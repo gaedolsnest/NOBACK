@@ -197,7 +197,6 @@
       .staff .line { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; color: var(--muted); font-size: 13px; }
       .staff .chip { border: 1px solid var(--border); border-radius: 999px; padding: 6px 10px; background: rgba(255, 255, 255, 0.03); color: var(--text); font-size: 12px; }
 
-      /* Lists: Events & Shoes */
       .list { display: grid; gap: 12px; margin-top: 12px; }
       .item { border: 1px solid var(--border); border-radius: 14px; background: rgba(0, 0, 0, 0.18); padding: 14px; }
       .item-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
@@ -205,6 +204,7 @@
       .item-title strong { font-size: 14px; }
       .meta { display: flex; gap: 8px; flex-wrap: wrap; }
       .note { font-size: 13px; color: var(--muted); margin-top: 10px; }
+
       .empty {
         border: 1px dashed var(--border);
         border-radius: 14px;
@@ -212,12 +212,14 @@
         color: var(--muted);
         background: rgba(255, 255, 255, 0.02);
       }
-      .code {
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-        font-size: 12px;
-        white-space: pre-wrap;
+
+      /* participants vertical */
+      .p-list {
+        margin: 10px 0 0;
+        padding-left: 18px;
         color: var(--muted);
       }
+      .p-list li { margin: 6px 0; }
     </style>
   </head>
 
@@ -267,7 +269,6 @@
             <h2>다가오는 대회</h2>
             <a class="cta" href="#/events">대회 일정 보기 →</a>
           </div>
-          <p class="help">GitHub에서 <b>data/events.json</b> 수정/커밋하면 반영됩니다.</p>
           <div id="home-events-preview" class="list"></div>
         </div>
 
@@ -276,7 +277,7 @@
             <h2>러닝화 추천</h2>
             <a class="cta" href="#/shoes">추천 보기 →</a>
           </div>
-          <p class="help">GitHub에서 <b>data/shoes.json</b> 수정/커밋하면 반영됩니다.</p>
+          <p class="help">데일리 조깅용 · 훈련용 · 레이스용</p>
         </div>
 
         <div class="card" style="margin-top: 14px;">
@@ -289,11 +290,6 @@
             <li>진행: 스트레칭(10분) → 러닝(50분) → 마무리 스트레칭/해산</li>
             <li>운영: 페이스 구간 사전취합 · 인원 많을 시 4명 내외 그룹</li>
           </ul>
-        </div>
-
-        <div class="card" style="margin-top: 14px;">
-          <h2>사용 팁</h2>
-          <p class="help">시간 입력은 <b>HH:MM:SS</b> 또는 <b>MM:SS</b> (예: 42:30, 1:50:00)</p>
         </div>
       </section>
 
@@ -425,7 +421,6 @@
 
         <div class="card">
           <h2>대회 일정</h2>
-          <p class="help">편집: GitHub에서 <b>data/events.json</b> 수정 → 커밋</p>
           <div id="events-list" class="list"></div>
         </div>
       </section>
@@ -439,7 +434,6 @@
 
         <div class="card">
           <h2>초보 입문용 러닝화 추천</h2>
-          <p class="help">편집: GitHub에서 <b>data/shoes.json</b> 수정 → 커밋</p>
 
           <div style="margin-top: 12px;">
             <h3>데일리 조깅용</h3>
@@ -456,7 +450,7 @@
             <div id="shoes-race" class="list"></div>
           </div>
 
-          <div class="note">러닝화는 발/체중/보행에 따라 체감이 다를 수 있어요. 가능하면 착화/반품 가능한 구매를 추천.</div>
+          <div class="note">러닝화는 발/체중/보행에 따라 체감이 다를 수 있어요.</div>
         </div>
       </section>
 
@@ -578,7 +572,6 @@
       function setVisible(el, visible) {
         el.style.display = visible ? "" : "none";
       }
-
       function sortKoreanDesc(arr) {
         return arr
           .slice()
@@ -587,7 +580,7 @@
           .sort((a, b) => b.localeCompare(a, "ko"));
       }
 
-      // 운영진(닉네임 기준 내림차순, 좌→우)
+      // 운영진
       (function renderStaff() {
         const ops = ["달려", "룰루", "나올", "밍경", "김땅콩", "슈퍼짹", "뽀용", "망구"];
         const sorted = sortKoreanDesc(ops);
@@ -601,7 +594,7 @@
         });
       })();
 
-      // Pace calculator
+      // Pace calc
       const paceDistanceType = document.getElementById("pace-distance-type");
       const paceCustomField = document.getElementById("pace-custom-distance-field");
       const paceDistanceKmInput = document.getElementById("pace-distance-km");
@@ -631,24 +624,19 @@
         setVisible(paceResult, false);
         paceRows.innerHTML = "";
       });
-
       function appendPaceRow(label, value, isTail) {
         const row = document.createElement("div");
         row.className = "pace-row" + (isTail ? " tail" : "");
-
         const left = document.createElement("div");
         left.className = "k";
         left.textContent = label;
-
         const right = document.createElement("div");
         right.className = "v";
         right.textContent = value;
-
         row.appendChild(left);
         row.appendChild(right);
         paceRows.appendChild(row);
       }
-
       paceForm.addEventListener("submit", (e) => {
         e.preventDefault();
         setVisible(paceError, false);
@@ -681,7 +669,8 @@
 
         document.getElementById("pace-pill-distance").textContent = `거리: ${distanceKm} km`;
         document.getElementById("pace-pill-time").textContent = `목표: ${formatTime(timeSec)}`;
-        document.getElementById("pace-pill-avgpace").textContent = `평균: ${formatPaceReadable(paceSecPerKm)} (${formatPaceColon(paceSecPerKm)})`;
+        document.getElementById("pace-pill-avgpace").textContent =
+          `평균: ${formatPaceReadable(paceSecPerKm)} (${formatPaceColon(paceSecPerKm)})`;
 
         setVisible(paceResult, true);
       });
@@ -768,21 +757,22 @@
         setVisible(predictResult, true);
       });
 
-      // JSON helpers
+      // JSON fetch helpers
       async function safeFetchJson(path) {
         try {
           const res = await fetch(path, { cache: "no-store" });
-          if (!res.ok) return null;
-          return await res.json();
+          if (!res.ok) return { ok: false, reason: `파일을 찾을 수 없음 (${res.status})`, data: null };
+          const data = await res.json();
+          return { ok: true, reason: "", data };
         } catch {
-          return null;
+          return { ok: false, reason: "JSON 형식이 아니거나 파싱 실패", data: null };
         }
       }
-      function renderEmpty(targetEl, title, exampleText) {
+      function renderEmpty(targetEl, title, reason) {
         targetEl.innerHTML = "";
         const box = document.createElement("div");
         box.className = "empty";
-        box.innerHTML = `<div style="margin-bottom:8px;"><b>${title}</b></div><div class="code">${exampleText}</div>`;
+        box.innerHTML = `<b>${title}</b><div style="margin-top:8px;">${reason || ""}</div>`;
         targetEl.appendChild(box);
       }
 
@@ -810,7 +800,7 @@
         return v;
       }
 
-      // Events render (participants: 가나다 내림차순)
+      // Events render (participants vertical)
       function createEventItem(ev) {
         const el = document.createElement("div");
         el.className = "item";
@@ -855,10 +845,14 @@
 
         const participants = Array.isArray(ev.participants) ? sortKoreanDesc(ev.participants) : [];
         if (participants.length) {
-          const p = document.createElement("div");
-          p.className = "note";
-          p.textContent = `참가자: ${participants.join(", ")}`;
-          el.appendChild(p);
+          const ul = document.createElement("ul");
+          ul.className = "p-list";
+          participants.forEach((name) => {
+            const li = document.createElement("li");
+            li.textContent = name;
+            ul.appendChild(li);
+          });
+          el.appendChild(ul);
         }
 
         if (ev.note) {
@@ -882,30 +876,17 @@
       }
 
       async function loadEvents() {
-        const data = await safeFetchJson("data/events.json");
+        const res = await safeFetchJson("data/events.json");
         const list = document.getElementById("events-list");
         const preview = document.getElementById("home-events-preview");
 
-        const example = `// data/events.json 예시
-{
-  "events": [
-    {
-      "name": "더레이스 서울",
-      "date": "2026-04-05",
-      "location": "서울",
-      "distance": "21k",
-      "participants": ["띰띰", "망구"]
-    }
-  ]
-}`;
-
-        if (!data || !Array.isArray(data.events) || data.events.length === 0) {
-          renderEmpty(list, "대회 데이터가 비어있어요", example);
-          renderEmpty(preview, "대회 미등록", example);
+        if (!res.ok || !res.data || !Array.isArray(res.data.events) || res.data.events.length === 0) {
+          renderEmpty(list, "대회 정보가 비어있어요", res.ok ? "" : res.reason);
+          renderEmpty(preview, "대회 정보가 비어있어요", res.ok ? "" : res.reason);
           return;
         }
 
-        const events = data.events
+        const events = res.data.events
           .slice()
           .map((ev) => ({
             ...ev,
@@ -970,37 +951,30 @@
       }
 
       async function loadShoes() {
-        const data = await safeFetchJson("data/shoes.json");
+        const res = await safeFetchJson("data/shoes.json");
         const dailyEl = document.getElementById("shoes-daily");
         const trainingEl = document.getElementById("shoes-training");
         const raceEl = document.getElementById("shoes-race");
 
-        const example = `// data/shoes.json 예시
-{
-  "daily": [{ "brand": "Nike", "model": "Pegasus 41", "tag": "데일리", "note": "입문/만능" }],
-  "training": [{ "brand": "Saucony", "model": "Endorphin Speed", "tag": "훈련", "note": "템포/훈련 겸용" }],
-  "race": [{ "brand": "Nike", "model": "Alphafly 3", "tag": "레이스", "note": "카본 레이스화" }]
-}`;
-
         function renderCategory(targetEl, arr, title) {
           targetEl.innerHTML = "";
           if (!Array.isArray(arr) || arr.length === 0) {
-            renderEmpty(targetEl, `${title} 비어있어요`, example);
+            renderEmpty(targetEl, `${title} 비어있어요`, "");
             return;
           }
           arr.forEach((s) => targetEl.appendChild(createShoeItem(s)));
         }
 
-        if (!data) {
-          renderCategory(dailyEl, [], "데일리 조깅용");
-          renderCategory(trainingEl, [], "훈련용");
-          renderCategory(raceEl, [], "레이스용");
+        if (!res.ok || !res.data) {
+          renderEmpty(dailyEl, "데일리 조깅용 비어있어요", res.reason);
+          renderEmpty(trainingEl, "훈련용 비어있어요", res.reason);
+          renderEmpty(raceEl, "레이스용 비어있어요", res.reason);
           return;
         }
 
-        renderCategory(dailyEl, data.daily, "데일리 조깅용");
-        renderCategory(trainingEl, data.training, "훈련용");
-        renderCategory(raceEl, data.race, "레이스용");
+        renderCategory(dailyEl, res.data.daily, "데일리 조깅용");
+        renderCategory(trainingEl, res.data.training, "훈련용");
+        renderCategory(raceEl, res.data.race, "레이스용");
       }
 
       loadEvents();
