@@ -4,8 +4,12 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>노빠꾸 러닝 크루 🏃🏃‍♂️🏃‍♀️</title>
-    <link rel="icon" href="favicon.ico" />
+    <title>노빠꾸 러닝 크루🏃🏽🏃‍♀️🏃🏻‍♂️</title>
+
+    <!-- favicon (cache-bust) -->
+    <link rel="icon" href="./favicon.ico?v=3" sizes="any" />
+    <link rel="shortcut icon" href="./favicon.ico?v=3" />
+
     <style>
       :root {
         --bg: #0b0f14;
@@ -16,13 +20,44 @@
         --radius: 16px;
       }
       * { box-sizing: border-box; }
+
+      /* ===== Monogram background (repeat) =====
+         - bg.jpg must exist at repo root: /NOBACK/bg.jpg
+         - adjust background-size + opacity to taste
+      */
       body {
         margin: 0;
         font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-        background: radial-gradient(1200px 800px at 10% 10%, #15233a, var(--bg));
         color: var(--text);
         line-height: 1.4;
+        background: var(--bg);
+        position: relative;
       }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: url("./bg.jpg?v=3");
+        background-repeat: repeat;
+        background-size: 320px auto; /* 타일 크기: 240/320/420 등 조절 */
+        background-position: 0 0;
+        opacity: 0.06; /* 패턴 진하기 */
+        pointer-events: none;
+        z-index: -2;
+      }
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: radial-gradient(
+          1200px 800px at 10% 10%,
+          rgba(21, 35, 58, 0.88),
+          rgba(11, 15, 20, 0.96)
+        );
+        pointer-events: none;
+        z-index: -1;
+      }
+
       a { color: inherit; text-decoration: none; }
       .container { max-width: 1040px; margin: 0 auto; padding: 22px 16px 60px; }
 
@@ -208,7 +243,7 @@
         background: rgba(255, 255, 255, 0.02);
       }
 
-      /* participants vertical + chip + more */
+      /* participants + chip + more */
       .p-wrap { margin-top: 10px; }
       .p-list { margin: 0; padding-left: 18px; color: var(--muted); }
       .p-list li { margin: 6px 0; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
@@ -245,7 +280,7 @@
   <body>
     <div class="container">
       <header>
-        <h1>노빠꾸 러닝 크루 🏃🏃‍♂️🏃‍♀️</h1>
+        <h1>노빠꾸 러닝 크루🏃🏽🏃‍♀️🏃🏻‍♂️</h1>
         <div class="header-right">
           <a
             class="linkbtn"
@@ -774,8 +809,6 @@
         btn.textContent = label;
         return btn;
       }
-
-      // participants: ["이름", ...] 또는 [{name, distance}, ...] 둘 다 지원
       function normalizeParticipants(rawParticipants) {
         const arr = Array.isArray(rawParticipants) ? rawParticipants : [];
         return arr
@@ -787,7 +820,7 @@
           .filter((p) => p.name.length > 0);
       }
 
-      function createEventItem(ev, participantPreviewCount = 10) {
+      function createEventItem(ev, participantPreviewCount = 12) {
         const el = document.createElement("div");
         el.className = "item";
 
@@ -852,12 +885,11 @@
               nameSpan.textContent = p.name;
               li.appendChild(nameSpan);
 
-              // 기본 대회 distance와 다를 때만 칩 표시
               const showDistChip = p.distance && p.distance !== eventDistanceNorm;
               if (showDistChip) {
                 const chip = document.createElement("span");
                 chip.className = "chip sub";
-                chip.textContent = p.distance;
+                chip.textContent = p.distance; // e.g. 10K
                 li.appendChild(chip);
               }
 
@@ -913,10 +945,7 @@
 
         const events = res.data.events
           .slice()
-          .map((ev) => ({
-            ...ev,
-            distance: normalizeDistance(ev.distance),
-          }))
+          .map((ev) => ({ ...ev, distance: normalizeDistance(ev.distance) }))
           .sort((a, b) => String(a.date || "").localeCompare(String(b.date || "")));
 
         list.innerHTML = "";
