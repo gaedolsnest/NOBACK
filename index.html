@@ -4,17 +4,21 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>노빠꾸 러닝 크루</title>
+    <title>Run Club VIP</title>
     <style>
       :root {
         --bg: #0b0f14;
+        --card: #121925;
         --text: #e7eefc;
         --muted: #a9b6cc;
         --border: rgba(255, 255, 255, 0.08);
         --shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
         --radius: 16px;
+        --accent: rgba(255, 255, 255, 0.12);
       }
-      * { box-sizing: border-box; }
+      * {
+        box-sizing: border-box;
+      }
       body {
         margin: 0;
         font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
@@ -22,30 +26,43 @@
         color: var(--text);
         line-height: 1.4;
       }
-      a { color: inherit; text-decoration: none; }
-      .container { max-width: 1040px; margin: 0 auto; padding: 22px 16px 60px; }
-
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .container {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 22px 16px 60px;
+      }
       header {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 12px;
-        margin-bottom: 12px;
+        margin-bottom: 14px;
       }
-      header h1 { font-size: 18px; margin: 0; letter-spacing: 0.3px; }
-      .header-right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
-      .linkbtn {
+      header h1 {
+        font-size: 18px;
+        margin: 0;
+        letter-spacing: 0.3px;
+      }
+      .tag {
         font-size: 12px;
-        color: var(--text);
+        color: var(--muted);
         border: 1px solid var(--border);
-        padding: 8px 12px;
+        padding: 6px 10px;
         border-radius: 999px;
-        background: rgba(255, 255, 255, 0.06);
+        background: rgba(255, 255, 255, 0.03);
         white-space: nowrap;
       }
-      .linkbtn:hover { background: rgba(255, 255, 255, 0.1); }
 
-      .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+      .tabs {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 14px;
+      }
       .tab {
         font-size: 13px;
         color: var(--muted);
@@ -60,11 +77,23 @@
         background: rgba(255, 255, 255, 0.07);
       }
 
-      .view { display: none; }
-      .view.active { display: block; }
+      .view {
+        display: none;
+      }
+      .view.active {
+        display: block;
+      }
 
-      .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
-      @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+      @media (max-width: 720px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
 
       .card {
         background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
@@ -73,10 +102,20 @@
         box-shadow: var(--shadow);
         padding: 16px;
       }
-      .card h2 { margin: 0 0 6px; font-size: 16px; }
-      .card h3 { margin: 0 0 8px; font-size: 14px; color: var(--text); }
-      .card p { margin: 0; color: var(--muted); font-size: 13px; }
-
+      .card h2 {
+        margin: 0 0 6px;
+        font-size: 16px;
+      }
+      .card h3 {
+        margin: 0 0 8px;
+        font-size: 14px;
+        color: var(--text);
+      }
+      .card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
       .cta {
         margin-top: 12px;
         display: inline-flex;
@@ -89,9 +128,17 @@
         padding: 8px 12px;
         background: rgba(255, 255, 255, 0.03);
       }
-      .cta:hover { background: rgba(255, 255, 255, 0.06); }
+      .cta:hover {
+        background: rgba(255, 255, 255, 0.06);
+      }
 
-      .topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
       .back {
         display: inline-flex;
         align-items: center;
@@ -103,14 +150,42 @@
         padding: 8px 12px;
         background: rgba(255, 255, 255, 0.03);
       }
-      .back:hover { background: rgba(255, 255, 255, 0.06); color: var(--text); }
+      .back:hover {
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--text);
+      }
 
-      form { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 12px; }
-      .field { grid-column: span 6; display: flex; flex-direction: column; gap: 6px; }
-      @media (max-width: 720px) { .field { grid-column: span 12; } }
-      label { font-size: 12px; color: var(--muted); }
-      input, select, button { font: inherit; color: var(--text); }
-      input, select {
+      form {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        gap: 12px;
+      }
+      .field {
+        grid-column: span 6;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .field.full {
+        grid-column: span 12;
+      }
+      @media (max-width: 720px) {
+        .field {
+          grid-column: span 12;
+        }
+      }
+      label {
+        font-size: 12px;
+        color: var(--muted);
+      }
+      input,
+      select,
+      button {
+        font: inherit;
+        color: var(--text);
+      }
+      input,
+      select {
         width: 100%;
         padding: 10px 12px;
         border-radius: 12px;
@@ -118,9 +193,22 @@
         background: rgba(0, 0, 0, 0.25);
         outline: none;
       }
-      input:focus, select:focus { border-color: rgba(255, 255, 255, 0.22); }
-      .help { font-size: 12px; color: var(--muted); margin-top: 2px; }
-      .actions { grid-column: span 12; display: flex; gap: 10px; flex-wrap: wrap; margin-top: 2px; }
+      input:focus,
+      select:focus {
+        border-color: rgba(255, 255, 255, 0.22);
+      }
+      .help {
+        font-size: 12px;
+        color: var(--muted);
+        margin-top: 2px;
+      }
+      .actions {
+        grid-column: span 12;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 2px;
+      }
       button {
         border: 1px solid var(--border);
         background: rgba(255, 255, 255, 0.06);
@@ -128,11 +216,28 @@
         border-radius: 999px;
         cursor: pointer;
       }
-      button:hover { background: rgba(255, 255, 255, 0.1); }
+      button:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
 
-      .error { margin-top: 10px; color: #ffb3b3; font-size: 13px; }
-      .result { margin-top: 14px; border-top: 1px dashed var(--border); padding-top: 14px; display: grid; gap: 12px; }
-      .pillrow { display: flex; gap: 8px; flex-wrap: wrap; }
+      .error {
+        margin-top: 10px;
+        color: #ffb3b3;
+        font-size: 13px;
+      }
+
+      .result {
+        margin-top: 14px;
+        border-top: 1px dashed var(--border);
+        padding-top: 14px;
+        display: grid;
+        gap: 12px;
+      }
+      .pillrow {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
       .pill {
         font-size: 12px;
         color: var(--muted);
@@ -142,26 +247,55 @@
         background: rgba(255, 255, 255, 0.03);
       }
 
-      .pace-rows { display: grid; gap: 8px; }
-      .pace-row {
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        overflow: hidden;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+      }
+      th,
+      td {
+        padding: 10px 10px;
+        border-bottom: 1px solid var(--border);
+        text-align: left;
+        font-size: 13px;
+      }
+      th {
+        color: var(--muted);
+        font-weight: 600;
+        background: rgba(255, 255, 255, 0.03);
+      }
+      tr:last-child td {
+        border-bottom: none;
+      }
+
+      .cards2 {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+      @media (max-width: 720px) {
+        .cards2 {
+          grid-template-columns: 1fr;
+        }
+      }
+      .mini {
+        padding: 14px;
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.03);
+      }
+      .mini .title {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 10px;
-        padding: 10px 10px;
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        background: rgba(0, 0, 0, 0.18);
+        gap: 8px;
+        margin-bottom: 10px;
       }
-      .pace-row .k { font-size: 12px; color: var(--muted); white-space: nowrap; }
-      .pace-row .v { font-size: 13px; white-space: nowrap; }
-      .pace-row.tail { color: var(--muted); border-style: dashed; }
-
-      .cards3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
-      @media (max-width: 900px) { .cards3 { grid-template-columns: 1fr; } }
-      .mini { padding: 14px; border-radius: 14px; border: 1px solid var(--border); background: rgba(255, 255, 255, 0.03); }
-      .mini .title { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 10px; }
-      .mini .title strong { font-size: 14px; }
+      .mini .title strong {
+        font-size: 14px;
+      }
       .mini .km {
         font-size: 12px;
         color: var(--muted);
@@ -171,7 +305,10 @@
         background: rgba(255, 255, 255, 0.02);
         white-space: nowrap;
       }
-      .rows { display: grid; gap: 8px; }
+      .rows {
+        display: grid;
+        gap: 8px;
+      }
       .row {
         display: flex;
         align-items: center;
@@ -182,41 +319,65 @@
         border-radius: 12px;
         background: rgba(0, 0, 0, 0.18);
       }
-      .row .k { font-size: 12px; color: var(--muted); }
-      .row .v { font-size: 13px; white-space: nowrap; }
-      .row.highlight { border-color: rgba(255, 255, 255, 0.22); background: rgba(255, 255, 255, 0.06); }
-      .group { margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--border); font-size: 12px; color: var(--muted); }
-
-      .section-title { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin: 0 0 10px; }
-      .section-title h2 { margin: 0; font-size: 16px; }
-      .muted { color: var(--muted); }
-      ul { margin: 8px 0 0; padding-left: 18px; color: var(--muted); }
-      li { margin: 6px 0; }
-
-      .staff { display: grid; gap: 10px; }
-      .staff .line { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; color: var(--muted); font-size: 13px; }
-      .staff .chip { border: 1px solid var(--border); border-radius: 999px; padding: 6px 10px; background: rgba(255, 255, 255, 0.03); color: var(--text); font-size: 12px; }
-
-      /* Lists: Events & Shoes */
-      .list { display: grid; gap: 12px; margin-top: 12px; }
-      .item { border: 1px solid var(--border); border-radius: 14px; background: rgba(0, 0, 0, 0.18); padding: 14px; }
-      .item-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
-      .item-title { display: grid; gap: 6px; }
-      .item-title strong { font-size: 14px; }
-      .meta { display: flex; gap: 8px; flex-wrap: wrap; }
-      .note { font-size: 13px; color: var(--muted); margin-top: 10px; }
-      .empty {
-        border: 1px dashed var(--border);
-        border-radius: 14px;
-        padding: 14px;
-        color: var(--muted);
-        background: rgba(255, 255, 255, 0.02);
-      }
-      .code {
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      .row .k {
         font-size: 12px;
-        white-space: pre-wrap;
         color: var(--muted);
+      }
+      .row .v {
+        font-size: 13px;
+      }
+      .row.highlight {
+        border-color: rgba(255, 255, 255, 0.22);
+        background: rgba(255, 255, 255, 0.06);
+      }
+      .group {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px dashed var(--border);
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .section-title {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 10px;
+        margin: 0 0 10px;
+      }
+      .section-title h2 {
+        margin: 0;
+        font-size: 16px;
+      }
+      .muted {
+        color: var(--muted);
+      }
+      ul {
+        margin: 8px 0 0;
+        padding-left: 18px;
+        color: var(--muted);
+      }
+      li {
+        margin: 6px 0;
+      }
+      .staff {
+        display: grid;
+        gap: 8px;
+      }
+      .staff .line {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .staff .chip {
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 6px 10px;
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--text);
+        font-size: 12px;
       }
     </style>
   </head>
@@ -224,25 +385,14 @@
   <body>
     <div class="container">
       <header>
-        <h1>노빠꾸 러닝 크루</h1>
-        <div class="header-right">
-          <a
-            class="linkbtn"
-            href="https://www.daangn.com/kr/group/%EB%85%B8%EB%B9%A0%EA%BE%B8-%EB%9F%AC%EB%8B%9D%ED%81%AC%EB%A3%A8-no-back-rc-1yeomgcwmnyx/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            크루 페이지 바로가기 →
-          </a>
-        </div>
+        <h1>Run Club VIP</h1>
+        <div class="tag">MVP: 페이스 · 예상 기록 · 정기런</div>
       </header>
 
       <nav class="tabs" aria-label="탭">
         <a class="tab" data-tab="home" href="#/">홈</a>
         <a class="tab" data-tab="pace" href="#/pace">페이스 계산기</a>
         <a class="tab" data-tab="predict" href="#/predict">예상 기록</a>
-        <a class="tab" data-tab="events" href="#/events">대회</a>
-        <a class="tab" data-tab="shoes" href="#/shoes">러닝화 추천</a>
         <a class="tab" data-tab="regular" href="#/regular">정기런</a>
       </nav>
 
@@ -251,32 +401,15 @@
         <div class="grid">
           <a class="card" href="#/pace" aria-label="페이스 계산기 열기">
             <h2>페이스 계산기</h2>
-            <p>거리 + 목표 시간 → 평균 페이스, 1KM/2KM… 세로 출력</p>
+            <p>거리 + 기록 → 평균 페이스, 1km 스플릿</p>
             <span class="cta">열기 →</span>
           </a>
 
           <a class="card" href="#/predict" aria-label="예상 기록 계산기 열기">
             <h2>예상 기록</h2>
-            <p>5K 기록 1번 입력 → 10K/하프/풀 동시 + 3단계</p>
+            <p>10K 기록 1번 입력 → 하프/풀 동시 + 3단계</p>
             <span class="cta">열기 →</span>
           </a>
-        </div>
-
-        <div class="card" style="margin-top: 14px;">
-          <div class="section-title">
-            <h2>다가오는 대회</h2>
-            <a class="cta" href="#/events">대회 일정 보기 →</a>
-          </div>
-          <p class="help">GitHub에서 <b>data/events.json</b> 수정/커밋하면 바로 반영됩니다.</p>
-          <div id="home-events-preview" class="list"></div>
-        </div>
-
-        <div class="card" style="margin-top: 14px;">
-          <div class="section-title">
-            <h2>러닝화 추천</h2>
-            <a class="cta" href="#/shoes">추천 보기 →</a>
-          </div>
-          <p class="help">GitHub에서 <b>data/shoes.json</b> 수정/커밋하면 바로 반영됩니다.</p>
         </div>
 
         <div class="card" style="margin-top: 14px;">
@@ -284,7 +417,9 @@
             <h2>정기런 안내(요약)</h2>
             <a class="cta" href="#/regular">자세히 보기 →</a>
           </div>
-          <p class="muted">매주 <b>수요일 20:00</b> · 노빠꾸 정기런 🏃‍♂️🏃‍♀️</p>
+          <p class="muted">
+            매주 <b>수요일 20:00</b> · 노빠꾸 정기런 🏃‍♂️🏃‍♀️
+          </p>
           <ul>
             <li>진행: 스트레칭(10분) → 러닝(50분) → 마무리 스트레칭/해산</li>
             <li>운영: 페이스 구간 사전취합 · 인원 많을 시 4명 내외 그룹</li>
@@ -293,7 +428,9 @@
 
         <div class="card" style="margin-top: 14px;">
           <h2>사용 팁</h2>
-          <p class="help">시간 입력은 <b>HH:MM:SS</b> 또는 <b>MM:SS</b> (예: 42:30, 1:50:00)</p>
+          <p class="help">
+            시간 입력은 <b>HH:MM:SS</b> 또는 <b>MM:SS</b> (예: 42:30, 1:50:00)
+          </p>
         </div>
       </section>
 
@@ -301,7 +438,7 @@
       <section id="view-pace" class="view">
         <div class="topbar">
           <a class="back" href="#/">← 홈</a>
-          <div class="pill">페이스 계산기</div>
+          <div class="tag">페이스 계산기</div>
         </div>
 
         <div class="card">
@@ -309,8 +446,7 @@
             <div class="field">
               <label for="pace-distance-type">거리</label>
               <select id="pace-distance-type" name="distanceType">
-                <option value="5">5K (5.000km)</option>
-                <option value="10" selected>10K (10.000km)</option>
+                <option value="10">10K (10.000km)</option>
                 <option value="21.0975">Half (21.0975km)</option>
                 <option value="42.195">Full (42.195km)</option>
                 <option value="custom">직접 입력</option>
@@ -320,12 +456,24 @@
 
             <div class="field" id="pace-custom-distance-field" style="display: none;">
               <label for="pace-distance-km">거리(km)</label>
-              <input id="pace-distance-km" name="distanceKm" inputmode="decimal" placeholder="예: 7.5" autocomplete="off" />
+              <input
+                id="pace-distance-km"
+                name="distanceKm"
+                inputmode="decimal"
+                placeholder="예: 7.5"
+                autocomplete="off"
+              />
             </div>
 
             <div class="field">
-              <label for="pace-time">목표 시간</label>
-              <input id="pace-time" name="time" inputmode="text" placeholder="예: 42:30 또는 1:50:00" autocomplete="off" />
+              <label for="pace-time">기록(시간)</label>
+              <input
+                id="pace-time"
+                name="time"
+                inputmode="text"
+                placeholder="예: 42:30 또는 1:50:00"
+                autocomplete="off"
+              />
               <div class="help">MM:SS 또는 HH:MM:SS</div>
             </div>
 
@@ -344,10 +492,15 @@
               <div class="pill" id="pace-pill-avgpace"></div>
             </div>
 
-            <div>
-              <div class="help" style="margin-bottom: 8px;">페이스 표시: <b>5:30</b> = 5분 30초</div>
-              <div class="pace-rows" id="pace-rows"></div>
-            </div>
+            <table aria-label="스플릿 표">
+              <thead>
+                <tr>
+                  <th>구간</th>
+                  <th>누적 시간</th>
+                </tr>
+              </thead>
+              <tbody id="pace-splits"></tbody>
+            </table>
           </div>
         </div>
       </section>
@@ -356,19 +509,25 @@
       <section id="view-predict" class="view">
         <div class="topbar">
           <a class="back" href="#/">← 홈</a>
-          <div class="pill">예상 기록 (5K 기준)</div>
+          <div class="tag">예상 기록 (10K → Half/Full)</div>
         </div>
 
         <div class="card">
           <form id="predict-form">
             <div class="field">
-              <label for="predict-5k-time">기준 기록(5K)</label>
-              <input id="predict-5k-time" name="time" inputmode="text" placeholder="예: 25:00 또는 0:25:00" autocomplete="off" />
+              <label for="predict-10k-time">기준 기록(10K)</label>
+              <input
+                id="predict-10k-time"
+                name="time"
+                inputmode="text"
+                placeholder="예: 50:00 또는 1:02:30"
+                autocomplete="off"
+              />
               <div class="help">MM:SS 또는 HH:MM:SS</div>
             </div>
 
             <div class="field">
-              <label for="predict-mode">컨디션(강조)</label>
+              <label for="predict-mode">컨디션(표시 강조)</label>
               <select id="predict-mode" name="mode">
                 <option value="base" selected>기본</option>
                 <option value="aggressive">공격</option>
@@ -388,75 +547,33 @@
           <div id="predict-result" class="result" style="display: none;">
             <div class="pillrow">
               <div class="pill" id="predict-pill-in"></div>
-              <div class="pill">공식: Riegel (1.04/1.06/1.08)</div>
+              <div class="pill" id="predict-pill-note">공식: Riegel (1.04/1.06/1.08)</div>
             </div>
 
-            <div class="cards3" aria-label="10K/Half/Full 결과 카드">
-              <div class="mini">
-                <div class="title"><strong>10K</strong><span class="km">10.000 km</span></div>
-                <div class="rows" id="rows-10k"></div>
-                <div class="group" id="group-10k"></div>
-              </div>
-
-              <div class="mini">
-                <div class="title"><strong>Half</strong><span class="km">21.0975 km</span></div>
+            <div class="cards2" aria-label="Half/Full 결과 카드">
+              <div class="mini" id="card-half">
+                <div class="title">
+                  <strong>Half</strong>
+                  <span class="km">21.0975 km</span>
+                </div>
                 <div class="rows" id="rows-half"></div>
                 <div class="group" id="group-half"></div>
               </div>
 
-              <div class="mini">
-                <div class="title"><strong>Full</strong><span class="km">42.195 km</span></div>
+              <div class="mini" id="card-full">
+                <div class="title">
+                  <strong>Full</strong>
+                  <span class="km">42.195 km</span>
+                </div>
                 <div class="rows" id="rows-full"></div>
                 <div class="group" id="group-full"></div>
               </div>
             </div>
 
-            <div class="help">참고: 개인차(지구력/훈련량/코스/날씨)에 따라 실제 기록은 달라질 수 있어요.</div>
+            <div class="help">
+              참고: 개인차(지구력/훈련량/코스/날씨)에 따라 실제 기록은 달라질 수 있어요.
+            </div>
           </div>
-        </div>
-      </section>
-
-      <!-- EVENTS -->
-      <section id="view-events" class="view">
-        <div class="topbar">
-          <a class="back" href="#/">← 홈</a>
-          <div class="pill">대회</div>
-        </div>
-
-        <div class="card">
-          <h2>대회 일정</h2>
-          <p class="help">편집: GitHub에서 <b>data/events.json</b> 수정 → 커밋</p>
-          <div id="events-list" class="list"></div>
-        </div>
-      </section>
-
-      <!-- SHOES -->
-      <section id="view-shoes" class="view">
-        <div class="topbar">
-          <a class="back" href="#/">← 홈</a>
-          <div class="pill">러닝화 추천</div>
-        </div>
-
-        <div class="card">
-          <h2>초보 입문용 러닝화 추천</h2>
-          <p class="help">편집: GitHub에서 <b>data/shoes.json</b> 수정 → 커밋</p>
-
-          <div style="margin-top: 12px;">
-            <h3>데일리 조깅용</h3>
-            <div id="shoes-daily" class="list"></div>
-          </div>
-
-          <div style="margin-top: 12px;">
-            <h3>훈련용</h3>
-            <div id="shoes-training" class="list"></div>
-          </div>
-
-          <div style="margin-top: 12px;">
-            <h3>레이스용</h3>
-            <div id="shoes-race" class="list"></div>
-          </div>
-
-          <div class="note">러닝화는 발/체중/보행에 따라 체감이 다를 수 있어요. 가능하면 착화/반품 가능한 구매를 추천.</div>
         </div>
       </section>
 
@@ -464,12 +581,14 @@
       <section id="view-regular" class="view">
         <div class="topbar">
           <a class="back" href="#/">← 홈</a>
-          <div class="pill">정기런</div>
+          <div class="tag">정기런</div>
         </div>
 
         <div class="card">
           <h2>정기런</h2>
-          <p class="muted">매주 <b>수요일 오후 8시</b>, 노빠꾸 정기런 진행합니다 🏃‍♂️🏃‍♀️</p>
+          <p class="muted">
+            매주 <b>수요일 오후 8시</b>, 노빠꾸 정기런 진행합니다 🏃‍♂️🏃‍♀️
+          </p>
 
           <h3 style="margin-top: 14px;">진행 순서</h3>
           <ul>
@@ -488,8 +607,12 @@
           <ul>
             <li>원활한 진행을 위해 정기런은 페이스 구간 사전취합 방식으로 운영합니다.</li>
             <li>참석 예정이신 분들은 모임 채팅방에 안내된 희망 페이스 구간에 맞춰 닉네임을 남겨주시면 됩니다.</li>
-            <li>사전취합된 인원을 기준으로 비슷한 페이스끼리 그룹을 나누어 출발하며, 인원이 많을 경우에는 4명 내외로 운영할 예정입니다.</li>
-            <li>현장 혼선을 줄이고 체조 후 바로 출발하기 위한 방식이며, 그날 컨디션에 맞춰 편하게 선택해주시면 됩니다 🙌</li>
+            <li>
+              사전취합된 인원을 기준으로 비슷한 페이스끼리 그룹을 나누어 출발하며, 인원이 많을 경우에는 4명 내외로 운영할 예정입니다.
+            </li>
+            <li>
+              현장 혼선을 줄이고 체조 후 바로 출발하기 위한 방식이며, 그날 컨디션에 맞춰 편하게 선택해주시면 됩니다 🙌
+            </li>
           </ul>
 
           <h3 style="margin-top: 14px;">기타</h3>
@@ -501,8 +624,18 @@
           <div style="margin-top: 16px; border-top: 1px dashed var(--border); padding-top: 14px;">
             <h2>운영진 정보</h2>
             <div class="staff">
-              <div class="line"><span class="muted">크루장</span><span class="chip">망구</span></div>
-              <div class="line"><span class="muted">운영진</span><span id="ops-chips"></span></div>
+              <div class="line"><span class="muted">크루장</span> <span class="chip">망구</span></div>
+              <div class="line">
+                <span class="muted">운영진(내림차순)</span>
+                <span class="chip">슈퍼짹</span>
+                <span class="chip">뽀용</span>
+                <span class="chip">밍경</span>
+                <span class="chip">망구</span>
+                <span class="chip">룰루</span>
+                <span class="chip">달려</span>
+                <span class="chip">나올</span>
+                <span class="chip">김땅콩</span>
+              </div>
             </div>
           </div>
         </div>
@@ -510,19 +643,18 @@
     </div>
 
     <script>
+      /**
+       * Router (hash-based)
+       */
       function route() {
         const hash = location.hash || "#/";
         const view = hash.startsWith("#/pace")
           ? "pace"
           : hash.startsWith("#/predict")
             ? "predict"
-            : hash.startsWith("#/events")
-              ? "events"
-              : hash.startsWith("#/shoes")
-                ? "shoes"
-                : hash.startsWith("#/regular")
-                  ? "regular"
-                  : "home";
+            : hash.startsWith("#/regular")
+              ? "regular"
+              : "home";
 
         document.querySelectorAll(".view").forEach((v) => v.classList.remove("active"));
         document.getElementById(`view-${view}`).classList.add("active");
@@ -531,14 +663,20 @@
         const activeTab = document.querySelector(`.tab[data-tab="${view}"]`);
         if (activeTab) activeTab.classList.add("active");
       }
+
       window.addEventListener("hashchange", route);
       route();
 
+      /**
+       * Utilities
+       */
       function parseTimeToSeconds(raw) {
         const s = String(raw || "").trim();
         if (!s) return null;
+
         const parts = s.split(":").map((p) => p.trim());
         if (parts.some((p) => p === "" || !/^\d+$/.test(p))) return null;
+
         if (parts.length === 2) {
           const mm = Number(parts[0]);
           const ss = Number(parts[1]);
@@ -554,6 +692,7 @@
         }
         return null;
       }
+
       function formatTime(totalSeconds) {
         const s = Math.round(totalSeconds);
         const hh = Math.floor(s / 3600);
@@ -562,43 +701,28 @@
         if (hh > 0) return `${hh}:${String(mm).padStart(2, "0")}:${String(ss).padStart(2, "0")}`;
         return `${mm}:${String(ss).padStart(2, "0")}`;
       }
-      function formatPaceColon(secondsPerKm) {
-        const s = Math.round(secondsPerKm);
-        const mm = Math.floor(s / 60);
-        const ss = s % 60;
-        return `${mm}:${String(ss).padStart(2, "0")}`;
-      }
-      function formatPaceReadable(secondsPerKm) {
+
+      function formatPace(secondsPerKm) {
         const s = Math.round(secondsPerKm);
         const mm = Math.floor(s / 60);
         const ss = s % 60;
         return `${mm}'${String(ss).padStart(2, "0")}" /km`;
       }
+
       function setVisible(el, visible) {
         el.style.display = visible ? "" : "none";
       }
 
-      (function renderStaff() {
-        const ops = ["달려", "룰루", "나올", "밍경", "김땅콩", "슈퍼짹", "뽀용", "망구"];
-        const sorted = ops.slice().sort((a, b) => b.localeCompare(a, "ko"));
-        const container = document.getElementById("ops-chips");
-        container.innerHTML = "";
-        sorted.forEach((name) => {
-          const chip = document.createElement("span");
-          chip.className = "chip";
-          chip.textContent = name;
-          container.appendChild(chip);
-        });
-      })();
-
-      // Pace calculator
+      /**
+       * Pace calculator
+       */
       const paceDistanceType = document.getElementById("pace-distance-type");
       const paceCustomField = document.getElementById("pace-custom-distance-field");
       const paceDistanceKmInput = document.getElementById("pace-distance-km");
       const paceForm = document.getElementById("pace-form");
       const paceError = document.getElementById("pace-error");
       const paceResult = document.getElementById("pace-result");
-      const paceRows = document.getElementById("pace-rows");
+      const paceSplitsTbody = document.getElementById("pace-splits");
 
       function getPaceDistanceKm() {
         const v = paceDistanceType.value;
@@ -611,36 +735,24 @@
         }
         return Number(v);
       }
+
       paceDistanceType.addEventListener("change", () => {
         setVisible(paceCustomField, paceDistanceType.value === "custom");
       });
+
       document.getElementById("pace-reset").addEventListener("click", () => {
         paceForm.reset();
         setVisible(paceCustomField, false);
         setVisible(paceError, false);
         setVisible(paceResult, false);
-        paceRows.innerHTML = "";
+        paceSplitsTbody.innerHTML = "";
       });
-
-      function appendPaceRow(label, value, isTail) {
-        const row = document.createElement("div");
-        row.className = "pace-row" + (isTail ? " tail" : "");
-        const left = document.createElement("div");
-        left.className = "k";
-        left.textContent = label;
-        const right = document.createElement("div");
-        right.className = "v";
-        right.textContent = value;
-        row.appendChild(left);
-        row.appendChild(right);
-        paceRows.appendChild(row);
-      }
 
       paceForm.addEventListener("submit", (e) => {
         e.preventDefault();
         setVisible(paceError, false);
         setVisible(paceResult, false);
-        paceRows.innerHTML = "";
+        paceSplitsTbody.innerHTML = "";
 
         const distanceKm = getPaceDistanceKm();
         const timeSec = parseTimeToSeconds(new FormData(paceForm).get("time"));
@@ -651,82 +763,111 @@
           return;
         }
         if (!timeSec || timeSec <= 0) {
-          paceError.textContent = "목표 시간을 올바르게 입력해 주세요. (MM:SS 또는 HH:MM:SS)";
+          paceError.textContent = "시간을 올바르게 입력해 주세요. (MM:SS 또는 HH:MM:SS)";
           setVisible(paceError, true);
           return;
         }
 
-        const paceSecPerKm = timeSec / distanceKm;
+        const avgPace = timeSec / distanceKm;
+
         const fullKm = Math.floor(distanceKm);
         const tail = distanceKm - fullKm;
 
-        for (let i = 1; i <= fullKm; i++) appendPaceRow(`${i}KM`, formatPaceColon(paceSecPerKm), false);
+        const rows = [];
+        for (let i = 1; i <= fullKm; i++) rows.push({ seg: `${i} km`, t: avgPace * i });
         if (tail > 0.0001) {
           const tailKm = Math.round(tail * 1000) / 1000;
-          appendPaceRow(`마지막 ${tailKm}km`, formatPaceColon(paceSecPerKm), true);
+          rows.push({ seg: `+ ${tailKm} km`, t: timeSec });
+        } else if (rows.length === 0) {
+          rows.push({ seg: `${distanceKm} km`, t: timeSec });
         }
 
+        rows.forEach((r) => {
+          const tr = document.createElement("tr");
+          const td1 = document.createElement("td");
+          const td2 = document.createElement("td");
+          td1.textContent = r.seg;
+          td2.textContent = formatTime(r.t);
+          tr.appendChild(td1);
+          tr.appendChild(td2);
+          paceSplitsTbody.appendChild(tr);
+        });
+
         document.getElementById("pace-pill-distance").textContent = `거리: ${distanceKm} km`;
-        document.getElementById("pace-pill-time").textContent = `목표: ${formatTime(timeSec)}`;
-        document.getElementById("pace-pill-avgpace").textContent = `평균: ${formatPaceReadable(paceSecPerKm)} (${formatPaceColon(paceSecPerKm)})`;
+        document.getElementById("pace-pill-time").textContent = `기록: ${formatTime(timeSec)}`;
+        document.getElementById("pace-pill-avgpace").textContent = `평균: ${formatPace(avgPace)}`;
 
         setVisible(paceResult, true);
       });
 
-      // Predict
+      /**
+       * Prediction (10K only -> Half/Full)
+       * Riegel: T2 = T1 * (D2/D1)^exponent
+       */
       const predictForm = document.getElementById("predict-form");
       const predictError = document.getElementById("predict-error");
       const predictResult = document.getElementById("predict-result");
 
-      const D5K = 5;
       const D10K = 10;
       const DHALF = 21.0975;
       const DFULL = 42.195;
 
-      const EXPONENTS = { aggressive: 1.04, base: 1.06, conservative: 1.08 };
+      const EXPONENTS = {
+        aggressive: 1.04, // 더 빠르게 추정
+        base: 1.06, // 일반
+        conservative: 1.08, // 더 보수적으로(느리게) 추정
+      };
+
       function riegelTime(t1, d1, d2, exponent) {
         return t1 * Math.pow(d2 / d1, exponent);
       }
+
       function recommendedGroupRange(paceSecPerKm) {
-        const lo = Math.max(0, paceSecPerKm - 10);
-        const hi = paceSecPerKm + 10;
-        return `${formatPaceColon(lo)}~${formatPaceColon(hi)}`;
+        // 아주 단순한 "근처 그룹" 느낌의 범위(나중에 실제 그룹 기준으로 바꾸기 쉬움)
+        const paceMin = paceSecPerKm;
+        const lo = Math.max(0, paceMin - 10);
+        const hi = paceMin + 10;
+        return `${formatPace(lo)} ~ ${formatPace(hi)}`;
       }
-      function renderPredictCard(rowsEl, groupEl, distanceKm, t1Sec, highlightMode) {
+
+      function renderPredictCard(rowsEl, groupEl, label, distanceKm, t1Sec, highlightMode) {
         const order = [
           { key: "aggressive", name: "공격" },
           { key: "base", name: "기본" },
           { key: "conservative", name: "보수" },
         ];
+
         rowsEl.innerHTML = "";
+
         order.forEach((o) => {
           const exp = EXPONENTS[o.key];
-          const t2 = riegelTime(t1Sec, D5K, distanceKm, exp);
+          const t2 = riegelTime(t1Sec, D10K, distanceKm, exp);
           const pace = t2 / distanceKm;
 
           const row = document.createElement("div");
           row.className = "row" + (o.key === highlightMode ? " highlight" : "");
-
           const left = document.createElement("div");
           left.className = "k";
-          left.textContent = o.name;
-
+          left.textContent = `${o.name}`;
           const right = document.createElement("div");
           right.className = "v";
-          right.textContent = `${formatTime(t2)} · ${formatPaceColon(pace)}`;
-
+          right.textContent = `${formatTime(t2)}  ·  ${formatPace(pace)}`;
           row.appendChild(left);
           row.appendChild(right);
           rowsEl.appendChild(row);
 
-          if (o.key === highlightMode) groupEl.textContent = `추천 페이스그룹: ${recommendedGroupRange(pace)}`;
+          if (o.key === highlightMode) {
+            groupEl.textContent = `추천 페이스그룹: ${recommendedGroupRange(pace)}`;
+          }
         });
       }
+
       document.getElementById("predict-reset").addEventListener("click", () => {
         predictForm.reset();
         setVisible(predictError, false);
         setVisible(predictResult, false);
       });
+
       predictForm.addEventListener("submit", (e) => {
         e.preventDefault();
         setVisible(predictError, false);
@@ -737,7 +878,7 @@
         const mode = String(fd.get("mode") || "base");
 
         if (!t1 || t1 <= 0) {
-          predictError.textContent = "5K 기록 시간을 올바르게 입력해 주세요. (MM:SS 또는 HH:MM:SS)";
+          predictError.textContent = "10K 기록 시간을 올바르게 입력해 주세요. (MM:SS 또는 HH:MM:SS)";
           setVisible(predictError, true);
           return;
         }
@@ -747,228 +888,18 @@
           return;
         }
 
-        document.getElementById("predict-pill-in").textContent = `입력: 5K / ${formatTime(t1)}`;
-        renderPredictCard(document.getElementById("rows-10k"), document.getElementById("group-10k"), D10K, t1, mode);
-        renderPredictCard(document.getElementById("rows-half"), document.getElementById("group-half"), DHALF, t1, mode);
-        renderPredictCard(document.getElementById("rows-full"), document.getElementById("group-full"), DFULL, t1, mode);
+        document.getElementById("predict-pill-in").textContent = `입력: 10K / ${formatTime(t1)}`;
+
+        const rowsHalf = document.getElementById("rows-half");
+        const groupHalf = document.getElementById("group-half");
+        const rowsFull = document.getElementById("rows-full");
+        const groupFull = document.getElementById("group-full");
+
+        renderPredictCard(rowsHalf, groupHalf, "Half", DHALF, t1, mode);
+        renderPredictCard(rowsFull, groupFull, "Full", DFULL, t1, mode);
 
         setVisible(predictResult, true);
       });
-
-      // JSON fetch helpers
-      async function safeFetchJson(path) {
-        try {
-          const res = await fetch(path, { cache: "no-store" });
-          if (!res.ok) return null;
-          return await res.json();
-        } catch {
-          return null;
-        }
-      }
-      function renderEmpty(targetEl, title, exampleText) {
-        targetEl.innerHTML = "";
-        const box = document.createElement("div");
-        box.className = "empty";
-        box.innerHTML = `<div style="margin-bottom:8px;"><b>${title}</b></div><div class="code">${exampleText}</div>`;
-        targetEl.appendChild(box);
-      }
-
-      // Events render
-      function createEventItem(ev) {
-        const el = document.createElement("div");
-        el.className = "item";
-
-        const head = document.createElement("div");
-        head.className = "item-head";
-
-        const title = document.createElement("div");
-        title.className = "item-title";
-        const strong = document.createElement("strong");
-        strong.textContent = ev.name || "대회";
-        const meta = document.createElement("div");
-        meta.className = "meta";
-
-        const pill1 = document.createElement("span");
-        pill1.className = "pill";
-        pill1.textContent = ev.date || "날짜 미정";
-        meta.appendChild(pill1);
-
-        if (ev.location) {
-          const pill2 = document.createElement("span");
-          pill2.className = "pill";
-          pill2.textContent = ev.location;
-          meta.appendChild(pill2);
-        }
-        if (ev.distance) {
-          const pill3 = document.createElement("span");
-          pill3.className = "pill";
-          pill3.textContent = ev.distance;
-          meta.appendChild(pill3);
-        }
-
-        title.appendChild(strong);
-        title.appendChild(meta);
-
-        head.appendChild(title);
-        el.appendChild(head);
-
-        if (ev.participants?.length) {
-          const p = document.createElement("div");
-          p.className = "note";
-          p.textContent = `참가자: ${ev.participants.join(", ")}`;
-          el.appendChild(p);
-        }
-
-        if (ev.note) {
-          const p = document.createElement("div");
-          p.className = "note";
-          p.textContent = ev.note;
-          el.appendChild(p);
-        }
-
-        if (ev.link) {
-          const a = document.createElement("a");
-          a.className = "cta";
-          a.href = ev.link;
-          a.target = "_blank";
-          a.rel = "noopener noreferrer";
-          a.textContent = "대회 링크 →";
-          el.appendChild(a);
-        }
-        return el;
-      }
-
-      async function loadEvents() {
-        const data = await safeFetchJson("data/events.json");
-        const list = document.getElementById("events-list");
-        const preview = document.getElementById("home-events-preview");
-
-        const example = `// data/events.json 예시
-{
-  "events": [
-    {
-      "name": "서울 하프마라톤",
-      "date": "2026-04-12",
-      "location": "서울",
-      "distance": "Half",
-      "participants": ["망구", "룰루"],
-      "link": "https://example.com",
-      "note": "집합 07:00"
-    }
-  ]
-}`;
-
-        if (!data || !Array.isArray(data.events) || data.events.length === 0) {
-          renderEmpty(list, "대회 데이터가 비어있어요", example);
-          renderEmpty(preview, "대회 미등록", example);
-          return;
-        }
-
-        const events = data.events
-          .slice()
-          .sort((a, b) => String(a.date || "").localeCompare(String(b.date || "")));
-
-        list.innerHTML = "";
-        events.forEach((ev) => list.appendChild(createEventItem(ev)));
-
-        // home preview: next 2
-        preview.innerHTML = "";
-        events.slice(0, 2).forEach((ev) => preview.appendChild(createEventItem(ev)));
-      }
-
-      // Shoes render
-      function createShoeItem(s) {
-        const el = document.createElement("div");
-        el.className = "item";
-
-        const head = document.createElement("div");
-        head.className = "item-head";
-
-        const title = document.createElement("div");
-        title.className = "item-title";
-
-        const strong = document.createElement("strong");
-        strong.textContent = `${s.brand || "브랜드"} · ${s.model || "모델"}`;
-
-        const meta = document.createElement("div");
-        meta.className = "meta";
-
-        if (s.tag) {
-          const pill = document.createElement("span");
-          pill.className = "pill";
-          pill.textContent = s.tag;
-          meta.appendChild(pill);
-        }
-
-        title.appendChild(strong);
-        title.appendChild(meta);
-        head.appendChild(title);
-        el.appendChild(head);
-
-        if (s.note) {
-          const p = document.createElement("div");
-          p.className = "note";
-          p.textContent = s.note;
-          el.appendChild(p);
-        }
-
-        if (s.link) {
-          const a = document.createElement("a");
-          a.className = "cta";
-          a.href = s.link;
-          a.target = "_blank";
-          a.rel = "noopener noreferrer";
-          a.textContent = "보기 →";
-          el.appendChild(a);
-        }
-
-        return el;
-      }
-
-      async function loadShoes() {
-        const data = await safeFetchJson("data/shoes.json");
-
-        const dailyEl = document.getElementById("shoes-daily");
-        const trainingEl = document.getElementById("shoes-training");
-        const raceEl = document.getElementById("shoes-race");
-
-        const example = `// data/shoes.json 예시
-{
-  "daily": [
-    { "brand": "Nike", "model": "Pegasus 41", "tag": "데일리", "note": "입문/만능" }
-  ],
-  "training": [
-    { "brand": "Saucony", "model": "Endorphin Speed", "tag": "훈련", "note": "템포/훈련 겸용" }
-  ],
-  "race": [
-    { "brand": "Nike", "model": "Alphafly 3", "tag": "레이스", "note": "카본 레이스화" }
-  ]
-}`;
-
-        function renderCategory(targetEl, arr, title) {
-          targetEl.innerHTML = "";
-          if (!Array.isArray(arr) || arr.length === 0) {
-            renderEmpty(targetEl, `${title} 비어있어요`, example);
-            return;
-          }
-          arr.forEach((s) => targetEl.appendChild(createShoeItem(s)));
-        }
-
-        if (!data) {
-          renderCategory(dailyEl, [], "데일리 조깅용");
-          renderCategory(trainingEl, [], "훈련용");
-          renderCategory(raceEl, [], "레이스용");
-          return;
-        }
-
-        renderCategory(dailyEl, data.daily, "데일리 조깅용");
-        renderCategory(trainingEl, data.training, "훈련용");
-        renderCategory(raceEl, data.race, "레이스용");
-      }
-
-      // initial load
-      loadEvents();
-      loadShoes();
     </script>
   </body>
 </html>
