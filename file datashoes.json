@@ -1,4 +1,3 @@
-// file: data/shoes.json
 {
   "daily": [
     { "brand": "Nike", "model": "Pegasus 41", "tag": "데일리", "note": "입문/만능 데일리 트레이너" },
