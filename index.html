@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>노빠꾸 러닝 크루 VIP</title>
+    <title>노빠꾸 러닝 크루</title>
     <style>
       :root {
         --bg: #0b0f14;
@@ -29,30 +29,41 @@
         text-decoration: none;
       }
       .container {
-        max-width: 980px;
+        max-width: 1040px;
         margin: 0 auto;
         padding: 22px 16px 60px;
       }
+
       header {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 12px;
-        margin-bottom: 14px;
+        margin-bottom: 12px;
       }
       header h1 {
         font-size: 18px;
         margin: 0;
         letter-spacing: 0.3px;
       }
-      .tag {
+      .header-right {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+      .linkbtn {
         font-size: 12px;
-        color: var(--muted);
+        color: var(--text);
         border: 1px solid var(--border);
-        padding: 6px 10px;
+        padding: 8px 12px;
         border-radius: 999px;
-        background: rgba(255, 255, 255, 0.03);
+        background: rgba(255, 255, 255, 0.06);
         white-space: nowrap;
+      }
+      .linkbtn:hover {
+        background: rgba(255, 255, 255, 0.1);
       }
 
       .tabs {
@@ -164,9 +175,6 @@
         flex-direction: column;
         gap: 6px;
       }
-      .field.full {
-        grid-column: span 12;
-      }
       @media (max-width: 720px) {
         .field {
           grid-column: span 12;
@@ -223,7 +231,6 @@
         color: #ffb3b3;
         font-size: 13px;
       }
-
       .result {
         margin-top: 14px;
         border-top: 1px dashed var(--border);
@@ -245,29 +252,36 @@
         background: rgba(255, 255, 255, 0.03);
       }
 
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        overflow: hidden;
-        border-radius: 12px;
-        border: 1px solid var(--border);
+      /* Vertical per-km output */
+      .pace-rows {
+        display: grid;
+        gap: 8px;
       }
-      th,
-      td {
+      .pace-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
         padding: 10px 10px;
-        border-bottom: 1px solid var(--border);
-        text-align: left;
-        font-size: 13px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: rgba(0, 0, 0, 0.18);
       }
-      th {
+      .pace-row .k {
+        font-size: 12px;
         color: var(--muted);
-        font-weight: 600;
-        background: rgba(255, 255, 255, 0.03);
+        white-space: nowrap;
       }
-      tr:last-child td {
-        border-bottom: none;
+      .pace-row .v {
+        font-size: 13px;
+        white-space: nowrap;
+      }
+      .pace-row.tail {
+        color: var(--muted);
+        border-style: dashed;
       }
 
+      /* Predict cards */
       .cards3 {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -359,14 +373,17 @@
       li {
         margin: 6px 0;
       }
+
+      /* Staff */
       .staff {
         display: grid;
-        gap: 8px;
+        gap: 10px;
       }
       .staff .line {
         display: flex;
         gap: 8px;
         flex-wrap: wrap;
+        align-items: center;
         color: var(--muted);
         font-size: 13px;
       }
@@ -378,31 +395,23 @@
         color: var(--text);
         font-size: 12px;
       }
-
-      .pace-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-      .pace-chip {
-        border: 1px solid var(--border);
-        border-radius: 999px;
-        padding: 8px 10px;
-        background: rgba(0, 0, 0, 0.18);
-        color: var(--text);
-        font-size: 12px;
-      }
-      .pace-chip.muted {
-        color: var(--muted);
-      }
     </style>
   </head>
 
   <body>
     <div class="container">
       <header>
-        <h1>노빠꾸 러닝 크루 VIP</h1>
-        <div class="tag">MVP: 페이스 · 예상 기록 · 정기런</div>
+        <h1>노빠꾸 러닝 크루</h1>
+        <div class="header-right">
+          <a
+            class="linkbtn"
+            href="https://www.daangn.com/kr/group/%EB%85%B8%EB%B9%A0%EA%BE%B8-%EB%9F%AC%EB%8B%9D%ED%81%AC%EB%A3%A8-no-back-rc-1yeomgcwmnyx/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            크루 페이지 바로가기 →
+          </a>
+        </div>
       </header>
 
       <nav class="tabs" aria-label="탭">
@@ -417,7 +426,7 @@
         <div class="grid">
           <a class="card" href="#/pace" aria-label="페이스 계산기 열기">
             <h2>페이스 계산기</h2>
-            <p>거리 + 기록 → 평균 페이스, km당 페이스 리스트(예: 530 530 530)</p>
+            <p>거리 + 목표 시간 → 평균 페이스, 1KM/2KM… 세로 출력</p>
             <span class="cta">열기 →</span>
           </a>
 
@@ -450,7 +459,7 @@
       <section id="view-pace" class="view">
         <div class="topbar">
           <a class="back" href="#/">← 홈</a>
-          <div class="tag">페이스 계산기</div>
+          <div class="pill">페이스 계산기</div>
         </div>
 
         <div class="card">
@@ -473,7 +482,7 @@
             </div>
 
             <div class="field">
-              <label for="pace-time">기록(시간)</label>
+              <label for="pace-time">목표 시간</label>
               <input id="pace-time" name="time" inputmode="text" placeholder="예: 42:30 또는 1:50:00" autocomplete="off" />
               <div class="help">MM:SS 또는 HH:MM:SS</div>
             </div>
@@ -494,8 +503,8 @@
             </div>
 
             <div>
-              <div class="help" style="margin-bottom: 8px;">km당 페이스(표준 표시: <b>530</b> = 5분 30초)</div>
-              <div class="pace-list" id="pace-per-km"></div>
+              <div class="help" style="margin-bottom: 8px;">페이스 표시: <b>5:30</b> = 5분 30초</div>
+              <div class="pace-rows" id="pace-rows"></div>
             </div>
           </div>
         </div>
@@ -505,7 +514,7 @@
       <section id="view-predict" class="view">
         <div class="topbar">
           <a class="back" href="#/">← 홈</a>
-          <div class="tag">예상 기록 (5K → 10K/Half/Full)</div>
+          <div class="pill">예상 기록 (5K 기준)</div>
         </div>
 
         <div class="card">
@@ -537,7 +546,7 @@
           <div id="predict-result" class="result" style="display: none;">
             <div class="pillrow">
               <div class="pill" id="predict-pill-in"></div>
-              <div class="pill" id="predict-pill-note">공식: Riegel (1.04/1.06/1.08)</div>
+              <div class="pill">공식: Riegel (1.04/1.06/1.08)</div>
             </div>
 
             <div class="cards3" aria-label="10K/Half/Full 결과 카드">
@@ -578,7 +587,7 @@
       <section id="view-regular" class="view">
         <div class="topbar">
           <a class="back" href="#/">← 홈</a>
-          <div class="tag">정기런</div>
+          <div class="pill">정기런</div>
         </div>
 
         <div class="card">
@@ -615,17 +624,14 @@
           <div style="margin-top: 16px; border-top: 1px dashed var(--border); padding-top: 14px;">
             <h2>운영진 정보</h2>
             <div class="staff">
-              <div class="line"><span class="muted">크루장</span> <span class="chip">망구</span></div>
               <div class="line">
-                <span class="muted">운영진(내림차순)</span>
-                <span class="chip">슈퍼짹</span>
-                <span class="chip">뽀용</span>
-                <span class="chip">밍경</span>
+                <span class="muted">크루장</span>
                 <span class="chip">망구</span>
-                <span class="chip">룰루</span>
-                <span class="chip">달려</span>
-                <span class="chip">나올</span>
-                <span class="chip">김땅콩</span>
+              </div>
+
+              <div class="line">
+                <span class="muted">운영진</span>
+                <span id="ops-chips"></span>
               </div>
             </div>
           </div>
@@ -693,11 +699,11 @@
         return `${mm}:${String(ss).padStart(2, "0")}`;
       }
 
-      function formatPaceCompact(secondsPerKm) {
+      function formatPaceColon(secondsPerKm) {
         const s = Math.round(secondsPerKm);
         const mm = Math.floor(s / 60);
         const ss = s % 60;
-        return `${mm}${String(ss).padStart(2, "0")}`; // e.g. 530
+        return `${mm}:${String(ss).padStart(2, "0")}`; // 5:30
       }
 
       function formatPaceReadable(secondsPerKm) {
@@ -712,7 +718,23 @@
       }
 
       /**
-       * Pace calculator: per-km pace list (not cumulative)
+       * Staff: sort descending by nickname (ko locale) and render chips
+       */
+      (function renderStaff() {
+        const ops = ["달려", "룰루", "나올", "밍경", "김땅콩", "슈퍼짹", "뽀용", "망구"];
+        const sorted = ops.slice().sort((a, b) => b.localeCompare(a, "ko"));
+        const container = document.getElementById("ops-chips");
+        container.innerHTML = "";
+        sorted.forEach((name) => {
+          const chip = document.createElement("span");
+          chip.className = "chip";
+          chip.textContent = name;
+          container.appendChild(chip);
+        });
+      })();
+
+      /**
+       * Pace calculator: vertical per-km output (1KM, 2KM ...)
        */
       const paceDistanceType = document.getElementById("pace-distance-type");
       const paceCustomField = document.getElementById("pace-custom-distance-field");
@@ -720,7 +742,7 @@
       const paceForm = document.getElementById("pace-form");
       const paceError = document.getElementById("pace-error");
       const paceResult = document.getElementById("pace-result");
-      const pacePerKm = document.getElementById("pace-per-km");
+      const paceRows = document.getElementById("pace-rows");
 
       function getPaceDistanceKm() {
         const v = paceDistanceType.value;
@@ -743,14 +765,31 @@
         setVisible(paceCustomField, false);
         setVisible(paceError, false);
         setVisible(paceResult, false);
-        pacePerKm.innerHTML = "";
+        paceRows.innerHTML = "";
       });
+
+      function appendPaceRow(label, value, isTail) {
+        const row = document.createElement("div");
+        row.className = "pace-row" + (isTail ? " tail" : "");
+
+        const left = document.createElement("div");
+        left.className = "k";
+        left.textContent = label;
+
+        const right = document.createElement("div");
+        right.className = "v";
+        right.textContent = value;
+
+        row.appendChild(left);
+        row.appendChild(right);
+        paceRows.appendChild(row);
+      }
 
       paceForm.addEventListener("submit", (e) => {
         e.preventDefault();
         setVisible(paceError, false);
         setVisible(paceResult, false);
-        pacePerKm.innerHTML = "";
+        paceRows.innerHTML = "";
 
         const distanceKm = getPaceDistanceKm();
         const timeSec = parseTimeToSeconds(new FormData(paceForm).get("time"));
@@ -761,7 +800,7 @@
           return;
         }
         if (!timeSec || timeSec <= 0) {
-          paceError.textContent = "시간을 올바르게 입력해 주세요. (MM:SS 또는 HH:MM:SS)";
+          paceError.textContent = "목표 시간을 올바르게 입력해 주세요. (MM:SS 또는 HH:MM:SS)";
           setVisible(paceError, true);
           return;
         }
@@ -771,29 +810,23 @@
         const fullKm = Math.floor(distanceKm);
         const tail = distanceKm - fullKm;
 
-        // Render: show per-km pace chips like "530 530 530"
         for (let i = 1; i <= fullKm; i++) {
-          const chip = document.createElement("span");
-          chip.className = "pace-chip";
-          chip.textContent = formatPaceCompact(paceSecPerKm);
-          pacePerKm.appendChild(chip);
+          appendPaceRow(`${i}KM`, formatPaceColon(paceSecPerKm), false);
         }
+
         if (tail > 0.0001) {
-          const chip = document.createElement("span");
-          chip.className = "pace-chip muted";
-          chip.textContent = `${formatPaceCompact(paceSecPerKm)} (마지막 ${Math.round(tail * 1000) / 1000}km)`;
-          pacePerKm.appendChild(chip);
+          const tailKm = Math.round(tail * 1000) / 1000;
+          appendPaceRow(`마지막 ${tailKm}km`, formatPaceColon(paceSecPerKm), true);
         }
+
         if (fullKm === 0 && tail > 0) {
-          const chip = document.createElement("span");
-          chip.className = "pace-chip";
-          chip.textContent = formatPaceCompact(paceSecPerKm);
-          pacePerKm.appendChild(chip);
+          appendPaceRow(`1KM`, formatPaceColon(paceSecPerKm), false);
+          appendPaceRow(`마지막 ${Math.round(tail * 1000) / 1000}km`, formatPaceColon(paceSecPerKm), true);
         }
 
         document.getElementById("pace-pill-distance").textContent = `거리: ${distanceKm} km`;
-        document.getElementById("pace-pill-time").textContent = `기록: ${formatTime(timeSec)}`;
-        document.getElementById("pace-pill-avgpace").textContent = `평균: ${formatPaceReadable(paceSecPerKm)} (${formatPaceCompact(
+        document.getElementById("pace-pill-time").textContent = `목표: ${formatTime(timeSec)}`;
+        document.getElementById("pace-pill-avgpace").textContent = `평균: ${formatPaceReadable(paceSecPerKm)} (${formatPaceColon(
           paceSecPerKm
         )})`;
 
@@ -802,7 +835,6 @@
 
       /**
        * Prediction (5K only -> 10K/Half/Full)
-       * Riegel: T2 = T1 * (D2/D1)^exponent
        */
       const predictForm = document.getElementById("predict-form");
       const predictError = document.getElementById("predict-error");
@@ -826,7 +858,7 @@
       function recommendedGroupRange(paceSecPerKm) {
         const lo = Math.max(0, paceSecPerKm - 10);
         const hi = paceSecPerKm + 10;
-        return `${formatPaceCompact(lo)}~${formatPaceCompact(hi)} (약 ${formatPaceReadable(paceSecPerKm)})`;
+        return `${formatPaceColon(lo)}~${formatPaceColon(hi)} (약 ${formatPaceColon(paceSecPerKm)})`;
       }
 
       function renderPredictCard(rowsEl, groupEl, distanceKm, t1Sec, highlightMode) {
@@ -852,7 +884,7 @@
 
           const right = document.createElement("div");
           right.className = "v";
-          right.textContent = `${formatTime(t2)} · ${formatPaceCompact(pace)}`;
+          right.textContent = `${formatTime(t2)} · ${formatPaceColon(pace)}`;
 
           row.appendChild(left);
           row.appendChild(right);
