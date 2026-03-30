@@ -4,7 +4,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>노빠꾸 러닝 크루</title>
+    <title>노빠꾸 러닝 크루 🏃🏃‍♂️🏃‍♀️</title>
+    <link rel="icon" href="favicon.ico" />
     <style>
       :root {
         --bg: #0b0f14;
@@ -206,9 +207,24 @@
         color: var(--muted);
         background: rgba(255, 255, 255, 0.02);
       }
+
+      /* participants vertical + chip + more */
       .p-wrap { margin-top: 10px; }
       .p-list { margin: 0; padding-left: 18px; color: var(--muted); }
-      .p-list li { margin: 6px 0; }
+      .p-list li { margin: 6px 0; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+      .chip {
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 4px 8px;
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--text);
+        font-size: 12px;
+        white-space: nowrap;
+      }
+      .chip.sub {
+        color: var(--muted);
+        background: rgba(0, 0, 0, 0.18);
+      }
       .morebtn {
         margin-top: 10px;
         display: inline-flex;
@@ -459,24 +475,30 @@
     </div>
 
     <script>
+      // Router: #/regular 뿐 아니라 #regular 도 잡아줌
       function route() {
-        const hash = location.hash || "#/";
-        const view = hash.startsWith("#/pace")
+        const raw = (location.hash || "#/").toLowerCase();
+        const normalized = raw.startsWith("#/") ? raw : raw.startsWith("#") ? "#/" + raw.slice(1) : "#/";
+
+        const view = normalized.startsWith("#/pace")
           ? "pace"
-          : hash.startsWith("#/predict")
+          : normalized.startsWith("#/predict")
             ? "predict"
-            : hash.startsWith("#/events")
+            : normalized.startsWith("#/events")
               ? "events"
-              : hash.startsWith("#/regular")
+              : normalized.startsWith("#/regular")
                 ? "regular"
                 : "home";
 
         document.querySelectorAll(".view").forEach((v) => v.classList.remove("active"));
-        document.getElementById(`view-${view}`).classList.add("active");
+        const target = document.getElementById(`view-${view}`);
+        if (target) target.classList.add("active");
 
         document.querySelectorAll(".tab").forEach((t) => t.classList.remove("active"));
         const activeTab = document.querySelector(`.tab[data-tab="${view}"]`);
         if (activeTab) activeTab.classList.add("active");
+
+        if (normalized !== raw) history.replaceState(null, "", normalized);
       }
       window.addEventListener("hashchange", route);
       route();
@@ -522,9 +544,8 @@
         const ss = s % 60;
         return `${mm}'${String(ss).padStart(2, "0")}" /km`;
       }
-      function setVisible(el, visible) {
-        el.style.display = visible ? "" : "none";
-      }
+      function setVisible(el, visible) { el.style.display = visible ? "" : "none"; }
+
       function sortKoreanDesc(arr) {
         return arr
           .slice()
@@ -730,10 +751,12 @@
         const v = String(raw || "").trim();
         if (!v) return "";
         const upper = v.toUpperCase();
+
         if (upper === "HALF" || upper === "HM" || upper === "21.1K" || upper === "21.0975K") return "21K";
         if (upper === "FULL" || upper === "FM" || upper === "MARATHON" || upper === "42.2K" || upper === "42.195K") return "42K";
         if (upper === "10KM" || upper === "10K") return "10K";
         if (upper === "5KM" || upper === "5K") return "5K";
+
         const m = upper.replace(/\s+/g, "").match(/^(\d+(\.\d+)?)(K|KM)$/);
         if (m) {
           const n = Number(m[1]);
@@ -751,7 +774,20 @@
         btn.textContent = label;
         return btn;
       }
-      function createEventItem(ev, participantPreviewCount = 8) {
+
+      // participants: ["이름", ...] 또는 [{name, distance}, ...] 둘 다 지원
+      function normalizeParticipants(rawParticipants) {
+        const arr = Array.isArray(rawParticipants) ? rawParticipants : [];
+        return arr
+          .map((p) => {
+            if (typeof p === "string") return { name: p, distance: "" };
+            if (p && typeof p === "object") return { name: String(p.name || "").trim(), distance: String(p.distance || "").trim() };
+            return { name: "", distance: "" };
+          })
+          .filter((p) => p.name.length > 0);
+      }
+
+      function createEventItem(ev, participantPreviewCount = 10) {
         const el = document.createElement("div");
         el.className = "item";
 
@@ -779,11 +815,11 @@
           meta.appendChild(p);
         }
 
-        const dist = normalizeDistance(ev.distance);
-        if (dist) {
+        const eventDistanceNorm = normalizeDistance(ev.distance);
+        if (eventDistanceNorm) {
           const p = document.createElement("span");
           p.className = "pill";
-          p.textContent = dist;
+          p.textContent = eventDistanceNorm;
           meta.appendChild(p);
         }
 
@@ -792,8 +828,11 @@
         head.appendChild(title);
         el.appendChild(head);
 
-        const participants = Array.isArray(ev.participants) ? sortKoreanDesc(ev.participants) : [];
-        if (participants.length) {
+        const parts = normalizeParticipants(ev.participants)
+          .map((p) => ({ name: p.name, distance: normalizeDistance(p.distance) || "" }))
+          .sort((a, b) => b.name.localeCompare(a.name, "ko"));
+
+        if (parts.length) {
           const wrap = document.createElement("div");
           wrap.className = "p-wrap";
 
@@ -804,16 +843,31 @@
           let expanded = false;
           const render = () => {
             ul.innerHTML = "";
-            const show = expanded ? participants : participants.slice(0, participantPreviewCount);
-            show.forEach((name) => {
+            const show = expanded ? parts : parts.slice(0, participantPreviewCount);
+
+            show.forEach((p) => {
               const li = document.createElement("li");
-              li.textContent = name;
+
+              const nameSpan = document.createElement("span");
+              nameSpan.textContent = p.name;
+              li.appendChild(nameSpan);
+
+              // 기본 대회 distance와 다를 때만 칩 표시
+              const showDistChip = p.distance && p.distance !== eventDistanceNorm;
+              if (showDistChip) {
+                const chip = document.createElement("span");
+                chip.className = "chip sub";
+                chip.textContent = p.distance;
+                li.appendChild(chip);
+              }
+
               ul.appendChild(li);
             });
           };
+
           render();
 
-          if (participants.length > participantPreviewCount) {
+          if (parts.length > participantPreviewCount) {
             const btn = createMoreButton("더보기");
             btn.addEventListener("click", () => {
               expanded = !expanded;
@@ -862,15 +916,14 @@
           .map((ev) => ({
             ...ev,
             distance: normalizeDistance(ev.distance),
-            participants: Array.isArray(ev.participants) ? sortKoreanDesc(ev.participants) : [],
           }))
           .sort((a, b) => String(a.date || "").localeCompare(String(b.date || "")));
 
         list.innerHTML = "";
-        events.forEach((ev) => list.appendChild(createEventItem(ev, 10)));
+        events.forEach((ev) => list.appendChild(createEventItem(ev, 12)));
 
         preview.innerHTML = "";
-        events.slice(0, 2).forEach((ev) => preview.appendChild(createEventItem(ev, 5)));
+        events.slice(0, 2).forEach((ev) => preview.appendChild(createEventItem(ev, 6)));
       }
 
       loadEvents();
