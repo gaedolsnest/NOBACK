@@ -4,17 +4,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Run Club VIP</title>
+    <title>노빠꾸 러닝 크루 VIP</title>
     <style>
       :root {
         --bg: #0b0f14;
-        --card: #121925;
         --text: #e7eefc;
         --muted: #a9b6cc;
         --border: rgba(255, 255, 255, 0.08);
         --shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
         --radius: 16px;
-        --accent: rgba(255, 255, 255, 0.12);
       }
       * {
         box-sizing: border-box;
@@ -270,13 +268,13 @@
         border-bottom: none;
       }
 
-      .cards2 {
+      .cards3 {
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 12px;
       }
-      @media (max-width: 720px) {
-        .cards2 {
+      @media (max-width: 900px) {
+        .cards3 {
           grid-template-columns: 1fr;
         }
       }
@@ -325,6 +323,7 @@
       }
       .row .v {
         font-size: 13px;
+        white-space: nowrap;
       }
       .row.highlight {
         border-color: rgba(255, 255, 255, 0.22);
@@ -379,13 +378,30 @@
         color: var(--text);
         font-size: 12px;
       }
+
+      .pace-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .pace-chip {
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 8px 10px;
+        background: rgba(0, 0, 0, 0.18);
+        color: var(--text);
+        font-size: 12px;
+      }
+      .pace-chip.muted {
+        color: var(--muted);
+      }
     </style>
   </head>
 
   <body>
     <div class="container">
       <header>
-        <h1>Run Club VIP</h1>
+        <h1>노빠꾸 러닝 크루 VIP</h1>
         <div class="tag">MVP: 페이스 · 예상 기록 · 정기런</div>
       </header>
 
@@ -401,13 +417,13 @@
         <div class="grid">
           <a class="card" href="#/pace" aria-label="페이스 계산기 열기">
             <h2>페이스 계산기</h2>
-            <p>거리 + 기록 → 평균 페이스, 1km 스플릿</p>
+            <p>거리 + 기록 → 평균 페이스, km당 페이스 리스트(예: 530 530 530)</p>
             <span class="cta">열기 →</span>
           </a>
 
           <a class="card" href="#/predict" aria-label="예상 기록 계산기 열기">
             <h2>예상 기록</h2>
-            <p>10K 기록 1번 입력 → 하프/풀 동시 + 3단계</p>
+            <p>5K 기록 1번 입력 → 10K/하프/풀 동시 + 3단계</p>
             <span class="cta">열기 →</span>
           </a>
         </div>
@@ -417,9 +433,7 @@
             <h2>정기런 안내(요약)</h2>
             <a class="cta" href="#/regular">자세히 보기 →</a>
           </div>
-          <p class="muted">
-            매주 <b>수요일 20:00</b> · 노빠꾸 정기런 🏃‍♂️🏃‍♀️
-          </p>
+          <p class="muted">매주 <b>수요일 20:00</b> · 노빠꾸 정기런 🏃‍♂️🏃‍♀️</p>
           <ul>
             <li>진행: 스트레칭(10분) → 러닝(50분) → 마무리 스트레칭/해산</li>
             <li>운영: 페이스 구간 사전취합 · 인원 많을 시 4명 내외 그룹</li>
@@ -428,9 +442,7 @@
 
         <div class="card" style="margin-top: 14px;">
           <h2>사용 팁</h2>
-          <p class="help">
-            시간 입력은 <b>HH:MM:SS</b> 또는 <b>MM:SS</b> (예: 42:30, 1:50:00)
-          </p>
+          <p class="help">시간 입력은 <b>HH:MM:SS</b> 또는 <b>MM:SS</b> (예: 42:30, 1:50:00)</p>
         </div>
       </section>
 
@@ -446,7 +458,8 @@
             <div class="field">
               <label for="pace-distance-type">거리</label>
               <select id="pace-distance-type" name="distanceType">
-                <option value="10">10K (10.000km)</option>
+                <option value="5">5K (5.000km)</option>
+                <option value="10" selected>10K (10.000km)</option>
                 <option value="21.0975">Half (21.0975km)</option>
                 <option value="42.195">Full (42.195km)</option>
                 <option value="custom">직접 입력</option>
@@ -456,24 +469,12 @@
 
             <div class="field" id="pace-custom-distance-field" style="display: none;">
               <label for="pace-distance-km">거리(km)</label>
-              <input
-                id="pace-distance-km"
-                name="distanceKm"
-                inputmode="decimal"
-                placeholder="예: 7.5"
-                autocomplete="off"
-              />
+              <input id="pace-distance-km" name="distanceKm" inputmode="decimal" placeholder="예: 7.5" autocomplete="off" />
             </div>
 
             <div class="field">
               <label for="pace-time">기록(시간)</label>
-              <input
-                id="pace-time"
-                name="time"
-                inputmode="text"
-                placeholder="예: 42:30 또는 1:50:00"
-                autocomplete="off"
-              />
+              <input id="pace-time" name="time" inputmode="text" placeholder="예: 42:30 또는 1:50:00" autocomplete="off" />
               <div class="help">MM:SS 또는 HH:MM:SS</div>
             </div>
 
@@ -492,15 +493,10 @@
               <div class="pill" id="pace-pill-avgpace"></div>
             </div>
 
-            <table aria-label="스플릿 표">
-              <thead>
-                <tr>
-                  <th>구간</th>
-                  <th>누적 시간</th>
-                </tr>
-              </thead>
-              <tbody id="pace-splits"></tbody>
-            </table>
+            <div>
+              <div class="help" style="margin-bottom: 8px;">km당 페이스(표준 표시: <b>530</b> = 5분 30초)</div>
+              <div class="pace-list" id="pace-per-km"></div>
+            </div>
           </div>
         </div>
       </section>
@@ -509,25 +505,19 @@
       <section id="view-predict" class="view">
         <div class="topbar">
           <a class="back" href="#/">← 홈</a>
-          <div class="tag">예상 기록 (10K → Half/Full)</div>
+          <div class="tag">예상 기록 (5K → 10K/Half/Full)</div>
         </div>
 
         <div class="card">
           <form id="predict-form">
             <div class="field">
-              <label for="predict-10k-time">기준 기록(10K)</label>
-              <input
-                id="predict-10k-time"
-                name="time"
-                inputmode="text"
-                placeholder="예: 50:00 또는 1:02:30"
-                autocomplete="off"
-              />
+              <label for="predict-5k-time">기준 기록(5K)</label>
+              <input id="predict-5k-time" name="time" inputmode="text" placeholder="예: 25:00 또는 0:25:00" autocomplete="off" />
               <div class="help">MM:SS 또는 HH:MM:SS</div>
             </div>
 
             <div class="field">
-              <label for="predict-mode">컨디션(표시 강조)</label>
+              <label for="predict-mode">컨디션(강조)</label>
               <select id="predict-mode" name="mode">
                 <option value="base" selected>기본</option>
                 <option value="aggressive">공격</option>
@@ -550,8 +540,17 @@
               <div class="pill" id="predict-pill-note">공식: Riegel (1.04/1.06/1.08)</div>
             </div>
 
-            <div class="cards2" aria-label="Half/Full 결과 카드">
-              <div class="mini" id="card-half">
+            <div class="cards3" aria-label="10K/Half/Full 결과 카드">
+              <div class="mini">
+                <div class="title">
+                  <strong>10K</strong>
+                  <span class="km">10.000 km</span>
+                </div>
+                <div class="rows" id="rows-10k"></div>
+                <div class="group" id="group-10k"></div>
+              </div>
+
+              <div class="mini">
                 <div class="title">
                   <strong>Half</strong>
                   <span class="km">21.0975 km</span>
@@ -560,7 +559,7 @@
                 <div class="group" id="group-half"></div>
               </div>
 
-              <div class="mini" id="card-full">
+              <div class="mini">
                 <div class="title">
                   <strong>Full</strong>
                   <span class="km">42.195 km</span>
@@ -570,9 +569,7 @@
               </div>
             </div>
 
-            <div class="help">
-              참고: 개인차(지구력/훈련량/코스/날씨)에 따라 실제 기록은 달라질 수 있어요.
-            </div>
+            <div class="help">참고: 개인차(지구력/훈련량/코스/날씨)에 따라 실제 기록은 달라질 수 있어요.</div>
           </div>
         </div>
       </section>
@@ -586,9 +583,7 @@
 
         <div class="card">
           <h2>정기런</h2>
-          <p class="muted">
-            매주 <b>수요일 오후 8시</b>, 노빠꾸 정기런 진행합니다 🏃‍♂️🏃‍♀️
-          </p>
+          <p class="muted">매주 <b>수요일 오후 8시</b>, 노빠꾸 정기런 진행합니다 🏃‍♂️🏃‍♀️</p>
 
           <h3 style="margin-top: 14px;">진행 순서</h3>
           <ul>
@@ -607,12 +602,8 @@
           <ul>
             <li>원활한 진행을 위해 정기런은 페이스 구간 사전취합 방식으로 운영합니다.</li>
             <li>참석 예정이신 분들은 모임 채팅방에 안내된 희망 페이스 구간에 맞춰 닉네임을 남겨주시면 됩니다.</li>
-            <li>
-              사전취합된 인원을 기준으로 비슷한 페이스끼리 그룹을 나누어 출발하며, 인원이 많을 경우에는 4명 내외로 운영할 예정입니다.
-            </li>
-            <li>
-              현장 혼선을 줄이고 체조 후 바로 출발하기 위한 방식이며, 그날 컨디션에 맞춰 편하게 선택해주시면 됩니다 🙌
-            </li>
+            <li>사전취합된 인원을 기준으로 비슷한 페이스끼리 그룹을 나누어 출발하며, 인원이 많을 경우에는 4명 내외로 운영할 예정입니다.</li>
+            <li>현장 혼선을 줄이고 체조 후 바로 출발하기 위한 방식이며, 그날 컨디션에 맞춰 편하게 선택해주시면 됩니다 🙌</li>
           </ul>
 
           <h3 style="margin-top: 14px;">기타</h3>
@@ -702,7 +693,14 @@
         return `${mm}:${String(ss).padStart(2, "0")}`;
       }
 
-      function formatPace(secondsPerKm) {
+      function formatPaceCompact(secondsPerKm) {
+        const s = Math.round(secondsPerKm);
+        const mm = Math.floor(s / 60);
+        const ss = s % 60;
+        return `${mm}${String(ss).padStart(2, "0")}`; // e.g. 530
+      }
+
+      function formatPaceReadable(secondsPerKm) {
         const s = Math.round(secondsPerKm);
         const mm = Math.floor(s / 60);
         const ss = s % 60;
@@ -714,7 +712,7 @@
       }
 
       /**
-       * Pace calculator
+       * Pace calculator: per-km pace list (not cumulative)
        */
       const paceDistanceType = document.getElementById("pace-distance-type");
       const paceCustomField = document.getElementById("pace-custom-distance-field");
@@ -722,7 +720,7 @@
       const paceForm = document.getElementById("pace-form");
       const paceError = document.getElementById("pace-error");
       const paceResult = document.getElementById("pace-result");
-      const paceSplitsTbody = document.getElementById("pace-splits");
+      const pacePerKm = document.getElementById("pace-per-km");
 
       function getPaceDistanceKm() {
         const v = paceDistanceType.value;
@@ -745,14 +743,14 @@
         setVisible(paceCustomField, false);
         setVisible(paceError, false);
         setVisible(paceResult, false);
-        paceSplitsTbody.innerHTML = "";
+        pacePerKm.innerHTML = "";
       });
 
       paceForm.addEventListener("submit", (e) => {
         e.preventDefault();
         setVisible(paceError, false);
         setVisible(paceResult, false);
-        paceSplitsTbody.innerHTML = "";
+        pacePerKm.innerHTML = "";
 
         const distanceKm = getPaceDistanceKm();
         const timeSec = parseTimeToSeconds(new FormData(paceForm).get("time"));
@@ -768,54 +766,57 @@
           return;
         }
 
-        const avgPace = timeSec / distanceKm;
+        const paceSecPerKm = timeSec / distanceKm;
 
         const fullKm = Math.floor(distanceKm);
         const tail = distanceKm - fullKm;
 
-        const rows = [];
-        for (let i = 1; i <= fullKm; i++) rows.push({ seg: `${i} km`, t: avgPace * i });
-        if (tail > 0.0001) {
-          const tailKm = Math.round(tail * 1000) / 1000;
-          rows.push({ seg: `+ ${tailKm} km`, t: timeSec });
-        } else if (rows.length === 0) {
-          rows.push({ seg: `${distanceKm} km`, t: timeSec });
+        // Render: show per-km pace chips like "530 530 530"
+        for (let i = 1; i <= fullKm; i++) {
+          const chip = document.createElement("span");
+          chip.className = "pace-chip";
+          chip.textContent = formatPaceCompact(paceSecPerKm);
+          pacePerKm.appendChild(chip);
         }
-
-        rows.forEach((r) => {
-          const tr = document.createElement("tr");
-          const td1 = document.createElement("td");
-          const td2 = document.createElement("td");
-          td1.textContent = r.seg;
-          td2.textContent = formatTime(r.t);
-          tr.appendChild(td1);
-          tr.appendChild(td2);
-          paceSplitsTbody.appendChild(tr);
-        });
+        if (tail > 0.0001) {
+          const chip = document.createElement("span");
+          chip.className = "pace-chip muted";
+          chip.textContent = `${formatPaceCompact(paceSecPerKm)} (마지막 ${Math.round(tail * 1000) / 1000}km)`;
+          pacePerKm.appendChild(chip);
+        }
+        if (fullKm === 0 && tail > 0) {
+          const chip = document.createElement("span");
+          chip.className = "pace-chip";
+          chip.textContent = formatPaceCompact(paceSecPerKm);
+          pacePerKm.appendChild(chip);
+        }
 
         document.getElementById("pace-pill-distance").textContent = `거리: ${distanceKm} km`;
         document.getElementById("pace-pill-time").textContent = `기록: ${formatTime(timeSec)}`;
-        document.getElementById("pace-pill-avgpace").textContent = `평균: ${formatPace(avgPace)}`;
+        document.getElementById("pace-pill-avgpace").textContent = `평균: ${formatPaceReadable(paceSecPerKm)} (${formatPaceCompact(
+          paceSecPerKm
+        )})`;
 
         setVisible(paceResult, true);
       });
 
       /**
-       * Prediction (10K only -> Half/Full)
+       * Prediction (5K only -> 10K/Half/Full)
        * Riegel: T2 = T1 * (D2/D1)^exponent
        */
       const predictForm = document.getElementById("predict-form");
       const predictError = document.getElementById("predict-error");
       const predictResult = document.getElementById("predict-result");
 
+      const D5K = 5;
       const D10K = 10;
       const DHALF = 21.0975;
       const DFULL = 42.195;
 
       const EXPONENTS = {
-        aggressive: 1.04, // 더 빠르게 추정
-        base: 1.06, // 일반
-        conservative: 1.08, // 더 보수적으로(느리게) 추정
+        aggressive: 1.04,
+        base: 1.06,
+        conservative: 1.08,
       };
 
       function riegelTime(t1, d1, d2, exponent) {
@@ -823,14 +824,12 @@
       }
 
       function recommendedGroupRange(paceSecPerKm) {
-        // 아주 단순한 "근처 그룹" 느낌의 범위(나중에 실제 그룹 기준으로 바꾸기 쉬움)
-        const paceMin = paceSecPerKm;
-        const lo = Math.max(0, paceMin - 10);
-        const hi = paceMin + 10;
-        return `${formatPace(lo)} ~ ${formatPace(hi)}`;
+        const lo = Math.max(0, paceSecPerKm - 10);
+        const hi = paceSecPerKm + 10;
+        return `${formatPaceCompact(lo)}~${formatPaceCompact(hi)} (약 ${formatPaceReadable(paceSecPerKm)})`;
       }
 
-      function renderPredictCard(rowsEl, groupEl, label, distanceKm, t1Sec, highlightMode) {
+      function renderPredictCard(rowsEl, groupEl, distanceKm, t1Sec, highlightMode) {
         const order = [
           { key: "aggressive", name: "공격" },
           { key: "base", name: "기본" },
@@ -841,17 +840,20 @@
 
         order.forEach((o) => {
           const exp = EXPONENTS[o.key];
-          const t2 = riegelTime(t1Sec, D10K, distanceKm, exp);
+          const t2 = riegelTime(t1Sec, D5K, distanceKm, exp);
           const pace = t2 / distanceKm;
 
           const row = document.createElement("div");
           row.className = "row" + (o.key === highlightMode ? " highlight" : "");
+
           const left = document.createElement("div");
           left.className = "k";
           left.textContent = `${o.name}`;
+
           const right = document.createElement("div");
           right.className = "v";
-          right.textContent = `${formatTime(t2)}  ·  ${formatPace(pace)}`;
+          right.textContent = `${formatTime(t2)} · ${formatPaceCompact(pace)}`;
+
           row.appendChild(left);
           row.appendChild(right);
           rowsEl.appendChild(row);
@@ -878,7 +880,7 @@
         const mode = String(fd.get("mode") || "base");
 
         if (!t1 || t1 <= 0) {
-          predictError.textContent = "10K 기록 시간을 올바르게 입력해 주세요. (MM:SS 또는 HH:MM:SS)";
+          predictError.textContent = "5K 기록 시간을 올바르게 입력해 주세요. (MM:SS 또는 HH:MM:SS)";
           setVisible(predictError, true);
           return;
         }
@@ -888,15 +890,11 @@
           return;
         }
 
-        document.getElementById("predict-pill-in").textContent = `입력: 10K / ${formatTime(t1)}`;
+        document.getElementById("predict-pill-in").textContent = `입력: 5K / ${formatTime(t1)}`;
 
-        const rowsHalf = document.getElementById("rows-half");
-        const groupHalf = document.getElementById("group-half");
-        const rowsFull = document.getElementById("rows-full");
-        const groupFull = document.getElementById("group-full");
-
-        renderPredictCard(rowsHalf, groupHalf, "Half", DHALF, t1, mode);
-        renderPredictCard(rowsFull, groupFull, "Full", DFULL, t1, mode);
+        renderPredictCard(document.getElementById("rows-10k"), document.getElementById("group-10k"), D10K, t1, mode);
+        renderPredictCard(document.getElementById("rows-half"), document.getElementById("group-half"), DHALF, t1, mode);
+        renderPredictCard(document.getElementById("rows-full"), document.getElementById("group-full"), DFULL, t1, mode);
 
         setVisible(predictResult, true);
       });
