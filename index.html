@@ -206,8 +206,6 @@
         color: var(--muted);
         background: rgba(255, 255, 255, 0.02);
       }
-
-      /* Participants vertical + more */
       .p-wrap { margin-top: 10px; }
       .p-list { margin: 0; padding-left: 18px; color: var(--muted); }
       .p-list li { margin: 6px 0; }
@@ -249,10 +247,10 @@
         <a class="tab" data-tab="pace" href="#/pace">페이스 계산기</a>
         <a class="tab" data-tab="predict" href="#/predict">예상 기록</a>
         <a class="tab" data-tab="events" href="#/events">대회</a>
-        <a class="tab" data-tab="shoes" href="#/shoes">러닝화 추천</a>
         <a class="tab" data-tab="regular" href="#/regular">정기런</a>
       </nav>
 
+      <!-- HOME -->
       <section id="view-home" class="view">
         <div class="grid">
           <a class="card" href="#/pace">
@@ -278,25 +276,14 @@
 
         <div class="card" style="margin-top: 14px;">
           <div class="section-title">
-            <h2>러닝화 추천</h2>
-            <a class="cta" href="#/shoes">추천 보기 →</a>
-          </div>
-          <p class="help">데일리 조깅용 · 훈련용 · 레이스용</p>
-        </div>
-
-        <div class="card" style="margin-top: 14px;">
-          <div class="section-title">
-            <h2>정기런 안내(요약)</h2>
+            <h2>정기런 안내</h2>
             <a class="cta" href="#/regular">자세히 보기 →</a>
           </div>
           <p class="muted">매주 <b>수요일 20:00</b> · 노빠꾸 정기런 🏃‍♂️🏃‍♀️</p>
-          <ul>
-            <li>진행: 스트레칭(10분) → 러닝(50분) → 마무리 스트레칭/해산</li>
-            <li>운영: 페이스 구간 사전취합 · 인원 많을 시 4명 내외 그룹</li>
-          </ul>
         </div>
       </section>
 
+      <!-- PACE -->
       <section id="view-pace" class="view">
         <div class="topbar">
           <a class="back" href="#/">← 홈</a>
@@ -351,6 +338,7 @@
         </div>
       </section>
 
+      <!-- PREDICT -->
       <section id="view-predict" class="view">
         <div class="topbar">
           <a class="back" href="#/">← 홈</a>
@@ -412,6 +400,7 @@
         </div>
       </section>
 
+      <!-- EVENTS -->
       <section id="view-events" class="view">
         <div class="topbar">
           <a class="back" href="#/">← 홈</a>
@@ -424,34 +413,7 @@
         </div>
       </section>
 
-      <section id="view-shoes" class="view">
-        <div class="topbar">
-          <a class="back" href="#/">← 홈</a>
-          <div class="pill">러닝화 추천</div>
-        </div>
-
-        <div class="card">
-          <h2>초보 입문용 러닝화 추천</h2>
-
-          <div style="margin-top: 12px;">
-            <h3>데일리 조깅용</h3>
-            <div id="shoes-daily" class="list"></div>
-          </div>
-
-          <div style="margin-top: 12px;">
-            <h3>훈련용</h3>
-            <div id="shoes-training" class="list"></div>
-          </div>
-
-          <div style="margin-top: 12px;">
-            <h3>레이스용</h3>
-            <div id="shoes-race" class="list"></div>
-          </div>
-
-          <div class="note">러닝화는 발/체중/보행에 따라 체감이 다를 수 있어요.</div>
-        </div>
-      </section>
-
+      <!-- REGULAR -->
       <section id="view-regular" class="view">
         <div class="topbar">
           <a class="back" href="#/">← 홈</a>
@@ -461,6 +423,29 @@
         <div class="card">
           <h2>정기런</h2>
           <p class="muted">매주 <b>수요일 오후 8시</b>, 노빠꾸 정기런 진행합니다 🏃‍♂️🏃‍♀️</p>
+
+          <h3 style="margin-top: 14px;">진행은 아래와 같습니다.</h3>
+          <ul>
+            <li>집합 및 가벼운 스트레칭 약 10분 (시작 전 닉네임으로 간단한 출석 체크 진행)</li>
+            <li>러닝 약 50분</li>
+            <li>마무리 스트레칭 후 해산</li>
+          </ul>
+
+          <p class="muted" style="margin-top: 12px;">
+            기록보다는 호흡을 맞추고, 대화 가능한 페이스로 함께 달리는 정기 모임입니다 :)<br />
+            처음 오시는 분들도 부담 없이 참여하시면 됩니다!
+          </p>
+
+          <h3 style="margin-top: 14px;">운영 방식</h3>
+          <ul>
+            <li>원활한 진행을 위해 정기런은 페이스 구간 사전취합 방식으로 운영합니다.</li>
+            <li>참석 예정이신 분들은 모임 채팅방에 안내된 희망 페이스 구간에 맞춰 닉네임을 남겨주시면 됩니다.</li>
+            <li>사전취합된 인원을 기준으로 비슷한 페이스끼리 그룹을 나누어 출발하며, 인원이 많을 경우에는 4명 내외로 운영할 예정입니다.</li>
+            <li>현장 혼선을 줄이고 체조 후 바로 출발하기 위한 방식이며, 그날 컨디션에 맞춰 편하게 선택해주시면 됩니다 🙌</li>
+          </ul>
+
+          <p class="muted" style="margin-top: 12px;">기타 인터벌 등 별도 훈련은 자유롭게 진행하시면 됩니다.</p>
+          <p class="muted">늦지 않게 와서 몸 먼저 풀고 바로 출발할 수 있게 준비 부탁드립니다 😊</p>
 
           <div style="margin-top: 16px; border-top: 1px dashed var(--border); padding-top: 14px;">
             <h2>운영진 정보</h2>
@@ -482,11 +467,9 @@
             ? "predict"
             : hash.startsWith("#/events")
               ? "events"
-              : hash.startsWith("#/shoes")
-                ? "shoes"
-                : hash.startsWith("#/regular")
-                  ? "regular"
-                  : "home";
+              : hash.startsWith("#/regular")
+                ? "regular"
+                : "home";
 
         document.querySelectorAll(".view").forEach((v) => v.classList.remove("active"));
         document.getElementById(`view-${view}`).classList.add("active");
@@ -550,6 +533,7 @@
           .sort((a, b) => b.localeCompare(a, "ko"));
       }
 
+      // 운영진: 가나다 내림차순(좌→우)
       (function renderStaff() {
         const ops = ["달려", "룰루", "나올", "밍경", "김땅콩", "슈퍼짹", "뽀용", "망구"];
         const sorted = sortKoreanDesc(ops);
@@ -724,7 +708,7 @@
         setVisible(predictResult, true);
       });
 
-      // JSON fetch helpers
+      // JSON fetch + Events
       async function safeFetchJson(path) {
         try {
           const res = await fetch(path, { cache: "no-store" });
@@ -742,18 +726,14 @@
         box.innerHTML = `<b>${title}</b>${reason ? `<div style="margin-top:8px;">${reason}</div>` : ""}`;
         targetEl.appendChild(box);
       }
-
-      // Distance normalize
       function normalizeDistance(raw) {
         const v = String(raw || "").trim();
         if (!v) return "";
         const upper = v.toUpperCase();
-
         if (upper === "HALF" || upper === "HM" || upper === "21.1K" || upper === "21.0975K") return "21K";
         if (upper === "FULL" || upper === "FM" || upper === "MARATHON" || upper === "42.2K" || upper === "42.195K") return "42K";
         if (upper === "10KM" || upper === "10K") return "10K";
         if (upper === "5KM" || upper === "5K") return "5K";
-
         const m = upper.replace(/\s+/g, "").match(/^(\d+(\.\d+)?)(K|KM)$/);
         if (m) {
           const n = Number(m[1]);
@@ -764,8 +744,6 @@
         }
         return v;
       }
-
-      // More helpers
       function createMoreButton(label) {
         const btn = document.createElement("button");
         btn.type = "button";
@@ -773,9 +751,7 @@
         btn.textContent = label;
         return btn;
       }
-
-      // Events render (participants vertical + 더보기)
-      function createEventItem(ev, participantPreviewCount = 6) {
+      function createEventItem(ev, participantPreviewCount = 8) {
         const el = document.createElement("div");
         el.className = "item";
 
@@ -835,7 +811,6 @@
               ul.appendChild(li);
             });
           };
-
           render();
 
           if (participants.length > participantPreviewCount) {
@@ -892,111 +867,13 @@
           .sort((a, b) => String(a.date || "").localeCompare(String(b.date || "")));
 
         list.innerHTML = "";
-        events.forEach((ev) => list.appendChild(createEventItem(ev, 8)));
+        events.forEach((ev) => list.appendChild(createEventItem(ev, 10)));
 
         preview.innerHTML = "";
-        events.slice(0, 2).forEach((ev) => preview.appendChild(createEventItem(ev, 4)));
-      }
-
-      // Shoes render (+ 더보기: 기본 3개)
-      function createShoeItem(s) {
-        const el = document.createElement("div");
-        el.className = "item";
-
-        const head = document.createElement("div");
-        head.className = "item-head";
-
-        const title = document.createElement("div");
-        title.className = "item-title";
-
-        const strong = document.createElement("strong");
-        strong.textContent = `${s.brand || "브랜드"} · ${s.model || "모델"}`;
-
-        const meta = document.createElement("div");
-        meta.className = "meta";
-        if (s.tag) {
-          const pill = document.createElement("span");
-          pill.className = "pill";
-          pill.textContent = s.tag;
-          meta.appendChild(알약);
-        }
-
-        title.appendChild(strong);
-        title.appendChild(meta);
-        head.appendChild(title);
-        el.appendChild(head);
-
-        if (s.note) {
-          const p = document.createElement("div");
-          p.className = "note";
-          p.textContent = s.note;
-          el.appendChild(p);
-        }
-
-        if (s.link) {
-          const a = document.createElement("a");
-          a.className = "cta";
-          a.href = s.link;
-          a.target = "_blank";
-          a.rel = "noopener noreferrer";
-          a.textContent = "보기 →";
-          el.appendChild(a);
-        }
-
-        return el;
-      }
-
-      function renderListWithMore(targetEl, items, renderItem, previewCount = 3) {
-        targetEl.innerHTML = "";
-        if (!Array.isArray(items) || items.length === 0) {
-          renderEmpty(targetEl, "비어있어요", "");
-          return;
-        }
-
-        let expanded = false;
-        const list = document.createElement("div");
-        list.className = "list";
-        targetEl.appendChild(list);
-
-        const render = () => {
-          list.innerHTML = "";
-          const show = expanded ? items : items.slice(0, previewCount);
-          show.forEach((it) => list.appendChild(renderItem(it)));
-        };
-
-        render();
-
-        if (items.length > previewCount) {
-          const btn = createMoreButton("더보기");
-          btn.addEventListener("click", () => {
-            expanded = !expanded;
-            btn.textContent = expanded ? "접기" : "더보기";
-            render();
-          });
-          targetEl.appendChild(btn);
-        }
-      }
-
-      async function loadShoes() {
-        const res = await safeFetchJson("data/shoes.json");
-        const dailyEl = document.getElementById("shoes-daily");
-        const trainingEl = document.getElementById("shoes-training");
-        const raceEl = document.getElementById("shoes-race");
-
-        if (!res.ok || !res.data) {
-          renderEmpty(dailyEl, "데일리 조깅용 비어있어요", res.reason);
-          renderEmpty(trainingEl, "훈련용 비어있어요", res.reason);
-          renderEmpty(raceEl, "레이스용 비어있어요", res.reason);
-          return;
-        }
-
-        renderListWithMore(dailyEl, res.data.daily, createShoeItem, 3);
-        renderListWithMore(trainingEl, res.data.training, createShoeItem, 3);
-        renderListWithMore(raceEl, res.data.race, createShoeItem, 3);
+        events.slice(0, 2).forEach((ev) => preview.appendChild(createEventItem(ev, 5)));
       }
 
       loadEvents();
-      loadShoes();
     </script>
   </body>
 </html>
