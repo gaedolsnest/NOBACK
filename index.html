@@ -21,10 +21,7 @@
       }
       * { box-sizing: border-box; }
 
-      /* ===== Monogram background (repeat) =====
-         - bg.jpg must exist at repo root: /NOBACK/bg.jpg
-         - adjust background-size + opacity to taste
-      */
+      /* ===== Monogram background (repeat) ===== */
       body {
         margin: 0;
         font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
@@ -37,11 +34,11 @@
         content: "";
         position: fixed;
         inset: 0;
-        background-image: url("./bg.jpg?v=3");
+        background-image: url("./bg.jpg?v=6");
         background-repeat: repeat;
-        background-size: 320px auto; /* 타일 크기: 240/320/420 등 조절 */
+        background-size: 260px auto; /* 모바일 체감↑ (320 → 260) */
         background-position: 0 0;
-        opacity: 0.06; /* 패턴 진하기 */
+        opacity: 0.06; /* 요청대로 0.06 유지 */
         pointer-events: none;
         z-index: -2;
       }
@@ -51,9 +48,9 @@
         inset: 0;
         background: radial-gradient(
           1200px 800px at 10% 10%,
-          rgba(21, 35, 58, 0.88),
-          rgba(11, 15, 20, 0.96)
-        );
+          rgba(21, 35, 58, 0.78),
+          rgba(11, 15, 20, 0.90)
+        ); /* 오버레이를 덜 진하게 → 패턴이 더 살아남 */
         pointer-events: none;
         z-index: -1;
       }
@@ -510,7 +507,6 @@
     </div>
 
     <script>
-      // Router: #/regular 뿐 아니라 #regular 도 잡아줌
       function route() {
         const raw = (location.hash || "#/").toLowerCase();
         const normalized = raw.startsWith("#/") ? raw : raw.startsWith("#") ? "#/" + raw.slice(1) : "#/";
@@ -589,7 +585,6 @@
           .sort((a, b) => b.localeCompare(a, "ko"));
       }
 
-      // 운영진: 가나다 내림차순(좌→우)
       (function renderStaff() {
         const ops = ["달려", "룰루", "나올", "밍경", "김땅콩", "슈퍼짹", "뽀용", "망구"];
         const sorted = sortKoreanDesc(ops);
@@ -603,7 +598,6 @@
         });
       })();
 
-      // Pace calc
       const paceDistanceType = document.getElementById("pace-distance-type");
       const paceCustomField = document.getElementById("pace-custom-distance-field");
       const paceDistanceKmInput = document.getElementById("pace-distance-km");
@@ -684,7 +678,6 @@
         setVisible(paceResult, true);
       });
 
-      // Predict
       const predictForm = document.getElementById("predict-form");
       const predictError = document.getElementById("predict-error");
       const predictResult = document.getElementById("predict-result");
@@ -764,7 +757,6 @@
         setVisible(predictResult, true);
       });
 
-      // JSON fetch + Events
       async function safeFetchJson(path) {
         try {
           const res = await fetch(path, { cache: "no-store" });
@@ -889,7 +881,7 @@
               if (showDistChip) {
                 const chip = document.createElement("span");
                 chip.className = "chip sub";
-                chip.textContent = p.distance; // e.g. 10K
+                chip.textContent = p.distance;
                 li.appendChild(chip);
               }
 
