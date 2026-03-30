@@ -7,8 +7,8 @@
     <title>노빠꾸 러닝 크루🏃🏽🏃‍♀️🏃🏻‍♂️</title>
 
     <!-- favicon (cache-bust) -->
-    <link rel="icon" href="./favicon.ico?v=3" sizes="any" />
-    <link rel="shortcut icon" href="./favicon.ico?v=3" />
+    <link rel="icon" href="./favicon.ico?v=9" sizes="any" />
+    <link rel="shortcut icon" href="./favicon.ico?v=9" />
 
     <style>
       :root {
@@ -20,43 +20,51 @@
         --radius: 16px;
       }
       * { box-sizing: border-box; }
+      html, body { height: 100%; }
 
-      /* ===== Monogram background (repeat) ===== */
-      body {
-        margin: 0;
-        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-        color: var(--text);
-        line-height: 1.4;
-        background: var(--bg);
-        position: relative;
-      }
-      body::before {
+      /* ===== Monogram background (repeat) - robust stacking ===== */
+      html { background: var(--bg); }
+      html::before {
         content: "";
         position: fixed;
         inset: 0;
-        background-image: url("./bg.jpg?v=6");
+        background-image: url("./bg.jpg?v=9");
         background-repeat: repeat;
-        background-size: 260px auto; /* 모바일 체감↑ (320 → 260) */
+        background-size: 260px auto;
         background-position: 0 0;
-        opacity: 0.06; /* 요청대로 0.06 유지 */
+        opacity: 0.06; /* 요청 유지 */
         pointer-events: none;
-        z-index: -2;
+        z-index: 0;
       }
-      body::after {
+      html::after {
         content: "";
         position: fixed;
         inset: 0;
         background: radial-gradient(
           1200px 800px at 10% 10%,
-          rgba(21, 35, 58, 0.78),
-          rgba(11, 15, 20, 0.90)
-        ); /* 오버레이를 덜 진하게 → 패턴이 더 살아남 */
+          rgba(21, 35, 58, 0.88),
+          rgba(11, 15, 20, 0.96)
+        );
         pointer-events: none;
-        z-index: -1;
+        z-index: 1;
+      }
+
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+        color: var(--text);
+        line-height: 1.4;
+        background: transparent;
       }
 
       a { color: inherit; text-decoration: none; }
-      .container { max-width: 1040px; margin: 0 auto; padding: 22px 16px 60px; }
+      .container {
+        max-width: 1040px;
+        margin: 0 auto;
+        padding: 22px 16px 60px;
+        position: relative;
+        z-index: 2; /* 핵심: 배경 레이어 위로 */
+      }
 
       header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
       header h1 { font-size: 18px; margin: 0; letter-spacing: 0.3px; }
@@ -217,6 +225,7 @@
       .section-title { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin: 0 0 10px; }
       .section-title h2 { margin: 0; font-size: 16px; }
       .muted { color: var(--muted); }
+
       ul { margin: 8px 0 0; padding-left: 18px; color: var(--muted); }
       li { margin: 6px 0; }
 
@@ -230,7 +239,6 @@
       .item-title { display: grid; gap: 6px; }
       .item-title strong { font-size: 14px; }
       .meta { display: flex; gap: 8px; flex-wrap: wrap; }
-      .note { font-size: 13px; color: var(--muted); margin-top: 10px; }
 
       .empty {
         border: 1px dashed var(--border);
@@ -598,6 +606,7 @@
         });
       })();
 
+      // Pace calc
       const paceDistanceType = document.getElementById("pace-distance-type");
       const paceCustomField = document.getElementById("pace-custom-distance-field");
       const paceDistanceKmInput = document.getElementById("pace-distance-km");
@@ -678,6 +687,7 @@
         setVisible(paceResult, true);
       });
 
+      // Predict
       const predictForm = document.getElementById("predict-form");
       const predictError = document.getElementById("predict-error");
       const predictResult = document.getElementById("predict-result");
@@ -757,6 +767,7 @@
         setVisible(predictResult, true);
       });
 
+      // Events
       async function safeFetchJson(path) {
         try {
           const res = await fetch(path, { cache: "no-store" });
@@ -811,7 +822,6 @@
           })
           .filter((p) => p.name.length > 0);
       }
-
       function createEventItem(ev, participantPreviewCount = 12) {
         const el = document.createElement("div");
         el.className = "item";
@@ -884,7 +894,6 @@
                 chip.textContent = p.distance;
                 li.appendChild(chip);
               }
-
               ul.appendChild(li);
             });
           };
@@ -902,23 +911,6 @@
           }
 
           el.appendChild(wrap);
-        }
-
-        if (ev.note) {
-          const p = document.createElement("div");
-          p.className = "note";
-          p.textContent = ev.note;
-          el.appendChild(p);
-        }
-
-        if (ev.link) {
-          const a = document.createElement("a");
-          a.className = "cta";
-          a.href = ev.link;
-          a.target = "_blank";
-          a.rel = "noopener noreferrer";
-          a.textContent = "대회 링크 →";
-          el.appendChild(a);
         }
 
         return el;
