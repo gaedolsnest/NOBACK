@@ -6,85 +6,137 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>노빠꾸 러닝 크루🏃🏽🏃‍♀️🏃🏻‍♂️</title>
 
-    <!-- favicon (cache-bust) -->
     <link rel="icon" href="./favicon.ico?v=999" sizes="any" />
     <link rel="shortcut icon" href="./favicon.ico?v=999" />
 
     <style>
       :root {
-        --bg: #0b0f14;
-        --text: #e7eefc;
-        --muted: #a9b6cc;
-        --border: rgba(255, 255, 255, 0.08);
-        --shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
-        --radius: 16px;
+        /* Brand */
+        --accent: #ff6a00;         /* signature orange */
+        --accent2: #ff8a33;
+        --accentSoft: rgba(255, 106, 0, 0.18);
+
+        /* Page */
+        --page: #ffffff;
+        --pageInk: #0b0b0c;
+
+        /* Glass (black) */
+        --glass: rgba(0, 0, 0, 0.58);     /* 투명도 ↑ (더 비침) */
+        --glass2: rgba(0, 0, 0, 0.46);
+        --border: rgba(255, 255, 255, 0.14);
+        --borderStrong: rgba(255, 255, 255, 0.20);
+
+        --text: rgba(255, 255, 255, 0.94);
+        --muted: rgba(255, 255, 255, 0.72);
+
+        --shadow: 0 18px 48px rgba(0, 0, 0, 0.18);
+        --radius: 18px;
       }
+
       * { box-sizing: border-box; }
       html, body { height: 100%; }
-
-      /* ✅ 가장 안정적인 배경 적용(가상요소/음수 z-index 제거) */
       body {
         margin: 0;
         font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-        color: var(--text);
-        line-height: 1.4;
-        background-color: var(--bg);
-
-        /* 1) 어두운 그라데이션  2) 모노그램 타일 */
-        background-image:
-          radial-gradient(1200px 800px at 10% 10%, rgba(21, 35, 58, 0.88), rgba(11, 15, 20, 0.96)),
-          url("./bg.jpg?v=999");
-        background-repeat: no-repeat, repeat;
-        background-size: cover, 260px auto;
-        background-position: center, 0 0;
+        color: var(--pageInk);
+        line-height: 1.45;
+        background: var(--page);
       }
 
       a { color: inherit; text-decoration: none; }
-      .container { max-width: 1040px; margin: 0 auto; padding: 22px 16px 60px; }
 
-      header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
-      header h1 { font-size: 18px; margin: 0; letter-spacing: 0.3px; }
-      .header-right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+      .container {
+        max-width: 1040px;
+        margin: 0 auto;
+        padding: 20px 14px 60px;
+      }
+
+      /* ===== Header / Tabs ===== */
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 12px;
+        padding: 14px 14px;
+        border-radius: var(--radius);
+        background: linear-gradient(180deg, var(--glass), var(--glass2));
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+      }
+      header h1 {
+        font-size: 18px;
+        margin: 0;
+        letter-spacing: 0.2px;
+        color: var(--text);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      header h1::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: var(--accent);
+        box-shadow: 0 0 0 4px rgba(255, 106, 0, 0.18);
+        flex: 0 0 auto;
+      }
+
+      .header-right { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
       .linkbtn {
         font-size: 12px;
         color: var(--text);
-        border: 1px solid var(--border);
-        padding: 8px 12px;
+        border: 1px solid rgba(255, 106, 0, 0.35);
+        padding: 9px 12px;
         border-radius: 999px;
-        background: rgba(255, 255, 255, 0.06);
+        background: rgba(255, 106, 0, 0.10);
         white-space: nowrap;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
       }
-      .linkbtn:hover { background: rgba(255, 255, 255, 0.1); }
+      .linkbtn:hover { background: rgba(255, 106, 0, 0.18); border-color: rgba(255, 106, 0, 0.55); }
 
-      .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+      .tabs {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin: 12px 0 14px;
+      }
       .tab {
         font-size: 13px;
-        color: var(--muted);
-        border: 1px solid var(--border);
+        color: rgba(0, 0, 0, 0.62);
+        border: 1px solid rgba(0, 0, 0, 0.10);
         padding: 8px 12px;
         border-radius: 999px;
-        background: rgba(255, 255, 255, 0.03);
+        background: rgba(0, 0, 0, 0.04);
       }
       .tab.active {
-        color: var(--text);
-        border-color: rgba(255, 255, 255, 0.2);
-        background: rgba(255, 255, 255, 0.07);
+        color: #111;
+        border-color: rgba(255, 106, 0, 0.55);
+        background: rgba(255, 106, 0, 0.16);
       }
 
       .view { display: none; }
       .view.active { display: block; }
 
+      /* ===== Cards / Sections ===== */
       .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
       @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
 
       .card {
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
-        border: 1px solid var(--border);
         border-radius: var(--radius);
+        background: linear-gradient(180deg, var(--glass), var(--glass2));
+        border: 1px solid var(--border);
         box-shadow: var(--shadow);
         padding: 16px;
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        color: var(--text);
       }
-      .card h2 { margin: 0 0 6px; font-size: 16px; }
+      .card h2 { margin: 0 0 6px; font-size: 16px; color: var(--text); }
       .card h3 { margin: 0 0 8px; font-size: 14px; color: var(--text); }
       .card p { margin: 0; color: var(--muted); font-size: 13px; }
 
@@ -95,12 +147,12 @@
         gap: 8px;
         font-size: 13px;
         color: var(--text);
-        border: 1px solid var(--border);
+        border: 1px solid rgba(255, 106, 0, 0.35);
         border-radius: 999px;
         padding: 8px 12px;
-        background: rgba(255, 255, 255, 0.03);
+        background: rgba(255, 106, 0, 0.10);
       }
-      .cta:hover { background: rgba(255, 255, 255, 0.06); }
+      .cta:hover { background: rgba(255, 106, 0, 0.18); border-color: rgba(255, 106, 0, 0.55); }
 
       .topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
       .back {
@@ -108,41 +160,14 @@
         align-items: center;
         gap: 8px;
         font-size: 13px;
-        color: var(--muted);
-        border: 1px solid var(--border);
+        color: rgba(0, 0, 0, 0.72);
+        border: 1px solid rgba(0, 0, 0, 0.10);
         border-radius: 999px;
         padding: 8px 12px;
-        background: rgba(255, 255, 255, 0.03);
+        background: rgba(0, 0, 0, 0.04);
       }
-      .back:hover { background: rgba(255, 255, 255, 0.06); color: var(--text); }
+      .back:hover { background: rgba(255, 106, 0, 0.12); border-color: rgba(255, 106, 0, 0.35); }
 
-      form { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 12px; }
-      .field { grid-column: span 6; display: flex; flex-direction: column; gap: 6px; }
-      @media (max-width: 720px) { .field { grid-column: span 12; } }
-      label { font-size: 12px; color: var(--muted); }
-      input, select, button { font: inherit; color: var(--text); }
-      input, select {
-        width: 100%;
-        padding: 10px 12px;
-        border-radius: 12px;
-        border: 1px solid var(--border);
-        background: rgba(0, 0, 0, 0.25);
-        outline: none;
-      }
-      input:focus, select:focus { border-color: rgba(255, 255, 255, 0.22); }
-      .help { font-size: 12px; color: var(--muted); margin-top: 2px; }
-      .actions { grid-column: span 12; display: flex; gap: 10px; flex-wrap: wrap; margin-top: 2px; }
-      button {
-        border: 1px solid var(--border);
-        background: rgba(255, 255, 255, 0.06);
-        padding: 10px 14px;
-        border-radius: 999px;
-        cursor: pointer;
-      }
-      button:hover { background: rgba(255, 255, 255, 0.1); }
-
-      .error { margin-top: 10px; color: #ffb3b3; font-size: 13px; }
-      .result { margin-top: 14px; border-top: 1px dashed var(--border); padding-top: 14px; display: grid; gap: 12px; }
       .pillrow { display: flex; gap: 8px; flex-wrap: wrap; }
       .pill {
         font-size: 12px;
@@ -150,9 +175,47 @@
         border: 1px solid var(--border);
         padding: 6px 10px;
         border-radius: 999px;
-        background: rgba(255, 255, 255, 0.03);
+        background: rgba(255, 255, 255, 0.06);
       }
 
+      /* ===== Forms ===== */
+      form { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 12px; }
+      .field { grid-column: span 6; display: flex; flex-direction: column; gap: 6px; }
+      @media (max-width: 720px) { .field { grid-column: span 12; } }
+
+      label { font-size: 12px; color: var(--muted); }
+      input, select, button { font: inherit; }
+
+      input, select {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--text);
+        outline: none;
+      }
+      input:focus, select:focus {
+        border-color: rgba(255, 106, 0, 0.55);
+        box-shadow: 0 0 0 3px rgba(255, 106, 0, 0.16);
+      }
+      .help { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+      .actions { grid-column: span 12; display: flex; gap: 10px; flex-wrap: wrap; margin-top: 2px; }
+      button {
+        border: 1px solid rgba(255, 106, 0, 0.35);
+        background: rgba(255, 106, 0, 0.12);
+        padding: 10px 14px;
+        border-radius: 999px;
+        cursor: pointer;
+        color: var(--text);
+      }
+      button:hover { background: rgba(255, 106, 0, 0.20); border-color: rgba(255, 106, 0, 0.55); }
+
+      .error { margin-top: 10px; color: #ffd0c2; font-size: 13px; }
+      .result { margin-top: 14px; border-top: 1px dashed rgba(255,255,255,0.18); padding-top: 14px; display: grid; gap: 12px; }
+
+      /* ===== Pace rows ===== */
       .pace-rows { display: grid; gap: 8px; }
       .pace-row {
         display: flex;
@@ -160,28 +223,37 @@
         justify-content: space-between;
         gap: 10px;
         padding: 10px 10px;
-        border: 1px solid var(--border);
+        border: 1px solid rgba(255,255,255,0.14);
         border-radius: 12px;
-        background: rgba(0, 0, 0, 0.18);
+        background: rgba(255, 255, 255, 0.05);
       }
       .pace-row .k { font-size: 12px; color: var(--muted); white-space: nowrap; }
-      .pace-row .v { font-size: 13px; white-space: nowrap; }
-      .pace-row.tail { color: var(--muted); border-style: dashed; }
+      .pace-row .v { font-size: 13px; white-space: nowrap; color: var(--text); }
+      .pace-row.tail { opacity: 0.85; border-style: dashed; }
 
+      /* ===== Predict cards ===== */
       .cards3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
       @media (max-width: 900px) { .cards3 { grid-template-columns: 1fr; } }
-      .mini { padding: 14px; border-radius: 14px; border: 1px solid var(--border); background: rgba(255, 255, 255, 0.03); }
+
+      .mini {
+        padding: 14px;
+        border-radius: 14px;
+        border: 1px solid rgba(255,255,255,0.14);
+        background: rgba(255, 255, 255, 0.05);
+      }
       .mini .title { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 10px; }
-      .mini .title strong { font-size: 14px; }
+      .mini .title strong { font-size: 14px; color: var(--text); }
+
       .mini .km {
         font-size: 12px;
-        color: var(--muted);
-        border: 1px solid var(--border);
+        color: rgba(255, 255, 255, 0.82);
+        border: 1px solid rgba(255, 106, 0, 0.35);
         padding: 4px 8px;
         border-radius: 999px;
-        background: rgba(255, 255, 255, 0.02);
+        background: rgba(255, 106, 0, 0.10);
         white-space: nowrap;
       }
+
       .rows { display: grid; gap: 8px; }
       .row {
         display: flex;
@@ -189,68 +261,76 @@
         justify-content: space-between;
         gap: 10px;
         padding: 10px 10px;
-        border: 1px solid var(--border);
+        border: 1px solid rgba(255,255,255,0.14);
         border-radius: 12px;
-        background: rgba(0, 0, 0, 0.18);
+        background: rgba(255, 255, 255, 0.05);
       }
       .row .k { font-size: 12px; color: var(--muted); }
-      .row .v { font-size: 13px; white-space: nowrap; }
-      .row.highlight { border-color: rgba(255, 255, 255, 0.22); background: rgba(255, 255, 255, 0.06); }
-      .group { margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--border); font-size: 12px; color: var(--muted); }
+      .row .v { font-size: 13px; white-space: nowrap; color: var(--text); }
+      .row.highlight {
+        border-color: rgba(255, 106, 0, 0.55);
+        background: rgba(255, 106, 0, 0.12);
+      }
+      .group { margin-top: 10px; padding-top: 10px; border-top: 1px dashed rgba(255,255,255,0.18); font-size: 12px; color: var(--muted); }
 
+      /* ===== Events ===== */
       .section-title { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin: 0 0 10px; }
-      .section-title h2 { margin: 0; font-size: 16px; }
-      .muted { color: var(--muted); }
-      ul { margin: 8px 0 0; padding-left: 18px; color: var(--muted); }
-      li { margin: 6px 0; }
-
-      .staff { display: grid; gap: 10px; }
-      .staff .line { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; color: var(--muted); font-size: 13px; }
-      .staff .chip { border: 1px solid var(--border); border-radius: 999px; padding: 6px 10px; background: rgba(255, 255, 255, 0.03); color: var(--text); font-size: 12px; }
+      .section-title h2 { margin: 0; font-size: 16px; color: var(--text); }
 
       .list { display: grid; gap: 12px; margin-top: 12px; }
-      .item { border: 1px solid var(--border); border-radius: 14px; background: rgba(0, 0, 0, 0.18); padding: 14px; }
+      .item {
+        border: 1px solid rgba(255,255,255,0.14);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 14px;
+      }
       .item-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
       .item-title { display: grid; gap: 6px; }
-      .item-title strong { font-size: 14px; }
+      .item-title strong { font-size: 14px; color: var(--text); }
       .meta { display: flex; gap: 8px; flex-wrap: wrap; }
-      .note { font-size: 13px; color: var(--muted); margin-top: 10px; }
 
       .empty {
-        border: 1px dashed var(--border);
+        border: 1px dashed rgba(255,255,255,0.22);
         border-radius: 14px;
         padding: 14px;
         color: var(--muted);
-        background: rgba(255, 255, 255, 0.02);
+        background: rgba(255, 255, 255, 0.03);
       }
 
+      /* participants + chip + more */
       .p-wrap { margin-top: 10px; }
       .p-list { margin: 0; padding-left: 18px; color: var(--muted); }
       .p-list li { margin: 6px 0; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+
       .chip {
-        border: 1px solid var(--border);
+        border: 1px solid rgba(255, 106, 0, 0.40);
         border-radius: 999px;
         padding: 4px 8px;
-        background: rgba(255, 255, 255, 0.03);
-        color: var(--text);
+        background: rgba(255, 106, 0, 0.12);
+        color: rgba(255, 255, 255, 0.92);
         font-size: 12px;
         white-space: nowrap;
       }
-      .chip.sub { color: var(--muted); background: rgba(0, 0, 0, 0.18); }
+      .chip.sub {
+        border-color: rgba(255,255,255,0.18);
+        background: rgba(255, 255, 255, 0.06);
+        color: rgba(255, 255, 255, 0.78);
+      }
+
       .morebtn {
         margin-top: 10px;
         display: inline-flex;
         align-items: center;
         gap: 8px;
         font-size: 12px;
-        color: var(--text);
-        border: 1px solid var(--border);
+        color: rgba(255,255,255,0.92);
+        border: 1px solid rgba(255, 106, 0, 0.35);
         padding: 8px 12px;
         border-radius: 999px;
-        background: rgba(255, 255, 255, 0.03);
+        background: rgba(255, 106, 0, 0.10);
         cursor: pointer;
       }
-      .morebtn:hover { background: rgba(255, 255, 255, 0.06); }
+      .morebtn:hover { background: rgba(255, 106, 0, 0.18); border-color: rgba(255, 106, 0, 0.55); }
     </style>
   </head>
 
@@ -453,7 +533,7 @@
           <p class="muted">매주 <b>수요일 오후 8시</b>, 노빠꾸 정기런 진행합니다 🏃‍♂️🏃‍♀️</p>
 
           <h3 style="margin-top: 14px;">진행은 아래와 같습니다.</h3>
-          <ul>
+          <ul style="margin: 8px 0 0; padding-left: 18px; color: var(--muted);">
             <li>집합 및 가벼운 스트레칭 약 10분 (시작 전 닉네임으로 간단한 출석 체크 진행)</li>
             <li>러닝 약 50분</li>
             <li>마무리 스트레칭 후 해산</li>
@@ -465,7 +545,7 @@
           </p>
 
           <h3 style="margin-top: 14px;">운영 방식</h3>
-          <ul>
+          <ul style="margin: 8px 0 0; padding-left: 18px; color: var(--muted);">
             <li>원활한 진행을 위해 정기런은 페이스 구간 사전취합 방식으로 운영합니다.</li>
             <li>참석 예정이신 분들은 모임 채팅방에 안내된 희망 페이스 구간에 맞춰 닉네임을 남겨주시면 됩니다.</li>
             <li>사전취합된 인원을 기준으로 비슷한 페이스끼리 그룹을 나누어 출발하며, 인원이 많을 경우에는 4명 내외로 운영할 예정입니다.</li>
@@ -475,11 +555,15 @@
           <p class="muted" style="margin-top: 12px;">기타 인터벌 등 별도 훈련은 자유롭게 진행하시면 됩니다.</p>
           <p class="muted">늦지 않게 와서 몸 먼저 풀고 바로 출발할 수 있게 준비 부탁드립니다 😊</p>
 
-          <div style="margin-top: 16px; border-top: 1px dashed var(--border); padding-top: 14px;">
+          <div style="margin-top: 16px; border-top: 1px dashed rgba(255,255,255,0.18); padding-top: 14px;">
             <h2>운영진 정보</h2>
-            <div class="staff">
-              <div class="line"><span class="muted">크루장</span><span class="chip">망구</span></div>
-              <div class="line"><span class="muted">운영진</span><span id="ops-chips"></span></div>
+            <div style="display:grid; gap:10px;">
+              <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center; color: var(--muted); font-size:13px;">
+                <span>크루장</span><span class="chip">망구</span>
+              </div>
+              <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center; color: var(--muted); font-size:13px;">
+                <span>운영진</span><span id="ops-chips"></span>
+              </div>
             </div>
           </div>
         </div>
@@ -565,10 +649,12 @@
           .sort((a, b) => b.localeCompare(a, "ko"));
       }
 
+      // 운영진: 가나다 내림차순(좌→우)
       (function renderStaff() {
         const ops = ["달려", "룰루", "나올", "밍경", "김땅콩", "슈퍼짹", "뽀용", "망구"];
         const sorted = sortKoreanDesc(ops);
         const container = document.getElementById("ops-chips");
+        if (!container) return;
         container.innerHTML = "";
         sorted.forEach((name) => {
           const chip = document.createElement("span");
@@ -598,16 +684,21 @@
         }
         return Number(v);
       }
-      paceDistanceType.addEventListener("change", () => {
-        setVisible(paceCustomField, paceDistanceType.value === "custom");
-      });
-      document.getElementById("pace-reset").addEventListener("click", () => {
-        paceForm.reset();
-        setVisible(paceCustomField, false);
-        setVisible(paceError, false);
-        setVisible(paceResult, false);
-        paceRows.innerHTML = "";
-      });
+      if (paceDistanceType) {
+        paceDistanceType.addEventListener("change", () => {
+          setVisible(paceCustomField, paceDistanceType.value === "custom");
+        });
+      }
+      const paceResetBtn = document.getElementById("pace-reset");
+      if (paceResetBtn) {
+        paceResetBtn.addEventListener("click", () => {
+          paceForm.reset();
+          setVisible(paceCustomField, false);
+          setVisible(paceError, false);
+          setVisible(paceResult, false);
+          paceRows.innerHTML = "";
+        });
+      }
       function appendPaceRow(label, value, isTail) {
         const row = document.createElement("div");
         row.className = "pace-row" + (isTail ? " tail" : "");
@@ -621,43 +712,45 @@
         row.appendChild(right);
         paceRows.appendChild(row);
       }
-      paceForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        setVisible(paceError, false);
-        setVisible(paceResult, false);
-        paceRows.innerHTML = "";
+      if (paceForm) {
+        paceForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          setVisible(paceError, false);
+          setVisible(paceResult, false);
+          paceRows.innerHTML = "";
 
-        const distanceKm = getPaceDistanceKm();
-        const timeSec = parseTimeToSeconds(new FormData(paceForm).get("time"));
+          const distanceKm = getPaceDistanceKm();
+          const timeSec = parseTimeToSeconds(new FormData(paceForm).get("time"));
 
-        if (!distanceKm) {
-          paceError.textContent = "거리를 올바르게 입력해 주세요.";
-          setVisible(paceError, true);
-          return;
-        }
-        if (!timeSec || timeSec <= 0) {
-          paceError.textContent = "목표 시간을 올바르게 입력해 주세요. (MM:SS 또는 HH:MM:SS)";
-          setVisible(paceError, true);
-          return;
-        }
+          if (!distanceKm) {
+            paceError.textContent = "거리를 올바르게 입력해 주세요.";
+            setVisible(paceError, true);
+            return;
+          }
+          if (!timeSec || timeSec <= 0) {
+            paceError.textContent = "목표 시간을 올바르게 입력해 주세요. (MM:SS 또는 HH:MM:SS)";
+            setVisible(paceError, true);
+            return;
+          }
 
-        const paceSecPerKm = timeSec / distanceKm;
-        const fullKm = Math.floor(distanceKm);
-        const tail = distanceKm - fullKm;
+          const paceSecPerKm = timeSec / distanceKm;
+          const fullKm = Math.floor(distanceKm);
+          const tail = distanceKm - fullKm;
 
-        for (let i = 1; i <= fullKm; i++) appendPaceRow(`${i}KM`, formatPaceColon(paceSecPerKm), false);
-        if (tail > 0.0001) {
-          const tailKm = Math.round(tail * 1000) / 1000;
-          appendPaceRow(`마지막 ${tailKm}km`, formatPaceColon(paceSecPerKm), true);
-        }
+          for (let i = 1; i <= fullKm; i++) appendPaceRow(`${i}KM`, formatPaceColon(paceSecPerKm), false);
+          if (tail > 0.0001) {
+            const tailKm = Math.round(tail * 1000) / 1000;
+            appendPaceRow(`마지막 ${tailKm}km`, formatPaceColon(paceSecPerKm), true);
+          }
 
-        document.getElementById("pace-pill-distance").textContent = `거리: ${distanceKm} km`;
-        document.getElementById("pace-pill-time").textContent = `목표: ${formatTime(timeSec)}`;
-        document.getElementById("pace-pill-avgpace").textContent =
-          `평균: ${formatPaceReadable(paceSecPerKm)} (${formatPaceColon(paceSecPerKm)})`;
+          document.getElementById("pace-pill-distance").textContent = `거리: ${distanceKm} km`;
+          document.getElementById("pace-pill-time").textContent = `목표: ${formatTime(timeSec)}`;
+          document.getElementById("pace-pill-avgpace").textContent =
+            `평균: ${formatPaceReadable(paceSecPerKm)} (${formatPaceColon(paceSecPerKm)})`;
 
-        setVisible(paceResult, true);
-      });
+          setVisible(paceResult, true);
+        });
+      }
 
       // Predict
       const predictForm = document.getElementById("predict-form");
@@ -706,38 +799,45 @@
           if (o.key === highlightMode) groupEl.textContent = `추천 페이스그룹: ${recommendedGroupRange(pace)}`;
         });
       }
-      document.getElementById("predict-reset").addEventListener("click", () => {
-        predictForm.reset();
-        setVisible(predictError, false);
-        setVisible(predictResult, false);
-      });
-      predictForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        setVisible(predictError, false);
-        setVisible(predictResult, false);
 
-        const fd = new FormData(predictForm);
-        const t1 = parseTimeToSeconds(fd.get("time"));
-        const mode = String(fd.get("mode") || "base");
+      const predictResetBtn = document.getElementById("predict-reset");
+      if (predictResetBtn) {
+        predictResetBtn.addEventListener("click", () => {
+          predictForm.reset();
+          setVisible(predictError, false);
+          setVisible(predictResult, false);
+        });
+      }
 
-        if (!t1 || t1 <= 0) {
-          predictError.textContent = "5K 기록 시간을 올바르게 입력해 주세요. (MM:SS 또는 HH:MM:SS)";
-          setVisible(predictError, true);
-          return;
-        }
-        if (!Object.keys(EXPONENTS).includes(mode)) {
-          predictError.textContent = "컨디션 선택이 올바르지 않아요.";
-          setVisible(predictError, true);
-          return;
-        }
+      if (predictForm) {
+        predictForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          setVisible(predictError, false);
+          setVisible(predictResult, false);
 
-        document.getElementById("predict-pill-in").textContent = `입력: 5K / ${formatTime(t1)}`;
-        renderPredictCard(document.getElementById("rows-10k"), document.getElementById("group-10k"), D10K, t1, mode);
-        renderPredictCard(document.getElementById("rows-half"), document.getElementById("group-half"), DHALF, t1, mode);
-        renderPredictCard(document.getElementById("rows-full"), document.getElementById("group-full"), DFULL, t1, mode);
+          const fd = new FormData(predictForm);
+          const t1 = parseTimeToSeconds(fd.get("time"));
+          const mode = String(fd.get("mode") || "base");
 
-        setVisible(predictResult, true);
-      });
+          if (!t1 || t1 <= 0) {
+            predictError.textContent = "5K 기록 시간을 올바르게 입력해 주세요. (MM:SS 또는 HH:MM:SS)";
+            setVisible(predictError, true);
+            return;
+          }
+          if (!Object.keys(EXPONENTS).includes(mode)) {
+            predictError.textContent = "컨디션 선택이 올바르지 않아요.";
+            setVisible(predictError, true);
+            return;
+          }
+
+          document.getElementById("predict-pill-in").textContent = `입력: 5K / ${formatTime(t1)}`;
+          renderPredictCard(document.getElementById("rows-10k"), document.getElementById("group-10k"), D10K, t1, mode);
+          renderPredictCard(document.getElementById("rows-half"), document.getElementById("group-half"), DHALF, t1, mode);
+          renderPredictCard(document.getElementById("rows-full"), document.getElementById("group-full"), DFULL, t1, mode);
+
+          setVisible(predictResult, true);
+        });
+      }
 
       // Events
       async function safeFetchJson(path) {
@@ -884,13 +984,6 @@
           }
 
           el.appendChild(wrap);
-        }
-
-        if (ev.note) {
-          const p = document.createElement("div");
-          p.className = "note";
-          p.textContent = ev.note;
-          el.appendChild(p);
         }
 
         if (ev.link) {
