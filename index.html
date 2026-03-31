@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>노빠꾸 러닝 크루🏃🏽🏃‍♀️🏃🏻‍♂️</title>
 
-    <link rel="icon" href="./favicon.ico?v=9" sizes="any" />
-    <link rel="shortcut icon" href="./favicon.ico?v=9" />
+    <!-- favicon (cache-bust) -->
+    <link rel="icon" href="./favicon.ico?v=999" sizes="any" />
+    <link rel="shortcut icon" href="./favicon.ico?v=999" />
 
     <style>
       :root {
@@ -19,27 +20,23 @@
         --radius: 16px;
       }
       * { box-sizing: border-box; }
-
-      /* ✅ 가장 확실한 배경 적용 방식 (pseudo-element 제거) */
       html, body { height: 100%; }
+
+      /* ✅ 가장 안정적인 배경 적용(가상요소/음수 z-index 제거) */
       body {
         margin: 0;
         font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
         color: var(--text);
         line-height: 1.4;
+        background-color: var(--bg);
 
-        /* 1) 오버레이 그라데이션  2) 패턴 타일 */
+        /* 1) 어두운 그라데이션  2) 모노그램 타일 */
         background-image:
           radial-gradient(1200px 800px at 10% 10%, rgba(21, 35, 58, 0.88), rgba(11, 15, 20, 0.96)),
           url("./bg.jpg?v=999");
-
         background-repeat: no-repeat, repeat;
         background-size: cover, 260px auto;
         background-position: center, 0 0;
-
-        /* 패턴이 너무 진하면 lighten/overlay로 조절 가능 */
-        background-blend-mode: normal, normal; /* 필요하면 overlay 로 바꿔볼 수 있음 */
-        background-color: var(--bg);
       }
 
       a { color: inherit; text-decoration: none; }
@@ -217,6 +214,7 @@
       .item-title { display: grid; gap: 6px; }
       .item-title strong { font-size: 14px; }
       .meta { display: flex; gap: 8px; flex-wrap: wrap; }
+      .note { font-size: 13px; color: var(--muted); margin-top: 10px; }
 
       .empty {
         border: 1px dashed var(--border);
@@ -257,8 +255,681 @@
   </head>
 
   <body>
-    <!-- 아래 body 내용/스크립트는 네 기존 그대로 유지하면 됨 -->
-    <!-- ⚠️ 길어서 생략하면 안 되니까: 너 기존 파일의 body + script 전체를 그대로 붙여넣고,
-         위의 <style>과 <head>만 교체해도 된다. -->
+    <div class="container">
+      <header>
+        <h1>노빠꾸 러닝 크루🏃🏽🏃‍♀️🏃🏻‍♂️</h1>
+        <div class="header-right">
+          <a
+            class="linkbtn"
+            href="https://www.daangn.com/kr/group/%EB%85%B8%EB%B9%A0%EA%BE%B8-%EB%9F%AC%EB%8B%9D%ED%81%AC%EB%A3%A8-no-back-rc-1yeomgcwmnyx/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            당근 모임 바로가기 →
+          </a>
+        </div>
+      </header>
+
+      <nav class="tabs" aria-label="탭">
+        <a class="tab" data-tab="home" href="#/">홈</a>
+        <a class="tab" data-tab="pace" href="#/pace">페이스 계산기</a>
+        <a class="tab" data-tab="predict" href="#/predict">예상 기록</a>
+        <a class="tab" data-tab="events" href="#/events">대회</a>
+        <a class="tab" data-tab="regular" href="#/regular">정기런</a>
+      </nav>
+
+      <!-- HOME -->
+      <section id="view-home" class="view">
+        <div class="grid">
+          <a class="card" href="#/pace">
+            <h2>페이스 계산기</h2>
+            <p>거리 + 목표 시간 → 평균 페이스, 1KM/2KM… 세로 출력</p>
+            <span class="cta">열기 →</span>
+          </a>
+
+          <a class="card" href="#/predict">
+            <h2>예상 기록</h2>
+            <p>5K 기록 1번 입력 → 10K/하프/풀 동시 + 3단계</p>
+            <span class="cta">열기 →</span>
+          </a>
+        </div>
+
+        <div class="card" style="margin-top: 14px;">
+          <div class="section-title">
+            <h2>다가오는 대회</h2>
+            <a class="cta" href="#/events">대회 일정 보기 →</a>
+          </div>
+          <div id="home-events-preview" class="list"></div>
+        </div>
+
+        <div class="card" style="margin-top: 14px;">
+          <div class="section-title">
+            <h2>정기런 안내</h2>
+            <a class="cta" href="#/regular">자세히 보기 →</a>
+          </div>
+          <p class="muted">매주 <b>수요일 20:00</b> · 노빠꾸 정기런 🏃‍♂️🏃‍♀️</p>
+        </div>
+      </section>
+
+      <!-- PACE -->
+      <section id="view-pace" class="view">
+        <div class="topbar">
+          <a class="back" href="#/">← 홈</a>
+          <div class="pill">페이스 계산기</div>
+        </div>
+
+        <div class="card">
+          <form id="pace-form">
+            <div class="field">
+              <label for="pace-distance-type">거리</label>
+              <select id="pace-distance-type" name="distanceType">
+                <option value="5">5K (5.000km)</option>
+                <option value="10" selected>10K (10.000km)</option>
+                <option value="21.0975">Half (21.0975km)</option>
+                <option value="42.195">Full (42.195km)</option>
+                <option value="custom">직접 입력</option>
+              </select>
+              <div class="help">직접 입력 선택 시 아래에 km로 입력</div>
+            </div>
+
+            <div class="field" id="pace-custom-distance-field" style="display: none;">
+              <label for="pace-distance-km">거리(km)</label>
+              <input id="pace-distance-km" name="distanceKm" inputmode="decimal" placeholder="예: 7.5" autocomplete="off" />
+            </div>
+
+            <div class="field">
+              <label for="pace-time">목표 시간</label>
+              <input id="pace-time" name="time" inputmode="text" placeholder="예: 42:30 또는 1:50:00" autocomplete="off" />
+              <div class="help">MM:SS 또는 HH:MM:SS</div>
+            </div>
+
+            <div class="actions">
+              <button type="submit">계산</button>
+              <button type="button" id="pace-reset">초기화</button>
+            </div>
+          </form>
+
+          <div id="pace-error" class="error" role="alert" style="display: none;"></div>
+
+          <div id="pace-result" class="result" style="display: none;">
+            <div class="pillrow">
+              <div class="pill" id="pace-pill-distance"></div>
+              <div class="pill" id="pace-pill-time"></div>
+              <div class="pill" id="pace-pill-avgpace"></div>
+            </div>
+
+            <div>
+              <div class="help" style="margin-bottom: 8px;">페이스 표시: <b>5:30</b> = 5분 30초</div>
+              <div class="pace-rows" id="pace-rows"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PREDICT -->
+      <section id="view-predict" class="view">
+        <div class="topbar">
+          <a class="back" href="#/">← 홈</a>
+          <div class="pill">예상 기록 (5K 기준)</div>
+        </div>
+
+        <div class="card">
+          <form id="predict-form">
+            <div class="field">
+              <label for="predict-5k-time">기준 기록(5K)</label>
+              <input id="predict-5k-time" name="time" inputmode="text" placeholder="예: 25:00 또는 0:25:00" autocomplete="off" />
+              <div class="help">MM:SS 또는 HH:MM:SS</div>
+            </div>
+
+            <div class="field">
+              <label for="predict-mode">컨디션(강조)</label>
+              <select id="predict-mode" name="mode">
+                <option value="base" selected>기본</option>
+                <option value="aggressive">공격</option>
+                <option value="conservative">보수</option>
+              </select>
+              <div class="help">3단계 모두 출력하고, 선택한 단계만 강조 표시</div>
+            </div>
+
+            <div class="actions">
+              <button type="submit">예상하기</button>
+              <button type="button" id="predict-reset">초기화</button>
+            </div>
+          </form>
+
+          <div id="predict-error" class="error" role="alert" style="display: none;"></div>
+
+          <div id="predict-result" class="result" style="display: none;">
+            <div class="pillrow">
+              <div class="pill" id="predict-pill-in"></div>
+              <div class="pill">공식: Riegel (1.04/1.06/1.08)</div>
+            </div>
+
+            <div class="cards3">
+              <div class="mini">
+                <div class="title"><strong>10K</strong><span class="km">10.000 km</span></div>
+                <div class="rows" id="rows-10k"></div>
+                <div class="group" id="group-10k"></div>
+              </div>
+              <div class="mini">
+                <div class="title"><strong>Half</strong><span class="km">21.0975 km</span></div>
+                <div class="rows" id="rows-half"></div>
+                <div class="group" id="group-half"></div>
+              </div>
+              <div class="mini">
+                <div class="title"><strong>Full</strong><span class="km">42.195 km</span></div>
+                <div class="rows" id="rows-full"></div>
+                <div class="group" id="group-full"></div>
+              </div>
+            </div>
+
+            <div class="help">참고: 개인차(지구력/훈련량/코스/날씨)에 따라 실제 기록은 달라질 수 있어요.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EVENTS -->
+      <section id="view-events" class="view">
+        <div class="topbar">
+          <a class="back" href="#/">← 홈</a>
+          <div class="pill">대회</div>
+        </div>
+
+        <div class="card">
+          <h2>대회 일정</h2>
+          <div id="events-list" class="list"></div>
+        </div>
+      </section>
+
+      <!-- REGULAR -->
+      <section id="view-regular" class="view">
+        <div class="topbar">
+          <a class="back" href="#/">← 홈</a>
+          <div class="pill">정기런</div>
+        </div>
+
+        <div class="card">
+          <h2>정기런</h2>
+          <p class="muted">매주 <b>수요일 오후 8시</b>, 노빠꾸 정기런 진행합니다 🏃‍♂️🏃‍♀️</p>
+
+          <h3 style="margin-top: 14px;">진행은 아래와 같습니다.</h3>
+          <ul>
+            <li>집합 및 가벼운 스트레칭 약 10분 (시작 전 닉네임으로 간단한 출석 체크 진행)</li>
+            <li>러닝 약 50분</li>
+            <li>마무리 스트레칭 후 해산</li>
+          </ul>
+
+          <p class="muted" style="margin-top: 12px;">
+            기록보다는 호흡을 맞추고, 대화 가능한 페이스로 함께 달리는 정기 모임입니다 :)<br />
+            처음 오시는 분들도 부담 없이 참여하시면 됩니다!
+          </p>
+
+          <h3 style="margin-top: 14px;">운영 방식</h3>
+          <ul>
+            <li>원활한 진행을 위해 정기런은 페이스 구간 사전취합 방식으로 운영합니다.</li>
+            <li>참석 예정이신 분들은 모임 채팅방에 안내된 희망 페이스 구간에 맞춰 닉네임을 남겨주시면 됩니다.</li>
+            <li>사전취합된 인원을 기준으로 비슷한 페이스끼리 그룹을 나누어 출발하며, 인원이 많을 경우에는 4명 내외로 운영할 예정입니다.</li>
+            <li>현장 혼선을 줄이고 체조 후 바로 출발하기 위한 방식이며, 그날 컨디션에 맞춰 편하게 선택해주시면 됩니다 🙌</li>
+          </ul>
+
+          <p class="muted" style="margin-top: 12px;">기타 인터벌 등 별도 훈련은 자유롭게 진행하시면 됩니다.</p>
+          <p class="muted">늦지 않게 와서 몸 먼저 풀고 바로 출발할 수 있게 준비 부탁드립니다 😊</p>
+
+          <div style="margin-top: 16px; border-top: 1px dashed var(--border); padding-top: 14px;">
+            <h2>운영진 정보</h2>
+            <div class="staff">
+              <div class="line"><span class="muted">크루장</span><span class="chip">망구</span></div>
+              <div class="line"><span class="muted">운영진</span><span id="ops-chips"></span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      function route() {
+        const raw = (location.hash || "#/").toLowerCase();
+        const normalized = raw.startsWith("#/") ? raw : raw.startsWith("#") ? "#/" + raw.slice(1) : "#/";
+
+        const view = normalized.startsWith("#/pace")
+          ? "pace"
+          : normalized.startsWith("#/predict")
+            ? "predict"
+            : normalized.startsWith("#/events")
+              ? "events"
+              : normalized.startsWith("#/regular")
+                ? "regular"
+                : "home";
+
+        document.querySelectorAll(".view").forEach((v) => v.classList.remove("active"));
+        const target = document.getElementById(`view-${view}`);
+        if (target) target.classList.add("active");
+
+        document.querySelectorAll(".tab").forEach((t) => t.classList.remove("active"));
+        const activeTab = document.querySelector(`.tab[data-tab="${view}"]`);
+        if (activeTab) activeTab.classList.add("active");
+
+        if (normalized !== raw) history.replaceState(null, "", normalized);
+      }
+      window.addEventListener("hashchange", route);
+      route();
+
+      function parseTimeToSeconds(raw) {
+        const s = String(raw || "").trim();
+        if (!s) return null;
+        const parts = s.split(":").map((p) => p.trim());
+        if (parts.some((p) => p === "" || !/^\d+$/.test(p))) return null;
+
+        if (parts.length === 2) {
+          const mm = Number(parts[0]);
+          const ss = Number(parts[1]);
+          if (ss >= 60) return null;
+          return mm * 60 + ss;
+        }
+        if (parts.length === 3) {
+          const hh = Number(parts[0]);
+          const mm = Number(parts[1]);
+          const ss = Number(parts[2]);
+          if (mm >= 60 || ss >= 60) return null;
+          return hh * 3600 + mm * 60 + ss;
+        }
+        return null;
+      }
+      function formatTime(totalSeconds) {
+        const s = Math.round(totalSeconds);
+        const hh = Math.floor(s / 3600);
+        const mm = Math.floor((s % 3600) / 60);
+        const ss = s % 60;
+        if (hh > 0) return `${hh}:${String(mm).padStart(2, "0")}:${String(ss).padStart(2, "0")}`;
+        return `${mm}:${String(ss).padStart(2, "0")}`;
+      }
+      function formatPaceColon(secondsPerKm) {
+        const s = Math.round(secondsPerKm);
+        const mm = Math.floor(s / 60);
+        const ss = s % 60;
+        return `${mm}:${String(ss).padStart(2, "0")}`;
+      }
+      function formatPaceReadable(secondsPerKm) {
+        const s = Math.round(secondsPerKm);
+        const mm = Math.floor(s / 60);
+        const ss = s % 60;
+        return `${mm}'${String(ss).padStart(2, "0")}" /km`;
+      }
+      function setVisible(el, visible) { el.style.display = visible ? "" : "none"; }
+
+      function sortKoreanDesc(arr) {
+        return arr
+          .slice()
+          .map((x) => String(x).trim())
+          .filter((x) => x.length > 0)
+          .sort((a, b) => b.localeCompare(a, "ko"));
+      }
+
+      (function renderStaff() {
+        const ops = ["달려", "룰루", "나올", "밍경", "김땅콩", "슈퍼짹", "뽀용", "망구"];
+        const sorted = sortKoreanDesc(ops);
+        const container = document.getElementById("ops-chips");
+        container.innerHTML = "";
+        sorted.forEach((name) => {
+          const chip = document.createElement("span");
+          chip.className = "chip";
+          chip.textContent = name;
+          container.appendChild(chip);
+        });
+      })();
+
+      // Pace calc
+      const paceDistanceType = document.getElementById("pace-distance-type");
+      const paceCustomField = document.getElementById("pace-custom-distance-field");
+      const paceDistanceKmInput = document.getElementById("pace-distance-km");
+      const paceForm = document.getElementById("pace-form");
+      const paceError = document.getElementById("pace-error");
+      const paceResult = document.getElementById("pace-result");
+      const paceRows = document.getElementById("pace-rows");
+
+      function getPaceDistanceKm() {
+        const v = paceDistanceType.value;
+        if (v === "custom") {
+          const raw = String(paceDistanceKmInput.value || "").trim().replace(",", ".");
+          if (!raw || !/^\d+(\.\d+)?$/.test(raw)) return null;
+          const km = Number(raw);
+          if (!(km > 0 && km <= 200)) return null;
+          return km;
+        }
+        return Number(v);
+      }
+      paceDistanceType.addEventListener("change", () => {
+        setVisible(paceCustomField, paceDistanceType.value === "custom");
+      });
+      document.getElementById("pace-reset").addEventListener("click", () => {
+        paceForm.reset();
+        setVisible(paceCustomField, false);
+        setVisible(paceError, false);
+        setVisible(paceResult, false);
+        paceRows.innerHTML = "";
+      });
+      function appendPaceRow(label, value, isTail) {
+        const row = document.createElement("div");
+        row.className = "pace-row" + (isTail ? " tail" : "");
+        const left = document.createElement("div");
+        left.className = "k";
+        left.textContent = label;
+        const right = document.createElement("div");
+        right.className = "v";
+        right.textContent = value;
+        row.appendChild(left);
+        row.appendChild(right);
+        paceRows.appendChild(row);
+      }
+      paceForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        setVisible(paceError, false);
+        setVisible(paceResult, false);
+        paceRows.innerHTML = "";
+
+        const distanceKm = getPaceDistanceKm();
+        const timeSec = parseTimeToSeconds(new FormData(paceForm).get("time"));
+
+        if (!distanceKm) {
+          paceError.textContent = "거리를 올바르게 입력해 주세요.";
+          setVisible(paceError, true);
+          return;
+        }
+        if (!timeSec || timeSec <= 0) {
+          paceError.textContent = "목표 시간을 올바르게 입력해 주세요. (MM:SS 또는 HH:MM:SS)";
+          setVisible(paceError, true);
+          return;
+        }
+
+        const paceSecPerKm = timeSec / distanceKm;
+        const fullKm = Math.floor(distanceKm);
+        const tail = distanceKm - fullKm;
+
+        for (let i = 1; i <= fullKm; i++) appendPaceRow(`${i}KM`, formatPaceColon(paceSecPerKm), false);
+        if (tail > 0.0001) {
+          const tailKm = Math.round(tail * 1000) / 1000;
+          appendPaceRow(`마지막 ${tailKm}km`, formatPaceColon(paceSecPerKm), true);
+        }
+
+        document.getElementById("pace-pill-distance").textContent = `거리: ${distanceKm} km`;
+        document.getElementById("pace-pill-time").textContent = `목표: ${formatTime(timeSec)}`;
+        document.getElementById("pace-pill-avgpace").textContent =
+          `평균: ${formatPaceReadable(paceSecPerKm)} (${formatPaceColon(paceSecPerKm)})`;
+
+        setVisible(paceResult, true);
+      });
+
+      // Predict
+      const predictForm = document.getElementById("predict-form");
+      const predictError = document.getElementById("predict-error");
+      const predictResult = document.getElementById("predict-result");
+
+      const D5K = 5;
+      const D10K = 10;
+      const DHALF = 21.0975;
+      const DFULL = 42.195;
+      const EXPONENTS = { aggressive: 1.04, base: 1.06, conservative: 1.08 };
+
+      function riegelTime(t1, d1, d2, exponent) { return t1 * Math.pow(d2 / d1, exponent); }
+      function recommendedGroupRange(paceSecPerKm) {
+        const lo = Math.max(0, paceSecPerKm - 10);
+        const hi = paceSecPerKm + 10;
+        return `${formatPaceColon(lo)}~${formatPaceColon(hi)}`;
+      }
+      function renderPredictCard(rowsEl, groupEl, distanceKm, t1Sec, highlightMode) {
+        const order = [
+          { key: "aggressive", name: "공격" },
+          { key: "base", name: "기본" },
+          { key: "conservative", name: "보수" },
+        ];
+        rowsEl.innerHTML = "";
+        order.forEach((o) => {
+          const exp = EXPONENTS[o.key];
+          const t2 = riegelTime(t1Sec, D5K, distanceKm, exp);
+          const pace = t2 / distanceKm;
+
+          const row = document.createElement("div");
+          row.className = "row" + (o.key === highlightMode ? " highlight" : "");
+
+          const left = document.createElement("div");
+          left.className = "k";
+          left.textContent = o.name;
+
+          const right = document.createElement("div");
+          right.className = "v";
+          right.textContent = `${formatTime(t2)} · ${formatPaceColon(pace)}`;
+
+          row.appendChild(left);
+          row.appendChild(right);
+          rowsEl.appendChild(row);
+
+          if (o.key === highlightMode) groupEl.textContent = `추천 페이스그룹: ${recommendedGroupRange(pace)}`;
+        });
+      }
+      document.getElementById("predict-reset").addEventListener("click", () => {
+        predictForm.reset();
+        setVisible(predictError, false);
+        setVisible(predictResult, false);
+      });
+      predictForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        setVisible(predictError, false);
+        setVisible(predictResult, false);
+
+        const fd = new FormData(predictForm);
+        const t1 = parseTimeToSeconds(fd.get("time"));
+        const mode = String(fd.get("mode") || "base");
+
+        if (!t1 || t1 <= 0) {
+          predictError.textContent = "5K 기록 시간을 올바르게 입력해 주세요. (MM:SS 또는 HH:MM:SS)";
+          setVisible(predictError, true);
+          return;
+        }
+        if (!Object.keys(EXPONENTS).includes(mode)) {
+          predictError.textContent = "컨디션 선택이 올바르지 않아요.";
+          setVisible(predictError, true);
+          return;
+        }
+
+        document.getElementById("predict-pill-in").textContent = `입력: 5K / ${formatTime(t1)}`;
+        renderPredictCard(document.getElementById("rows-10k"), document.getElementById("group-10k"), D10K, t1, mode);
+        renderPredictCard(document.getElementById("rows-half"), document.getElementById("group-half"), DHALF, t1, mode);
+        renderPredictCard(document.getElementById("rows-full"), document.getElementById("group-full"), DFULL, t1, mode);
+
+        setVisible(predictResult, true);
+      });
+
+      // Events
+      async function safeFetchJson(path) {
+        try {
+          const res = await fetch(path, { cache: "no-store" });
+          if (!res.ok) return { ok: false, reason: `파일을 찾을 수 없음 (${res.status})`, data: null };
+          const data = await res.json();
+          return { ok: true, reason: "", data };
+        } catch {
+          return { ok: false, reason: "JSON 형식이 아니거나 파싱 실패", data: null };
+        }
+      }
+      function renderEmpty(targetEl, title, reason) {
+        targetEl.innerHTML = "";
+        const box = document.createElement("div");
+        box.className = "empty";
+        box.innerHTML = `<b>${title}</b>${reason ? `<div style="margin-top:8px;">${reason}</div>` : ""}`;
+        targetEl.appendChild(box);
+      }
+      function normalizeDistance(raw) {
+        const v = String(raw || "").trim();
+        if (!v) return "";
+        const upper = v.toUpperCase();
+
+        if (upper === "HALF" || upper === "HM" || upper === "21.1K" || upper === "21.0975K") return "21K";
+        if (upper === "FULL" || upper === "FM" || upper === "MARATHON" || upper === "42.2K" || upper === "42.195K") return "42K";
+        if (upper === "10KM" || upper === "10K") return "10K";
+        if (upper === "5KM" || upper === "5K") return "5K";
+
+        const m = upper.replace(/\s+/g, "").match(/^(\d+(\.\d+)?)(K|KM)$/);
+        if (m) {
+          const n = Number(m[1]);
+          if (Math.abs(n - 5) < 0.01) return "5K";
+          if (Math.abs(n - 10) < 0.01) return "10K";
+          if (Math.abs(n - 21) < 0.2) return "21K";
+          if (Math.abs(n - 42) < 0.3) return "42K";
+        }
+        return v;
+      }
+      function createMoreButton(label) {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "morebtn";
+        btn.textContent = label;
+        return btn;
+      }
+      function normalizeParticipants(rawParticipants) {
+        const arr = Array.isArray(rawParticipants) ? rawParticipants : [];
+        return arr
+          .map((p) => {
+            if (typeof p === "string") return { name: p, distance: "" };
+            if (p && typeof p === "object") return { name: String(p.name || "").trim(), distance: String(p.distance || "").trim() };
+            return { name: "", distance: "" };
+          })
+          .filter((p) => p.name.length > 0);
+      }
+      function createEventItem(ev, participantPreviewCount = 12) {
+        const el = document.createElement("div");
+        el.className = "item";
+
+        const head = document.createElement("div");
+        head.className = "item-head";
+
+        const title = document.createElement("div");
+        title.className = "item-title";
+
+        const strong = document.createElement("strong");
+        strong.textContent = ev.name || "대회";
+
+        const meta = document.createElement("div");
+        meta.className = "meta";
+
+        const datePill = document.createElement("span");
+        datePill.className = "pill";
+        datePill.textContent = ev.date || "날짜 미정";
+        meta.appendChild(datePill);
+
+        if (ev.location) {
+          const p = document.createElement("span");
+          p.className = "pill";
+          p.textContent = ev.location;
+          meta.appendChild(p);
+        }
+
+        const eventDistanceNorm = normalizeDistance(ev.distance);
+        if (eventDistanceNorm) {
+          const p = document.createElement("span");
+          p.className = "pill";
+          p.textContent = eventDistanceNorm;
+          meta.appendChild(p);
+        }
+
+        title.appendChild(strong);
+        title.appendChild(meta);
+        head.appendChild(title);
+        el.appendChild(head);
+
+        const parts = normalizeParticipants(ev.participants)
+          .map((p) => ({ name: p.name, distance: normalizeDistance(p.distance) || "" }))
+          .sort((a, b) => b.name.localeCompare(a.name, "ko"));
+
+        if (parts.length) {
+          const wrap = document.createElement("div");
+          wrap.className = "p-wrap";
+
+          const ul = document.createElement("ul");
+          ul.className = "p-list";
+          wrap.appendChild(ul);
+
+          let expanded = false;
+          const render = () => {
+            ul.innerHTML = "";
+            const show = expanded ? parts : parts.slice(0, participantPreviewCount);
+
+            show.forEach((p) => {
+              const li = document.createElement("li");
+
+              const nameSpan = document.createElement("span");
+              nameSpan.textContent = p.name;
+              li.appendChild(nameSpan);
+
+              const showDistChip = p.distance && p.distance !== eventDistanceNorm;
+              if (showDistChip) {
+                const chip = document.createElement("span");
+                chip.className = "chip sub";
+                chip.textContent = p.distance;
+                li.appendChild(chip);
+              }
+
+              ul.appendChild(li);
+            });
+          };
+
+          render();
+
+          if (parts.length > participantPreviewCount) {
+            const btn = createMoreButton("더보기");
+            btn.addEventListener("click", () => {
+              expanded = !expanded;
+              btn.textContent = expanded ? "접기" : "더보기";
+              render();
+            });
+            wrap.appendChild(btn);
+          }
+
+          el.appendChild(wrap);
+        }
+
+        if (ev.note) {
+          const p = document.createElement("div");
+          p.className = "note";
+          p.textContent = ev.note;
+          el.appendChild(p);
+        }
+
+        if (ev.link) {
+          const a = document.createElement("a");
+          a.className = "cta";
+          a.href = ev.link;
+          a.target = "_blank";
+          a.rel = "noopener noreferrer";
+          a.textContent = "대회 링크 →";
+          el.appendChild(a);
+        }
+
+        return el;
+      }
+
+      async function loadEvents() {
+        const res = await safeFetchJson("data/events.json");
+        const list = document.getElementById("events-list");
+        const preview = document.getElementById("home-events-preview");
+
+        if (!res.ok || !res.data || !Array.isArray(res.data.events) || res.data.events.length === 0) {
+          renderEmpty(list, "대회 정보가 비어있어요", res.ok ? "" : res.reason);
+          renderEmpty(preview, "대회 정보가 비어있어요", res.ok ? "" : res.reason);
+          return;
+        }
+
+        const events = res.data.events
+          .slice()
+          .map((ev) => ({ ...ev, distance: normalizeDistance(ev.distance) }))
+          .sort((a, b) => String(a.date || "").localeCompare(String(b.date || "")));
+
+        list.innerHTML = "";
+        events.forEach((ev) => list.appendChild(createEventItem(ev, 12)));
+
+        preview.innerHTML = "";
+        events.slice(0, 2).forEach((ev) => preview.appendChild(createEventItem(ev, 6)));
+      }
+
+      loadEvents();
+    </script>
   </body>
 </html>
