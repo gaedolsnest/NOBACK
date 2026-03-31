@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>노빠꾸 러닝 크루🏃🏽🏃‍♀️🏃🏻‍♂️</title>
 
-    <link rel="icon" href="./favicon.ico?v=1001" sizes="any" />
-    <link rel="shortcut icon" href="./favicon.ico?v=1001" />
+    <link rel="icon" href="./favicon.ico?v=1100" sizes="any" />
+    <link rel="shortcut icon" href="./favicon.ico?v=1100" />
 
     <style>
       :root {
@@ -19,7 +19,7 @@
         --page: #ffffff;
 
         /* Glass (black) */
-        --glass: rgba(0, 0, 0, 0.56);   /* 투명도↑ (배경 더 비침) */
+        --glass: rgba(0, 0, 0, 0.56);
         --glass2: rgba(0, 0, 0, 0.42);
         --border: rgba(255, 255, 255, 0.14);
         --text: rgba(255, 255, 255, 0.94);
@@ -32,7 +32,6 @@
       * { box-sizing: border-box; }
       html, body { height: 100%; }
 
-      /* ===== Page background (white + visible monogram) ===== */
       body {
         margin: 0;
         font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
@@ -45,11 +44,11 @@
         content:"";
         position: fixed;
         inset: 0;
-        background-image: url("./bg.jpg?v=1001");
+        background-image: url("./bg.jpg?v=1100");
         background-repeat: repeat;
-        background-size: 260px auto; /* 적당 */
+        background-size: 260px auto;
         background-position: 0 0;
-        opacity: 0.11; /* ✅ 더 보이게 */
+        opacity: 0.11;
         pointer-events: none;
         z-index: 0;
       }
@@ -63,7 +62,6 @@
 
       a { color: inherit; text-decoration: none; }
 
-      /* ===== Header / Tabs ===== */
       header {
         display: flex;
         align-items: center;
@@ -134,7 +132,6 @@
       .view { display: none; }
       .view.active { display: block; }
 
-      /* ===== Cards / Sections ===== */
       .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
       @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
 
@@ -190,7 +187,6 @@
         background: rgba(255, 255, 255, 0.06);
       }
 
-      /* ===== Forms ===== */
       form { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 12px; }
       .field { grid-column: span 6; display: flex; flex-direction: column; gap: 6px; }
       @media (max-width: 720px) { .field { grid-column: span 12; } }
@@ -227,7 +223,6 @@
       .error { margin-top: 10px; color: #ffd0c2; font-size: 13px; }
       .result { margin-top: 14px; border-top: 1px dashed rgba(255,255,255,0.18); padding-top: 14px; display: grid; gap: 12px; }
 
-      /* ===== Pace rows ===== */
       .pace-rows { display: grid; gap: 8px; }
       .pace-row {
         display: flex;
@@ -243,7 +238,6 @@
       .pace-row .v { font-size: 13px; white-space: nowrap; color: var(--text); }
       .pace-row.tail { opacity: 0.85; border-style: dashed; }
 
-      /* ===== Predict cards ===== */
       .cards3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
       @media (max-width: 900px) { .cards3 { grid-template-columns: 1fr; } }
 
@@ -285,7 +279,6 @@
       }
       .group { margin-top: 10px; padding-top: 10px; border-top: 1px dashed rgba(255,255,255,0.18); font-size: 12px; color: var(--muted); }
 
-      /* ===== Events ===== */
       .section-title { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin: 0 0 10px; }
       .section-title h2 { margin: 0; font-size: 16px; color: var(--text); }
 
@@ -309,7 +302,6 @@
         background: rgba(255, 255, 255, 0.03);
       }
 
-      /* participants + chip + more */
       .p-wrap { margin-top: 10px; }
       .p-list { margin: 0; padding-left: 18px; color: var(--muted); }
       .p-list li { margin: 6px 0; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
@@ -343,6 +335,39 @@
         cursor: pointer;
       }
       .morebtn:hover { background: rgba(255, 106, 0, 0.20); border-color: rgba(255, 106, 0, 0.58); }
+
+      /* ===== Interval table ===== */
+      .interval-presets { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+      .presetbtn {
+        border: 1px solid rgba(255, 106, 0, 0.38);
+        background: rgba(255, 106, 0, 0.10);
+        padding: 8px 10px;
+        border-radius: 999px;
+        cursor: pointer;
+        color: var(--text);
+        font-size: 12px;
+      }
+      .presetbtn:hover { background: rgba(255, 106, 0, 0.18); border-color: rgba(255, 106, 0, 0.58); }
+
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+        overflow: hidden;
+        border-radius: 14px;
+        border: 1px solid rgba(255,255,255,0.14);
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .table th, .table td {
+        padding: 10px 10px;
+        border-bottom: 1px solid rgba(255,255,255,0.10);
+        text-align: left;
+        font-size: 13px;
+        color: var(--text);
+        white-space: nowrap;
+      }
+      .table th { color: rgba(255,255,255,0.78); font-size: 12px; }
+      .table tr:last-child td { border-bottom: none; }
+      .mono { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
     </style>
   </head>
 
@@ -386,6 +411,75 @@
           </a>
         </div>
 
+        <!-- ✅ Interval Calculator (NEW) -->
+        <div class="card" style="margin-top: 14px;">
+          <div class="section-title">
+            <h2>인터벌 계산기</h2>
+          </div>
+          <p class="muted">예: 워크 4:30 /km, 휴식 6:30 /km → 400m·200m 총 시간(초, mm:ss) 계산</p>
+
+          <form id="interval-form" style="margin-top:12px;">
+            <div class="field">
+              <label for="work-pace">워크 페이스 (/km)</label>
+              <input id="work-pace" name="workPace" inputmode="text" placeholder="예: 4:30" value="4:30" />
+              <div class="help">MM:SS</div>
+            </div>
+
+            <div class="field">
+              <label for="rest-pace">휴식 페이스 (/km)</label>
+              <input id="rest-pace" name="restPace" inputmode="text" placeholder="예: 6:30" value="6:30" />
+              <div class="help">MM:SS</div>
+            </div>
+
+            <div class="field">
+              <label for="work-m">워크 거리 (m)</label>
+              <input id="work-m" name="workM" inputmode="numeric" placeholder="예: 400" value="400" />
+              <div class="help">미터</div>
+            </div>
+
+            <div class="field">
+              <label for="rest-m">휴식 거리 (m)</label>
+              <input id="rest-m" name="restM" inputmode="numeric" placeholder="예: 200 (0이면 정지휴식)" value="200" />
+              <div class="help">미터 (0 가능)</div>
+            </div>
+
+            <div class="actions">
+              <button type="submit">계산</button>
+              <button type="button" id="interval-reset">초기화</button>
+            </div>
+          </form>
+
+          <div class="interval-presets">
+            <button class="presetbtn" type="button" data-work="400" data-rest="200">400 / 200</button>
+            <button class="presetbtn" type="button" data-work="400" data-rest="0">400 / 0</button>
+            <button class="presetbtn" type="button" data-work="200" data-rest="200">200 / 200</button>
+            <button class="presetbtn" type="button" data-work="1000" data-rest="200">1000 / 200</button>
+          </div>
+
+          <div id="interval-error" class="error" role="alert" style="display:none;"></div>
+
+          <div id="interval-result" class="result" style="display:none;">
+            <div class="pillrow">
+              <div class="pill mono" id="interval-pill-work"></div>
+              <div class="pill mono" id="interval-pill-rest"></div>
+            </div>
+
+            <table class="table" aria-label="인터벌 시간 표">
+              <thead>
+                <tr>
+                  <th>구간</th>
+                  <th>거리</th>
+                  <th>페이스</th>
+                  <th>총 시간</th>
+                  <th>총 초수</th>
+                </tr>
+              </thead>
+              <tbody id="interval-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Upcoming events -->
         <div class="card" style="margin-top: 14px;">
           <div class="section-title">
             <h2>다가오는 대회</h2>
@@ -394,13 +488,7 @@
           <div id="home-events-preview" class="list"></div>
         </div>
 
-        <div class="card" style="margin-top: 14px;">
-          <div class="section-title">
-            <h2>정기런 안내</h2>
-            <a class="cta" href="#/regular">자세히 보기 →</a>
-          </div>
-          <p class="muted">매주 <b>수요일 20:00</b> · 노빠꾸 정기런 🏃‍♂️🏃‍♀️</p>
-        </div>
+        <!-- ✅ 정기런 안내(Home)는 제거 -->
       </section>
 
       <!-- PACE -->
@@ -631,6 +719,7 @@
         }
         return null;
       }
+
       function formatTime(totalSeconds) {
         const s = Math.round(totalSeconds);
         const hh = Math.floor(s / 3600);
@@ -639,18 +728,14 @@
         if (hh > 0) return `${hh}:${String(mm).padStart(2, "0")}:${String(ss).padStart(2, "0")}`;
         return `${mm}:${String(ss).padStart(2, "0")}`;
       }
+
       function formatPaceColon(secondsPerKm) {
         const s = Math.round(secondsPerKm);
         const mm = Math.floor(s / 60);
         const ss = s % 60;
         return `${mm}:${String(ss).padStart(2, "0")}`;
       }
-      function formatPaceReadable(secondsPerKm) {
-        const s = Math.round(secondsPerKm);
-        const mm = Math.floor(s / 60);
-        const ss = s % 60;
-        return `${mm}'${String(ss).padStart(2, "0")}" /km`;
-      }
+
       function setVisible(el, visible) { el.style.display = visible ? "" : "none"; }
 
       function sortKoreanDesc(arr) {
@@ -675,7 +760,116 @@
         });
       })();
 
-      // Pace calc
+      // ===== Interval calculator (NEW) =====
+      function parsePaceToSecPerKm(paceStr) {
+        // allow "4:30" or "04:30"
+        const sec = parseTimeToSeconds(paceStr);
+        if (sec === null) return null;
+        // pace input is MM:SS => total seconds per km
+        return sec;
+      }
+      function parseMeters(raw) {
+        const s = String(raw || "").trim();
+        if (!/^\d+$/.test(s)) return null;
+        const n = Number(s);
+        if (n < 0 || n > 50000) return null;
+        return n;
+      }
+      function segmentSeconds(secPerKm, meters) {
+        return (secPerKm * meters) / 1000;
+      }
+
+      const intervalForm = document.getElementById("interval-form");
+      const intervalError = document.getElementById("interval-error");
+      const intervalResult = document.getElementById("interval-result");
+      const intervalTbody = document.getElementById("interval-tbody");
+
+      function renderIntervalTable({ workPaceSec, restPaceSec, workM, restM }) {
+        intervalTbody.innerHTML = "";
+
+        const workSec = segmentSeconds(workPaceSec, workM);
+        const restSec = segmentSeconds(restPaceSec, restM);
+        const totalSec = workSec + restSec;
+
+        const rows = [
+          { label: "워크", meters: workM, pace: formatPaceColon(workPaceSec), time: formatTime(workSec), seconds: Math.round(workSec) },
+          { label: "휴식", meters: restM, pace: formatPaceColon(restPaceSec), time: formatTime(restSec), seconds: Math.round(restSec) },
+          { label: "합계", meters: workM + restM, pace: "-", time: formatTime(totalSec), seconds: Math.round(totalSec) },
+        ];
+
+        rows.forEach((r) => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td>${r.label}</td>
+            <td class="mono">${r.meters}m</td>
+            <td class="mono">${r.pace}</td>
+            <td class="mono">${r.time}</td>
+            <td class="mono">${r.seconds}s</td>
+          `;
+          intervalTbody.appendChild(tr);
+        });
+
+        document.getElementById("interval-pill-work").textContent =
+          `워크 ${workM}m @ ${formatPaceColon(workPaceSec)}`;
+        document.getElementById("interval-pill-rest").textContent =
+          `휴식 ${restM}m @ ${formatPaceColon(restPaceSec)}`;
+
+        setVisible(intervalResult, true);
+      }
+
+      if (intervalForm) {
+        intervalForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          setVisible(intervalError, false);
+          setVisible(intervalResult, false);
+
+          const fd = new FormData(intervalForm);
+          const workPaceSec = parsePaceToSecPerKm(fd.get("workPace"));
+          const restPaceSec = parsePaceToSecPerKm(fd.get("restPace"));
+          const workM = parseMeters(fd.get("workM"));
+          const restM = parseMeters(fd.get("restM"));
+
+          if (workPaceSec === null || restPaceSec === null) {
+            intervalError.textContent = "페이스는 MM:SS 형식으로 입력해 주세요. (예: 4:30, 6:30)";
+            setVisible(intervalError, true);
+            return;
+          }
+          if (workM === null || restM === null) {
+            intervalError.textContent = "거리는 m(미터) 정수로 입력해 주세요. (예: 400, 200, 0)";
+            setVisible(intervalError, true);
+            return;
+          }
+
+          renderIntervalTable({ workPaceSec, restPaceSec, workM, restM });
+        });
+
+        const resetBtn = document.getElementById("interval-reset");
+        resetBtn.addEventListener("click", () => {
+          intervalForm.reset();
+          document.getElementById("work-pace").value = "4:30";
+          document.getElementById("rest-pace").value = "6:30";
+          document.getElementById("work-m").value = "400";
+          document.getElementById("rest-m").value = "200";
+          setVisible(intervalError, false);
+          setVisible(intervalResult, false);
+        });
+
+        document.querySelectorAll(".presetbtn").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            document.getElementById("work-m").value = btn.dataset.work;
+            document.getElementById("rest-m").value = btn.dataset.rest;
+          });
+        });
+      }
+
+      // ===== Pace calc (existing) =====
+      function formatPaceReadable(secondsPerKm) {
+        const s = Math.round(secondsPerKm);
+        const mm = Math.floor(s / 60);
+        const ss = s % 60;
+        return `${mm}'${String(ss).padStart(2, "0")}" /km`;
+      }
+
       const paceDistanceType = document.getElementById("pace-distance-type");
       const paceCustomField = document.getElementById("pace-custom-distance-field");
       const paceDistanceKmInput = document.getElementById("pace-distance-km");
@@ -763,7 +957,7 @@
         });
       }
 
-      // Predict
+      // ===== Predict (existing) =====
       const predictForm = document.getElementById("predict-form");
       const predictError = document.getElementById("predict-error");
       const predictResult = document.getElementById("predict-result");
@@ -850,7 +1044,7 @@
         });
       }
 
-      // Events
+      // ===== Events (existing) =====
       async function safeFetchJson(path) {
         try {
           const res = await fetch(path, { cache: "no-store" });
