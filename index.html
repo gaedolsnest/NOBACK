@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>노빠꾸 러닝 크루🏃🏽🏃‍♀️🏃🏻‍♂️</title>
 
-    <link rel="icon" type="image/x-icon" href="./favicon.ico?v=3300" />
-    <link rel="shortcut icon" href="./favicon.ico?v=3300" />
-    <link rel="apple-touch-icon" href="./apple-touch-icon.png?v=3300" />
+    <link rel="icon" type="image/x-icon" href="./favicon.ico?v=3400" />
+    <link rel="shortcut icon" href="./favicon.ico?v=3400" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png?v=3400" />
 
     <style>
       :root {
@@ -41,7 +41,7 @@
         content:"";
         position: fixed;
         inset: 0;
-        background-image: url("./bg.jpg?v=3300");
+        background-image: url("./bg.jpg?v=3400");
         background-repeat: repeat;
         background-size: 260px auto;
         background-position: 0 0;
@@ -349,7 +349,13 @@
         overflow: hidden;
         background: rgba(255,255,255,0.05);
       }
-      canvas { display:block; width:100%; height:auto; background: #fff; }
+      canvas {
+        display:block;
+        width:100%;
+        height:auto;
+        background: #fff;
+        border-radius: 14px; /* iOS overflow 대비 */
+      }
 
       /* mode toggle */
       .modebar{
@@ -469,7 +475,7 @@
 
           <a class="card" href="#/certificate">
             <h2>기록증</h2>
-            <p>일반 기록증 + 📸 사진 위 기록 오버레이</p>
+            <p>일반 기록증 + 📸 사진 위 기록(우하단 스택)</p>
             <span class="cta">열기 →</span>
           </a>
         </div>
@@ -928,7 +934,7 @@
         const s = Math.round(secPerKm);
         const mm = Math.floor(s / 60);
         const ss = s % 60;
-        return `${mm}:${String(ss).padStart(2, "0")}`;
+        return `${String(mm).padStart(2,"0")}:${String(ss).padStart(2, "0")}`;
       }
 
       function normalizeDistance(raw) {
@@ -1546,8 +1552,16 @@
       const photoField = document.getElementById("photo-field");
       const photoInput = document.getElementById("cert-photo");
 
+      const btnCustomCert = document.getElementById("btn-custom-cert");
+
       let CERT_MODE = "normal"; // "normal" | "photo"
       let PHOTO_IMAGE = null;
+
+      btnCustomCert.addEventListener("click", () => {
+        sessionStorage.setItem("cert_selected_event_mode", "normal");
+        sessionStorage.setItem("cert_selected_event_index", "custom");
+        location.hash = "#/certificate";
+      });
 
       function setMode(next) {
         CERT_MODE = next;
@@ -1558,13 +1572,6 @@
       function syncPhotoFieldVisibility() { setVisible(photoField, CERT_MODE === "photo"); }
       modeNormalBtn.addEventListener("click", () => setMode("normal"));
       modePhotoBtn.addEventListener("click", () => setMode("photo"));
-
-      const btnCustomCert = document.getElementById("btn-custom-cert");
-      btnCustomCert.addEventListener("click", () => {
-        sessionStorage.setItem("cert_selected_event_mode", "normal");
-        sessionStorage.setItem("cert_selected_event_index", "custom");
-        location.hash = "#/certificate";
-      });
 
       function toggleCustomEventFields() {
         const isCustom = certEventSel.value === "custom";
@@ -1717,6 +1724,15 @@
         return minPx;
       }
 
+      function outlineText(ctx, text, x, y, strokeW = 6, strokeColor = "rgba(0,0,0,0.75)") {
+        ctx.save();
+        ctx.lineWidth = strokeW;
+        ctx.strokeStyle = strokeColor;
+        ctx.strokeText(text, x, y);
+        ctx.restore();
+        ctx.fillText(text, x, y);
+      }
+
       async function generateNormalCertificate(ev, nick, bib, tsec, note, theme, courseLabel) {
         const colors = themeColors(theme);
         const W = certCanvas.width;
@@ -1728,7 +1744,7 @@
         ctx.fillRect(0, 0, W, H);
 
         let bg = null;
-        try { bg = await loadImage("./bg.jpg?v=3300"); } catch {}
+        try { bg = await loadImage("./bg.jpg?v=3400"); } catch {}
         if (bg) {
           ctx.save();
           ctx.globalAlpha = theme === "neon" ? 0.05 : 0.10;
@@ -1760,7 +1776,7 @@
         ctx.fill();
 
         let logo = null;
-        try { logo = await loadImage("./logo.png?v=3300"); } catch {}
+        try { logo = await loadImage("./logo.png?v=3400"); } catch {}
 
         if (logo) {
           const wmMaxW = cardW * 0.90;
@@ -1903,7 +1919,7 @@
         ctx.restore();
       }
 
-      // ✅ 사진 기록 (닉네임 overflow 방지: 2줄/자동 축소)
+      // ✅ 사진 기록: 우측 하단 정보 스택 + 디지털 느낌 + 라운드 클립
       async function generatePhotoOverlay(ev, nick, bib, tsec, note, courseLabel) {
         const W = certCanvas.width;
         const H = certCanvas.height;
@@ -1911,6 +1927,13 @@
 
         ctx.clearRect(0, 0, W, H);
 
+        // clip to rounded canvas area (fix "삐져나가")
+        const clipPad = 20;
+        ctx.save();
+        roundedRect(ctx, clipPad, clipPad, W - clipPad * 2, H - clipPad * 2, 32);
+        ctx.clip();
+
+        // draw photo
         if (!PHOTO_IMAGE) {
           ctx.fillStyle = "#111";
           ctx.fillRect(0, 0, W, H);
@@ -1918,16 +1941,24 @@
           drawCover(ctx, PHOTO_IMAGE, 0, 0, W, H);
         }
 
+        // soft vignette for readability (no big box)
+        const vg = ctx.createRadialGradient(W * 0.7, H * 0.65, 200, W * 0.7, H * 0.65, 900);
+        vg.addColorStop(0, "rgba(0,0,0,0.00)");
+        vg.addColorStop(1, "rgba(0,0,0,0.55)");
+        ctx.fillStyle = vg;
+        ctx.fillRect(0, 0, W, H);
+
+        // top-right small logo
         let logo = null;
-        try { logo = await loadImage("./logo.png?v=3300"); } catch {}
+        try { logo = await loadImage("./logo.png?v=3400"); } catch {}
         if (logo) {
-          const maxW = 220;
-          const maxH = 160;
+          const maxW = 190;
+          const maxH = 140;
           const r = Math.min(maxW / logo.width, maxH / logo.height);
           const lw = Math.floor(logo.width * r);
           const lh = Math.floor(logo.height * r);
-          const lx = W - lw - 46;
-          const ly = 38;
+          const lx = W - lw - 56;
+          const ly = 46;
 
           ctx.save();
           ctx.globalAlpha = 0.92;
@@ -1935,125 +1966,27 @@
           ctx.restore();
         }
 
-        const topFade = ctx.createLinearGradient(0, 0, 0, 320);
-        topFade.addColorStop(0, "rgba(0,0,0,0.55)");
-        topFade.addColorStop(1, "rgba(0,0,0,0.00)");
-        ctx.fillStyle = topFade;
-        ctx.fillRect(0, 0, W, 360);
-
-        const panelH = 520;
-        const panelY = H - panelH - 54;
-        const panelX = 44;
-        const panelW = W - 88;
-
-        ctx.save();
-        ctx.shadowColor = "rgba(0,0,0,0.40)";
-        ctx.shadowBlur = 30;
-        ctx.shadowOffsetY = 18;
-        ctx.fillStyle = "rgba(0,0,0,0.00)";
-        roundedRect(ctx, panelX, panelY, panelW, panelH, 30);
-        ctx.fill();
-        ctx.restore();
-
-        const g = ctx.createLinearGradient(0, panelY, 0, panelY + panelH);
-        g.addColorStop(0, "rgba(0,0,0,0.35)");
-        g.addColorStop(1, "rgba(0,0,0,0.72)");
-        ctx.fillStyle = g;
-        roundedRect(ctx, panelX, panelY, panelW, panelH, 30);
-        ctx.fill();
-
-        ctx.save();
-        ctx.strokeStyle = "rgba(255,106,0,0.85)";
-        ctx.lineWidth = 6;
-        roundedRect(ctx, panelX + 16, panelY + 16, panelW - 32, panelH - 32, 24);
-        ctx.stroke();
-        ctx.restore();
-
-        const left = panelX + 40;
-        const right = panelX + panelW - 40;
-        let y = panelY + 72;
-
-        // nickname (fit + wrap)
-        ctx.save();
-        ctx.fillStyle = "rgba(255,255,255,0.92)";
-        ctx.textAlign = "left";
-
+        // right-bottom stack positions
+        const right = W - 70;
+        let y = H - 140; // baseline near bottom
         const family = "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        const nickMaxW = panelW - 40 - 280; // reserve for chips area
-        let fontSize = fitFontToWidth(ctx, nick, Math.max(240, nickMaxW), 900, 46, 28, family);
+        const mono = "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace";
 
-        ctx.font = `900 ${fontSize}px ${family}`;
-        const nickLines = ctx.measureText(nick).width <= nickMaxW ? [nick] : (function () {
-          // wrap into max 2 lines if still too long
-          ctx.font = `900 ${Math.min(fontSize, 38)}px ${family}`;
-          return wrapLines(ctx, nick, nickMaxW, 2);
-        })();
-
-        nickLines.forEach((ln, i) => {
-          ctx.fillText(ln, left, y + i * (fontSize + 6));
-        });
-
-        // shift y depending on wrapped nickname
-        y += (nickLines.length === 2 ? (fontSize + 10) : 0);
-        ctx.restore();
-
-        // chips on right
-        const chipText = courseLabel || ev.distance || "";
-        const bibText = bib ? `BIB ${bib}` : "";
-
-        function drawChip(text, xRight, yMid, fill, stroke, tcolor) {
-          if (!text) return xRight;
+        // helper: right aligned label/value row
+        function drawRow(label, value, yPos, labelColor, valueColor) {
           ctx.save();
-          ctx.font = `900 26px ${family}`;
-          const padX = 18;
-          const tw = ctx.measureText(text).width;
-          const w = tw + padX * 2;
-          const h = 44;
-          const x = xRight - w;
-          const yTop = yMid - h + 6;
+          ctx.textAlign = "right";
+          ctx.fillStyle = labelColor;
+          ctx.font = `900 28px ${family}`;
+          ctx.fillText(label, right - 260, yPos);
 
-          ctx.fillStyle = fill;
-          ctx.strokeStyle = stroke;
-          ctx.lineWidth = 2.5;
-          roundedRect(ctx, x, yTop, w, h, 999);
-          ctx.fill();
-          ctx.stroke();
-
-          ctx.fillStyle = tcolor;
-          ctx.textAlign = "center";
-          ctx.fillText(text, x + w / 2, yTop + 32);
+          ctx.fillStyle = valueColor;
+          ctx.font = `900 40px ${mono}`;
+          outlineText(ctx, value, right, yPos, 5, "rgba(0,0,0,0.65)");
           ctx.restore();
-          return x - 12;
         }
 
-        let xr = right;
-        xr = drawChip(bibText, xr, panelY + 72, "rgba(255,255,255,0.10)", "rgba(255,255,255,0.26)", "rgba(255,255,255,0.92)");
-        xr = drawChip(chipText, xr, panelY + 72, "rgba(255,106,0,0.18)", "rgba(255,106,0,0.70)", "rgba(255,255,255,0.92)");
-
-        // meta
-        y += 52;
-        ctx.fillStyle = "rgba(255,255,255,0.78)";
-        ctx.font = `800 24px ${family}`;
-        const meta = [ev.name, ev.date, ev.location].filter(Boolean).join(" · ");
-        ctx.fillText(meta || "—", left, y);
-
-        // divider
-        y += 26;
-        ctx.strokeStyle = "rgba(255,255,255,0.18)";
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.moveTo(left, y);
-        ctx.lineTo(right, y);
-        ctx.stroke();
-
-        // time
-        y += 120;
-        ctx.fillStyle = "rgba(255,255,255,0.96)";
-        ctx.font = `900 120px ${family}`;
-        ctx.textAlign = "left";
-        ctx.fillText(formatTime(tsec), left, y);
-
-        // pace (optional)
+        // compute km from course
         const km = (() => {
           const d = (courseLabel || ev.distance || "").toUpperCase();
           if (d === "5K") return 5;
@@ -2063,35 +1996,87 @@
           return null;
         })();
 
-        if (km) {
-          const paceSec = tsec / km;
-          const pace = fmtPace(paceSec);
+        const paceStr = km ? `${fmtPace(tsec / km)} /km` : "";
+        const speedStr = km ? `${(km / (tsec / 3600)).toFixed(2)} km/h` : "";
 
-          ctx.fillStyle = "rgba(255,106,0,0.95)";
-          ctx.font = `900 30px ${family}`;
-          ctx.textAlign = "right";
-          ctx.fillText("PACE", right, y - 70);
-
-          ctx.fillStyle = "rgba(255,255,255,0.92)";
-          ctx.font = `900 48px ${family}`;
-          ctx.fillText(`${pace} /km`, right, y - 20);
-        }
-
-        // note
-        if (note) {
-          y += 62;
-          ctx.fillStyle = "rgba(255,255,255,0.78)";
-          ctx.font = `800 26px ${family}`;
-          ctx.textAlign = "left";
-          const lines = wrapLines(ctx, note, panelW - 80, 2);
-          lines.forEach((ln, i) => ctx.fillText(ln, left, y + i * 34));
-        }
-
-        // footer
-        ctx.fillStyle = "rgba(255,255,255,0.50)";
-        ctx.font = `700 20px ${family}`;
+        // Nickname (above time)
+        ctx.save();
         ctx.textAlign = "right";
-        ctx.fillText("NoBack RunningCrew", right, panelY + panelH - 30);
+        ctx.fillStyle = "rgba(255,255,255,0.92)";
+        const nickMaxW = 650;
+        const nickSize = fitFontToWidth(ctx, nick, nickMaxW, 900, 56, 30, family);
+        ctx.font = `900 ${nickSize}px ${family}`;
+        outlineText(ctx, nick, right, y - 300, 6, "rgba(0,0,0,0.70)");
+        ctx.restore();
+
+        // meta (event name + date + location)
+        const meta = [ev.name, ev.date, ev.location].filter(Boolean).join(" · ");
+        if (meta) {
+          ctx.save();
+          ctx.textAlign = "right";
+          ctx.fillStyle = "rgba(255,255,255,0.72)";
+          ctx.font = `800 26px ${family}`;
+          outlineText(ctx, meta, right, y - 255, 5, "rgba(0,0,0,0.60)");
+          ctx.restore();
+        }
+
+        // chip line (course + bib)
+        const chipLine = [
+          courseLabel || ev.distance ? (courseLabel || ev.distance) : "",
+          bib ? `BIB ${bib}` : ""
+        ].filter(Boolean).join("   ");
+
+        if (chipLine) {
+          ctx.save();
+          ctx.textAlign = "right";
+          ctx.fillStyle = "rgba(255,106,0,0.95)";
+          ctx.font = `900 28px ${mono}`;
+          outlineText(ctx, chipLine, right, y - 215, 5, "rgba(0,0,0,0.60)");
+          ctx.restore();
+        }
+
+        // BIG digital time (neon green)
+        const timeText = formatTime(tsec);
+        ctx.save();
+        ctx.textAlign = "right";
+
+        // fake digital: monospace + spacing + glow
+        const timeMaxW = 780;
+        const timeSize = fitFontToWidth(ctx, timeText, timeMaxW, 900, 150, 90, mono);
+        ctx.font = `900 ${timeSize}px ${mono}`;
+        ctx.letterSpacing = "2px"; // no-op on canvas but harmless
+
+        ctx.shadowColor = "rgba(57,255,20,0.55)";
+        ctx.shadowBlur = 18;
+        ctx.fillStyle = "rgba(57,255,20,0.95)";
+        outlineText(ctx, timeText, right, y - 90, 10, "rgba(0,0,0,0.78)");
+        ctx.restore();
+
+        // Pace/Speed rows (below time)
+        if (paceStr) drawRow("PACE", paceStr, y - 30, "rgba(255,106,0,0.95)", "rgba(255,255,255,0.92)");
+        if (speedStr) drawRow("SPEED", speedStr, y + 30, "rgba(255,106,0,0.95)", "rgba(255,255,255,0.92)");
+
+        // note (optional) below
+        if (note) {
+          ctx.save();
+          ctx.textAlign = "right";
+          ctx.fillStyle = "rgba(255,255,255,0.74)";
+          ctx.font = `800 26px ${family}`;
+          const lines = wrapLines(ctx, note, 760, 2);
+          lines.forEach((ln, i) => outlineText(ctx, ln, right, y + 92 + i * 34, 5, "rgba(0,0,0,0.65)"));
+          ctx.restore();
+        }
+
+        // small footer
+        ctx.save();
+        ctx.textAlign = "right";
+        ctx.fillStyle = "rgba(255,255,255,0.40)";
+        ctx.font = `800 22px ${family}`;
+        ctx.fillText("NoBack RunningCrew", right, H - 60);
+        ctx.restore();
+
+        // end clip
+        ctx.restore();
       }
 
       async function generateCertificatePreview() {
@@ -2142,28 +2127,6 @@
         certDownloadBtn.dataset.filename = certificateFilename(ev.name, nick, "normal");
       }
 
-      // photo loader
-      async function ensurePhotoLoaded(file) {
-        if (!file) return null;
-        const url = URL.createObjectURL(file);
-        try {
-          const img = await loadImage(url);
-          return img;
-        } finally {
-          URL.revokeObjectURL(url);
-        }
-      }
-      photoInput.addEventListener("change", async () => {
-        PHOTO_IMAGE = null;
-        const file = photoInput.files?.[0];
-        if (!file) return;
-        try {
-          PHOTO_IMAGE = await ensurePhotoLoaded(file);
-        } catch {
-          PHOTO_IMAGE = null;
-        }
-      });
-
       certForm.addEventListener("submit", async (e) => {
         e.preventDefault();
         await generateCertificatePreview();
@@ -2190,97 +2153,15 @@
         ctx.fillRect(0, 0, certCanvas.width, certCanvas.height);
       });
 
-      function getCertificateEventData() {
-        const selected = String(certEventSel.value || "");
-        if (selected === "custom") {
-          const name = String(certCustomName.value || "").trim() || "무지 기록";
-          const date = String(certCustomDate.value || "").trim();
-          const location = String(certCustomLoc.value || "").trim();
-          const distance = normalizeDistance(String(certCustomDist.value || "").trim());
-          return { name, date, location, distance };
-        }
-        const idx = Number(selected);
-        const ev = EVENTS_CACHE[idx];
-        if (!ev) return null;
-        return {
-          name: String(ev.name || "대회"),
-          date: String(ev.date || ""),
-          location: String(ev.location || ""),
-          distance: normalizeDistance(ev.distance),
-        };
-      }
-
-      // mode init
-      function syncPhotoFieldVisibility() { setVisible(photoField, CERT_MODE === "photo"); }
-
-      function setMode(next) {
-        CERT_MODE = next;
-        modeNormalBtn.classList.toggle("active", next === "normal");
-        modePhotoBtn.classList.toggle("active", next === "photo");
-        syncPhotoFieldVisibility();
-      }
-      modeNormalBtn.addEventListener("click", () => setMode("normal"));
-      modePhotoBtn.addEventListener("click", () => setMode("photo"));
-
-      // init canvas blank
+      // init blank canvas
       (function initCanvas() {
         const ctx = certCanvas.getContext("2d");
         ctx.fillStyle = "#ffffff";
         ctx.fillRect(0, 0, certCanvas.width, certCanvas.height);
       })();
 
-      // hydrate event select
-      function hydrateCertificateEventSelectFromCache() {
-        const current = certEventSel.value;
-        certEventSel.innerHTML = "";
-
-        const customOpt = document.createElement("option");
-        customOpt.value = "custom";
-        customOpt.textContent = "직접 입력(무지)";
-        certEventSel.appendChild(customOpt);
-
-        if (EVENTS_CACHE.length) {
-          EVENTS_CACHE.forEach((ev, idx) => {
-            const opt = document.createElement("option");
-            opt.value = String(idx);
-            const dist = ev.distance ? ` · ${ev.distance}` : "";
-            const date = ev.date ? ` · ${ev.date}` : "";
-            opt.textContent = `${ev.name || "대회"}${date}${dist}`;
-            certEventSel.appendChild(opt);
-          });
-        }
-
-        const savedIdx = sessionStorage.getItem("cert_selected_event_index");
-        const savedMode = sessionStorage.getItem("cert_selected_event_mode");
-
-        if (savedMode === "photo") setMode("photo");
-        else setMode("normal");
-
-        if (savedIdx === "custom") certEventSel.value = "custom";
-        else if (savedIdx !== null && savedIdx !== "" && !Number.isNaN(Number(savedIdx))) certEventSel.value = savedIdx;
-        else if (current) certEventSel.value = current;
-        else certEventSel.value = EVENTS_CACHE.length ? "0" : "custom";
-
-        sessionStorage.removeItem("cert_selected_event_index");
-        sessionStorage.removeItem("cert_selected_event_mode");
-      }
-
-      // custom fields
-      function toggleCustomEventFields() {
-        const isCustom = certEventSel.value === "custom";
-        setVisible(customFieldsWrap, isCustom);
-      }
-      certEventSel.addEventListener("change", toggleCustomEventFields);
-
-      // load image
-      async function loadImage(src) {
-        return new Promise((resolve, reject) => {
-          const img = new Image();
-          img.onload = () => resolve(img);
-          img.onerror = () => reject(new Error("이미지 로드 실패"));
-          img.src = src;
-        });
-      }
+      // mode init
+      function syncPhotoFieldVisibility() { setVisible(photoField, CERT_MODE === "photo"); }
 
       // ========== Boot ==========
       loadEvents();
