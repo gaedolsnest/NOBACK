@@ -6,10 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>노빠꾸 러닝 크루🏃🏽🏃‍♀️🏃🏻‍♂️</title>
 
-    <!-- Favicons -->
-    <link rel="icon" type="image/x-icon" href="./favicon.ico?v=2800" />
-    <link rel="shortcut icon" href="./favicon.ico?v=2800" />
-    <link rel="apple-touch-icon" href="./apple-touch-icon.png?v=2800" />
+    <link rel="icon" type="image/x-icon" href="./favicon.ico?v=2900" />
+    <link rel="shortcut icon" href="./favicon.ico?v=2900" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png?v=2900" />
 
     <style>
       :root {
@@ -42,7 +41,7 @@
         content:"";
         position: fixed;
         inset: 0;
-        background-image: url("./bg.jpg?v=2800");
+        background-image: url("./bg.jpg?v=2900");
         background-repeat: repeat;
         background-size: 260px auto;
         background-position: 0 0;
@@ -222,8 +221,6 @@
         color: var(--text);
         outline: none;
       }
-
-      /* dropdown readability */
       select option { color: #111; background: #fff; }
 
       input:focus, select:focus {
@@ -406,7 +403,7 @@
       }
       canvas { display:block; width:100%; height:auto; background: #fff; }
 
-      /* Shoes accordion (no images) */
+      /* Shoes accordion */
       .shoe-wrap { display: grid; gap: 12px; margin-top: 12px; }
       .shoe-section {
         border: 1px solid rgba(255,255,255,0.14);
@@ -443,7 +440,6 @@
       .shoe-model { color: rgba(255,255,255,0.86); font-size: 13px; }
       .shoe-note { color: rgba(255,255,255,0.72); font-size: 12px; margin-top: 6px; }
 
-      /* Regular staff chips */
       .staff { display: grid; gap: 10px; }
       .staff .line { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; color: var(--muted); font-size: 13px; }
     </style>
@@ -466,7 +462,6 @@
         </div>
       </header>
 
-      <!-- ✅ 탭 다시 복구 -->
       <nav class="tabs" aria-label="탭">
         <a class="tab" data-tab="home" href="#/">홈</a>
         <a class="tab" data-tab="pace" href="#/pace">페이스 계산기</a>
@@ -699,7 +694,7 @@
 
         <div class="card">
           <h2>기록증 출력</h2>
-          <p class="muted">대회 선택 + 코스(옵션) + 닉네임 + 기록 입력 → PNG 저장</p>
+          <p class="muted">대회 선택 + 코스(옵션) + 닉네임 + 기록 + 메모 → PNG 저장</p>
 
           <form id="cert-form" style="margin-top:12px;">
             <div class="field">
@@ -708,7 +703,6 @@
               <div class="help">대회 탭의 “기록증 출력” 버튼으로 오면 자동 선택돼요</div>
             </div>
 
-            <!-- ✅ 같은 대회(21K) 안의 10K 같은 케이스: 여기서 코스 선택 -->
             <div class="field">
               <label for="cert-course">코스(옵션)</label>
               <select id="cert-course" name="course">
@@ -718,7 +712,7 @@
                 <option value="21K">21K</option>
                 <option value="42K">42K</option>
               </select>
-              <div class="help">예: 같은 대회인데 10K 참가면 여기서 10K 선택</div>
+              <div class="help">같은 레이스(21K)인데 10K 참가면 여기서 10K 선택</div>
             </div>
 
             <div class="field">
@@ -763,8 +757,6 @@
           <div class="canvas-wrap">
             <canvas id="cert-canvas" width="1200" height="1600" aria-label="기록증 미리보기"></canvas>
           </div>
-
-          <!-- ✅ 아래 안내문구 삭제(요청 반영) -->
         </div>
       </section>
 
@@ -891,7 +883,8 @@
       window.addEventListener("hashchange", route);
       route();
 
-      // ===== Helpers =====
+      function setVisible(el, visible) { el.style.display = visible ? "" : "none"; }
+
       function parseTimeToSeconds(raw) {
         const s = String(raw || "").trim();
         if (!s) return null;
@@ -923,7 +916,21 @@
         return `${mm}:${String(ss).padStart(2, "0")}`;
       }
 
-      function setVisible(el, visible) { el.style.display = visible ? "" : "none"; }
+      function fmtPace(secPerKm) {
+        const s = Math.round(secPerKm);
+        const mm = Math.floor(s / 60);
+        const ss = s % 60;
+        return `${mm}:${String(ss).padStart(2, "0")}`;
+      }
+
+      function fmtTime(totalSeconds) {
+        const s = Math.round(totalSeconds);
+        const hh = Math.floor(s / 3600);
+        const mm = Math.floor((s % 3600) / 60);
+        const ss = s % 60;
+        if (hh > 0) return `${hh}:${String(mm).padStart(2, "0")}:${String(ss).padStart(2, "0")}`;
+        return `${mm}:${String(ss).padStart(2, "0")}`;
+      }
 
       function sortKoreanDesc(arr) {
         return arr
@@ -933,7 +940,7 @@
           .sort((a, b) => b.localeCompare(a, "ko"));
       }
 
-      // ===== 운영진: 가나다 내림차순 =====
+      // ===== 운영진 =====
       (function renderStaff() {
         const ops = ["달려", "룰루", "나올", "밍경", "김땅콩", "슈퍼짹", "뽀용", "망구"];
         const sorted = sortKoreanDesc(ops);
@@ -954,7 +961,6 @@
         if (sec === null) return null;
         return sec;
       }
-
       function parseMeters(raw) {
         const s = String(raw || "").trim();
         if (!/^\d+$/.test(s)) return null;
@@ -962,7 +968,6 @@
         if (n < 0 || n > 50000) return null;
         return n;
       }
-
       function segmentSeconds(secPerKm, meters) { return (secPerKm * meters) / 1000; }
 
       function wireInterval(el) {
@@ -1054,24 +1059,99 @@
           validateAndRender();
         });
       }
-
-      function fmtPace(secPerKm) {
-        const s = Math.round(secPerKm);
-        const mm = Math.floor(s / 60);
-        const ss = s % 60;
-        return `${mm}:${String(ss).padStart(2, "0")}`;
-      }
-
-      function fmtTime(totalSeconds) {
-        const s = Math.round(totalSeconds);
-        const hh = Math.floor(s / 3600);
-        const mm = Math.floor((s % 3600) / 60);
-        const ss = s % 60;
-        if (hh > 0) return `${hh}:${String(mm).padStart(2, "0")}:${String(ss).padStart(2, "0")}`;
-        return `${mm}:${String(ss).padStart(2, "0")}`;
-      }
-
       document.querySelectorAll(".interval").forEach(wireInterval);
+
+      // ===== Pace calc =====
+      const paceDistanceType = document.getElementById("pace-distance-type");
+      const paceCustomField = document.getElementById("pace-custom-distance-field");
+      const paceDistanceKmInput = document.getElementById("pace-distance-km");
+      const paceForm = document.getElementById("pace-form");
+      const paceError = document.getElementById("pace-error");
+      const paceResult = document.getElementById("pace-result");
+      const paceRows = document.getElementById("pace-rows");
+
+      function getPaceDistanceKm() {
+        const v = paceDistanceType.value;
+        if (v === "custom") {
+          const raw = String(paceDistanceKmInput.value || "").trim().replace(",", ".");
+          if (!raw || !/^\d+(\.\d+)?$/.test(raw)) return null;
+          const km = Number(raw);
+          if (!(km > 0 && km <= 200)) return null;
+          return km;
+        }
+        return Number(v);
+      }
+
+      if (paceDistanceType) {
+        paceDistanceType.addEventListener("change", () => {
+          setVisible(paceCustomField, paceDistanceType.value === "custom");
+        });
+      }
+
+      const paceResetBtn = document.getElementById("pace-reset");
+      if (paceResetBtn) {
+        paceResetBtn.addEventListener("click", () => {
+          paceForm.reset();
+          setVisible(paceCustomField, false);
+          setVisible(paceError, false);
+          setVisible(paceResult, false);
+          paceRows.innerHTML = "";
+        });
+      }
+
+      function appendPaceRow(label, value, isTail) {
+        const row = document.createElement("div");
+        row.className = "pace-row" + (isTail ? " tail" : "");
+        const left = document.createElement("div");
+        left.className = "k";
+        left.textContent = label;
+        const right = document.createElement("div");
+        right.className = "v";
+        right.textContent = value;
+        row.appendChild(left);
+        row.appendChild(right);
+        paceRows.appendChild(row);
+      }
+
+      if (paceForm) {
+        paceForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          setVisible(paceError, false);
+          setVisible(paceResult, false);
+          paceRows.innerHTML = "";
+
+          const distanceKm = getPaceDistanceKm();
+          const timeSec = parseTimeToSeconds(new FormData(paceForm).get("time"));
+
+          if (!distanceKm) {
+            paceError.textContent = "거리를 올바르게 입력해 주세요.";
+            setVisible(paceError, true);
+            return;
+          }
+          if (!timeSec || timeSec <= 0) {
+            paceError.textContent = "목표 시간을 올바르게 입력해 주세요. (MM:SS 또는 HH:MM:SS)";
+            setVisible(paceError, true);
+            return;
+          }
+
+          const paceSecPerKm = timeSec / distanceKm;
+          const fullKm = Math.floor(distanceKm);
+          const tail = distanceKm - fullKm;
+
+          for (let i = 1; i <= fullKm; i++) appendPaceRow(`${i}KM`, fmtPace(paceSecPerKm), false);
+          if (tail > 0.0001) {
+            const tailKm = Math.round(tail * 1000) / 1000;
+            appendPaceRow(`마지막 ${tailKm}km`, fmtPace(paceSecPerKm), true);
+          }
+
+          document.getElementById("pace-pill-distance").textContent = `거리: ${distanceKm} km`;
+          document.getElementById("pace-pill-time").textContent = `목표: ${formatTime(timeSec)}`;
+          document.getElementById("pace-pill-avgpace").textContent =
+            `평균: ${Math.floor(paceSecPerKm/60)}'${String(Math.round(paceSecPerKm)%60).padStart(2,"0")}" /km (${fmtPace(paceSecPerKm)})`;
+
+          setVisible(paceResult, true);
+        });
+      }
 
       // ===== Predict =====
       (function wirePredict() {
@@ -1092,7 +1172,6 @@
           const hi = paceSecPerKm + 10;
           return `${fmtPace(lo)}~${fmtPace(hi)}`;
         }
-
         function renderPredictCard(rowsEl, groupEl, distanceKm, t1Sec, highlightMode) {
           const order = [
             { key: "aggressive", name: "공격" },
@@ -1296,7 +1375,6 @@
                 chip.textContent = p.distance;
                 li.appendChild(chip);
               }
-
               ul.appendChild(li);
             });
           };
@@ -1317,7 +1395,6 @@
 
         const actions = document.createElement("div");
         actions.className = "actions";
-        actions.style.marginTop = "10px";
 
         const certBtn = document.createElement("button");
         certBtn.type = "button";
@@ -1586,7 +1663,42 @@
         ctx.fillText(text, xCenter - w / 2, yBaseline);
       }
 
-      // ✅ 여백 줄이고 기록 더 키운 기록증
+      function wrapLines(ctx, text, maxW, maxLines) {
+        const raw = String(text || "").trim();
+        if (!raw) return [];
+        const words = raw.split(/\s+/);
+        const lines = [];
+        let line = "";
+
+        for (const w of words) {
+          const test = line ? `${line} ${w}` : w;
+          if (ctx.measureText(test).width > maxW && line) {
+            lines.push(line);
+            line = w;
+            if (lines.length >= maxLines) return lines;
+          } else {
+            line = test;
+          }
+        }
+        if (line) lines.push(line);
+
+        if (lines.length === 1 && ctx.measureText(lines[0]).width > maxW) {
+          lines.length = 0;
+          let chunk = "";
+          for (const ch of raw) {
+            const t = chunk + ch;
+            if (ctx.measureText(t).width > maxW && chunk) {
+              lines.push(chunk);
+              chunk = ch;
+              if (lines.length >= maxLines) return lines;
+            } else chunk = t;
+          }
+          if (chunk && lines.length < maxLines) lines.push(chunk);
+        }
+
+        return lines.slice(0, maxLines);
+      }
+
       async function generateCertificatePreview() {
         setVisible(certError, false);
         certDownloadBtn.disabled = true;
@@ -1624,7 +1736,6 @@
 
         const colors = themeColors(theme);
 
-        // ✅ 코스 override: 선택값 있으면 그걸로, 없으면 대회 기본 distance
         const eventDist = normalizeDistance(ev.distance);
         const overrideCourse = String(certCourseSel.value || "").trim();
         const courseLabel = overrideCourse || eventDist || "";
@@ -1637,12 +1748,10 @@
         ctx.fillStyle = colors.bg;
         ctx.fillRect(0, 0, W, H);
 
-        // pattern bg (subtle)
         let bg = null;
-        try { bg = await loadImage("./bg.jpg?v=2800"); } catch {}
+        try { bg = await loadImage("./bg.jpg?v=2900"); } catch {}
         if (bg) drawTiledBg(ctx, bg, W, H, theme === "neon" ? 0.05 : 0.10, 260);
 
-        // panel
         const pad = 70;
         const cardX = pad;
         const cardY = 110;
@@ -1658,16 +1767,13 @@
         ctx.fill();
         ctx.restore();
 
-        // top strip
         ctx.fillStyle = colors.strip;
         roundedRect(ctx, cardX, cardY, cardW, 18, 10);
         ctx.fill();
 
-        // load logo
         let logo = null;
-        try { logo = await loadImage("./logo.png?v=2800"); } catch {}
+        try { logo = await loadImage("./logo.png?v=2900"); } catch {}
 
-        // watermark big center
         if (logo) {
           const wmMaxW = cardW * 0.90;
           const wmMaxH = cardH * 0.58;
@@ -1684,7 +1790,6 @@
           ctx.restore();
         }
 
-        // small logo top center
         if (logo) {
           const topMaxW = cardW * 0.20;
           const topMaxH = 110;
@@ -1704,7 +1809,6 @@
         const rightX = cardX + cardW - 70;
         let y = cardY + 175;
 
-        // header
         ctx.fillStyle = colors.headerText;
         ctx.font = "900 60px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
         ctx.fillText("CERTIFICATE OF RECORD", leftX, y);
@@ -1714,13 +1818,11 @@
         ctx.font = "700 22px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
         ctx.fillText("노빠꾸 러닝 크루", leftX, y);
 
-        // event name
         y += 64;
         ctx.fillStyle = "#111";
         ctx.font = "900 52px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
         ctx.fillText(String(ev.name || "대회"), leftX, y);
 
-        // meta
         y += 38;
         const dist = eventDist || "";
         const date = ev.date ? String(ev.date) : "";
@@ -1731,28 +1833,6 @@
         ctx.font = "800 22px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
         ctx.fillText(metaText, leftX, y);
 
-        // course chip (uses override)
-        if (courseLabel) {
-          ctx.save();
-          ctx.fillStyle = "rgba(255,106,0,0.12)";
-          ctx.strokeStyle = "rgba(255,106,0,0.45)";
-          ctx.lineWidth = 2;
-
-          const chipW = 190;
-          const chipH = 52;
-          const chipX = rightX - chipW;
-          const chipY = y - 34;
-
-          roundedRect(ctx, chipX, chipY, chipW, chipH, 999);
-          ctx.fill();
-          ctx.stroke();
-
-          ctx.fillStyle = "#111";
-          ctx.font = "900 24px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-          centerText(ctx, courseLabel, chipX + chipW / 2, chipY + 34);
-          ctx.restore();
-        }
-
         // divider
         y += 45;
         ctx.strokeStyle = "rgba(0,0,0,0.10)";
@@ -1762,13 +1842,13 @@
         ctx.lineTo(rightX, y);
         ctx.stroke();
 
-        // name (center)
+        // name
         y += 95;
         ctx.fillStyle = "#111";
         ctx.font = "900 72px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
         centerText(ctx, nick, cardX + cardW / 2, y);
 
-        // time (BIGGER, less whitespace)
+        // time (big)
         const t = formatTime(tsec);
         y += 115;
 
@@ -1790,26 +1870,63 @@
           centerText(ctx, t, cardX + cardW / 2, y + 8);
         }
 
-        // Bib (closer to time)
-        y += 80;
+        // bib (tight)
+        y += 78;
         if (bib) {
           ctx.fillStyle = colors.accent;
           ctx.font = "900 34px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
           centerText(ctx, `Bib No. ${bib}`, cardX + cardW / 2, y);
-        } else {
-          // no text if empty (reduce clutter)
         }
 
-        // note (optional, small)
+        // BIG course badge under bib/time
+        if (courseLabel) {
+          const badgeY = y + (bib ? 40 : 18);
+          const badgeW = Math.min(520, cardW - 220);
+          const badgeH = 76;
+          const badgeX = Math.floor(cardX + (cardW - badgeW) / 2);
+
+          ctx.save();
+          ctx.fillStyle = "rgba(255,106,0,0.16)";
+          ctx.strokeStyle = "rgba(255,106,0,0.55)";
+          ctx.lineWidth = 3;
+
+          roundedRect(ctx, badgeX, badgeY - 54, badgeW, badgeH, 999);
+          ctx.fill();
+          ctx.stroke();
+
+          ctx.fillStyle = "#111";
+          ctx.font = "900 44px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+          ctx.textAlign = "center";
+          ctx.fillText(courseLabel, badgeX + badgeW / 2, badgeY - 4);
+          ctx.restore();
+
+          y = badgeY + 8;
+        }
+
+        // NOTE (always visible, wrapped)
         if (음표) {
-          y += 44;
-          ctx.fillStyle = "rgba(17,17,17,0.60)";
+          const noteTop = y + 18;
+          const maxW = cardW - 220;
+          const lineH = 30;
+          const maxLines = 3;
+
+          ctx.save();
+          ctx.fillStyle = "rgba(17,17,17,0.62)";
           ctx.font = "800 22px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-          centerText(ctx, note, cardX + cardW / 2, y);
+          ctx.textAlign = "center";
+
+          const lines = wrapLines(ctx, note, maxW, maxLines);
+          lines.forEach((ln, i) => {
+            ctx.fillText(ln, cardX + cardW / 2, noteTop + i * lineH);
+          });
+
+          ctx.restore();
+
+          y = noteTop + lines.length * lineH;
         }
 
-        // footer text (fills the bottom so it doesn't feel empty)
-        const footerY = cardY + cardH - 120;
+        // footer (pull up a bit to reduce empty)
+        const footerY = cardY + cardH - 100;
         ctx.fillStyle = "rgba(17,17,17,0.78)";
         ctx.font = "900 22px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
         centerText(ctx, `${String(ev.name || "대회")} 완주를 축하드립니다.`, cardX + cardW / 2, footerY);
@@ -1818,7 +1935,6 @@
         ctx.font = "800 20px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
         centerText(ctx, `${date || "—"} · NoBack RunningCrew`, cardX + cardW / 2, footerY + 34);
 
-        // bottom strip
         ctx.save();
         ctx.globalAlpha = 0.95;
         ctx.fillStyle = colors.accent;
@@ -1857,6 +1973,8 @@
           ctx.fillRect(0, 0, certCanvas.width, certCanvas.height);
         });
       }
+
+      // ===== Cert (external) no JS needed =====
 
       // ===== Boot =====
       loadEvents();
