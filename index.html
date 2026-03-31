@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>노빠꾸 러닝 크루🏃🏽🏃‍♀️🏃🏻‍♂️</title>
 
-    <link rel="icon" type="image/x-icon" href="./favicon.ico?v=2900" />
-    <link rel="shortcut icon" href="./favicon.ico?v=2900" />
-    <link rel="apple-touch-icon" href="./apple-touch-icon.png?v=2900" />
+    <link rel="icon" type="image/x-icon" href="./favicon.ico?v=3000" />
+    <link rel="shortcut icon" href="./favicon.ico?v=3000" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png?v=3000" />
 
     <style>
       :root {
@@ -41,7 +41,7 @@
         content:"";
         position: fixed;
         inset: 0;
-        background-image: url("./bg.jpg?v=2900");
+        background-image: url("./bg.jpg?v=3000");
         background-repeat: repeat;
         background-size: 260px auto;
         background-position: 0 0;
@@ -246,7 +246,6 @@
       .error { margin-top: 10px; color: #ffd0c2; font-size: 13px; }
       .result { margin-top: 14px; border-top: 1px dashed rgba(255,255,255,0.18); padding-top: 14px; display: grid; gap: 12px; }
 
-      /* pace rows */
       .pace-rows { display: grid; gap: 8px; }
       .pace-row {
         display: flex;
@@ -262,7 +261,6 @@
       .pace-row .v { font-size: 13px; white-space: nowrap; color: var(--text); }
       .pace-row.tail { opacity: 0.85; border-style: dashed; }
 
-      /* predict cards */
       .cards3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
       @media (max-width: 900px) { .cards3 { grid-template-columns: 1fr; } }
       .mini {
@@ -301,10 +299,6 @@
       }
       .group { margin-top: 10px; padding-top: 10px; border-top: 1px dashed rgba(255,255,255,0.18); font-size: 12px; color: var(--muted); }
 
-      .section-title { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin: 0 0 10px; }
-      .section-title h2 { margin: 0; font-size: 16px; color: var(--text); }
-
-      /* lists */
       .list { display: grid; gap: 12px; margin-top: 12px; }
       .item {
         border: 1px solid rgba(255,255,255,0.14);
@@ -325,7 +319,6 @@
         background: rgba(255, 255, 255, 0.03);
       }
 
-      /* participants */
       .p-wrap { margin-top: 10px; }
       .p-list { margin: 0; padding-left: 18px; color: var(--muted); }
       .p-list li { margin: 6px 0; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
@@ -442,6 +435,26 @@
 
       .staff { display: grid; gap: 10px; }
       .staff .line { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; color: var(--muted); font-size: 13px; }
+
+      /* custom event fields */
+      .subgrid { grid-column: span 12; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 12px; }
+      .hintbox {
+        grid-column: span 12;
+        padding: 10px 12px;
+        border-radius: 14px;
+        border: 1px dashed rgba(255,255,255,0.18);
+        background: rgba(255,255,255,0.04);
+        color: var(--muted);
+        font-size: 12px;
+      }
+      .ghostbtn{
+        border: 1px solid rgba(255,255,255,0.16);
+        background: rgba(255,255,255,0.06);
+      }
+      .ghostbtn:hover{
+        background: rgba(255,255,255,0.10);
+        border-color: rgba(255,255,255,0.24);
+      }
     </style>
   </head>
 
@@ -489,6 +502,7 @@
           </a>
         </div>
 
+        <!-- Interval -->
         <div class="card interval" style="margin-top: 14px;">
           <div class="section-title"><h2>인터벌 계산기</h2></div>
           <p class="muted">초기화=빈칸 / 프리셋=즉시 계산</p>
@@ -680,7 +694,11 @@
         </div>
 
         <div class="card">
-          <h2>대회 일정</h2>
+          <div class="section-title" style="margin-bottom:6px;">
+            <h2>대회 일정</h2>
+            <button type="button" id="btn-custom-cert" class="ghostbtn">무지(선택 없음) 기록증 →</button>
+          </div>
+          <p class="muted">대회가 없거나, 비공식/기록만 남기고 싶으면 “무지 기록증”을 쓰면 돼요.</p>
           <div id="events-list" class="list"></div>
         </div>
       </section>
@@ -694,17 +712,17 @@
 
         <div class="card">
           <h2>기록증 출력</h2>
-          <p class="muted">대회 선택 + 코스(옵션) + 닉네임 + 기록 + 메모 → PNG 저장</p>
+          <p class="muted">대회 선택 or 직접 입력 + 코스 + 닉네임 + 기록 + 메모 → PNG 저장</p>
 
           <form id="cert-form" style="margin-top:12px;">
             <div class="field">
               <label for="cert-event">대회</label>
               <select id="cert-event" name="event"></select>
-              <div class="help">대회 탭의 “기록증 출력” 버튼으로 오면 자동 선택돼요</div>
+              <div class="help">“직접 입력(무지)”를 고르면 아래 입력란이 열려요.</div>
             </div>
 
             <div class="field">
-              <label for="cert-course">코스(옵션)</label>
+              <label for="cert-course">코스</label>
               <select id="cert-course" name="course">
                 <option value="">대회 기본값 사용</option>
                 <option value="5K">5K</option>
@@ -712,7 +730,31 @@
                 <option value="21K">21K</option>
                 <option value="42K">42K</option>
               </select>
-              <div class="help">같은 레이스(21K)인데 10K 참가면 여기서 10K 선택</div>
+              <div class="help">같은 대회(21K) 안에서 10K 참가면 10K로 선택</div>
+            </div>
+
+            <div id="custom-event-fields" class="subgrid" style="display:none;">
+              <div class="hintbox">직접 입력 모드: 여기 값으로 기록증 상단이 채워집니다.</div>
+
+              <div class="field">
+                <label for="cert-custom-name">대회명</label>
+                <input id="cert-custom-name" inputmode="text" placeholder="예: 더레이스 서울" autocomplete="off" />
+              </div>
+
+              <div class="field">
+                <label for="cert-custom-date">날짜</label>
+                <input id="cert-custom-date" inputmode="text" placeholder="예: 2026-04-05" autocomplete="off" />
+              </div>
+
+              <div class="field">
+                <label for="cert-custom-loc">장소</label>
+                <input id="cert-custom-loc" inputmode="text" placeholder="예: 서울" autocomplete="off" />
+              </div>
+
+              <div class="field">
+                <label for="cert-custom-dist">거리</label>
+                <input id="cert-custom-dist" inputmode="text" placeholder="예: 21K / 10K" autocomplete="off" />
+              </div>
             </div>
 
             <div class="field">
@@ -734,6 +776,7 @@
             <div class="field">
               <label for="cert-note">메모(선택)</label>
               <input id="cert-note" name="note" inputmode="text" placeholder="예: PB / 첫 하프 완주" autocomplete="off" />
+              <div class="help">기록증에 1~3줄로 표시됩니다.</div>
             </div>
 
             <div class="field">
@@ -760,7 +803,7 @@
         </div>
       </section>
 
-      <!-- CERT (external) -->
+      <!-- CERT -->
       <section id="view-cert" class="view">
         <div class="topbar">
           <a class="back" href="#/">← 홈</a>
@@ -847,7 +890,9 @@
     </div>
 
     <script>
-      // ===== Router =====
+      // =========================
+      // Router
+      // =========================
       function route() {
         const raw = (location.hash || "#/").toLowerCase();
         const normalized = raw.startsWith("#/") ? raw : raw.startsWith("#") ? "#/" + raw.slice(1) : "#/";
@@ -878,11 +923,17 @@
 
         if (normalized !== raw) history.replaceState(null, "", normalized);
 
-        if (view === "certificate") hydrateCertificateEventSelectFromCache();
+        if (view === "certificate") {
+          hydrateCertificateEventSelectFromCache();
+          toggleCustomEventFields();
+        }
       }
       window.addEventListener("hashchange", route);
       route();
 
+      // =========================
+      // Helpers
+      // =========================
       function setVisible(el, visible) { el.style.display = visible ? "" : "none"; }
 
       function parseTimeToSeconds(raw) {
@@ -923,14 +974,7 @@
         return `${mm}:${String(ss).padStart(2, "0")}`;
       }
 
-      function fmtTime(totalSeconds) {
-        const s = Math.round(totalSeconds);
-        const hh = Math.floor(s / 3600);
-        const mm = Math.floor((s % 3600) / 60);
-        const ss = s % 60;
-        if (hh > 0) return `${hh}:${String(mm).padStart(2, "0")}:${String(ss).padStart(2, "0")}`;
-        return `${mm}:${String(ss).padStart(2, "0")}`;
-      }
+      function fmtTime(totalSeconds) { return formatTime(totalSeconds); }
 
       function sortKoreanDesc(arr) {
         return arr
@@ -940,7 +984,50 @@
           .sort((a, b) => b.localeCompare(a, "ko"));
       }
 
-      // ===== 운영진 =====
+      function normalizeDistance(raw) {
+        const v = String(raw || "").trim();
+        if (!v) return "";
+        const upper = v.toUpperCase();
+
+        if (upper === "HALF" || upper === "HM" || upper === "21.1K" || upper === "21.0975K") return "21K";
+        if (upper === "FULL" || upper === "FM" || upper === "MARATHON" || upper === "42.2K" || upper === "42.195K") return "42K";
+        if (upper === "10KM" || upper === "10K") return "10K";
+        if (upper === "5KM" || upper === "5K") return "5K";
+
+        const m = upper.replace(/\s+/g, "").match(/^(\d+(\.\d+)?)(K|KM)$/);
+        if (m) {
+          const n = Number(m[1]);
+          if (Math.abs(n - 5) < 0.01) return "5K";
+          if (Math.abs(n - 10) < 0.01) return "10K";
+          if (Math.abs(n - 21) < 0.2) return "21K";
+          if (Math.abs(n - 42) < 0.3) return "42K";
+        }
+        return v;
+      }
+
+      async function safeFetchJson(path) {
+        try {
+          const url = new URL(path, window.location.href);
+          const res = await fetch(url.toString(), { cache: "no-store" });
+          if (!res.ok) return { ok: false, reason: `파일을 찾을 수 없음 (${res.status})`, data: null };
+          const data = await res.json();
+          return { ok: true, reason: "", data };
+        } catch {
+          return { ok: false, reason: "JSON 형식이 아니거나 파싱 실패", data: null };
+        }
+      }
+
+      function renderEmpty(targetEl, title, reason) {
+        targetEl.innerHTML = "";
+        const box = document.createElement("div");
+        box.className = "empty";
+        box.innerHTML = `<b>${title}</b>${reason ? `<div style="margin-top:8px;">${reason}</div>` : ""}`;
+        targetEl.appendChild(box);
+      }
+
+      // =========================
+      // Staff
+      // =========================
       (function renderStaff() {
         const ops = ["달려", "룰루", "나올", "밍경", "김땅콩", "슈퍼짹", "뽀용", "망구"];
         const sorted = sortKoreanDesc(ops);
@@ -955,7 +1042,9 @@
         });
       })();
 
-      // ===== Interval =====
+      // =========================
+      // Interval
+      // =========================
       function parsePaceToSecPerKm(paceStr) {
         const sec = parseTimeToSeconds(paceStr);
         if (sec === null) return null;
@@ -1061,7 +1150,9 @@
       }
       document.querySelectorAll(".interval").forEach(wireInterval);
 
-      // ===== Pace calc =====
+      // =========================
+      // Pace calculator
+      // =========================
       const paceDistanceType = document.getElementById("pace-distance-type");
       const paceCustomField = document.getElementById("pace-custom-distance-field");
       const paceDistanceKmInput = document.getElementById("pace-distance-km");
@@ -1153,7 +1244,9 @@
         });
       }
 
-      // ===== Predict =====
+      // =========================
+      // Predict
+      // =========================
       (function wirePredict() {
         const predictForm = document.getElementById("predict-form");
         const predictError = document.getElementById("predict-error");
@@ -1172,6 +1265,7 @@
           const hi = paceSecPerKm + 10;
           return `${fmtPace(lo)}~${fmtPace(hi)}`;
         }
+
         function renderPredictCard(rowsEl, groupEl, distanceKm, t1Sec, highlightMode) {
           const order = [
             { key: "aggressive", name: "공격" },
@@ -1243,47 +1337,10 @@
         });
       })();
 
-      // ===== JSON =====
-      async function safeFetchJson(path) {
-        try {
-          const url = new URL(path, window.location.href);
-          const res = await fetch(url.toString(), { cache: "no-store" });
-          if (!res.ok) return { ok: false, reason: `파일을 찾을 수 없음 (${res.status})`, data: null };
-          const data = await res.json();
-          return { ok: true, reason: "", data };
-        } catch {
-          return { ok: false, reason: "JSON 형식이 아니거나 파싱 실패", data: null };
-        }
-      }
-
-      function renderEmpty(targetEl, title, reason) {
-        targetEl.innerHTML = "";
-        const box = document.createElement("div");
-        box.className = "empty";
-        box.innerHTML = `<b>${title}</b>${reason ? `<div style="margin-top:8px;">${reason}</div>` : ""}`;
-        targetEl.appendChild(box);
-      }
-
-      function normalizeDistance(raw) {
-        const v = String(raw || "").trim();
-        if (!v) return "";
-        const upper = v.toUpperCase();
-
-        if (upper === "HALF" || upper === "HM" || upper === "21.1K" || upper === "21.0975K") return "21K";
-        if (upper === "FULL" || upper === "FM" || upper === "MARATHON" || upper === "42.2K" || upper === "42.195K") return "42K";
-        if (upper === "10KM" || upper === "10K") return "10K";
-        if (upper === "5KM" || upper === "5K") return "5K";
-
-        const m = upper.replace(/\s+/g, "").match(/^(\d+(\.\d+)?)(K|KM)$/);
-        if (m) {
-          const n = Number(m[1]);
-          if (Math.abs(n - 5) < 0.01) return "5K";
-          if (Math.abs(n - 10) < 0.01) return "10K";
-          if (Math.abs(n - 21) < 0.2) return "21K";
-          if (Math.abs(n - 42) < 0.3) return "42K";
-        }
-        return v;
-      }
+      // =========================
+      // Events + Certificate
+      // =========================
+      let EVENTS_CACHE = [];
 
       function createMoreButton(label) {
         const btn = document.createElement("button");
@@ -1407,8 +1464,6 @@
         return el;
       }
 
-      let EVENTS_CACHE = [];
-
       async function loadEvents() {
         const res = await safeFetchJson("data/events.json");
         const list = document.getElementById("events-list");
@@ -1444,7 +1499,498 @@
         events.slice(0, 2).forEach((ev, idx) => preview.appendChild(createEventItem(ev, 6, idx)));
       }
 
-      // ===== Shoes =====
+      // ---- certificate DOM ----
+      const certForm = document.getElementById("cert-form");
+      const certEventSel = document.getElementById("cert-event");
+      const certCourseSel = document.getElementById("cert-course");
+      const certNick = document.getElementById("cert-nick");
+      const certTime = document.getElementById("cert-time");
+      const certNote = document.getElementById("cert-note");
+      const certBib = document.getElementById("cert-bib");
+      const certTheme = document.getElementById("cert-theme");
+      const certError = document.getElementById("cert-error");
+      const certCanvas = document.getElementById("cert-canvas");
+      const certDownloadBtn = document.getElementById("cert-download");
+      const certResetBtn = document.getElementById("cert-reset");
+
+      const customFieldsWrap = document.getElementById("custom-event-fields");
+      const certCustomName = document.getElementById("cert-custom-name");
+      const certCustomDate = document.getElementById("cert-custom-date");
+      const certCustomLoc = document.getElementById("cert-custom-loc");
+      const certCustomDist = document.getElementById("cert-custom-dist");
+
+      function hydrateCertificateEventSelectFromCache() {
+        if (!certEventSel) return;
+
+        const current = certEventSel.value;
+        certEventSel.innerHTML = "";
+
+        // ✅ always include custom
+        const customOpt = document.createElement("option");
+        customOpt.value = "custom";
+        customOpt.textContent = "직접 입력(무지)";
+        certEventSel.appendChild(customOpt);
+
+        if (EVENTS_CACHE.length) {
+          EVENTS_CACHE.forEach((ev, idx) => {
+            const opt = document.createElement("option");
+            opt.value = String(idx);
+            const dist = ev.distance ? ` · ${ev.distance}` : "";
+            const date = ev.date ? ` · ${ev.date}` : "";
+            opt.textContent = `${ev.name || "대회"}${date}${dist}`;
+            certEventSel.appendChild(opt);
+          });
+        }
+
+        const saved = sessionStorage.getItem("cert_selected_event_index");
+        const savedMode = sessionStorage.getItem("cert_selected_event_mode");
+
+        if (savedMode === "custom") {
+          certEventSel.value = "custom";
+        } else if (saved !== null && saved !== "" && !Number.isNaN(Number(saved))) {
+          certEventSel.value = saved;
+        } else if (current) {
+          certEventSel.value = current;
+        } else {
+          certEventSel.value = EVENTS_CACHE.length ? "0" : "custom";
+        }
+
+        sessionStorage.removeItem("cert_selected_event_index");
+        sessionStorage.removeItem("cert_selected_event_mode");
+      }
+
+      function toggleCustomEventFields() {
+        if (!certEventSel || !customFieldsWrap) return;
+        const isCustom = certEventSel.value === "custom";
+        setVisible(customFieldsWrap, isCustom);
+      }
+
+      if (certEventSel) {
+        certEventSel.addEventListener("change", () => {
+          toggleCustomEventFields();
+        });
+      }
+
+      // Custom cert button from events tab
+      const btnCustomCert = document.getElementById("btn-custom-cert");
+      if (btnCustomCert) {
+        btnCustomCert.addEventListener("click", () => {
+          sessionStorage.setItem("cert_selected_event_mode", "custom");
+          location.hash = "#/certificate";
+        });
+      }
+
+      // canvas helpers
+      async function loadImage(src) {
+        return new Promise((resolve, reject) => {
+          const img = new Image();
+          img.onload = () => resolve(img);
+          img.onerror = () => reject(new Error("이미지 로드 실패"));
+          img.src = src;
+        });
+      }
+
+      function roundedRect(ctx, x, y, w, h, r) {
+        const rr = Math.min(r, w / 2, h / 2);
+        ctx.beginPath();
+        ctx.moveTo(x + rr, y);
+        ctx.arcTo(x + w, y, x + w, y + h, rr);
+        ctx.arcTo(x + w, y + h, x, y + h, rr);
+        ctx.arcTo(x, y + h, x, y, rr);
+        ctx.arcTo(x, y, x + w, y, rr);
+        ctx.closePath();
+      }
+
+      function drawTiledBg(ctx, img, w, h, alpha = 0.12, tile = 260) {
+        ctx.save();
+        ctx.globalAlpha = alpha;
+        const tileH = (tile * img.height) / img.width;
+        for (let y = 0; y < h; y += tile) {
+          for (let x = 0; x < w; x += tile) {
+            ctx.drawImage(img, x, y, tile, tileH);
+          }
+        }
+        ctx.restore();
+      }
+
+      function certificateFilename(evName, nick) {
+        const safe = (s) =>
+          String(s || "")
+            .trim()
+            .replaceAll(/[\\/:*?"<>|]/g, "-")
+            .replaceAll(/\s+/g, "_");
+        return `${safe(evName) || "certificate"}_${safe(nick) || "runner"}.png`;
+      }
+
+      function themeColors(theme) {
+        if (theme === "neon") {
+          return {
+            bg: "#d8ff2f",
+            panel: "rgba(255,255,255,0.95)",
+            headerText: "#111",
+            accent: "#ff6a00",
+            sub: "rgba(17,17,17,0.72)",
+            strip: "#ff6a00",
+            wmAlpha: 0.04,
+          };
+        }
+        if (theme === "split") {
+          return {
+            bg: "#ffffff",
+            panel: "rgba(255,255,255,0.96)",
+            headerText: "#111",
+            accent: "#ff6a00",
+            sub: "rgba(17,17,17,0.72)",
+            strip: "#111111",
+            wmAlpha: 0.06,
+          };
+        }
+        return {
+          bg: "#ffffff",
+          panel: "rgba(255,255,255,0.96)",
+          headerText: "#111",
+          accent: "#ff6a00",
+          sub: "rgba(17,17,17,0.72)",
+          strip: "#ff6a00",
+          wmAlpha: 0.06,
+        };
+      }
+
+      function centerText(ctx, text, xCenter, yBaseline) {
+        const w = ctx.measureText(text).width;
+        ctx.fillText(text, xCenter - w / 2, yBaseline);
+      }
+
+      function wrapLines(ctx, text, maxW, maxLines) {
+        const raw = String(text || "").trim();
+        if (!raw) return [];
+        const words = raw.split(/\s+/);
+        const lines = [];
+        let line = "";
+
+        for (const w of words) {
+          const test = line ? `${line} ${w}` : w;
+          if (ctx.measureText(test).width > maxW && line) {
+            lines.push(line);
+            line = w;
+            if (lines.length >= maxLines) return lines;
+          } else {
+            line = test;
+          }
+        }
+        if (line) lines.push(line);
+
+        if (lines.length === 1 && ctx.measureText(lines[0]).width > maxW) {
+          lines.length = 0;
+          let chunk = "";
+          for (const ch of raw) {
+            const t = chunk + ch;
+            if (ctx.measureText(t).width > maxW && chunk) {
+              lines.push(chunk);
+              chunk = ch;
+              if (lines.length >= maxLines) return lines;
+            } else chunk = t;
+          }
+          if (chunk && lines.length < maxLines) lines.push(chunk);
+        }
+
+        return lines.slice(0, maxLines);
+      }
+
+      function getCertificateEventData() {
+        const selected = String(certEventSel.value || "");
+        if (selected === "custom") {
+          const name = String(certCustomName.value || "").trim() || "무지 기록";
+          const date = String(certCustomDate.value || "").trim();
+          const location = String(certCustomLoc.value || "").trim();
+          const distance = normalizeDistance(String(certCustomDist.value || "").trim());
+          return { name, date, location, distance };
+        }
+
+        const idx = Number(selected);
+        const ev = EVENTS_CACHE[idx];
+        if (!ev) return null;
+
+        return {
+          name: String(ev.name || "대회"),
+          date: String(ev.date || ""),
+          location: String(ev.location || ""),
+          distance: normalizeDistance(ev.distance),
+        };
+      }
+
+      async function generateCertificatePreview() {
+        setVisible(certError, false);
+        certDownloadBtn.disabled = true;
+
+        const ev = getCertificateEventData();
+        if (!ev) {
+          certError.textContent = "대회 정보를 불러오지 못했어요. (events.json 확인)";
+          setVisible(certError, true);
+          return;
+        }
+
+        const nick = String(certNick.value || "").trim();
+        const bib = String(certBib.value || "").trim();
+        const note = String(certNote.value || "").trim();
+        const tsec = parseTimeToSeconds(certTime.value);
+        const theme = String(certTheme.value || "clean");
+
+        if (!nick) {
+          certError.textContent = "닉네임을 입력해 주세요.";
+          setVisible(certError, true);
+          return;
+        }
+        if (!tsec || tsec <= 0) {
+          certError.textContent = "기록 시간을 올바르게 입력해 주세요. (MM:SS 또는 HH:MM:SS)";
+          setVisible(certError, true);
+          return;
+        }
+
+        const colors = themeColors(theme);
+
+        const overrideCourse = String(certCourseSel.value || "").trim();
+        const eventDist = normalizeDistance(ev.distance);
+        const courseLabel = overrideCourse || eventDist || "";
+
+        const W = certCanvas.width;
+        const H = certCanvas.height;
+        const ctx = certCanvas.getContext("2d");
+
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = colors.bg;
+        ctx.fillRect(0, 0, W, H);
+
+        let bg = null;
+        try { bg = await loadImage("./bg.jpg?v=3000"); } catch {}
+        if (bg) drawTiledBg(ctx, bg, W, H, theme === "neon" ? 0.05 : 0.10, 260);
+
+        const pad = 70;
+        const cardX = pad;
+        const cardY = 110;
+        const cardW = W - pad * 2;
+        const cardH = H - 190;
+
+        ctx.save();
+        ctx.shadowColor = "rgba(0,0,0,0.14)";
+        ctx.shadowBlur = 28;
+        ctx.shadowOffsetY = 14;
+        ctx.fillStyle = colors.panel;
+        roundedRect(ctx, cardX, cardY, cardW, cardH, 28);
+        ctx.fill();
+        ctx.restore();
+
+        ctx.fillStyle = colors.strip;
+        roundedRect(ctx, cardX, cardY, cardW, 18, 10);
+        ctx.fill();
+
+        let logo = null;
+        try { logo = await loadImage("./logo.png?v=3000"); } catch {}
+
+        // watermark
+        if (logo) {
+          const wmMaxW = cardW * 0.90;
+          const wmMaxH = cardH * 0.58;
+          const wmScale = Math.min(wmMaxW / logo.width, wmMaxH / logo.height);
+
+          const wmW = Math.floor(logo.width * wmScale);
+          const wmH = Math.floor(logo.height * wmScale);
+          const wmX = Math.floor(cardX + (cardW - wmW) / 2);
+          const wmY = Math.floor(cardY + (cardH - wmH) / 2 + 60);
+
+          ctx.save();
+          ctx.globalAlpha = colors.wmAlpha;
+          ctx.drawImage(logo, wmX, wmY, wmW, wmH);
+          ctx.restore();
+        }
+
+        // top logo
+        if (logo) {
+          const topMaxW = cardW * 0.20;
+          const topMaxH = 110;
+          const r = Math.min(topMaxW / logo.width, topMaxH / logo.height);
+          const lw = Math.floor(logo.width * r);
+          const lh = Math.floor(logo.height * r);
+          const lx = Math.floor(cardX + (cardW - lw) / 2);
+          const ly = Math.floor(cardY + 32);
+
+          ctx.save();
+          ctx.globalAlpha = 0.95;
+          ctx.drawImage(logo, lx, ly, lw, lh);
+          ctx.restore();
+        }
+
+        const leftX = cardX + 70;
+        const rightX = cardX + cardW - 70;
+        let y = cardY + 175;
+
+        // header
+        ctx.fillStyle = colors.headerText;
+        ctx.font = "900 60px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        ctx.fillText("CERTIFICATE OF RECORD", leftX, y);
+
+        y += 38;
+        ctx.fillStyle = colors.sub;
+        ctx.font = "700 22px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        ctx.fillText("노빠꾸 러닝 크루", leftX, y);
+
+        // event
+        y += 64;
+        ctx.fillStyle = "#111";
+        ctx.font = "900 52px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        ctx.fillText(ev.name || "무지 기록", leftX, y);
+
+        // meta
+        y += 38;
+        const metaText = [ev.date, ev.location, eventDist].filter(Boolean).join(" · ");
+        ctx.fillStyle = colors.sub;
+        ctx.font = "800 22px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        ctx.fillText(metaText || "—", leftX, y);
+
+        // divider
+        y += 45;
+        ctx.strokeStyle = "rgba(0,0,0,0.10)";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(leftX, y);
+        ctx.lineTo(rightX, y);
+        ctx.stroke();
+
+        // name
+        y += 95;
+        ctx.fillStyle = "#111";
+        ctx.font = "900 72px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        centerText(ctx, nick, cardX + cardW / 2, y);
+
+        // time (big)
+        const t = formatTime(tsec);
+        y += 115;
+
+        if (theme === "split") {
+          ctx.save();
+          ctx.fillStyle = "#111";
+          const barH = 190;
+          const barY = y - 120;
+          roundedRect(ctx, cardX + 40, barY, cardW - 80, barH, 26);
+          ctx.fill();
+          ctx.restore();
+
+          ctx.fillStyle = "#ffffff";
+          ctx.font = "900 150px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+          centerText(ctx, t, cardX + cardW / 2, y + 8);
+        } else {
+          ctx.fillStyle = "#111";
+          ctx.font = "900 155px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+          centerText(ctx, t, cardX + cardW / 2, y + 8);
+        }
+
+        // bib
+        y += 78;
+        if (bib) {
+          ctx.fillStyle = colors.accent;
+          ctx.font = "900 34px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+          centerText(ctx, `Bib No. ${bib}`, cardX + cardW / 2, y);
+        }
+
+        // BIG course badge (fills space)
+        if (courseLabel) {
+          const badgeY = y + (bib ? 40 : 18);
+          const badgeW = Math.min(520, cardW - 220);
+          const badgeH = 76;
+          const badgeX = Math.floor(cardX + (cardW - badgeW) / 2);
+
+          ctx.save();
+          ctx.fillStyle = "rgba(255,106,0,0.16)";
+          ctx.strokeStyle = "rgba(255,106,0,0.55)";
+          ctx.lineWidth = 3;
+
+          roundedRect(ctx, badgeX, badgeY - 54, badgeW, badgeH, 999);
+          ctx.fill();
+          ctx.stroke();
+
+          ctx.fillStyle = "#111";
+          ctx.font = "900 44px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+          ctx.textAlign = "center";
+          ctx.fillText(courseLabel, badgeX + badgeW / 2, badgeY - 4);
+          ctx.restore();
+
+          y = badgeY + 8;
+        }
+
+        // NOTE (always visible, wrapped)
+        if (note) {
+          const noteTop = y + 18;
+          const maxW = cardW - 220;
+          const lineH = 30;
+          const maxLines = 3;
+
+          ctx.save();
+          ctx.fillStyle = "rgba(17,17,17,0.62)";
+          ctx.font = "800 22px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+          ctx.textAlign = "center";
+
+          const lines = wrapLines(ctx, note, maxW, maxLines);
+          lines.forEach((ln, i) => {
+            ctx.fillText(ln, cardX + cardW / 2, noteTop + i * lineH);
+          });
+
+          ctx.restore();
+        }
+
+        // footer
+        const footerY = cardY + cardH - 100;
+        ctx.fillStyle = "rgba(17,17,17,0.78)";
+        ctx.font = "900 22px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        centerText(ctx, `${ev.name || "무지 기록"} 완주를 축하드립니다.`, cardX + cardW / 2, footerY);
+
+        ctx.fillStyle = "rgba(17,17,17,0.60)";
+        ctx.font = "800 20px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        centerText(ctx, `${ev.date || "—"} · NoBack RunningCrew`, cardX + cardW / 2, footerY + 34);
+
+        // bottom strip
+        ctx.save();
+        ctx.globalAlpha = 0.95;
+        ctx.fillStyle = colors.accent;
+        roundedRect(ctx, cardX, cardY + cardH - 18, cardW, 18, 10);
+        ctx.fill();
+        ctx.restore();
+
+        certDownloadBtn.disabled = false;
+        certDownloadBtn.dataset.filename = certificateFilename(ev.name, nick);
+      }
+
+      if (certForm) {
+        certForm.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          await generateCertificatePreview();
+        });
+      }
+
+      if (certDownloadBtn) {
+        certDownloadBtn.addEventListener("click", () => {
+          const a = document.createElement("a");
+          a.download = certDownloadBtn.dataset.filename || "certificate.png";
+          a.href = certCanvas.toDataURL("image/png");
+          a.click();
+        });
+      }
+
+      if (certResetBtn) {
+        certResetBtn.addEventListener("click", () => {
+          certForm.reset();
+          toggleCustomEventFields();
+          setVisible(certError, false);
+          certDownloadBtn.disabled = true;
+          const ctx = certCanvas.getContext("2d");
+          ctx.clearRect(0, 0, certCanvas.width, certCanvas.height);
+          ctx.fillStyle = "#ffffff";
+          ctx.fillRect(0, 0, certCanvas.width, certCanvas.height);
+        });
+      }
+
+      // =========================
+      // Shoes
+      // =========================
       async function loadShoes() {
         const mount = document.getElementById("shoes-wrap");
         if (!mount) return;
@@ -1538,445 +2084,9 @@
         });
       }
 
-      // ===== Certificate =====
-      const certForm = document.getElementById("cert-form");
-      const certEventSel = document.getElementById("cert-event");
-      const certCourseSel = document.getElementById("cert-course");
-      const certNick = document.getElementById("cert-nick");
-      const certTime = document.getElementById("cert-time");
-      const certNote = document.getElementById("cert-note");
-      const certBib = document.getElementById("cert-bib");
-      const certTheme = document.getElementById("cert-theme");
-      const certError = document.getElementById("cert-error");
-      const certCanvas = document.getElementById("cert-canvas");
-      const certDownloadBtn = document.getElementById("cert-download");
-      const certResetBtn = document.getElementById("cert-reset");
-
-      function hydrateCertificateEventSelectFromCache() {
-        if (!certEventSel) return;
-
-        const current = certEventSel.value;
-        certEventSel.innerHTML = "";
-
-        if (!EVENTS_CACHE.length) {
-          const opt = document.createElement("option");
-          opt.value = "";
-          opt.textContent = "대회 정보 없음";
-          certEventSel.appendChild(opt);
-          return;
-        }
-
-        EVENTS_CACHE.forEach((ev, idx) => {
-          const opt = document.createElement("option");
-          opt.value = String(idx);
-          const dist = ev.distance ? ` · ${ev.distance}` : "";
-          const date = ev.date ? ` · ${ev.date}` : "";
-          opt.textContent = `${ev.name || "대회"}${date}${dist}`;
-          certEventSel.appendChild(opt);
-        });
-
-        const savedIdx = sessionStorage.getItem("cert_selected_event_index");
-        if (savedIdx !== null && savedIdx !== "" && !Number.isNaN(Number(savedIdx))) {
-          certEventSel.value = savedIdx;
-        } else if (current) {
-          certEventSel.value = current;
-        } else {
-          certEventSel.value = "0";
-        }
-        sessionStorage.removeItem("cert_selected_event_index");
-      }
-
-      async function loadImage(src) {
-        return new Promise((resolve, reject) => {
-          const img = new Image();
-          img.onload = () => resolve(img);
-          img.onerror = () => reject(new Error("이미지 로드 실패"));
-          img.src = src;
-        });
-      }
-
-      function roundedRect(ctx, x, y, w, h, r) {
-        const rr = Math.min(r, w / 2, h / 2);
-        ctx.beginPath();
-        ctx.moveTo(x + rr, y);
-        ctx.arcTo(x + w, y, x + w, y + h, rr);
-        ctx.arcTo(x + w, y + h, x, y + h, rr);
-        ctx.arcTo(x, y + h, x, y, rr);
-        ctx.arcTo(x, y, x + w, y, rr);
-        ctx.closePath();
-      }
-
-      function drawTiledBg(ctx, img, w, h, alpha = 0.12, tile = 260) {
-        ctx.save();
-        ctx.globalAlpha = alpha;
-        const tileH = (tile * img.height) / img.width;
-        for (let y = 0; y < h; y += tile) {
-          for (let x = 0; x < w; x += tile) {
-            ctx.drawImage(img, x, y, tile, tileH);
-          }
-        }
-        ctx.restore();
-      }
-
-      function certificateFilename(evName, nick) {
-        const safe = (s) =>
-          String(s || "")
-            .trim()
-            .replaceAll(/[\\/:*?"<>|]/g, "-")
-            .replaceAll(/\s+/g, "_");
-        return `${safe(evName) || "certificate"}_${safe(nick) || "runner"}.png`;
-      }
-
-      function themeColors(theme) {
-        if (theme === "neon") {
-          return {
-            bg: "#d8ff2f",
-            panel: "rgba(255,255,255,0.95)",
-            headerText: "#111",
-            accent: "#ff6a00",
-            sub: "rgba(17,17,17,0.72)",
-            strip: "#ff6a00",
-          };
-        }
-        if (theme === "split") {
-          return {
-            bg: "#ffffff",
-            panel: "rgba(255,255,255,0.96)",
-            headerText: "#111",
-            accent: "#ff6a00",
-            sub: "rgba(17,17,17,0.72)",
-            strip: "#111111",
-          };
-        }
-        return {
-          bg: "#ffffff",
-          panel: "rgba(255,255,255,0.96)",
-          headerText: "#111",
-          accent: "#ff6a00",
-          sub: "rgba(17,17,17,0.72)",
-          strip: "#ff6a00",
-        };
-      }
-
-      function centerText(ctx, text, xCenter, yBaseline) {
-        const w = ctx.measureText(text).width;
-        ctx.fillText(text, xCenter - w / 2, yBaseline);
-      }
-
-      function wrapLines(ctx, text, maxW, maxLines) {
-        const raw = String(text || "").trim();
-        if (!raw) return [];
-        const words = raw.split(/\s+/);
-        const lines = [];
-        let line = "";
-
-        for (const w of words) {
-          const test = line ? `${line} ${w}` : w;
-          if (ctx.measureText(test).width > maxW && line) {
-            lines.push(line);
-            line = w;
-            if (lines.length >= maxLines) return lines;
-          } else {
-            line = test;
-          }
-        }
-        if (line) lines.push(line);
-
-        if (lines.length === 1 && ctx.measureText(lines[0]).width > maxW) {
-          lines.length = 0;
-          let chunk = "";
-          for (const ch of raw) {
-            const t = chunk + ch;
-            if (ctx.measureText(t).width > maxW && chunk) {
-              lines.push(chunk);
-              chunk = ch;
-              if (lines.length >= maxLines) return lines;
-            } else chunk = t;
-          }
-          if (chunk && lines.length < maxLines) lines.push(chunk);
-        }
-
-        return lines.slice(0, maxLines);
-      }
-
-      async function generateCertificatePreview() {
-        setVisible(certError, false);
-        certDownloadBtn.disabled = true;
-
-        if (!EVENTS_CACHE.length) {
-          certError.textContent = "대회 정보(events.json)가 없어서 기록증을 만들 수 없어요.";
-          setVisible(certError, true);
-          return;
-        }
-
-        const idx = Number(certEventSel.value);
-        const ev = EVENTS_CACHE[idx];
-        if (!ev) {
-          certError.textContent = "대회 선택이 올바르지 않아요.";
-          setVisible(certError, true);
-          return;
-        }
-
-        const nick = String(certNick.value || "").trim();
-        const bib = String(certBib.value || "").trim();
-        const note = String(certNote.value || "").trim();
-        const tsec = parseTimeToSeconds(certTime.value);
-        const theme = String(certTheme.value || "clean");
-
-        if (!nick) {
-          certError.textContent = "닉네임을 입력해 주세요.";
-          setVisible(certError, true);
-          return;
-        }
-        if (!tsec || tsec <= 0) {
-          certError.textContent = "기록 시간을 올바르게 입력해 주세요. (MM:SS 또는 HH:MM:SS)";
-          setVisible(certError, true);
-          return;
-        }
-
-        const colors = themeColors(theme);
-
-        const eventDist = normalizeDistance(ev.distance);
-        const overrideCourse = String(certCourseSel.value || "").trim();
-        const courseLabel = overrideCourse || eventDist || "";
-
-        const W = certCanvas.width;
-        const H = certCanvas.height;
-        const ctx = certCanvas.getContext("2d");
-
-        ctx.clearRect(0, 0, W, H);
-        ctx.fillStyle = colors.bg;
-        ctx.fillRect(0, 0, W, H);
-
-        let bg = null;
-        try { bg = await loadImage("./bg.jpg?v=2900"); } catch {}
-        if (bg) drawTiledBg(ctx, bg, W, H, theme === "neon" ? 0.05 : 0.10, 260);
-
-        const pad = 70;
-        const cardX = pad;
-        const cardY = 110;
-        const cardW = W - pad * 2;
-        const cardH = H - 190;
-
-        ctx.save();
-        ctx.shadowColor = "rgba(0,0,0,0.14)";
-        ctx.shadowBlur = 28;
-        ctx.shadowOffsetY = 14;
-        ctx.fillStyle = colors.panel;
-        roundedRect(ctx, cardX, cardY, cardW, cardH, 28);
-        ctx.fill();
-        ctx.restore();
-
-        ctx.fillStyle = colors.strip;
-        roundedRect(ctx, cardX, cardY, cardW, 18, 10);
-        ctx.fill();
-
-        let logo = null;
-        try { logo = await loadImage("./logo.png?v=2900"); } catch {}
-
-        if (logo) {
-          const wmMaxW = cardW * 0.90;
-          const wmMaxH = cardH * 0.58;
-          const wmScale = Math.min(wmMaxW / logo.width, wmMaxH / logo.height);
-
-          const wmW = Math.floor(logo.width * wmScale);
-          const wmH = Math.floor(logo.height * wmScale);
-          const wmX = Math.floor(cardX + (cardW - wmW) / 2);
-          const wmY = Math.floor(cardY + (cardH - wmH) / 2 + 60);
-
-          ctx.save();
-          ctx.globalAlpha = theme === "neon" ? 0.04 : 0.06;
-          ctx.drawImage(logo, wmX, wmY, wmW, wmH);
-          ctx.restore();
-        }
-
-        if (logo) {
-          const topMaxW = cardW * 0.20;
-          const topMaxH = 110;
-          const r = Math.min(topMaxW / logo.width, topMaxH / logo.height);
-          const lw = Math.floor(logo.width * r);
-          const lh = Math.floor(logo.height * r);
-          const lx = Math.floor(cardX + (cardW - lw) / 2);
-          const ly = Math.floor(cardY + 32);
-
-          ctx.save();
-          ctx.globalAlpha = 0.95;
-          ctx.drawImage(logo, lx, ly, lw, lh);
-          ctx.restore();
-        }
-
-        const leftX = cardX + 70;
-        const rightX = cardX + cardW - 70;
-        let y = cardY + 175;
-
-        ctx.fillStyle = colors.headerText;
-        ctx.font = "900 60px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        ctx.fillText("CERTIFICATE OF RECORD", leftX, y);
-
-        y += 38;
-        ctx.fillStyle = colors.sub;
-        ctx.font = "700 22px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        ctx.fillText("노빠꾸 러닝 크루", leftX, y);
-
-        y += 64;
-        ctx.fillStyle = "#111";
-        ctx.font = "900 52px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        ctx.fillText(String(ev.name || "대회"), leftX, y);
-
-        y += 38;
-        const dist = eventDist || "";
-        const date = ev.date ? String(ev.date) : "";
-        const loc = ev.location ? String(ev.location) : "";
-        const metaText = [date, loc, dist].filter(Boolean).join(" · ");
-
-        ctx.fillStyle = colors.sub;
-        ctx.font = "800 22px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        ctx.fillText(metaText, leftX, y);
-
-        // divider
-        y += 45;
-        ctx.strokeStyle = "rgba(0,0,0,0.10)";
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.moveTo(leftX, y);
-        ctx.lineTo(rightX, y);
-        ctx.stroke();
-
-        // name
-        y += 95;
-        ctx.fillStyle = "#111";
-        ctx.font = "900 72px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        centerText(ctx, nick, cardX + cardW / 2, y);
-
-        // time (big)
-        const t = formatTime(tsec);
-        y += 115;
-
-        if (theme === "split") {
-          ctx.save();
-          ctx.fillStyle = "#111";
-          const barH = 190;
-          const barY = y - 120;
-          roundedRect(ctx, cardX + 40, barY, cardW - 80, barH, 26);
-          ctx.fill();
-          ctx.restore();
-
-          ctx.fillStyle = "#ffffff";
-          ctx.font = "900 150px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-          centerText(ctx, t, cardX + cardW / 2, y + 8);
-        } else {
-          ctx.fillStyle = "#111";
-          ctx.font = "900 155px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-          centerText(ctx, t, cardX + cardW / 2, y + 8);
-        }
-
-        // bib (tight)
-        y += 78;
-        if (bib) {
-          ctx.fillStyle = colors.accent;
-          ctx.font = "900 34px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-          centerText(ctx, `Bib No. ${bib}`, cardX + cardW / 2, y);
-        }
-
-        // BIG course badge under bib/time
-        if (courseLabel) {
-          const badgeY = y + (bib ? 40 : 18);
-          const badgeW = Math.min(520, cardW - 220);
-          const badgeH = 76;
-          const badgeX = Math.floor(cardX + (cardW - badgeW) / 2);
-
-          ctx.save();
-          ctx.fillStyle = "rgba(255,106,0,0.16)";
-          ctx.strokeStyle = "rgba(255,106,0,0.55)";
-          ctx.lineWidth = 3;
-
-          roundedRect(ctx, badgeX, badgeY - 54, badgeW, badgeH, 999);
-          ctx.fill();
-          ctx.stroke();
-
-          ctx.fillStyle = "#111";
-          ctx.font = "900 44px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-          ctx.textAlign = "center";
-          ctx.fillText(courseLabel, badgeX + badgeW / 2, badgeY - 4);
-          ctx.restore();
-
-          y = badgeY + 8;
-        }
-
-        // NOTE (always visible, wrapped)
-        if (음표) {
-          const noteTop = y + 18;
-          const maxW = cardW - 220;
-          const lineH = 30;
-          const maxLines = 3;
-
-          ctx.save();
-          ctx.fillStyle = "rgba(17,17,17,0.62)";
-          ctx.font = "800 22px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-          ctx.textAlign = "center";
-
-          const lines = wrapLines(ctx, note, maxW, maxLines);
-          lines.forEach((ln, i) => {
-            ctx.fillText(ln, cardX + cardW / 2, noteTop + i * lineH);
-          });
-
-          ctx.restore();
-
-          y = noteTop + lines.length * lineH;
-        }
-
-        // footer (pull up a bit to reduce empty)
-        const footerY = cardY + cardH - 100;
-        ctx.fillStyle = "rgba(17,17,17,0.78)";
-        ctx.font = "900 22px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        centerText(ctx, `${String(ev.name || "대회")} 완주를 축하드립니다.`, cardX + cardW / 2, footerY);
-
-        ctx.fillStyle = "rgba(17,17,17,0.60)";
-        ctx.font = "800 20px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        centerText(ctx, `${date || "—"} · NoBack RunningCrew`, cardX + cardW / 2, footerY + 34);
-
-        ctx.save();
-        ctx.globalAlpha = 0.95;
-        ctx.fillStyle = colors.accent;
-        roundedRect(ctx, cardX, cardY + cardH - 18, cardW, 18, 10);
-        ctx.fill();
-        ctx.restore();
-
-        certDownloadBtn.disabled = false;
-        certDownloadBtn.dataset.filename = certificateFilename(ev.name, nick);
-      }
-
-      if (certForm) {
-        certForm.addEventListener("submit", async (e) => {
-          e.preventDefault();
-          await generateCertificatePreview();
-        });
-      }
-
-      if (certDownloadBtn) {
-        certDownloadBtn.addEventListener("click", () => {
-          const a = document.createElement("a");
-          a.download = certDownloadBtn.dataset.filename || "certificate.png";
-          a.href = certCanvas.toDataURL("image/png");
-          a.click();
-        });
-      }
-
-      if (certResetBtn) {
-        certResetBtn.addEventListener("click", () => {
-          certForm.reset();
-          setVisible(certError, false);
-          certDownloadBtn.disabled = true;
-          const ctx = certCanvas.getContext("2d");
-          ctx.clearRect(0, 0, certCanvas.width, certCanvas.height);
-          ctx.fillStyle = "#ffffff";
-          ctx.fillRect(0, 0, certCanvas.width, certCanvas.height);
-        });
-      }
-
-      // ===== Cert (external) no JS needed =====
-
-      // ===== Boot =====
+      // =========================
+      // Boot
+      // =========================
       loadEvents();
       loadShoes();
     </script>
