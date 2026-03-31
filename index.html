@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>노빠꾸 러닝 크루🏃🏽🏃‍♀️🏃🏻‍♂️</title>
 
-    <link rel="icon" type="image/x-icon" href="./favicon.ico?v=2600" />
-    <link rel="shortcut icon" href="./favicon.ico?v=2600" />
-    <link rel="apple-touch-icon" href="./apple-touch-icon.png?v=2600" />
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="./favicon.ico?v=2800" />
+    <link rel="shortcut icon" href="./favicon.ico?v=2800" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png?v=2800" />
 
     <style>
       :root {
@@ -41,7 +42,7 @@
         content:"";
         position: fixed;
         inset: 0;
-        background-image: url("./bg.jpg?v=2600");
+        background-image: url("./bg.jpg?v=2800");
         background-repeat: repeat;
         background-size: 260px auto;
         background-position: 0 0;
@@ -221,6 +222,8 @@
         color: var(--text);
         outline: none;
       }
+
+      /* dropdown readability */
       select option { color: #111; background: #fff; }
 
       input:focus, select:focus {
@@ -403,7 +406,46 @@
       }
       canvas { display:block; width:100%; height:auto; background: #fff; }
 
-      .row-actions { display:flex; gap:10px; flex-wrap:wrap; margin-top: 10px; }
+      /* Shoes accordion (no images) */
+      .shoe-wrap { display: grid; gap: 12px; margin-top: 12px; }
+      .shoe-section {
+        border: 1px solid rgba(255,255,255,0.14);
+        border-radius: 14px;
+        background: rgba(255,255,255,0.05);
+        overflow: hidden;
+      }
+      .shoe-section summary {
+        cursor: pointer;
+        list-style: none;
+        padding: 12px 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .shoe-section summary::-webkit-details-marker { display: none; }
+      .shoe-section summary strong { color: rgba(255,255,255,0.92); font-size: 13px; }
+      .shoe-section .sec-meta { display:flex; gap:8px; align-items:center; }
+      .shoe-openhint { color: rgba(255,255,255,0.60); font-size: 12px; white-space: nowrap; }
+      .shoe-item { border-top: 1px dashed rgba(255,255,255,0.18); padding: 10px 12px; }
+      .shoe-item summary {
+        cursor: pointer;
+        list-style: none;
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        justify-content: space-between;
+        padding: 0;
+      }
+      .shoe-item summary::-webkit-details-marker { display: none; }
+      .shoe-text { display:grid; gap:3px; }
+      .shoe-brand { font-weight: 800; color: rgba(255,255,255,0.92); font-size: 13px; }
+      .shoe-model { color: rgba(255,255,255,0.86); font-size: 13px; }
+      .shoe-note { color: rgba(255,255,255,0.72); font-size: 12px; margin-top: 6px; }
+
+      /* Regular staff chips */
+      .staff { display: grid; gap: 10px; }
+      .staff .line { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; color: var(--muted); font-size: 13px; }
     </style>
   </head>
 
@@ -424,12 +466,16 @@
         </div>
       </header>
 
+      <!-- ✅ 탭 다시 복구 -->
       <nav class="tabs" aria-label="탭">
         <a class="tab" data-tab="home" href="#/">홈</a>
         <a class="tab" data-tab="pace" href="#/pace">페이스 계산기</a>
         <a class="tab" data-tab="predict" href="#/predict">예상 기록</a>
         <a class="tab" data-tab="events" href="#/events">대회</a>
         <a class="tab" data-tab="certificate" href="#/certificate">기록증</a>
+        <a class="tab" data-tab="cert" href="#/cert">인증서</a>
+        <a class="tab" data-tab="shoes" href="#/shoes">러닝화</a>
+        <a class="tab" data-tab="regular" href="#/regular">정기런</a>
       </nav>
 
       <!-- HOME -->
@@ -482,6 +528,8 @@
           <div class="interval-presets">
             <button class="presetbtn" type="button" data-work="400" data-rest="200">400 / 200</button>
             <button class="presetbtn" type="button" data-work="400" data-rest="0">400 / 0</button>
+            <button class="presetbtn" type="button" data-work="200" data-rest="200">200 / 200</button>
+            <button class="presetbtn" type="button" data-work="1000" data-rest="200">1000 / 200</button>
           </div>
 
           <div class="interval-error error" role="alert" style="display:none;"></div>
@@ -651,13 +699,26 @@
 
         <div class="card">
           <h2>기록증 출력</h2>
-          <p class="muted">대회 선택 + 닉네임 + 기록 입력 → PNG로 저장</p>
+          <p class="muted">대회 선택 + 코스(옵션) + 닉네임 + 기록 입력 → PNG 저장</p>
 
           <form id="cert-form" style="margin-top:12px;">
             <div class="field">
               <label for="cert-event">대회</label>
               <select id="cert-event" name="event"></select>
               <div class="help">대회 탭의 “기록증 출력” 버튼으로 오면 자동 선택돼요</div>
+            </div>
+
+            <!-- ✅ 같은 대회(21K) 안의 10K 같은 케이스: 여기서 코스 선택 -->
+            <div class="field">
+              <label for="cert-course">코스(옵션)</label>
+              <select id="cert-course" name="course">
+                <option value="">대회 기본값 사용</option>
+                <option value="5K">5K</option>
+                <option value="10K">10K</option>
+                <option value="21K">21K</option>
+                <option value="42K">42K</option>
+              </select>
+              <div class="help">예: 같은 대회인데 10K 참가면 여기서 10K 선택</div>
             </div>
 
             <div class="field">
@@ -672,7 +733,7 @@
 
             <div class="field">
               <label for="cert-time">기록</label>
-              <input id="cert-time" name="time" inputmode="text" placeholder="예: 1:58:32 또는 58:32" autocomplete="off" />
+              <input id="cert-time" name="time" inputmode="text" placeholder="예: 1:39:11 또는 59:11" autocomplete="off" />
               <div class="help">MM:SS 또는 HH:MM:SS</div>
             </div>
 
@@ -685,10 +746,9 @@
               <label for="cert-theme">테마</label>
               <select id="cert-theme" name="theme">
                 <option value="clean" selected>Clean (화이트)</option>
-                <option value="neon">Neon (네온/포스터)</option>
-                <option value="split">Split (블랙/화이트)</option>
+                <option value="neon">Neon (네온)</option>
+                <option value="split">Split (블랙바)</option>
               </select>
-              <div class="help">예시 느낌용 (배경/컬러만 변경)</div>
             </div>
 
             <div class="actions">
@@ -704,8 +764,91 @@
             <canvas id="cert-canvas" width="1200" height="1600" aria-label="기록증 미리보기"></canvas>
           </div>
 
-          <div class="help" style="margin-top:10px;">
-            로고: <b>logo.png</b>, 패턴: <b>bg.jpg</b> (둘 다 레포 루트)
+          <!-- ✅ 아래 안내문구 삭제(요청 반영) -->
+        </div>
+      </section>
+
+      <!-- CERT (external) -->
+      <section id="view-cert" class="view">
+        <div class="topbar">
+          <a class="back" href="#/">← 홈</a>
+          <div class="pill">인증서</div>
+        </div>
+
+        <div class="card">
+          <h2>인증서 생성기</h2>
+          <p class="muted">페이지 안에 띄우기(iframe). 안 뜨면 새 탭으로 열어주세요.</p>
+          <a class="cta" href="https://noback-lineup-generator.netlify.app/" target="_blank" rel="noopener noreferrer">
+            새 탭으로 열기 →
+          </a>
+
+          <div style="margin-top:12px; border:1px solid rgba(255,255,255,0.14); border-radius:14px; overflow:hidden; background:rgba(255,255,255,0.05);">
+            <iframe
+              title="인증서 생성기"
+              src="https://noback-lineup-generator.netlify.app/"
+              loading="lazy"
+              referrerpolicy="no-referrer"
+              allow="clipboard-read; clipboard-write"
+              style="width:100%; height:70vh; border:0; display:block; background:#fff;"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+
+      <!-- SHOES -->
+      <section id="view-shoes" class="view">
+        <div class="topbar">
+          <a class="back" href="#/">← 홈</a>
+          <div class="pill">러닝화</div>
+        </div>
+
+        <div class="card">
+          <h2>러닝화 추천</h2>
+          <p class="muted">개인 발/체중/주법에 따라 차이가 있어요. 참고용으로만 봐주세요 🙌</p>
+          <div id="shoes-wrap" class="shoe-wrap"></div>
+        </div>
+      </section>
+
+      <!-- REGULAR -->
+      <section id="view-regular" class="view">
+        <div class="topbar">
+          <a class="back" href="#/">← 홈</a>
+          <div class="pill">정기런</div>
+        </div>
+
+        <div class="card">
+          <h2>정기런</h2>
+          <p class="muted">매주 <b>수요일 오후 8시</b>, 노빠꾸 정기런 진행합니다 🏃‍♂️🏃‍♀️</p>
+
+          <h3 style="margin-top: 14px;">진행은 아래와 같습니다.</h3>
+          <ul style="margin: 8px 0 0; padding-left: 18px; color: var(--muted);">
+            <li>집합 및 가벼운 스트레칭 약 10분 (시작 전 닉네임으로 간단한 출석 체크 진행)</li>
+            <li>러닝 약 50분</li>
+            <li>마무리 스트레칭 후 해산</li>
+          </ul>
+
+          <p class="muted" style="margin-top: 12px;">
+            기록보다는 호흡을 맞추고, 대화 가능한 페이스로 함께 달리는 정기 모임입니다 :)<br />
+            처음 오시는 분들도 부담 없이 참여하시면 됩니다!
+          </p>
+
+          <h3 style="margin-top: 14px;">운영 방식</h3>
+          <ul style="margin: 8px 0 0; padding-left: 18px; color: var(--muted);">
+            <li>원활한 진행을 위해 정기런은 페이스 구간 사전취합 방식으로 운영합니다.</li>
+            <li>참석 예정이신 분들은 모임 채팅방에 안내된 희망 페이스 구간에 맞춰 닉네임을 남겨주시면 됩니다.</li>
+            <li>사전취합된 인원을 기준으로 비슷한 페이스끼리 그룹을 나누어 출발하며, 인원이 많을 경우에는 4명 내외로 운영할 예정입니다.</li>
+            <li>현장 혼선을 줄이고 체조 후 바로 출발하기 위한 방식이며, 그날 컨디션에 맞춰 편하게 선택해주시면 됩니다 🙌</li>
+          </ul>
+
+          <p class="muted" style="margin-top: 12px;">기타 인터벌 등 별도 훈련은 자유롭게 진행하시면 됩니다.</p>
+          <p class="muted">늦지 않게 와서 몸 먼저 풀고 바로 출발할 수 있게 준비 부탁드립니다 😊</p>
+
+          <div style="margin-top: 16px; border-top: 1px dashed rgba(255,255,255,0.18); padding-top: 14px;">
+            <h2>운영진 정보</h2>
+            <div class="staff">
+              <div class="line"><span>크루장</span><span class="chip">망구</span></div>
+              <div class="line"><span>운영진</span><span id="ops-chips"></span></div>
+            </div>
           </div>
         </div>
       </section>
@@ -725,7 +868,13 @@
               ? "events"
               : normalized.startsWith("#/certificate")
                 ? "certificate"
-                : "home";
+                : normalized.startsWith("#/cert")
+                  ? "cert"
+                  : normalized.startsWith("#/shoes")
+                    ? "shoes"
+                    : normalized.startsWith("#/regular")
+                      ? "regular"
+                      : "home";
 
         document.querySelectorAll(".view").forEach((v) => v.classList.remove("active"));
         const target = document.getElementById(`view-${view}`);
@@ -774,21 +923,30 @@
         return `${mm}:${String(ss).padStart(2, "0")}`;
       }
 
-      function formatPaceColon(secondsPerKm) {
-        const s = Math.round(secondsPerKm);
-        const mm = Math.floor(s / 60);
-        const ss = s % 60;
-        return `${mm}:${String(ss).padStart(2, "0")}`;
-      }
-
-      function formatPaceReadable(secondsPerKm) {
-        const s = Math.round(secondsPerKm);
-        const mm = Math.floor(s / 60);
-        const ss = s % 60;
-        return `${mm}'${String(ss).padStart(2, "0")}" /km`;
-      }
-
       function setVisible(el, visible) { el.style.display = visible ? "" : "none"; }
+
+      function sortKoreanDesc(arr) {
+        return arr
+          .slice()
+          .map((x) => String(x).trim())
+          .filter((x) => x.length > 0)
+          .sort((a, b) => b.localeCompare(a, "ko"));
+      }
+
+      // ===== 운영진: 가나다 내림차순 =====
+      (function renderStaff() {
+        const ops = ["달려", "룰루", "나올", "밍경", "김땅콩", "슈퍼짹", "뽀용", "망구"];
+        const sorted = sortKoreanDesc(ops);
+        const container = document.getElementById("ops-chips");
+        if (!container) return;
+        container.innerHTML = "";
+        sorted.forEach((name) => {
+          const chip = document.createElement("span");
+          chip.className = "chip";
+          chip.textContent = name;
+          container.appendChild(chip);
+        });
+      })();
 
       // ===== Interval =====
       function parsePaceToSecPerKm(paceStr) {
@@ -829,9 +987,9 @@
           const totalSec = workSec + restSec;
 
           const rows = [
-            { label: "워크", meters: wm, pace: formatPaceColon(wp), time: formatTime(workSec), seconds: Math.round(workSec) },
-            { label: "휴식", meters: rm, pace: formatPaceColon(rp), time: formatTime(restSec), seconds: Math.round(restSec) },
-            { label: "합계", meters: wm + rm, pace: "-", time: formatTime(totalSec), seconds: Math.round(totalSec) },
+            { label: "워크", meters: wm, pace: fmtPace(wp), time: fmtTime(workSec), seconds: Math.round(workSec) },
+            { label: "휴식", meters: rm, pace: fmtPace(rp), time: fmtTime(restSec), seconds: Math.round(restSec) },
+            { label: "합계", meters: wm + rm, pace: "-", time: fmtTime(totalSec), seconds: Math.round(totalSec) },
           ];
 
           rows.forEach((r) => {
@@ -846,8 +1004,8 @@
             tbody.appendChild(tr);
           });
 
-          pillWork.textContent = `워크 ${wm}m @ ${formatPaceColon(wp)}`;
-          pillRest.textContent = `휴식 ${rm}m @ ${formatPaceColon(rp)}`;
+          pillWork.textContent = `워크 ${wm}m @ ${fmtPace(wp)}`;
+          pillRest.textContent = `휴식 ${rm}m @ ${fmtPace(rp)}`;
           setVisible(resultEl, true);
         };
 
@@ -896,99 +1054,24 @@
           validateAndRender();
         });
       }
+
+      function fmtPace(secPerKm) {
+        const s = Math.round(secPerKm);
+        const mm = Math.floor(s / 60);
+        const ss = s % 60;
+        return `${mm}:${String(ss).padStart(2, "0")}`;
+      }
+
+      function fmtTime(totalSeconds) {
+        const s = Math.round(totalSeconds);
+        const hh = Math.floor(s / 3600);
+        const mm = Math.floor((s % 3600) / 60);
+        const ss = s % 60;
+        if (hh > 0) return `${hh}:${String(mm).padStart(2, "0")}:${String(ss).padStart(2, "0")}`;
+        return `${mm}:${String(ss).padStart(2, "0")}`;
+      }
+
       document.querySelectorAll(".interval").forEach(wireInterval);
-
-      // ===== Pace =====
-      const paceDistanceType = document.getElementById("pace-distance-type");
-      const paceCustomField = document.getElementById("pace-custom-distance-field");
-      const paceDistanceKmInput = document.getElementById("pace-distance-km");
-      const paceForm = document.getElementById("pace-form");
-      const paceError = document.getElementById("pace-error");
-      const paceResult = document.getElementById("pace-result");
-      const paceRows = document.getElementById("pace-rows");
-
-      function getPaceDistanceKm() {
-        const v = paceDistanceType.value;
-        if (v === "custom") {
-          const raw = String(paceDistanceKmInput.value || "").trim().replace(",", ".");
-          if (!raw || !/^\d+(\.\d+)?$/.test(raw)) return null;
-          const km = Number(raw);
-          if (!(km > 0 && km <= 200)) return null;
-          return km;
-        }
-        return Number(v);
-      }
-
-      if (paceDistanceType) {
-        paceDistanceType.addEventListener("change", () => {
-          setVisible(paceCustomField, paceDistanceType.value === "custom");
-        });
-      }
-
-      const paceResetBtn = document.getElementById("pace-reset");
-      if (paceResetBtn) {
-        paceResetBtn.addEventListener("click", () => {
-          paceForm.reset();
-          setVisible(paceCustomField, false);
-          setVisible(paceError, false);
-          setVisible(paceResult, false);
-          paceRows.innerHTML = "";
-        });
-      }
-
-      function appendPaceRow(label, value, isTail) {
-        const row = document.createElement("div");
-        row.className = "pace-row" + (isTail ? " tail" : "");
-        const left = document.createElement("div");
-        left.className = "k";
-        left.textContent = label;
-        const right = document.createElement("div");
-        right.className = "v";
-        right.textContent = value;
-        row.appendChild(left);
-        row.appendChild(right);
-        paceRows.appendChild(row);
-      }
-
-      if (paceForm) {
-        paceForm.addEventListener("submit", (e) => {
-          e.preventDefault();
-          setVisible(paceError, false);
-          setVisible(paceResult, false);
-          paceRows.innerHTML = "";
-
-          const distanceKm = getPaceDistanceKm();
-          const timeSec = parseTimeToSeconds(new FormData(paceForm).get("time"));
-
-          if (!distanceKm) {
-            paceError.textContent = "거리를 올바르게 입력해 주세요.";
-            setVisible(paceError, true);
-            return;
-          }
-          if (!timeSec || timeSec <= 0) {
-            paceError.textContent = "목표 시간을 올바르게 입력해 주세요. (MM:SS 또는 HH:MM:SS)";
-            setVisible(paceError, true);
-            return;
-          }
-
-          const paceSecPerKm = timeSec / distanceKm;
-          const fullKm = Math.floor(distanceKm);
-          const tail = distanceKm - fullKm;
-
-          for (let i = 1; i <= fullKm; i++) appendPaceRow(`${i}KM`, formatPaceColon(paceSecPerKm), false);
-          if (tail > 0.0001) {
-            const tailKm = Math.round(tail * 1000) / 1000;
-            appendPaceRow(`마지막 ${tailKm}km`, formatPaceColon(paceSecPerKm), true);
-          }
-
-          document.getElementById("pace-pill-distance").textContent = `거리: ${distanceKm} km`;
-          document.getElementById("pace-pill-time").textContent = `목표: ${formatTime(timeSec)}`;
-          document.getElementById("pace-pill-avgpace").textContent =
-            `평균: ${formatPaceReadable(paceSecPerKm)} (${formatPaceColon(paceSecPerKm)})`;
-
-          setVisible(paceResult, true);
-        });
-      }
 
       // ===== Predict =====
       (function wirePredict() {
@@ -1007,8 +1090,9 @@
         function recommendedGroupRange(paceSecPerKm) {
           const lo = Math.max(0, paceSecPerKm - 10);
           const hi = paceSecPerKm + 10;
-          return `${formatPaceColon(lo)}~${formatPaceColon(hi)}`;
+          return `${fmtPace(lo)}~${fmtPace(hi)}`;
         }
+
         function renderPredictCard(rowsEl, groupEl, distanceKm, t1Sec, highlightMode) {
           const order = [
             { key: "aggressive", name: "공격" },
@@ -1032,7 +1116,7 @@
 
             const right = document.createElement("div");
             right.className = "v";
-            right.textContent = `${formatTime(t2)} · ${formatPaceColon(pace)}`;
+            right.textContent = `${formatTime(t2)} · ${fmtPace(pace)}`;
 
             row.appendChild(left);
             row.appendChild(right);
@@ -1232,7 +1316,8 @@
         }
 
         const actions = document.createElement("div");
-        actions.className = "row-actions";
+        actions.className = "actions";
+        actions.style.marginTop = "10px";
 
         const certBtn = document.createElement("button");
         certBtn.type = "button";
@@ -1282,9 +1367,104 @@
         events.slice(0, 2).forEach((ev, idx) => preview.appendChild(createEventItem(ev, 6, idx)));
       }
 
+      // ===== Shoes =====
+      async function loadShoes() {
+        const mount = document.getElementById("shoes-wrap");
+        if (!mount) return;
+
+        const res = await safeFetchJson("data/shoes.json");
+        if (!res.ok || !res.data) {
+          renderEmpty(mount, "러닝화 추천을 불러오지 못했어요", res.ok ? "" : res.reason);
+          return;
+        }
+
+        const data = res.data || {};
+        const sections = [
+          { key: "daily", title: "데일리 조깅용" },
+          { key: "training", title: "훈련용" },
+          { key: "race", title: "레이스용" },
+        ];
+
+        const esc = (v) =>
+          String(v ?? "")
+            .replaceAll("&", "&amp;")
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll('"', "&quot;")
+            .replaceAll("'", "&#39;");
+
+        let html = "";
+        let total = 0;
+
+        for (const sec of sections) {
+          const arr = Array.isArray(data[sec.key]) ? data[sec.key] : [];
+          total += arr.length;
+
+          html += `
+            <details class="shoe-section">
+              <summary>
+                <strong>${esc(sec.title)}</strong>
+                <span class="sec-meta">
+                  <span class="pill">${arr.length}개</span>
+                  <span class="shoe-openhint">펼치기</span>
+                </span>
+              </summary>
+              <div>
+          `;
+
+          if (arr.length === 0) {
+            html += `<div class="shoe-item"><div class="empty">등록된 추천이 없어요.</div></div>`;
+          } else {
+            for (const s of arr) {
+              const brand = esc(s.brand || "");
+              const model = esc(s.model || "");
+              const note = esc(s.note || "");
+              const tag = esc(s.tag || sec.title);
+
+              html += `
+                <details class="shoe-item">
+                  <summary>
+                    <div class="shoe-text">
+                      <div class="shoe-brand">${brand}</div>
+                      <div class="shoe-model">${model}</div>
+                    </div>
+                    <div style="display:flex; flex-direction:column; gap:6px; align-items:flex-end;">
+                      <span class="chip">${tag}</span>
+                      <span class="shoe-openhint">상세</span>
+                    </div>
+                  </summary>
+                  <div class="shoe-note">${note || "메모 없음"}</div>
+                </details>
+              `;
+            }
+          }
+
+          html += `
+              </div>
+            </details>
+          `;
+        }
+
+        if (total === 0) {
+          renderEmpty(mount, "러닝화 추천 데이터가 비어있어요", "data/shoes.json에 daily/training/race 배열을 넣어주세요.");
+          return;
+        }
+
+        mount.innerHTML = html;
+
+        mount.querySelectorAll(".shoe-section").forEach((d) => {
+          const hint = d.querySelector(".shoe-openhint");
+          if (!hint) return;
+          const update = () => (hint.textContent = d.open ? "접기" : "펼치기");
+          update();
+          d.addEventListener("toggle", update);
+        });
+      }
+
       // ===== Certificate =====
       const certForm = document.getElementById("cert-form");
       const certEventSel = document.getElementById("cert-event");
+      const certCourseSel = document.getElementById("cert-course");
       const certNick = document.getElementById("cert-nick");
       const certTime = document.getElementById("cert-time");
       const certNote = document.getElementById("cert-note");
@@ -1374,35 +1554,29 @@
         if (theme === "neon") {
           return {
             bg: "#d8ff2f",
-            panel: "#ffffff",
+            panel: "rgba(255,255,255,0.95)",
             headerText: "#111",
-            time: "#111",
             accent: "#ff6a00",
             sub: "rgba(17,17,17,0.72)",
-            footer: "#111",
             strip: "#ff6a00",
           };
         }
         if (theme === "split") {
           return {
             bg: "#ffffff",
-            panel: "#ffffff",
+            panel: "rgba(255,255,255,0.96)",
             headerText: "#111",
-            time: "#ffffff",
             accent: "#ff6a00",
             sub: "rgba(17,17,17,0.72)",
-            footer: "#111",
             strip: "#111111",
           };
         }
         return {
           bg: "#ffffff",
-          panel: "#ffffff",
+          panel: "rgba(255,255,255,0.96)",
           headerText: "#111",
-          time: "#111",
           accent: "#ff6a00",
           sub: "rgba(17,17,17,0.72)",
-          footer: "#111",
           strip: "#ff6a00",
         };
       }
@@ -1412,6 +1586,7 @@
         ctx.fillText(text, xCenter - w / 2, yBaseline);
       }
 
+      // ✅ 여백 줄이고 기록 더 키운 기록증
       async function generateCertificatePreview() {
         setVisible(certError, false);
         certDownloadBtn.disabled = true;
@@ -1448,55 +1623,60 @@
         }
 
         const colors = themeColors(theme);
+
+        // ✅ 코스 override: 선택값 있으면 그걸로, 없으면 대회 기본 distance
+        const eventDist = normalizeDistance(ev.distance);
+        const overrideCourse = String(certCourseSel.value || "").trim();
+        const courseLabel = overrideCourse || eventDist || "";
+
         const W = certCanvas.width;
         const H = certCanvas.height;
         const ctx = certCanvas.getContext("2d");
 
-        // base background
         ctx.clearRect(0, 0, W, H);
         ctx.fillStyle = colors.bg;
         ctx.fillRect(0, 0, W, H);
 
-        // pattern bg on top (subtle)
+        // pattern bg (subtle)
         let bg = null;
-        try { bg = await loadImage("./bg.jpg?v=2600"); } catch {}
+        try { bg = await loadImage("./bg.jpg?v=2800"); } catch {}
         if (bg) drawTiledBg(ctx, bg, W, H, theme === "neon" ? 0.05 : 0.10, 260);
 
-        // main card / poster layout
+        // panel
         const pad = 70;
         const cardX = pad;
-        const cardY = 120;
+        const cardY = 110;
         const cardW = W - pad * 2;
-        const cardH = H - 200;
+        const cardH = H - 190;
 
-        // shadowed panel
         ctx.save();
         ctx.shadowColor = "rgba(0,0,0,0.14)";
         ctx.shadowBlur = 28;
         ctx.shadowOffsetY = 14;
-        ctx.fillStyle = theme === "neon" ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.96)";
+        ctx.fillStyle = colors.panel;
         roundedRect(ctx, cardX, cardY, cardW, cardH, 28);
         ctx.fill();
         ctx.restore();
 
-        // top strip (poster vibe)
+        // top strip
         ctx.fillStyle = colors.strip;
         roundedRect(ctx, cardX, cardY, cardW, 18, 10);
         ctx.fill();
 
         // load logo
         let logo = null;
-        try { logo = await loadImage("./logo.png?v=2600"); } catch {}
+        try { logo = await loadImage("./logo.png?v=2800"); } catch {}
 
-        // watermark big in center
+        // watermark big center
         if (logo) {
-          const wmMaxW = cardW * 0.92;
-          const wmMaxH = cardH * 0.60;
+          const wmMaxW = cardW * 0.90;
+          const wmMaxH = cardH * 0.58;
           const wmScale = Math.min(wmMaxW / logo.width, wmMaxH / logo.height);
+
           const wmW = Math.floor(logo.width * wmScale);
           const wmH = Math.floor(logo.height * wmScale);
           const wmX = Math.floor(cardX + (cardW - wmW) / 2);
-          const wmY = Math.floor(cardY + (cardH - wmH) / 2);
+          const wmY = Math.floor(cardY + (cardH - wmH) / 2 + 60);
 
           ctx.save();
           ctx.globalAlpha = theme === "neon" ? 0.04 : 0.06;
@@ -1504,15 +1684,15 @@
           ctx.restore();
         }
 
-        // small top logo (center)
+        // small logo top center
         if (logo) {
-          const topMaxW = cardW * 0.22;
-          const topMaxH = 120;
+          const topMaxW = cardW * 0.20;
+          const topMaxH = 110;
           const r = Math.min(topMaxW / logo.width, topMaxH / logo.height);
           const lw = Math.floor(logo.width * r);
           const lh = Math.floor(logo.height * r);
           const lx = Math.floor(cardX + (cardW - lw) / 2);
-          const ly = Math.floor(cardY + 36);
+          const ly = Math.floor(cardY + 32);
 
           ctx.save();
           ctx.globalAlpha = 0.95;
@@ -1520,28 +1700,29 @@
           ctx.restore();
         }
 
-        // Header texts (like examples)
         const leftX = cardX + 70;
         const rightX = cardX + cardW - 70;
-        let y = cardY + 190;
+        let y = cardY + 175;
 
+        // header
         ctx.fillStyle = colors.headerText;
-        ctx.font = "900 62px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        ctx.font = "900 60px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
         ctx.fillText("CERTIFICATE OF RECORD", leftX, y);
 
-        y += 40;
+        y += 38;
         ctx.fillStyle = colors.sub;
         ctx.font = "700 22px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
         ctx.fillText("노빠꾸 러닝 크루", leftX, y);
 
-        // Event name + meta
-        y += 68;
+        // event name
+        y += 64;
         ctx.fillStyle = "#111";
         ctx.font = "900 52px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
         ctx.fillText(String(ev.name || "대회"), leftX, y);
 
-        y += 40;
-        const dist = ev.distance ? String(ev.distance) : "";
+        // meta
+        y += 38;
+        const dist = eventDist || "";
         const date = ev.date ? String(ev.date) : "";
         const loc = ev.location ? String(ev.location) : "";
         const metaText = [date, loc, dist].filter(Boolean).join(" · ");
@@ -1550,26 +1731,30 @@
         ctx.font = "800 22px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
         ctx.fillText(metaText, leftX, y);
 
-        // right course chip
-        const courseLabel = dist || "COURSE";
-        ctx.save();
-        ctx.fillStyle = "rgba(255,106,0,0.12)";
-        ctx.strokeStyle = "rgba(255,106,0,0.45)";
-        ctx.lineWidth = 2;
-        const chipW = 190;
-        const chipH = 52;
-        const chipX = rightX - chipW;
-        const chipY = y - 34;
-        roundedRect(ctx, chipX, chipY, chipW, chipH, 999);
-        ctx.fill();
-        ctx.stroke();
-        ctx.fillStyle = "#111";
-        ctx.font = "900 24px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        centerText(ctx, courseLabel, chipX + chipW / 2, chipY + 34);
-        ctx.restore();
+        // course chip (uses override)
+        if (courseLabel) {
+          ctx.save();
+          ctx.fillStyle = "rgba(255,106,0,0.12)";
+          ctx.strokeStyle = "rgba(255,106,0,0.45)";
+          ctx.lineWidth = 2;
+
+          const chipW = 190;
+          const chipH = 52;
+          const chipX = rightX - chipW;
+          const chipY = y - 34;
+
+          roundedRect(ctx, chipX, chipY, chipW, chipH, 999);
+          ctx.fill();
+          ctx.stroke();
+
+          ctx.fillStyle = "#111";
+          ctx.font = "900 24px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+          centerText(ctx, courseLabel, chipX + chipW / 2, chipY + 34);
+          ctx.restore();
+        }
 
         // divider
-        y += 50;
+        y += 45;
         ctx.strokeStyle = "rgba(0,0,0,0.10)";
         ctx.lineWidth = 2;
         ctx.beginPath();
@@ -1577,67 +1762,63 @@
         ctx.lineTo(rightX, y);
         ctx.stroke();
 
-        // BIG name centered
-        y += 110;
+        // name (center)
+        y += 95;
         ctx.fillStyle = "#111";
         ctx.font = "900 72px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
         centerText(ctx, nick, cardX + cardW / 2, y);
 
-        // BIG TIME (poster-like)
-        const t = formatTime(tsec); // already HH:MM:SS for >=1h
-        y += 140;
+        // time (BIGGER, less whitespace)
+        const t = formatTime(tsec);
+        y += 115;
 
         if (theme === "split") {
-          // black bar behind time
           ctx.save();
           ctx.fillStyle = "#111";
-          const barH = 180;
+          const barH = 190;
           const barY = y - 120;
           roundedRect(ctx, cardX + 40, barY, cardW - 80, barH, 26);
           ctx.fill();
           ctx.restore();
 
           ctx.fillStyle = "#ffffff";
-          ctx.font = "900 120px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-          centerText(ctx, t, cardX + cardW / 2, y);
+          ctx.font = "900 150px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+          centerText(ctx, t, cardX + cardW / 2, y + 8);
         } else {
           ctx.fillStyle = "#111";
-          ctx.font = "900 130px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-          centerText(ctx, t, cardX + cardW / 2, y);
+          ctx.font = "900 155px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+          centerText(ctx, t, cardX + cardW / 2, y + 8);
         }
 
-        // Bib row
-        y += 85;
+        // Bib (closer to time)
+        y += 80;
         if (bib) {
           ctx.fillStyle = colors.accent;
           ctx.font = "900 34px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
           centerText(ctx, `Bib No. ${bib}`, cardX + cardW / 2, y);
         } else {
-          ctx.fillStyle = "rgba(17,17,17,0.45)";
-          ctx.font = "800 22px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-          centerText(ctx, "Bib No. (optional)", cardX + cardW / 2, y);
+          // no text if empty (reduce clutter)
         }
 
-        // note (small)
+        // note (optional, small)
         if (음표) {
-          y += 60;
+          y += 44;
           ctx.fillStyle = "rgba(17,17,17,0.60)";
           ctx.font = "800 22px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
           centerText(ctx, note, cardX + cardW / 2, y);
         }
 
-        // footer: congratulation + date line
-        const footerY = cardY + cardH - 110;
-
-        ctx.fillStyle = "rgba(17,17,17,0.75)";
+        // footer text (fills the bottom so it doesn't feel empty)
+        const footerY = cardY + cardH - 120;
+        ctx.fillStyle = "rgba(17,17,17,0.78)";
         ctx.font = "900 22px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
         centerText(ctx, `${String(ev.name || "대회")} 완주를 축하드립니다.`, cardX + cardW / 2, footerY);
 
         ctx.fillStyle = "rgba(17,17,17,0.60)";
         ctx.font = "800 20px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        centerText(ctx, `${date || "—"}  ·  NoBack RunningCrew`, cardX + cardW / 2, footerY + 34);
+        centerText(ctx, `${date || "—"} · NoBack RunningCrew`, cardX + cardW / 2, footerY + 34);
 
-        // bottom accent strip
+        // bottom strip
         ctx.save();
         ctx.globalAlpha = 0.95;
         ctx.fillStyle = colors.accent;
@@ -1677,43 +1858,9 @@
         });
       }
 
-      // ===== Events load =====
-      async function loadEvents() {
-        const res = await safeFetchJson("data/events.json");
-        const list = document.getElementById("events-list");
-        const preview = document.getElementById("home-events-preview");
-
-        if (!res.ok || !res.data || !Array.isArray(res.data.events) || res.data.events.length === 0) {
-          renderEmpty(list, "대회 정보가 비어있어요", res.ok ? "" : res.reason);
-          renderEmpty(preview, "대회 정보가 비어있어요", res.ok ? "" : res.reason);
-          EVENTS_CACHE = [];
-          hydrateCertificateEventSelectFromCache();
-          return;
-        }
-
-        const events = res.data.events
-          .slice()
-          .map((ev) => ({ ...ev, distance: normalizeDistance(ev.distance) }))
-          .sort((a, b) => String(a.date || "").localeCompare(String(b.date || "")));
-
-        EVENTS_CACHE = events;
-        hydrateCertificateEventSelectFromCache();
-
-        list.innerHTML = "";
-        events.forEach((ev, idx) => list.appendChild(createEventItem(ev, 12, idx)));
-
-        list.querySelectorAll("button[data-cert-event-index]").forEach((btn) => {
-          btn.addEventListener("click", () => {
-            sessionStorage.setItem("cert_selected_event_index", btn.dataset.certEventIndex || "0");
-            location.hash = "#/certificate";
-          });
-        });
-
-        preview.innerHTML = "";
-        events.slice(0, 2).forEach((ev, idx) => preview.appendChild(createEventItem(ev, 6, idx)));
-      }
-
+      // ===== Boot =====
       loadEvents();
+      loadShoes();
     </script>
   </body>
 </html>
