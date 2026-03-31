@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>노빠꾸 러닝 크루🏃🏽🏃‍♀️🏃🏻‍♂️</title>
 
-    <link rel="icon" href="./favicon.ico?v=1400" sizes="any" />
-    <link rel="shortcut icon" href="./favicon.ico?v=1400" />
+    <link rel="icon" href="./favicon.ico?v=1500" sizes="any" />
+    <link rel="shortcut icon" href="./favicon.ico?v=1500" />
 
     <style>
       :root {
@@ -41,7 +41,7 @@
         content:"";
         position: fixed;
         inset: 0;
-        background-image: url("./bg.jpg?v=1400");
+        background-image: url("./bg.jpg?v=1500");
         background-repeat: repeat;
         background-size: 260px auto;
         background-position: 0 0;
@@ -323,7 +323,6 @@
         font-size: 12px;
         white-space: nowrap;
       }
-      /* ✅ 10K 같은 서브 토큰도 주황색으로 */
       .chip.sub {
         border: 1px solid rgba(255, 106, 0, 0.40);
         background: rgba(255, 106, 0, 0.14);
@@ -345,7 +344,7 @@
       }
       .morebtn:hover { background: rgba(255, 106, 0, 0.20); border-color: rgba(255, 106, 0, 0.58); }
 
-      /* ===== Interval component ===== */
+      /* Interval component */
       .interval-presets { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
       .presetbtn {
         border: 1px solid rgba(255, 106, 0, 0.38);
@@ -423,35 +422,35 @@
           </a>
         </div>
 
-        <!-- ✅ HOME: Interval Calculator -->
+        <!-- HOME: Interval Calculator -->
         <div class="card interval" style="margin-top: 14px;">
           <div class="section-title">
             <h2>인터벌 계산기</h2>
           </div>
-          <p class="muted">워크/휴식 페이스를 넣으면 (예: 4:30, 6:30) 400m/200m 구간 시간을 표로 계산해요.</p>
+          <p class="muted">워크/휴식 페이스를 넣으면 400m/200m 구간 시간을 표로 계산해요.</p>
 
           <form class="interval-form" style="margin-top:12px;">
             <div class="field">
               <label>워크 페이스 (/km)</label>
-              <input class="work-pace" inputmode="text" placeholder="예: 4:30" value="4:30" />
+              <input class="work-pace" inputmode="text" placeholder="예: 4:30" />
               <div class="help">MM:SS</div>
             </div>
 
             <div class="field">
               <label>휴식 페이스 (/km)</label>
-              <input class="rest-pace" inputmode="text" placeholder="예: 6:30" value="6:30" />
+              <input class="rest-pace" inputmode="text" placeholder="예: 6:30" />
               <div class="help">MM:SS</div>
             </div>
 
             <div class="field">
               <label>워크 거리 (m)</label>
-              <input class="work-m" inputmode="numeric" placeholder="예: 400" value="400" />
+              <input class="work-m" inputmode="numeric" placeholder="예: 400" />
               <div class="help">미터</div>
             </div>
 
             <div class="field">
               <label>휴식 거리 (m)</label>
-              <input class="rest-m" inputmode="numeric" placeholder="예: 200 (0이면 정지휴식)" value="200" />
+              <input class="rest-m" inputmode="numeric" placeholder="예: 200 (0이면 정지휴식)" />
               <div class="help">미터 (0 가능)</div>
             </div>
 
@@ -489,7 +488,7 @@
               <tbody class="interval-tbody"></tbody>
             </table>
 
-            <div class="minihelp">팁: 휴식거리를 0으로 두면 정지휴식(시간=0) 계산됩니다.</div>
+            <div class="minihelp">프리셋을 누르면 값이 채워지고 바로 계산돼요.</div>
           </div>
         </div>
 
@@ -557,35 +556,35 @@
           </div>
         </div>
 
-        <!-- ✅ PACE: Interval Calculator (same component, works independently) -->
+        <!-- PACE: Interval Calculator -->
         <div class="card interval" style="margin-top: 14px;">
           <div class="section-title">
             <h2>인터벌 계산기</h2>
           </div>
-          <p class="muted">자주 쓰는 400/200, 400/0 프리셋 포함. 페이스만 바꿔가며 바로 계산하세요.</p>
+          <p class="muted">프리셋(400/200, 400/0 등) 누르면 바로 시간표가 생성돼요.</p>
 
           <form class="interval-form" style="margin-top:12px;">
             <div class="field">
               <label>워크 페이스 (/km)</label>
-              <input class="work-pace" inputmode="text" placeholder="예: 4:30" value="4:30" />
+              <input class="work-pace" inputmode="text" placeholder="예: 4:30" />
               <div class="help">MM:SS</div>
             </div>
 
             <div class="field">
               <label>휴식 페이스 (/km)</label>
-              <input class="rest-pace" inputmode="text" placeholder="예: 6:30" value="6:30" />
+              <input class="rest-pace" inputmode="text" placeholder="예: 6:30" />
               <div class="help">MM:SS</div>
             </div>
 
             <div class="field">
               <label>워크 거리 (m)</label>
-              <input class="work-m" inputmode="numeric" placeholder="예: 400" value="400" />
+              <input class="work-m" inputmode="numeric" placeholder="예: 400" />
               <div class="help">미터</div>
             </div>
 
             <div class="field">
               <label>휴식 거리 (m)</label>
-              <input class="rest-m" inputmode="numeric" placeholder="예: 200 (0이면 정지휴식)" value="200" />
+              <input class="rest-m" inputmode="numeric" placeholder="예: 200 (0이면 정지휴식)" />
               <div class="help">미터 (0 가능)</div>
             </div>
 
@@ -874,14 +873,7 @@
         const pillWork = el.querySelector(".interval-pill-work");
         const pillRest = el.querySelector(".interval-pill-rest");
         const tbody = el.querySelector(".interval-tbody");
-
         const presets = el.querySelectorAll(".presetbtn");
-        presets.forEach((b) => {
-          b.addEventListener("click", () => {
-            workM.value = b.dataset.work;
-            restM.value = b.dataset.rest;
-          });
-        });
 
         const render = (wp, rp, wm, rm) => {
           tbody.innerHTML = "";
@@ -914,17 +906,7 @@
           setVisible(resultEl, true);
         };
 
-        resetBtn.addEventListener("click", () => {
-          workPace.value = "4:30";
-          restPace.value = "6:30";
-          workM.value = "400";
-          restM.value = "200";
-          setVisible(errorEl, false);
-          setVisible(resultEl, false);
-        });
-
-        form.addEventListener("submit", (e) => {
-          e.preventDefault();
+        const validateAndRender = () => {
           setVisible(errorEl, false);
           setVisible(resultEl, false);
 
@@ -945,6 +927,28 @@
           }
 
           render(wp, rp, wm, rm);
+        };
+
+        presets.forEach((b) => {
+          b.addEventListener("click", () => {
+            workM.value = b.dataset.work;
+            restM.value = b.dataset.rest;
+            validateAndRender(); // ✅ 프리셋 누르면 즉시 계산
+          });
+        });
+
+        resetBtn.addEventListener("click", () => {
+          workPace.value = "";
+          restPace.value = "";
+          workM.value = "";
+          restM.value = "";
+          setVisible(errorEl, false);
+          setVisible(resultEl, false);
+        });
+
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          validateAndRender();
         });
       }
 
