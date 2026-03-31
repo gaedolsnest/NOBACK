@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>노빠꾸 러닝 크루🏃🏽🏃‍♀️🏃🏻‍♂️</title>
 
-    <link rel="icon" href="./favicon.ico?v=1900" sizes="any" />
-    <link rel="shortcut icon" href="./favicon.ico?v=1900" />
+    <link rel="icon" href="./favicon.ico?v=2000" sizes="any" />
+    <link rel="shortcut icon" href="./favicon.ico?v=2000" />
 
     <style>
       :root {
@@ -41,7 +41,7 @@
         content:"";
         position: fixed;
         inset: 0;
-        background-image: url("./bg.jpg?v=1900");
+        background-image: url("./bg.jpg?v=2000");
         background-repeat: repeat;
         background-size: 260px auto;
         background-position: 0 0;
@@ -231,7 +231,7 @@
       .error { margin-top: 10px; color: #ffd0c2; font-size: 13px; }
       .result { margin-top: 14px; border-top: 1px dashed rgba(255,255,255,0.18); padding-top: 14px; display: grid; gap: 12px; }
 
-      /* ===== Pace rows ===== */
+      /* Pace rows */
       .pace-rows { display: grid; gap: 8px; }
       .pace-row {
         display: flex;
@@ -247,10 +247,9 @@
       .pace-row .v { font-size: 13px; white-space: nowrap; color: var(--text); }
       .pace-row.tail { opacity: 0.85; border-style: dashed; }
 
-      /* ===== Predict cards ===== */
+      /* Predict cards */
       .cards3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
       @media (max-width: 900px) { .cards3 { grid-template-columns: 1fr; } }
-
       .mini {
         padding: 14px;
         border-radius: 14px;
@@ -259,7 +258,6 @@
       }
       .mini .title { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 10px; }
       .mini .title strong { font-size: 14px; color: var(--text); }
-
       .mini .km {
         font-size: 12px;
         color: rgba(255, 255, 255, 0.82);
@@ -269,7 +267,6 @@
         background: rgba(255, 106, 0, 0.12);
         white-space: nowrap;
       }
-
       .rows { display: grid; gap: 8px; }
       .row {
         display: flex;
@@ -292,7 +289,7 @@
       .section-title { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin: 0 0 10px; }
       .section-title h2 { margin: 0; font-size: 16px; color: var(--text); }
 
-      /* ===== Events list ===== */
+      /* Events list */
       .list { display: grid; gap: 12px; margin-top: 12px; }
       .item {
         border: 1px solid rgba(255,255,255,0.14);
@@ -346,7 +343,7 @@
       }
       .morebtn:hover { background: rgba(255, 106, 0, 0.20); border-color: rgba(255, 106, 0, 0.58); }
 
-      /* ===== Interval component ===== */
+      /* Interval component */
       .interval-presets { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
       .presetbtn {
         border: 1px solid rgba(255, 106, 0, 0.38);
@@ -380,7 +377,7 @@
       .mono { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
       .interval .minihelp { margin-top: 6px; color: var(--muted); font-size: 12px; }
 
-      /* ===== Shoes ===== */
+      /* Shoes */
       .shoe-title{
         display:flex;
         align-items:center;
@@ -457,7 +454,6 @@
           </a>
         </div>
 
-        <!-- Interval -->
         <div class="card interval" style="margin-top: 14px;">
           <div class="section-title"><h2>인터벌 계산기</h2></div>
           <p class="muted">초기화=빈칸 / 프리셋=즉시 계산</p>
@@ -515,7 +511,6 @@
           </div>
         </div>
 
-        <!-- Upcoming events -->
         <div class="card" style="margin-top: 14px;">
           <div class="section-title">
             <h2>다가오는 대회</h2>
@@ -778,6 +773,7 @@
       window.addEventListener("hashchange", route);
       route();
 
+      // Time helpers
       function parseTimeToSeconds(raw) {
         const s = String(raw || "").trim();
         if (!s) return null;
@@ -821,6 +817,7 @@
       }
       function setVisible(el, visible) { el.style.display = visible ? "" : "none"; }
 
+      // Staff
       function sortKoreanDesc(arr) {
         return arr
           .slice()
@@ -828,7 +825,6 @@
           .filter((x) => x.length > 0)
           .sort((a, b) => b.localeCompare(a, "ko"));
       }
-
       (function renderStaff() {
         const ops = ["달려", "룰루", "나올", "밍경", "김땅콩", "슈퍼짹", "뽀용", "망구"];
         const sorted = sortKoreanDesc(ops);
@@ -843,7 +839,7 @@
         });
       })();
 
-      // Interval (multi instance)
+      // Interval
       function parsePaceToSecPerKm(paceStr) {
         const sec = parseTimeToSeconds(paceStr);
         if (sec === null) return null;
@@ -1040,7 +1036,7 @@
         });
       }
 
-      // Predict (5K -> 10K/Half/Full)
+      // Predict
       (function wirePredict() {
         const predictForm = document.getElementById("predict-form");
         const predictError = document.getElementById("predict-error");
@@ -1132,7 +1128,7 @@
         });
       })();
 
-      // JSON fetch + Events + Shoes
+      // JSON fetch helpers
       async function safeFetchJson(path) {
         try {
           const url = new URL(path, window.location.href);
@@ -1151,16 +1147,16 @@
         box.innerHTML = `<b>${title}</b>${reason ? `<div style="margin-top:8px;">${reason}</div>` : ""}`;
         targetEl.appendChild(box);
       }
+
+      // Events
       function normalizeDistance(raw) {
         const v = String(raw || "").trim();
         if (!v) return "";
         const upper = v.toUpperCase();
-
         if (upper === "HALF" || upper === "HM" || upper === "21.1K" || upper === "21.0975K") return "21K";
         if (upper === "FULL" || upper === "FM" || upper === "MARATHON" || upper === "42.2K" || upper === "42.195K") return "42K";
         if (upper === "10KM" || upper === "10K") return "10K";
         if (upper === "5KM" || upper === "5K") return "5K";
-
         const m = upper.replace(/\s+/g, "").match(/^(\d+(\.\d+)?)(K|KM)$/);
         if (m) {
           const n = Number(m[1]);
@@ -1188,7 +1184,6 @@
           })
           .filter((p) => p.name.length > 0);
       }
-
       function createEventItem(ev, participantPreviewCount = 12) {
         const el = document.createElement("div");
         el.className = "item";
@@ -1293,7 +1288,6 @@
 
         return el;
       }
-
       async function loadEvents() {
         const res = await safeFetchJson("data/events.json");
         const list = document.getElementById("events-list");
@@ -1317,6 +1311,7 @@
         events.slice(0, 2).forEach((ev) => preview.appendChild(createEventItem(ev, 6)));
       }
 
+      // ✅ Shoes (innerHTML 통째 렌더)
       async function loadShoes() {
         const mount = document.getElementById("shoes-wrap");
         if (!mount) return;
@@ -1334,63 +1329,56 @@
           { key: "race", title: "레이스용" },
         ];
 
-        mount.innerHTML = "";
+        const esc = (v) =>
+          String(v ?? "")
+            .replaceAll("&", "&amp;")
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll('"', "&quot;")
+            .replaceAll("'", "&#39;");
+
+        let html = "";
+        let totalRows = 0;
 
         for (const sec of sections) {
           const arr = Array.isArray(data[sec.key]) ? data[sec.key] : [];
 
-          const head = document.createElement("div");
-          head.className = "shoe-title";
-          head.innerHTML = `<strong>${sec.title}</strong><span class="pill">${arr.length}개</span>`;
-          mount.appendChild(head);
+          html += `
+            <div class="shoe-title">
+              <strong>${esc(sec.title)}</strong>
+              <span class="pill">${arr.length}개</span>
+            </div>
+          `;
 
           if (arr.length === 0) {
-            const empty = document.createElement("div");
-            empty.className = "empty";
-            empty.textContent = "등록된 추천이 없어요.";
-            mount.appendChild(empty);
+            html += `<div class="empty">등록된 추천이 없어요.</div>`;
             continue;
           }
 
-          arr.forEach((s) => {
-            const brand = String(s.brand || "").trim();
-            const model = String(s.model || "").trim();
-            const note = String(s.note || "").trim();
-            const tagText = String(s.tag || sec.title).trim() || sec.title;
+          for (const s of arr) {
+            totalRows += 1;
+            const brand = esc(s.brand || "");
+            const model = esc(s.model || "");
+            const note = esc(s.note || "");
+            const tag = esc(s.tag || sec.title);
 
-            const row = document.createElement("div");
-            row.className = "shoe-row";
+            html += `
+              <div class="shoe-row">
+                <div class="left">
+                  <div class="brand">${brand}</div>
+                  <div class="model">${model}</div>
+                  ${note ? `<div class="note">${note}</div>` : ``}
+                </div>
+                <div><span class="chip">${tag}</span></div>
+              </div>
+            `;
+          }
+        }
 
-            const left = document.createElement("div");
-            left.className = "left";
+        mount.innerHTML = html;
 
-            const brandEl = document.createElement("div");
-            brandEl.className = "brand";
-            brandEl.textContent = brand;
-
-            const modelEl = document.createElement("div");
-            modelEl.className = "model";
-            modelEl.textContent = model;
-
-            const noteEl = document.createElement("div");
-            noteEl.className = "note";
-            noteEl.textContent = note;
-
-            left.appendChild(brandEl);
-            left.appendChild(modelEl);
-            if (음표) left.appendChild(noteEl);
-
-            const right = document.createElement("div");
-            const tag = document.createElement("span");
-            tag.className = "chip";
-            tag.textContent = tagText;
-            right.appendChild(tag);
-
-            row.appendChild(left);
-            row.appendChild(right);
-
-            mount.appendChild(row);
-          });
+        if (totalRows === 0) {
+          renderEmpty(mount, "러닝화 추천 데이터가 비어있어요", "data/shoes.json의 daily/training/race 배열을 확인해 주세요.");
         }
       }
 
