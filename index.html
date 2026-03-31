@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>노빠꾸 러닝 크루🏃🏽🏃‍♀️🏃🏻‍♂️</title>
 
-    <link rel="icon" href="./favicon.ico?v=2200" sizes="any" />
-    <link rel="shortcut icon" href="./favicon.ico?v=2200" />
+    <link rel="icon" href="./favicon.ico?v=2300" sizes="any" />
+    <link rel="shortcut icon" href="./favicon.ico?v=2300" />
 
     <style>
       :root {
@@ -39,7 +39,7 @@
         content:"";
         position: fixed;
         inset: 0;
-        background-image: url("./bg.jpg?v=2200");
+        background-image: url("./bg.jpg?v=2300");
         background-repeat: repeat;
         background-size: 260px auto;
         background-position: 0 0;
@@ -210,11 +210,8 @@
         outline: none;
       }
 
-      /* ✅ 드롭다운 펼쳤을 때 옵션이 하얀 글씨로 안 보이는 문제 해결 */
-      select option {
-        color: #111;
-        background: #fff;
-      }
+      /* 드롭다운 옵션 가독성 */
+      select option { color: #111; background: #fff; }
 
       input:focus, select:focus {
         border-color: rgba(255, 106, 0, 0.60);
@@ -383,7 +380,7 @@
       .table tr:last-child td { border-bottom: none; }
       .mono { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
 
-      /* ✅ Shoes accordion (no images) */
+      /* Shoes accordion (no images) */
       .shoe-wrap { display: grid; gap: 12px; margin-top: 12px; }
 
       .shoe-section {
@@ -425,6 +422,18 @@
       .shoe-brand { font-weight: 800; color: rgba(255,255,255,0.92); font-size: 13px; }
       .shoe-model { color: rgba(255,255,255,0.86); font-size: 13px; }
       .shoe-note { color: rgba(255,255,255,0.72); font-size: 12px; margin-top: 6px; }
+
+      /* Certificate */
+      .canvas-wrap {
+        margin-top: 12px;
+        border: 1px solid rgba(255,255,255,0.14);
+        border-radius: 14px;
+        overflow: hidden;
+        background: rgba(255,255,255,0.05);
+      }
+      canvas { display:block; width:100%; height:auto; background: #fff; }
+      .small { font-size: 12px; padding: 8px 10px; }
+      .row-actions { display:flex; gap:10px; flex-wrap:wrap; margin-top: 10px; }
     </style>
   </head>
 
@@ -450,6 +459,7 @@
         <a class="tab" data-tab="pace" href="#/pace">페이스 계산기</a>
         <a class="tab" data-tab="predict" href="#/predict">예상 기록</a>
         <a class="tab" data-tab="events" href="#/events">대회</a>
+        <a class="tab" data-tab="certificate" href="#/certificate">기록증</a>
         <a class="tab" data-tab="cert" href="#/cert">인증서</a>
         <a class="tab" data-tab="shoes" href="#/shoes">러닝화</a>
         <a class="tab" data-tab="regular" href="#/regular">정기런</a>
@@ -669,7 +679,61 @@
         </div>
       </section>
 
-      <!-- CERT -->
+      <!-- CERTIFICATE GENERATOR -->
+      <section id="view-certificate" class="view">
+        <div class="topbar">
+          <a class="back" href="#/">← 홈</a>
+          <div class="pill">기록증</div>
+        </div>
+
+        <div class="card">
+          <h2>기록증 출력</h2>
+          <p class="muted">대회 선택 + 닉네임 + 기록 입력 → PNG로 저장</p>
+
+          <form id="cert-form" style="margin-top:12px;">
+            <div class="field">
+              <label for="cert-event">대회</label>
+              <select id="cert-event" name="event"></select>
+              <div class="help">대회 탭의 “기록증 출력” 버튼으로 오면 자동 선택돼요</div>
+            </div>
+
+            <div class="field">
+              <label for="cert-nick">닉네임</label>
+              <input id="cert-nick" name="nick" inputmode="text" placeholder="예: 나올" autocomplete="off" />
+              <div class="help">표기용 (저장은 안 됨)</div>
+            </div>
+
+            <div class="field">
+              <label for="cert-time">기록</label>
+              <input id="cert-time" name="time" inputmode="text" placeholder="예: 1:58:32 또는 58:32" autocomplete="off" />
+              <div class="help">MM:SS 또는 HH:MM:SS</div>
+            </div>
+
+            <div class="field">
+              <label for="cert-note">메모(선택)</label>
+              <input id="cert-note" name="note" inputmode="text" placeholder="예: PB / 첫 하프 완주" autocomplete="off" />
+            </div>
+
+            <div class="actions">
+              <button type="submit">미리보기 생성</button>
+              <button type="button" id="cert-download" disabled>PNG 다운로드</button>
+              <button type="button" id="cert-reset">초기화</button>
+            </div>
+          </form>
+
+          <div id="cert-error" class="error" role="alert" style="display:none;"></div>
+
+          <div class="canvas-wrap" style="margin-top:12px;">
+            <canvas id="cert-canvas" width="1200" height="1600" aria-label="기록증 미리보기"></canvas>
+          </div>
+
+          <div class="help" style="margin-top:10px;">
+            배경은 현재 사이트와 동일한 패턴(bg.jpg)을 타일로 깔아줍니다.
+          </div>
+        </div>
+      </section>
+
+      <!-- CERT (external) -->
       <section id="view-cert" class="view">
         <div class="topbar">
           <a class="back" href="#/">← 홈</a>
@@ -760,7 +824,7 @@
     </div>
 
     <script>
-      // Router
+      // ===== Router =====
       function route() {
         const raw = (location.hash || "#/").toLowerCase();
         const normalized = raw.startsWith("#/") ? raw : raw.startsWith("#") ? "#/" + raw.slice(1) : "#/";
@@ -771,13 +835,15 @@
             ? "predict"
             : normalized.startsWith("#/events")
               ? "events"
-              : normalized.startsWith("#/cert")
-                ? "cert"
-                : normalized.startsWith("#/shoes")
-                  ? "shoes"
-                  : normalized.startsWith("#/regular")
-                    ? "regular"
-                    : "home";
+              : normalized.startsWith("#/certificate")
+                ? "certificate"
+                : normalized.startsWith("#/cert")
+                  ? "cert"
+                  : normalized.startsWith("#/shoes")
+                    ? "shoes"
+                    : normalized.startsWith("#/regular")
+                      ? "regular"
+                      : "home";
 
         document.querySelectorAll(".view").forEach((v) => v.classList.remove("active"));
         const target = document.getElementById(`view-${view}`);
@@ -788,11 +854,16 @@
         if (activeTab) activeTab.classList.add("active");
 
         if (normalized !== raw) history.replaceState(null, "", normalized);
+
+        // 뷰 들어올 때 필요한 초기화
+        if (view === "certificate") {
+          hydrateCertificateEventSelectFromCache();
+        }
       }
       window.addEventListener("hashchange", route);
       route();
 
-      // helpers
+      // ===== Helpers =====
       function parseTimeToSeconds(raw) {
         const s = String(raw || "").trim();
         if (!s) return null;
@@ -844,7 +915,6 @@
           .sort((a, b) => b.localeCompare(a, "ko"));
       }
 
-      // staff
       (function renderStaff() {
         const ops = ["달려", "룰루", "나올", "밍경", "김땅콩", "슈퍼짹", "뽀용", "망구"];
         const sorted = sortKoreanDesc(ops);
@@ -859,7 +929,7 @@
         });
       })();
 
-      // Interval
+      // ===== Interval =====
       function parsePaceToSecPerKm(paceStr) {
         const sec = parseTimeToSeconds(paceStr);
         if (sec === null) return null;
@@ -965,7 +1035,7 @@
       }
       document.querySelectorAll(".interval").forEach(wireInterval);
 
-      // Pace calculator
+      // ===== Pace calculator =====
       const paceDistanceType = document.getElementById("pace-distance-type");
       const paceCustomField = document.getElementById("pace-custom-distance-field");
       const paceDistanceKmInput = document.getElementById("pace-distance-km");
@@ -1057,7 +1127,7 @@
         });
       }
 
-      // Predict
+      // ===== Predict =====
       (function wirePredict() {
         const predictForm = document.getElementById("predict-form");
         const predictError = document.getElementById("predict-error");
@@ -1147,7 +1217,7 @@
         });
       })();
 
-      // JSON
+      // ===== JSON helpers =====
       async function safeFetchJson(path) {
         try {
           const url = new URL(path, window.location.href);
@@ -1167,7 +1237,7 @@
         targetEl.appendChild(box);
       }
 
-      // Events
+      // ===== Events =====
       function normalizeDistance(raw) {
         const v = String(raw || "").trim();
         if (!v) return "";
@@ -1205,7 +1275,8 @@
           })
           .filter((p) => p.name.length > 0);
       }
-      function createEventItem(ev, participantPreviewCount = 12) {
+
+      function createEventItem(ev, participantPreviewCount = 12, eventIndex = 0) {
         const el = document.createElement("div");
         el.className = "item";
 
@@ -1297,6 +1368,17 @@
           el.appendChild(wrap);
         }
 
+        // ✅ record certificate button (store selected event index)
+        const actions = document.createElement("div");
+        actions.className = "row-actions";
+
+        const certBtn = document.createElement("button");
+        certBtn.type = "button";
+        certBtn.className = "small";
+        certBtn.textContent = "기록증 출력 →";
+        certBtn.dataset.certEventIndex = String(eventIndex);
+        actions.appendChild(certBtn);
+
         if (ev.link) {
           const a = document.createElement("a");
           a.className = "cta";
@@ -1304,11 +1386,15 @@
           a.target = "_blank";
           a.rel = "noopener noreferrer";
           a.textContent = "대회 링크 →";
-          el.appendChild(a);
+          actions.appendChild(a);
         }
 
+        el.appendChild(actions);
         return el;
       }
+
+      let EVENTS_CACHE = [];
+
       async function loadEvents() {
         const res = await safeFetchJson("data/events.json");
         const list = document.getElementById("events-list");
@@ -1317,6 +1403,8 @@
         if (!res.ok || !res.data || !Array.isArray(res.data.events) || res.data.events.length === 0) {
           renderEmpty(list, "대회 정보가 비어있어요", res.ok ? "" : res.reason);
           renderEmpty(preview, "대회 정보가 비어있어요", res.ok ? "" : res.reason);
+          EVENTS_CACHE = [];
+          hydrateCertificateEventSelectFromCache();
           return;
         }
 
@@ -1325,14 +1413,25 @@
           .map((ev) => ({ ...ev, distance: normalizeDistance(ev.distance) }))
           .sort((a, b) => String(a.date || "").localeCompare(String(b.date || "")));
 
+        EVENTS_CACHE = events;
+        hydrateCertificateEventSelectFromCache();
+
         list.innerHTML = "";
-        events.forEach((ev) => list.appendChild(createEventItem(ev, 12)));
+        events.forEach((ev, idx) => list.appendChild(createEventItem(ev, 12, idx)));
+
+        // bind per-event cert button
+        list.querySelectorAll("button[data-cert-event-index]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            sessionStorage.setItem("cert_selected_event_index", btn.dataset.certEventIndex || "0");
+            location.hash = "#/certificate";
+          });
+        });
 
         preview.innerHTML = "";
-        events.slice(0, 2).forEach((ev) => preview.appendChild(createEventItem(ev, 6)));
+        events.slice(0, 2).forEach((ev, idx) => preview.appendChild(createEventItem(ev, 6, idx)));
       }
 
-      // ✅ Shoes accordion (no images)
+      // ===== Shoes (accordion) =====
       async function loadShoes() {
         const mount = document.getElementById("shoes-wrap");
         if (!mount) return;
@@ -1417,7 +1516,6 @@
 
         mount.innerHTML = html;
 
-        // hint 텍스트 토글
         mount.querySelectorAll(".shoe-section").forEach((d) => {
           const hint = d.querySelector(".shoe-openhint");
           if (!hint) return;
@@ -1427,6 +1525,309 @@
         });
       }
 
+      // ===== Certificate generator =====
+      const certForm = document.getElementById("cert-form");
+      const certEventSel = document.getElementById("cert-event");
+      const certNick = document.getElementById("cert-nick");
+      const certTime = document.getElementById("cert-time");
+      const certNote = document.getElementById("cert-note");
+      const certError = document.getElementById("cert-error");
+      const certCanvas = document.getElementById("cert-canvas");
+      const certDownloadBtn = document.getElementById("cert-download");
+      const certResetBtn = document.getElementById("cert-reset");
+
+      function hydrateCertificateEventSelectFromCache() {
+        if (!certEventSel) return;
+
+        const current = certEventSel.value;
+        certEventSel.innerHTML = "";
+
+        if (!EVENTS_CACHE.length) {
+          const opt = document.createElement("option");
+          opt.value = "";
+          opt.textContent = "대회 정보 없음";
+          certEventSel.appendChild(opt);
+          return;
+        }
+
+        EVENTS_CACHE.forEach((ev, idx) => {
+          const opt = document.createElement("option");
+          opt.value = String(idx);
+          const dist = ev.distance ? ` · ${ev.distance}` : "";
+          const date = ev.date ? ` · ${ev.date}` : "";
+          opt.textContent = `${ev.name || "대회"}${date}${dist}`;
+          certEventSel.appendChild(opt);
+        });
+
+        const savedIdx = sessionStorage.getItem("cert_selected_event_index");
+        if (savedIdx !== null && savedIdx !== "" && !Number.isNaN(Number(savedIdx))) {
+          certEventSel.value = savedIdx;
+        } else if (current) {
+          certEventSel.value = current;
+        } else {
+          certEventSel.value = "0";
+        }
+
+        // one-shot: keep selected but avoid forcing later
+        sessionStorage.removeItem("cert_selected_event_index");
+      }
+
+      function drawTiledBg(ctx, img, w, h, alpha = 0.14, tile = 260) {
+        ctx.save();
+        ctx.globalAlpha = alpha;
+        for (let y = 0; y < h; y += tile) {
+          for (let x = 0; x < w; x += tile) {
+            ctx.drawImage(img, x, y, tile, (tile * img.height) / img.width);
+          }
+        }
+        ctx.restore();
+      }
+
+      function roundedRect(ctx, x, y, w, h, r) {
+        const rr = Math.min(r, w / 2, h / 2);
+        ctx.beginPath();
+        ctx.moveTo(x + rr, y);
+        ctx.arcTo(x + w, y, x + w, y + h, rr);
+        ctx.arcTo(x + w, y + h, x, y + h, rr);
+        ctx.arcTo(x, y + h, x, y, rr);
+        ctx.arcTo(x, y, x + w, y, rr);
+        ctx.closePath();
+      }
+
+      async function loadImage(src) {
+        return new Promise((resolve, reject) => {
+          const img = new Image();
+          img.onload = () => resolve(img);
+          img.onerror = () => reject(new Error("이미지 로드 실패"));
+          img.src = src;
+        });
+      }
+
+      function certificateFilename(evName, nick) {
+        const safe = (s) => String(s || "")
+          .trim()
+          .replaceAll(/[\\/:*?"<>|]/g, "-")
+          .replaceAll(/\s+/g, "_");
+        const a = safe(evName) || "certificate";
+        const b = safe(nick) || "runner";
+        return `${a}_${b}.png`;
+      }
+
+      async function generateCertificatePreview() {
+        setVisible(certError, false);
+        certDownloadBtn.disabled = true;
+
+        if (!EVENTS_CACHE.length) {
+          certError.textContent = "대회 정보(events.json)가 없어서 기록증을 만들 수 없어요.";
+          setVisible(certError, true);
+          return;
+        }
+
+        const idx = Number(certEventSel.value);
+        const ev = EVENTS_CACHE[idx];
+        if (!ev) {
+          certError.textContent = "대회 선택이 올바르지 않아요.";
+          setVisible(certError, true);
+          return;
+        }
+
+        const nick = String(certNick.value || "").trim();
+        const tsec = parseTimeToSeconds(certTime.value);
+        if (!nick) {
+          certError.textContent = "닉네임을 입력해 주세요.";
+          setVisible(certError, true);
+          return;
+        }
+        if (!tsec || tsec <= 0) {
+          certError.textContent = "기록 시간을 올바르게 입력해 주세요. (MM:SS 또는 HH:MM:SS)";
+          setVisible(certError, true);
+          return;
+        }
+
+        const note = String(certNote.value || "").trim();
+        const W = certCanvas.width;
+        const H = certCanvas.height;
+
+        const ctx = certCanvas.getContext("2d");
+        ctx.clearRect(0, 0, W, H);
+
+        // base
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(0, 0, W, H);
+
+        // pattern bg (same as site)
+        let bg;
+        try {
+          bg = await loadImage("./bg.jpg?v=2300");
+        } catch {
+          bg = null;
+        }
+        if (bg) drawTiledBg(ctx, bg, W, H, 0.14, 260);
+
+        // top gradient overlay
+        const g = ctx.createLinearGradient(0, 0, 0, H);
+        g.addColorStop(0, "rgba(255,106,0,0.10)");
+        g.addColorStop(0.45, "rgba(0,0,0,0.02)");
+        g.addColorStop(1, "rgba(0,0,0,0.00)");
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, W, H);
+
+        // main card
+        const pad = 80;
+        const cardX = pad;
+        const cardY = 140;
+        const cardW = W - pad * 2;
+        const cardH = H - 240;
+        ctx.save();
+        ctx.shadowColor = "rgba(0,0,0,0.12)";
+        ctx.shadowBlur = 22;
+        ctx.shadowOffsetY = 10;
+        ctx.fillStyle = "rgba(255,255,255,0.92)";
+        roundedRect(ctx, cardX, cardY, cardW, cardH, 28);
+        ctx.fill();
+        ctx.restore();
+
+        // orange accent bar
+        ctx.fillStyle = "#ff6a00";
+        roundedRect(ctx, cardX, cardY, cardW, 18, 10);
+        ctx.fill();
+
+        // title
+        ctx.fillStyle = "#111";
+        ctx.font = "800 56px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        ctx.fillText("CERTIFICATE", cardX + 60, cardY + 120);
+
+        ctx.fillStyle = "rgba(17,17,17,0.70)";
+        ctx.font = "600 22px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        ctx.fillText("노빠꾸 러닝 크루", cardX + 60, cardY + 160);
+
+        // event name
+        ctx.fillStyle = "#111";
+        ctx.font = "800 42px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        ctx.fillText(String(ev.name || "대회"), cardX + 60, cardY + 235);
+
+        // meta line
+        const dist = ev.distance ? String(ev.distance) : "";
+        const date = ev.date ? String(ev.date) : "";
+        const loc = ev.location ? String(ev.location) : "";
+        const metaText = [date, loc, dist].filter(Boolean).join(" · ");
+        ctx.fillStyle = "rgba(17,17,17,0.70)";
+        ctx.font = "600 22px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        ctx.fillText(metaText, cardX + 60, cardY + 275);
+
+        // divider
+        ctx.strokeStyle = "rgba(0,0,0,0.10)";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(cardX + 60, cardY + 320);
+        ctx.lineTo(cardX + cardW - 60, cardY + 320);
+        ctx.stroke();
+
+        // content labels
+        const leftX = cardX + 60;
+        let y = cardY + 395;
+
+        const drawKV = (k, v) => {
+          ctx.fillStyle = "rgba(17,17,17,0.60)";
+          ctx.font = "700 20px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+          ctx.fillText(k, leftX, y);
+
+          ctx.fillStyle = "#111";
+          ctx.font = "800 34px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+          ctx.fillText(v, leftX, y + 46);
+
+          y += 95;
+        };
+
+        drawKV("닉네임", nick);
+        drawKV("기록", formatTime(tsec));
+
+        if (음표) {
+          ctx.fillStyle = "rgba(17,17,17,0.60)";
+          ctx.font = "700 20px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+          ctx.fillText("메모", leftX, y);
+
+          ctx.fillStyle = "#111";
+          ctx.font = "700 26px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+
+          const maxW = cardW - 120;
+          const words = note.split(/\s+/);
+          let line = "";
+          let yy = y + 40;
+
+          for (const w of words) {
+            const test = line ? `${line} ${w}` : w;
+            if (ctx.measureText(test).width > maxW) {
+              ctx.fillText(line, leftX, yy);
+              yy += 34;
+              line = w;
+            } else {
+              line = test;
+            }
+          }
+          if (line) ctx.fillText(line, leftX, yy);
+
+          y = yy + 70;
+        }
+
+        // footer
+        const footerY = cardY + cardH - 90;
+        ctx.fillStyle = "rgba(17,17,17,0.55)";
+        ctx.font = "600 18px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        ctx.fillText("NO BACK RC · Generated on this page", cardX + 60, footerY);
+
+        // stamp
+        ctx.save();
+        ctx.translate(cardX + cardW - 150, footerY - 50);
+        ctx.rotate(-0.15);
+        ctx.strokeStyle = "rgba(255,106,0,0.55)";
+        ctx.lineWidth = 6;
+        ctx.beginPath();
+        ctx.arc(0, 0, 62, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.fillStyle = "rgba(255,106,0,0.12)";
+        ctx.beginPath();
+        ctx.arc(0, 0, 62, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = "rgba(255,106,0,0.85)";
+        ctx.font = "900 20px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        ctx.textAlign = "center";
+        ctx.fillText("FINISH", 0, 7);
+        ctx.restore();
+
+        certDownloadBtn.disabled = false;
+        certDownloadBtn.dataset.filename = certificateFilename(ev.name, nick);
+      }
+
+      if (certForm) {
+        certForm.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          await generateCertificatePreview();
+        });
+      }
+
+      if (certDownloadBtn) {
+        certDownloadBtn.addEventListener("click", () => {
+          const a = document.createElement("a");
+          a.download = certDownloadBtn.dataset.filename || "certificate.png";
+          a.href = certCanvas.toDataURL("image/png");
+          a.click();
+        });
+      }
+
+      if (certResetBtn) {
+        certResetBtn.addEventListener("click", () => {
+          certForm.reset();
+          setVisible(certError, false);
+          certDownloadBtn.disabled = true;
+          const ctx = certCanvas.getContext("2d");
+          ctx.clearRect(0, 0, certCanvas.width, certCanvas.height);
+          ctx.fillStyle = "#ffffff";
+          ctx.fillRect(0, 0, certCanvas.width, certCanvas.height);
+        });
+      }
+
+      // ===== Boot =====
       loadEvents();
       loadShoes();
     </script>
