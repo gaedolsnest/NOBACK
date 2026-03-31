@@ -6,14 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>노빠꾸 러닝 크루🏃🏽🏃‍♀️🏃🏻‍♂️</title>
 
-    <link rel="icon" href="./favicon.ico?v=2000" sizes="any" />
-    <link rel="shortcut icon" href="./favicon.ico?v=2000" />
+    <link rel="icon" href="./favicon.ico?v=2200" sizes="any" />
+    <link rel="shortcut icon" href="./favicon.ico?v=2200" />
 
     <style>
       :root {
         --accent: #ff6a00;
-        --accent2: #ff8a33;
-
         --page: #ffffff;
 
         --glass: rgba(0, 0, 0, 0.56);
@@ -41,7 +39,7 @@
         content:"";
         position: fixed;
         inset: 0;
-        background-image: url("./bg.jpg?v=2000");
+        background-image: url("./bg.jpg?v=2200");
         background-repeat: repeat;
         background-size: 260px auto;
         background-position: 0 0;
@@ -211,6 +209,13 @@
         color: var(--text);
         outline: none;
       }
+
+      /* ✅ 드롭다운 펼쳤을 때 옵션이 하얀 글씨로 안 보이는 문제 해결 */
+      select option {
+        color: #111;
+        background: #fff;
+      }
+
       input:focus, select:focus {
         border-color: rgba(255, 106, 0, 0.60);
         box-shadow: 0 0 0 3px rgba(255, 106, 0, 0.16);
@@ -231,7 +236,7 @@
       .error { margin-top: 10px; color: #ffd0c2; font-size: 13px; }
       .result { margin-top: 14px; border-top: 1px dashed rgba(255,255,255,0.18); padding-top: 14px; display: grid; gap: 12px; }
 
-      /* Pace rows */
+      /* pace rows */
       .pace-rows { display: grid; gap: 8px; }
       .pace-row {
         display: flex;
@@ -247,7 +252,7 @@
       .pace-row .v { font-size: 13px; white-space: nowrap; color: var(--text); }
       .pace-row.tail { opacity: 0.85; border-style: dashed; }
 
-      /* Predict cards */
+      /* predict cards */
       .cards3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
       @media (max-width: 900px) { .cards3 { grid-template-columns: 1fr; } }
       .mini {
@@ -289,7 +294,7 @@
       .section-title { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin: 0 0 10px; }
       .section-title h2 { margin: 0; font-size: 16px; color: var(--text); }
 
-      /* Events list */
+      /* lists */
       .list { display: grid; gap: 12px; margin-top: 12px; }
       .item {
         border: 1px solid rgba(255,255,255,0.14);
@@ -310,10 +315,11 @@
         background: rgba(255, 255, 255, 0.03);
       }
 
-      /* participants + chip + more */
+      /* participants */
       .p-wrap { margin-top: 10px; }
       .p-list { margin: 0; padding-left: 18px; color: var(--muted); }
       .p-list li { margin: 6px 0; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+
       .chip {
         border: 1px solid rgba(255, 106, 0, 0.40);
         border-radius: 999px;
@@ -328,6 +334,7 @@
         background: rgba(255, 106, 0, 0.14);
         color: rgba(255, 255, 255, 0.92);
       }
+
       .morebtn {
         margin-top: 10px;
         display: inline-flex;
@@ -343,7 +350,7 @@
       }
       .morebtn:hover { background: rgba(255, 106, 0, 0.20); border-color: rgba(255, 106, 0, 0.58); }
 
-      /* Interval component */
+      /* Interval */
       .interval-presets { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
       .presetbtn {
         border: 1px solid rgba(255, 106, 0, 0.38);
@@ -375,39 +382,49 @@
       .table th { color: rgba(255,255,255,0.78); font-size: 12px; }
       .table tr:last-child td { border-bottom: none; }
       .mono { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
-      .interval .minihelp { margin-top: 6px; color: var(--muted); font-size: 12px; }
 
-      /* Shoes */
-      .shoe-title{
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-        gap:10px;
-        margin-top: 10px;
-        padding-top: 10px;
+      /* ✅ Shoes accordion (no images) */
+      .shoe-wrap { display: grid; gap: 12px; margin-top: 12px; }
+
+      .shoe-section {
+        border: 1px solid rgba(255,255,255,0.14);
+        border-radius: 14px;
+        background: rgba(255,255,255,0.05);
+        overflow: hidden;
+      }
+      .shoe-section summary {
+        cursor: pointer;
+        list-style: none;
+        padding: 12px 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .shoe-section summary::-webkit-details-marker { display: none; }
+      .shoe-section summary strong { color: rgba(255,255,255,0.92); font-size: 13px; }
+      .shoe-section .sec-meta { display:flex; gap:8px; align-items:center; }
+      .shoe-openhint { color: rgba(255,255,255,0.60); font-size: 12px; white-space: nowrap; }
+
+      .shoe-item {
         border-top: 1px dashed rgba(255,255,255,0.18);
+        padding: 10px 12px;
       }
-      .shoe-title:first-child{
-        margin-top: 0;
-        padding-top: 0;
-        border-top: 0;
+      .shoe-item summary {
+        cursor: pointer;
+        list-style: none;
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        justify-content: space-between;
+        padding: 0;
       }
-      .shoe-title strong{ color: rgba(255,255,255,0.92); font-size:13px; }
+      .shoe-item summary::-webkit-details-marker { display: none; }
 
-      .shoe-row{
-        display:flex;
-        align-items:flex-start;
-        justify-content:space-between;
-        gap:10px;
-        padding:10px 10px;
-        border:1px solid rgba(255,255,255,0.14);
-        border-radius:12px;
-        background: rgba(255, 255, 255, 0.05);
-      }
-      .shoe-row .left{ display:grid; gap:4px; }
-      .shoe-row .brand{ color: rgba(255,255,255,0.92); font-size:13px; font-weight:700; }
-      .shoe-row .model{ color: rgba(255,255,255,0.85); font-size:13px; }
-      .shoe-row .note{ color: rgba(255,255,255,0.70); font-size:12px; }
+      .shoe-text { display:grid; gap:3px; }
+      .shoe-brand { font-weight: 800; color: rgba(255,255,255,0.92); font-size: 13px; }
+      .shoe-model { color: rgba(255,255,255,0.86); font-size: 13px; }
+      .shoe-note { color: rgba(255,255,255,0.72); font-size: 12px; margin-top: 6px; }
     </style>
   </head>
 
@@ -454,6 +471,7 @@
           </a>
         </div>
 
+        <!-- Interval -->
         <div class="card interval" style="margin-top: 14px;">
           <div class="section-title"><h2>인터벌 계산기</h2></div>
           <p class="muted">초기화=빈칸 / 프리셋=즉시 계산</p>
@@ -511,6 +529,7 @@
           </div>
         </div>
 
+        <!-- Upcoming events -->
         <div class="card" style="margin-top: 14px;">
           <div class="section-title">
             <h2>다가오는 대회</h2>
@@ -593,8 +612,8 @@
             <div class="field">
               <label for="predict-mode">컨디션(강조)</label>
               <select id="predict-mode" name="mode">
-                <option value="base" selected>기본</option>
                 <option value="aggressive">공격</option>
+                <option value="base" selected>기본</option>
                 <option value="conservative">보수</option>
               </select>
               <div class="help">3단계 모두 출력하고, 선택한 단계만 강조 표시</div>
@@ -677,7 +696,7 @@
         </div>
       </section>
 
-      <!-- SHOES -->
+      <!-- SHOES (accordion) -->
       <section id="view-shoes" class="view">
         <div class="topbar">
           <a class="back" href="#/">← 홈</a>
@@ -687,7 +706,7 @@
         <div class="card">
           <h2>러닝화 추천</h2>
           <p class="muted">개인 발/체중/주법에 따라 차이가 있어요. 참고용으로만 봐주세요 🙌</p>
-          <div id="shoes-wrap" class="list"></div>
+          <div id="shoes-wrap" class="shoe-wrap"></div>
         </div>
       </section>
 
@@ -773,7 +792,7 @@
       window.addEventListener("hashchange", route);
       route();
 
-      // Time helpers
+      // helpers
       function parseTimeToSeconds(raw) {
         const s = String(raw || "").trim();
         if (!s) return null;
@@ -817,7 +836,6 @@
       }
       function setVisible(el, visible) { el.style.display = visible ? "" : "none"; }
 
-      // Staff
       function sortKoreanDesc(arr) {
         return arr
           .slice()
@@ -825,6 +843,8 @@
           .filter((x) => x.length > 0)
           .sort((a, b) => b.localeCompare(a, "ko"));
       }
+
+      // staff
       (function renderStaff() {
         const ops = ["달려", "룰루", "나올", "밍경", "김땅콩", "슈퍼짹", "뽀용", "망구"];
         const sorted = sortKoreanDesc(ops);
@@ -852,9 +872,7 @@
         if (n < 0 || n > 50000) return null;
         return n;
       }
-      function segmentSeconds(secPerKm, meters) {
-        return (secPerKm * meters) / 1000;
-      }
+      function segmentSeconds(secPerKm, meters) { return (secPerKm * meters) / 1000; }
 
       function wireInterval(el) {
         const form = el.querySelector(".interval-form");
@@ -897,7 +915,6 @@
 
           pillWork.textContent = `워크 ${wm}m @ ${formatPaceColon(wp)}`;
           pillRest.textContent = `휴식 ${rm}m @ ${formatPaceColon(rp)}`;
-
           setVisible(resultEl, true);
         };
 
@@ -968,11 +985,13 @@
         }
         return Number(v);
       }
+
       if (paceDistanceType) {
         paceDistanceType.addEventListener("change", () => {
           setVisible(paceCustomField, paceDistanceType.value === "custom");
         });
       }
+
       const paceResetBtn = document.getElementById("pace-reset");
       if (paceResetBtn) {
         paceResetBtn.addEventListener("click", () => {
@@ -983,6 +1002,7 @@
           paceRows.innerHTML = "";
         });
       }
+
       function appendPaceRow(label, value, isTail) {
         const row = document.createElement("div");
         row.className = "pace-row" + (isTail ? " tail" : "");
@@ -996,6 +1016,7 @@
         row.appendChild(right);
         paceRows.appendChild(row);
       }
+
       if (paceForm) {
         paceForm.addEventListener("submit", (e) => {
           e.preventDefault();
@@ -1049,9 +1070,7 @@
         const DFULL = 42.195;
         const EXPONENTS = { aggressive: 1.04, base: 1.06, conservative: 1.08 };
 
-        function riegelTime(t1, d1, d2, exponent) {
-          return t1 * Math.pow(d2 / d1, exponent);
-        }
+        function riegelTime(t1, d1, d2, exponent) { return t1 * Math.pow(d2 / d1, exponent); }
         function recommendedGroupRange(paceSecPerKm) {
           const lo = Math.max(0, paceSecPerKm - 10);
           const hi = paceSecPerKm + 10;
@@ -1128,7 +1147,7 @@
         });
       })();
 
-      // JSON fetch helpers
+      // JSON
       async function safeFetchJson(path) {
         try {
           const url = new URL(path, window.location.href);
@@ -1153,10 +1172,12 @@
         const v = String(raw || "").trim();
         if (!v) return "";
         const upper = v.toUpperCase();
+
         if (upper === "HALF" || upper === "HM" || upper === "21.1K" || upper === "21.0975K") return "21K";
         if (upper === "FULL" || upper === "FM" || upper === "MARATHON" || upper === "42.2K" || upper === "42.195K") return "42K";
         if (upper === "10KM" || upper === "10K") return "10K";
         if (upper === "5KM" || upper === "5K") return "5K";
+
         const m = upper.replace(/\s+/g, "").match(/^(\d+(\.\d+)?)(K|KM)$/);
         if (m) {
           const n = Number(m[1]);
@@ -1311,7 +1332,7 @@
         events.slice(0, 2).forEach((ev) => preview.appendChild(createEventItem(ev, 6)));
       }
 
-      // ✅ Shoes (innerHTML 통째 렌더)
+      // ✅ Shoes accordion (no images)
       async function loadShoes() {
         const mount = document.getElementById("shoes-wrap");
         if (!mount) return;
@@ -1338,48 +1359,72 @@
             .replaceAll("'", "&#39;");
 
         let html = "";
-        let totalRows = 0;
+        let total = 0;
 
         for (const sec of sections) {
           const arr = Array.isArray(data[sec.key]) ? data[sec.key] : [];
+          total += arr.length;
 
           html += `
-            <div class="shoe-title">
-              <strong>${esc(sec.title)}</strong>
-              <span class="pill">${arr.length}개</span>
-            </div>
+            <details class="shoe-section">
+              <summary>
+                <strong>${esc(sec.title)}</strong>
+                <span class="sec-meta">
+                  <span class="pill">${arr.length}개</span>
+                  <span class="shoe-openhint">펼치기</span>
+                </span>
+              </summary>
+              <div>
           `;
 
           if (arr.length === 0) {
-            html += `<div class="empty">등록된 추천이 없어요.</div>`;
-            continue;
+            html += `<div class="shoe-item"><div class="empty">등록된 추천이 없어요.</div></div>`;
+          } else {
+            for (const s of arr) {
+              const brand = esc(s.brand || "");
+              const model = esc(s.model || "");
+              const note = esc(s.note || "");
+              const tag = esc(s.tag || sec.title);
+
+              html += `
+                <details class="shoe-item">
+                  <summary>
+                    <div class="shoe-text">
+                      <div class="shoe-brand">${brand}</div>
+                      <div class="shoe-model">${model}</div>
+                    </div>
+                    <div style="display:flex; flex-direction:column; gap:6px; align-items:flex-end;">
+                      <span class="chip">${tag}</span>
+                      <span class="shoe-openhint">상세</span>
+                    </div>
+                  </summary>
+                  <div class="shoe-note">${note || "메모 없음"}</div>
+                </details>
+              `;
+            }
           }
 
-          for (const s of arr) {
-            totalRows += 1;
-            const brand = esc(s.brand || "");
-            const model = esc(s.model || "");
-            const note = esc(s.note || "");
-            const tag = esc(s.tag || sec.title);
-
-            html += `
-              <div class="shoe-row">
-                <div class="left">
-                  <div class="brand">${brand}</div>
-                  <div class="model">${model}</div>
-                  ${note ? `<div class="note">${note}</div>` : ``}
-                </div>
-                <div><span class="chip">${tag}</span></div>
+          html += `
               </div>
-            `;
-          }
+            </details>
+          `;
+        }
+
+        if (total === 0) {
+          renderEmpty(mount, "러닝화 추천 데이터가 비어있어요", "data/shoes.json에 daily/training/race 배열을 넣어주세요.");
+          return;
         }
 
         mount.innerHTML = html;
 
-        if (totalRows === 0) {
-          renderEmpty(mount, "러닝화 추천 데이터가 비어있어요", "data/shoes.json의 daily/training/race 배열을 확인해 주세요.");
-        }
+        // hint 텍스트 토글
+        mount.querySelectorAll(".shoe-section").forEach((d) => {
+          const hint = d.querySelector(".shoe-openhint");
+          if (!hint) return;
+          const update = () => (hint.textContent = d.open ? "접기" : "펼치기");
+          update();
+          d.addEventListener("toggle", update);
+        });
       }
 
       loadEvents();
