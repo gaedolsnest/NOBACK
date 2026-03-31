@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>노빠꾸 러닝 크루🏃🏽🏃‍♀️🏃🏻‍♂️</title>
 
-    <link rel="icon" href="./favicon.ico?v=1800" sizes="any" />
-    <link rel="shortcut icon" href="./favicon.ico?v=1800" />
+    <link rel="icon" href="./favicon.ico?v=1900" sizes="any" />
+    <link rel="shortcut icon" href="./favicon.ico?v=1900" />
 
     <style>
       :root {
@@ -41,7 +41,7 @@
         content:"";
         position: fixed;
         inset: 0;
-        background-image: url("./bg.jpg?v=1800");
+        background-image: url("./bg.jpg?v=1900");
         background-repeat: repeat;
         background-size: 260px auto;
         background-position: 0 0;
@@ -231,6 +231,7 @@
       .error { margin-top: 10px; color: #ffd0c2; font-size: 13px; }
       .result { margin-top: 14px; border-top: 1px dashed rgba(255,255,255,0.18); padding-top: 14px; display: grid; gap: 12px; }
 
+      /* ===== Pace rows ===== */
       .pace-rows { display: grid; gap: 8px; }
       .pace-row {
         display: flex;
@@ -246,6 +247,7 @@
       .pace-row .v { font-size: 13px; white-space: nowrap; color: var(--text); }
       .pace-row.tail { opacity: 0.85; border-style: dashed; }
 
+      /* ===== Predict cards ===== */
       .cards3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
       @media (max-width: 900px) { .cards3 { grid-template-columns: 1fr; } }
 
@@ -290,6 +292,7 @@
       .section-title { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin: 0 0 10px; }
       .section-title h2 { margin: 0; font-size: 16px; color: var(--text); }
 
+      /* ===== Events list ===== */
       .list { display: grid; gap: 12px; margin-top: 12px; }
       .item {
         border: 1px solid rgba(255,255,255,0.14);
@@ -310,10 +313,10 @@
         background: rgba(255, 255, 255, 0.03);
       }
 
+      /* participants + chip + more */
       .p-wrap { margin-top: 10px; }
       .p-list { margin: 0; padding-left: 18px; color: var(--muted); }
       .p-list li { margin: 6px 0; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-
       .chip {
         border: 1px solid rgba(255, 106, 0, 0.40);
         border-radius: 999px;
@@ -328,7 +331,6 @@
         background: rgba(255, 106, 0, 0.14);
         color: rgba(255, 255, 255, 0.92);
       }
-
       .morebtn {
         margin-top: 10px;
         display: inline-flex;
@@ -344,7 +346,7 @@
       }
       .morebtn:hover { background: rgba(255, 106, 0, 0.20); border-color: rgba(255, 106, 0, 0.58); }
 
-      /* Interval component */
+      /* ===== Interval component ===== */
       .interval-presets { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
       .presetbtn {
         border: 1px solid rgba(255, 106, 0, 0.38);
@@ -376,8 +378,39 @@
       .table th { color: rgba(255,255,255,0.78); font-size: 12px; }
       .table tr:last-child td { border-bottom: none; }
       .mono { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
-
       .interval .minihelp { margin-top: 6px; color: var(--muted); font-size: 12px; }
+
+      /* ===== Shoes ===== */
+      .shoe-title{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:10px;
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px dashed rgba(255,255,255,0.18);
+      }
+      .shoe-title:first-child{
+        margin-top: 0;
+        padding-top: 0;
+        border-top: 0;
+      }
+      .shoe-title strong{ color: rgba(255,255,255,0.92); font-size:13px; }
+
+      .shoe-row{
+        display:flex;
+        align-items:flex-start;
+        justify-content:space-between;
+        gap:10px;
+        padding:10px 10px;
+        border:1px solid rgba(255,255,255,0.14);
+        border-radius:12px;
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .shoe-row .left{ display:grid; gap:4px; }
+      .shoe-row .brand{ color: rgba(255,255,255,0.92); font-size:13px; font-weight:700; }
+      .shoe-row .model{ color: rgba(255,255,255,0.85); font-size:13px; }
+      .shoe-row .note{ color: rgba(255,255,255,0.70); font-size:12px; }
     </style>
   </head>
 
@@ -404,6 +437,7 @@
         <a class="tab" data-tab="predict" href="#/predict">예상 기록</a>
         <a class="tab" data-tab="events" href="#/events">대회</a>
         <a class="tab" data-tab="cert" href="#/cert">인증서</a>
+        <a class="tab" data-tab="shoes" href="#/shoes">러닝화</a>
         <a class="tab" data-tab="regular" href="#/regular">정기런</a>
       </nav>
 
@@ -635,7 +669,7 @@
             새 탭으로 열기 →
           </a>
 
-          <div class="embed-wrap" style="margin-top:12px; border:1px solid rgba(255,255,255,0.14); border-radius:14px; overflow:hidden; background:rgba(255,255,255,0.05);">
+          <div style="margin-top:12px; border:1px solid rgba(255,255,255,0.14); border-radius:14px; overflow:hidden; background:rgba(255,255,255,0.05);">
             <iframe
               title="인증서 생성기"
               src="https://noback-lineup-generator.netlify.app/"
@@ -645,6 +679,20 @@
               style="width:100%; height:70vh; border:0; display:block; background:#fff;"
             ></iframe>
           </div>
+        </div>
+      </section>
+
+      <!-- SHOES -->
+      <section id="view-shoes" class="view">
+        <div class="topbar">
+          <a class="back" href="#/">← 홈</a>
+          <div class="pill">러닝화</div>
+        </div>
+
+        <div class="card">
+          <h2>러닝화 추천</h2>
+          <p class="muted">data/shoes.json 기준으로 출력 (데일리/훈련/레이스)</p>
+          <div id="shoes-wrap" class="list"></div>
         </div>
       </section>
 
@@ -711,9 +759,11 @@
               ? "events"
               : normalized.startsWith("#/cert")
                 ? "cert"
-                : normalized.startsWith("#/regular")
-                  ? "regular"
-                  : "home";
+                : normalized.startsWith("#/shoes")
+                  ? "shoes"
+                  : normalized.startsWith("#/regular")
+                    ? "regular"
+                    : "home";
 
         document.querySelectorAll(".view").forEach((v) => v.classList.remove("active"));
         const target = document.getElementById(`view-${view}`);
@@ -990,7 +1040,7 @@
         });
       }
 
-      // ===== Predict (FIXED) =====
+      // Predict (5K -> 10K/Half/Full)
       (function wirePredict() {
         const predictForm = document.getElementById("predict-form");
         const predictError = document.getElementById("predict-error");
@@ -1082,10 +1132,11 @@
         });
       })();
 
-      // Events loader
+      // JSON fetch + Events + Shoes
       async function safeFetchJson(path) {
         try {
-          const res = await fetch(path, { cache: "no-store" });
+          const url = new URL(path, window.location.href);
+          const res = await fetch(url.toString(), { cache: "no-store" });
           if (!res.ok) return { ok: false, reason: `파일을 찾을 수 없음 (${res.status})`, data: null };
           const data = await res.json();
           return { ok: true, reason: "", data };
@@ -1265,7 +1316,86 @@
         preview.innerHTML = "";
         events.slice(0, 2).forEach((ev) => preview.appendChild(createEventItem(ev, 6)));
       }
+
+      async function loadShoes() {
+        const mount = document.getElementById("shoes-wrap");
+        if (!mount) return;
+
+        const res = await safeFetchJson("data/shoes.json");
+        if (!res.ok || !res.data) {
+          renderEmpty(mount, "러닝화 추천을 불러오지 못했어요", res.ok ? "" : res.reason);
+          return;
+        }
+
+        const data = res.data || {};
+        const sections = [
+          { key: "daily", title: "데일리 조깅용" },
+          { key: "training", title: "훈련용" },
+          { key: "race", title: "레이스용" },
+        ];
+
+        mount.innerHTML = "";
+
+        for (const sec of sections) {
+          const arr = Array.isArray(data[sec.key]) ? data[sec.key] : [];
+
+          const head = document.createElement("div");
+          head.className = "shoe-title";
+          head.innerHTML = `<strong>${sec.title}</strong><span class="pill">${arr.length}개</span>`;
+          mount.appendChild(head);
+
+          if (arr.length === 0) {
+            const empty = document.createElement("div");
+            empty.className = "empty";
+            empty.textContent = "등록된 추천이 없어요.";
+            mount.appendChild(empty);
+            continue;
+          }
+
+          arr.forEach((s) => {
+            const brand = String(s.brand || "").trim();
+            const model = String(s.model || "").trim();
+            const note = String(s.note || "").trim();
+            const tagText = String(s.tag || sec.title).trim() || sec.title;
+
+            const row = document.createElement("div");
+            row.className = "shoe-row";
+
+            const left = document.createElement("div");
+            left.className = "left";
+
+            const brandEl = document.createElement("div");
+            brandEl.className = "brand";
+            brandEl.textContent = brand;
+
+            const modelEl = document.createElement("div");
+            modelEl.className = "model";
+            modelEl.textContent = model;
+
+            const noteEl = document.createElement("div");
+            noteEl.className = "note";
+            noteEl.textContent = note;
+
+            left.appendChild(brandEl);
+            left.appendChild(modelEl);
+            if (음표) left.appendChild(noteEl);
+
+            const right = document.createElement("div");
+            const tag = document.createElement("span");
+            tag.className = "chip";
+            tag.textContent = tagText;
+            right.appendChild(tag);
+
+            row.appendChild(left);
+            row.appendChild(right);
+
+            mount.appendChild(row);
+          });
+        }
+      }
+
       loadEvents();
+      loadShoes();
     </script>
   </body>
 </html>
