@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>노빠꾸 러닝 크루🏃🏽🏃‍♀️🏃🏻‍♂️</title>
 
-    <link rel="icon" href="./favicon.ico?v=1700" sizes="any" />
-    <link rel="shortcut icon" href="./favicon.ico?v=1700" />
+    <link rel="icon" href="./favicon.ico?v=1800" sizes="any" />
+    <link rel="shortcut icon" href="./favicon.ico?v=1800" />
 
     <style>
       :root {
@@ -41,7 +41,7 @@
         content:"";
         position: fixed;
         inset: 0;
-        background-image: url("./bg.jpg?v=1700");
+        background-image: url("./bg.jpg?v=1800");
         background-repeat: repeat;
         background-size: 260px auto;
         background-position: 0 0;
@@ -246,6 +246,47 @@
       .pace-row .v { font-size: 13px; white-space: nowrap; color: var(--text); }
       .pace-row.tail { opacity: 0.85; border-style: dashed; }
 
+      .cards3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+      @media (max-width: 900px) { .cards3 { grid-template-columns: 1fr; } }
+
+      .mini {
+        padding: 14px;
+        border-radius: 14px;
+        border: 1px solid rgba(255,255,255,0.14);
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .mini .title { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 10px; }
+      .mini .title strong { font-size: 14px; color: var(--text); }
+
+      .mini .km {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.82);
+        border: 1px solid rgba(255, 106, 0, 0.38);
+        padding: 4px 8px;
+        border-radius: 999px;
+        background: rgba(255, 106, 0, 0.12);
+        white-space: nowrap;
+      }
+
+      .rows { display: grid; gap: 8px; }
+      .row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 10px 10px;
+        border: 1px solid rgba(255,255,255,0.14);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .row .k { font-size: 12px; color: var(--muted); }
+      .row .v { font-size: 13px; white-space: nowrap; color: var(--text); }
+      .row.highlight {
+        border-color: rgba(255, 106, 0, 0.60);
+        background: rgba(255, 106, 0, 0.14);
+      }
+      .group { margin-top: 10px; padding-top: 10px; border-top: 1px dashed rgba(255,255,255,0.18); font-size: 12px; color: var(--muted); }
+
       .section-title { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin: 0 0 10px; }
       .section-title h2 { margin: 0; font-size: 16px; color: var(--text); }
 
@@ -336,21 +377,7 @@
       .table tr:last-child td { border-bottom: none; }
       .mono { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
 
-      /* Cert embed */
-      .embed-wrap{
-        margin-top: 12px;
-        border: 1px solid rgba(255,255,255,0.14);
-        border-radius: 14px;
-        overflow: hidden;
-        background: rgba(255,255,255,0.05);
-      }
-      iframe{
-        width: 100%;
-        height: 70vh;
-        border: 0;
-        display: block;
-        background: #fff;
-      }
+      .interval .minihelp { margin-top: 6px; color: var(--muted); font-size: 12px; }
     </style>
   </head>
 
@@ -396,7 +423,7 @@
           </a>
         </div>
 
-        <!-- HOME: Interval Calculator -->
+        <!-- Interval -->
         <div class="card interval" style="margin-top: 14px;">
           <div class="section-title"><h2>인터벌 계산기</h2></div>
           <p class="muted">초기화=빈칸 / 프리셋=즉시 계산</p>
@@ -581,7 +608,7 @@
         </div>
       </section>
 
-      <!-- EVENTS (기존 그대로) -->
+      <!-- EVENTS -->
       <section id="view-events" class="view">
         <div class="topbar">
           <a class="back" href="#/">← 홈</a>
@@ -594,7 +621,7 @@
         </div>
       </section>
 
-      <!-- CERT (iframe embed + open button) -->
+      <!-- CERT -->
       <section id="view-cert" class="view">
         <div class="topbar">
           <a class="back" href="#/">← 홈</a>
@@ -603,18 +630,19 @@
 
         <div class="card">
           <h2>인증서 생성기</h2>
-          <p class="muted">페이지 안에 띄워두기(iframe). 안 뜨면 아래 버튼으로 새 탭에서 열면 됩니다.</p>
+          <p class="muted">페이지 안에 띄우기(iframe). 안 뜨면 새 탭으로 열어주세요.</p>
           <a class="cta" href="https://noback-lineup-generator.netlify.app/" target="_blank" rel="noopener noreferrer">
             새 탭으로 열기 →
           </a>
 
-          <div class="embed-wrap">
+          <div class="embed-wrap" style="margin-top:12px; border:1px solid rgba(255,255,255,0.14); border-radius:14px; overflow:hidden; background:rgba(255,255,255,0.05);">
             <iframe
               title="인증서 생성기"
               src="https://noback-lineup-generator.netlify.app/"
               loading="lazy"
               referrerpolicy="no-referrer"
               allow="clipboard-read; clipboard-write"
+              style="width:100%; height:70vh; border:0; display:block; background:#fff;"
             ></iframe>
           </div>
         </div>
@@ -700,7 +728,6 @@
       window.addEventListener("hashchange", route);
       route();
 
-      // Time helpers
       function parseTimeToSeconds(raw) {
         const s = String(raw || "").trim();
         if (!s) return null;
@@ -744,7 +771,6 @@
       }
       function setVisible(el, visible) { el.style.display = visible ? "" : "none"; }
 
-      // 운영진: 가나다 내림차순
       function sortKoreanDesc(arr) {
         return arr
           .slice()
@@ -752,6 +778,7 @@
           .filter((x) => x.length > 0)
           .sort((a, b) => b.localeCompare(a, "ko"));
       }
+
       (function renderStaff() {
         const ops = ["달려", "룰루", "나올", "밍경", "김땅콩", "슈퍼짹", "뽀용", "망구"];
         const sorted = sortKoreanDesc(ops);
@@ -766,7 +793,7 @@
         });
       })();
 
-      // Interval component (home only)
+      // Interval (multi instance)
       function parsePaceToSecPerKm(paceStr) {
         const sec = parseTimeToSeconds(paceStr);
         if (sec === null) return null;
@@ -963,7 +990,99 @@
         });
       }
 
-      // Events loader (기존)
+      // ===== Predict (FIXED) =====
+      (function wirePredict() {
+        const predictForm = document.getElementById("predict-form");
+        const predictError = document.getElementById("predict-error");
+        const predictResult = document.getElementById("predict-result");
+        if (!predictForm || !predictError || !predictResult) return;
+
+        const D5K = 5;
+        const D10K = 10;
+        const DHALF = 21.0975;
+        const DFULL = 42.195;
+        const EXPONENTS = { aggressive: 1.04, base: 1.06, conservative: 1.08 };
+
+        function riegelTime(t1, d1, d2, exponent) {
+          return t1 * Math.pow(d2 / d1, exponent);
+        }
+        function recommendedGroupRange(paceSecPerKm) {
+          const lo = Math.max(0, paceSecPerKm - 10);
+          const hi = paceSecPerKm + 10;
+          return `${formatPaceColon(lo)}~${formatPaceColon(hi)}`;
+        }
+        function renderPredictCard(rowsEl, groupEl, distanceKm, t1Sec, highlightMode) {
+          const order = [
+            { key: "aggressive", name: "공격" },
+            { key: "base", name: "기본" },
+            { key: "conservative", name: "보수" },
+          ];
+          rowsEl.innerHTML = "";
+          groupEl.textContent = "";
+
+          order.forEach((o) => {
+            const exp = EXPONENTS[o.key];
+            const t2 = riegelTime(t1Sec, D5K, distanceKm, exp);
+            const pace = t2 / distanceKm;
+
+            const row = document.createElement("div");
+            row.className = "row" + (o.key === highlightMode ? " highlight" : "");
+
+            const left = document.createElement("div");
+            left.className = "k";
+            left.textContent = o.name;
+
+            const right = document.createElement("div");
+            right.className = "v";
+            right.textContent = `${formatTime(t2)} · ${formatPaceColon(pace)}`;
+
+            row.appendChild(left);
+            row.appendChild(right);
+            rowsEl.appendChild(row);
+
+            if (o.key === highlightMode) groupEl.textContent = `추천 페이스그룹: ${recommendedGroupRange(pace)}`;
+          });
+        }
+
+        const resetBtn = document.getElementById("predict-reset");
+        if (resetBtn) {
+          resetBtn.addEventListener("click", () => {
+            predictForm.reset();
+            setVisible(predictError, false);
+            setVisible(predictResult, false);
+          });
+        }
+
+        predictForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          setVisible(predictError, false);
+          setVisible(predictResult, false);
+
+          const fd = new FormData(predictForm);
+          const t1 = parseTimeToSeconds(fd.get("time"));
+          const mode = String(fd.get("mode") || "base");
+
+          if (!t1 || t1 <= 0) {
+            predictError.textContent = "5K 기록 시간을 올바르게 입력해 주세요. (MM:SS 또는 HH:MM:SS)";
+            setVisible(predictError, true);
+            return;
+          }
+          if (!Object.keys(EXPONENTS).includes(mode)) {
+            predictError.textContent = "컨디션 선택이 올바르지 않아요.";
+            setVisible(predictError, true);
+            return;
+          }
+
+          document.getElementById("predict-pill-in").textContent = `입력: 5K / ${formatTime(t1)}`;
+          renderPredictCard(document.getElementById("rows-10k"), document.getElementById("group-10k"), D10K, t1, mode);
+          renderPredictCard(document.getElementById("rows-half"), document.getElementById("group-half"), DHALF, t1, mode);
+          renderPredictCard(document.getElementById("rows-full"), document.getElementById("group-full"), DFULL, t1, mode);
+
+          setVisible(predictResult, true);
+        });
+      })();
+
+      // Events loader
       async function safeFetchJson(path) {
         try {
           const res = await fetch(path, { cache: "no-store" });
