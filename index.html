@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>노빠꾸 러닝 크루🏃🏽🏃‍♀️🏃🏻‍♂️</title>
 
-    <link rel="icon" type="image/x-icon" href="./favicon.ico?v=3200" />
-    <link rel="shortcut icon" href="./favicon.ico?v=3200" />
-    <link rel="apple-touch-icon" href="./apple-touch-icon.png?v=3200" />
+    <link rel="icon" type="image/x-icon" href="./favicon.ico?v=3300" />
+    <link rel="shortcut icon" href="./favicon.ico?v=3300" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png?v=3300" />
 
     <style>
       :root {
@@ -41,7 +41,7 @@
         content:"";
         position: fixed;
         inset: 0;
-        background-image: url("./bg.jpg?v=3200");
+        background-image: url("./bg.jpg?v=3300");
         background-repeat: repeat;
         background-size: 260px auto;
         background-position: 0 0;
@@ -164,6 +164,7 @@
         color: var(--text);
       }
       .card h2 { margin: 0 0 6px; font-size: 16px; color: var(--text); }
+      .card h3 { margin: 0 0 8px; font-size: 14px; color: var(--text); }
       .card p { margin: 0; color: var(--muted); font-size: 13px; }
 
       .cta {
@@ -251,6 +252,56 @@
       .error { margin-top: 10px; color: #ffd0c2; font-size: 13px; }
       .result { margin-top: 14px; border-top: 1px dashed rgba(255,255,255,0.18); padding-top: 14px; display: grid; gap: 12px; }
 
+      /* pace list */
+      .pace-rows { display: grid; gap: 8px; }
+      .pace-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 10px 10px;
+        border: 1px solid rgba(255,255,255,0.14);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .pace-row .k { font-size: 12px; color: var(--muted); white-space: nowrap; }
+      .pace-row .v { font-size: 13px; white-space: nowrap; color: var(--text); }
+      .pace-row.tail { opacity: 0.85; border-style: dashed; }
+
+      /* interval */
+      .interval-presets { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+      .presetbtn {
+        border: 1px solid rgba(255, 106, 0, 0.38);
+        background: rgba(255, 106, 0, 0.10);
+        padding: 8px 10px;
+        border-radius: 999px;
+        cursor: pointer;
+        color: var(--text);
+        font-size: 12px;
+      }
+      .presetbtn:hover { background: rgba(255, 106, 0, 0.18); border-color: rgba(255, 106, 0, 0.58); }
+
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+        overflow: hidden;
+        border-radius: 14px;
+        border: 1px solid rgba(255,255,255,0.14);
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .table th, .table td {
+        padding: 10px 10px;
+        border-bottom: 1px solid rgba(255,255,255,0.10);
+        text-align: left;
+        font-size: 13px;
+        color: var(--text);
+        white-space: nowrap;
+      }
+      .table th { color: rgba(255,255,255,0.78); font-size: 12px; }
+      .table tr:last-child td { border-bottom: none; }
+      .mono { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
+
+      /* events */
       .list { display: grid; gap: 12px; margin-top: 12px; }
       .item {
         border: 1px solid rgba(255,255,255,0.14);
@@ -271,6 +322,10 @@
         background: rgba(255, 255, 255, 0.03);
       }
 
+      .p-wrap { margin-top: 10px; }
+      .p-list { margin: 0; padding-left: 18px; color: var(--muted); }
+      .p-list li { margin: 6px 0; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+
       .chip {
         border: 1px solid rgba(255, 106, 0, 0.40);
         border-radius: 999px;
@@ -286,6 +341,7 @@
         color: rgba(255, 255, 255, 0.92);
       }
 
+      /* canvas */
       .canvas-wrap {
         margin-top: 12px;
         border: 1px solid rgba(255,255,255,0.14);
@@ -321,6 +377,43 @@
         color: var(--muted);
         font-size: 12px;
       }
+
+      /* shoes accordion */
+      .shoe-wrap { display: grid; gap: 12px; margin-top: 12px; }
+      .shoe-section {
+        border: 1px solid rgba(255,255,255,0.14);
+        border-radius: 14px;
+        background: rgba(255,255,255,0.05);
+        overflow: hidden;
+      }
+      .shoe-section summary {
+        cursor: pointer;
+        list-style: none;
+        padding: 12px 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .shoe-section summary::-webkit-details-marker { display: none; }
+      .shoe-section summary strong { color: rgba(255,255,255,0.92); font-size: 13px; }
+      .shoe-section .sec-meta { display:flex; gap:8px; align-items:center; }
+      .shoe-openhint { color: rgba(255,255,255,0.60); font-size: 12px; white-space: nowrap; }
+      .shoe-item { border-top: 1px dashed rgba(255,255,255,0.18); padding: 10px 12px; }
+      .shoe-item summary {
+        cursor: pointer;
+        list-style: none;
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        justify-content: space-between;
+        padding: 0;
+      }
+      .shoe-item summary::-webkit-details-marker { display: none; }
+      .shoe-text { display:grid; gap:3px; }
+      .shoe-brand { font-weight: 800; color: rgba(255,255,255,0.92); font-size: 13px; }
+      .shoe-model { color: rgba(255,255,255,0.86); font-size: 13px; }
+      .shoe-note { color: rgba(255,255,255,0.72); font-size: 12px; margin-top: 6px; }
     </style>
   </head>
 
@@ -343,26 +436,162 @@
 
       <nav class="tabs" aria-label="탭">
         <a class="tab" data-tab="home" href="#/">홈</a>
-        <a class="tab" data-tab="predict" href="#/predict">예상 기록</a>
+        <a class="tab" data-tab="pace" href="#/pace">페이스</a>
+        <a class="tab" data-tab="interval" href="#/interval">인터벌</a>
+        <a class="tab" data-tab="predict" href="#/predict">예상기록</a>
         <a class="tab" data-tab="events" href="#/events">대회</a>
         <a class="tab" data-tab="certificate" href="#/certificate">기록증</a>
         <a class="tab" data-tab="cert" href="#/cert">인증서</a>
+        <a class="tab" data-tab="shoes" href="#/shoes">러닝화</a>
         <a class="tab" data-tab="regular" href="#/regular">정기런</a>
       </nav>
 
+      <!-- HOME -->
       <section id="view-home" class="view">
         <div class="grid">
-          <a class="card" href="#/predict">
-            <h2>예상 기록</h2>
-            <p>5K 기록 1번 입력 → 10K/하프/풀 동시 + 3단계</p>
+          <a class="card" href="#/pace">
+            <h2>페이스 계산기</h2>
+            <p>거리 + 목표 시간 → 평균 페이스 + KM별(세로)</p>
             <span class="cta">열기 →</span>
           </a>
 
-          <a class="card" href="#/events">
-            <h2>대회</h2>
-            <p>대회 일정 + 참가자 + 기록증 출력</p>
+          <a class="card" href="#/interval">
+            <h2>인터벌 계산기</h2>
+            <p>워크/휴식 페이스 + 400/200 등 → 구간 시간표</p>
             <span class="cta">열기 →</span>
           </a>
+
+          <a class="card" href="#/predict">
+            <h2>예상 기록</h2>
+            <p>5K 기록 1번 입력 → 10K/하프/풀 + 3단계</p>
+            <span class="cta">열기 →</span>
+          </a>
+
+          <a class="card" href="#/certificate">
+            <h2>기록증</h2>
+            <p>일반 기록증 + 📸 사진 위 기록 오버레이</p>
+            <span class="cta">열기 →</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- PACE -->
+      <section id="view-pace" class="view">
+        <div class="topbar">
+          <a class="back" href="#/">← 홈</a>
+          <div class="pill">페이스</div>
+        </div>
+
+        <div class="card">
+          <form id="pace-form">
+            <div class="field">
+              <label for="pace-distance-type">거리</label>
+              <select id="pace-distance-type" name="distanceType">
+                <option value="5">5K (5.000km)</option>
+                <option value="10" selected>10K (10.000km)</option>
+                <option value="21.0975">Half (21.0975km)</option>
+                <option value="42.195">Full (42.195km)</option>
+                <option value="custom">직접 입력</option>
+              </select>
+              <div class="help">직접 입력 선택 시 아래에 km로 입력</div>
+            </div>
+
+            <div class="field" id="pace-custom-distance-field" style="display: none;">
+              <label for="pace-distance-km">거리(km)</label>
+              <input id="pace-distance-km" name="distanceKm" inputmode="decimal" placeholder="예: 7.5" autocomplete="off" />
+            </div>
+
+            <div class="field">
+              <label for="pace-time">목표 시간</label>
+              <input id="pace-time" name="time" inputmode="text" placeholder="예: 42:30 또는 1:50:00" autocomplete="off" />
+              <div class="help">MM:SS 또는 HH:MM:SS</div>
+            </div>
+
+            <div class="actions">
+              <button type="submit">계산</button>
+              <button type="button" id="pace-reset">초기화</button>
+            </div>
+          </form>
+
+          <div id="pace-error" class="error" role="alert" style="display: none;"></div>
+
+          <div id="pace-result" class="result" style="display: none;">
+            <div class="pillrow">
+              <div class="pill" id="pace-pill-distance"></div>
+              <div class="pill" id="pace-pill-time"></div>
+              <div class="pill" id="pace-pill-avgpace"></div>
+            </div>
+
+            <div>
+              <div class="help" style="margin-bottom: 8px;">페이스 표시: <b>5:30</b> = 5분 30초</div>
+              <div class="pace-rows" id="pace-rows"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- INTERVAL -->
+      <section id="view-interval" class="view">
+        <div class="topbar">
+          <a class="back" href="#/">← 홈</a>
+          <div class="pill">인터벌</div>
+        </div>
+
+        <div class="card interval">
+          <h2>인터벌 계산기</h2>
+          <p class="muted">초기화=빈칸 / 프리셋=즉시 계산</p>
+
+          <form class="interval-form" style="margin-top:12px;">
+            <div class="field">
+              <label>워크 페이스 (/km)</label>
+              <input class="work-pace" inputmode="text" placeholder="예: 4:30" />
+              <div class="help">MM:SS</div>
+            </div>
+            <div class="field">
+              <label>휴식 페이스 (/km)</label>
+              <input class="rest-pace" inputmode="text" placeholder="예: 6:30" />
+              <div class="help">MM:SS</div>
+            </div>
+            <div class="field">
+              <label>워크 거리 (m)</label>
+              <input class="work-m" inputmode="numeric" placeholder="예: 400" />
+              <div class="help">미터</div>
+            </div>
+            <div class="field">
+              <label>휴식 거리 (m)</label>
+              <input class="rest-m" inputmode="numeric" placeholder="예: 200 (0이면 정지휴식)" />
+              <div class="help">미터 (0 가능)</div>
+            </div>
+            <div class="actions">
+              <button type="submit">계산</button>
+              <button type="button" class="interval-reset">초기화</button>
+            </div>
+          </form>
+
+          <div class="interval-presets">
+            <button class="presetbtn" type="button" data-work="400" data-rest="200">400 / 200</button>
+            <button class="presetbtn" type="button" data-work="400" data-rest="0">400 / 0</button>
+            <button class="presetbtn" type="button" data-work="200" data-rest="200">200 / 200</button>
+            <button class="presetbtn" type="button" data-work="1000" data-rest="200">1000 / 200</button>
+          </div>
+
+          <div class="interval-error error" role="alert" style="display:none;"></div>
+
+          <div class="interval-result result" style="display:none;">
+            <div class="pillrow">
+              <div class="pill mono interval-pill-work"></div>
+              <div class="pill mono interval-pill-rest"></div>
+            </div>
+
+            <table class="table" aria-label="인터벌 시간 표">
+              <thead>
+                <tr>
+                  <th>구간</th><th>거리</th><th>페이스</th><th>총 시간</th><th>총 초수</th>
+                </tr>
+              </thead>
+              <tbody class="interval-tbody"></tbody>
+            </table>
+          </div>
         </div>
       </section>
 
@@ -370,7 +599,7 @@
       <section id="view-predict" class="view">
         <div class="topbar">
           <a class="back" href="#/">← 홈</a>
-          <div class="pill">예상 기록 (5K 기준)</div>
+          <div class="pill">예상기록</div>
         </div>
 
         <div class="card">
@@ -410,11 +639,15 @@
                 <div><b>10K</b> <span class="pill">10.000 km</span></div>
                 <div id="rows-10k"></div>
                 <div id="group-10k" class="help"></div>
+
                 <hr style="border:none; border-top:1px dashed rgba(255,255,255,0.18);" />
+
                 <div><b>Half</b> <span class="pill">21.0975 km</span></div>
                 <div id="rows-half"></div>
                 <div id="group-half" class="help"></div>
+
                 <hr style="border:none; border-top:1px dashed rgba(255,255,255,0.18);" />
+
                 <div><b>Full</b> <span class="pill">42.195 km</span></div>
                 <div id="rows-full"></div>
                 <div id="group-full" class="help"></div>
@@ -501,7 +734,6 @@
               </div>
             </div>
 
-            <!-- 📸 사진 업로드 (사진 기록 모드에서만 사용) -->
             <div class="field" id="photo-field" style="display:none;">
               <label for="cert-photo">사진 업로드</label>
               <input id="cert-photo" type="file" accept="image/*" />
@@ -580,6 +812,20 @@
         </div>
       </section>
 
+      <!-- SHOES -->
+      <section id="view-shoes" class="view">
+        <div class="topbar">
+          <a class="back" href="#/">← 홈</a>
+          <div class="pill">러닝화</div>
+        </div>
+
+        <div class="card">
+          <h2>러닝화 추천</h2>
+          <p class="muted">개인 발/체중/주법에 따라 차이가 있어요. 참고용으로만 봐주세요 🙌</p>
+          <div id="shoes-wrap" class="shoe-wrap"></div>
+        </div>
+      </section>
+
       <!-- REGULAR -->
       <section id="view-regular" class="view">
         <div class="topbar">
@@ -607,17 +853,23 @@
         const raw = (location.hash || "#/").toLowerCase();
         const normalized = raw.startsWith("#/") ? raw : raw.startsWith("#") ? "#/" + raw.slice(1) : "#/";
 
-        const view = normalized.startsWith("#/predict")
-          ? "predict"
-          : normalized.startsWith("#/events")
-            ? "events"
-            : normalized.startsWith("#/certificate")
-              ? "certificate"
-              : normalized.startsWith("#/cert")
-                ? "cert"
-                : normalized.startsWith("#/regular")
-                  ? "regular"
-                  : "home";
+        const view = normalized.startsWith("#/pace")
+          ? "pace"
+          : normalized.startsWith("#/interval")
+            ? "interval"
+            : normalized.startsWith("#/predict")
+              ? "predict"
+              : normalized.startsWith("#/events")
+                ? "events"
+                : normalized.startsWith("#/certificate")
+                  ? "certificate"
+                  : normalized.startsWith("#/cert")
+                    ? "cert"
+                    : normalized.startsWith("#/shoes")
+                      ? "shoes"
+                      : normalized.startsWith("#/regular")
+                        ? "regular"
+                        : "home";
 
         document.querySelectorAll(".view").forEach((v) => v.classList.remove("active"));
         const target = document.getElementById(`view-${view}`);
@@ -669,6 +921,13 @@
         const mm = Math.floor((s % 3600) / 60);
         const ss = s % 60;
         if (hh > 0) return `${hh}:${String(mm).padStart(2, "0")}:${String(ss).padStart(2, "0")}`;
+        return `${mm}:${String(ss).padStart(2, "0")}`;
+      }
+
+      function fmtPace(secPerKm) {
+        const s = Math.round(secPerKm);
+        const mm = Math.floor(s / 60);
+        const ss = s % 60;
         return `${mm}:${String(ss).padStart(2, "0")}`;
       }
 
@@ -748,7 +1007,204 @@
         return lines.slice(0, maxLines);
       }
 
-      // ========== Predict (간단 렌더) ==========
+      // ========== Pace ==========
+      const paceDistanceType = document.getElementById("pace-distance-type");
+      const paceCustomField = document.getElementById("pace-custom-distance-field");
+      const paceDistanceKmInput = document.getElementById("pace-distance-km");
+      const paceForm = document.getElementById("pace-form");
+      const paceError = document.getElementById("pace-error");
+      const paceResult = document.getElementById("pace-result");
+      const paceRows = document.getElementById("pace-rows");
+
+      function getPaceDistanceKm() {
+        const v = paceDistanceType.value;
+        if (v === "custom") {
+          const raw = String(paceDistanceKmInput.value || "").trim().replace(",", ".");
+          if (!raw || !/^\d+(\.\d+)?$/.test(raw)) return null;
+          const km = Number(raw);
+          if (!(km > 0 && km <= 200)) return null;
+          return km;
+        }
+        return Number(v);
+      }
+
+      if (paceDistanceType) {
+        paceDistanceType.addEventListener("change", () => {
+          setVisible(paceCustomField, paceDistanceType.value === "custom");
+        });
+      }
+
+      const paceResetBtn = document.getElementById("pace-reset");
+      if (paceResetBtn) {
+        paceResetBtn.addEventListener("click", () => {
+          paceForm.reset();
+          setVisible(paceCustomField, false);
+          setVisible(paceError, false);
+          setVisible(paceResult, false);
+          paceRows.innerHTML = "";
+        });
+      }
+
+      function appendPaceRow(label, value, isTail) {
+        const row = document.createElement("div");
+        row.className = "pace-row" + (isTail ? " tail" : "");
+        const left = document.createElement("div");
+        left.className = "k";
+        left.textContent = label;
+        const right = document.createElement("div");
+        right.className = "v";
+        right.textContent = value;
+        row.appendChild(left);
+        row.appendChild(right);
+        paceRows.appendChild(row);
+      }
+
+      if (paceForm) {
+        paceForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          setVisible(paceError, false);
+          setVisible(paceResult, false);
+          paceRows.innerHTML = "";
+
+          const distanceKm = getPaceDistanceKm();
+          const timeSec = parseTimeToSeconds(new FormData(paceForm).get("time"));
+
+          if (!distanceKm) {
+            paceError.textContent = "거리를 올바르게 입력해 주세요.";
+            setVisible(paceError, true);
+            return;
+          }
+          if (!timeSec || timeSec <= 0) {
+            paceError.textContent = "목표 시간을 올바르게 입력해 주세요. (MM:SS 또는 HH:MM:SS)";
+            setVisible(paceError, true);
+            return;
+          }
+
+          const paceSecPerKm = timeSec / distanceKm;
+          const fullKm = Math.floor(distanceKm);
+          const tail = distanceKm - fullKm;
+
+          for (let i = 1; i <= fullKm; i++) appendPaceRow(`${i}KM`, fmtPace(paceSecPerKm), false);
+          if (tail > 0.0001) {
+            const tailKm = Math.round(tail * 1000) / 1000;
+            appendPaceRow(`마지막 ${tailKm}km`, fmtPace(paceSecPerKm), true);
+          }
+
+          document.getElementById("pace-pill-distance").textContent = `거리: ${distanceKm} km`;
+          document.getElementById("pace-pill-time").textContent = `목표: ${formatTime(timeSec)}`;
+          document.getElementById("pace-pill-avgpace").textContent =
+            `평균: ${Math.floor(paceSecPerKm/60)}'${String(Math.round(paceSecPerKm)%60).padStart(2,"0")}" /km (${fmtPace(paceSecPerKm)})`;
+
+          setVisible(paceResult, true);
+        });
+      }
+
+      // ========== Interval ==========
+      function parsePaceToSecPerKm(paceStr) {
+        const sec = parseTimeToSeconds(paceStr);
+        if (sec === null) return null;
+        return sec;
+      }
+      function parseMeters(raw) {
+        const s = String(raw || "").trim();
+        if (!/^\d+$/.test(s)) return null;
+        const n = Number(s);
+        if (n < 0 || n > 50000) return null;
+        return n;
+      }
+      function segmentSeconds(secPerKm, meters) { return (secPerKm * meters) / 1000; }
+
+      function wireInterval(el) {
+        const form = el.querySelector(".interval-form");
+        const workPace = el.querySelector(".work-pace");
+        const restPace = el.querySelector(".rest-pace");
+        const workM = el.querySelector(".work-m");
+        const restM = el.querySelector(".rest-m");
+        const resetBtn = el.querySelector(".interval-reset");
+        const errorEl = el.querySelector(".interval-error");
+        const resultEl = el.querySelector(".interval-result");
+        const pillWork = el.querySelector(".interval-pill-work");
+        const pillRest = el.querySelector(".interval-pill-rest");
+        const tbody = el.querySelector(".interval-tbody");
+        const presets = el.querySelectorAll(".presetbtn");
+
+        const render = (wp, rp, wm, rm) => {
+          tbody.innerHTML = "";
+          const workSec = segmentSeconds(wp, wm);
+          const restSec = segmentSeconds(rp, rm);
+          const totalSec = workSec + restSec;
+
+          const rows = [
+            { label: "워크", meters: wm, pace: fmtPace(wp), time: formatTime(workSec), seconds: Math.round(workSec) },
+            { label: "휴식", meters: rm, pace: fmtPace(rp), time: formatTime(restSec), seconds: Math.round(restSec) },
+            { label: "합계", meters: wm + rm, pace: "-", time: formatTime(totalSec), seconds: Math.round(totalSec) },
+          ];
+
+          rows.forEach((r) => {
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+              <td>${r.label}</td>
+              <td class="mono">${r.meters}m</td>
+              <td class="mono">${r.pace}</td>
+              <td class="mono">${r.time}</td>
+              <td class="mono">${r.seconds}s</td>
+            `;
+            tbody.appendChild(tr);
+          });
+
+          pillWork.textContent = `워크 ${wm}m @ ${fmtPace(wp)}`;
+          pillRest.textContent = `휴식 ${rm}m @ ${fmtPace(rp)}`;
+          setVisible(resultEl, true);
+        };
+
+        const validateAndRender = () => {
+          setVisible(errorEl, false);
+          setVisible(resultEl, false);
+
+          const wp = parsePaceToSecPerKm(workPace.value);
+          const rp = parsePaceToSecPerKm(restPace.value);
+          const wm = parseMeters(workM.value);
+          const rm = parseMeters(restM.value);
+
+          if (wp === null || rp === null) {
+            errorEl.textContent = "페이스는 MM:SS 형식으로 입력해 주세요. (예: 4:30, 6:30)";
+            setVisible(errorEl, true);
+            return;
+          }
+          if (wm === null || rm === null) {
+            errorEl.textContent = "거리는 m(미터) 정수로 입력해 주세요. (예: 400, 200, 0)";
+            setVisible(errorEl, true);
+            return;
+          }
+
+          render(wp, rp, wm, rm);
+        };
+
+        presets.forEach((b) => {
+          b.addEventListener("click", () => {
+            workM.value = b.dataset.work;
+            restM.value = b.dataset.rest;
+            validateAndRender();
+          });
+        });
+
+        resetBtn.addEventListener("click", () => {
+          workPace.value = "";
+          restPace.value = "";
+          workM.value = "";
+          restM.value = "";
+          setVisible(errorEl, false);
+          setVisible(resultEl, false);
+        });
+
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          validateAndRender();
+        });
+      }
+      document.querySelectorAll(".interval").forEach(wireInterval);
+
+      // ========== Predict ==========
       (function wirePredict() {
         const predictForm = document.getElementById("predict-form");
         const predictError = document.getElementById("predict-error");
@@ -762,26 +1218,23 @@
         const EXPONENTS = { aggressive: 1.04, base: 1.06, conservative: 1.08 };
 
         function riegelTime(t1, d1, d2, exponent) { return t1 * Math.pow(d2 / d1, exponent); }
-        function fmtPace(secPerKm) {
-          const s = Math.round(secPerKm);
-          const mm = Math.floor(s / 60);
-          const ss = s % 60;
-          return `${mm}:${String(ss).padStart(2, "0")}`;
-        }
         function recommendedGroupRange(paceSecPerKm) {
           const lo = Math.max(0, paceSecPerKm - 10);
           const hi = paceSecPerKm + 10;
           return `${fmtPace(lo)}~${fmtPace(hi)}`;
         }
 
-        function renderBlock(el, groupEl, dist, t1, mode) {
+        function renderBlock(containerId, groupId, dist, t1, mode) {
+          const el = document.getElementById(containerId);
+          const groupEl = document.getElementById(groupId);
+          el.innerHTML = "";
+          groupEl.textContent = "";
+
           const order = [
             { key: "aggressive", name: "공격" },
             { key: "base", name: "기본" },
             { key: "conservative", name: "보수" },
           ];
-          el.innerHTML = "";
-          groupEl.textContent = "";
 
           order.forEach((o) => {
             const t2 = riegelTime(t1, D5K, dist, EXPONENTS[o.key]);
@@ -814,14 +1267,11 @@
           });
         }
 
-        const resetBtn = document.getElementById("predict-reset");
-        if (resetBtn) {
-          resetBtn.addEventListener("click", () => {
-            predictForm.reset();
-            setVisible(predictError, false);
-            setVisible(predictResult, false);
-          });
-        }
+        document.getElementById("predict-reset").addEventListener("click", () => {
+          predictForm.reset();
+          setVisible(predictError, false);
+          setVisible(predictResult, false);
+        });
 
         predictForm.addEventListener("submit", (e) => {
           e.preventDefault();
@@ -839,9 +1289,9 @@
           }
 
           document.getElementById("predict-pill-in").textContent = `입력: 5K / ${formatTime(t1)}`;
-          renderBlock(document.getElementById("rows-10k"), document.getElementById("group-10k"), D10K, t1, mode);
-          renderBlock(document.getElementById("rows-half"), document.getElementById("group-half"), DHALF, t1, mode);
-          renderBlock(document.getElementById("rows-full"), document.getElementById("group-full"), DFULL, t1, mode);
+          renderBlock("rows-10k", "group-10k", D10K, t1, mode);
+          renderBlock("rows-half", "group-half", DHALF, t1, mode);
+          renderBlock("rows-full", "group-full", DFULL, t1, mode);
 
           setVisible(predictResult, true);
         });
@@ -908,22 +1358,18 @@
 
         if (parts.length) {
           const wrap = document.createElement("div");
-          wrap.style.marginTop = "10px";
+          wrap.className = "p-wrap";
 
           const ul = document.createElement("ul");
-          ul.style.margin = "0";
-          ul.style.paddingLeft = "18px";
-          ul.style.color = "rgba(255,255,255,0.72)";
+          ul.className = "p-list";
           wrap.appendChild(ul);
 
           parts.forEach((p) => {
             const li = document.createElement("li");
-            li.style.margin = "6px 0";
-            li.style.display = "flex";
-            li.style.gap = "8px";
-            li.style.flexWrap = "wrap";
-            li.style.alignItems = "center";
-            li.textContent = p.name;
+
+            const nameSpan = document.createElement("span");
+            nameSpan.textContent = p.name;
+            li.appendChild(nameSpan);
 
             if (p.distance && p.distance !== eventDistanceNorm) {
               const chip = document.createElement("span");
@@ -981,6 +1427,100 @@
         });
       }
 
+      // ========== Shoes ==========
+      async function loadShoes() {
+        const mount = document.getElementById("shoes-wrap");
+        if (!mount) return;
+
+        const res = await safeFetchJson("data/shoes.json");
+        if (!res.ok || !res.data) {
+          renderEmpty(mount, "러닝화 추천을 불러오지 못했어요", res.ok ? "" : res.reason);
+          return;
+        }
+
+        const data = res.data || {};
+        const sections = [
+          { key: "daily", title: "데일리 조깅용" },
+          { key: "training", title: "훈련용" },
+          { key: "race", title: "레이스용" },
+        ];
+
+        const esc = (v) =>
+          String(v ?? "")
+            .replaceAll("&", "&amp;")
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll('"', "&quot;")
+            .replaceAll("'", "&#39;");
+
+        let html = "";
+        let total = 0;
+
+        for (const sec of sections) {
+          const arr = Array.isArray(data[sec.key]) ? data[sec.key] : [];
+          total += arr.length;
+
+          html += `
+            <details class="shoe-section">
+              <summary>
+                <strong>${esc(sec.title)}</strong>
+                <span class="sec-meta">
+                  <span class="pill">${arr.length}개</span>
+                  <span class="shoe-openhint">펼치기</span>
+                </span>
+              </summary>
+              <div>
+          `;
+
+          if (arr.length === 0) {
+            html += `<div class="shoe-item"><div class="empty">등록된 추천이 없어요.</div></div>`;
+          } else {
+            for (const s of arr) {
+              const brand = esc(s.brand || "");
+              const model = esc(s.model || "");
+              const note = esc(s.note || "");
+              const tag = esc(s.tag || sec.title);
+
+              html += `
+                <details class="shoe-item">
+                  <summary>
+                    <div class="shoe-text">
+                      <div class="shoe-brand">${brand}</div>
+                      <div class="shoe-model">${model}</div>
+                    </div>
+                    <div style="display:flex; flex-direction:column; gap:6px; align-items:flex-end;">
+                      <span class="chip">${tag}</span>
+                      <span class="shoe-openhint">상세</span>
+                    </div>
+                  </summary>
+                  <div class="shoe-note">${note || "메모 없음"}</div>
+                </details>
+              `;
+            }
+          }
+
+          html += `
+              </div>
+            </details>
+          `;
+        }
+
+        if (total === 0) {
+          renderEmpty(mount, "러닝화 추천 데이터가 비어있어요", "data/shoes.json에 daily/training/race 배열을 넣어주세요.");
+          return;
+        }
+
+        mount.innerHTML = html;
+
+        mount.querySelectorAll(".shoe-section").forEach((d) => {
+          const hint = d.querySelector(".shoe-openhint");
+          if (!hint) return;
+          const update = () => (hint.textContent = d.open ? "접기" : "펼치기");
+          update();
+          d.addEventListener("toggle", update);
+        });
+      }
+
       // ========== Certificate ==========
       const certForm = document.getElementById("cert-form");
       const certEventSel = document.getElementById("cert-event");
@@ -1015,11 +1555,7 @@
         modePhotoBtn.classList.toggle("active", next === "photo");
         syncPhotoFieldVisibility();
       }
-
-      function syncPhotoFieldVisibility() {
-        setVisible(photoField, CERT_MODE === "photo");
-      }
-
+      function syncPhotoFieldVisibility() { setVisible(photoField, CERT_MODE === "photo"); }
       modeNormalBtn.addEventListener("click", () => setMode("normal"));
       modePhotoBtn.addEventListener("click", () => setMode("photo"));
 
@@ -1029,6 +1565,12 @@
         sessionStorage.setItem("cert_selected_event_index", "custom");
         location.hash = "#/certificate";
       });
+
+      function toggleCustomEventFields() {
+        const isCustom = certEventSel.value === "custom";
+        setVisible(customFieldsWrap, isCustom);
+      }
+      certEventSel.addEventListener("change", toggleCustomEventFields);
 
       function hydrateCertificateEventSelectFromCache() {
         const current = certEventSel.value;
@@ -1064,12 +1606,6 @@
         sessionStorage.removeItem("cert_selected_event_index");
         sessionStorage.removeItem("cert_selected_event_mode");
       }
-
-      function toggleCustomEventFields() {
-        const isCustom = certEventSel.value === "custom";
-        setVisible(customFieldsWrap, isCustom);
-      }
-      certEventSel.addEventListener("change", toggleCustomEventFields);
 
       function getCertificateEventData() {
         const selected = String(certEventSel.value || "");
@@ -1117,12 +1653,8 @@
       }
 
       function themeColors(theme) {
-        if (theme === "neon") {
-          return { bg: "#d8ff2f", panel: "rgba(255,255,255,0.95)", accent: "#ff6a00", sub: "rgba(17,17,17,0.72)", strip: "#ff6a00", wmAlpha: 0.04 };
-        }
-        if (theme === "split") {
-          return { bg: "#ffffff", panel: "rgba(255,255,255,0.96)", accent: "#ff6a00", sub: "rgba(17,17,17,0.72)", strip: "#111111", wmAlpha: 0.06 };
-        }
+        if (theme === "neon") return { bg: "#d8ff2f", panel: "rgba(255,255,255,0.95)", accent: "#ff6a00", sub: "rgba(17,17,17,0.72)", strip: "#ff6a00", wmAlpha: 0.04 };
+        if (theme === "split") return { bg: "#ffffff", panel: "rgba(255,255,255,0.96)", accent: "#ff6a00", sub: "rgba(17,17,17,0.72)", strip: "#111111", wmAlpha: 0.06 };
         return { bg: "#ffffff", panel: "rgba(255,255,255,0.96)", accent: "#ff6a00", sub: "rgba(17,17,17,0.72)", strip: "#ff6a00", wmAlpha: 0.06 };
       }
 
@@ -1135,20 +1667,16 @@
         return `${safe(evName) || "certificate"}_${safe(nick) || "runner"}_${suffix}.png`;
       }
 
-      // Draw image cover (fills canvas, may crop)
       function drawCover(ctx, img, x, y, w, h) {
         const ir = img.width / img.height;
         const cr = w / h;
-
         let sw, sh, sx, sy;
         if (ir > cr) {
-          // image wider
           sh = img.height;
           sw = sh * cr;
           sx = (img.width - sw) / 2;
           sy = 0;
         } else {
-          // image taller
           sw = img.width;
           sh = sw / cr;
           sx = 0;
@@ -1179,6 +1707,16 @@
         }
       });
 
+      function fitFontToWidth(ctx, text, maxWidth, weight, startPx, minPx, family) {
+        let size = startPx;
+        while (size > minPx) {
+          ctx.font = `${weight} ${size}px ${family}`;
+          if (ctx.measureText(text).width <= maxWidth) return size;
+          size -= 2;
+        }
+        return minPx;
+      }
+
       async function generateNormalCertificate(ev, nick, bib, tsec, note, theme, courseLabel) {
         const colors = themeColors(theme);
         const W = certCanvas.width;
@@ -1190,7 +1728,7 @@
         ctx.fillRect(0, 0, W, H);
 
         let bg = null;
-        try { bg = await loadImage("./bg.jpg?v=3200"); } catch {}
+        try { bg = await loadImage("./bg.jpg?v=3300"); } catch {}
         if (bg) {
           ctx.save();
           ctx.globalAlpha = theme === "neon" ? 0.05 : 0.10;
@@ -1222,10 +1760,9 @@
         ctx.fill();
 
         let logo = null;
-        try { logo = await loadImage("./logo.png?v=3200"); } catch {}
+        try { logo = await loadImage("./logo.png?v=3300"); } catch {}
 
         if (logo) {
-          // watermark
           const wmMaxW = cardW * 0.90;
           const wmMaxH = cardH * 0.58;
           const wmScale = Math.min(wmMaxW / logo.width, wmMaxH / logo.height);
@@ -1239,7 +1776,6 @@
           ctx.drawImage(logo, wmX, wmY, wmW, wmH);
           ctx.restore();
 
-          // top center
           const topMaxW = cardW * 0.20;
           const topMaxH = 110;
           const r = Math.min(topMaxW / logo.width, topMaxH / logo.height);
@@ -1367,7 +1903,7 @@
         ctx.restore();
       }
 
-      // ✅ A안: 사진 위 하단 HUD 오버레이
+      // ✅ 사진 기록 (닉네임 overflow 방지: 2줄/자동 축소)
       async function generatePhotoOverlay(ev, nick, bib, tsec, note, courseLabel) {
         const W = certCanvas.width;
         const H = certCanvas.height;
@@ -1376,16 +1912,14 @@
         ctx.clearRect(0, 0, W, H);
 
         if (!PHOTO_IMAGE) {
-          // fallback background
           ctx.fillStyle = "#111";
           ctx.fillRect(0, 0, W, H);
         } else {
           drawCover(ctx, PHOTO_IMAGE, 0, 0, W, H);
         }
 
-        // top-right small logo
         let logo = null;
-        try { logo = await loadImage("./logo.png?v=3200"); } catch {}
+        try { logo = await loadImage("./logo.png?v=3300"); } catch {}
         if (logo) {
           const maxW = 220;
           const maxH = 160;
@@ -1401,20 +1935,17 @@
           ctx.restore();
         }
 
-        // subtle top fade (readability)
         const topFade = ctx.createLinearGradient(0, 0, 0, 320);
         topFade.addColorStop(0, "rgba(0,0,0,0.55)");
         topFade.addColorStop(1, "rgba(0,0,0,0.00)");
         ctx.fillStyle = topFade;
         ctx.fillRect(0, 0, W, 360);
 
-        // HUD panel at bottom
         const panelH = 520;
         const panelY = H - panelH - 54;
         const panelX = 44;
         const panelW = W - 88;
 
-        // panel shadow
         ctx.save();
         ctx.shadowColor = "rgba(0,0,0,0.40)";
         ctx.shadowBlur = 30;
@@ -1424,7 +1955,6 @@
         ctx.fill();
         ctx.restore();
 
-        // gradient panel background
         const g = ctx.createLinearGradient(0, panelY, 0, panelY + panelH);
         g.addColorStop(0, "rgba(0,0,0,0.35)");
         g.addColorStop(1, "rgba(0,0,0,0.72)");
@@ -1432,7 +1962,6 @@
         roundedRect(ctx, panelX, panelY, panelW, panelH, 30);
         ctx.fill();
 
-        // orange accent line
         ctx.save();
         ctx.strokeStyle = "rgba(255,106,0,0.85)";
         ctx.lineWidth = 6;
@@ -1440,26 +1969,43 @@
         ctx.stroke();
         ctx.restore();
 
-        // text content
         const left = panelX + 40;
         const right = panelX + panelW - 40;
         let y = panelY + 72;
 
-        // row 1: nickname + chips
+        // nickname (fit + wrap)
+        ctx.save();
         ctx.fillStyle = "rgba(255,255,255,0.92)";
-        ctx.font = "900 46px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        ctx.fillText(nick, left, y);
+        ctx.textAlign = "left";
 
-        // course chip + bib on right
+        const family = "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        const nickMaxW = panelW - 40 - 280; // reserve for chips area
+        let fontSize = fitFontToWidth(ctx, nick, Math.max(240, nickMaxW), 900, 46, 28, family);
+
+        ctx.font = `900 ${fontSize}px ${family}`;
+        const nickLines = ctx.measureText(nick).width <= nickMaxW ? [nick] : (function () {
+          // wrap into max 2 lines if still too long
+          ctx.font = `900 ${Math.min(fontSize, 38)}px ${family}`;
+          return wrapLines(ctx, nick, nickMaxW, 2);
+        })();
+
+        nickLines.forEach((ln, i) => {
+          ctx.fillText(ln, left, y + i * (fontSize + 6));
+        });
+
+        // shift y depending on wrapped nickname
+        y += (nickLines.length === 2 ? (fontSize + 10) : 0);
+        ctx.restore();
+
+        // chips on right
         const chipText = courseLabel || ev.distance || "";
         const bibText = bib ? `BIB ${bib}` : "";
 
         function drawChip(text, xRight, yMid, fill, stroke, tcolor) {
           if (!text) return xRight;
           ctx.save();
-          ctx.font = "900 26px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+          ctx.font = `900 26px ${family}`;
           const padX = 18;
-          const padY = 12;
           const tw = ctx.measureText(text).width;
           const w = tw + padX * 2;
           const h = 44;
@@ -1481,13 +2027,13 @@
         }
 
         let xr = right;
-        xr = drawChip(bibText, xr, y, "rgba(255,255,255,0.10)", "rgba(255,255,255,0.26)", "rgba(255,255,255,0.92)");
-        xr = drawChip(chipText, xr, y, "rgba(255,106,0,0.18)", "rgba(255,106,0,0.70)", "rgba(255,255,255,0.92)");
+        xr = drawChip(bibText, xr, panelY + 72, "rgba(255,255,255,0.10)", "rgba(255,255,255,0.26)", "rgba(255,255,255,0.92)");
+        xr = drawChip(chipText, xr, panelY + 72, "rgba(255,106,0,0.18)", "rgba(255,106,0,0.70)", "rgba(255,255,255,0.92)");
 
-        // row 2: event meta
+        // meta
         y += 52;
         ctx.fillStyle = "rgba(255,255,255,0.78)";
-        ctx.font = "800 24px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        ctx.font = `800 24px ${family}`;
         const meta = [ev.name, ev.date, ev.location].filter(Boolean).join(" · ");
         ctx.fillText(meta || "—", left, y);
 
@@ -1500,15 +2046,14 @@
         ctx.lineTo(right, y);
         ctx.stroke();
 
-        // row 3: time big
+        // time
         y += 120;
         ctx.fillStyle = "rgba(255,255,255,0.96)";
-        ctx.font = "900 120px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        ctx.font = `900 120px ${family}`;
         ctx.textAlign = "left";
         ctx.fillText(formatTime(tsec), left, y);
 
-        // optional: pace 계산해서 오른쪽에 작게
-        // pace = totalSeconds / distanceKm (if distance known like 10K/21K/42K)
+        // pace (optional)
         const km = (() => {
           const d = (courseLabel || ev.distance || "").toUpperCase();
           if (d === "5K") return 5;
@@ -1520,20 +2065,15 @@
 
         if (km) {
           const paceSec = tsec / km;
-          const pace = (() => {
-            const s = Math.round(paceSec);
-            const mm = Math.floor(s / 60);
-            const ss = s % 60;
-            return `${String(mm).padStart(2,"0")}:${String(ss).padStart(2,"0")}`;
-          })();
+          const pace = fmtPace(paceSec);
 
           ctx.fillStyle = "rgba(255,106,0,0.95)";
-          ctx.font = "900 30px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+          ctx.font = `900 30px ${family}`;
           ctx.textAlign = "right";
           ctx.fillText("PACE", right, y - 70);
 
           ctx.fillStyle = "rgba(255,255,255,0.92)";
-          ctx.font = "900 48px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+          ctx.font = `900 48px ${family}`;
           ctx.fillText(`${pace} /km`, right, y - 20);
         }
 
@@ -1541,15 +2081,15 @@
         if (note) {
           y += 62;
           ctx.fillStyle = "rgba(255,255,255,0.78)";
-          ctx.font = "800 26px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+          ctx.font = `800 26px ${family}`;
           ctx.textAlign = "left";
           const lines = wrapLines(ctx, note, panelW - 80, 2);
           lines.forEach((ln, i) => ctx.fillText(ln, left, y + i * 34));
         }
 
-        // footer small
+        // footer
         ctx.fillStyle = "rgba(255,255,255,0.50)";
-        ctx.font = "700 20px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        ctx.font = `700 20px ${family}`;
         ctx.textAlign = "right";
         ctx.fillText("NoBack RunningCrew", right, panelY + panelH - 30);
       }
@@ -1602,33 +2142,33 @@
         certDownloadBtn.dataset.filename = certificateFilename(ev.name, nick, "normal");
       }
 
-      function getCertificateEventData() {
-        const selected = String(certEventSel.value || "");
-        if (selected === "custom") {
-          const name = String(document.getElementById("cert-custom-name").value || "").trim() || "무지 기록";
-          const date = String(document.getElementById("cert-custom-date").value || "").trim();
-          const location = String(document.getElementById("cert-custom-loc").value || "").trim();
-          const distance = normalizeDistance(String(document.getElementById("cert-custom-dist").value || "").trim());
-          return { name, date, location, distance };
+      // photo loader
+      async function ensurePhotoLoaded(file) {
+        if (!file) return null;
+        const url = URL.createObjectURL(file);
+        try {
+          const img = await loadImage(url);
+          return img;
+        } finally {
+          URL.revokeObjectURL(url);
         }
-        const idx = Number(selected);
-        const ev = EVENTS_CACHE[idx];
-        if (!ev) return null;
-        return {
-          name: String(ev.name || "대회"),
-          date: String(ev.date || ""),
-          location: String(ev.location || ""),
-          distance: normalizeDistance(ev.distance),
-        };
       }
+      photoInput.addEventListener("change", async () => {
+        PHOTO_IMAGE = null;
+        const file = photoInput.files?.[0];
+        if (!file) return;
+        try {
+          PHOTO_IMAGE = await ensurePhotoLoaded(file);
+        } catch {
+          PHOTO_IMAGE = null;
+        }
+      });
 
-      // submit
       certForm.addEventListener("submit", async (e) => {
         e.preventDefault();
         await generateCertificatePreview();
       });
 
-      // download
       certDownloadBtn.addEventListener("click", () => {
         const a = document.createElement("a");
         a.download = certDownloadBtn.dataset.filename || "certificate.png";
@@ -1636,7 +2176,6 @@
         a.click();
       });
 
-      // reset
       certResetBtn.addEventListener("click", () => {
         certForm.reset();
         toggleCustomEventFields();
@@ -1651,20 +2190,101 @@
         ctx.fillRect(0, 0, certCanvas.width, certCanvas.height);
       });
 
-      function toggleCustomEventFields() {
-        const isCustom = certEventSel.value === "custom";
-        setVisible(customFieldsWrap, isCustom);
+      function getCertificateEventData() {
+        const selected = String(certEventSel.value || "");
+        if (selected === "custom") {
+          const name = String(certCustomName.value || "").trim() || "무지 기록";
+          const date = String(certCustomDate.value || "").trim();
+          const location = String(certCustomLoc.value || "").trim();
+          const distance = normalizeDistance(String(certCustomDist.value || "").trim());
+          return { name, date, location, distance };
+        }
+        const idx = Number(selected);
+        const ev = EVENTS_CACHE[idx];
+        if (!ev) return null;
+        return {
+          name: String(ev.name || "대회"),
+          date: String(ev.date || ""),
+          location: String(ev.location || ""),
+          distance: normalizeDistance(ev.distance),
+        };
       }
 
-      // init blank canvas
+      // mode init
+      function syncPhotoFieldVisibility() { setVisible(photoField, CERT_MODE === "photo"); }
+
+      function setMode(next) {
+        CERT_MODE = next;
+        modeNormalBtn.classList.toggle("active", next === "normal");
+        modePhotoBtn.classList.toggle("active", next === "photo");
+        syncPhotoFieldVisibility();
+      }
+      modeNormalBtn.addEventListener("click", () => setMode("normal"));
+      modePhotoBtn.addEventListener("click", () => setMode("photo"));
+
+      // init canvas blank
       (function initCanvas() {
         const ctx = certCanvas.getContext("2d");
         ctx.fillStyle = "#ffffff";
         ctx.fillRect(0, 0, certCanvas.width, certCanvas.height);
       })();
 
-      // load events + hydrate select
+      // hydrate event select
+      function hydrateCertificateEventSelectFromCache() {
+        const current = certEventSel.value;
+        certEventSel.innerHTML = "";
+
+        const customOpt = document.createElement("option");
+        customOpt.value = "custom";
+        customOpt.textContent = "직접 입력(무지)";
+        certEventSel.appendChild(customOpt);
+
+        if (EVENTS_CACHE.length) {
+          EVENTS_CACHE.forEach((ev, idx) => {
+            const opt = document.createElement("option");
+            opt.value = String(idx);
+            const dist = ev.distance ? ` · ${ev.distance}` : "";
+            const date = ev.date ? ` · ${ev.date}` : "";
+            opt.textContent = `${ev.name || "대회"}${date}${dist}`;
+            certEventSel.appendChild(opt);
+          });
+        }
+
+        const savedIdx = sessionStorage.getItem("cert_selected_event_index");
+        const savedMode = sessionStorage.getItem("cert_selected_event_mode");
+
+        if (savedMode === "photo") setMode("photo");
+        else setMode("normal");
+
+        if (savedIdx === "custom") certEventSel.value = "custom";
+        else if (savedIdx !== null && savedIdx !== "" && !Number.isNaN(Number(savedIdx))) certEventSel.value = savedIdx;
+        else if (current) certEventSel.value = current;
+        else certEventSel.value = EVENTS_CACHE.length ? "0" : "custom";
+
+        sessionStorage.removeItem("cert_selected_event_index");
+        sessionStorage.removeItem("cert_selected_event_mode");
+      }
+
+      // custom fields
+      function toggleCustomEventFields() {
+        const isCustom = certEventSel.value === "custom";
+        setVisible(customFieldsWrap, isCustom);
+      }
+      certEventSel.addEventListener("change", toggleCustomEventFields);
+
+      // load image
+      async function loadImage(src) {
+        return new Promise((resolve, reject) => {
+          const img = new Image();
+          img.onload = () => resolve(img);
+          img.onerror = () => reject(new Error("이미지 로드 실패"));
+          img.src = src;
+        });
+      }
+
+      // ========== Boot ==========
       loadEvents();
+      loadShoes();
     </script>
   </body>
 </html>
