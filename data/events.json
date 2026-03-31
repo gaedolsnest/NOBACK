@@ -7,19 +7,19 @@
       "distance": "21k",
       "participants": [
         { "name": "강프로" },
+        { "name": "디카" },
         { "name": "더스" },
         { "name": "띰띰" },
-        { "name": "레일라" },
+        { "name": "레일라", "distance": "10k" },
         { "name": "망구" },
         { "name": "미니" },
         { "name": "슈퍼짹" },
         { "name": "쏭즈" },
         { "name": "여전" },
         { "name": "장현" },
+        { "name": "지똥", "distance": "10k" },
         { "name": "차니" },
         { "name": "캐롯맨" },
-        { "name": "디카" },
-        { "name": "지똥", "distance": "10k" }
       ]
     }
   ]
