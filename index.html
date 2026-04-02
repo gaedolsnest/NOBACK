@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>노빠꾸 러닝 크루🏃🏽🏃‍♀️🏃🏻‍♂️</title>
 
-    <link rel="icon" type="image/x-icon" href="./favicon.ico?v=3700" />
-    <link rel="shortcut icon" href="./favicon.ico?v=3700" />
+    <link rel="icon" type="image/x-icon" href="./favicon.ico?v=3900" />
+    <link rel="shortcut icon" href="./favicon.ico?v=3900" />
 
     <style>
       :root{
@@ -37,7 +37,7 @@
         content:"";
         position:fixed;
         inset:0;
-        background-image:url("./bg.jpg?v=3700");
+        background-image:url("./bg.jpg?v=3900");
         background-repeat:repeat;
         background-size:260px auto;
         background-position:0 0;
@@ -45,6 +45,8 @@
         pointer-events:none;
         z-index:0;
       }
+
+      a{color:inherit;text-decoration:none;}
       .container{
         position:relative;
         z-index:1;
@@ -52,7 +54,6 @@
         margin:0 auto;
         padding:20px 14px 60px;
       }
-      a{color:inherit;text-decoration:none;}
 
       header{
         display:flex;
@@ -112,6 +113,7 @@
         backdrop-filter:blur(10px);
         -webkit-backdrop-filter:blur(10px);
       }
+      .linkbtn:hover{background:rgba(255,106,0,.20);border-color:rgba(255,106,0,.58);}
 
       .tabs{
         display:flex;
@@ -150,6 +152,7 @@
         color:var(--text);
       }
       .card h2{margin:0 0 6px;font-size:16px;color:var(--text);}
+      .card h3{margin:0 0 8px;font-size:14px;color:var(--text);}
       .card p{margin:0;color:var(--muted);font-size:13px;}
 
       .cta{
@@ -164,6 +167,7 @@
         padding:8px 12px;
         background:rgba(255,106,0,.12);
       }
+      .cta:hover{background:rgba(255,106,0,.20);border-color:rgba(255,106,0,.58);}
 
       .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;}
       .back{
@@ -177,6 +181,8 @@
         padding:8px 12px;
         background:rgba(0,0,0,.04);
       }
+      .back:hover{background:rgba(255,106,0,.12);border-color:rgba(255,106,0,.35);}
+
       .pill{
         font-size:12px;
         color:var(--muted);
@@ -185,6 +191,7 @@
         border-radius:999px;
         background:rgba(255,255,255,.06);
       }
+      .pillrow{display:flex;gap:8px;flex-wrap:wrap;}
 
       form{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:12px;}
       .field{grid-column:span 6;display:flex;flex-direction:column;gap:6px;}
@@ -200,8 +207,13 @@
         color:var(--text);
         outline:none;
       }
+      input:focus,select:focus{
+        border-color:rgba(255,106,0,.60);
+        box-shadow:0 0 0 3px rgba(255,106,0,.16);
+      }
       select option{color:#111;background:#fff;}
       .help{font-size:12px;color:var(--muted);margin-top:2px;}
+
       .actions{grid-column:span 12;display:flex;gap:10px;flex-wrap:wrap;margin-top:2px;}
       button{
         border:1px solid rgba(255,106,0,.38);
@@ -211,12 +223,67 @@
         cursor:pointer;
         color:var(--text);
       }
+      button:hover{background:rgba(255,106,0,.20);border-color:rgba(255,106,0,.58);}
       button.ghost{border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);}
+      button.ghost:hover{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.24);}
 
       .error{margin-top:10px;color:#ffd0c2;font-size:13px;}
       .result{margin-top:14px;border-top:1px dashed rgba(255,255,255,.18);padding-top:14px;display:grid;gap:12px;}
 
-      /* Events */
+      .pace-rows{display:grid;gap:8px;}
+      .pace-row{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:10px;
+        padding:10px 10px;
+        border:1px solid rgba(255,255,255,.14);
+        border-radius:12px;
+        background:rgba(0,0,0,.18);
+      }
+      .pace-row .k{font-size:12px;color:var(--muted);white-space:nowrap;}
+      .pace-row .v{font-size:13px;white-space:nowrap;}
+      .pace-row.tail{color:var(--muted);border-style:dashed;}
+
+      .cards3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;}
+      @media (max-width:900px){.cards3{grid-template-columns:1fr;}}
+      .mini{padding:14px;border-radius:14px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);}
+      .mini .title{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px;}
+      .mini .title strong{font-size:14px;}
+      .mini .km{
+        font-size:12px;color:var(--muted);
+        border:1px solid rgba(255,255,255,.16);
+        padding:4px 8px;border-radius:999px;background:rgba(255,255,255,.06);
+      }
+      .rows{display:grid;gap:8px;}
+      .row{
+        display:flex;align-items:center;justify-content:space-between;gap:10px;
+        padding:10px 10px;border:1px solid rgba(255,255,255,.14);
+        border-radius:12px;background:rgba(0,0,0,.18);
+      }
+      .row .k{font-size:12px;color:var(--muted);}
+      .row .v{font-size:13px;white-space:nowrap;}
+      .row.highlight{border-color:rgba(255,106,0,.55);background:rgba(255,106,0,.12);}
+      .group{margin-top:10px;padding-top:10px;border-top:1px dashed rgba(255,255,255,.18);font-size:12px;color:var(--muted);}
+
+      table{
+        width:100%;
+        border-collapse:separate;
+        border-spacing:0;
+        overflow:hidden;
+        border-radius:14px;
+        border:1px solid rgba(255,255,255,.14);
+        background:rgba(0,0,0,.18);
+      }
+      th,td{
+        padding:10px 10px;
+        font-size:13px;
+        color:var(--text);
+        border-bottom:1px solid rgba(255,255,255,.10);
+      }
+      th{color:var(--muted);text-align:left;background:rgba(255,255,255,.04);}
+      tr:last-child td{border-bottom:0;}
+
       .list{display:grid;gap:12px;margin-top:12px;}
       .item{border:1px solid rgba(255,255,255,.14);border-radius:14px;background:rgba(255,255,255,.05);padding:14px;}
       .item-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;}
@@ -226,10 +293,48 @@
       .p-wrap{margin-top:10px;}
       .p-list{margin:0;padding-left:18px;color:var(--muted);}
       .p-list li{margin:6px 0;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
-      .chip{border:1px solid rgba(255,106,0,.40);border-radius:999px;padding:4px 8px;background:rgba(255,106,0,.14);color:rgba(255,255,255,.92);font-size:12px;white-space:nowrap;}
+      .chip{
+        border:1px solid rgba(255,106,0,.40);
+        border-radius:999px;
+        padding:4px 8px;
+        background:rgba(255,106,0,.14);
+        color:rgba(255,255,255,.92);
+        font-size:12px;
+        white-space:nowrap;
+      }
+      .chip.orange{background:rgba(255,106,0,.22);border-color:rgba(255,106,0,.65);}
       .empty{border:1px dashed rgba(255,255,255,.22);border-radius:14px;padding:14px;color:var(--muted);background:rgba(255,255,255,.03);}
 
-      /* Certificate canvas */
+      details{
+        border:1px solid rgba(255,255,255,.14);
+        border-radius:14px;
+        background:rgba(0,0,0,.18);
+        overflow:hidden;
+      }
+      summary{
+        cursor:pointer;
+        padding:12px 14px;
+        list-style:none;
+        color:var(--text);
+        font-weight:800;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:10px;
+        background:rgba(255,255,255,.04);
+      }
+      summary::-webkit-details-marker{display:none;}
+      .badge{font-size:12px;color:var(--muted);border:1px solid rgba(255,255,255,.16);padding:4px 8px;border-radius:999px;background:rgba(255,255,255,.06);}
+      .shoe-list{padding:12px 14px;display:grid;gap:10px;}
+      .shoe{
+        border:1px solid rgba(255,255,255,.14);
+        border-radius:12px;
+        padding:10px 10px;
+        background:rgba(255,255,255,.05);
+      }
+      .shoe strong{display:block;font-size:13px;}
+      .shoe span{display:block;font-size:12px;color:var(--muted);margin-top:4px;}
+
       .canvas-wrap{
         margin-top:12px;
         border:1px solid rgba(255,255,255,.14);
@@ -242,6 +347,10 @@
       .modebar{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;}
       .modebtn{border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);}
       .modebtn.active{border-color:rgba(255,106,0,.60);background:rgba(255,106,0,.18);}
+
+      .staff{display:grid;gap:10px;margin-top:14px;border-top:1px dashed rgba(255,255,255,.18);padding-top:14px;}
+      .line{display:flex;gap:8px;flex-wrap:wrap;align-items:center;color:var(--muted);font-size:13px;}
+      .staff .chip{color:var(--text);background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.16);}
     </style>
   </head>
 
@@ -283,22 +392,195 @@
         </div>
       </section>
 
-      <!-- PACE (placeholder: 네가 쓰던 기존 코드 붙여넣기 쉽게 남겨둠) -->
+      <!-- PACE -->
       <section id="view-pace" class="view">
         <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">페이스</div></div>
-        <div class="card"><p class="muted">페이스 계산기는 기존 버전 그대로 사용 중이면 여기 내용만 너가 쓰던 걸로 교체해도 됨</p></div>
+        <div class="card">
+          <h2>페이스 계산기</h2>
+          <p class="muted">거리 + 목표 시간 → 평균 페이스, KM별 세로 출력</p>
+
+          <form id="pace-form" style="margin-top:12px;">
+            <div class="field">
+              <label for="pace-distance-type">거리</label>
+              <select id="pace-distance-type">
+                <option value="5">5K (5.000km)</option>
+                <option value="10" selected>10K (10.000km)</option>
+                <option value="21.0975">Half (21.0975km)</option>
+                <option value="42.195">Full (42.195km)</option>
+                <option value="custom">직접 입력</option>
+              </select>
+              <div class="help">직접 입력 선택 시 아래에 km로 입력</div>
+            </div>
+
+            <div class="field" id="pace-custom-distance-field" style="display:none;">
+              <label for="pace-distance-km">거리(km)</label>
+              <input id="pace-distance-km" inputmode="decimal" placeholder="예: 7.5" autocomplete="off" />
+            </div>
+
+            <div class="field">
+              <label for="pace-time">목표 시간</label>
+              <input id="pace-time" inputmode="text" placeholder="예: 42:30 또는 1:50:00" autocomplete="off" />
+              <div class="help">MM:SS 또는 HH:MM:SS</div>
+            </div>
+
+            <div class="actions">
+              <button type="submit">계산</button>
+              <button type="button" class="ghost" id="pace-reset">초기화</button>
+            </div>
+          </form>
+
+          <div id="pace-error" class="error" style="display:none;"></div>
+
+          <div id="pace-result" class="result" style="display:none;">
+            <div class="pillrow">
+              <div class="pill" id="pace-pill-distance"></div>
+              <div class="pill" id="pace-pill-time"></div>
+              <div class="pill" id="pace-pill-avgpace"></div>
+            </div>
+            <div>
+              <div class="help" style="margin-bottom:8px;">페이스 표시: <b>5:30</b> = 5분 30초</div>
+              <div class="pace-rows" id="pace-rows"></div>
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- INTERVAL -->
       <section id="view-interval" class="view">
         <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">인터벌</div></div>
-        <div class="card"><p class="muted">인터벌 계산기는 기존 버전 그대로 사용 중이면 여기 내용만 너가 쓰던 걸로 교체해도 됨</p></div>
+        <div class="card">
+          <h2>인터벌 계산기</h2>
+          <p class="muted">워크/휴식 페이스 + 400/200 등 → 1세트 시간 표</p>
+
+          <form id="interval-form" style="margin-top:12px;">
+            <div class="field">
+              <label for="int-work-pace">워크 페이스(/km)</label>
+              <input id="int-work-pace" placeholder="예: 4:30" autocomplete="off" />
+              <div class="help">MM:SS</div>
+            </div>
+
+            <div class="field">
+              <label for="int-rest-pace">휴식 페이스(/km)</label>
+              <input id="int-rest-pace" placeholder="예: 6:30" autocomplete="off" />
+              <div class="help">MM:SS</div>
+            </div>
+
+            <div class="field">
+              <label for="int-pattern">패턴</label>
+              <select id="int-pattern">
+                <option value="400/200" selected>400 / 200</option>
+                <option value="400/0">400 / 0</option>
+                <option value="800/400">800 / 400</option>
+                <option value="custom">직접 입력</option>
+              </select>
+              <div class="help">워크(m) / 휴식(m)</div>
+            </div>
+
+            <div class="field" id="int-custom-field" style="display:none;">
+              <label for="int-custom">직접 입력 (워크/휴식 m)</label>
+              <input id="int-custom" placeholder="예: 400/300" autocomplete="off" />
+              <div class="help">형식: 400/200</div>
+            </div>
+
+            <div class="field">
+              <label for="int-reps">반복 횟수(선택)</label>
+              <input id="int-reps" inputmode="numeric" placeholder="예: 10" autocomplete="off" />
+              <div class="help">입력 시 총 합계도 계산</div>
+            </div>
+
+            <div class="actions">
+              <button type="submit">계산</button>
+              <button type="button" class="ghost" id="int-reset">초기화</button>
+            </div>
+          </form>
+
+          <div id="int-error" class="error" style="display:none;"></div>
+
+          <div id="int-result" class="result" style="display:none;">
+            <div class="pillrow">
+              <div class="pill" id="int-pill-pattern"></div>
+              <div class="pill" id="int-pill-work"></div>
+              <div class="pill" id="int-pill-rest"></div>
+            </div>
+
+            <div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>구간</th>
+                    <th>거리</th>
+                    <th>시간</th>
+                    <th>페이스 기준</th>
+                  </tr>
+                </thead>
+                <tbody id="int-table"></tbody>
+              </table>
+            </div>
+
+            <div id="int-total" class="help"></div>
+          </div>
+        </div>
       </section>
 
       <!-- PREDICT -->
       <section id="view-predict" class="view">
-        <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">예상기록</div></div>
-        <div class="card"><p class="muted">예상기록도 기존 버전 사용 중이면 여기 내용만 교체해도 됨</p></div>
+        <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">예상기록 (5K 기준)</div></div>
+        <div class="card">
+          <h2>예상 기록</h2>
+          <p class="muted">5K 기록 1번 입력 → 10K/하프/풀 동시 + 3단계</p>
+
+          <form id="predict-form" style="margin-top:12px;">
+            <div class="field">
+              <label for="predict-5k-time">기준 기록(5K)</label>
+              <input id="predict-5k-time" placeholder="예: 25:00 또는 0:25:00" autocomplete="off" />
+              <div class="help">MM:SS 또는 HH:MM:SS</div>
+            </div>
+
+            <div class="field">
+              <label for="predict-mode">강조(컨디션)</label>
+              <select id="predict-mode">
+                <option value="base" selected>기본</option>
+                <option value="aggressive">공격</option>
+                <option value="conservative">보수</option>
+              </select>
+              <div class="help">3단계 모두 출력하고 선택한 단계만 강조</div>
+            </div>
+
+            <div class="actions">
+              <button type="submit">예상하기</button>
+              <button type="button" class="ghost" id="predict-reset">초기화</button>
+            </div>
+          </form>
+
+          <div id="predict-error" class="error" style="display:none;"></div>
+
+          <div id="predict-result" class="result" style="display:none;">
+            <div class="pillrow">
+              <div class="pill" id="predict-pill-in"></div>
+              <div class="pill">공식: Riegel (1.04/1.06/1.08)</div>
+            </div>
+
+            <div class="cards3">
+              <div class="mini">
+                <div class="title"><strong>10K</strong><span class="km">10.000 km</span></div>
+                <div class="rows" id="rows-10k"></div>
+                <div class="group" id="group-10k"></div>
+              </div>
+              <div class="mini">
+                <div class="title"><strong>Half</strong><span class="km">21.0975 km</span></div>
+                <div class="rows" id="rows-half"></div>
+                <div class="group" id="group-half"></div>
+              </div>
+              <div class="mini">
+                <div class="title"><strong>Full</strong><span class="km">42.195 km</span></div>
+                <div class="rows" id="rows-full"></div>
+                <div class="group" id="group-full"></div>
+              </div>
+            </div>
+
+            <div class="help">참고: 개인차(지구력/훈련량/코스/날씨)에 따라 실제 기록은 달라질 수 있어요.</div>
+          </div>
+        </div>
       </section>
 
       <!-- EVENTS -->
@@ -316,7 +598,6 @@
       <!-- CERTIFICATE -->
       <section id="view-certificate" class="view">
         <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">기록증</div></div>
-
         <div class="card">
           <h2>기록증 출력</h2>
 
@@ -356,6 +637,7 @@
             <div class="field" id="photo-field" style="display:none;">
               <label for="cert-photo">사진 업로드</label>
               <input id="cert-photo" type="file" accept="image/*" />
+              <div class="help">사진은 업로드되지 않고 브라우저에서만 합성돼요.</div>
             </div>
 
             <div class="field" id="photo-distance-field" style="display:none;">
@@ -371,7 +653,7 @@
                 <option value="tp">시간 + 페이스</option>
                 <option value="t">시간만</option>
               </select>
-              <div class="help">모바일에서 체크박스 깨짐 방지용(드롭다운 1개)</div>
+              <div class="help">모바일 깨짐 방지: 체크박스 대신 드롭다운</div>
             </div>
 
             <div class="field">
@@ -408,7 +690,7 @@
             <div class="actions">
               <button type="submit">미리보기 생성</button>
               <button type="button" id="cert-download" disabled>PNG 다운로드</button>
-              <button type="button" id="cert-reset">초기화</button>
+              <button type="button" class="ghost" id="cert-reset">초기화</button>
             </div>
           </form>
 
@@ -436,7 +718,27 @@
       <!-- SHOES -->
       <section id="view-shoes" class="view">
         <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">러닝화</div></div>
-        <div class="card"><p class="muted">러닝화 탭은 기존 버전 유지(여기 내용 교체 가능)</p></div>
+        <div class="card">
+          <h2>초보 입문용 러닝화 추천</h2>
+          <p class="muted">참고만 하세요 🙌 발/체중/보행에 따라 체감이 달라요.</p>
+
+          <div id="shoes-error" class="error" style="display:none;"></div>
+
+          <div style="display:grid; gap:12px; margin-top:12px;">
+            <details open>
+              <summary>데일리 조깅용 <span class="badge" id="badge-daily">0개</span></summary>
+              <div class="shoe-list" id="shoes-daily"></div>
+            </details>
+            <details>
+              <summary>훈련용 <span class="badge" id="badge-training">0개</span></summary>
+              <div class="shoe-list" id="shoes-training"></div>
+            </details>
+            <details>
+              <summary>레이스용 <span class="badge" id="badge-race">0개</span></summary>
+              <div class="shoe-list" id="shoes-race"></div>
+            </details>
+          </div>
+        </div>
       </section>
 
       <!-- REGULAR -->
@@ -445,32 +747,56 @@
         <div class="card">
           <h2>정기런</h2>
           <p class="muted">매주 <b>수요일 오후 8시</b>, 노빠꾸 정기런 진행합니다 🏃‍♂️🏃‍♀️</p>
+
+          <h3 style="margin-top:14px;">진행</h3>
+          <ul style="margin:8px 0 0; padding-left:18px; color:var(--muted);">
+            <li>집합 및 가벼운 스트레칭 약 10분 (시작 전 닉네임으로 간단한 출석 체크)</li>
+            <li>러닝 약 50분</li>
+            <li>마무리 스트레칭 후 해산</li>
+          </ul>
+
+          <p class="muted" style="margin-top:12px;">
+            기록보다는 호흡을 맞추고, 대화 가능한 페이스로 함께 달립니다 :)<br />
+            처음 오시는 분들도 부담 없이 참여하시면 됩니다!
+          </p>
+
+          <h3 style="margin-top:14px;">운영 방식</h3>
+          <ul style="margin:8px 0 0; padding-left:18px; color:var(--muted);">
+            <li>정기런은 페이스 구간 사전취합 방식으로 운영합니다.</li>
+            <li>사전취합된 인원을 기준으로 비슷한 페이스끼리 그룹 출발 (많을 경우 4명 내외)</li>
+            <li>현장 혼선을 줄이고 체조 후 바로 출발하기 위한 방식입니다 🙌</li>
+          </ul>
+
+          <p class="muted" style="margin-top:12px;">기타 인터벌 등 별도 훈련은 자유롭게 진행하시면 됩니다.</p>
+          <p class="muted">늦지 않게 와서 몸 먼저 풀고 바로 출발할 수 있게 준비 부탁드립니다 😊</p>
+
+          <div class="staff">
+            <h2 style="margin:0;">운영진 정보</h2>
+            <div class="line"><span class="muted">크루장</span><span class="chip">망구</span></div>
+            <div class="line"><span class="muted">운영진</span><span id="ops-chips"></span></div>
+          </div>
         </div>
       </section>
     </div>
 
     <script>
-      // ====== "절대 안 죽는" 초기화 (null-safe) ======
       document.addEventListener("DOMContentLoaded", () => {
-        try {
-          boot();
-        } catch (e) {
-          console.error(e);
-          // 최악에도 홈이라도 보이게
-          document.getElementById("view-home")?.classList.add("active");
-        }
+        try { boot(); } catch (e) { console.error(e); document.getElementById("view-home")?.classList.add("active"); }
       });
 
       function boot() {
         initRouter();
+        initStaff();
+        initPace();
+        initInterval();
+        initPredict();
         initEvents();
         initCertificate();
+        initShoes();
         route();
       }
 
-      function initRouter() {
-        window.addEventListener("hashchange", route);
-      }
+      function initRouter() { window.addEventListener("hashchange", route); }
 
       function route() {
         const raw = (location.hash || "#/").toLowerCase();
@@ -502,8 +828,7 @@
         }
       }
 
-      // ===== Utils =====
-      function setVisible(el, v) { if (el) el.style.display = v ? "" : "none"; }
+      function setVisible(el, visible) { if (el) el.style.display = visible ? "" : "none"; }
 
       function parseTimeToSeconds(raw) {
         const s = String(raw || "").trim();
@@ -522,6 +847,16 @@
           return hh * 3600 + mm * 60 + ss;
         }
         return null;
+      }
+
+      function parsePaceToSeconds(raw) {
+        const s = String(raw || "").trim();
+        const parts = s.split(":").map(p => p.trim());
+        if (parts.length !== 2) return null;
+        if (parts.some(p => p === "" || !/^\d+$/.test(p))) return null;
+        const mm = Number(parts[0]), ss = Number(parts[1]);
+        if (ss >= 60) return null;
+        return mm * 60 + ss;
       }
 
       function formatTime(totalSeconds) {
@@ -549,6 +884,19 @@
         if (upper === "10KM" || upper === "10K") return "10K";
         if (upper === "5KM" || upper === "5K") return "5K";
         return v;
+      }
+
+      function parseDistanceKmInput(raw){
+        const s = String(raw || "").trim().replace(",", ".");
+        if (!s) return null;
+        if (!/^\d+(\.\d+)?$/.test(s)) return null;
+        const n = Number(s);
+        if (!(n > 0 && n <= 200)) return null;
+        return n;
+      }
+
+      function sortKoreanDesc(arr) {
+        return arr.slice().map(x => String(x).trim()).filter(Boolean).sort((a,b)=>b.localeCompare(a,"ko"));
       }
 
       async function safeFetchJson(path) {
@@ -582,15 +930,6 @@
         ctx.fillText(text, x, y);
       }
 
-      function parseDistanceKmInput(raw) {
-        const s = String(raw || "").trim().replace(",", ".");
-        if (!s) return null;
-        if (!/^\d+(\.\d+)?$/.test(s)) return null;
-        const n = Number(s);
-        if (!(n > 0 && n <= 200)) return null;
-        return n;
-      }
-
       async function loadImage(src){
         return new Promise((resolve, reject) => {
           const img = new Image();
@@ -618,19 +957,262 @@
         ctx.drawImage(img, sx, sy, sw, sh, x, y, w, h);
       }
 
-      // ===== EVENTS =====
+      function initStaff() {
+        const ops = ["달려", "룰루", "나올", "밍경", "김땅콩", "슈퍼짹", "뽀용", "망구"];
+        const sorted = sortKoreanDesc(ops);
+        const container = document.getElementById("ops-chips");
+        if (!container) return;
+        container.innerHTML = "";
+        sorted.forEach(name => {
+          const s = document.createElement("span");
+          s.className = "chip";
+          s.textContent = name;
+          container.appendChild(s);
+        });
+      }
+
+      // ---- pace ----
+      function initPace() {
+        const form = document.getElementById("pace-form");
+        if (!form) return;
+
+        const distType = document.getElementById("pace-distance-type");
+        const customField = document.getElementById("pace-custom-distance-field");
+        const distKmInput = document.getElementById("pace-distance-km");
+        const timeInput = document.getElementById("pace-time");
+        const err = document.getElementById("pace-error");
+        const result = document.getElementById("pace-result");
+        const rows = document.getElementById("pace-rows");
+
+        distType.addEventListener("change", () => setVisible(customField, distType.value === "custom"));
+
+        document.getElementById("pace-reset")?.addEventListener("click", () => {
+          form.reset();
+          setVisible(customField, false);
+          setVisible(err, false);
+          setVisible(result, false);
+          rows.innerHTML = "";
+        });
+
+        function getDistanceKm() {
+          if (distType.value === "custom") return parseDistanceKmInput(distKmInput.value);
+          return Number(distType.value);
+        }
+
+        function appendRow(label, value, isTail) {
+          const row = document.createElement("div");
+          row.className = "pace-row" + (isTail ? " tail" : "");
+          const left = document.createElement("div");
+          left.className = "k";
+          left.textContent = label;
+          const right = document.createElement("div");
+          right.className = "v";
+          right.textContent = value;
+          row.append(left, right);
+          rows.appendChild(row);
+        }
+
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          setVisible(err, false);
+          setVisible(result, false);
+          rows.innerHTML = "";
+
+          const distanceKm = getDistanceKm();
+          const timeSec = parseTimeToSeconds(timeInput.value);
+
+          if (!distanceKm) { err.textContent = "거리를 올바르게 입력해 주세요."; setVisible(err,true); return; }
+          if (!timeSec || timeSec <= 0) { err.textContent = "목표 시간을 올바르게 입력해 주세요."; setVisible(err,true); return; }
+
+          const pace = timeSec / distanceKm;
+          const fullKm = Math.floor(distanceKm);
+          const tail = distanceKm - fullKm;
+
+          for (let i=1;i<=fullKm;i++) appendRow(`${i}KM`, `${fmtPace(pace)}`, false);
+          if (tail > 0.0001) appendRow(`마지막 ${Math.round(tail*1000)/1000}km`, `${fmtPace(pace)}`, true);
+
+          document.getElementById("pace-pill-distance").textContent = `거리: ${distanceKm} km`;
+          document.getElementById("pace-pill-time").textContent = `목표: ${formatTime(timeSec)}`;
+          document.getElementById("pace-pill-avgpace").textContent = `평균: ${fmtPace(pace)} /km`;
+
+          setVisible(result, true);
+        });
+      }
+
+      // ---- interval ----
+      function initInterval() {
+        const form = document.getElementById("interval-form");
+        if (!form) return;
+
+        const workPace = document.getElementById("int-work-pace");
+        const restPace = document.getElementById("int-rest-pace");
+        const pattern = document.getElementById("int-pattern");
+        const customField = document.getElementById("int-custom-field");
+        const customInput = document.getElementById("int-custom");
+        const repsInput = document.getElementById("int-reps");
+
+        const err = document.getElementById("int-error");
+        const result = document.getElementById("int-result");
+        const tbody = document.getElementById("int-table");
+        const total = document.getElementById("int-total");
+
+        pattern.addEventListener("change", () => setVisible(customField, pattern.value === "custom"));
+
+        document.getElementById("int-reset")?.addEventListener("click", () => {
+          form.reset();
+          setVisible(customField,false);
+          setVisible(err,false);
+          setVisible(result,false);
+          tbody.innerHTML = "";
+          total.textContent = "";
+        });
+
+        function parsePattern() {
+          let p = pattern.value;
+          if (p === "custom") p = String(customInput.value || "").trim();
+          const m = p.match(/^(\d+)\s*\/\s*(\d+)$/);
+          if (!m) return null;
+          const w = Number(m[1]), r = Number(m[2]);
+          if (!(w > 0 && w <= 10000 && r >= 0 && r <= 10000)) return null;
+          return { workM: w, restM: r, label: `${w}/${r}` };
+        }
+
+        function secondsForMeters(paceSecPerKm, meters) { return (paceSecPerKm * meters) / 1000; }
+
+        function addRow(name, dist, secs, paceLabel) {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `<td>${name}</td><td>${dist}</td><td>${formatTime(secs)}</td><td>${paceLabel}</td>`;
+          tbody.appendChild(tr);
+        }
+
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          setVisible(err,false);
+          setVisible(result,false);
+          tbody.innerHTML = "";
+          total.textContent = "";
+
+          const wp = parsePaceToSeconds(workPace.value);
+          const rp = parsePaceToSeconds(restPace.value);
+          const pat = parsePattern();
+
+          if (!wp) { err.textContent = "워크 페이스를 MM:SS로 입력해 주세요. (예: 4:30)"; setVisible(err,true); return; }
+          if (!rp) { err.textContent = "휴식 페이스를 MM:SS로 입력해 주세요. (예: 6:30)"; setVisible(err,true); return; }
+          if (!pat) { err.textContent = "패턴을 올바르게 선택/입력해 주세요. (예: 400/200)"; setVisible(err,true); return; }
+
+          const workSec = secondsForMeters(wp, pat.workM);
+          const restSec = secondsForMeters(rp, pat.restM);
+          const cycleSec = workSec + restSec;
+
+          document.getElementById("int-pill-pattern").textContent = `패턴: ${pat.label}`;
+          document.getElementById("int-pill-work").textContent = `워크: ${fmtPace(wp)} /km`;
+          document.getElementById("int-pill-rest").textContent = `휴식: ${fmtPace(rp)} /km`;
+
+          addRow("워크", `${pat.workM}m`, workSec, `${fmtPace(wp)}/km`);
+          addRow("휴식", `${pat.restM}m`, restSec, `${fmtPace(rp)}/km`);
+          addRow("1세트 합", `${pat.workM + pat.restM}m`, cycleSec, "-");
+
+          const repsRaw = String(repsInput.value || "").trim();
+          if (repsRaw && /^\d+$/.test(repsRaw)) {
+            const reps = Number(repsRaw);
+            if (reps > 0 && reps <= 200) {
+              total.textContent = `총 ${reps}세트: ${formatTime(cycleSec * reps)} (워크 ${formatTime(workSec*reps)} + 휴식 ${formatTime(restSec*reps)})`;
+            }
+          }
+
+          setVisible(result,true);
+        });
+      }
+
+      // ---- predict ----
+      function initPredict() {
+        const form = document.getElementById("predict-form");
+        if (!form) return;
+
+        const timeInput = document.getElementById("predict-5k-time");
+        const modeSel = document.getElementById("predict-mode");
+
+        const err = document.getElementById("predict-error");
+        const result = document.getElementById("predict-result");
+
+        const D5=5, D10=10, DH=21.0975, DF=42.195;
+        const EXP = { aggressive: 1.04, base: 1.06, conservative: 1.08 };
+
+        function riegel(t1, d1, d2, exp){ return t1 * Math.pow(d2/d1, exp); }
+        function groupRange(paceSecPerKm){
+          const lo = Math.max(0, paceSecPerKm - 10);
+          const hi = paceSecPerKm + 10;
+          return `${fmtPace(lo)}~${fmtPace(hi)}`;
+        }
+
+        function renderCard(rowsEl, groupEl, distKm, t1Sec, highlight) {
+          const order = [
+            { key:"aggressive", name:"공격" },
+            { key:"base", name:"기본" },
+            { key:"conservative", name:"보수" },
+          ];
+          rowsEl.innerHTML = "";
+          groupEl.textContent = "";
+
+          order.forEach(o => {
+            const t2 = riegel(t1Sec, D5, distKm, EXP[o.key]);
+            const pace = t2 / distKm;
+
+            const row = document.createElement("div");
+            row.className = "row" + (o.key === highlight ? " highlight" : "");
+
+            const left = document.createElement("div");
+            left.className = "k";
+            left.textContent = o.name;
+
+            const right = document.createElement("div");
+            right.className = "v";
+            right.textContent = `${formatTime(t2)} · ${fmtPace(pace)}/km`;
+
+            row.append(left, right);
+            rowsEl.appendChild(row);
+
+            if (o.key === highlight) groupEl.textContent = `추천 페이스그룹: ${groupRange(pace)}`;
+          });
+        }
+
+        document.getElementById("predict-reset")?.addEventListener("click", () => {
+          form.reset();
+          setVisible(err,false);
+          setVisible(result,false);
+        });
+
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          setVisible(err,false);
+          setVisible(result,false);
+
+          const t1 = parseTimeToSeconds(timeInput.value);
+          const mode = String(modeSel.value || "base");
+
+          if (!t1 || t1 <= 0) { err.textContent = "5K 기록 시간을 올바르게 입력해 주세요."; setVisible(err,true); return; }
+          if (!EXP[mode]) { err.textContent = "컨디션 선택이 올바르지 않아요."; setVisible(err,true); return; }
+
+          document.getElementById("predict-pill-in").textContent = `입력: 5K / ${formatTime(t1)}`;
+
+          renderCard(document.getElementById("rows-10k"), document.getElementById("group-10k"), D10, t1, mode);
+          renderCard(document.getElementById("rows-half"), document.getElementById("group-half"), DH, t1, mode);
+          renderCard(document.getElementById("rows-full"), document.getElementById("group-full"), DF, t1, mode);
+
+          setVisible(result,true);
+        });
+      }
+
+      // ---- events ----
       let EVENTS_CACHE = [];
 
       function initEvents() {
         loadEvents();
-        const btn = document.getElementById("btn-custom-cert");
-        if (btn) {
-          btn.addEventListener("click", () => {
-            sessionStorage.setItem("cert_selected_event_index", "custom");
-            sessionStorage.setItem("cert_selected_event_mode", "photo");
-            location.hash = "#/certificate";
-          });
-        }
+        document.getElementById("btn-custom-cert")?.addEventListener("click", () => {
+          sessionStorage.setItem("cert_selected_event_index", "custom");
+          sessionStorage.setItem("cert_selected_event_mode", "photo");
+          location.hash = "#/certificate";
+        });
       }
 
       async function loadEvents() {
@@ -659,7 +1241,7 @@
         return arr.map(p => {
           if (typeof p === "string") return { name: p, distance: "" };
           if (p && typeof p === "object") return { name: String(p.name || "").trim(), distance: String(p.distance || "").trim() };
-          return { name: "", distance: "" };
+          return { name:"", distance:"" };
         }).filter(p => p.name.length > 0);
       }
 
@@ -678,13 +1260,13 @@
 
         const meta = document.createElement("div");
         meta.className = "meta";
+
         const p1 = document.createElement("span"); p1.className = "pill"; p1.textContent = ev.date || "날짜 미정"; meta.appendChild(p1);
         if (ev.location) { const p = document.createElement("span"); p.className="pill"; p.textContent=ev.location; meta.appendChild(p); }
         const dist = normalizeDistance(ev.distance);
         if (dist) { const p = document.createElement("span"); p.className="pill"; p.textContent=dist; meta.appendChild(p); }
 
-        title.appendChild(strong);
-        title.appendChild(meta);
+        title.append(strong, meta);
         head.appendChild(title);
         el.appendChild(head);
 
@@ -704,12 +1286,13 @@
             li.appendChild(document.createTextNode(p.name));
             if (p.distance && p.distance !== dist) {
               const chip = document.createElement("span");
-              chip.className = "chip";
+              chip.className = "chip orange";
               chip.textContent = p.distance;
               li.appendChild(chip);
             }
             ul.appendChild(li);
           });
+
           el.appendChild(wrap);
         }
 
@@ -729,112 +1312,81 @@
         return el;
       }
 
-      // ===== CERTIFICATE =====
+      // ---- certificate ----
       let CERT_MODE = "normal";
       let PHOTO_IMAGE = null;
 
       function initCertificate() {
-        // mode buttons
-        const modeNormalBtn = document.getElementById("mode-normal");
-        const modePhotoBtn = document.getElementById("mode-photo");
-        if (modeNormalBtn) modeNormalBtn.addEventListener("click", () => setMode("normal"));
-        if (modePhotoBtn) modePhotoBtn.addEventListener("click", () => setMode("photo"));
+        document.getElementById("mode-normal")?.addEventListener("click", () => setMode("normal"));
+        document.getElementById("mode-photo")?.addEventListener("click", () => setMode("photo"));
 
-        // selects
-        const certEventSel = document.getElementById("cert-event");
-        if (certEventSel) certEventSel.addEventListener("change", () => { toggleCustomFields(); });
+        document.getElementById("cert-event")?.addEventListener("change", toggleCustomFields);
 
-        // photo upload
-        const photoInput = document.getElementById("cert-photo");
-        if (photoInput) {
-          photoInput.addEventListener("change", async (e) => {
-            PHOTO_IMAGE = null;
-            const file = e.target.files?.[0];
-            if (!file) return;
-            const url = URL.createObjectURL(file);
-            try { PHOTO_IMAGE = await loadImage(url); }
-            finally { URL.revokeObjectURL(url); }
-          });
-        }
+        document.getElementById("cert-photo")?.addEventListener("change", async (e) => {
+          PHOTO_IMAGE = null;
+          const file = e.target.files?.[0];
+          if (!file) return;
+          const url = URL.createObjectURL(file);
+          try { PHOTO_IMAGE = await loadImage(url); }
+          finally { URL.revokeObjectURL(url); }
+        });
 
-        // form submit
-        const form = document.getElementById("cert-form");
-        if (form) {
-          form.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            await generateCertificatePreview();
-          });
-        }
+        document.getElementById("cert-form")?.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          await generateCertificatePreview();
+        });
 
-        // reset / download
-        const resetBtn = document.getElementById("cert-reset");
-        const downloadBtn = document.getElementById("cert-download");
-        if (resetBtn) {
-          resetBtn.addEventListener("click", () => {
-            document.getElementById("cert-form")?.reset();
-            PHOTO_IMAGE = null;
-            setMode("normal");
-            toggleCustomFields();
-            syncPhotoFields();
-            setError("");
-            setDownloadEnabled(false);
+        document.getElementById("cert-reset")?.addEventListener("click", () => {
+          document.getElementById("cert-form")?.reset();
+          PHOTO_IMAGE = null;
+          setMode("normal");
+          toggleCustomFields();
+          syncPhotoFields();
+          setCertError("");
+          setDownloadEnabled(false);
+          paintBlankCanvas();
+        });
 
-            const c = document.getElementById("cert-canvas");
-            if (c) {
-              const ctx = c.getContext("2d");
-              ctx.fillStyle = "#fff";
-              ctx.fillRect(0,0,c.width,c.height);
-            }
-          });
-        }
-        if (downloadBtn) {
-          downloadBtn.addEventListener("click", () => {
-            const c = document.getElementById("cert-canvas");
-            if (!c) return;
-            const a = document.createElement("a");
-            a.download = downloadBtn.dataset.filename || "certificate.png";
-            a.href = c.toDataURL("image/png");
-            a.click();
-          });
-        }
+        document.getElementById("cert-download")?.addEventListener("click", () => {
+          const c = document.getElementById("cert-canvas");
+          const btn = document.getElementById("cert-download");
+          if (!c || !btn) return;
+          const a = document.createElement("a");
+          a.download = btn.dataset.filename || "certificate.png";
+          a.href = c.toDataURL("image/png");
+          a.click();
+        });
 
-        // init canvas
+        paintBlankCanvas();
+      }
+
+      function paintBlankCanvas(){
         const c = document.getElementById("cert-canvas");
-        if (c) {
-          const ctx = c.getContext("2d");
-          ctx.fillStyle = "#fff";
-          ctx.fillRect(0,0,c.width,c.height);
-        }
-
-        // hydrate select initially
-        hydrateCertSelect();
-        toggleCustomFields();
-        syncPhotoFields();
+        if (!c) return;
+        const ctx = c.getContext("2d");
+        ctx.fillStyle = "#fff";
+        ctx.fillRect(0,0,c.width,c.height);
       }
 
-      function setMode(next) {
+      function setMode(next){
         CERT_MODE = next;
-        const modeNormalBtn = document.getElementById("mode-normal");
-        const modePhotoBtn = document.getElementById("mode-photo");
-        if (modeNormalBtn) modeNormalBtn.classList.toggle("active", next === "normal");
-        if (modePhotoBtn) modePhotoBtn.classList.toggle("active", next === "photo");
+        document.getElementById("mode-normal")?.classList.toggle("active", next === "normal");
+        document.getElementById("mode-photo")?.classList.toggle("active", next === "photo");
         syncPhotoFields();
       }
 
-      function syncPhotoFields() {
+      function syncPhotoFields(){
         const isPhoto = CERT_MODE === "photo";
         setVisible(document.getElementById("photo-field"), isPhoto);
         setVisible(document.getElementById("photo-distance-field"), isPhoto);
       }
 
-      function toggleCustomFields() {
+      function toggleCustomFields(){
         const sel = document.getElementById("cert-event");
-        const wrap = document.getElementById("custom-event-fields");
-        if (!sel || !wrap) return;
-        setVisible(wrap, sel.value === "custom");
+        setVisible(document.getElementById("custom-event-fields"), sel && sel.value === "custom");
       }
 
-      function hydrateCertSelect() {
+      function hydrateCertSelect(){
         const sel = document.getElementById("cert-event");
         if (!sel) return;
 
@@ -855,7 +1407,6 @@
 
         const savedIdx = sessionStorage.getItem("cert_selected_event_index");
         const savedMode = sessionStorage.getItem("cert_selected_event_mode");
-
         if (savedMode === "photo") setMode("photo"); else setMode("normal");
 
         if (savedIdx === "custom") sel.value = "custom";
@@ -870,31 +1421,32 @@
         syncPhotoFields();
       }
 
-      function setError(msg) {
+      function setCertError(msg){
         const el = document.getElementById("cert-error");
         if (!el) return;
-        if (!msg) { el.style.display = "none"; el.textContent = ""; return; }
+        if (!msg) { el.style.display="none"; el.textContent=""; return; }
         el.textContent = msg;
         el.style.display = "";
       }
 
-      function setDownloadEnabled(enabled, filename = "") {
+      function setDownloadEnabled(enabled, filename=""){
         const btn = document.getElementById("cert-download");
         if (!btn) return;
         btn.disabled = !enabled;
         if (enabled && filename) btn.dataset.filename = filename;
       }
 
-      function getEventData() {
+      function getEventData(){
         const sel = document.getElementById("cert-event");
         if (!sel) return null;
 
         if (sel.value === "custom") {
-          const name = String(document.getElementById("cert-custom-name")?.value || "").trim() || "무지 기록";
-          const date = String(document.getElementById("cert-custom-date")?.value || "").trim();
-          const location = String(document.getElementById("cert-custom-loc")?.value || "").trim();
-          const distance = normalizeDistance(String(document.getElementById("cert-custom-dist")?.value || "").trim());
-          return { name, date, location, distance };
+          return {
+            name: String(document.getElementById("cert-custom-name")?.value || "").trim() || "무지 기록",
+            date: String(document.getElementById("cert-custom-date")?.value || "").trim(),
+            location: String(document.getElementById("cert-custom-loc")?.value || "").trim(),
+            distance: normalizeDistance(String(document.getElementById("cert-custom-dist")?.value || "").trim())
+          };
         }
 
         const idx = Number(sel.value);
@@ -904,11 +1456,11 @@
           name: String(ev.name || "대회"),
           date: String(ev.date || ""),
           location: String(ev.location || ""),
-          distance: normalizeDistance(ev.distance),
+          distance: normalizeDistance(ev.distance)
         };
       }
 
-      function kmFromCourseLabel(label, evDistance) {
+      function kmFromCourseLabel(label, evDistance){
         const d = (String(label || "") || String(evDistance || "")).toUpperCase();
         if (d === "5K") return 5;
         if (d === "10K") return 10;
@@ -917,7 +1469,7 @@
         return null;
       }
 
-      async function generatePhotoOverlay(ev, nick, bib, tsec, note, courseLabel) {
+      async function generatePhotoOverlay(ev, nick, bib, tsec, note, courseLabel){
         const c = document.getElementById("cert-canvas");
         if (!c) return;
         const ctx = c.getContext("2d");
@@ -925,10 +1477,10 @@
 
         ctx.clearRect(0,0,W,H);
 
-        // clip to rounded
+        // clip rounded (prevents overflow)
         const clipPad = 20;
         ctx.save();
-        roundedRect(ctx, clipPad, clipPad, W - clipPad*2, H - clipPad*2, 32);
+        roundedRect(ctx, clipPad, clipPad, W-clipPad*2, H-clipPad*2, 32);
         ctx.clip();
 
         // photo
@@ -940,37 +1492,51 @@
         }
 
         // vignette
-        const vg = ctx.createRadialGradient(W*0.72, H*0.55, 220, W*0.72, H*0.55, 1050);
-        vg.addColorStop(0, "rgba(0,0,0,0.00)");
-        vg.addColorStop(1, "rgba(0,0,0,0.55)");
+        const vg = ctx.createRadialGradient(W*0.72,H*0.55,220,W*0.72,H*0.55,1050);
+        vg.addColorStop(0,"rgba(0,0,0,0.00)");
+        vg.addColorStop(1,"rgba(0,0,0,0.55)");
         ctx.fillStyle = vg;
         ctx.fillRect(0,0,W,H);
 
         const family = "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
         const mono = "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace";
 
-        // right vertical white strip with NO BACK (fixed)
-        const stripW = 84;
-        const stripX = W - stripW - 40;
-        const stripY = 120;
-        const stripH = H - 260;
+        // ===== NO BACK strip (FLUSH + RADIUS 0 + TOP->BOTTOM) =====
+        const stripW = 78;
+        const stripX = W - clipPad - stripW;      // flush to right inside clip
+        const stripY = clipPad;                   // flush to top inside clip
+        const stripH = H - clipPad * 2;           // flush to bottom inside clip
 
         ctx.save();
-        ctx.fillStyle = "rgba(255,255,255,0.94)";
-        ctx.shadowColor = "rgba(0,0,0,0.35)";
-        ctx.shadowBlur = 18;
-        roundedRect(ctx, stripX, stripY, stripW, stripH, 18);
-        ctx.fill();
+        ctx.fillStyle = "rgba(255,255,255,0.96)";
+        // radius 0 (칼각)
+        ctx.fillRect(stripX, stripY, stripW, stripH);
         ctx.restore();
 
+        // Text auto-fit (top -> bottom)
         ctx.save();
         ctx.translate(stripX + stripW/2, stripY + stripH/2);
-        ctx.rotate(Math.PI/2);
+        ctx.rotate(Math.PI / 2); // left->right becomes top->bottom on canvas
         ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
         ctx.fillStyle = "#111";
-        ctx.font = `900 44px ${family}`;
-        ctx.fillText("NO BACK", 0, 0);
+
+        const text = "NO BACK";
+        let fontSize = 60;
+        ctx.font = `900 ${fontSize}px ${family}`;
+
+        // after rotation: measureText(width) should fit stripH
+        const target = stripH - 16; // tighter padding
+        const measured = ctx.measureText(text).width;
+        if (measured > 0) {
+          fontSize = Math.floor((fontSize * target) / measured);
+          fontSize = Math.max(28, Math.min(fontSize, 78));
+          ctx.font = `900 ${fontSize}px ${family}`;
+        }
+
+        ctx.fillText(text, 0, 0);
         ctx.restore();
+        // ===== END strip =====
 
         // left-top title
         const titleMode = document.getElementById("photo-title-mode")?.value || "note";
@@ -997,15 +1563,15 @@
         const timeText = formatTime(tsec);
         const paceText = km ? `${fmtPace(tsec / km)} /km` : "";
 
-        const metricMode = document.getElementById("photo-metric-mode")?.value || "all"; // all/tp/t
+        const metricMode = document.getElementById("photo-metric-mode")?.value || "all";
         const showDistance = metricMode === "all";
         const showTime = metricMode === "all" || metricMode === "tp" || metricMode === "t";
         const showPace = metricMode === "all" || metricMode === "tp";
 
-        const right = stripX - 40;
+        const right = stripX - 22; // tight gap to strip
         let y = H - 120;
 
-        function drawMetric(label, value, yPos) {
+        function drawMetric(label, value, yPos){
           ctx.save();
           ctx.textAlign = "right";
           ctx.fillStyle = "rgba(255,255,255,0.78)";
@@ -1040,51 +1606,255 @@
         outlineText(ctx, nick, right, H - 48, 8, "rgba(0,0,0,0.72)");
         ctx.restore();
 
-        ctx.restore();
+        ctx.restore(); // end clip
       }
 
-      async function generateNormalCertificate(ev, nick, bib, tsec) {
+      async function generateNormalCertificate(ev, nick, bib, tsec){
         const c = document.getElementById("cert-canvas");
         if (!c) return;
         const ctx = c.getContext("2d");
+        const W = c.width, H = c.height;
+
+        ctx.clearRect(0,0,W,H);
         ctx.fillStyle = "#fff";
-        ctx.fillRect(0,0,c.width,c.height);
+        ctx.fillRect(0,0,W,H);
+
+        // watermark background (optional)
+        try {
+          const bg = await loadImage("./bg.jpg?v=3900");
+          ctx.save();
+          ctx.globalAlpha = 0.08;
+          const tile = 260;
+          const tileH = (tile * bg.height) / bg.width;
+          for (let yy=0; yy<H; yy+=tile) for (let xx=0; xx<W; xx+=tile) ctx.drawImage(bg, xx, yy, tile, tileH);
+          ctx.restore();
+        } catch {}
+
+        const pad = 70;
+        const x = pad, y = 120, w = W - pad*2, h = H - 220;
+
+        ctx.save();
+        ctx.shadowColor = "rgba(0,0,0,.14)";
+        ctx.shadowBlur = 28;
+        ctx.shadowOffsetY = 14;
+        ctx.fillStyle = "rgba(255,255,255,.96)";
+        roundedRect(ctx, x, y, w, h, 28);
+        ctx.fill();
+        ctx.restore();
+
+        ctx.fillStyle = "#ff6a00";
+        roundedRect(ctx, x, y, w, 18, 10);
+        ctx.fill();
+
         ctx.fillStyle = "#111";
-        ctx.font = "900 64px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        ctx.fillText("CERTIFICATE", 80, 140);
-        ctx.font = "900 52px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        ctx.fillText(ev.name || "무지 기록", 80, 220);
-        ctx.font = "800 36px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        ctx.fillText(`닉네임: ${nick}`, 80, 310);
-        ctx.fillText(`기록: ${formatTime(tsec)}`, 80, 370);
-        if (bib) ctx.fillText(`BIB: ${bib}`, 80, 430);
+        ctx.font = "900 66px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        ctx.fillText("CERTIFICATE OF RECORD", x+70, y+120);
+
+        ctx.fillStyle = "rgba(17,17,17,.70)";
+        ctx.font = "800 24px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        ctx.fillText("노빠꾸 러닝 크루", x+70, y+160);
+
+        ctx.fillStyle = "#111";
+        ctx.font = "900 56px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        ctx.fillText(ev.name || "무지 기록", x+70, y+230);
+
+        const meta = [ev.date, ev.location, ev.distance].filter(Boolean).join(" · ");
+        ctx.fillStyle = "rgba(17,17,17,.65)";
+        ctx.font = "800 24px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        ctx.fillText(meta || "—", x+70, y+270);
+
+        ctx.strokeStyle = "rgba(0,0,0,.10)";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(x+70, y+310);
+        ctx.lineTo(x+w-70, y+310);
+        ctx.stroke();
+
+        ctx.textAlign = "center";
+        ctx.fillStyle = "#111";
+        ctx.font = "900 84px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        ctx.fillText(nick, x+w/2, y+430);
+
+        ctx.font = "900 170px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        ctx.fillText(formatTime(tsec), x+w/2, y+610);
+
+        if (bib) {
+          ctx.fillStyle = "#ff6a00";
+          ctx.font = "900 34px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+          ctx.fillText(`Bib No. ${bib}`, x+w/2, y+670);
+        }
+
+        ctx.textAlign = "center";
+        ctx.fillStyle = "rgba(17,17,17,.78)";
+        ctx.font = "900 24px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        ctx.fillText(`${ev.name || "완주"}를 축하드립니다.`, x+w/2, y+h-90);
+
+        ctx.save();
+        ctx.globalAlpha = 0.95;
+        ctx.fillStyle = "#ff6a00";
+        roundedRect(ctx, x, y+h-18, w, 18, 10);
+        ctx.fill();
+        ctx.restore();
       }
 
-      async function generateCertificatePreview() {
-        setError("");
+      async function generateCertificatePreview(){
+        setCertError("");
         setDownloadEnabled(false);
 
         const ev = getEventData();
-        if (!ev) return setError("대회 정보를 불러오지 못했어요.");
+        if (!ev) return setCertError("대회 정보를 불러오지 못했어요.");
 
         const nick = String(document.getElementById("cert-nick")?.value || "").trim();
         const bib = String(document.getElementById("cert-bib")?.value || "").trim();
         const note = String(document.getElementById("cert-note")?.value || "").trim();
         const tsec = parseTimeToSeconds(document.getElementById("cert-time")?.value);
 
-        if (!nick) return setError("닉네임을 입력해 주세요.");
-        if (!tsec || tsec <= 0) return setError("기록 시간을 올바르게 입력해 주세요.");
+        if (!nick) return setCertError("닉네임을 입력해 주세요.");
+        if (!tsec || tsec <= 0) return setCertError("기록 시간을 올바르게 입력해 주세요.");
 
         const courseLabel = String(document.getElementById("cert-course")?.value || "").trim() || normalizeDistance(ev.distance) || "";
 
         if (CERT_MODE === "photo") {
-          if (!PHOTO_IMAGE) return setError("사진 기록: 사진을 업로드해 주세요.");
+          if (!PHOTO_IMAGE) return setCertError("사진 기록: 사진을 업로드해 주세요.");
           await generatePhotoOverlay(ev, nick, bib, tsec, note, courseLabel);
         } else {
           await generateNormalCertificate(ev, nick, bib, tsec);
         }
 
-        setDownloadEnabled(true, `noback_${(ev.name||"record").replace(/\s+/g,"_")}_${(nick||"runner").replace(/\s+/g,"_")}_${CERT_MODE}.png`);
+        const fname = `noback_${(ev.name||"record").replace(/\s+/g,"_")}_${(nick||"runner").replace(/\s+/g,"_")}_${CERT_MODE}.png`;
+        setDownloadEnabled(true, fname);
+      }
+
+      function initCertificate() {
+        document.getElementById("mode-normal")?.addEventListener("click", () => setMode("normal"));
+        document.getElementById("mode-photo")?.addEventListener("click", () => setMode("photo"));
+
+        document.getElementById("cert-event")?.addEventListener("change", toggleCustomFields);
+
+        document.getElementById("cert-photo")?.addEventListener("change", async (e) => {
+          PHOTO_IMAGE = null;
+          const file = e.target.files?.[0];
+          if (!file) return;
+          const url = URL.createObjectURL(file);
+          try { PHOTO_IMAGE = await loadImage(url); }
+          finally { URL.revokeObjectURL(url); }
+        });
+
+        document.getElementById("cert-form")?.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          await generateCertificatePreview();
+        });
+
+        document.getElementById("cert-reset")?.addEventListener("click", () => {
+          document.getElementById("cert-form")?.reset();
+          PHOTO_IMAGE = null;
+          setMode("normal");
+          toggleCustomFields();
+          syncPhotoFields();
+          setCertError("");
+          setDownloadEnabled(false);
+          paintBlankCanvas();
+        });
+
+        document.getElementById("cert-download")?.addEventListener("click", () => {
+          const c = document.getElementById("cert-canvas");
+          const btn = document.getElementById("cert-download");
+          if (!c || !btn) return;
+          const a = document.createElement("a");
+          a.download = btn.dataset.filename || "certificate.png";
+          a.href = c.toDataURL("image/png");
+          a.click();
+        });
+
+        paintBlankCanvas();
+      }
+
+      function paintBlankCanvas(){
+        const c = document.getElementById("cert-canvas");
+        if (!c) return;
+        const ctx = c.getContext("2d");
+        ctx.fillStyle = "#fff";
+        ctx.fillRect(0,0,c.width,c.height);
+      }
+
+      function setMode(next){
+        CERT_MODE = next;
+        document.getElementById("mode-normal")?.classList.toggle("active", next === "normal");
+        document.getElementById("mode-photo")?.classList.toggle("active", next === "photo");
+        syncPhotoFields();
+      }
+
+      function syncPhotoFields(){
+        const isPhoto = CERT_MODE === "photo";
+        setVisible(document.getElementById("photo-field"), isPhoto);
+        setVisible(document.getElementById("photo-distance-field"), isPhoto);
+      }
+
+      function setCertError(msg){
+        const el = document.getElementById("cert-error");
+        if (!el) return;
+        if (!msg) { el.style.display="none"; el.textContent=""; return; }
+        el.textContent = msg;
+        el.style.display = "";
+      }
+
+      function setDownloadEnabled(enabled, filename=""){
+        const btn = document.getElementById("cert-download");
+        if (!btn) return;
+        btn.disabled = !enabled;
+        if (enabled && filename) btn.dataset.filename = filename;
+      }
+
+      // ---- shoes ----
+      function initShoes() { loadShoes(); }
+
+      async function loadShoes(){
+        const err = document.getElementById("shoes-error");
+        const dailyEl = document.getElementById("shoes-daily");
+        const trainEl = document.getElementById("shoes-training");
+        const raceEl = document.getElementById("shoes-race");
+        if (!dailyEl || !trainEl || !raceEl) return;
+
+        const res = await safeFetchJson("data/shoes.json");
+        if (!res.ok || !res.data) {
+          err.textContent = `러닝화 정보를 불러오지 못했어요. ${res.ok ? "" : res.reason}`;
+          err.style.display = "";
+          return;
+        }
+        err.style.display = "none";
+
+        const daily = Array.isArray(res.data.daily) ? res.data.daily : [];
+        const training = Array.isArray(res.data.training) ? res.data.training : [];
+        const race = Array.isArray(res.data.race) ? res.data.race : [];
+
+        document.getElementById("badge-daily").textContent = `${daily.length}개`;
+        document.getElementById("badge-training").textContent = `${training.length}개`;
+        document.getElementById("badge-race").textContent = `${race.length}개`;
+
+        function render(list, root){
+          root.innerHTML = "";
+          if (!list.length) {
+            const div = document.createElement("div");
+            div.className = "empty";
+            div.innerHTML = "<b>비어있어요</b><div style='margin-top:8px;'>data/shoes.json에 추가해 주세요.</div>";
+            root.appendChild(div);
+            return;
+          }
+          list.forEach(s => {
+            const card = document.createElement("div");
+            card.className = "shoe";
+            const title = document.createElement("strong");
+            title.textContent = `${s.brand || ""} ${s.model || ""}`.trim();
+            const sub = document.createElement("span");
+            sub.textContent = `${s.tag ? `[${s.tag}] ` : ""}${s.note || ""}`.trim();
+            card.append(title, sub);
+            root.appendChild(card);
+          });
+        }
+
+        render(daily, dailyEl);
+        render(training, trainEl);
+        render(race, raceEl);
       }
     </script>
   </body>
