@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>노빠꾸 러닝 크루🏃🏽🏃‍♀️🏃🏻‍♂️</title>
 
-    <link rel="icon" type="image/x-icon" href="./favicon.ico?v=3900" />
-    <link rel="shortcut icon" href="./favicon.ico?v=3900" />
+    <link rel="icon" type="image/x-icon" href="./favicon.ico?v=4000" />
+    <link rel="shortcut icon" href="./favicon.ico?v=4000" />
 
     <style>
       :root{
@@ -37,7 +37,7 @@
         content:"";
         position:fixed;
         inset:0;
-        background-image:url("./bg.jpg?v=3900");
+        background-image:url("./bg.jpg?v=4000");
         background-repeat:repeat;
         background-size:260px auto;
         background-position:0 0;
@@ -640,10 +640,19 @@
               <div class="help">사진은 업로드되지 않고 브라우저에서만 합성돼요.</div>
             </div>
 
-            <div class="field" id="photo-distance-field" style="display:none;">
-              <label for="photo-distance-km">거리(km) (선택)</label>
+            <!-- ✅ 입력 단순화: 거리 모드 2개(대회기준 vs 직접입력) -->
+            <div class="field" id="photo-distance-mode-field" style="display:none;">
+              <label for="photo-distance-mode">거리</label>
+              <select id="photo-distance-mode">
+                <option value="auto" selected>대회/코스 기준</option>
+                <option value="manual">직접 입력</option>
+              </select>
+              <div class="help">직접 입력 선택 시 아래 입력란이 열려요.</div>
+            </div>
+
+            <div class="field" id="photo-distance-km-field" style="display:none;">
+              <label for="photo-distance-km">거리(km)</label>
               <input id="photo-distance-km" inputmode="decimal" placeholder="예: 11.43" />
-              <div class="help">비워두면 코스(10K/21K)로 Pace 계산</div>
             </div>
 
             <div class="field">
@@ -653,7 +662,6 @@
                 <option value="tp">시간 + 페이스</option>
                 <option value="t">시간만</option>
               </select>
-              <div class="help">모바일 깨짐 방지: 체크박스 대신 드롭다운</div>
             </div>
 
             <div class="field">
@@ -796,6 +804,7 @@
         route();
       }
 
+      // ---------- router ----------
       function initRouter() { window.addEventListener("hashchange", route); }
 
       function route() {
@@ -825,9 +834,11 @@
           hydrateCertSelect();
           toggleCustomFields();
           syncPhotoFields();
+          syncPhotoDistanceModeFields();
         }
       }
 
+      // ---------- utils ----------
       function setVisible(el, visible) { if (el) el.style.display = visible ? "" : "none"; }
 
       function parseTimeToSeconds(raw) {
@@ -957,6 +968,7 @@
         ctx.drawImage(img, sx, sy, sw, sh, x, y, w, h);
       }
 
+      // ---------- staff ----------
       function initStaff() {
         const ops = ["달려", "룰루", "나올", "밍경", "김땅콩", "슈퍼짹", "뽀용", "망구"];
         const sorted = sortKoreanDesc(ops);
@@ -971,7 +983,7 @@
         });
       }
 
-      // ---- pace ----
+      // ---------- pace ----------
       function initPace() {
         const form = document.getElementById("pace-form");
         if (!form) return;
@@ -1039,7 +1051,7 @@
         });
       }
 
-      // ---- interval ----
+      // ---------- interval ----------
       function initInterval() {
         const form = document.getElementById("interval-form");
         if (!form) return;
@@ -1124,14 +1136,13 @@
         });
       }
 
-      // ---- predict ----
+      // ---------- predict ----------
       function initPredict() {
         const form = document.getElementById("predict-form");
         if (!form) return;
 
         const timeInput = document.getElementById("predict-5k-time");
         const modeSel = document.getElementById("predict-mode");
-
         const err = document.getElementById("predict-error");
         const result = document.getElementById("predict-result");
 
@@ -1203,7 +1214,7 @@
         });
       }
 
-      // ---- events ----
+      // ---------- events ----------
       let EVENTS_CACHE = [];
 
       function initEvents() {
@@ -1312,7 +1323,7 @@
         return el;
       }
 
-      // ---- certificate ----
+      // ---------- certificate ----------
       let CERT_MODE = "normal";
       let PHOTO_IMAGE = null;
 
@@ -1320,12 +1331,27 @@
         document.getElementById("mode-normal")?.addEventListener("click", () => setMode("normal"));
         document.getElementById("mode-photo")?.addEventListener("click", () => setMode("photo"));
 
-        document.getElementById("cert-event")?.addEventListener("change", toggleCustomFields);
+        document.getElementById("cert-event")?.addEventListener("change", () => {
+          toggleCustomFields();
+          syncPhotoDistanceModeFields();
+        });
 
+        document.getElementById("photo-distance-mode")?.addEventListener("change", syncPhotoDistanceModeFields);
+
+        // ✅ iOS EXIF orientation 대응 + 깨짐 방지
         document.getElementById("cert-photo")?.addEventListener("change", async (e) => {
           PHOTO_IMAGE = null;
           const file = e.target.files?.[0];
           if (!file) return;
+
+          if ("createImageBitmap" in window) {
+            try {
+              const bmp = await createImageBitmap(file, { imageOrientation: "from-image" });
+              PHOTO_IMAGE = bmp;
+              return;
+            } catch { /* fallback */ }
+          }
+
           const url = URL.createObjectURL(file);
           try { PHOTO_IMAGE = await loadImage(url); }
           finally { URL.revokeObjectURL(url); }
@@ -1342,6 +1368,7 @@
           setMode("normal");
           toggleCustomFields();
           syncPhotoFields();
+          syncPhotoDistanceModeFields();
           setCertError("");
           setDownloadEnabled(false);
           paintBlankCanvas();
@@ -1360,7 +1387,21 @@
         paintBlankCanvas();
       }
 
+      function setCanvasSizeForMode(mode) {
+        const c = document.getElementById("cert-canvas");
+        if (!c) return;
+        if (mode === "photo") {
+          // ✅ 사진 기록은 무조건 정사각형
+          c.width = 1080;
+          c.height = 1080;
+        } else {
+          c.width = 1200;
+          c.height = 1600;
+        }
+      }
+
       function paintBlankCanvas(){
+        setCanvasSizeForMode(CERT_MODE);
         const c = document.getElementById("cert-canvas");
         if (!c) return;
         const ctx = c.getContext("2d");
@@ -1373,12 +1414,20 @@
         document.getElementById("mode-normal")?.classList.toggle("active", next === "normal");
         document.getElementById("mode-photo")?.classList.toggle("active", next === "photo");
         syncPhotoFields();
+        syncPhotoDistanceModeFields();
+        paintBlankCanvas();
       }
 
       function syncPhotoFields(){
         const isPhoto = CERT_MODE === "photo";
         setVisible(document.getElementById("photo-field"), isPhoto);
-        setVisible(document.getElementById("photo-distance-field"), isPhoto);
+        setVisible(document.getElementById("photo-distance-mode-field"), isPhoto);
+      }
+
+      function syncPhotoDistanceModeFields(){
+        const isPhoto = CERT_MODE === "photo";
+        const mode = document.getElementById("photo-distance-mode")?.value || "auto";
+        setVisible(document.getElementById("photo-distance-km-field"), isPhoto && mode === "manual");
       }
 
       function toggleCustomFields(){
@@ -1419,6 +1468,7 @@
 
         toggleCustomFields();
         syncPhotoFields();
+        syncPhotoDistanceModeFields();
       }
 
       function setCertError(msg){
@@ -1477,13 +1527,13 @@
 
         ctx.clearRect(0,0,W,H);
 
-        // clip rounded (prevents overflow)
-        const clipPad = 20;
+        // ✅ 정사각 프레임(rounded clip)
+        const clipPad = 18;
         ctx.save();
-        roundedRect(ctx, clipPad, clipPad, W-clipPad*2, H-clipPad*2, 32);
+        roundedRect(ctx, clipPad, clipPad, W-clipPad*2, H-clipPad*2, 28);
         ctx.clip();
 
-        // photo
+        // photo cover into square
         if (!PHOTO_IMAGE) {
           ctx.fillStyle = "#111";
           ctx.fillRect(0,0,W,H);
@@ -1491,8 +1541,8 @@
           drawCover(ctx, PHOTO_IMAGE, 0,0,W,H);
         }
 
-        // vignette
-        const vg = ctx.createRadialGradient(W*0.72,H*0.55,220,W*0.72,H*0.55,1050);
+        // vignette (light)
+        const vg = ctx.createRadialGradient(W*0.70,H*0.58,220,W*0.70,H*0.58,980);
         vg.addColorStop(0,"rgba(0,0,0,0.00)");
         vg.addColorStop(1,"rgba(0,0,0,0.55)");
         ctx.fillStyle = vg;
@@ -1501,44 +1551,41 @@
         const family = "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
         const mono = "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace";
 
-        // ===== NO BACK strip (FLUSH + RADIUS 0 + TOP->BOTTOM) =====
-        const stripW = 78;
-        const stripX = W - clipPad - stripW;      // flush to right inside clip
-        const stripY = clipPad;                   // flush to top inside clip
-        const stripH = H - clipPad * 2;           // flush to bottom inside clip
+        // ✅ GARMIN 느낌: 스트립은 "짧고 컴팩트" (대략 중앙에 위치)
+        const innerH = H - clipPad * 2;
+        const stripW = 66;
+        const stripH = Math.floor(innerH * 0.62);
+        const stripY = clipPad + Math.floor((innerH - stripH) / 2);
+        const stripX = W - clipPad - stripW;
 
+        // strip (radius 0 / flush)
         ctx.save();
         ctx.fillStyle = "rgba(255,255,255,0.96)";
-        // radius 0 (칼각)
         ctx.fillRect(stripX, stripY, stripW, stripH);
         ctx.restore();
 
-        // Text auto-fit (top -> bottom)
+        // NO BACK vertical (top -> bottom), auto-fit
         ctx.save();
         ctx.translate(stripX + stripW/2, stripY + stripH/2);
-        ctx.rotate(Math.PI / 2); // left->right becomes top->bottom on canvas
+        ctx.rotate(Math.PI / 2);
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
         ctx.fillStyle = "#111";
 
         const text = "NO BACK";
-        let fontSize = 60;
+        let fontSize = 58;
         ctx.font = `900 ${fontSize}px ${family}`;
-
-        // after rotation: measureText(width) should fit stripH
-        const target = stripH - 16; // tighter padding
+        const target = stripH - 10;
         const measured = ctx.measureText(text).width;
         if (measured > 0) {
           fontSize = Math.floor((fontSize * target) / measured);
-          fontSize = Math.max(28, Math.min(fontSize, 78));
+          fontSize = Math.max(22, Math.min(fontSize, 70));
           ctx.font = `900 ${fontSize}px ${family}`;
         }
-
         ctx.fillText(text, 0, 0);
         ctx.restore();
-        // ===== END strip =====
 
-        // left-top title
+        // title (top-left)
         const titleMode = document.getElementById("photo-title-mode")?.value || "note";
         let title = "";
         if (titleMode === "off") title = "";
@@ -1550,14 +1597,17 @@
           ctx.save();
           ctx.textAlign = "left";
           ctx.fillStyle = "rgba(255,255,255,0.92)";
-          ctx.font = `900 44px ${family}`;
-          outlineText(ctx, t, 56, 92, 8, "rgba(0,0,0,0.72)");
+          ctx.font = `900 40px ${family}`;
+          outlineText(ctx, t, 46, 74, 8, "rgba(0,0,0,0.72)");
           ctx.restore();
         }
 
-        // metrics bottom-right (left of strip)
-        const kmOverride = parseDistanceKmInput(document.getElementById("photo-distance-km")?.value);
-        const km = kmOverride ?? kmFromCourseLabel(courseLabel, ev.distance);
+        // distance mode: auto vs manual
+        const distMode = document.getElementById("photo-distance-mode")?.value || "auto";
+        const kmManual = parseDistanceKmInput(document.getElementById("photo-distance-km")?.value);
+
+        const kmAuto = kmFromCourseLabel(courseLabel, ev.distance);
+        const km = (distMode === "manual") ? kmManual : kmAuto;
 
         const distanceText = km ? `${km.toFixed(2)} km` : (courseLabel || ev.distance || "");
         const timeText = formatTime(tsec);
@@ -1568,48 +1618,53 @@
         const showTime = metricMode === "all" || metricMode === "tp" || metricMode === "t";
         const showPace = metricMode === "all" || metricMode === "tp";
 
-        const right = stripX - 22; // tight gap to strip
-        let y = H - 120;
+        // metrics right-bottom (avoid overlap) - tuned for square
+        const right = stripX - 16;
+        let y = H - 88;
 
         function drawMetric(label, value, yPos){
           ctx.save();
           ctx.textAlign = "right";
           ctx.fillStyle = "rgba(255,255,255,0.78)";
-          ctx.font = `900 26px ${family}`;
-          outlineText(ctx, label, right, yPos - 46, 6, "rgba(0,0,0,0.70)");
+          ctx.font = `900 20px ${family}`;
+          outlineText(ctx, label, right, yPos - 34, 6, "rgba(0,0,0,0.70)");
 
           ctx.fillStyle = "rgba(255,255,255,0.96)";
-          ctx.font = `900 64px ${mono}`;
+          ctx.font = `900 54px ${mono}`;
           outlineText(ctx, value, right, yPos, 10, "rgba(0,0,0,0.78)");
           ctx.restore();
         }
 
-        if (showPace && paceText) { drawMetric("평균페이스", paceText, y); y -= 150; }
-        if (showTime) { drawMetric("총 시간", timeText, y); y -= 150; }
-        if (showDistance && distanceText) { drawMetric("거리", distanceText, y); y -= 150; }
+        const gap = 108;
+        if (showPace && paceText) { drawMetric("평균페이스", paceText, y); y -= gap; }
+        if (showTime) { drawMetric("총 시간", timeText, y); y -= gap; }
+        if (showDistance && distanceText) { drawMetric("거리", distanceText, y); y -= gap; }
 
-        // chip line + nick
-        const chipLine = [courseLabel || ev.distance ? (courseLabel || ev.distance) : "", bib ? `BIB ${bib}` : ""].filter(Boolean).join(" · ");
+        // chip + nick
+        const chipLine = [courseLabel || ev.distance ? (courseLabel || ev.distance) : "", bib ? `BIB ${bib}` : ""]
+          .filter(Boolean).join(" · ");
+
         if (chipLine) {
           ctx.save();
           ctx.textAlign = "right";
           ctx.fillStyle = "rgba(255,106,0,0.95)";
-          ctx.font = `900 28px ${mono}`;
-          outlineText(ctx, chipLine, right, H - 78, 7, "rgba(0,0,0,0.70)");
+          ctx.font = `900 24px ${mono}`;
+          outlineText(ctx, chipLine, right, H - 54, 7, "rgba(0,0,0,0.70)");
           ctx.restore();
         }
 
         ctx.save();
         ctx.textAlign = "right";
         ctx.fillStyle = "rgba(255,255,255,0.92)";
-        ctx.font = `900 42px ${family}`;
-        outlineText(ctx, nick, right, H - 48, 8, "rgba(0,0,0,0.72)");
+        ctx.font = `900 36px ${family}`;
+        outlineText(ctx, nick, right, H - 22, 8, "rgba(0,0,0,0.72)");
         ctx.restore();
 
-        ctx.restore(); // end clip
+        ctx.restore(); // clip
       }
 
       async function generateNormalCertificate(ev, nick, bib, tsec){
+        setCanvasSizeForMode("normal");
         const c = document.getElementById("cert-canvas");
         if (!c) return;
         const ctx = c.getContext("2d");
@@ -1619,9 +1674,8 @@
         ctx.fillStyle = "#fff";
         ctx.fillRect(0,0,W,H);
 
-        // watermark background (optional)
         try {
-          const bg = await loadImage("./bg.jpg?v=3900");
+          const bg = await loadImage("./bg.jpg?v=4000");
           ctx.save();
           ctx.globalAlpha = 0.08;
           const tile = 260;
@@ -1715,6 +1769,7 @@
         const courseLabel = String(document.getElementById("cert-course")?.value || "").trim() || normalizeDistance(ev.distance) || "";
 
         if (CERT_MODE === "photo") {
+          setCanvasSizeForMode("photo");
           if (!PHOTO_IMAGE) return setCertError("사진 기록: 사진을 업로드해 주세요.");
           await generatePhotoOverlay(ev, nick, bib, tsec, note, courseLabel);
         } else {
@@ -1725,87 +1780,7 @@
         setDownloadEnabled(true, fname);
       }
 
-      function initCertificate() {
-        document.getElementById("mode-normal")?.addEventListener("click", () => setMode("normal"));
-        document.getElementById("mode-photo")?.addEventListener("click", () => setMode("photo"));
-
-        document.getElementById("cert-event")?.addEventListener("change", toggleCustomFields);
-
-        document.getElementById("cert-photo")?.addEventListener("change", async (e) => {
-          PHOTO_IMAGE = null;
-          const file = e.target.files?.[0];
-          if (!file) return;
-          const url = URL.createObjectURL(file);
-          try { PHOTO_IMAGE = await loadImage(url); }
-          finally { URL.revokeObjectURL(url); }
-        });
-
-        document.getElementById("cert-form")?.addEventListener("submit", async (e) => {
-          e.preventDefault();
-          await generateCertificatePreview();
-        });
-
-        document.getElementById("cert-reset")?.addEventListener("click", () => {
-          document.getElementById("cert-form")?.reset();
-          PHOTO_IMAGE = null;
-          setMode("normal");
-          toggleCustomFields();
-          syncPhotoFields();
-          setCertError("");
-          setDownloadEnabled(false);
-          paintBlankCanvas();
-        });
-
-        document.getElementById("cert-download")?.addEventListener("click", () => {
-          const c = document.getElementById("cert-canvas");
-          const btn = document.getElementById("cert-download");
-          if (!c || !btn) return;
-          const a = document.createElement("a");
-          a.download = btn.dataset.filename || "certificate.png";
-          a.href = c.toDataURL("image/png");
-          a.click();
-        });
-
-        paintBlankCanvas();
-      }
-
-      function paintBlankCanvas(){
-        const c = document.getElementById("cert-canvas");
-        if (!c) return;
-        const ctx = c.getContext("2d");
-        ctx.fillStyle = "#fff";
-        ctx.fillRect(0,0,c.width,c.height);
-      }
-
-      function setMode(next){
-        CERT_MODE = next;
-        document.getElementById("mode-normal")?.classList.toggle("active", next === "normal");
-        document.getElementById("mode-photo")?.classList.toggle("active", next === "photo");
-        syncPhotoFields();
-      }
-
-      function syncPhotoFields(){
-        const isPhoto = CERT_MODE === "photo";
-        setVisible(document.getElementById("photo-field"), isPhoto);
-        setVisible(document.getElementById("photo-distance-field"), isPhoto);
-      }
-
-      function setCertError(msg){
-        const el = document.getElementById("cert-error");
-        if (!el) return;
-        if (!msg) { el.style.display="none"; el.textContent=""; return; }
-        el.textContent = msg;
-        el.style.display = "";
-      }
-
-      function setDownloadEnabled(enabled, filename=""){
-        const btn = document.getElementById("cert-download");
-        if (!btn) return;
-        btn.disabled = !enabled;
-        if (enabled && filename) btn.dataset.filename = filename;
-      }
-
-      // ---- shoes ----
+      // ---------- shoes ----------
       function initShoes() { loadShoes(); }
 
       async function loadShoes(){
