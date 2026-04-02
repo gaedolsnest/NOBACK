@@ -6,58 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>노빠꾸 러닝 크루🏃🏽🏃‍♀️🏃🏻‍♂️</title>
 
-    <link rel="icon" type="image/x-icon" href="./favicon.ico?v=3600" />
-    <link rel="shortcut icon" href="./favicon.ico?v=3600" />
+    <link rel="icon" type="image/x-icon" href="./favicon.ico?v=3700" />
+    <link rel="shortcut icon" href="./favicon.ico?v=3700" />
 
     <style>
-      :root {
-        --accent: #ff6a00;
-        --page: #ffffff;
+      :root{
+        --accent:#ff6a00;
+        --page:#ffffff;
 
-        --glass: rgba(0, 0, 0, 0.56);
-        --glass2: rgba(0, 0, 0, 0.42);
-        --border: rgba(255, 255, 255, 0.14);
-        --text: rgba(255, 255, 255, 0.94);
-        --muted: rgba(255, 255, 255, 0.72);
+        --glass:rgba(0,0,0,.56);
+        --glass2:rgba(0,0,0,.42);
+        --border:rgba(255,255,255,.14);
+        --text:rgba(255,255,255,.94);
+        --muted:rgba(255,255,255,.72);
 
-        --shadow: 0 18px 48px rgba(0, 0, 0, 0.18);
-        --radius: 18px;
+        --shadow:0 18px 48px rgba(0,0,0,.18);
+        --radius:18px;
       }
-
-      * { box-sizing: border-box; }
-      html, body { height: 100%; }
-
-      body {
-        margin: 0;
-        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-        line-height: 1.45;
-        background: var(--page);
-        position: relative;
-        color: #111;
+      *{box-sizing:border-box;}
+      html,body{height:100%;}
+      body{
+        margin:0;
+        font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+        line-height:1.45;
+        background:var(--page);
+        position:relative;
+        color:#111;
       }
-
       body::before{
         content:"";
-        position: fixed;
-        inset: 0;
-        background-image: url("./bg.jpg?v=3600");
-        background-repeat: repeat;
-        background-size: 260px auto;
-        background-position: 0 0;
-        opacity: 0.11;
-        pointer-events: none;
-        z-index: 0;
+        position:fixed;
+        inset:0;
+        background-image:url("./bg.jpg?v=3700");
+        background-repeat:repeat;
+        background-size:260px auto;
+        background-position:0 0;
+        opacity:.11;
+        pointer-events:none;
+        z-index:0;
       }
-
       .container{
-        position: relative;
-        z-index: 1;
-        max-width: 1040px;
-        margin: 0 auto;
-        padding: 20px 14px 60px;
+        position:relative;
+        z-index:1;
+        max-width:1040px;
+        margin:0 auto;
+        padding:20px 14px 60px;
       }
-
-      a { color: inherit; text-decoration: none; }
+      a{color:inherit;text-decoration:none;}
 
       header{
         display:flex;
@@ -66,33 +61,29 @@
         gap:12px;
         margin-bottom:12px;
         padding:14px 14px;
-        border-radius: var(--radius);
-        background: linear-gradient(180deg, var(--glass), var(--glass2));
-        border: 1px solid var(--border);
-        box-shadow: var(--shadow);
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
+        border-radius:var(--radius);
+        background:linear-gradient(180deg,var(--glass),var(--glass2));
+        border:1px solid var(--border);
+        box-shadow:var(--shadow);
+        backdrop-filter:blur(14px);
+        -webkit-backdrop-filter:blur(14px);
       }
-
       header h1{
-        font-size: 18px;
-        margin: 0;
-        letter-spacing: .2px;
-        color: var(--text);
+        font-size:18px;
+        margin:0;
+        letter-spacing:.2px;
+        color:var(--text);
         display:flex;
         align-items:center;
         gap:10px;
       }
-
       header h1::before{
         content:"";
-        width:10px; height:10px;
-        border-radius: 999px;
-        background: var(--accent);
-        box-shadow: 0 0 0 4px rgba(255, 106, 0, .18);
-        flex: 0 0 auto;
+        width:10px;height:10px;border-radius:999px;
+        background:var(--accent);
+        box-shadow:0 0 0 4px rgba(255,106,0,.18);
+        flex:0 0 auto;
       }
-
       .header-right{
         display:flex;
         gap:10px;
@@ -100,172 +91,157 @@
         justify-content:flex-end;
         align-items:center;
       }
-
       .builtby{
-        font-size: 11px;
-        color: rgba(255,255,255,.62);
-        padding: 6px 10px;
-        border-radius: 999px;
-        border: 1px solid rgba(255,255,255,.10);
-        background: rgba(255,255,255,.04);
-        white-space: nowrap;
+        font-size:11px;
+        color:rgba(255,255,255,.62);
+        padding:6px 10px;
+        border-radius:999px;
+        border:1px solid rgba(255,255,255,.10);
+        background:rgba(255,255,255,.04);
+        white-space:nowrap;
       }
-      .builtby b{ color: rgba(255,255,255,.84); font-weight: 700; }
-
+      .builtby b{color:rgba(255,255,255,.84);font-weight:700;}
       .linkbtn{
-        font-size: 12px;
-        color: var(--text);
-        border: 1px solid rgba(255, 106, 0, .38);
-        padding: 9px 12px;
-        border-radius: 999px;
-        background: rgba(255, 106, 0, .12);
-        white-space: nowrap;
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-      }
-      .linkbtn:hover{
-        background: rgba(255, 106, 0, .20);
-        border-color: rgba(255, 106, 0, .58);
+        font-size:12px;
+        color:var(--text);
+        border:1px solid rgba(255,106,0,.38);
+        padding:9px 12px;
+        border-radius:999px;
+        background:rgba(255,106,0,.12);
+        white-space:nowrap;
+        backdrop-filter:blur(10px);
+        -webkit-backdrop-filter:blur(10px);
       }
 
       .tabs{
         display:flex;
         gap:8px;
         flex-wrap:wrap;
-        margin: 12px 0 14px;
+        margin:12px 0 14px;
       }
       .tab{
-        font-size: 13px;
-        color: rgba(0,0,0,.62);
-        border: 1px solid rgba(0,0,0,.10);
-        padding: 8px 12px;
-        border-radius: 999px;
-        background: rgba(0,0,0,.04);
+        font-size:13px;
+        color:rgba(0,0,0,.62);
+        border:1px solid rgba(0,0,0,.10);
+        padding:8px 12px;
+        border-radius:999px;
+        background:rgba(0,0,0,.04);
       }
       .tab.active{
-        color: #111;
-        border-color: rgba(255, 106, 0, .60);
-        background: rgba(255, 106, 0, .18);
+        color:#111;
+        border-color:rgba(255,106,0,.60);
+        background:rgba(255,106,0,.18);
       }
 
-      .view{ display:none; }
-      .view.active{ display:block; }
+      .view{display:none;}
+      .view.active{display:block;}
 
-      .grid{ display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap:14px; }
-      @media (max-width:720px){ .grid{ grid-template-columns: 1fr; } }
+      .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;}
+      @media (max-width:720px){.grid{grid-template-columns:1fr;}}
 
       .card{
-        border-radius: var(--radius);
-        background: linear-gradient(180deg, var(--glass), var(--glass2));
-        border: 1px solid var(--border);
-        box-shadow: var(--shadow);
-        padding: 16px;
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
-        color: var(--text);
+        border-radius:var(--radius);
+        background:linear-gradient(180deg,var(--glass),var(--glass2));
+        border:1px solid var(--border);
+        box-shadow:var(--shadow);
+        padding:16px;
+        backdrop-filter:blur(14px);
+        -webkit-backdrop-filter:blur(14px);
+        color:var(--text);
       }
-      .card h2{ margin:0 0 6px; font-size:16px; color:var(--text); }
-      .card p{ margin:0; color: var(--muted); font-size:13px; }
+      .card h2{margin:0 0 6px;font-size:16px;color:var(--text);}
+      .card p{margin:0;color:var(--muted);font-size:13px;}
 
       .cta{
-        margin-top: 12px;
-        display: inline-flex;
+        margin-top:12px;
+        display:inline-flex;
         align-items:center;
         gap:8px;
-        font-size: 13px;
-        color: var(--text);
-        border: 1px solid rgba(255, 106, 0, .38);
-        border-radius: 999px;
-        padding: 8px 12px;
-        background: rgba(255, 106, 0, .12);
+        font-size:13px;
+        color:var(--text);
+        border:1px solid rgba(255,106,0,.38);
+        border-radius:999px;
+        padding:8px 12px;
+        background:rgba(255,106,0,.12);
       }
 
-      .topbar{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px; }
+      .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;}
       .back{
         display:inline-flex;
         align-items:center;
         gap:8px;
-        font-size: 13px;
-        color: rgba(0,0,0,.72);
-        border: 1px solid rgba(0,0,0,.10);
-        border-radius: 999px;
-        padding: 8px 12px;
-        background: rgba(0,0,0,.04);
-      }
-
-      .pill{
-        font-size: 12px;
-        color: var(--muted);
-        border: 1px solid rgba(255,255,255,.16);
-        padding: 6px 10px;
-        border-radius: 999px;
-        background: rgba(255,255,255,.06);
-      }
-
-      form{ display:grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap:12px; }
-      .field{ grid-column: span 6; display:flex; flex-direction:column; gap:6px; }
-      @media (max-width:720px){ .field{ grid-column: span 12; } }
-
-      label{ font-size: 12px; color: var(--muted); }
-      input, select, button{ font: inherit; }
-      input, select{
-        width: 100%;
-        padding: 10px 12px;
-        border-radius: 12px;
-        border: 1px solid rgba(255,255,255,.16);
-        background: rgba(255,255,255,.06);
-        color: var(--text);
-        outline: none;
-      }
-      select option{ color:#111; background:#fff; }
-
-      .help{ font-size: 12px; color: var(--muted); margin-top:2px; }
-
-      .actions{ grid-column: span 12; display:flex; gap:10px; flex-wrap:wrap; margin-top:2px; }
-      button{
-        border: 1px solid rgba(255, 106, 0, .38);
-        background: rgba(255, 106, 0, .12);
-        padding: 10px 14px;
-        border-radius: 999px;
-        cursor: pointer;
-        color: var(--text);
-      }
-      button.ghost{
-        border: 1px solid rgba(255,255,255,.18);
-        background: rgba(255,255,255,.06);
-      }
-
-      .error{ margin-top:10px; color:#ffd0c2; font-size:13px; }
-      .canvas-wrap{
-        margin-top: 12px;
-        border: 1px solid rgba(255,255,255,.14);
-        border-radius: 14px;
-        overflow: hidden;
-        background: rgba(255,255,255,.05);
-      }
-      canvas{ display:block; width:100%; height:auto; background:#fff; border-radius:14px; }
-
-      /* Events list */
-      .list{ display:grid; gap:12px; margin-top:12px; }
-      .item{ border:1px solid rgba(255,255,255,.14); border-radius:14px; background:rgba(255,255,255,.05); padding:14px; }
-      .item-head{ display:flex; align-items:flex-start; justify-content:space-between; gap:10px; }
-      .item-title{ display:grid; gap:6px; }
-      .item-title strong{ font-size:14px; color:var(--text); }
-      .meta{ display:flex; gap:8px; flex-wrap:wrap; }
-      .p-wrap{ margin-top:10px; }
-      .p-list{ margin:0; padding-left:18px; color:var(--muted); }
-      .p-list li{ margin:6px 0; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
-      .chip{
-        border:1px solid rgba(255,106,0,.40);
+        font-size:13px;
+        color:rgba(0,0,0,.72);
+        border:1px solid rgba(0,0,0,.10);
         border-radius:999px;
-        padding:4px 8px;
-        background: rgba(255,106,0,.14);
-        color: rgba(255,255,255,.92);
+        padding:8px 12px;
+        background:rgba(0,0,0,.04);
+      }
+      .pill{
         font-size:12px;
-        white-space:nowrap;
+        color:var(--muted);
+        border:1px solid rgba(255,255,255,.16);
+        padding:6px 10px;
+        border-radius:999px;
+        background:rgba(255,255,255,.06);
       }
 
-      .empty{ border:1px dashed rgba(255,255,255,.22); border-radius:14px; padding:14px; color:var(--muted); background: rgba(255,255,255,.03); }
+      form{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:12px;}
+      .field{grid-column:span 6;display:flex;flex-direction:column;gap:6px;}
+      @media (max-width:720px){.field{grid-column:span 12;}}
+      label{font-size:12px;color:var(--muted);}
+      input,select,button{font:inherit;}
+      input,select{
+        width:100%;
+        padding:10px 12px;
+        border-radius:12px;
+        border:1px solid rgba(255,255,255,.16);
+        background:rgba(255,255,255,.06);
+        color:var(--text);
+        outline:none;
+      }
+      select option{color:#111;background:#fff;}
+      .help{font-size:12px;color:var(--muted);margin-top:2px;}
+      .actions{grid-column:span 12;display:flex;gap:10px;flex-wrap:wrap;margin-top:2px;}
+      button{
+        border:1px solid rgba(255,106,0,.38);
+        background:rgba(255,106,0,.12);
+        padding:10px 14px;
+        border-radius:999px;
+        cursor:pointer;
+        color:var(--text);
+      }
+      button.ghost{border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);}
+
+      .error{margin-top:10px;color:#ffd0c2;font-size:13px;}
+      .result{margin-top:14px;border-top:1px dashed rgba(255,255,255,.18);padding-top:14px;display:grid;gap:12px;}
+
+      /* Events */
+      .list{display:grid;gap:12px;margin-top:12px;}
+      .item{border:1px solid rgba(255,255,255,.14);border-radius:14px;background:rgba(255,255,255,.05);padding:14px;}
+      .item-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;}
+      .item-title{display:grid;gap:6px;}
+      .item-title strong{font-size:14px;color:var(--text);}
+      .meta{display:flex;gap:8px;flex-wrap:wrap;}
+      .p-wrap{margin-top:10px;}
+      .p-list{margin:0;padding-left:18px;color:var(--muted);}
+      .p-list li{margin:6px 0;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+      .chip{border:1px solid rgba(255,106,0,.40);border-radius:999px;padding:4px 8px;background:rgba(255,106,0,.14);color:rgba(255,255,255,.92);font-size:12px;white-space:nowrap;}
+      .empty{border:1px dashed rgba(255,255,255,.22);border-radius:14px;padding:14px;color:var(--muted);background:rgba(255,255,255,.03);}
+
+      /* Certificate canvas */
+      .canvas-wrap{
+        margin-top:12px;
+        border:1px solid rgba(255,255,255,.14);
+        border-radius:14px;
+        overflow:hidden;
+        background:rgba(255,255,255,.05);
+      }
+      canvas{display:block;width:100%;height:auto;background:#fff;border-radius:14px;}
+
+      .modebar{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;}
+      .modebtn{border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);}
+      .modebtn.active{border-color:rgba(255,106,0,.60);background:rgba(255,106,0,.18);}
     </style>
   </head>
 
@@ -299,7 +275,7 @@
           <a class="card" href="#/pace"><h2>페이스</h2><p>거리 + 목표 시간 → 평균 페이스 + KM별</p><span class="cta">열기 →</span></a>
           <a class="card" href="#/interval"><h2>인터벌</h2><p>워크/휴식 페이스 + 400/200 등 → 표</p><span class="cta">열기 →</span></a>
           <a class="card" href="#/predict"><h2>예상기록</h2><p>5K 기준 → 10K/하프/풀 3단계</p><span class="cta">열기 →</span></a>
-          <a class="card" href="#/events"><h2>대회</h2><p>대회 일정 + 참가자 + 기록증 출력</p><span class="cta">열기 →</span></a>
+          <a class="card" href="#/events"><h2>대회</h2><p>대회 일정 + 참가자 + 기록증</p><span class="cta">열기 →</span></a>
           <a class="card" href="#/certificate"><h2>기록증</h2><p>일반 + 📸 사진 기록(가민 스타일)</p><span class="cta">열기 →</span></a>
           <a class="card" href="#/cert"><h2>인증서</h2><p>땅콩 인증서 생성기 연결</p><span class="cta">열기 →</span></a>
           <a class="card" href="#/shoes"><h2>러닝화</h2><p>데일리/훈련/레이스 추천</p><span class="cta">열기 →</span></a>
@@ -307,17 +283,31 @@
         </div>
       </section>
 
-      <!-- (기존 pace/interval/predict/shoes/regular 뷰는 너가 이미 쓰던 버전이 있을 테니, 여기서는 핵심인 “기록증/대회”만 다시 넣어도 동작하게 유지) -->
+      <!-- PACE (placeholder: 네가 쓰던 기존 코드 붙여넣기 쉽게 남겨둠) -->
+      <section id="view-pace" class="view">
+        <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">페이스</div></div>
+        <div class="card"><p class="muted">페이스 계산기는 기존 버전 그대로 사용 중이면 여기 내용만 너가 쓰던 걸로 교체해도 됨</p></div>
+      </section>
+
+      <!-- INTERVAL -->
+      <section id="view-interval" class="view">
+        <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">인터벌</div></div>
+        <div class="card"><p class="muted">인터벌 계산기는 기존 버전 그대로 사용 중이면 여기 내용만 너가 쓰던 걸로 교체해도 됨</p></div>
+      </section>
+
+      <!-- PREDICT -->
+      <section id="view-predict" class="view">
+        <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">예상기록</div></div>
+        <div class="card"><p class="muted">예상기록도 기존 버전 사용 중이면 여기 내용만 교체해도 됨</p></div>
+      </section>
+
       <!-- EVENTS -->
       <section id="view-events" class="view">
-        <div class="topbar">
-          <a class="back" href="#/">← 홈</a>
-          <div class="pill">대회</div>
-        </div>
+        <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">대회</div></div>
         <div class="card">
           <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:space-between; align-items:center;">
             <h2 style="margin:0;">대회 일정</h2>
-            <button type="button" id="btn-custom-cert" class="ghost">무지(선택 없음) 기록증 →</button>
+            <button type="button" id="btn-custom-cert" class="ghost">무지 기록증 →</button>
           </div>
           <div id="events-list" class="list"></div>
         </div>
@@ -325,16 +315,12 @@
 
       <!-- CERTIFICATE -->
       <section id="view-certificate" class="view">
-        <div class="topbar">
-          <a class="back" href="#/">← 홈</a>
-          <div class="pill">기록증</div>
-        </div>
+        <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">기록증</div></div>
 
         <div class="card">
           <h2>기록증 출력</h2>
-          <p class="muted">일반 기록증 / 📸 사진 기록</p>
 
-          <div class="modebar" style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;">
+          <div class="modebar">
             <button type="button" class="modebtn active" id="mode-normal">일반 기록증</button>
             <button type="button" class="modebtn" id="mode-photo">📸 사진 기록</button>
           </div>
@@ -342,13 +328,13 @@
           <form id="cert-form" style="margin-top:12px;">
             <div class="field">
               <label for="cert-event">대회</label>
-              <select id="cert-event" name="event"></select>
+              <select id="cert-event"></select>
               <div class="help">“직접 입력(무지)” 선택 시 아래 입력란 열림</div>
             </div>
 
             <div class="field">
               <label for="cert-course">코스</label>
-              <select id="cert-course" name="course">
+              <select id="cert-course">
                 <option value="">대회 기본값 사용</option>
                 <option value="5K">5K</option>
                 <option value="10K">10K</option>
@@ -357,56 +343,35 @@
               </select>
             </div>
 
-            <div id="custom-event-fields" class="subgrid" style="display:none;">
-              <div class="hintbox">직접 입력 모드: 아래 값으로 기록증 상단이 채워집니다.</div>
-              <div class="field"><label for="cert-custom-name">대회명</label><input id="cert-custom-name" placeholder="예: 더레이스 서울" /></div>
-              <div class="field"><label for="cert-custom-date">날짜</label><input id="cert-custom-date" placeholder="예: 2026-04-05" /></div>
-              <div class="field"><label for="cert-custom-loc">장소</label><input id="cert-custom-loc" placeholder="예: 서울" /></div>
-              <div class="field"><label for="cert-custom-dist">거리</label><input id="cert-custom-dist" placeholder="예: 21K / 10K" /></div>
+            <div id="custom-event-fields" class="field" style="grid-column:span 12; display:none;">
+              <div class="help">직접 입력(무지): 아래를 채우면 기록증 상단에 반영됨</div>
+              <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px;">
+                <div class="field" style="grid-column:span 1;"><label>대회명</label><input id="cert-custom-name" placeholder="예: 더레이스 서울" /></div>
+                <div class="field" style="grid-column:span 1;"><label>날짜</label><input id="cert-custom-date" placeholder="예: 2026-04-05" /></div>
+                <div class="field" style="grid-column:span 1;"><label>장소</label><input id="cert-custom-loc" placeholder="예: 서울" /></div>
+                <div class="field" style="grid-column:span 1;"><label>거리</label><input id="cert-custom-dist" placeholder="예: 21K / 10K" /></div>
+              </div>
             </div>
 
-            <!-- PHOTO ONLY -->
             <div class="field" id="photo-field" style="display:none;">
               <label for="cert-photo">사진 업로드</label>
               <input id="cert-photo" type="file" accept="image/*" />
-              <div class="help">사진은 서버로 업로드되지 않고, 브라우저에서만 합성돼요.</div>
             </div>
 
             <div class="field" id="photo-distance-field" style="display:none;">
               <label for="photo-distance-km">거리(km) (선택)</label>
               <input id="photo-distance-km" inputmode="decimal" placeholder="예: 11.43" />
-              <div class="help">비워두면 코스(10K/21K 등)로 Pace 계산</div>
+              <div class="help">비워두면 코스(10K/21K)로 Pace 계산</div>
             </div>
 
             <div class="field">
-              <label for="photo-metric-mode">사진 지표 표시(모바일 깨짐 방지: 체크박스 대신 드롭다운)</label>
+              <label for="photo-metric-mode">사진 지표 표시</label>
               <select id="photo-metric-mode">
                 <option value="all" selected>거리 + 시간 + 페이스</option>
                 <option value="tp">시간 + 페이스</option>
                 <option value="t">시간만</option>
               </select>
-              <div class="help">가민처럼 깔끔하게 줄이고 싶으면 “시간+페이스” 추천</div>
-            </div>
-
-            <div class="field">
-              <label for="cert-bib">Bib No. (선택)</label>
-              <input id="cert-bib" name="bib" inputmode="numeric" placeholder="예: 40222" />
-            </div>
-
-            <div class="field">
-              <label for="cert-nick">닉네임</label>
-              <input id="cert-nick" name="nick" placeholder="예: 나올" />
-            </div>
-
-            <div class="field">
-              <label for="cert-time">기록</label>
-              <input id="cert-time" name="time" placeholder="예: 1:03:58 또는 54:00" />
-              <div class="help">MM:SS 또는 HH:MM:SS</div>
-            </div>
-
-            <div class="field">
-              <label for="cert-note">메모(선택)</label>
-              <input id="cert-note" name="note" placeholder="예: 3월 마무리 런 / 첫 10K" />
+              <div class="help">모바일에서 체크박스 깨짐 방지용(드롭다운 1개)</div>
             </div>
 
             <div class="field">
@@ -420,12 +385,24 @@
             </div>
 
             <div class="field">
-              <label for="cert-theme">테마</label>
-              <select id="cert-theme" name="theme">
-                <option value="clean" selected>Clean</option>
-                <option value="neon">Neon</option>
-                <option value="split">Split</option>
-              </select>
+              <label for="cert-bib">Bib No. (선택)</label>
+              <input id="cert-bib" inputmode="numeric" placeholder="예: 40222" />
+            </div>
+
+            <div class="field">
+              <label for="cert-nick">닉네임</label>
+              <input id="cert-nick" placeholder="예: 나올" />
+            </div>
+
+            <div class="field">
+              <label for="cert-time">기록</label>
+              <input id="cert-time" placeholder="예: 1:03:58 또는 54:00" />
+              <div class="help">MM:SS 또는 HH:MM:SS</div>
+            </div>
+
+            <div class="field">
+              <label for="cert-note">메모(선택)</label>
+              <input id="cert-note" placeholder="예: 3월 마무리 런 / 첫 10K" />
             </div>
 
             <div class="actions">
@@ -435,7 +412,7 @@
             </div>
           </form>
 
-          <div id="cert-error" class="error" role="alert" style="display:none;"></div>
+          <div id="cert-error" class="error" style="display:none;"></div>
 
           <div class="canvas-wrap">
             <canvas id="cert-canvas" width="1200" height="1600"></canvas>
@@ -445,32 +422,60 @@
 
       <!-- CERT -->
       <section id="view-cert" class="view">
-        <div class="topbar">
-          <a class="back" href="#/">← 홈</a>
-          <div class="pill">인증서</div>
-        </div>
+        <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">인증서</div></div>
         <div class="card">
           <h2>인증서 생성기</h2>
           <a class="cta" href="https://noback-lineup-generator.netlify.app/" target="_blank" rel="noopener noreferrer">새 탭으로 열기 →</a>
           <div style="margin-top:12px; border:1px solid rgba(255,255,255,0.14); border-radius:14px; overflow:hidden; background:rgba(255,255,255,0.05);">
-            <iframe title="인증서 생성기" src="https://noback-lineup-generator.netlify.app/" loading="lazy" style="width:100%; height:70vh; border:0; display:block; background:#fff;"></iframe>
+            <iframe title="인증서 생성기" src="https://noback-lineup-generator.netlify.app/" loading="lazy"
+              style="width:100%; height:70vh; border:0; display:block; background:#fff;"></iframe>
           </div>
         </div>
       </section>
 
-      <!-- placeholders for other views -->
-      <section id="view-pace" class="view"><div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">페이스</div></div><div class="card"><p class="muted">페이스 탭은 기존 버전 유지(여기서는 홈 복구 목적)</p></div></section>
-      <section id="view-interval" class="view"><div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">인터벌</div></div><div class="card"><p class="muted">인터벌 탭은 기존 버전 유지</p></div></section>
-      <section id="view-predict" class="view"><div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">예상기록</div></div><div class="card"><p class="muted">예상기록 탭은 기존 버전 유지</p></div></section>
-      <section id="view-shoes" class="view"><div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">러닝화</div></div><div class="card"><p class="muted">러닝화 탭은 기존 버전 유지</p></div></section>
-      <section id="view-regular" class="view"><div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">정기런</div></div><div class="card"><p class="muted">정기런 탭은 기존 버전 유지</p></div></section>
+      <!-- SHOES -->
+      <section id="view-shoes" class="view">
+        <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">러닝화</div></div>
+        <div class="card"><p class="muted">러닝화 탭은 기존 버전 유지(여기 내용 교체 가능)</p></div>
+      </section>
+
+      <!-- REGULAR -->
+      <section id="view-regular" class="view">
+        <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">정기런</div></div>
+        <div class="card">
+          <h2>정기런</h2>
+          <p class="muted">매주 <b>수요일 오후 8시</b>, 노빠꾸 정기런 진행합니다 🏃‍♂️🏃‍♀️</p>
+        </div>
+      </section>
     </div>
 
     <script>
-      // Router
+      // ====== "절대 안 죽는" 초기화 (null-safe) ======
+      document.addEventListener("DOMContentLoaded", () => {
+        try {
+          boot();
+        } catch (e) {
+          console.error(e);
+          // 최악에도 홈이라도 보이게
+          document.getElementById("view-home")?.classList.add("active");
+        }
+      });
+
+      function boot() {
+        initRouter();
+        initEvents();
+        initCertificate();
+        route();
+      }
+
+      function initRouter() {
+        window.addEventListener("hashchange", route);
+      }
+
       function route() {
         const raw = (location.hash || "#/").toLowerCase();
         const normalized = raw.startsWith("#/") ? raw : raw.startsWith("#") ? "#/" + raw.slice(1) : "#/";
+
         const view =
           normalized.startsWith("#/pace") ? "pace" :
           normalized.startsWith("#/interval") ? "interval" :
@@ -483,25 +488,22 @@
           "home";
 
         document.querySelectorAll(".view").forEach(v => v.classList.remove("active"));
-        const target = document.getElementById(`view-${view}`);
-        if (target) target.classList.add("active");
+        document.getElementById(`view-${view}`)?.classList.add("active");
 
         document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
-        const activeTab = document.querySelector(`.tab[data-tab="${view}"]`);
-        if (activeTab) activeTab.classList.add("active");
+        document.querySelector(`.tab[data-tab="${view}"]`)?.classList.add("active");
 
         if (normalized !== raw) history.replaceState(null, "", normalized);
 
         if (view === "certificate") {
-          hydrateCertificateEventSelectFromCache();
-          toggleCustomEventFields();
-          syncPhotoFieldsVisibility();
+          hydrateCertSelect();
+          toggleCustomFields();
+          syncPhotoFields();
         }
       }
-      window.addEventListener("hashchange", route);
-      route();
 
-      function setVisible(el, visible) { el.style.display = visible ? "" : "none"; }
+      // ===== Utils =====
+      function setVisible(el, v) { if (el) el.style.display = v ? "" : "none"; }
 
       function parseTimeToSeconds(raw) {
         const s = String(raw || "").trim();
@@ -549,6 +551,17 @@
         return v;
       }
 
+      async function safeFetchJson(path) {
+        try {
+          const res = await fetch(new URL(path, location.href).toString(), { cache: "no-store" });
+          if (!res.ok) return { ok:false, reason:`파일을 찾을 수 없음 (${res.status})`, data:null };
+          const data = await res.json();
+          return { ok:true, reason:"", data };
+        } catch {
+          return { ok:false, reason:"JSON 형식이 아니거나 파싱 실패", data:null };
+        }
+      }
+
       function roundedRect(ctx, x, y, w, h, r) {
         const rr = Math.min(r, w/2, h/2);
         ctx.beginPath();
@@ -569,7 +582,7 @@
         ctx.fillText(text, x, y);
       }
 
-      function parseDistanceKmInput(raw){
+      function parseDistanceKmInput(raw) {
         const s = String(raw || "").trim().replace(",", ".");
         if (!s) return null;
         if (!/^\d+(\.\d+)?$/.test(s)) return null;
@@ -605,37 +618,52 @@
         ctx.drawImage(img, sx, sy, sw, sh, x, y, w, h);
       }
 
-      async function safeFetchJson(path){
-        try{
-          const res = await fetch(new URL(path, location.href).toString(), { cache: "no-store" });
-          if(!res.ok) return { ok:false, reason:`파일을 찾을 수 없음 (${res.status})`, data:null };
-          const data = await res.json();
-          return { ok:true, reason:"", data };
-        }catch{
-          return { ok:false, reason:"JSON 형식이 아니거나 파싱 실패", data:null };
+      // ===== EVENTS =====
+      let EVENTS_CACHE = [];
+
+      function initEvents() {
+        loadEvents();
+        const btn = document.getElementById("btn-custom-cert");
+        if (btn) {
+          btn.addEventListener("click", () => {
+            sessionStorage.setItem("cert_selected_event_index", "custom");
+            sessionStorage.setItem("cert_selected_event_mode", "photo");
+            location.hash = "#/certificate";
+          });
         }
       }
 
-      function renderEmpty(targetEl, title, reason){
-        targetEl.innerHTML = "";
-        const box = document.createElement("div");
-        box.className = "empty";
-        box.innerHTML = `<b>${title}</b>${reason ? `<div style="margin-top:8px;">${reason}</div>` : ""}`;
-        targetEl.appendChild(box);
+      async function loadEvents() {
+        const list = document.getElementById("events-list");
+        if (!list) return;
+
+        const res = await safeFetchJson("data/events.json");
+        if (!res.ok || !res.data || !Array.isArray(res.data.events) || res.data.events.length === 0) {
+          EVENTS_CACHE = [];
+          list.innerHTML = `<div class="empty"><b>대회 정보가 비어있어요</b><div style="margin-top:8px;">${res.ok ? "" : res.reason}</div></div>`;
+          hydrateCertSelect();
+          return;
+        }
+
+        EVENTS_CACHE = res.data.events.slice()
+          .map(ev => ({ ...ev, distance: normalizeDistance(ev.distance) }))
+          .sort((a,b) => String(a.date || "").localeCompare(String(b.date || "")));
+
+        list.innerHTML = "";
+        EVENTS_CACHE.forEach((ev, idx) => list.appendChild(createEventItem(ev, idx)));
+        hydrateCertSelect();
       }
 
-      // Events
-      let EVENTS_CACHE = [];
-      function normalizeParticipants(rawParticipants){
+      function normalizeParticipants(rawParticipants) {
         const arr = Array.isArray(rawParticipants) ? rawParticipants : [];
         return arr.map(p => {
           if (typeof p === "string") return { name: p, distance: "" };
           if (p && typeof p === "object") return { name: String(p.name || "").trim(), distance: String(p.distance || "").trim() };
-          return { name:"", distance:"" };
+          return { name: "", distance: "" };
         }).filter(p => p.name.length > 0);
       }
 
-      function createEventItem(ev, idx){
+      function createEventItem(ev, idx) {
         const el = document.createElement("div");
         el.className = "item";
 
@@ -650,26 +678,10 @@
 
         const meta = document.createElement("div");
         meta.className = "meta";
-
-        const p1 = document.createElement("span");
-        p1.className = "pill";
-        p1.textContent = ev.date || "날짜 미정";
-        meta.appendChild(p1);
-
-        if (ev.location) {
-          const p = document.createElement("span");
-          p.className = "pill";
-          p.textContent = ev.location;
-          meta.appendChild(p);
-        }
-
+        const p1 = document.createElement("span"); p1.className = "pill"; p1.textContent = ev.date || "날짜 미정"; meta.appendChild(p1);
+        if (ev.location) { const p = document.createElement("span"); p.className="pill"; p.textContent=ev.location; meta.appendChild(p); }
         const dist = normalizeDistance(ev.distance);
-        if (dist) {
-          const p = document.createElement("span");
-          p.className = "pill";
-          p.textContent = dist;
-          meta.appendChild(p);
-        }
+        if (dist) { const p = document.createElement("span"); p.className="pill"; p.textContent=dist; meta.appendChild(p); }
 
         title.appendChild(strong);
         title.appendChild(meta);
@@ -698,7 +710,6 @@
             }
             ul.appendChild(li);
           });
-
           el.appendChild(wrap);
         }
 
@@ -709,7 +720,7 @@
         btn.textContent = "기록증 출력 →";
         btn.addEventListener("click", () => {
           sessionStorage.setItem("cert_selected_event_index", String(idx));
-          sessionStorage.setItem("cert_selected_event_mode", "photo"); // 대회에서 누르면 사진으로 바로 가도 됨
+          sessionStorage.setItem("cert_selected_event_mode", "photo");
           location.hash = "#/certificate";
         });
         actions.appendChild(btn);
@@ -718,152 +729,186 @@
         return el;
       }
 
-      async function loadEvents(){
-        const list = document.getElementById("events-list");
-        const res = await safeFetchJson("data/events.json");
-        if (!res.ok || !res.data || !Array.isArray(res.data.events) || res.data.events.length === 0) {
-          EVENTS_CACHE = [];
-          renderEmpty(list, "대회 정보가 비어있어요", res.ok ? "" : res.reason);
-          hydrateCertificateEventSelectFromCache();
-          return;
-        }
-        EVENTS_CACHE = res.data.events
-          .slice()
-          .map(ev => ({ ...ev, distance: normalizeDistance(ev.distance) }))
-          .sort((a,b) => String(a.date||"").localeCompare(String(b.date||"")));
-
-        list.innerHTML = "";
-        EVENTS_CACHE.forEach((ev, idx) => list.appendChild(createEventItem(ev, idx)));
-        hydrateCertificateEventSelectFromCache();
-      }
-
-      // Certificate controls
-      const certForm = document.getElementById("cert-form");
-      const certEventSel = document.getElementById("cert-event");
-      const certCourseSel = document.getElementById("cert-course");
-      const certNick = document.getElementById("cert-nick");
-      const certTime = document.getElementById("cert-time");
-      const certNote = document.getElementById("cert-note");
-      const certBib = document.getElementById("cert-bib");
-      const certTheme = document.getElementById("cert-theme");
-      const certError = document.getElementById("cert-error");
-      const certCanvas = document.getElementById("cert-canvas");
-      const certDownloadBtn = document.getElementById("cert-download");
-      const certResetBtn = document.getElementById("cert-reset");
-
-      const customFieldsWrap = document.getElementById("custom-event-fields");
-      const certCustomName = document.getElementById("cert-custom-name");
-      const certCustomDate = document.getElementById("cert-custom-date");
-      const certCustomLoc = document.getElementById("cert-custom-loc");
-      const certCustomDist = document.getElementById("cert-custom-dist");
-
-      const modeNormalBtn = document.getElementById("mode-normal");
-      const modePhotoBtn = document.getElementById("mode-photo");
-      const photoField = document.getElementById("photo-field");
-      const photoDistanceField = document.getElementById("photo-distance-field");
-      const photoDistanceKm = document.getElementById("photo-distance-km");
-
-      const photoMetricMode = document.getElementById("photo-metric-mode");
-      const photoTitleMode = document.getElementById("photo-title-mode");
-
-      const btnCustomCert = document.getElementById("btn-custom-cert");
-
+      // ===== CERTIFICATE =====
       let CERT_MODE = "normal";
       let PHOTO_IMAGE = null;
 
-      function setMode(next){
+      function initCertificate() {
+        // mode buttons
+        const modeNormalBtn = document.getElementById("mode-normal");
+        const modePhotoBtn = document.getElementById("mode-photo");
+        if (modeNormalBtn) modeNormalBtn.addEventListener("click", () => setMode("normal"));
+        if (modePhotoBtn) modePhotoBtn.addEventListener("click", () => setMode("photo"));
+
+        // selects
+        const certEventSel = document.getElementById("cert-event");
+        if (certEventSel) certEventSel.addEventListener("change", () => { toggleCustomFields(); });
+
+        // photo upload
+        const photoInput = document.getElementById("cert-photo");
+        if (photoInput) {
+          photoInput.addEventListener("change", async (e) => {
+            PHOTO_IMAGE = null;
+            const file = e.target.files?.[0];
+            if (!file) return;
+            const url = URL.createObjectURL(file);
+            try { PHOTO_IMAGE = await loadImage(url); }
+            finally { URL.revokeObjectURL(url); }
+          });
+        }
+
+        // form submit
+        const form = document.getElementById("cert-form");
+        if (form) {
+          form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            await generateCertificatePreview();
+          });
+        }
+
+        // reset / download
+        const resetBtn = document.getElementById("cert-reset");
+        const downloadBtn = document.getElementById("cert-download");
+        if (resetBtn) {
+          resetBtn.addEventListener("click", () => {
+            document.getElementById("cert-form")?.reset();
+            PHOTO_IMAGE = null;
+            setMode("normal");
+            toggleCustomFields();
+            syncPhotoFields();
+            setError("");
+            setDownloadEnabled(false);
+
+            const c = document.getElementById("cert-canvas");
+            if (c) {
+              const ctx = c.getContext("2d");
+              ctx.fillStyle = "#fff";
+              ctx.fillRect(0,0,c.width,c.height);
+            }
+          });
+        }
+        if (downloadBtn) {
+          downloadBtn.addEventListener("click", () => {
+            const c = document.getElementById("cert-canvas");
+            if (!c) return;
+            const a = document.createElement("a");
+            a.download = downloadBtn.dataset.filename || "certificate.png";
+            a.href = c.toDataURL("image/png");
+            a.click();
+          });
+        }
+
+        // init canvas
+        const c = document.getElementById("cert-canvas");
+        if (c) {
+          const ctx = c.getContext("2d");
+          ctx.fillStyle = "#fff";
+          ctx.fillRect(0,0,c.width,c.height);
+        }
+
+        // hydrate select initially
+        hydrateCertSelect();
+        toggleCustomFields();
+        syncPhotoFields();
+      }
+
+      function setMode(next) {
         CERT_MODE = next;
-        modeNormalBtn.classList.toggle("active", next === "normal");
-        modePhotoBtn.classList.toggle("active", next === "photo");
-        syncPhotoFieldsVisibility();
+        const modeNormalBtn = document.getElementById("mode-normal");
+        const modePhotoBtn = document.getElementById("mode-photo");
+        if (modeNormalBtn) modeNormalBtn.classList.toggle("active", next === "normal");
+        if (modePhotoBtn) modePhotoBtn.classList.toggle("active", next === "photo");
+        syncPhotoFields();
       }
-      modeNormalBtn.addEventListener("click", () => setMode("normal"));
-      modePhotoBtn.addEventListener("click", () => setMode("photo"));
 
-      function syncPhotoFieldsVisibility(){
+      function syncPhotoFields() {
         const isPhoto = CERT_MODE === "photo";
-        setVisible(photoField, isPhoto);
-        setVisible(photoDistanceField, isPhoto);
+        setVisible(document.getElementById("photo-field"), isPhoto);
+        setVisible(document.getElementById("photo-distance-field"), isPhoto);
       }
 
-      function toggleCustomEventFields(){
-        setVisible(customFieldsWrap, certEventSel.value === "custom");
+      function toggleCustomFields() {
+        const sel = document.getElementById("cert-event");
+        const wrap = document.getElementById("custom-event-fields");
+        if (!sel || !wrap) return;
+        setVisible(wrap, sel.value === "custom");
       }
-      certEventSel.addEventListener("change", toggleCustomEventFields);
 
-      btnCustomCert.addEventListener("click", () => {
-        sessionStorage.setItem("cert_selected_event_index", "custom");
-        sessionStorage.setItem("cert_selected_event_mode", "photo");
-        location.hash = "#/certificate";
-      });
+      function hydrateCertSelect() {
+        const sel = document.getElementById("cert-event");
+        if (!sel) return;
 
-      function hydrateCertificateEventSelectFromCache(){
-        if (!certEventSel) return;
-        const current = certEventSel.value;
+        const current = sel.value;
+        sel.innerHTML = "";
 
-        certEventSel.innerHTML = "";
         const optCustom = document.createElement("option");
         optCustom.value = "custom";
         optCustom.textContent = "직접 입력(무지)";
-        certEventSel.appendChild(optCustom);
+        sel.appendChild(optCustom);
 
         EVENTS_CACHE.forEach((ev, idx) => {
           const opt = document.createElement("option");
           opt.value = String(idx);
           opt.textContent = `${ev.name || "대회"} · ${ev.date || ""} · ${normalizeDistance(ev.distance) || ""}`;
-          certEventSel.appendChild(opt);
+          sel.appendChild(opt);
         });
 
         const savedIdx = sessionStorage.getItem("cert_selected_event_index");
         const savedMode = sessionStorage.getItem("cert_selected_event_mode");
+
         if (savedMode === "photo") setMode("photo"); else setMode("normal");
 
-        if (savedIdx === "custom") certEventSel.value = "custom";
-        else if (savedIdx && !Number.isNaN(Number(savedIdx))) certEventSel.value = savedIdx;
-        else if (current) certEventSel.value = current;
-        else certEventSel.value = EVENTS_CACHE.length ? "0" : "custom";
+        if (savedIdx === "custom") sel.value = "custom";
+        else if (savedIdx && !Number.isNaN(Number(savedIdx))) sel.value = savedIdx;
+        else if (current) sel.value = current;
+        else sel.value = EVENTS_CACHE.length ? "0" : "custom";
 
         sessionStorage.removeItem("cert_selected_event_index");
         sessionStorage.removeItem("cert_selected_event_mode");
 
-        toggleCustomEventFields();
-        syncPhotoFieldsVisibility();
+        toggleCustomFields();
+        syncPhotoFields();
       }
 
-      function getCertificateEventData(){
-        if (certEventSel.value === "custom") {
-          return {
-            name: String(certCustomName.value || "").trim() || "무지 기록",
-            date: String(certCustomDate.value || "").trim(),
-            location: String(certCustomLoc.value || "").trim(),
-            distance: normalizeDistance(String(certCustomDist.value || "").trim())
-          };
+      function setError(msg) {
+        const el = document.getElementById("cert-error");
+        if (!el) return;
+        if (!msg) { el.style.display = "none"; el.textContent = ""; return; }
+        el.textContent = msg;
+        el.style.display = "";
+      }
+
+      function setDownloadEnabled(enabled, filename = "") {
+        const btn = document.getElementById("cert-download");
+        if (!btn) return;
+        btn.disabled = !enabled;
+        if (enabled && filename) btn.dataset.filename = filename;
+      }
+
+      function getEventData() {
+        const sel = document.getElementById("cert-event");
+        if (!sel) return null;
+
+        if (sel.value === "custom") {
+          const name = String(document.getElementById("cert-custom-name")?.value || "").trim() || "무지 기록";
+          const date = String(document.getElementById("cert-custom-date")?.value || "").trim();
+          const location = String(document.getElementById("cert-custom-loc")?.value || "").trim();
+          const distance = normalizeDistance(String(document.getElementById("cert-custom-dist")?.value || "").trim());
+          return { name, date, location, distance };
         }
-        const idx = Number(certEventSel.value);
+
+        const idx = Number(sel.value);
         const ev = EVENTS_CACHE[idx];
         if (!ev) return null;
         return {
           name: String(ev.name || "대회"),
           date: String(ev.date || ""),
           location: String(ev.location || ""),
-          distance: normalizeDistance(ev.distance)
+          distance: normalizeDistance(ev.distance),
         };
       }
 
-      // Photo upload
-      document.getElementById("cert-photo").addEventListener("change", async (e) => {
-        PHOTO_IMAGE = null;
-        const file = e.target.files?.[0];
-        if (!file) return;
-        const url = URL.createObjectURL(file);
-        try {
-          PHOTO_IMAGE = await loadImage(url);
-        } finally {
-          URL.revokeObjectURL(url);
-        }
-      });
-
-      function kmFromCourseLabel(label, evDistance){
+      function kmFromCourseLabel(label, evDistance) {
         const d = (String(label || "") || String(evDistance || "")).toUpperCase();
         if (d === "5K") return 5;
         if (d === "10K") return 10;
@@ -872,19 +917,21 @@
         return null;
       }
 
-      // Photo overlay: GARMIN-ish
-      async function generatePhotoOverlay(ev, nick, bib, tsec, note, courseLabel){
-        const W = certCanvas.width, H = certCanvas.height;
-        const ctx = certCanvas.getContext("2d");
+      async function generatePhotoOverlay(ev, nick, bib, tsec, note, courseLabel) {
+        const c = document.getElementById("cert-canvas");
+        if (!c) return;
+        const ctx = c.getContext("2d");
+        const W = c.width, H = c.height;
+
         ctx.clearRect(0,0,W,H);
 
-        // clip rounded canvas
+        // clip to rounded
         const clipPad = 20;
         ctx.save();
         roundedRect(ctx, clipPad, clipPad, W - clipPad*2, H - clipPad*2, 32);
         ctx.clip();
 
-        // draw photo
+        // photo
         if (!PHOTO_IMAGE) {
           ctx.fillStyle = "#111";
           ctx.fillRect(0,0,W,H);
@@ -892,17 +939,17 @@
           drawCover(ctx, PHOTO_IMAGE, 0,0,W,H);
         }
 
-        // vignette only
-        const vg = ctx.createRadialGradient(W*0.72,H*0.55,220,W*0.72,H*0.55,1050);
-        vg.addColorStop(0,"rgba(0,0,0,0.00)");
-        vg.addColorStop(1,"rgba(0,0,0,0.55)");
+        // vignette
+        const vg = ctx.createRadialGradient(W*0.72, H*0.55, 220, W*0.72, H*0.55, 1050);
+        vg.addColorStop(0, "rgba(0,0,0,0.00)");
+        vg.addColorStop(1, "rgba(0,0,0,0.55)");
         ctx.fillStyle = vg;
         ctx.fillRect(0,0,W,H);
 
         const family = "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
         const mono = "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace";
 
-        // Right vertical NO BACK white strip (fixed, not custom)
+        // right vertical white strip with NO BACK (fixed)
         const stripW = 84;
         const stripX = W - stripW - 40;
         const stripY = 120;
@@ -916,7 +963,6 @@
         ctx.fill();
         ctx.restore();
 
-        // text rotated inside strip
         ctx.save();
         ctx.translate(stripX + stripW/2, stripY + stripH/2);
         ctx.rotate(Math.PI/2);
@@ -926,10 +972,11 @@
         ctx.fillText("NO BACK", 0, 0);
         ctx.restore();
 
-        // Left-top title: 🏃 + (note or event)
+        // left-top title
+        const titleMode = document.getElementById("photo-title-mode")?.value || "note";
         let title = "";
-        if (photoTitleMode.value === "off") title = "";
-        else if (photoTitleMode.value === "event") title = String(ev.name || "").trim();
+        if (titleMode === "off") title = "";
+        else if (titleMode === "event") title = String(ev.name || "").trim();
         else title = String(note || "").trim() || String(ev.name || "").trim();
 
         if (title) {
@@ -942,23 +989,23 @@
           ctx.restore();
         }
 
-        // Metrics (bottom-right, Garmin-ish)
-        const kmOverride = parseDistanceKmInput(photoDistanceKm.value);
+        // metrics bottom-right (left of strip)
+        const kmOverride = parseDistanceKmInput(document.getElementById("photo-distance-km")?.value);
         const km = kmOverride ?? kmFromCourseLabel(courseLabel, ev.distance);
 
         const distanceText = km ? `${km.toFixed(2)} km` : (courseLabel || ev.distance || "");
         const timeText = formatTime(tsec);
         const paceText = km ? `${fmtPace(tsec / km)} /km` : "";
 
-        const mode = photoMetricMode.value; // all | tp | t
-        const showDistance = mode === "all";
-        const showTime = mode === "all" || mode === "tp" || mode === "t";
-        const showPace = mode === "all" || mode === "tp";
+        const metricMode = document.getElementById("photo-metric-mode")?.value || "all"; // all/tp/t
+        const showDistance = metricMode === "all";
+        const showTime = metricMode === "all" || metricMode === "tp" || metricMode === "t";
+        const showPace = metricMode === "all" || metricMode === "tp";
 
-        const right = stripX - 40; // keep away from vertical strip
+        const right = stripX - 40;
         let y = H - 120;
 
-        function drawMetric(label, value, yPos){
+        function drawMetric(label, value, yPos) {
           ctx.save();
           ctx.textAlign = "right";
           ctx.fillStyle = "rgba(255,255,255,0.78)";
@@ -975,7 +1022,7 @@
         if (showTime) { drawMetric("총 시간", timeText, y); y -= 150; }
         if (showDistance && distanceText) { drawMetric("거리", distanceText, y); y -= 150; }
 
-        // Nick + bib/course (small)
+        // chip line + nick
         const chipLine = [courseLabel || ev.distance ? (courseLabel || ev.distance) : "", bib ? `BIB ${bib}` : ""].filter(Boolean).join(" · ");
         if (chipLine) {
           ctx.save();
@@ -993,16 +1040,15 @@
         outlineText(ctx, nick, right, H - 48, 8, "rgba(0,0,0,0.72)");
         ctx.restore();
 
-        ctx.restore(); // end clip
+        ctx.restore();
       }
 
-      // Minimal normal cert placeholder (keep existing if you want)
       async function generateNormalCertificate(ev, nick, bib, tsec) {
-        const W = certCanvas.width, H = certCanvas.height;
-        const ctx = certCanvas.getContext("2d");
-        ctx.clearRect(0,0,W,H);
+        const c = document.getElementById("cert-canvas");
+        if (!c) return;
+        const ctx = c.getContext("2d");
         ctx.fillStyle = "#fff";
-        ctx.fillRect(0,0,W,H);
+        ctx.fillRect(0,0,c.width,c.height);
         ctx.fillStyle = "#111";
         ctx.font = "900 64px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
         ctx.fillText("CERTIFICATE", 80, 140);
@@ -1014,72 +1060,32 @@
         if (bib) ctx.fillText(`BIB: ${bib}`, 80, 430);
       }
 
-      async function generateCertificatePreview(){
-        certError.style.display = "none";
-        certDownloadBtn.disabled = true;
+      async function generateCertificatePreview() {
+        setError("");
+        setDownloadEnabled(false);
 
-        const ev = getCertificateEventData();
-        if (!ev) {
-          certError.textContent = "대회 정보를 불러오지 못했어요.";
-          certError.style.display = "";
-          return;
-        }
+        const ev = getEventData();
+        if (!ev) return setError("대회 정보를 불러오지 못했어요.");
 
-        const nick = String(certNick.value || "").trim();
-        const bib = String(certBib.value || "").trim();
-        const note = String(certNote.value || "").trim();
-        const tsec = parseTimeToSeconds(certTime.value);
+        const nick = String(document.getElementById("cert-nick")?.value || "").trim();
+        const bib = String(document.getElementById("cert-bib")?.value || "").trim();
+        const note = String(document.getElementById("cert-note")?.value || "").trim();
+        const tsec = parseTimeToSeconds(document.getElementById("cert-time")?.value);
 
-        if (!nick) { certError.textContent = "닉네임을 입력해 주세요."; certError.style.display = ""; return; }
-        if (!tsec || tsec <= 0) { certError.textContent = "기록 시간을 올바르게 입력해 주세요."; certError.style.display = ""; return; }
+        if (!nick) return setError("닉네임을 입력해 주세요.");
+        if (!tsec || tsec <= 0) return setError("기록 시간을 올바르게 입력해 주세요.");
 
-        const courseLabel = String(certCourseSel.value || "").trim() || normalizeDistance(ev.distance) || "";
+        const courseLabel = String(document.getElementById("cert-course")?.value || "").trim() || normalizeDistance(ev.distance) || "";
 
         if (CERT_MODE === "photo") {
-          if (!PHOTO_IMAGE) { certError.textContent = "사진 기록: 사진을 업로드해 주세요."; certError.style.display = ""; return; }
+          if (!PHOTO_IMAGE) return setError("사진 기록: 사진을 업로드해 주세요.");
           await generatePhotoOverlay(ev, nick, bib, tsec, note, courseLabel);
         } else {
           await generateNormalCertificate(ev, nick, bib, tsec);
         }
 
-        certDownloadBtn.disabled = false;
-        certDownloadBtn.dataset.filename = `noback_${(ev.name||"record").replace(/\s+/g,"_")}_${(nick||"runner").replace(/\s+/g,"_")}_${CERT_MODE}.png`;
+        setDownloadEnabled(true, `noback_${(ev.name||"record").replace(/\s+/g,"_")}_${(nick||"runner").replace(/\s+/g,"_")}_${CERT_MODE}.png`);
       }
-
-      certForm.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        await generateCertificatePreview();
-      });
-
-      certDownloadBtn.addEventListener("click", () => {
-        const a = document.createElement("a");
-        a.download = certDownloadBtn.dataset.filename || "certificate.png";
-        a.href = certCanvas.toDataURL("image/png");
-        a.click();
-      });
-
-      certResetBtn.addEventListener("click", () => {
-        certForm.reset();
-        PHOTO_IMAGE = null;
-        toggleCustomEventFields();
-        syncPhotoFieldsVisibility();
-        certError.style.display = "none";
-        certDownloadBtn.disabled = true;
-
-        const ctx = certCanvas.getContext("2d");
-        ctx.fillStyle = "#fff";
-        ctx.fillRect(0,0,certCanvas.width, certCanvas.height);
-      });
-
-      // init blank
-      (function initCanvas(){
-        const ctx = certCanvas.getContext("2d");
-        ctx.fillStyle = "#fff";
-        ctx.fillRect(0,0,certCanvas.width, certCanvas.height);
-      })();
-
-      // boot
-      loadEvents();
     </script>
   </body>
 </html>
