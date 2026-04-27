@@ -4,10 +4,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>노빠꾸 러닝 크루🏃🏽🏃‍♀️🏃🏻‍♂️</title>
+    <title>노빠꾸 러닝 크루🏃</title>
 
-    <link rel="icon" type="image/x-icon" href="./favicon.ico?v=4012" />
-    <link rel="shortcut icon" href="./favicon.ico?v=4012" />
+    <link rel="icon" type="image/x-icon" href="./favicon.ico?v=6002" />
+    <link rel="shortcut icon" href="./favicon.ico?v=6002" />
 
     <style>
       :root {
@@ -23,13 +23,8 @@
         --shadow: 0 18px 48px rgba(0, 0, 0, 0.18);
         --radius: 18px;
       }
-      * {
-        box-sizing: border-box;
-      }
-      html,
-      body {
-        height: 100%;
-      }
+      * { box-sizing: border-box; }
+      html, body { height: 100%; }
       body {
         margin: 0;
         font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
@@ -42,7 +37,7 @@
         content: "";
         position: fixed;
         inset: 0;
-        background-image: url("./bg.jpg?v=4012");
+        background-image: url("./bg.jpg?v=6002");
         background-repeat: repeat;
         background-size: 260px auto;
         background-position: 0 0;
@@ -51,10 +46,7 @@
         z-index: 0;
       }
 
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
+      a { color: inherit; text-decoration: none; }
       .container {
         position: relative;
         z-index: 1;
@@ -111,10 +103,7 @@
         background: rgba(255, 255, 255, 0.04);
         white-space: nowrap;
       }
-      .builtby b {
-        color: rgba(255, 255, 255, 0.84);
-        font-weight: 700;
-      }
+      .builtby b { color: rgba(255, 255, 255, 0.84); font-weight: 700; }
       .linkbtn {
         font-size: 12px;
         color: var(--text);
@@ -126,17 +115,9 @@
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
       }
-      .linkbtn:hover {
-        background: rgba(255, 106, 0, 0.2);
-        border-color: rgba(255, 106, 0, 0.58);
-      }
+      .linkbtn:hover { background: rgba(255, 106, 0, 0.2); border-color: rgba(255, 106, 0, 0.58); }
 
-      .tabs {
-        display: flex;
-        gap: 8px;
-        flex-wrap: wrap;
-        margin: 12px 0 14px;
-      }
+      .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0 14px; }
       .tab {
         font-size: 13px;
         color: rgba(0, 0, 0, 0.62);
@@ -145,29 +126,13 @@
         border-radius: 999px;
         background: rgba(0, 0, 0, 0.04);
       }
-      .tab.active {
-        color: #111;
-        border-color: rgba(255, 106, 0, 0.6);
-        background: rgba(255, 106, 0, 0.18);
-      }
+      .tab.active { color: #111; border-color: rgba(255, 106, 0, 0.6); background: rgba(255, 106, 0, 0.18); }
 
-      .view {
-        display: none;
-      }
-      .view.active {
-        display: block;
-      }
+      .view { display: none; }
+      .view.active { display: block; }
 
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 14px;
-      }
-      @media (max-width: 720px) {
-        .grid {
-          grid-template-columns: 1fr;
-        }
-      }
+      .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+      @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
 
       .card {
         border-radius: var(--radius);
@@ -179,21 +144,8 @@
         -webkit-backdrop-filter: blur(14px);
         color: var(--text);
       }
-      .card h2 {
-        margin: 0 0 6px;
-        font-size: 16px;
-        color: var(--text);
-      }
-      .card h3 {
-        margin: 0 0 8px;
-        font-size: 14px;
-        color: var(--text);
-      }
-      .card p {
-        margin: 0;
-        color: var(--muted);
-        font-size: 13px;
-      }
+      .card h2 { margin: 0 0 6px; font-size: 16px; color: var(--text); }
+      .card p { margin: 0; color: var(--muted); font-size: 13px; }
 
       .cta {
         margin-top: 12px;
@@ -207,18 +159,8 @@
         padding: 8px 12px;
         background: rgba(255, 106, 0, 0.12);
       }
-      .cta:hover {
-        background: rgba(255, 106, 0, 0.2);
-        border-color: rgba(255, 106, 0, 0.58);
-      }
 
-      .topbar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
-        margin-bottom: 12px;
-      }
+      .topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
       .back {
         display: inline-flex;
         align-items: center;
@@ -230,10 +172,6 @@
         padding: 8px 12px;
         background: rgba(0, 0, 0, 0.04);
       }
-      .back:hover {
-        background: rgba(255, 106, 0, 0.12);
-        border-color: rgba(255, 106, 0, 0.35);
-      }
 
       .pill {
         font-size: 12px;
@@ -243,39 +181,13 @@
         border-radius: 999px;
         background: rgba(255, 255, 255, 0.06);
       }
-      .pillrow {
-        display: flex;
-        gap: 8px;
-        flex-wrap: wrap;
-      }
 
-      form {
-        display: grid;
-        grid-template-columns: repeat(12, minmax(0, 1fr));
-        gap: 12px;
-      }
-      .field {
-        grid-column: span 6;
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-      }
-      @media (max-width: 720px) {
-        .field {
-          grid-column: span 12;
-        }
-      }
-      label {
-        font-size: 12px;
-        color: var(--muted);
-      }
-      input,
-      select,
-      button {
-        font: inherit;
-      }
-      input,
-      select {
+      form { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 12px; }
+      .field { grid-column: span 6; display: flex; flex-direction: column; gap: 6px; }
+      @media (max-width: 720px) { .field { grid-column: span 12; } }
+      label { font-size: 12px; color: var(--muted); }
+      input, button { font: inherit; }
+      input {
         width: 100%;
         padding: 10px 12px;
         border-radius: 12px;
@@ -284,28 +196,12 @@
         color: var(--text);
         outline: none;
       }
-      input:focus,
-      select:focus {
+      input:focus {
         border-color: rgba(255, 106, 0, 0.6);
         box-shadow: 0 0 0 3px rgba(255, 106, 0, 0.16);
       }
-      select option {
-        color: #111;
-        background: #fff;
-      }
-      .help {
-        font-size: 12px;
-        color: var(--muted);
-        margin-top: 2px;
-      }
 
-      .actions {
-        grid-column: span 12;
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-        margin-top: 2px;
-      }
+      .actions { grid-column: span 12; display: flex; gap: 10px; flex-wrap: wrap; margin-top: 2px; }
       button {
         border: 1px solid rgba(255, 106, 0, 0.38);
         background: rgba(255, 106, 0, 0.12);
@@ -314,127 +210,10 @@
         cursor: pointer;
         color: var(--text);
       }
-      button:hover {
-        background: rgba(255, 106, 0, 0.2);
-        border-color: rgba(255, 106, 0, 0.58);
-      }
-      button.ghost {
-        border: 1px solid rgba(255, 255, 255, 0.18);
-        background: rgba(255, 255, 255, 0.06);
-      }
-      button.ghost:hover {
-        background: rgba(255, 255, 255, 0.1);
-        border-color: rgba(255, 255, 255, 0.24);
-      }
+      button.ghost { border: 1px solid rgba(255, 255, 255, 0.18); background: rgba(255, 255, 255, 0.06); }
 
-      .error {
-        margin-top: 10px;
-        color: #ffd0c2;
-        font-size: 13px;
-      }
-      .result {
-        margin-top: 14px;
-        border-top: 1px dashed rgba(255, 255, 255, 0.18);
-        padding-top: 14px;
-        display: grid;
-        gap: 12px;
-      }
-
-      .pace-rows {
-        display: grid;
-        gap: 8px;
-      }
-      .pace-row {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-        padding: 10px 10px;
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        border-radius: 12px;
-        background: rgba(0, 0, 0, 0.18);
-      }
-      .pace-row .k {
-        font-size: 12px;
-        color: var(--muted);
-        white-space: nowrap;
-      }
-      .pace-row .v {
-        font-size: 13px;
-        white-space: nowrap;
-      }
-      .pace-row.tail {
-        color: var(--muted);
-        border-style: dashed;
-      }
-
-      .cards3 {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 12px;
-      }
-      @media (max-width: 900px) {
-        .cards3 {
-          grid-template-columns: 1fr;
-        }
-      }
-      .mini {
-        padding: 14px;
-        border-radius: 14px;
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        background: rgba(255, 255, 255, 0.05);
-      }
-      .mini .title {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 8px;
-        margin-bottom: 10px;
-      }
-      .mini .title strong {
-        font-size: 14px;
-      }
-      .mini .km {
-        font-size: 12px;
-        color: var(--muted);
-        border: 1px solid rgba(255, 255, 255, 0.16);
-        padding: 4px 8px;
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.06);
-      }
-      .rows {
-        display: grid;
-        gap: 8px;
-      }
-      .row {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-        padding: 10px 10px;
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        border-radius: 12px;
-        background: rgba(0, 0, 0, 0.18);
-      }
-      .row .k {
-        font-size: 12px;
-        color: var(--muted);
-      }
-      .row .v {
-        font-size: 13px;
-        white-space: nowrap;
-      }
-      .row.highlight {
-        border-color: rgba(255, 106, 0, 0.55);
-        background: rgba(255, 106, 0, 0.12);
-      }
-      .group {
-        margin-top: 10px;
-        padding-top: 10px;
-        border-top: 1px dashed rgba(255, 255, 255, 0.18);
-        font-size: 12px;
-        color: var(--muted);
-      }
+      .error { margin-top: 10px; color: #ffd0c2; font-size: 13px; }
+      .result { margin-top: 14px; border-top: 1px dashed rgba(255, 255, 255, 0.18); padding-top: 14px; display: grid; gap: 12px; }
 
       table {
         width: 100%;
@@ -445,67 +224,22 @@
         border: 1px solid rgba(255, 255, 255, 0.14);
         background: rgba(0, 0, 0, 0.18);
       }
-      th,
-      td {
+      th, td {
         padding: 10px 10px;
         font-size: 13px;
         color: var(--text);
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       }
-      th {
-        color: var(--muted);
-        text-align: left;
-        background: rgba(255, 255, 255, 0.04);
-      }
-      tr:last-child td {
-        border-bottom: 0;
-      }
+      th { color: var(--muted); text-align: left; background: rgba(255, 255, 255, 0.04); }
+      tr:last-child td { border-bottom: 0; }
 
-      .list {
-        display: grid;
-        gap: 12px;
-        margin-top: 12px;
-      }
-      .item {
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        border-radius: 14px;
-        background: rgba(255, 255, 255, 0.05);
-        padding: 14px;
-      }
-      .item-head {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-        gap: 10px;
-      }
-      .item-title {
-        display: grid;
-        gap: 6px;
-      }
-      .item-title strong {
-        font-size: 14px;
-        color: var(--text);
-      }
-      .meta {
-        display: flex;
-        gap: 8px;
-        flex-wrap: wrap;
-      }
-      .p-wrap {
-        margin-top: 10px;
-      }
-      .p-list {
-        margin: 0;
-        padding-left: 18px;
-        color: var(--muted);
-      }
-      .p-list li {
-        margin: 6px 0;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        flex-wrap: wrap;
-      }
+      .list { display: grid; gap: 12px; margin-top: 12px; }
+      .item { border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 14px; background: rgba(255, 255, 255, 0.05); padding: 14px; }
+      .item-title strong { font-size: 14px; color: var(--text); }
+      .meta { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+      .p-list { margin: 10px 0 0; padding-left: 18px; color: var(--muted); }
+      .p-list li { margin: 6px 0; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+
       .chip {
         border: 1px solid rgba(255, 106, 0, 0.4);
         border-radius: 999px;
@@ -515,134 +249,26 @@
         font-size: 12px;
         white-space: nowrap;
       }
-      .chip.orange {
-        background: rgba(255, 106, 0, 0.22);
-        border-color: rgba(255, 106, 0, 0.65);
-      }
-      .empty {
-        border: 1px dashed rgba(255, 255, 255, 0.22);
-        border-radius: 14px;
-        padding: 14px;
-        color: var(--muted);
-        background: rgba(255, 255, 255, 0.03);
-      }
+      .chip.orange { background: rgba(255, 106, 0, 0.22); border-color: rgba(255, 106, 0, 0.65); }
 
-      details {
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        border-radius: 14px;
-        background: rgba(0, 0, 0, 0.18);
-        overflow: hidden;
-      }
-      summary {
-        cursor: pointer;
-        padding: 12px 14px;
-        list-style: none;
-        color: var(--text);
-        font-weight: 800;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-        background: rgba(255, 255, 255, 0.04);
-      }
-      summary::-webkit-details-marker {
-        display: none;
-      }
-      .badge {
-        font-size: 12px;
-        color: var(--muted);
-        border: 1px solid rgba(255, 255, 255, 0.16);
-        padding: 4px 8px;
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.06);
-      }
-      .shoe-list {
-        padding: 12px 14px;
-        display: grid;
-        gap: 10px;
-      }
-      .shoe {
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        border-radius: 12px;
-        padding: 10px 10px;
-        background: rgba(255, 255, 255, 0.05);
-      }
-      .shoe strong {
-        display: block;
-        font-size: 13px;
-      }
-      .shoe span {
-        display: block;
-        font-size: 12px;
-        color: var(--muted);
-        margin-top: 4px;
-      }
+      .empty { border: 1px dashed rgba(255, 255, 255, 0.22); border-radius: 14px; padding: 14px; color: var(--muted); background: rgba(255, 255, 255, 0.03); }
 
-      .canvas-wrap {
-        margin-top: 12px;
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        border-radius: 14px;
-        overflow: hidden;
-        background: rgba(255, 255, 255, 0.05);
-      }
-      canvas {
-        display: block;
-        width: 100%;
-        height: auto;
-        background: #fff;
-        border-radius: 14px;
-      }
+      .canvas-wrap { margin-top: 12px; border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 14px; overflow: hidden; background: rgba(255, 255, 255, 0.05); }
+      canvas { display: block; width: 100%; height: auto; background: #fff; border-radius: 14px; }
 
-      .modebar {
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-        margin-top: 10px;
-      }
-      .modebtn {
-        border: 1px solid rgba(255, 255, 255, 0.18);
-        background: rgba(255, 255, 255, 0.06);
-      }
-      .modebtn.active {
-        border-color: rgba(255, 106, 0, 0.6);
-        background: rgba(255, 106, 0, 0.18);
-      }
-
-      .staff {
-        display: grid;
-        gap: 10px;
-        margin-top: 14px;
-        border-top: 1px dashed rgba(255, 255, 255, 0.18);
-        padding-top: 14px;
-      }
-      .line {
-        display: flex;
-        gap: 8px;
-        flex-wrap: wrap;
-        align-items: center;
-        color: var(--muted);
-        font-size: 13px;
-      }
-      .staff .chip {
-        color: var(--text);
-        background: rgba(255, 255, 255, 0.06);
-        border-color: rgba(255, 255, 255, 0.16);
-      }
+      .staff { display: grid; gap: 10px; margin-top: 14px; border-top: 1px dashed rgba(255, 255, 255, 0.18); padding-top: 14px; }
+      .line { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; color: var(--muted); font-size: 13px; }
+      .staff .chip { color: var(--text); background: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.16); }
     </style>
   </head>
 
   <body>
     <div class="container">
       <header>
-        <h1>노빠꾸 러닝 크루🏃🏽🏃‍♀️🏃🏻‍♂️</h1>
+        <h1>노빠꾸 러닝 크루🏃</h1>
         <div class="header-right">
           <span class="builtby">built by <b>나올</b></span>
-          <a
-            class="linkbtn"
-            href="https://www.daangn.com/kr/group/%EB%85%B8%EB%B9%A0%EA%BE%B8-%EB%9F%AC%EB%8B%9D%ED%81%AC%EB%A3%A8-no-back-rc-1yeomgcwmnyx/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a class="linkbtn" href="https://www.daangn.com/kr/group/%EB%85%B8%EB%B9%A0%EA%BE%B8-%EB%9F%AC%EB%8B%9D%ED%81%AC%EB%A3%A8-no-back-rc-1yeomgcwmnyx/" target="_blank" rel="noopener noreferrer">
             당근 모임 바로가기 →
           </a>
         </div>
@@ -650,401 +276,111 @@
 
       <nav class="tabs" aria-label="탭">
         <a class="tab" data-tab="home" href="#/">홈</a>
-        <a class="tab" data-tab="pace" href="#/pace">페이스</a>
         <a class="tab" data-tab="interval" href="#/interval">인터벌</a>
-        <a class="tab" data-tab="predict" href="#/predict">예상기록</a>
         <a class="tab" data-tab="events" href="#/events">대회</a>
         <a class="tab" data-tab="certificate" href="#/certificate">기록증</a>
-        <a class="tab" data-tab="cert" href="#/cert">인증서</a>
-        <a class="tab" data-tab="shoes" href="#/shoes">러닝화</a>
         <a class="tab" data-tab="regular" href="#/regular">정기런</a>
       </nav>
 
       <!-- HOME -->
       <section id="view-home" class="view">
         <div class="grid">
-          <a class="card" href="#/pace">
-            <h2>페이스</h2>
-            <p>거리 + 목표 시간 → 평균 페이스 + KM별</p>
-            <span class="cta">열기 →</span>
-          </a>
-          <a class="card" href="#/interval">
-            <h2>인터벌</h2>
-            <p>워크/휴식 페이스 + 400/200 등 → 표</p>
-            <span class="cta">열기 →</span>
-          </a>
-          <a class="card" href="#/predict">
-            <h2>예상기록</h2>
-            <p>5K 기준 → 10K/하프/풀 3단계</p>
-            <span class="cta">열기 →</span>
-          </a>
-          <a class="card" href="#/events">
-            <h2>대회</h2>
-            <p>대회 일정 + 참가자 + 기록증</p>
-            <span class="cta">열기 →</span>
-          </a>
-          <a class="card" href="#/certificate">
-            <h2>기록증</h2>
-            <p>일반 + 📸 사진 기록(가민 스타일)</p>
-            <span class="cta">열기 →</span>
-          </a>
-          <a class="card" href="#/cert">
-            <h2>인증서</h2>
-            <p>땅콩 인증서 생성기 연결</p>
-            <span class="cta">열기 →</span>
-          </a>
-          <a class="card" href="#/shoes">
-            <h2>러닝화</h2>
-            <p>데일리/훈련/레이스 추천</p>
-            <span class="cta">열기 →</span>
-          </a>
-          <a class="card" href="#/regular">
-            <h2>정기런</h2>
-            <p>매주 수요일 20:00</p>
-            <span class="cta">열기 →</span>
-          </a>
-        </div>
-      </section>
-
-      <!-- PACE -->
-      <section id="view-pace" class="view">
-        <div class="topbar">
-          <a class="back" href="#/">← 홈</a>
-          <div class="pill">페이스</div>
-        </div>
-
-        <div class="card">
-          <h2>페이스 계산기</h2>
-          <p class="muted">거리 + 목표 시간 → 평균 페이스, KM별 세로 출력</p>
-
-          <form id="pace-form" style="margin-top: 12px;">
-            <div class="field">
-              <label for="pace-distance-type">거리</label>
-              <select id="pace-distance-type">
-                <option value="5">5K (5.000km)</option>
-                <option value="10" selected>10K (10.000km)</option>
-                <option value="21.0975">Half (21.0975km)</option>
-                <option value="42.195">Full (42.195km)</option>
-                <option value="custom">직접 입력</option>
-              </select>
-              <div class="help">직접 입력 선택 시 아래에 km로 입력</div>
-            </div>
-
-            <div class="field" id="pace-custom-distance-field" style="display: none;">
-              <label for="pace-distance-km">거리(km)</label>
-              <input id="pace-distance-km" inputmode="decimal" placeholder="예: 7.5" autocomplete="off" />
-            </div>
-
-            <div class="field">
-              <label for="pace-time">목표 시간</label>
-              <input id="pace-time" inputmode="text" placeholder="예: 42:30 또는 1:50:00" autocomplete="off" />
-              <div class="help">MM:SS 또는 HH:MM:SS</div>
-            </div>
-
-            <div class="actions">
-              <button type="submit">계산</button>
-              <button type="button" class="ghost" id="pace-reset">초기화</button>
-            </div>
-          </form>
-
-          <div id="pace-error" class="error" style="display: none;"></div>
-
-          <div id="pace-result" class="result" style="display: none;">
-            <div class="pillrow">
-              <div class="pill" id="pace-pill-distance"></div>
-              <div class="pill" id="pace-pill-time"></div>
-              <div class="pill" id="pace-pill-avgpace"></div>
-            </div>
-
-            <div>
-              <div class="help" style="margin-bottom: 8px;">페이스 표시: <b>5:30</b> = 5분 30초</div>
-              <div class="pace-rows" id="pace-rows"></div>
-            </div>
-          </div>
+          <a class="card" href="#/interval"><h2>인터벌</h2><p>400/200 등 시간 계산</p><span class="cta">열기 →</span></a>
+          <a class="card" href="#/events"><h2>대회</h2><p>크루 대회 일정/참가자</p><span class="cta">열기 →</span></a>
+          <a class="card" href="#/certificate"><h2>기록증</h2><p>매뉴얼 입력으로 출력</p><span class="cta">열기 →</span></a>
+          <a class="card" href="#/regular"><h2>정기런</h2><p>매주 수요일 20:00</p><span class="cta">열기 →</span></a>
         </div>
       </section>
 
       <!-- INTERVAL -->
       <section id="view-interval" class="view">
-        <div class="topbar">
-          <a class="back" href="#/">← 홈</a>
-          <div class="pill">인터벌</div>
-        </div>
-
+        <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">인터벌</div></div>
         <div class="card">
           <h2>인터벌 계산기</h2>
-          <p class="muted">워크/휴식 페이스 + 400/200 등 → 1세트 시간 표</p>
+          <p class="muted">워크/휴식 페이스 + 400/200 등 → 표</p>
 
-          <form id="interval-form" style="margin-top: 12px;">
+          <form id="interval-form" style="margin-top:12px;">
             <div class="field">
               <label for="int-work-pace">워크 페이스(/km)</label>
               <input id="int-work-pace" placeholder="예: 4:30" autocomplete="off" />
-              <div class="help">MM:SS</div>
             </div>
-
             <div class="field">
               <label for="int-rest-pace">휴식 페이스(/km)</label>
               <input id="int-rest-pace" placeholder="예: 6:30" autocomplete="off" />
-              <div class="help">MM:SS</div>
             </div>
-
             <div class="field">
               <label for="int-pattern">패턴</label>
-              <select id="int-pattern">
-                <option value="400/200" selected>400 / 200</option>
-                <option value="400/0">400 / 0</option>
-                <option value="800/400">800 / 400</option>
-                <option value="custom">직접 입력</option>
-              </select>
-              <div class="help">워크(m) / 휴식(m)</div>
+              <input id="int-pattern" placeholder="예: 400/200" autocomplete="off" />
             </div>
-
-            <div class="field" id="int-custom-field" style="display: none;">
-              <label for="int-custom">직접 입력 (워크/휴식 m)</label>
-              <input id="int-custom" placeholder="예: 400/300" autocomplete="off" />
-              <div class="help">형식: 400/200</div>
-            </div>
-
             <div class="field">
               <label for="int-reps">반복 횟수(선택)</label>
               <input id="int-reps" inputmode="numeric" placeholder="예: 10" autocomplete="off" />
-              <div class="help">입력 시 총 합계도 계산</div>
             </div>
 
             <div class="actions">
-              <button type="submit">계산</button>
+              <!-- ✅ 재생은 submit -->
+              <button type="submit" id="int-play">재생</button>
+              <!-- ✅ 나머지는 무조건 button -->
               <button type="button" class="ghost" id="int-reset">초기화</button>
             </div>
           </form>
 
-          <div id="int-error" class="error" style="display: none;"></div>
+          <div id="int-error" class="error" style="display:none;"></div>
 
-          <div id="int-result" class="result" style="display: none;">
-            <div class="pillrow">
+          <div id="int-result" class="result" style="display:none;">
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
               <div class="pill" id="int-pill-pattern"></div>
               <div class="pill" id="int-pill-work"></div>
               <div class="pill" id="int-pill-rest"></div>
             </div>
 
-            <div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>구간</th>
-                    <th>거리</th>
-                    <th>시간</th>
-                    <th>페이스 기준</th>
-                  </tr>
-                </thead>
-                <tbody id="int-table"></tbody>
-              </table>
-            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>구간</th><th>거리</th><th>시간</th><th>페이스 기준</th>
+                </tr>
+              </thead>
+              <tbody id="int-table"></tbody>
+            </table>
 
-            <div id="int-total" class="help"></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- PREDICT -->
-      <section id="view-predict" class="view">
-        <div class="topbar">
-          <a class="back" href="#/">← 홈</a>
-          <div class="pill">예상기록 (5K 기준)</div>
-        </div>
-
-        <div class="card">
-          <h2>예상 기록</h2>
-          <p class="muted">5K 기록 1번 입력 → 10K/하프/풀 동시 + 3단계</p>
-
-          <form id="predict-form" style="margin-top: 12px;">
-            <div class="field">
-              <label for="predict-5k-time">기준 기록(5K)</label>
-              <input id="predict-5k-time" placeholder="예: 25:00 또는 0:25:00" autocomplete="off" />
-              <div class="help">MM:SS 또는 HH:MM:SS</div>
-            </div>
-
-            <div class="field">
-              <label for="predict-mode">강조(컨디션)</label>
-              <select id="predict-mode">
-                <option value="base" selected>기본</option>
-                <option value="aggressive">공격</option>
-                <option value="conservative">보수</option>
-              </select>
-              <div class="help">3단계 모두 출력하고 선택한 단계만 강조</div>
-            </div>
-
-            <div class="actions">
-              <button type="submit">예상하기</button>
-              <button type="button" class="ghost" id="predict-reset">초기화</button>
-            </div>
-          </form>
-
-          <div id="predict-error" class="error" style="display: none;"></div>
-
-          <div id="predict-result" class="result" style="display: none;">
-            <div class="pillrow">
-              <div class="pill" id="predict-pill-in"></div>
-              <div class="pill">공식: Riegel (1.04/1.06/1.08)</div>
-            </div>
-
-            <div class="cards3">
-              <div class="mini">
-                <div class="title"><strong>10K</strong><span class="km">10.000 km</span></div>
-                <div class="rows" id="rows-10k"></div>
-                <div class="group" id="group-10k"></div>
-              </div>
-              <div class="mini">
-                <div class="title"><strong>Half</strong><span class="km">21.0975 km</span></div>
-                <div class="rows" id="rows-half"></div>
-                <div class="group" id="group-half"></div>
-              </div>
-              <div class="mini">
-                <div class="title"><strong>Full</strong><span class="km">42.195 km</span></div>
-                <div class="rows" id="rows-full"></div>
-                <div class="group" id="group-full"></div>
-              </div>
-            </div>
-
-            <div class="help">참고: 개인차(지구력/훈련량/코스/날씨)에 따라 실제 기록은 달라질 수 있어요.</div>
+            <div id="int-total" class="pill" style="width:max-content;"></div>
           </div>
         </div>
       </section>
 
       <!-- EVENTS -->
       <section id="view-events" class="view">
-        <div class="topbar">
-          <a class="back" href="#/">← 홈</a>
-          <div class="pill">대회</div>
-        </div>
-
+        <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">대회</div></div>
         <div class="card">
-          <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: space-between; align-items: center;">
-            <h2 style="margin: 0;">대회 일정</h2>
-            <button type="button" id="btn-custom-cert" class="ghost">무지 기록증 →</button>
-          </div>
+          <h2 style="margin:0;">크루 대회 일정</h2>
           <div id="events-list" class="list"></div>
         </div>
       </section>
 
-      <!-- CERTIFICATE -->
+      <!-- CERTIFICATE (MANUAL ONLY) -->
       <section id="view-certificate" class="view">
-        <div class="topbar">
-          <a class="back" href="#/">← 홈</a>
-          <div class="pill">기록증</div>
-        </div>
-
+        <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">기록증</div></div>
         <div class="card">
           <h2>기록증 출력</h2>
+          <p class="muted">대회명/날짜/장소/거리/닉네임/기록 입력</p>
 
-          <div class="modebar">
-            <button type="button" class="modebtn active" id="mode-normal">일반 기록증</button>
-            <button type="button" class="modebtn" id="mode-photo">📸 사진 기록</button>
-          </div>
-
-          <form id="cert-form" style="margin-top: 12px;">
-            <div class="field">
-              <label for="cert-event">대회</label>
-              <select id="cert-event"></select>
-              <div class="help">“직접 입력(무지)” 선택 시 아래 입력란 열림</div>
-            </div>
-
-            <div class="field">
-              <label for="cert-course">코스</label>
-              <select id="cert-course">
-                <option value="">대회 기본값 사용</option>
-                <option value="5K">5K</option>
-                <option value="10K">10K</option>
-                <option value="21K">21K</option>
-                <option value="42K">42K</option>
-              </select>
-            </div>
-
-            <div id="custom-event-fields" class="field" style="grid-column: span 12; display: none;">
-              <div class="help">직접 입력(무지): 아래를 채우면 기록증 상단에 반영됨</div>
-              <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;">
-                <div class="field" style="grid-column: span 1;">
-                  <label>대회명</label><input id="cert-custom-name" placeholder="예: 더레이스 서울" />
-                </div>
-                <div class="field" style="grid-column: span 1;">
-                  <label>날짜</label><input id="cert-custom-date" placeholder="예: 2026-04-05" />
-                </div>
-                <div class="field" style="grid-column: span 1;">
-                  <label>장소</label><input id="cert-custom-loc" placeholder="예: 서울" />
-                </div>
-                <div class="field" style="grid-column: span 1;">
-                  <label>거리</label><input id="cert-custom-dist" placeholder="예: 21K / 10K" />
-                </div>
-              </div>
-            </div>
-
-            <div class="field" id="photo-field" style="display: none;">
-              <label for="cert-photo">사진 업로드</label>
-              <input id="cert-photo" type="file" accept="image/*" />
-              <div class="help">사진은 업로드되지 않고 브라우저에서만 합성돼요.</div>
-            </div>
-
-            <div class="field" id="photo-distance-mode-field" style="display: none;">
-              <label for="photo-distance-mode">거리</label>
-              <select id="photo-distance-mode">
-                <option value="auto" selected>대회/코스 기준</option>
-                <option value="manual">직접 입력</option>
-              </select>
-              <div class="help">직접 입력 선택 시 아래 입력란이 열려요.</div>
-            </div>
-
-            <div class="field" id="photo-distance-km-field" style="display: none;">
-              <label for="photo-distance-km">거리(km)</label>
-              <input id="photo-distance-km" inputmode="decimal" placeholder="예: 11.43" />
-            </div>
-
-            <div class="field">
-              <label for="photo-metric-mode">사진 지표 표시</label>
-              <select id="photo-metric-mode">
-                <option value="all" selected>거리 + 시간 + 페이스</option>
-                <option value="tp">시간 + 페이스</option>
-                <option value="t">시간만</option>
-              </select>
-            </div>
-
-            <div class="field">
-              <label for="photo-title-mode">좌상단 타이틀</label>
-              <select id="photo-title-mode">
-                <option value="note" selected>메모 우선</option>
-                <option value="event">대회명</option>
-                <option value="off">표시 안 함</option>
-              </select>
-              <div class="help">기본: 🏃 + 메모(없으면 대회명)</div>
-            </div>
-
-            <div class="field">
-              <label for="cert-bib">Bib No. (선택)</label>
-              <input id="cert-bib" inputmode="numeric" placeholder="예: 40222" />
-            </div>
-
-            <div class="field">
-              <label for="cert-nick">닉네임</label>
-              <input id="cert-nick" placeholder="예: 나올" />
-            </div>
-
-            <div class="field">
-              <label for="cert-time">기록</label>
-              <input id="cert-time" placeholder="예: 1:03:58 또는 54:00" />
-              <div class="help">MM:SS 또는 HH:MM:SS</div>
-            </div>
-
-            <div class="field">
-              <label for="cert-note">메모(선택)</label>
-              <input id="cert-note" placeholder="예: 3월 마무리 런 / 첫 10K" />
-            </div>
+          <form id="cert-form" style="margin-top:12px;">
+            <div class="field"><label for="cert-name">대회명</label><input id="cert-name" placeholder="예: 더레이스 서울" /></div>
+            <div class="field"><label for="cert-date">날짜</label><input id="cert-date" placeholder="예: 2026-04-05" /></div>
+            <div class="field"><label for="cert-location">장소</label><input id="cert-location" placeholder="예: 서울" /></div>
+            <div class="field"><label for="cert-distance">거리</label><input id="cert-distance" placeholder="예: 21K / 10K" /></div>
+            <div class="field"><label for="cert-bib">Bib (선택)</label><input id="cert-bib" inputmode="numeric" placeholder="예: 40222" /></div>
+            <div class="field"><label for="cert-nick">닉네임</label><input id="cert-nick" placeholder="예: 나올" /></div>
+            <div class="field"><label for="cert-time">기록</label><input id="cert-time" placeholder="예: 1:03:58 또는 54:00" /></div>
 
             <div class="actions">
-              <button type="submit">미리보기 생성</button>
+              <button type="submit" id="cert-play">재생</button>
               <button type="button" id="cert-download" disabled>PNG 다운로드</button>
               <button type="button" class="ghost" id="cert-reset">초기화</button>
             </div>
           </form>
 
-          <div id="cert-error" class="error" style="display: none;"></div>
+          <div id="cert-error" class="error" style="display:none;"></div>
 
           <div class="canvas-wrap">
             <canvas id="cert-canvas" width="1200" height="1600"></canvas>
@@ -1052,92 +388,15 @@
         </div>
       </section>
 
-      <!-- CERT -->
-      <section id="view-cert" class="view">
-        <div class="topbar">
-          <a class="back" href="#/">← 홈</a>
-          <div class="pill">인증서</div>
-        </div>
-
-        <div class="card">
-          <h2>인증서 생성기</h2>
-          <a class="cta" href="https://noback-lineup-generator.netlify.app/" target="_blank" rel="noopener noreferrer">새 탭으로 열기 →</a>
-          <div style="margin-top: 12px; border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 14px; overflow: hidden; background: rgba(255, 255, 255, 0.05);">
-            <iframe
-              title="인증서 생성기"
-              src="https://noback-lineup-generator.netlify.app/"
-              loading="lazy"
-              style="width: 100%; height: 70vh; border: 0; display: block; background: #fff;"
-            ></iframe>
-          </div>
-        </div>
-      </section>
-
-      <!-- SHOES -->
-      <section id="view-shoes" class="view">
-        <div class="topbar">
-          <a class="back" href="#/">← 홈</a>
-          <div class="pill">러닝화</div>
-        </div>
-
-        <div class="card">
-          <h2>초보 입문용 러닝화 추천</h2>
-          <p class="muted">참고만 하세요 🙌 발/체중/보행에 따라 체감이 달라요.</p>
-
-          <div id="shoes-error" class="error" style="display: none;"></div>
-
-          <div style="display: grid; gap: 12px; margin-top: 12px;">
-            <details open>
-              <summary>데일리 조깅용 <span class="badge" id="badge-daily">0개</span></summary>
-              <div class="shoe-list" id="shoes-daily"></div>
-            </details>
-            <details>
-              <summary>훈련용 <span class="badge" id="badge-training">0개</span></summary>
-              <div class="shoe-list" id="shoes-training"></div>
-            </details>
-            <details>
-              <summary>레이스용 <span class="badge" id="badge-race">0개</span></summary>
-              <div class="shoe-list" id="shoes-race"></div>
-            </details>
-          </div>
-        </div>
-      </section>
-
       <!-- REGULAR -->
       <section id="view-regular" class="view">
-        <div class="topbar">
-          <a class="back" href="#/">← 홈</a>
-          <div class="pill">정기런</div>
-        </div>
-
+        <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">정기런</div></div>
         <div class="card">
           <h2>정기런</h2>
-          <p class="muted">매주 <b>수요일 오후 8시</b>, 노빠꾸 정기런 진행합니다 🏃‍♂️🏃‍♀️</p>
-
-          <h3 style="margin-top: 14px;">진행</h3>
-          <ul style="margin: 8px 0 0; padding-left: 18px; color: var(--muted);">
-            <li>집합 및 가벼운 스트레칭 약 10분 (시작 전 닉네임으로 간단한 출석 체크)</li>
-            <li>러닝 약 50분</li>
-            <li>마무리 스트레칭 후 해산</li>
-          </ul>
-
-          <p class="muted" style="margin-top: 12px;">
-            기록보다는 호흡을 맞추고, 대화 가능한 페이스로 함께 달립니다 :)<br />
-            처음 오시는 분들도 부담 없이 참여하시면 됩니다!
-          </p>
-
-          <h3 style="margin-top: 14px;">운영 방식</h3>
-          <ul style="margin: 8px 0 0; padding-left: 18px; color: var(--muted);">
-            <li>정기런은 페이스 구간 사전취합 방식으로 운영합니다.</li>
-            <li>사전취합된 인원을 기준으로 비슷한 페이스끼리 그룹 출발 (많을 경우 4명 내외)</li>
-            <li>현장 혼선을 줄이고 체조 후 바로 출발하기 위한 방식입니다 🙌</li>
-          </ul>
-
-          <p class="muted" style="margin-top: 12px;">기타 인터벌 등 별도 훈련은 자유롭게 진행하시면 됩니다.</p>
-          <p class="muted">늦지 않게 와서 몸 먼저 풀고 바로 출발할 수 있게 준비 부탁드립니다 😊</p>
+          <p class="muted">매주 <b>수요일 오후 8시</b>, 노빠꾸 정기런 🏃‍♂️🏃‍♀️</p>
 
           <div class="staff">
-            <h2 style="margin: 0;">운영진 정보</h2>
+            <h2 style="margin:0;">운영진 정보</h2>
             <div class="line"><span class="muted">크루장</span><span class="chip">망구</span></div>
             <div class="line"><span class="muted">운영진</span><span id="ops-chips"></span></div>
           </div>
@@ -1146,105 +405,66 @@
     </div>
 
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        try {
-          boot();
-        } catch (e) {
-          console.error(e);
-          document.getElementById("view-home")?.classList.add("active");
-        }
-      });
+      document.addEventListener("DOMContentLoaded", () => boot());
 
       function boot() {
         initRouter();
         initStaff();
-        initPace();
         initInterval();
-        initPredict();
         initEvents();
         initCertificate();
-        initShoes();
         route();
       }
 
-      function initRouter() {
-        window.addEventListener("hashchange", route);
-      }
+      function initRouter() { window.addEventListener("hashchange", route); }
 
       function route() {
         const raw = (location.hash || "#/").toLowerCase();
         const normalized = raw.startsWith("#/") ? raw : raw.startsWith("#") ? "#/" + raw.slice(1) : "#/";
-
         const view =
-          normalized.startsWith("#/pace")
-            ? "pace"
-            : normalized.startsWith("#/interval")
-              ? "interval"
-              : normalized.startsWith("#/predict")
-                ? "predict"
-                : normalized.startsWith("#/events")
-                  ? "events"
-                  : normalized.startsWith("#/certificate")
-                    ? "certificate"
-                    : normalized.startsWith("#/cert")
-                      ? "cert"
-                      : normalized.startsWith("#/shoes")
-                        ? "shoes"
-                        : normalized.startsWith("#/regular")
-                          ? "regular"
-                          : "home";
+          normalized.startsWith("#/interval") ? "interval" :
+          normalized.startsWith("#/events") ? "events" :
+          normalized.startsWith("#/certificate") ? "certificate" :
+          normalized.startsWith("#/regular") ? "regular" :
+          "home";
 
-        document.querySelectorAll(".view").forEach((v) => v.classList.remove("active"));
+        document.querySelectorAll(".view").forEach(v => v.classList.remove("active"));
         document.getElementById(`view-${view}`)?.classList.add("active");
 
-        document.querySelectorAll(".tab").forEach((t) => t.classList.remove("active"));
+        document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
         document.querySelector(`.tab[data-tab="${view}"]`)?.classList.add("active");
 
         if (normalized !== raw) history.replaceState(null, "", normalized);
-
-        if (view === "certificate") {
-          hydrateCertSelect();
-          toggleCustomFields();
-          syncPhotoFields();
-          syncPhotoDistanceModeFields();
-        }
       }
 
-      function setVisible(el, visible) {
-        if (el) el.style.display = visible ? "" : "none";
+      function setVisible(el, visible) { if (el) el.style.display = visible ? "" : "none"; }
+
+      function parsePaceToSeconds(raw) {
+        const s = String(raw || "").trim();
+        const parts = s.split(":").map(p => p.trim());
+        if (parts.length !== 2) return null;
+        if (parts.some(p => p === "" || !/^\d+$/.test(p))) return null;
+        const mm = Number(parts[0]), ss = Number(parts[1]);
+        if (ss >= 60) return null;
+        return mm * 60 + ss;
       }
 
       function parseTimeToSeconds(raw) {
         const s = String(raw || "").trim();
         if (!s) return null;
-        const parts = s.split(":").map((p) => p.trim());
-        if (parts.some((p) => p === "" || !/^\d+$/.test(p))) return null;
-
+        const parts = s.split(":").map(p => p.trim());
+        if (parts.some(p => p === "" || !/^\d+$/.test(p))) return null;
         if (parts.length === 2) {
-          const mm = Number(parts[0]);
-          const ss = Number(parts[1]);
+          const mm = Number(parts[0]), ss = Number(parts[1]);
           if (ss >= 60) return null;
           return mm * 60 + ss;
         }
         if (parts.length === 3) {
-          const hh = Number(parts[0]);
-          const mm = Number(parts[1]);
-          const ss = Number(parts[2]);
+          const hh = Number(parts[0]), mm = Number(parts[1]), ss = Number(parts[2]);
           if (mm >= 60 || ss >= 60) return null;
           return hh * 3600 + mm * 60 + ss;
         }
         return null;
-      }
-
-      function parsePaceToSeconds(raw) {
-        const s = String(raw || "").trim();
-        const parts = s.split(":").map((p) => p.trim());
-        if (parts.length !== 2) return null;
-        if (parts.some((p) => p === "" || !/^\d+$/.test(p))) return null;
-        const mm = Number(parts[0]);
-        const ss = Number(parts[1]);
-        if (ss >= 60) return null;
-        return mm * 60 + ss;
       }
 
       function formatTime(totalSeconds) {
@@ -1252,190 +472,44 @@
         const hh = Math.floor(s / 3600);
         const mm = Math.floor((s % 3600) / 60);
         const ss = s % 60;
-        if (hh > 0) return `${hh}:${String(mm).padStart(2, "0")}:${String(ss).padStart(2, "0")}`;
-        return `${mm}:${String(ss).padStart(2, "0")}`;
+        if (hh > 0) return `${hh}:${String(mm).padStart(2,"0")}:${String(ss).padStart(2,"0")}`;
+        return `${mm}:${String(ss).padStart(2,"0")}`;
       }
 
       function fmtPace(secPerKm) {
         const s = Math.round(secPerKm);
         const mm = Math.floor(s / 60);
         const ss = s % 60;
-        return `${mm}:${String(ss).padStart(2, "0")}`;
-      }
-
-      function normalizeDistance(raw) {
-        const v = String(raw || "").trim();
-        if (!v) return "";
-        const upper = v.toUpperCase();
-        if (upper === "HALF" || upper === "HM" || upper === "21.1K" || upper === "21.0975K") return "21K";
-        if (upper === "FULL" || upper === "FM" || upper === "MARATHON" || upper === "42.2K" || upper === "42.195K") return "42K";
-        if (upper === "10KM" || upper === "10K") return "10K";
-        if (upper === "5KM" || upper === "5K") return "5K";
-        return v;
-      }
-
-      function parseDistanceKmInput(raw) {
-        const s = String(raw || "").trim().replace(",", ".");
-        if (!s) return null;
-        if (!/^\d+(\.\d+)?$/.test(s)) return null;
-        const n = Number(s);
-        if (!(n > 0 && n <= 200)) return null;
-        return n;
+        return `${mm}:${String(ss).padStart(2,"0")}`;
       }
 
       function sortKoreanDesc(arr) {
-        return arr
-          .slice()
-          .map((x) => String(x).trim())
-          .filter(Boolean)
-          .sort((a, b) => b.localeCompare(a, "ko"));
+        return arr.slice().map(x => String(x).trim()).filter(Boolean).sort((a,b)=>b.localeCompare(a,"ko"));
       }
 
       async function safeFetchJson(path) {
         try {
           const res = await fetch(new URL(path, location.href).toString(), { cache: "no-store" });
-          if (!res.ok) return { ok: false, reason: `파일을 찾을 수 없음 (${res.status})`, data: null };
+          if (!res.ok) return { ok:false, reason:`파일을 찾을 수 없음 (${res.status})`, data:null };
           const data = await res.json();
-          return { ok: true, reason: "", data };
+          return { ok:true, reason:"", data };
         } catch {
-          return { ok: false, reason: "JSON 형식이 아니거나 파싱 실패", data: null };
+          return { ok:false, reason:"JSON 파싱 실패", data:null };
         }
       }
 
-      function roundedRect(ctx, x, y, w, h, r) {
-        const rr = Math.min(r, w / 2, h / 2);
-        ctx.beginPath();
-        ctx.moveTo(x + rr, y);
-        ctx.arcTo(x + w, y, x + w, y + h, rr);
-        ctx.arcTo(x + w, y + h, x, y + h, rr);
-        ctx.arcTo(x, y + h, x, y, rr);
-        ctx.arcTo(x, y, x + w, y, rr);
-        ctx.closePath();
-      }
-
-      function outlineText(ctx, text, x, y, strokeW = 6, strokeColor = "rgba(0,0,0,0.75)") {
-        ctx.save();
-        ctx.lineWidth = strokeW;
-        ctx.strokeStyle = strokeColor;
-        ctx.strokeText(text, x, y);
-        ctx.restore();
-        ctx.fillText(text, x, y);
-      }
-
-      async function loadImage(src) {
-        return new Promise((resolve, reject) => {
-          const img = new Image();
-          img.onload = () => resolve(img);
-          img.onerror = reject;
-          img.src = src;
-        });
-      }
-
-      function drawCover(ctx, img, x, y, w, h) {
-        const ir = img.width / img.height;
-        const cr = w / h;
-        let sw, sh, sx, sy;
-        if (ir > cr) {
-          sh = img.height;
-          sw = sh * cr;
-          sx = (img.width - sw) / 2;
-          sy = 0;
-        } else {
-          sw = img.width;
-          sh = sw / cr;
-          sx = 0;
-          sy = (img.height - sh) / 2;
-        }
-        ctx.drawImage(img, sx, sy, sw, sh, x, y, w, h);
-      }
-
+      // ---- staff ----
       function initStaff() {
         const ops = ["달려", "룰루", "나올", "밍경", "김땅콩", "슈퍼짹", "뽀용", "망구"];
         const sorted = sortKoreanDesc(ops);
         const container = document.getElementById("ops-chips");
         if (!container) return;
         container.innerHTML = "";
-        sorted.forEach((name) => {
+        sorted.forEach(name => {
           const s = document.createElement("span");
           s.className = "chip";
           s.textContent = name;
           container.appendChild(s);
-        });
-      }
-
-      // ---- pace ----
-      function initPace() {
-        const form = document.getElementById("pace-form");
-        if (!form) return;
-
-        const distType = document.getElementById("pace-distance-type");
-        const customField = document.getElementById("pace-custom-distance-field");
-        const distKmInput = document.getElementById("pace-distance-km");
-        const timeInput = document.getElementById("pace-time");
-        const err = document.getElementById("pace-error");
-        const result = document.getElementById("pace-result");
-        const rows = document.getElementById("pace-rows");
-
-        distType.addEventListener("change", () => setVisible(customField, distType.value === "custom"));
-
-        document.getElementById("pace-reset")?.addEventListener("click", () => {
-          form.reset();
-          setVisible(customField, false);
-          setVisible(err, false);
-          setVisible(result, false);
-          rows.innerHTML = "";
-        });
-
-        function getDistanceKm() {
-          if (distType.value === "custom") return parseDistanceKmInput(distKmInput.value);
-          return Number(distType.value);
-        }
-
-        function appendRow(label, value, isTail) {
-          const row = document.createElement("div");
-          row.className = "pace-row" + (isTail ? " tail" : "");
-          const left = document.createElement("div");
-          left.className = "k";
-          left.textContent = label;
-          const right = document.createElement("div");
-          right.className = "v";
-          right.textContent = value;
-          row.append(left, right);
-          rows.appendChild(row);
-        }
-
-        form.addEventListener("submit", (e) => {
-          e.preventDefault();
-          setVisible(err, false);
-          setVisible(result, false);
-          rows.innerHTML = "";
-
-          const distanceKm = getDistanceKm();
-          const timeSec = parseTimeToSeconds(timeInput.value);
-
-          if (!distanceKm) {
-            err.textContent = "거리를 올바르게 입력해 주세요.";
-            setVisible(err, true);
-            return;
-          }
-          if (!timeSec || timeSec <= 0) {
-            err.textContent = "목표 시간을 올바르게 입력해 주세요.";
-            setVisible(err, true);
-            return;
-          }
-
-          const pace = timeSec / distanceKm;
-          const fullKm = Math.floor(distanceKm);
-          const tail = distanceKm - fullKm;
-
-          for (let i = 1; i <= fullKm; i++) appendRow(`${i}KM`, `${fmtPace(pace)}`, false);
-          if (tail > 0.0001) appendRow(`마지막 ${Math.round(tail * 1000) / 1000}km`, `${fmtPace(pace)}`, true);
-
-          document.getElementById("pace-pill-distance").textContent = `거리: ${distanceKm} km`;
-          document.getElementById("pace-pill-time").textContent = `목표: ${formatTime(timeSec)}`;
-          document.getElementById("pace-pill-avgpace").textContent = `평균: ${fmtPace(pace)} /km`;
-
-          setVisible(result, true);
         });
       }
 
@@ -1447,8 +521,6 @@
         const workPace = document.getElementById("int-work-pace");
         const restPace = document.getElementById("int-rest-pace");
         const pattern = document.getElementById("int-pattern");
-        const customField = document.getElementById("int-custom-field");
-        const customInput = document.getElementById("int-custom");
         const repsInput = document.getElementById("int-reps");
 
         const err = document.getElementById("int-error");
@@ -1456,31 +528,24 @@
         const tbody = document.getElementById("int-table");
         const total = document.getElementById("int-total");
 
-        pattern.addEventListener("change", () => setVisible(customField, pattern.value === "custom"));
-
         document.getElementById("int-reset")?.addEventListener("click", () => {
           form.reset();
-          setVisible(customField, false);
-          setVisible(err, false);
-          setVisible(result, false);
+          setVisible(err,false);
+          setVisible(result,false);
           tbody.innerHTML = "";
           total.textContent = "";
         });
 
-        function parsePattern() {
-          let p = pattern.value;
-          if (p === "custom") p = String(customInput.value || "").trim();
+        function parsePattern(raw) {
+          const p = String(raw || "").trim();
           const m = p.match(/^(\d+)\s*\/\s*(\d+)$/);
           if (!m) return null;
-          const w = Number(m[1]);
-          const r = Number(m[2]);
+          const w = Number(m[1]), r = Number(m[2]);
           if (!(w > 0 && w <= 10000 && r >= 0 && r <= 10000)) return null;
           return { workM: w, restM: r, label: `${w}/${r}` };
         }
 
-        function secondsForMeters(paceSecPerKm, meters) {
-          return (paceSecPerKm * meters) / 1000;
-        }
+        function secondsForMeters(paceSecPerKm, meters) { return (paceSecPerKm * meters) / 1000; }
 
         function addRow(name, dist, secs, paceLabel) {
           const tr = document.createElement("tr");
@@ -1489,31 +554,19 @@
         }
 
         form.addEventListener("submit", (e) => {
-          e.preventDefault();
-          setVisible(err, false);
-          setVisible(result, false);
+          e.preventDefault(); // ✅ 핵심
+          setVisible(err,false);
+          setVisible(result,false);
           tbody.innerHTML = "";
           total.textContent = "";
 
           const wp = parsePaceToSeconds(workPace.value);
           const rp = parsePaceToSeconds(restPace.value);
-          const pat = parsePattern();
+          const pat = parsePattern(pattern.value);
 
-          if (!wp) {
-            err.textContent = "워크 페이스를 MM:SS로 입력해 주세요. (예: 4:30)";
-            setVisible(err, true);
-            return;
-          }
-          if (!rp) {
-            err.textContent = "휴식 페이스를 MM:SS로 입력해 주세요. (예: 6:30)";
-            setVisible(err, true);
-            return;
-          }
-          if (!pat) {
-            err.textContent = "패턴을 올바르게 선택/입력해 주세요. (예: 400/200)";
-            setVisible(err, true);
-            return;
-          }
+          if (!wp) { err.textContent = "워크 페이스를 MM:SS로 입력해 주세요. (예: 4:30)"; setVisible(err,true); return; }
+          if (!rp) { err.textContent = "휴식 페이스를 MM:SS로 입력해 주세요. (예: 6:30)"; setVisible(err,true); return; }
+          if (!pat) { err.textContent = "패턴을 400/200 처럼 입력해 주세요."; setVisible(err,true); return; }
 
           const workSec = secondsForMeters(wp, pat.workM);
           const restSec = secondsForMeters(rp, pat.restM);
@@ -1531,156 +584,38 @@
           if (repsRaw && /^\d+$/.test(repsRaw)) {
             const reps = Number(repsRaw);
             if (reps > 0 && reps <= 200) {
-              total.textContent = `총 ${reps}세트: ${formatTime(cycleSec * reps)} (워크 ${formatTime(workSec * reps)} + 휴식 ${formatTime(restSec * reps)})`;
-            }
-          }
+              total.textContent = `총 ${reps}세트: ${formatTime(cycleSec * reps)}`;
+            } else total.textContent = "";
+          } else total.textContent = "";
 
-          setVisible(result, true);
-        });
-      }
-
-      // ---- predict ----
-      function initPredict() {
-        const form = document.getElementById("predict-form");
-        if (!form) return;
-
-        const timeInput = document.getElementById("predict-5k-time");
-        const modeSel = document.getElementById("predict-mode");
-        const err = document.getElementById("predict-error");
-        const result = document.getElementById("predict-result");
-
-        const D5 = 5,
-          D10 = 10,
-          DH = 21.0975,
-          DF = 42.195;
-        const EXP = { aggressive: 1.04, base: 1.06, conservative: 1.08 };
-
-        function riegel(t1, d1, d2, exp) {
-          return t1 * Math.pow(d2 / d1, exp);
-        }
-        function groupRange(paceSecPerKm) {
-          const lo = Math.max(0, paceSecPerKm - 10);
-          const hi = paceSecPerKm + 10;
-          return `${fmtPace(lo)}~${fmtPace(hi)}`;
-        }
-
-        function renderCard(rowsEl, groupEl, distKm, t1Sec, highlight) {
-          const order = [
-            { key: "aggressive", name: "공격" },
-            { key: "base", name: "기본" },
-            { key: "conservative", name: "보수" },
-          ];
-          rowsEl.innerHTML = "";
-          groupEl.textContent = "";
-
-          order.forEach((o) => {
-            const t2 = riegel(t1Sec, D5, distKm, EXP[o.key]);
-            const pace = t2 / distKm;
-
-            const row = document.createElement("div");
-            row.className = "row" + (o.key === highlight ? " highlight" : "");
-
-            const left = document.createElement("div");
-            left.className = "k";
-            left.textContent = o.name;
-
-            const right = document.createElement("div");
-            right.className = "v";
-            right.textContent = `${formatTime(t2)} · ${fmtPace(pace)}/km`;
-
-            row.append(left, right);
-            rowsEl.appendChild(row);
-
-            if (o.key === highlight) groupEl.textContent = `추천 페이스그룹: ${groupRange(pace)}`;
-          });
-        }
-
-        document.getElementById("predict-reset")?.addEventListener("click", () => {
-          form.reset();
-          setVisible(err, false);
-          setVisible(result, false);
-        });
-
-        form.addEventListener("submit", (e) => {
-          e.preventDefault();
-          setVisible(err, false);
-          setVisible(result, false);
-
-          const t1 = parseTimeToSeconds(timeInput.value);
-          const mode = String(modeSel.value || "base");
-
-          if (!t1 || t1 <= 0) {
-            err.textContent = "5K 기록 시간을 올바르게 입력해 주세요.";
-            setVisible(err, true);
-            return;
-          }
-          if (!EXP[mode]) {
-            err.textContent = "컨디션 선택이 올바르지 않아요.";
-            setVisible(err, true);
-            return;
-          }
-
-          document.getElementById("predict-pill-in").textContent = `입력: 5K / ${formatTime(t1)}`;
-
-          renderCard(document.getElementById("rows-10k"), document.getElementById("group-10k"), D10, t1, mode);
-          renderCard(document.getElementById("rows-half"), document.getElementById("group-half"), DH, t1, mode);
-          renderCard(document.getElementById("rows-full"), document.getElementById("group-full"), DF, t1, mode);
-
-          setVisible(result, true);
+          setVisible(result,true);
         });
       }
 
       // ---- events ----
-      let EVENTS_CACHE = [];
-
-      function initEvents() {
-        loadEvents();
-        document.getElementById("btn-custom-cert")?.addEventListener("click", () => {
-          sessionStorage.setItem("cert_selected_event_index", "custom");
-          sessionStorage.setItem("cert_selected_event_mode", "photo");
-          location.hash = "#/certificate";
-        });
-      }
-
-      async function loadEvents() {
-        const list = document.getElementById("events-list");
-        if (!list) return;
-
-        const res = await safeFetchJson("data/events.json");
-        if (!res.ok || !res.data || !Array.isArray(res.data.events) || res.data.events.length === 0) {
-          EVENTS_CACHE = [];
-          list.innerHTML = `<div class="empty"><b>대회 정보가 비어있어요</b><div style="margin-top:8px;">${res.ok ? "" : res.reason}</div></div>`;
-          hydrateCertSelect();
-          return;
-        }
-
-        EVENTS_CACHE = res.data.events
-          .slice()
-          .map((ev) => ({ ...ev, distance: normalizeDistance(ev.distance) }))
-          .sort((a, b) => String(a.date || "").localeCompare(String(b.date || "")));
-
-        list.innerHTML = "";
-        EVENTS_CACHE.forEach((ev, idx) => list.appendChild(createEventItem(ev, idx)));
-        hydrateCertSelect();
+      function normalizeDistance(raw) {
+        const v = String(raw || "").trim();
+        if (!v) return "";
+        const upper = v.toUpperCase();
+        if (upper === "HALF" || upper === "HM" || upper === "21.1K" || upper === "21.0975K") return "21K";
+        if (upper === "FULL" || upper === "FM" || upper === "MARATHON" || upper === "42.2K" || upper === "42.195K") return "42K";
+        if (upper === "10KM" || upper === "10K") return "10K";
+        if (upper === "5KM" || upper === "5K") return "5K";
+        return v;
       }
 
       function normalizeParticipants(rawParticipants) {
         const arr = Array.isArray(rawParticipants) ? rawParticipants : [];
-        return arr
-          .map((p) => {
-            if (typeof p === "string") return { name: p, distance: "" };
-            if (p && typeof p === "object") return { name: String(p.name || "").trim(), distance: String(p.distance || "").trim() };
-            return { name: "", distance: "" };
-          })
-          .filter((p) => p.name.length > 0);
+        return arr.map(p => {
+          if (typeof p === "string") return { name: p, distance: "" };
+          if (p && typeof p === "object") return { name: String(p.name || "").trim(), distance: String(p.distance || "").trim() };
+          return { name:"", distance:"" };
+        }).filter(p => p.name.length > 0);
       }
 
-      function createEventItem(ev, idx) {
+      function createEventItem(ev) {
         const el = document.createElement("div");
         el.className = "item";
-
-        const head = document.createElement("div");
-        head.className = "item-head";
 
         const title = document.createElement("div");
         title.className = "item-title";
@@ -1691,42 +626,23 @@
         const meta = document.createElement("div");
         meta.className = "meta";
 
-        const p1 = document.createElement("span");
-        p1.className = "pill";
-        p1.textContent = ev.date || "날짜 미정";
-        meta.appendChild(p1);
-
-        if (ev.location) {
-          const p = document.createElement("span");
-          p.className = "pill";
-          p.textContent = ev.location;
-          meta.appendChild(p);
-        }
-
+        const p1 = document.createElement("span"); p1.className = "pill"; p1.textContent = ev.date || "날짜 미정"; meta.appendChild(p1);
+        if (ev.location) { const p = document.createElement("span"); p.className="pill"; p.textContent=ev.location; meta.appendChild(p); }
         const dist = normalizeDistance(ev.distance);
-        if (dist) {
-          const p = document.createElement("span");
-          p.className = "pill";
-          p.textContent = dist;
-          meta.appendChild(p);
-        }
+        if (dist) { const p = document.createElement("span"); p.className="pill"; p.textContent=dist; meta.appendChild(p); }
 
-        title.append(strong, meta);
-        head.appendChild(title);
-        el.appendChild(head);
+        title.appendChild(strong);
+        title.appendChild(meta);
+        el.appendChild(title);
 
         const parts = normalizeParticipants(ev.participants)
-          .map((p) => ({ name: p.name, distance: normalizeDistance(p.distance) || "" }))
-          .sort((a, b) => b.name.localeCompare(a.name, "ko"));
+          .map(p => ({ name: p.name, distance: normalizeDistance(p.distance) || "" }))
+          .sort((a,b)=>b.name.localeCompare(a.name,"ko"));
 
         if (parts.length) {
-          const wrap = document.createElement("div");
-          wrap.className = "p-wrap";
           const ul = document.createElement("ul");
           ul.className = "p-list";
-          wrap.appendChild(ul);
-
-          parts.forEach((p) => {
+          parts.forEach(p => {
             const li = document.createElement("li");
             li.appendChild(document.createTextNode(p.name));
             if (p.distance && p.distance !== dist) {
@@ -1737,77 +653,79 @@
             }
             ul.appendChild(li);
           });
-
-          el.appendChild(wrap);
+          el.appendChild(ul);
         }
-
-        const actions = document.createElement("div");
-        actions.className = "actions";
-        const btn = document.createElement("button");
-        btn.type = "button";
-        btn.textContent = "기록증 출력 →";
-        btn.addEventListener("click", () => {
-          sessionStorage.setItem("cert_selected_event_index", String(idx));
-          sessionStorage.setItem("cert_selected_event_mode", "photo");
-          location.hash = "#/certificate";
-        });
-        actions.appendChild(btn);
-        el.appendChild(actions);
 
         return el;
       }
 
-      // ---- certificate ----
-      let CERT_MODE = "normal";
-      let PHOTO_IMAGE = null;
+      async function initEvents() {
+        const list = document.getElementById("events-list");
+        if (!list) return;
+
+        const res = await safeFetchJson("data/events.json");
+        if (!res.ok || !res.data || !Array.isArray(res.data.events) || res.data.events.length === 0) {
+          list.innerHTML = `<div class="empty"><b>대회 정보가 비어있어요</b></div>`;
+          return;
+        }
+
+        const events = res.data.events.slice().sort((a,b)=>String(a.date||"").localeCompare(String(b.date||"")));
+        list.innerHTML = "";
+        events.forEach(ev => list.appendChild(createEventItem(ev)));
+      }
+
+      // ---- certificate (manual) ----
+      function roundedRect(ctx, x, y, w, h, r) {
+        const rr = Math.min(r, w/2, h/2);
+        ctx.beginPath();
+        ctx.moveTo(x+rr, y);
+        ctx.arcTo(x+w, y, x+w, y+h, rr);
+        ctx.arcTo(x+w, y+h, x, y+h, rr);
+        ctx.arcTo(x, y+h, x, y, rr);
+        ctx.arcTo(x, y, x+w, y, rr);
+        ctx.closePath();
+      }
+
+      async function loadImage(src) {
+        return new Promise((resolve, reject) => {
+          const img = new Image();
+          img.onload = () => resolve(img);
+          img.onerror = reject;
+          img.src = src;
+        });
+      }
+
+      function paintBlankCanvas() {
+        const c = document.getElementById("cert-canvas");
+        if (!c) return;
+        const ctx = c.getContext("2d");
+        ctx.fillStyle = "#fff";
+        ctx.fillRect(0,0,c.width,c.height);
+      }
+
+      function setCertError(msg) {
+        const el = document.getElementById("cert-error");
+        if (!el) return;
+        if (!msg) { el.style.display="none"; el.textContent=""; return; }
+        el.textContent = msg;
+        el.style.display = "";
+      }
+
+      function setDownloadEnabled(enabled, filename="") {
+        const btn = document.getElementById("cert-download");
+        if (!btn) return;
+        btn.disabled = !enabled;
+        if (enabled && filename) btn.dataset.filename = filename;
+      }
 
       function initCertificate() {
-        document.getElementById("mode-normal")?.addEventListener("click", () => setMode("normal"));
-        document.getElementById("mode-photo")?.addEventListener("click", () => setMode("photo"));
+        paintBlankCanvas();
 
-        document.getElementById("cert-event")?.addEventListener("change", () => {
-          toggleCustomFields();
-          syncPhotoDistanceModeFields();
-        });
-
-        document.getElementById("photo-distance-mode")?.addEventListener("change", syncPhotoDistanceModeFields);
-
-        // iOS EXIF orientation + 깨짐 방지
-        document.getElementById("cert-photo")?.addEventListener("change", async (e) => {
-          PHOTO_IMAGE = null;
-          const file = e.target.files?.[0];
-          if (!file) return;
-
-          if ("createImageBitmap" in window) {
-            try {
-              const bmp = await createImageBitmap(file, { imageOrientation: "from-image" });
-              PHOTO_IMAGE = bmp;
-              return;
-            } catch {
-              // fallback
-            }
-          }
-
-          const url = URL.createObjectURL(file);
-          try {
-            PHOTO_IMAGE = await loadImage(url);
-          } finally {
-            URL.revokeObjectURL(url);
-          }
-        });
-
-        document.getElementById("cert-form")?.addEventListener("submit", async (e) => {
-          e.preventDefault();
-          await generateCertificatePreview();
-        });
+        const form = document.getElementById("cert-form");
+        if (!form) return;
 
         document.getElementById("cert-reset")?.addEventListener("click", () => {
-          document.getElementById("cert-form")?.reset();
-          PHOTO_IMAGE = null;
-          setMode("normal");
-          toggleCustomFields();
-          syncPhotoFields();
-          syncPhotoDistanceModeFields();
+          form.reset();
           setCertError("");
           setDownloadEnabled(false);
           paintBlankCanvas();
@@ -1823,331 +741,48 @@
           a.click();
         });
 
-        paintBlankCanvas();
-      }
-
-      function setCanvasSizeForMode(mode) {
-        const c = document.getElementById("cert-canvas");
-        if (!c) return;
-        if (mode === "photo") {
-          c.width = 1080;
-          c.height = 1080;
-        } else {
-          c.width = 1200;
-          c.height = 1600;
-        }
-      }
-
-      function paintBlankCanvas() {
-        setCanvasSizeForMode(CERT_MODE);
-        const c = document.getElementById("cert-canvas");
-        if (!c) return;
-        const ctx = c.getContext("2d");
-        ctx.fillStyle = "#fff";
-        ctx.fillRect(0, 0, c.width, c.height);
-      }
-
-      function setMode(next) {
-        CERT_MODE = next;
-        document.getElementById("mode-normal")?.classList.toggle("active", next === "normal");
-        document.getElementById("mode-photo")?.classList.toggle("active", next === "photo");
-        syncPhotoFields();
-        syncPhotoDistanceModeFields();
-        paintBlankCanvas();
-      }
-
-      function syncPhotoFields() {
-        const isPhoto = CERT_MODE === "photo";
-        setVisible(document.getElementById("photo-field"), isPhoto);
-        setVisible(document.getElementById("photo-distance-mode-field"), isPhoto);
-      }
-
-      function syncPhotoDistanceModeFields() {
-        const isPhoto = CERT_MODE === "photo";
-        const mode = document.getElementById("photo-distance-mode")?.value || "auto";
-        setVisible(document.getElementById("photo-distance-km-field"), isPhoto && mode === "manual");
-      }
-
-      function toggleCustomFields() {
-        const sel = document.getElementById("cert-event");
-        setVisible(document.getElementById("custom-event-fields"), sel && sel.value === "custom");
-      }
-
-      function hydrateCertSelect() {
-        const sel = document.getElementById("cert-event");
-        if (!sel) return;
-
-        const current = sel.value;
-        sel.innerHTML = "";
-
-        const optCustom = document.createElement("option");
-        optCustom.value = "custom";
-        optCustom.textContent = "직접 입력(무지)";
-        sel.appendChild(optCustom);
-
-        EVENTS_CACHE.forEach((ev, idx) => {
-          const opt = document.createElement("option");
-          opt.value = String(idx);
-          opt.textContent = `${ev.name || "대회"} · ${ev.date || ""} · ${normalizeDistance(ev.distance) || ""}`;
-          sel.appendChild(opt);
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault(); // ✅ 핵심
+          await generateCertificatePreview();
         });
-
-        const savedIdx = sessionStorage.getItem("cert_selected_event_index");
-        const savedMode = sessionStorage.getItem("cert_selected_event_mode");
-        if (savedMode === "photo") setMode("photo");
-        else setMode("normal");
-
-        if (savedIdx === "custom") sel.value = "custom";
-        else if (savedIdx && !Number.isNaN(Number(savedIdx))) sel.value = savedIdx;
-        else if (current) sel.value = current;
-        else sel.value = EVENTS_CACHE.length ? "0" : "custom";
-
-        sessionStorage.removeItem("cert_selected_event_index");
-        sessionStorage.removeItem("cert_selected_event_mode");
-
-        toggleCustomFields();
-        syncPhotoFields();
-        syncPhotoDistanceModeFields();
       }
 
-      function setCertError(msg) {
-        const el = document.getElementById("cert-error");
-        if (!el) return;
-        if (!msg) {
-          el.style.display = "none";
-          el.textContent = "";
-          return;
-        }
-        el.textContent = msg;
-        el.style.display = "";
-      }
+      async function generateCertificatePreview() {
+        setCertError("");
+        setDownloadEnabled(false);
 
-      function setDownloadEnabled(enabled, filename = "") {
-        const btn = document.getElementById("cert-download");
-        if (!btn) return;
-        btn.disabled = !enabled;
-        if (enabled && filename) btn.dataset.filename = filename;
-      }
+        const evName = String(document.getElementById("cert-name")?.value || "").trim();
+        const evDate = String(document.getElementById("cert-date")?.value || "").trim();
+        const evLoc = String(document.getElementById("cert-location")?.value || "").trim();
+        const evDist = String(document.getElementById("cert-distance")?.value || "").trim();
+        const bib = String(document.getElementById("cert-bib")?.value || "").trim();
+        const nick = String(document.getElementById("cert-nick")?.value || "").trim();
+        const tsec = parseTimeToSeconds(document.getElementById("cert-time")?.value);
 
-      function getEventData() {
-        const sel = document.getElementById("cert-event");
-        if (!sel) return null;
+        if (!evName) return setCertError("대회명을 입력해 주세요.");
+        if (!nick) return setCertError("닉네임을 입력해 주세요.");
+        if (!tsec || tsec <= 0) return setCertError("기록 시간을 올바르게 입력해 주세요.");
 
-        if (sel.value === "custom") {
-          return {
-            name: String(document.getElementById("cert-custom-name")?.value || "").trim() || "무지 기록",
-            date: String(document.getElementById("cert-custom-date")?.value || "").trim(),
-            location: String(document.getElementById("cert-custom-loc")?.value || "").trim(),
-            distance: normalizeDistance(String(document.getElementById("cert-custom-dist")?.value || "").trim()),
-          };
-        }
-
-        const idx = Number(sel.value);
-        const ev = EVENTS_CACHE[idx];
-        if (!ev) return null;
-        return {
-          name: String(ev.name || "대회"),
-          date: String(ev.date || ""),
-          location: String(ev.location || ""),
-          distance: normalizeDistance(ev.distance),
-        };
-      }
-
-      function kmFromCourseLabel(label, evDistance) {
-        const d = (String(label || "") || String(evDistance || "")).toUpperCase();
-        if (d === "5K") return 5;
-        if (d === "10K") return 10;
-        if (d === "21K") return 21.0975;
-        if (d === "42K") return 42.195;
-        return null;
-      }
-
-      async function generatePhotoOverlay(ev, nick, bib, tsec, note, courseLabel) {
         const c = document.getElementById("cert-canvas");
-        if (!c) return;
         const ctx = c.getContext("2d");
-        const W = c.width,
-          H = c.height;
+        const W = c.width, H = c.height;
 
-        ctx.clearRect(0, 0, W, H);
-
-        // square clip
-        const clipPad = 18;
-        ctx.save();
-        roundedRect(ctx, clipPad, clipPad, W - clipPad * 2, H - clipPad * 2, 28);
-        ctx.clip();
-
-        // photo cover
-        if (!PHOTO_IMAGE) {
-          ctx.fillStyle = "#111";
-          ctx.fillRect(0, 0, W, H);
-        } else {
-          drawCover(ctx, PHOTO_IMAGE, 0, 0, W, H);
-        }
-
-        // vignette
-        const vg = ctx.createRadialGradient(W * 0.7, H * 0.58, 220, W * 0.7, H * 0.58, 980);
-        vg.addColorStop(0, "rgba(0,0,0,0.00)");
-        vg.addColorStop(1, "rgba(0,0,0,0.55)");
-        ctx.fillStyle = vg;
-        ctx.fillRect(0, 0, W, H);
-
-        const family = "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        const mono = "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace";
-
-        // ===== STRIP: 더 위 + 더 작게 =====
-        const innerH = H - clipPad * 2;
-
-        const stripW = 54;
-        const stripH = Math.floor(innerH * 0.5);
-        const stripY = clipPad + Math.floor(innerH * 0.14);
-        const stripX = W - clipPad - stripW;
-
-        ctx.save();
-        ctx.fillStyle = "rgba(255,255,255,0.96)";
-        ctx.fillRect(stripX, stripY, stripW, stripH);
-        ctx.restore();
-
-        // NO BACK (top->bottom), auto fit
-        ctx.save();
-        ctx.translate(stripX + stripW / 2, stripY + stripH / 2);
-        ctx.rotate(Math.PI / 2);
-        ctx.textAlign = "center";
-        ctx.textBaseline = "middle";
-        ctx.fillStyle = "#111";
-
-        const text = "NO BACK";
-        let fontSize = 54;
-        ctx.font = `900 ${fontSize}px ${family}`;
-
-        const target = stripH - 6;
-        const measured = ctx.measureText(text).width;
-        if (measured > 0) {
-          fontSize = Math.floor((fontSize * target) / measured);
-          fontSize = Math.max(18, Math.min(fontSize, 62));
-          ctx.font = `900 ${fontSize}px ${family}`;
-        }
-        ctx.fillText(text, 0, 0);
-        ctx.restore();
-
-        // title top-left
-        const titleMode = document.getElementById("photo-title-mode")?.value || "note";
-        let title = "";
-        if (titleMode === "off") title = "";
-        else if (titleMode === "event") title = String(ev.name || "").trim();
-        else title = String(note || "").trim() || String(ev.name || "").trim();
-
-        if (title) {
-          const t = title.includes("🏃") ? title : `🏃 ${title}`;
-          ctx.save();
-          ctx.textAlign = "left";
-          ctx.fillStyle = "rgba(255,255,255,0.92)";
-          ctx.font = `900 40px ${family}`;
-          outlineText(ctx, t, 46, 74, 8, "rgba(0,0,0,0.72)");
-          ctx.restore();
-        }
-
-        // distance mode: auto vs manual
-        const distMode = document.getElementById("photo-distance-mode")?.value || "auto";
-        const kmManual = parseDistanceKmInput(document.getElementById("photo-distance-km")?.value);
-        const kmAuto = kmFromCourseLabel(courseLabel, ev.distance);
-        const km = distMode === "manual" ? kmManual : kmAuto;
-
-        const distanceText = km ? `${km.toFixed(2)} km` : courseLabel || ev.distance || "";
-        const timeText = formatTime(tsec);
-        const paceText = km ? `${fmtPace(tsec / km)} /km` : "";
-
-        const metricMode = document.getElementById("photo-metric-mode")?.value || "all";
-        const showDistance = metricMode === "all";
-        const showTime = metricMode === "all" || metricMode === "tp" || metricMode === "t";
-        const showPace = metricMode === "all" || metricMode === "tp";
-
-        // ===== METRICS: 겹침 방지 =====
-        const right = stripX - 34; // 띠에서 더 떨어짐
-        const labelFont = 18;
-        const valueFont = 46;
-        const gap = 92;
-        let y = H - 94;
-
-        function drawMetric(label, value, yPos) {
-          ctx.save();
-          ctx.textAlign = "right";
-
-          ctx.fillStyle = "rgba(255,255,255,0.78)";
-          ctx.font = `900 ${labelFont}px ${family}`;
-          outlineText(ctx, label, right, yPos - 30, 5, "rgba(0,0,0,0.70)");
-
-          ctx.fillStyle = "rgba(255,255,255,0.96)";
-          ctx.font = `900 ${valueFont}px ${mono}`;
-          outlineText(ctx, value, right, yPos, 9, "rgba(0,0,0,0.78)");
-
-          ctx.restore();
-        }
-
-        if (showPace && paceText) {
-          drawMetric("평균페이스", paceText, y);
-          y -= gap;
-        }
-        if (showTime) {
-          drawMetric("총 시간", timeText, y);
-          y -= gap;
-        }
-        if (showDistance && distanceText) {
-          drawMetric("거리", distanceText, y);
-          y -= gap;
-        }
-
-        // chip + nick
-        const chipLine = [courseLabel || ev.distance ? courseLabel || ev.distance : "", bib ? `BIB ${bib}` : ""]
-          .filter(Boolean)
-          .join(" · ");
-
-        if (chipLine) {
-          ctx.save();
-          ctx.textAlign = "right";
-          ctx.fillStyle = "rgba(255,106,0,0.95)";
-          ctx.font = `900 22px ${mono}`;
-          outlineText(ctx, chipLine, right, H - 58, 6, "rgba(0,0,0,0.70)");
-          ctx.restore();
-        }
-
-        ctx.save();
-        ctx.textAlign = "right";
-        ctx.fillStyle = "rgba(255,255,255,0.92)";
-        ctx.font = `900 34px ${family}`;
-        outlineText(ctx, nick, right, H - 28, 7, "rgba(0,0,0,0.72)");
-        ctx.restore();
-
-        ctx.restore(); // clip
-      }
-
-      async function generateNormalCertificate(ev, nick, bib, tsec) {
-        setCanvasSizeForMode("normal");
-        const c = document.getElementById("cert-canvas");
-        if (!c) return;
-        const ctx = c.getContext("2d");
-        const W = c.width,
-          H = c.height;
-
-        ctx.clearRect(0, 0, W, H);
+        ctx.clearRect(0,0,W,H);
         ctx.fillStyle = "#fff";
-        ctx.fillRect(0, 0, W, H);
+        ctx.fillRect(0,0,W,H);
 
         try {
-          const bg = await loadImage("./bg.jpg?v=4012");
+          const bg = await loadImage("./bg.jpg?v=6002");
           ctx.save();
           ctx.globalAlpha = 0.08;
           const tile = 260;
           const tileH = (tile * bg.height) / bg.width;
-          for (let yy = 0; yy < H; yy += tile) for (let xx = 0; xx < W; xx += tile) ctx.drawImage(bg, xx, yy, tile, tileH);
+          for (let yy=0; yy<H; yy+=tile) for (let xx=0; xx<W; xx+=tile) ctx.drawImage(bg, xx, yy, tile, tileH);
           ctx.restore();
         } catch {}
 
         const pad = 70;
-        const x = pad,
-          y = 120,
-          w = W - pad * 2,
-          h = H - 220;
+        const x = pad, y = 120, w = W - pad*2, h = H - 220;
 
         ctx.save();
         ctx.shadowColor = "rgba(0,0,0,.14)";
@@ -2164,149 +799,56 @@
 
         ctx.fillStyle = "#111";
         ctx.font = "900 66px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        ctx.fillText("CERTIFICATE OF RECORD", x + 70, y + 120);
+        ctx.fillText("CERTIFICATE OF RECORD", x+70, y+120);
 
         ctx.fillStyle = "rgba(17,17,17,.70)";
         ctx.font = "800 24px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        ctx.fillText("노빠꾸 러닝 크루", x + 70, y + 160);
+        ctx.fillText("노빠꾸 러닝 크루", x+70, y+160);
 
         ctx.fillStyle = "#111";
         ctx.font = "900 56px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        ctx.fillText(ev.name || "무지 기록", x + 70, y + 230);
+        ctx.fillText(evName, x+70, y+230);
 
-        const meta = [ev.date, ev.location, ev.distance].filter(Boolean).join(" · ");
+        const meta = [evDate, evLoc, evDist].filter(Boolean).join(" · ");
         ctx.fillStyle = "rgba(17,17,17,.65)";
         ctx.font = "800 24px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        ctx.fillText(meta || "—", x + 70, y + 270);
+        ctx.fillText(meta || "—", x+70, y+270);
 
         ctx.strokeStyle = "rgba(0,0,0,.10)";
         ctx.lineWidth = 2;
         ctx.beginPath();
-        ctx.moveTo(x + 70, y + 310);
-        ctx.lineTo(x + w - 70, y + 310);
+        ctx.moveTo(x+70, y+310);
+        ctx.lineTo(x+w-70, y+310);
         ctx.stroke();
 
         ctx.textAlign = "center";
         ctx.fillStyle = "#111";
         ctx.font = "900 84px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        ctx.fillText(nick, x + w / 2, y + 430);
+        ctx.fillText(nick, x+w/2, y+430);
 
         ctx.font = "900 170px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        ctx.fillText(formatTime(tsec), x + w / 2, y + 610);
+        ctx.fillText(formatTime(tsec), x+w/2, y+610);
 
         if (bib) {
           ctx.fillStyle = "#ff6a00";
           ctx.font = "900 34px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-          ctx.fillText(`Bib No. ${bib}`, x + w / 2, y + 670);
+          ctx.fillText(`Bib No. ${bib}`, x+w/2, y+670);
         }
 
         ctx.textAlign = "center";
         ctx.fillStyle = "rgba(17,17,17,.78)";
         ctx.font = "900 24px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        ctx.fillText(`${ev.name || "완주"}를 축하드립니다.`, x + w / 2, y + h - 90);
+        ctx.fillText("완주를 축하드립니다.", x+w/2, y+h-90);
 
         ctx.save();
         ctx.globalAlpha = 0.95;
         ctx.fillStyle = "#ff6a00";
-        roundedRect(ctx, x, y + h - 18, w, 18, 10);
+        roundedRect(ctx, x, y+h-18, w, 18, 10);
         ctx.fill();
         ctx.restore();
-      }
 
-      async function generateCertificatePreview() {
-        setCertError("");
-        setDownloadEnabled(false);
-
-        const ev = getEventData();
-        if (!ev) return setCertError("대회 정보를 불러오지 못했어요.");
-
-        const nick = String(document.getElementById("cert-nick")?.value || "").trim();
-        const bib = String(document.getElementById("cert-bib")?.value || "").trim();
-        const note = String(document.getElementById("cert-note")?.value || "").trim();
-        const tsec = parseTimeToSeconds(document.getElementById("cert-time")?.value);
-
-        if (!nick) return setCertError("닉네임을 입력해 주세요.");
-        if (!tsec || tsec <= 0) return setCertError("기록 시간을 올바르게 입력해 주세요.");
-
-        const courseLabel = String(document.getElementById("cert-course")?.value || "").trim() || normalizeDistance(ev.distance) || "";
-
-        if (CERT_MODE === "photo") {
-          setCanvasSizeForMode("photo");
-          if (!PHOTO_IMAGE) return setCertError("사진 기록: 사진을 업로드해 주세요.");
-          await generatePhotoOverlay(ev, nick, bib, tsec, note, courseLabel);
-        } else {
-          await generateNormalCertificate(ev, nick, bib, tsec);
-        }
-
-        const fname = `noback_${(ev.name || "record").replace(/\s+/g, "_")}_${(nick || "runner").replace(/\s+/g, "_")}_${CERT_MODE}.png`;
+        const fname = `noback_${evName.replace(/\s+/g,"_")}_${nick.replace(/\s+/g,"_")}_normal.png`;
         setDownloadEnabled(true, fname);
-      }
-
-      // ---- mode helpers ----
-      function setCanvasSizeForMode(mode) {
-        const c = document.getElementById("cert-canvas");
-        if (!c) return;
-        if (mode === "photo") {
-          c.width = 1080;
-          c.height = 1080;
-        } else {
-          c.width = 1200;
-          c.height = 1600;
-        }
-      }
-
-      // ---- shoes ----
-      function initShoes() {
-        loadShoes();
-      }
-
-      async function loadShoes() {
-        const err = document.getElementById("shoes-error");
-        const dailyEl = document.getElementById("shoes-daily");
-        const trainEl = document.getElementById("shoes-training");
-        const raceEl = document.getElementById("shoes-race");
-        if (!dailyEl || !trainEl || !raceEl) return;
-
-        const res = await safeFetchJson("data/shoes.json");
-        if (!res.ok || !res.data) {
-          err.textContent = `러닝화 정보를 불러오지 못했어요. ${res.ok ? "" : res.reason}`;
-          err.style.display = "";
-          return;
-        }
-        err.style.display = "none";
-
-        const daily = Array.isArray(res.data.daily) ? res.data.daily : [];
-        const training = Array.isArray(res.data.training) ? res.data.training : [];
-        const race = Array.isArray(res.data.race) ? res.data.race : [];
-
-        document.getElementById("badge-daily").textContent = `${daily.length}개`;
-        document.getElementById("badge-training").textContent = `${training.length}개`;
-        document.getElementById("badge-race").textContent = `${race.length}개`;
-
-        function render(list, root) {
-          root.innerHTML = "";
-          if (!list.length) {
-            const div = document.createElement("div");
-            div.className = "empty";
-            div.innerHTML = "<b>비어있어요</b><div style='margin-top:8px;'>data/shoes.json에 추가해 주세요.</div>";
-            root.appendChild(div);
-            return;
-          }
-          list.forEach((s) => {
-            const card = document.createElement("div");
-            card.className = "shoe";
-            const title = document.createElement("strong");
-            title.textContent = `${s.brand || ""} ${s.model || ""}`.trim();
-            const sub = document.createElement("span");
-            sub.textContent = `${s.tag ? `[${s.tag}] ` : ""}${s.note || ""}`.trim();
-            card.append(title, sub);
-            root.appendChild(card);
-          });
-        }
-
-        render(daily, dailyEl);
-        render(training, trainEl);
-        render(race, raceEl);
       }
     </script>
   </body>
