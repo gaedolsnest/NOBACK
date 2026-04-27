@@ -6,20 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>노빠꾸 러닝 크루🏃</title>
 
-    <link rel="icon" type="image/x-icon" href="./favicon.ico?v=7010" />
-    <link rel="shortcut icon" href="./favicon.ico?v=7010" />
+    <link rel="icon" type="image/x-icon" href="./favicon.ico?v=7030" />
+    <link rel="shortcut icon" href="./favicon.ico?v=7030" />
 
     <style>
       :root {
         --accent: #ff6a00;
         --page: #ffffff;
-
         --glass: rgba(0, 0, 0, 0.56);
         --glass2: rgba(0, 0, 0, 0.42);
         --border: rgba(255, 255, 255, 0.14);
         --text: rgba(255, 255, 255, 0.94);
         --muted: rgba(255, 255, 255, 0.72);
-
         --shadow: 0 18px 48px rgba(0, 0, 0, 0.18);
         --radius: 18px;
       }
@@ -40,7 +38,7 @@
         content: "";
         position: fixed;
         inset: 0;
-        background-image: url("./bg.jpg?v=7010");
+        background-image: url("./bg.jpg?v=7030");
         background-repeat: repeat;
         background-size: 260px auto;
         background-position: 0 0;
@@ -111,7 +109,6 @@
         background: rgba(255, 255, 255, 0.04);
         white-space: nowrap;
       }
-
       .builtby b { color: rgba(255, 255, 255, 0.84); font-weight: 700; }
 
       .linkbtn {
@@ -266,7 +263,14 @@
       button.ghost { border: 1px solid rgba(255, 255, 255, 0.18); background: rgba(255, 255, 255, 0.06); }
 
       .error { margin-top: 10px; color: #ffd0c2; font-size: 13px; }
-      .result { margin-top: 14px; border-top: 1px dashed rgba(255, 255, 255, 0.18); padding-top: 14px; display: grid; gap: 12px; }
+
+      .result {
+        margin-top: 14px;
+        border-top: 1px dashed rgba(255, 255, 255, 0.18);
+        padding-top: 14px;
+        display: grid;
+        gap: 12px;
+      }
 
       table {
         width: 100%;
@@ -351,6 +355,7 @@
         <a class="tab" data-tab="regular" href="#/regular">정기런</a>
       </nav>
 
+      <!-- HOME -->
       <section id="view-home" class="view">
         <div class="grid">
           <a class="card" href="#/interval">
@@ -361,7 +366,7 @@
 
           <a class="card" href="#/certificate">
             <h2>기록증</h2>
-            <p>사진은 선택 배경 · 기록 우선</p>
+            <p>사진은 크게 · 기록 우선</p>
             <span class="cta">열기 →</span>
           </a>
 
@@ -373,12 +378,9 @@
         </div>
       </section>
 
+      <!-- INTERVAL -->
       <section id="view-interval" class="view">
-        <div class="topbar">
-          <a class="back" href="#/">← 홈</a>
-          <div class="pill">인터벌</div>
-        </div>
-
+        <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">인터벌</div></div>
         <div class="card">
           <h2>인터벌 계산기</h2>
           <p class="muted">워크/휴식 페이스 + 400/200 등 → 표</p>
@@ -417,11 +419,7 @@
             </div>
 
             <table>
-              <thead>
-                <tr>
-                  <th>구간</th><th>거리</th><th>시간</th><th>페이스 기준</th>
-                </tr>
-              </thead>
+              <thead><tr><th>구간</th><th>거리</th><th>시간</th><th>페이스 기준</th></tr></thead>
               <tbody id="int-table"></tbody>
             </table>
 
@@ -430,21 +428,19 @@
         </div>
       </section>
 
+      <!-- CERTIFICATE -->
       <section id="view-certificate" class="view">
-        <div class="topbar">
-          <a class="back" href="#/">← 홈</a>
-          <div class="pill">기록증</div>
-        </div>
+        <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">기록증</div></div>
 
         <div class="card">
           <h2>기록증 출력</h2>
-          <p class="muted">사진은 선택 배경 · 시간 가독성 최우선</p>
+          <p class="muted">사진은 크게(기록 영역까지 올라와도 OK) · 텍스트는 항상 우선</p>
 
           <form id="cert-form" style="margin-top:12px;">
             <div class="field"><label for="cert-name">대회명</label><input id="cert-name" placeholder="예: 더레이스 서울" /></div>
             <div class="field"><label for="cert-date">날짜</label><input id="cert-date" placeholder="예: 2026-04-05" /></div>
             <div class="field"><label for="cert-location">장소</label><input id="cert-location" placeholder="예: 서울" /></div>
-            <div class="field"><label for="cert-distance">거리</label><input id="cert-distance" placeholder="예: 21K / 10K" /></div>
+            <div class="field"><label for="cert-distance">거리</label><input id="cert-distance" placeholder="예: 10K / 21K / 42K" /></div>
             <div class="field"><label for="cert-bib">Bib (선택)</label><input id="cert-bib" inputmode="numeric" placeholder="예: 40222" /></div>
             <div class="field"><label for="cert-nick">닉네임</label><input id="cert-nick" placeholder="예: 나올" /></div>
             <div class="field"><label for="cert-time">기록</label><input id="cert-time" placeholder="예: 1:03:58 또는 54:00" /></div>
@@ -470,11 +466,9 @@
         </div>
       </section>
 
+      <!-- REGULAR -->
       <section id="view-regular" class="view">
-        <div class="topbar">
-          <a class="back" href="#/">← 홈</a>
-          <div class="pill">정기런</div>
-        </div>
+        <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">정기런</div></div>
 
         <div class="card">
           <h2>정기런</h2>
@@ -516,6 +510,8 @@
       document.addEventListener("DOMContentLoaded", () => boot());
 
       function boot() {
+        if (!location.hash) location.replace("#/");
+
         initRouter();
         initStaff();
         initInterval();
@@ -528,6 +524,16 @@
       function route() {
         const raw = (location.hash || "#/").toLowerCase();
         const normalized = raw.startsWith("#/") ? raw : raw.startsWith("#") ? "#/" + raw.slice(1) : "#/";
+
+        const known =
+          normalized === "#/" ||
+          normalized.startsWith("#/home") ||
+          normalized.startsWith("#/interval") ||
+          normalized.startsWith("#/certificate") ||
+          normalized.startsWith("#/regular");
+
+        if (!known) { location.replace("#/"); return; }
+
         const view =
           normalized.startsWith("#/interval") ? "interval" :
           normalized.startsWith("#/certificate") ? "certificate" :
@@ -598,14 +604,13 @@
         return arr.slice().map(x => String(x).trim()).filter(Boolean).sort((a, b) => b.localeCompare(a, "ko"));
       }
 
-      // ✅ 운영진 "원래대로": 칩 렌더 + 가나다 내림차순
       function initStaff() {
         const ops = ["나올", "밍경", "김땅콩", "슈퍼짹", "뽀용"];
         const sorted = sortKoreanDesc(ops);
         const container = document.getElementById("ops-chips");
         if (!container) return;
         container.innerHTML = "";
-        sorted.forEach((name) => {
+        sorted.forEach(name => {
           const chip = document.createElement("span");
           chip.className = "chip";
           chip.textContent = name;
@@ -689,7 +694,7 @@
         });
       }
 
-      // ===== 기록증: 시간 우선(외곽선/그림자 강도 업) + 사진은 선택 배경 =====
+      // ===== CERTIFICATE =====
       function roundedRect(ctx, x, y, w, h, r) {
         const rr = Math.min(r, w / 2, h / 2);
         ctx.beginPath();
@@ -745,7 +750,6 @@
         }
       }
 
-      // contain = 최대한 다 보이게
       function drawContainImage(ctx, img, x, y, w, h) {
         const ir = img.width / img.height;
         const br = w / h;
@@ -833,7 +837,7 @@
         ctx.fillStyle = "#ffffff";
         ctx.fillRect(0, 0, W, H);
 
-        const bg = await loadOptionalImage("./bg.jpg?v=7010");
+        const bg = await loadOptionalImage("./bg.jpg?v=7030");
         if (bg) {
           ctx.save();
           ctx.globalAlpha = 0.08;
@@ -843,7 +847,7 @@
           ctx.restore();
         }
 
-        const logo = await loadOptionalImage("./logo.png?v=7010");
+        const logo = await loadOptionalImage("./logo.png?v=7030");
         const photo = await loadOptionalFileImage(photoInput);
 
         const pad = 70;
@@ -867,40 +871,50 @@
         roundedRect(ctx, cardX, cardY, cardW, 18, 10);
         ctx.fill();
 
-        // optional photo behind record
-        const recordBgX = cardX + 70;
-        const recordBgY = cardY + 330;
-        const recordBgW = cardW - 140;
-        const recordBgH = 430;
-
+        // ===== BIG PHOTO AREA: mid -> bottom (can go behind record area) =====
+        // Start under header line, so photo is actually big and visible.
+        // Text will stay readable by gradient brightening near top.
         if (photo) {
+          const px = cardX + 44;
+          const py = cardY + 300;                  // ⬅️ 사진이 여기서 시작 (기록 뒤까지 올라옴)
+          const pw = cardW - 88;
+          const ph = cardY + cardH - 44 - py;      // bottom padding
+
           ctx.save();
-          roundedRect(ctx, recordBgX, recordBgY, recordBgW, recordBgH, 24);
+          roundedRect(ctx, px, py, pw, ph, 26);
           ctx.clip();
 
+          // base
           ctx.fillStyle = "rgba(0,0,0,0.03)";
-          ctx.fillRect(recordBgX, recordBgY, recordBgW, recordBgH);
+          ctx.fillRect(px, py, pw, ph);
 
-          drawContainImage(ctx, photo, recordBgX, recordBgY, recordBgW, recordBgH);
+          // image (contain)
+          drawContainImage(ctx, photo, px, py, pw, ph);
 
-          // ✅ 사진은 더 쨍하게(덮개 최소) BUT 시간 우선이라 대비 보정만 살짝
-          ctx.fillStyle = "rgba(255,255,255,0.18)";
-          ctx.fillRect(recordBgX, recordBgY, recordBgW, recordBgH);
+          // very light overall tone control (doesn't kill photo)
+          ctx.fillStyle = "rgba(255,255,255,0.10)";
+          ctx.fillRect(px, py, pw, ph);
 
-          // ✅ 시간 가독성 최우선: 비네팅(가운데 밝고 가장자리 어둡게)
-          const g = ctx.createRadialGradient(
-            recordBgX + recordBgW * 0.50, recordBgY + recordBgH * 0.45, 120,
-            recordBgX + recordBgW * 0.50, recordBgY + recordBgH * 0.50, recordBgW
-          );
+          // strong top gradient ONLY near record text zone to protect readability
+          // (top = brighter, goes transparent)
+          const protectTop = ctx.createLinearGradient(0, py, 0, py + 520);
+          protectTop.addColorStop(0.00, "rgba(255,255,255,0.72)");
+          protectTop.addColorStop(0.35, "rgba(255,255,255,0.38)");
+          protectTop.addColorStop(1.00, "rgba(255,255,255,0.00)");
+          ctx.fillStyle = protectTop;
+          ctx.fillRect(px, py, pw, 560);
+
+          // subtle vignette to keep edges calm
+          const g = ctx.createRadialGradient(px + pw * 0.5, py + ph * 0.55, 180, px + pw * 0.5, py + ph * 0.55, pw);
           g.addColorStop(0, "rgba(0,0,0,0.00)");
-          g.addColorStop(1, "rgba(0,0,0,0.22)");
+          g.addColorStop(1, "rgba(0,0,0,0.16)");
           ctx.fillStyle = g;
-          ctx.fillRect(recordBgX, recordBgY, recordBgW, recordBgH);
+          ctx.fillRect(px, py, pw, ph);
 
           ctx.restore();
         }
 
-        // header text
+        // header
         ctx.fillStyle = "#111111";
         ctx.textAlign = "left";
         ctx.textBaseline = "alphabetic";
@@ -915,7 +929,7 @@
         ctx.font = "900 52px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
         ctx.fillText(evName, cardX + 70, cardY + 225);
 
-        const metaText = [evDate, evLocation, evDistance].filter(Boolean).join(" · ");
+        const metaText = [evDate, evLocation].filter(Boolean).join(" · ");
         ctx.fillStyle = "rgba(17,17,17,.62)";
         ctx.font = "800 24px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
         ctx.fillText(metaText || "—", cardX + 70, cardY + 265);
@@ -927,7 +941,7 @@
         ctx.lineTo(cardX + cardW - 70, cardY + 305);
         ctx.stroke();
 
-        // nickname
+        // nick (high contrast)
         ctx.textAlign = "center";
         ctx.font = "900 80px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
         ctx.fillStyle = "#ffffff";
@@ -937,47 +951,56 @@
         outlineText(ctx, nick, cardX + cardW / 2, cardY + 415, 10, "rgba(0,0,0,0.92)");
         ctx.shadowColor = "transparent";
 
-        // ✅ TIME: 오렌지 + 외곽선/그림자 강도 MAX
+        // time (strong)
         const timeText = formatTime(timeSec);
         ctx.textAlign = "center";
         ctx.font = "900 172px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-
-        // 강한 쉐도우(아래) + 강한 스트로크(검정) + 오렌지 채움
         ctx.shadowColor = "rgba(0,0,0,0.78)";
         ctx.shadowBlur = 26;
         ctx.shadowOffsetY = 4;
-
         ctx.fillStyle = "#ff6a00";
         outlineText(ctx, timeText, cardX + cardW / 2, cardY + 600, 18, "rgba(0,0,0,0.96)");
 
-        // 하이라이트 한 겹(화이트 아주 얇게)로 더 또렷하게
         ctx.shadowColor = "transparent";
         ctx.fillStyle = "rgba(255,255,255,0.70)";
-        ctx.font = "900 172px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
         outlineText(ctx, timeText, cardX + cardW / 2, cardY + 600, 4, "rgba(0,0,0,0.00)");
 
+        // distance between time and bib
+        if (evDistance) {
+          ctx.textAlign = "center";
+          ctx.font = "900 76px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+          ctx.fillStyle = "#ffffff";
+          ctx.shadowColor = "rgba(0,0,0,0.55)";
+          ctx.shadowBlur = 18;
+          ctx.shadowOffsetY = 2;
+          outlineText(ctx, evDistance, cardX + cardW / 2, cardY + 690, 10, "rgba(0,0,0,0.92)");
+          ctx.shadowColor = "transparent";
+        }
+
+        // bib (moved down)
         if (bib) {
           ctx.fillStyle = "#ff6a00";
           ctx.font = "900 34px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
           ctx.shadowColor = "rgba(0,0,0,0.45)";
           ctx.shadowBlur = 10;
           ctx.shadowOffsetY = 2;
-          outlineText(ctx, `Bib No. ${bib}`, cardX + cardW / 2, cardY + 670, 6, "rgba(0,0,0,0.80)");
+          outlineText(ctx, `Bib No. ${bib}`, cardX + cardW / 2, cardY + 740, 6, "rgba(0,0,0,0.80)");
           ctx.shadowColor = "transparent";
         }
 
-        // bottom: logo watermark (photo 없으면 크게)
-        const bottomX = cardX + 70;
-        const bottomY = cardY + 790;
-        const bottomW = cardW - 140;
-        const bottomH = 285;
-
+        // no-photo: big logo watermark (keep)
         if (!photo) {
+          const bottomX = cardX + 70;
+          const bottomY = cardY + 790;
+          const bottomW = cardW - 140;
+          const bottomH = 285;
+
           if (logo) {
             const maxW = Math.min(640, bottomW * 0.95);
             const logoH = (maxW * logo.height) / logo.width;
             const lx = bottomX + (bottomW - maxW) / 2;
             const ly = bottomY + (bottomH - logoH) / 2;
+
             ctx.save();
             ctx.globalAlpha = 0.28;
             ctx.drawImage(logo, lx, ly, maxW, logoH);
@@ -994,18 +1017,8 @@
             ctx.fillText("RUNNING CREW", bottomX + bottomW / 2, bottomY + bottomH / 2 + 56);
             ctx.restore();
           }
-        } else {
-          if (logo) {
-            const maxW = 190;
-            const logoH = (maxW * logo.height) / logo.width;
-            const lx = bottomX + bottomW - maxW;
-            const ly = bottomY + bottomH - logoH;
-            ctx.save();
-            ctx.globalAlpha = 0.22;
-            ctx.drawImage(logo, lx, ly, maxW, logoH);
-            ctx.restore();
-          }
         }
+        // ✅ photo 있을 때: 우하단 로고 등 추가 요소 없음(요청 반영)
 
         // footer
         ctx.textAlign = "center";
