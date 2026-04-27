@@ -6,25 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>노빠꾸 러닝 크루🏃</title>
 
-    <link rel="icon" type="image/x-icon" href="./favicon.ico?v=6002" />
-    <link rel="shortcut icon" href="./favicon.ico?v=6002" />
+    <link rel="icon" type="image/x-icon" href="./favicon.ico?v=7002" />
+    <link rel="shortcut icon" href="./favicon.ico?v=7002" />
 
     <style>
       :root {
         --accent: #ff6a00;
         --page: #ffffff;
-
         --glass: rgba(0, 0, 0, 0.56);
         --glass2: rgba(0, 0, 0, 0.42);
         --border: rgba(255, 255, 255, 0.14);
         --text: rgba(255, 255, 255, 0.94);
         --muted: rgba(255, 255, 255, 0.72);
-
         --shadow: 0 18px 48px rgba(0, 0, 0, 0.18);
         --radius: 18px;
       }
+
       * { box-sizing: border-box; }
       html, body { height: 100%; }
+
       body {
         margin: 0;
         font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
@@ -33,11 +33,12 @@
         position: relative;
         color: #111;
       }
+
       body::before {
         content: "";
         position: fixed;
         inset: 0;
-        background-image: url("./bg.jpg?v=6002");
+        background-image: url("./bg.jpg?v=7002");
         background-repeat: repeat;
         background-size: 260px auto;
         background-position: 0 0;
@@ -47,6 +48,7 @@
       }
 
       a { color: inherit; text-decoration: none; }
+
       .container {
         position: relative;
         z-index: 1;
@@ -69,6 +71,7 @@
         backdrop-filter: blur(14px);
         -webkit-backdrop-filter: blur(14px);
       }
+
       header h1 {
         font-size: 18px;
         margin: 0;
@@ -78,6 +81,7 @@
         align-items: center;
         gap: 10px;
       }
+
       header h1::before {
         content: "";
         width: 10px;
@@ -87,6 +91,7 @@
         box-shadow: 0 0 0 4px rgba(255, 106, 0, 0.18);
         flex: 0 0 auto;
       }
+
       .header-right {
         display: flex;
         gap: 10px;
@@ -94,6 +99,7 @@
         justify-content: flex-end;
         align-items: center;
       }
+
       .builtby {
         font-size: 11px;
         color: rgba(255, 255, 255, 0.62);
@@ -103,7 +109,12 @@
         background: rgba(255, 255, 255, 0.04);
         white-space: nowrap;
       }
-      .builtby b { color: rgba(255, 255, 255, 0.84); font-weight: 700; }
+
+      .builtby b {
+        color: rgba(255, 255, 255, 0.84);
+        font-weight: 700;
+      }
+
       .linkbtn {
         font-size: 12px;
         color: var(--text);
@@ -115,9 +126,19 @@
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
       }
-      .linkbtn:hover { background: rgba(255, 106, 0, 0.2); border-color: rgba(255, 106, 0, 0.58); }
 
-      .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0 14px; }
+      .linkbtn:hover {
+        background: rgba(255, 106, 0, 0.2);
+        border-color: rgba(255, 106, 0, 0.58);
+      }
+
+      .tabs {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin: 12px 0 14px;
+      }
+
       .tab {
         font-size: 13px;
         color: rgba(0, 0, 0, 0.62);
@@ -126,13 +147,25 @@
         border-radius: 999px;
         background: rgba(0, 0, 0, 0.04);
       }
-      .tab.active { color: #111; border-color: rgba(255, 106, 0, 0.6); background: rgba(255, 106, 0, 0.18); }
+
+      .tab.active {
+        color: #111;
+        border-color: rgba(255, 106, 0, 0.6);
+        background: rgba(255, 106, 0, 0.18);
+      }
 
       .view { display: none; }
       .view.active { display: block; }
 
-      .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
-      @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      @media (max-width: 720px) {
+        .grid { grid-template-columns: 1fr; }
+      }
 
       .card {
         border-radius: var(--radius);
@@ -144,8 +177,24 @@
         -webkit-backdrop-filter: blur(14px);
         color: var(--text);
       }
-      .card h2 { margin: 0 0 6px; font-size: 16px; color: var(--text); }
-      .card p { margin: 0; color: var(--muted); font-size: 13px; }
+
+      .card h2 {
+        margin: 0 0 6px;
+        font-size: 16px;
+        color: var(--text);
+      }
+
+      .card h3 {
+        margin: 14px 0 8px;
+        font-size: 14px;
+        color: var(--text);
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
 
       .cta {
         margin-top: 12px;
@@ -160,7 +209,14 @@
         background: rgba(255, 106, 0, 0.12);
       }
 
-      .topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+
       .back {
         display: inline-flex;
         align-items: center;
@@ -182,11 +238,32 @@
         background: rgba(255, 255, 255, 0.06);
       }
 
-      form { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 12px; }
-      .field { grid-column: span 6; display: flex; flex-direction: column; gap: 6px; }
-      @media (max-width: 720px) { .field { grid-column: span 12; } }
-      label { font-size: 12px; color: var(--muted); }
-      input, button { font: inherit; }
+      form {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .field {
+        grid-column: span 6;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      @media (max-width: 720px) {
+        .field { grid-column: span 12; }
+      }
+
+      label {
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      input, button {
+        font: inherit;
+      }
+
       input {
         width: 100%;
         padding: 10px 12px;
@@ -196,12 +273,24 @@
         color: var(--text);
         outline: none;
       }
+
+      input[type="file"] {
+        padding: 8px 10px;
+      }
+
       input:focus {
         border-color: rgba(255, 106, 0, 0.6);
         box-shadow: 0 0 0 3px rgba(255, 106, 0, 0.16);
       }
 
-      .actions { grid-column: span 12; display: flex; gap: 10px; flex-wrap: wrap; margin-top: 2px; }
+      .actions {
+        grid-column: span 12;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 2px;
+      }
+
       button {
         border: 1px solid rgba(255, 106, 0, 0.38);
         background: rgba(255, 106, 0, 0.12);
@@ -210,10 +299,25 @@
         cursor: pointer;
         color: var(--text);
       }
-      button.ghost { border: 1px solid rgba(255, 255, 255, 0.18); background: rgba(255, 255, 255, 0.06); }
 
-      .error { margin-top: 10px; color: #ffd0c2; font-size: 13px; }
-      .result { margin-top: 14px; border-top: 1px dashed rgba(255, 255, 255, 0.18); padding-top: 14px; display: grid; gap: 12px; }
+      button.ghost {
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .error {
+        margin-top: 10px;
+        color: #ffd0c2;
+        font-size: 13px;
+      }
+
+      .result {
+        margin-top: 14px;
+        border-top: 1px dashed rgba(255, 255, 255, 0.18);
+        padding-top: 14px;
+        display: grid;
+        gap: 12px;
+      }
 
       table {
         width: 100%;
@@ -224,21 +328,56 @@
         border: 1px solid rgba(255, 255, 255, 0.14);
         background: rgba(0, 0, 0, 0.18);
       }
+
       th, td {
         padding: 10px 10px;
         font-size: 13px;
         color: var(--text);
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       }
-      th { color: var(--muted); text-align: left; background: rgba(255, 255, 255, 0.04); }
-      tr:last-child td { border-bottom: 0; }
 
-      .list { display: grid; gap: 12px; margin-top: 12px; }
-      .item { border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 14px; background: rgba(255, 255, 255, 0.05); padding: 14px; }
-      .item-title strong { font-size: 14px; color: var(--text); }
-      .meta { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
-      .p-list { margin: 10px 0 0; padding-left: 18px; color: var(--muted); }
-      .p-list li { margin: 6px 0; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+      th {
+        color: var(--muted);
+        text-align: left;
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      tr:last-child td {
+        border-bottom: 0;
+      }
+
+      .canvas-wrap {
+        margin-top: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 14px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      canvas {
+        display: block;
+        width: 100%;
+        height: auto;
+        background: #fff;
+        border-radius: 14px;
+      }
+
+      .staff {
+        display: grid;
+        gap: 10px;
+        margin-top: 14px;
+        border-top: 1px dashed rgba(255, 255, 255, 0.18);
+        padding-top: 14px;
+      }
+
+      .line {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        align-items: center;
+        color: var(--muted);
+        font-size: 13px;
+      }
 
       .chip {
         border: 1px solid rgba(255, 106, 0, 0.4);
@@ -249,16 +388,28 @@
         font-size: 12px;
         white-space: nowrap;
       }
-      .chip.orange { background: rgba(255, 106, 0, 0.22); border-color: rgba(255, 106, 0, 0.65); }
 
-      .empty { border: 1px dashed rgba(255, 255, 255, 0.22); border-radius: 14px; padding: 14px; color: var(--muted); background: rgba(255, 255, 255, 0.03); }
+      .staff .chip {
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(255, 255, 255, 0.16);
+      }
 
-      .canvas-wrap { margin-top: 12px; border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 14px; overflow: hidden; background: rgba(255, 255, 255, 0.05); }
-      canvas { display: block; width: 100%; height: auto; background: #fff; border-radius: 14px; }
+      ul {
+        margin: 8px 0 0;
+        padding-left: 18px;
+        color: var(--muted);
+      }
 
-      .staff { display: grid; gap: 10px; margin-top: 14px; border-top: 1px dashed rgba(255, 255, 255, 0.18); padding-top: 14px; }
-      .line { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; color: var(--muted); font-size: 13px; }
-      .staff .chip { color: var(--text); background: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.16); }
+      li {
+        margin: 6px 0;
+      }
+
+      .help {
+        font-size: 12px;
+        color: var(--muted);
+        margin-top: 2px;
+      }
     </style>
   </head>
 
@@ -268,7 +419,12 @@
         <h1>노빠꾸 러닝 크루🏃</h1>
         <div class="header-right">
           <span class="builtby">built by <b>나올</b></span>
-          <a class="linkbtn" href="https://www.daangn.com/kr/group/%EB%85%B8%EB%B9%A0%EA%BE%B8-%EB%9F%AC%EB%8B%9D%ED%81%AC%EB%A3%A8-no-back-rc-1yeomgcwmnyx/" target="_blank" rel="noopener noreferrer">
+          <a
+            class="linkbtn"
+            href="https://www.daangn.com/kr/group/%EB%85%B8%EB%B9%A0%EA%BE%B8-%EB%9F%AC%EB%8B%9D%ED%81%AC%EB%A3%A8-no-back-rc-1yeomgcwmnyx/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             당근 모임 바로가기 →
           </a>
         </div>
@@ -277,24 +433,38 @@
       <nav class="tabs" aria-label="탭">
         <a class="tab" data-tab="home" href="#/">홈</a>
         <a class="tab" data-tab="interval" href="#/interval">인터벌</a>
-        <a class="tab" data-tab="events" href="#/events">대회</a>
         <a class="tab" data-tab="certificate" href="#/certificate">기록증</a>
         <a class="tab" data-tab="regular" href="#/regular">정기런</a>
       </nav>
 
-      <!-- HOME -->
       <section id="view-home" class="view">
         <div class="grid">
-          <a class="card" href="#/interval"><h2>인터벌</h2><p>400/200 등 시간 계산</p><span class="cta">열기 →</span></a>
-          <a class="card" href="#/events"><h2>대회</h2><p>크루 대회 일정/참가자</p><span class="cta">열기 →</span></a>
-          <a class="card" href="#/certificate"><h2>기록증</h2><p>매뉴얼 입력으로 출력</p><span class="cta">열기 →</span></a>
-          <a class="card" href="#/regular"><h2>정기런</h2><p>매주 수요일 20:00</p><span class="cta">열기 →</span></a>
+          <a class="card" href="#/interval">
+            <h2>인터벌</h2>
+            <p>400/200 등 구간 시간 계산</p>
+            <span class="cta">열기 →</span>
+          </a>
+
+          <a class="card" href="#/certificate">
+            <h2>기록증</h2>
+            <p>기록 입력 + 로고 + 하단 사진 영역</p>
+            <span class="cta">열기 →</span>
+          </a>
+
+          <a class="card" href="#/regular">
+            <h2>정기런</h2>
+            <p>매주 수요일 20:00 안내</p>
+            <span class="cta">열기 →</span>
+          </a>
         </div>
       </section>
 
-      <!-- INTERVAL -->
       <section id="view-interval" class="view">
-        <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">인터벌</div></div>
+        <div class="topbar">
+          <a class="back" href="#/">← 홈</a>
+          <div class="pill">인터벌</div>
+        </div>
+
         <div class="card">
           <h2>인터벌 계산기</h2>
           <p class="muted">워크/휴식 페이스 + 400/200 등 → 표</p>
@@ -318,9 +488,7 @@
             </div>
 
             <div class="actions">
-              <!-- ✅ 재생은 submit -->
-              <button type="submit" id="int-play">재생</button>
-              <!-- ✅ 나머지는 무조건 button -->
+              <button type="submit">재생</button>
               <button type="button" class="ghost" id="int-reset">초기화</button>
             </div>
           </form>
@@ -337,7 +505,10 @@
             <table>
               <thead>
                 <tr>
-                  <th>구간</th><th>거리</th><th>시간</th><th>페이스 기준</th>
+                  <th>구간</th>
+                  <th>거리</th>
+                  <th>시간</th>
+                  <th>페이스 기준</th>
                 </tr>
               </thead>
               <tbody id="int-table"></tbody>
@@ -348,33 +519,60 @@
         </div>
       </section>
 
-      <!-- EVENTS -->
-      <section id="view-events" class="view">
-        <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">대회</div></div>
-        <div class="card">
-          <h2 style="margin:0;">크루 대회 일정</h2>
-          <div id="events-list" class="list"></div>
-        </div>
-      </section>
-
-      <!-- CERTIFICATE (MANUAL ONLY) -->
       <section id="view-certificate" class="view">
-        <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">기록증</div></div>
+        <div class="topbar">
+          <a class="back" href="#/">← 홈</a>
+          <div class="pill">기록증</div>
+        </div>
+
         <div class="card">
           <h2>기록증 출력</h2>
-          <p class="muted">대회명/날짜/장소/거리/닉네임/기록 입력</p>
+          <p class="muted">대회명/날짜/장소/거리/닉네임/기록 입력 + 사진(선택)</p>
 
           <form id="cert-form" style="margin-top:12px;">
-            <div class="field"><label for="cert-name">대회명</label><input id="cert-name" placeholder="예: 더레이스 서울" /></div>
-            <div class="field"><label for="cert-date">날짜</label><input id="cert-date" placeholder="예: 2026-04-05" /></div>
-            <div class="field"><label for="cert-location">장소</label><input id="cert-location" placeholder="예: 서울" /></div>
-            <div class="field"><label for="cert-distance">거리</label><input id="cert-distance" placeholder="예: 21K / 10K" /></div>
-            <div class="field"><label for="cert-bib">Bib (선택)</label><input id="cert-bib" inputmode="numeric" placeholder="예: 40222" /></div>
-            <div class="field"><label for="cert-nick">닉네임</label><input id="cert-nick" placeholder="예: 나올" /></div>
-            <div class="field"><label for="cert-time">기록</label><input id="cert-time" placeholder="예: 1:03:58 또는 54:00" /></div>
+            <div class="field">
+              <label for="cert-name">대회명</label>
+              <input id="cert-name" placeholder="예: 더레이스 서울" />
+            </div>
+
+            <div class="field">
+              <label for="cert-date">날짜</label>
+              <input id="cert-date" placeholder="예: 2026-04-05" />
+            </div>
+
+            <div class="field">
+              <label for="cert-location">장소</label>
+              <input id="cert-location" placeholder="예: 서울" />
+            </div>
+
+            <div class="field">
+              <label for="cert-distance">거리</label>
+              <input id="cert-distance" placeholder="예: 21K / 10K" />
+            </div>
+
+            <div class="field">
+              <label for="cert-bib">Bib (선택)</label>
+              <input id="cert-bib" inputmode="numeric" placeholder="예: 40222" />
+            </div>
+
+            <div class="field">
+              <label for="cert-nick">닉네임</label>
+              <input id="cert-nick" placeholder="예: 나올" />
+            </div>
+
+            <div class="field">
+              <label for="cert-time">기록</label>
+              <input id="cert-time" placeholder="예: 1:03:58 또는 54:00" />
+            </div>
+
+            <div class="field">
+              <label for="cert-photo">사진 (선택)</label>
+              <input id="cert-photo" type="file" accept="image/*" />
+              <div class="help">없으면 하단에 로고 워터마크만 표시</div>
+            </div>
 
             <div class="actions">
-              <button type="submit" id="cert-play">재생</button>
+              <button type="submit">재생</button>
               <button type="button" id="cert-download" disabled>PNG 다운로드</button>
               <button type="button" class="ghost" id="cert-reset">초기화</button>
             </div>
@@ -388,12 +586,38 @@
         </div>
       </section>
 
-      <!-- REGULAR -->
       <section id="view-regular" class="view">
-        <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">정기런</div></div>
+        <div class="topbar">
+          <a class="back" href="#/">← 홈</a>
+          <div class="pill">정기런</div>
+        </div>
+
         <div class="card">
           <h2>정기런</h2>
-          <p class="muted">매주 <b>수요일 오후 8시</b>, 노빠꾸 정기런 🏃‍♂️🏃‍♀️</p>
+          <p class="muted">매주 <b>수요일 오후 8시</b>, 노빠꾸 정기런 진행합니다 🏃‍♂️🏃‍♀️</p>
+
+          <h3>진행은 아래와 같습니다.</h3>
+          <ul>
+            <li>집합 및 가벼운 스트레칭 약 10분 (시작 전 닉네임으로 간단한 출석 체크 진행)</li>
+            <li>러닝 약 50분</li>
+            <li>마무리 스트레칭 후 해산</li>
+          </ul>
+
+          <p class="muted" style="margin-top:12px;">
+            기록보다는 호흡을 맞추고, 대화 가능한 페이스로 함께 달리는 정기 모임입니다 :)<br />
+            처음 오시는 분들도 부담 없이 참여하시면 됩니다!
+          </p>
+
+          <h3>운영 방식</h3>
+          <ul>
+            <li>원활한 진행을 위해 정기런은 페이스 구간 사전취합 방식으로 운영합니다.</li>
+            <li>참석 예정이신 분들은 모임 채팅방에 안내된 희망 페이스 구간에 맞춰 닉네임을 남겨주시면 됩니다.</li>
+            <li>사전취합된 인원을 기준으로 비슷한 페이스끼리 그룹을 나누어 출발하며, 인원이 많을 경우에는 4명 내외로 운영할 예정입니다.</li>
+            <li>현장 혼선을 줄이고 체조 후 바로 출발하기 위한 방식이며, 그날 컨디션에 맞춰 편하게 선택해주시면 됩니다 🙌</li>
+          </ul>
+
+          <p class="muted" style="margin-top:12px;">기타 인터벌 등 별도 훈련은 자유롭게 진행하시면 됩니다.</p>
+          <p class="muted">늦지 않게 와서 몸 먼저 풀고 바로 출발할 수 있게 준비 부탁드립니다 😊</p>
 
           <div class="staff">
             <h2 style="margin:0;">운영진 정보</h2>
@@ -411,40 +635,43 @@
         initRouter();
         initStaff();
         initInterval();
-        initEvents();
         initCertificate();
         route();
       }
 
-      function initRouter() { window.addEventListener("hashchange", route); }
+      function initRouter() {
+        window.addEventListener("hashchange", route);
+      }
 
       function route() {
         const raw = (location.hash || "#/").toLowerCase();
         const normalized = raw.startsWith("#/") ? raw : raw.startsWith("#") ? "#/" + raw.slice(1) : "#/";
         const view =
           normalized.startsWith("#/interval") ? "interval" :
-          normalized.startsWith("#/events") ? "events" :
           normalized.startsWith("#/certificate") ? "certificate" :
           normalized.startsWith("#/regular") ? "regular" :
           "home";
 
-        document.querySelectorAll(".view").forEach(v => v.classList.remove("active"));
+        document.querySelectorAll(".view").forEach((v) => v.classList.remove("active"));
         document.getElementById(`view-${view}`)?.classList.add("active");
 
-        document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+        document.querySelectorAll(".tab").forEach((t) => t.classList.remove("active"));
         document.querySelector(`.tab[data-tab="${view}"]`)?.classList.add("active");
 
         if (normalized !== raw) history.replaceState(null, "", normalized);
       }
 
-      function setVisible(el, visible) { if (el) el.style.display = visible ? "" : "none"; }
+      function setVisible(el, visible) {
+        if (el) el.style.display = visible ? "" : "none";
+      }
 
       function parsePaceToSeconds(raw) {
         const s = String(raw || "").trim();
-        const parts = s.split(":").map(p => p.trim());
+        const parts = s.split(":").map((p) => p.trim());
         if (parts.length !== 2) return null;
-        if (parts.some(p => p === "" || !/^\d+$/.test(p))) return null;
-        const mm = Number(parts[0]), ss = Number(parts[1]);
+        if (parts.some((p) => p === "" || !/^\d+$/.test(p))) return null;
+        const mm = Number(parts[0]);
+        const ss = Number(parts[1]);
         if (ss >= 60) return null;
         return mm * 60 + ss;
       }
@@ -452,18 +679,24 @@
       function parseTimeToSeconds(raw) {
         const s = String(raw || "").trim();
         if (!s) return null;
-        const parts = s.split(":").map(p => p.trim());
-        if (parts.some(p => p === "" || !/^\d+$/.test(p))) return null;
+        const parts = s.split(":").map((p) => p.trim());
+        if (parts.some((p) => p === "" || !/^\d+$/.test(p))) return null;
+
         if (parts.length === 2) {
-          const mm = Number(parts[0]), ss = Number(parts[1]);
+          const mm = Number(parts[0]);
+          const ss = Number(parts[1]);
           if (ss >= 60) return null;
           return mm * 60 + ss;
         }
+
         if (parts.length === 3) {
-          const hh = Number(parts[0]), mm = Number(parts[1]), ss = Number(parts[2]);
+          const hh = Number(parts[0]);
+          const mm = Number(parts[1]);
+          const ss = Number(parts[2]);
           if (mm >= 60 || ss >= 60) return null;
           return hh * 3600 + mm * 60 + ss;
         }
+
         return null;
       }
 
@@ -472,48 +705,39 @@
         const hh = Math.floor(s / 3600);
         const mm = Math.floor((s % 3600) / 60);
         const ss = s % 60;
-        if (hh > 0) return `${hh}:${String(mm).padStart(2,"0")}:${String(ss).padStart(2,"0")}`;
-        return `${mm}:${String(ss).padStart(2,"0")}`;
+        if (hh > 0) return `${hh}:${String(mm).padStart(2, "0")}:${String(ss).padStart(2, "0")}`;
+        return `${mm}:${String(ss).padStart(2, "0")}`;
       }
 
       function fmtPace(secPerKm) {
         const s = Math.round(secPerKm);
         const mm = Math.floor(s / 60);
         const ss = s % 60;
-        return `${mm}:${String(ss).padStart(2,"0")}`;
+        return `${mm}:${String(ss).padStart(2, "0")}`;
       }
 
       function sortKoreanDesc(arr) {
-        return arr.slice().map(x => String(x).trim()).filter(Boolean).sort((a,b)=>b.localeCompare(a,"ko"));
+        return arr
+          .slice()
+          .map((x) => String(x).trim())
+          .filter(Boolean)
+          .sort((a, b) => b.localeCompare(a, "ko"));
       }
 
-      async function safeFetchJson(path) {
-        try {
-          const res = await fetch(new URL(path, location.href).toString(), { cache: "no-store" });
-          if (!res.ok) return { ok:false, reason:`파일을 찾을 수 없음 (${res.status})`, data:null };
-          const data = await res.json();
-          return { ok:true, reason:"", data };
-        } catch {
-          return { ok:false, reason:"JSON 파싱 실패", data:null };
-        }
-      }
-
-      // ---- staff ----
       function initStaff() {
         const ops = ["달려", "룰루", "나올", "밍경", "김땅콩", "슈퍼짹", "뽀용", "망구"];
         const sorted = sortKoreanDesc(ops);
         const container = document.getElementById("ops-chips");
         if (!container) return;
         container.innerHTML = "";
-        sorted.forEach(name => {
-          const s = document.createElement("span");
-          s.className = "chip";
-          s.textContent = name;
-          container.appendChild(s);
+        sorted.forEach((name) => {
+          const chip = document.createElement("span");
+          chip.className = "chip";
+          chip.textContent = name;
+          container.appendChild(chip);
         });
       }
 
-      // ---- interval ----
       function initInterval() {
         const form = document.getElementById("interval-form");
         if (!form) return;
@@ -522,7 +746,6 @@
         const restPace = document.getElementById("int-rest-pace");
         const pattern = document.getElementById("int-pattern");
         const repsInput = document.getElementById("int-reps");
-
         const err = document.getElementById("int-error");
         const result = document.getElementById("int-result");
         const tbody = document.getElementById("int-table");
@@ -530,8 +753,8 @@
 
         document.getElementById("int-reset")?.addEventListener("click", () => {
           form.reset();
-          setVisible(err,false);
-          setVisible(result,false);
+          setVisible(err, false);
+          setVisible(result, false);
           tbody.innerHTML = "";
           total.textContent = "";
         });
@@ -540,12 +763,15 @@
           const p = String(raw || "").trim();
           const m = p.match(/^(\d+)\s*\/\s*(\d+)$/);
           if (!m) return null;
-          const w = Number(m[1]), r = Number(m[2]);
-          if (!(w > 0 && w <= 10000 && r >= 0 && r <= 10000)) return null;
-          return { workM: w, restM: r, label: `${w}/${r}` };
+          const workM = Number(m[1]);
+          const restM = Number(m[2]);
+          if (!(workM > 0 && workM <= 10000 && restM >= 0 && restM <= 10000)) return null;
+          return { workM, restM, label: `${workM}/${restM}` };
         }
 
-        function secondsForMeters(paceSecPerKm, meters) { return (paceSecPerKm * meters) / 1000; }
+        function secondsForMeters(paceSecPerKm, meters) {
+          return (paceSecPerKm * meters) / 1000;
+        }
 
         function addRow(name, dist, secs, paceLabel) {
           const tr = document.createElement("tr");
@@ -554,9 +780,9 @@
         }
 
         form.addEventListener("submit", (e) => {
-          e.preventDefault(); // ✅ 핵심
-          setVisible(err,false);
-          setVisible(result,false);
+          e.preventDefault();
+          setVisible(err, false);
+          setVisible(result, false);
           tbody.innerHTML = "";
           total.textContent = "";
 
@@ -564,9 +790,23 @@
           const rp = parsePaceToSeconds(restPace.value);
           const pat = parsePattern(pattern.value);
 
-          if (!wp) { err.textContent = "워크 페이스를 MM:SS로 입력해 주세요. (예: 4:30)"; setVisible(err,true); return; }
-          if (!rp) { err.textContent = "휴식 페이스를 MM:SS로 입력해 주세요. (예: 6:30)"; setVisible(err,true); return; }
-          if (!pat) { err.textContent = "패턴을 400/200 처럼 입력해 주세요."; setVisible(err,true); return; }
+          if (!wp) {
+            err.textContent = "워크 페이스를 MM:SS로 입력해 주세요. (예: 4:30)";
+            setVisible(err, true);
+            return;
+          }
+
+          if (!rp) {
+            err.textContent = "휴식 페이스를 MM:SS로 입력해 주세요. (예: 6:30)";
+            setVisible(err, true);
+            return;
+          }
+
+          if (!pat) {
+            err.textContent = "패턴을 400/200 처럼 입력해 주세요.";
+            setVisible(err, true);
+            return;
+          }
 
           const workSec = secondsForMeters(wp, pat.workM);
           const restSec = secondsForMeters(rp, pat.restM);
@@ -583,107 +823,31 @@
           const repsRaw = String(repsInput.value || "").trim();
           if (repsRaw && /^\d+$/.test(repsRaw)) {
             const reps = Number(repsRaw);
-            if (reps > 0 && reps <= 200) {
-              total.textContent = `총 ${reps}세트: ${formatTime(cycleSec * reps)}`;
-            } else total.textContent = "";
-          } else total.textContent = "";
+            if (reps > 0 && reps <= 200) total.textContent = `총 ${reps}세트: ${formatTime(cycleSec * reps)}`;
+          }
 
-          setVisible(result,true);
+          setVisible(result, true);
         });
       }
 
-      // ---- events ----
-      function normalizeDistance(raw) {
-        const v = String(raw || "").trim();
-        if (!v) return "";
-        const upper = v.toUpperCase();
-        if (upper === "HALF" || upper === "HM" || upper === "21.1K" || upper === "21.0975K") return "21K";
-        if (upper === "FULL" || upper === "FM" || upper === "MARATHON" || upper === "42.2K" || upper === "42.195K") return "42K";
-        if (upper === "10KM" || upper === "10K") return "10K";
-        if (upper === "5KM" || upper === "5K") return "5K";
-        return v;
-      }
-
-      function normalizeParticipants(rawParticipants) {
-        const arr = Array.isArray(rawParticipants) ? rawParticipants : [];
-        return arr.map(p => {
-          if (typeof p === "string") return { name: p, distance: "" };
-          if (p && typeof p === "object") return { name: String(p.name || "").trim(), distance: String(p.distance || "").trim() };
-          return { name:"", distance:"" };
-        }).filter(p => p.name.length > 0);
-      }
-
-      function createEventItem(ev) {
-        const el = document.createElement("div");
-        el.className = "item";
-
-        const title = document.createElement("div");
-        title.className = "item-title";
-
-        const strong = document.createElement("strong");
-        strong.textContent = ev.name || "대회";
-
-        const meta = document.createElement("div");
-        meta.className = "meta";
-
-        const p1 = document.createElement("span"); p1.className = "pill"; p1.textContent = ev.date || "날짜 미정"; meta.appendChild(p1);
-        if (ev.location) { const p = document.createElement("span"); p.className="pill"; p.textContent=ev.location; meta.appendChild(p); }
-        const dist = normalizeDistance(ev.distance);
-        if (dist) { const p = document.createElement("span"); p.className="pill"; p.textContent=dist; meta.appendChild(p); }
-
-        title.appendChild(strong);
-        title.appendChild(meta);
-        el.appendChild(title);
-
-        const parts = normalizeParticipants(ev.participants)
-          .map(p => ({ name: p.name, distance: normalizeDistance(p.distance) || "" }))
-          .sort((a,b)=>b.name.localeCompare(a.name,"ko"));
-
-        if (parts.length) {
-          const ul = document.createElement("ul");
-          ul.className = "p-list";
-          parts.forEach(p => {
-            const li = document.createElement("li");
-            li.appendChild(document.createTextNode(p.name));
-            if (p.distance && p.distance !== dist) {
-              const chip = document.createElement("span");
-              chip.className = "chip orange";
-              chip.textContent = p.distance;
-              li.appendChild(chip);
-            }
-            ul.appendChild(li);
-          });
-          el.appendChild(ul);
-        }
-
-        return el;
-      }
-
-      async function initEvents() {
-        const list = document.getElementById("events-list");
-        if (!list) return;
-
-        const res = await safeFetchJson("data/events.json");
-        if (!res.ok || !res.data || !Array.isArray(res.data.events) || res.data.events.length === 0) {
-          list.innerHTML = `<div class="empty"><b>대회 정보가 비어있어요</b></div>`;
-          return;
-        }
-
-        const events = res.data.events.slice().sort((a,b)=>String(a.date||"").localeCompare(String(b.date||"")));
-        list.innerHTML = "";
-        events.forEach(ev => list.appendChild(createEventItem(ev)));
-      }
-
-      // ---- certificate (manual) ----
       function roundedRect(ctx, x, y, w, h, r) {
-        const rr = Math.min(r, w/2, h/2);
+        const rr = Math.min(r, w / 2, h / 2);
         ctx.beginPath();
-        ctx.moveTo(x+rr, y);
-        ctx.arcTo(x+w, y, x+w, y+h, rr);
-        ctx.arcTo(x+w, y+h, x, y+h, rr);
-        ctx.arcTo(x, y+h, x, y, rr);
-        ctx.arcTo(x, y, x+w, y, rr);
+        ctx.moveTo(x + rr, y);
+        ctx.arcTo(x + w, y, x + w, y + h, rr);
+        ctx.arcTo(x + w, y + h, x, y + h, rr);
+        ctx.arcTo(x, y + h, x, y, rr);
+        ctx.arcTo(x, y, x + w, y, rr);
         ctx.closePath();
+      }
+
+      function readFileAsDataURL(file) {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        });
       }
 
       async function loadImage(src) {
@@ -695,27 +859,87 @@
         });
       }
 
+      async function loadOptionalImage(src) {
+        try {
+          return await loadImage(src);
+        } catch {
+          return null;
+        }
+      }
+
+      async function loadOptionalFileImage(inputEl) {
+        const file = inputEl?.files?.[0];
+        if (!file) return null;
+        try {
+          const dataUrl = await readFileAsDataURL(file);
+          return await loadImage(dataUrl);
+        } catch {
+          return null;
+        }
+      }
+
+      function drawCoverImage(ctx, img, x, y, w, h) {
+        const imgRatio = img.width / img.height;
+        const boxRatio = w / h;
+
+        let drawW, drawH, drawX, drawY;
+        if (imgRatio > boxRatio) {
+          drawH = h;
+          drawW = h * imgRatio;
+          drawX = x - (drawW - w) / 2;
+          drawY = y;
+        } else {
+          drawW = w;
+          drawH = w / imgRatio;
+          drawX = x;
+          drawY = y - (drawH - h) / 2;
+        }
+
+        ctx.drawImage(img, drawX, drawY, drawW, drawH);
+      }
+
       function paintBlankCanvas() {
-        const c = document.getElementById("cert-canvas");
-        if (!c) return;
-        const ctx = c.getContext("2d");
-        ctx.fillStyle = "#fff";
-        ctx.fillRect(0,0,c.width,c.height);
+        const canvas = document.getElementById("cert-canvas");
+        if (!canvas) return;
+        const ctx = canvas.getContext("2d");
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
       }
 
       function setCertError(msg) {
         const el = document.getElementById("cert-error");
         if (!el) return;
-        if (!msg) { el.style.display="none"; el.textContent=""; return; }
+        if (!msg) {
+          el.style.display = "none";
+          el.textContent = "";
+          return;
+        }
         el.textContent = msg;
         el.style.display = "";
       }
 
-      function setDownloadEnabled(enabled, filename="") {
+      function setDownloadEnabled(enabled, filename = "") {
         const btn = document.getElementById("cert-download");
         if (!btn) return;
         btn.disabled = !enabled;
         if (enabled && filename) btn.dataset.filename = filename;
+      }
+
+      function drawLogoFallback(ctx, x, y, w, h, alpha) {
+        ctx.save();
+        ctx.globalAlpha = alpha;
+        ctx.fillStyle = "#ffffff";
+        roundedRect(ctx, x, y, w, h, 0);
+        ctx.fill();
+        ctx.strokeStyle = "rgba(0,0,0,0.08)";
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        ctx.fillStyle = "#111111";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.font = "900 34px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        ctx.fillText("NO BACK RC", x + w / 2, y + h / 2);
+        ctx.restore();
       }
 
       function initCertificate() {
@@ -732,17 +956,18 @@
         });
 
         document.getElementById("cert-download")?.addEventListener("click", () => {
-          const c = document.getElementById("cert-canvas");
+          const canvas = document.getElementById("cert-canvas");
           const btn = document.getElementById("cert-download");
-          if (!c || !btn) return;
+          if (!canvas || !btn) return;
+
           const a = document.createElement("a");
           a.download = btn.dataset.filename || "certificate.png";
-          a.href = c.toDataURL("image/png");
+          a.href = canvas.toDataURL("image/png");
           a.click();
         });
 
         form.addEventListener("submit", async (e) => {
-          e.preventDefault(); // ✅ 핵심
+          e.preventDefault();
           await generateCertificatePreview();
         });
       }
@@ -753,102 +978,183 @@
 
         const evName = String(document.getElementById("cert-name")?.value || "").trim();
         const evDate = String(document.getElementById("cert-date")?.value || "").trim();
-        const evLoc = String(document.getElementById("cert-location")?.value || "").trim();
-        const evDist = String(document.getElementById("cert-distance")?.value || "").trim();
+        const evLocation = String(document.getElementById("cert-location")?.value || "").trim();
+        const evDistance = String(document.getElementById("cert-distance")?.value || "").trim();
         const bib = String(document.getElementById("cert-bib")?.value || "").trim();
         const nick = String(document.getElementById("cert-nick")?.value || "").trim();
-        const tsec = parseTimeToSeconds(document.getElementById("cert-time")?.value);
+        const timeSec = parseTimeToSeconds(document.getElementById("cert-time")?.value);
+        const photoInput = document.getElementById("cert-photo");
 
         if (!evName) return setCertError("대회명을 입력해 주세요.");
         if (!nick) return setCertError("닉네임을 입력해 주세요.");
-        if (!tsec || tsec <= 0) return setCertError("기록 시간을 올바르게 입력해 주세요.");
+        if (!timeSec || timeSec <= 0) return setCertError("기록 시간을 올바르게 입력해 주세요.");
 
-        const c = document.getElementById("cert-canvas");
-        const ctx = c.getContext("2d");
-        const W = c.width, H = c.height;
+        const canvas = document.getElementById("cert-canvas");
+        const ctx = canvas.getContext("2d");
+        const W = canvas.width;
+        const H = canvas.height;
 
-        ctx.clearRect(0,0,W,H);
-        ctx.fillStyle = "#fff";
-        ctx.fillRect(0,0,W,H);
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(0, 0, W, H);
 
-        try {
-          const bg = await loadImage("./bg.jpg?v=6002");
+        const bg = await loadOptionalImage("./bg.jpg?v=7002");
+        if (bg) {
           ctx.save();
           ctx.globalAlpha = 0.08;
           const tile = 260;
           const tileH = (tile * bg.height) / bg.width;
-          for (let yy=0; yy<H; yy+=tile) for (let xx=0; xx<W; xx+=tile) ctx.drawImage(bg, xx, yy, tile, tileH);
+          for (let yy = 0; yy < H; yy += tile) {
+            for (let xx = 0; xx < W; xx += tile) {
+              ctx.drawImage(bg, xx, yy, tile, tileH);
+            }
+          }
           ctx.restore();
-        } catch {}
+        }
+
+        const logo = await loadOptionalImage("./logo.png?v=7002");
+        const photo = await loadOptionalFileImage(photoInput);
 
         const pad = 70;
-        const x = pad, y = 120, w = W - pad*2, h = H - 220;
+        const cardX = pad;
+        const cardY = 120;
+        const cardW = W - pad * 2;
+        const cardH = H - 220;
 
         ctx.save();
         ctx.shadowColor = "rgba(0,0,0,.14)";
         ctx.shadowBlur = 28;
         ctx.shadowOffsetY = 14;
         ctx.fillStyle = "rgba(255,255,255,.96)";
-        roundedRect(ctx, x, y, w, h, 28);
+        roundedRect(ctx, cardX, cardY, cardW, cardH, 28);
         ctx.fill();
         ctx.restore();
 
         ctx.fillStyle = "#ff6a00";
-        roundedRect(ctx, x, y, w, 18, 10);
+        roundedRect(ctx, cardX, cardY, cardW, 18, 10);
         ctx.fill();
 
-        ctx.fillStyle = "#111";
-        ctx.font = "900 66px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        ctx.fillText("CERTIFICATE OF RECORD", x+70, y+120);
+        ctx.fillStyle = "#111111";
+        ctx.textAlign = "left";
+        ctx.textBaseline = "alphabetic";
+        ctx.font = "900 62px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        ctx.fillText("CERTIFICATE OF RECORD", cardX + 70, cardY + 115);
 
         ctx.fillStyle = "rgba(17,17,17,.70)";
         ctx.font = "800 24px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        ctx.fillText("노빠꾸 러닝 크루", x+70, y+160);
+        ctx.fillText("노빠꾸 러닝 크루", cardX + 70, cardY + 155);
 
-        ctx.fillStyle = "#111";
-        ctx.font = "900 56px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        ctx.fillText(evName, x+70, y+230);
+        ctx.fillStyle = "#111111";
+        ctx.font = "900 52px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        ctx.fillText(evName, cardX + 70, cardY + 225);
 
-        const meta = [evDate, evLoc, evDist].filter(Boolean).join(" · ");
-        ctx.fillStyle = "rgba(17,17,17,.65)";
+        const metaText = [evDate, evLocation, evDistance].filter(Boolean).join(" · ");
+        ctx.fillStyle = "rgba(17,17,17,.62)";
         ctx.font = "800 24px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        ctx.fillText(meta || "—", x+70, y+270);
+        ctx.fillText(metaText || "—", cardX + 70, cardY + 265);
 
         ctx.strokeStyle = "rgba(0,0,0,.10)";
         ctx.lineWidth = 2;
         ctx.beginPath();
-        ctx.moveTo(x+70, y+310);
-        ctx.lineTo(x+w-70, y+310);
+        ctx.moveTo(cardX + 70, cardY + 305);
+        ctx.lineTo(cardX + cardW - 70, cardY + 305);
         ctx.stroke();
 
         ctx.textAlign = "center";
-        ctx.fillStyle = "#111";
-        ctx.font = "900 84px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        ctx.fillText(nick, x+w/2, y+430);
+        ctx.fillStyle = "#111111";
+        ctx.font = "900 80px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        ctx.fillText(nick, cardX + cardW / 2, cardY + 415);
 
-        ctx.font = "900 170px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        ctx.fillText(formatTime(tsec), x+w/2, y+610);
+        ctx.font = "900 168px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        ctx.fillText(formatTime(timeSec), cardX + cardW / 2, cardY + 595);
 
         if (bib) {
           ctx.fillStyle = "#ff6a00";
           ctx.font = "900 34px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-          ctx.fillText(`Bib No. ${bib}`, x+w/2, y+670);
+          ctx.fillText(`Bib No. ${bib}`, cardX + cardW / 2, cardY + 655);
+        }
+
+        const photoZoneX = cardX + 70;
+        const photoZoneY = cardY + 715;
+        const photoZoneW = cardW - 140;
+        const photoZoneH = 360;
+
+        ctx.save();
+        roundedRect(ctx, photoZoneX, photoZoneY, photoZoneW, photoZoneH, 26);
+        ctx.clip();
+
+        if (photo) {
+          drawCoverImage(ctx, photo, photoZoneX, photoZoneY, photoZoneW, photoZoneH);
+          ctx.fillStyle = "rgba(255,255,255,0.18)";
+          ctx.fillRect(photoZoneX, photoZoneY, photoZoneW, photoZoneH);
+        } else {
+          ctx.fillStyle = "rgba(255,255,255,0.86)";
+          ctx.fillRect(photoZoneX, photoZoneY, photoZoneW, photoZoneH);
+        }
+
+        ctx.restore();
+
+        ctx.save();
+        ctx.strokeStyle = "rgba(0,0,0,0.08)";
+        ctx.lineWidth = 2;
+        roundedRect(ctx, photoZoneX, photoZoneY, photoZoneW, photoZoneH, 26);
+        ctx.stroke();
+        ctx.restore();
+
+        if (logo) {
+          if (photo) {
+            const maxW = 170;
+            const logoH = (maxW * logo.height) / logo.width;
+            const lx = photoZoneX + photoZoneW - maxW - 28;
+            const ly = photoZoneY + photoZoneH - logoH - 24;
+            ctx.save();
+            ctx.globalAlpha = 0.96;
+            ctx.fillStyle = "rgba(255,255,255,0.86)";
+            roundedRect(ctx, lx - 14, ly - 12, maxW + 28, logoH + 24, 0);
+            ctx.fill();
+            ctx.drawImage(logo, lx, ly, maxW, logoH);
+            ctx.restore();
+          } else {
+            const maxW = 360;
+            const logoH = (maxW * logo.height) / logo.width;
+            const lx = photoZoneX + (photoZoneW - maxW) / 2;
+            const ly = photoZoneY + (photoZoneH - logoH) / 2;
+            ctx.save();
+            ctx.globalAlpha = 0.28;
+            ctx.drawImage(logo, lx, ly, maxW, logoH);
+            ctx.restore();
+          }
+        } else {
+          if (photo) {
+            drawLogoFallback(ctx, photoZoneX + photoZoneW - 220, photoZoneY + photoZoneH - 92, 180, 56, 0.95);
+          } else {
+            drawLogoFallback(
+              ctx,
+              photoZoneX + (photoZoneW - 320) / 2,
+              photoZoneY + (photoZoneH - 86) / 2,
+              320,
+              86,
+              0.28
+            );
+          }
         }
 
         ctx.textAlign = "center";
         ctx.fillStyle = "rgba(17,17,17,.78)";
         ctx.font = "900 24px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        ctx.fillText("완주를 축하드립니다.", x+w/2, y+h-90);
+        ctx.fillText("완주를 축하드립니다.", cardX + cardW / 2, cardY + cardH - 82);
 
         ctx.save();
         ctx.globalAlpha = 0.95;
         ctx.fillStyle = "#ff6a00";
-        roundedRect(ctx, x, y+h-18, w, 18, 10);
+        roundedRect(ctx, cardX, cardY + cardH - 18, cardW, 18, 10);
         ctx.fill();
         ctx.restore();
 
-        const fname = `noback_${evName.replace(/\s+/g,"_")}_${nick.replace(/\s+/g,"_")}_normal.png`;
-        setDownloadEnabled(true, fname);
+        const safeEventName = evName.replace(/\s+/g, "_");
+        const safeNick = nick.replace(/\s+/g, "_");
+        const filename = `noback_${safeEventName}_${safeNick}.png`;
+        setDownloadEnabled(true, filename);
       }
     </script>
   </body>
