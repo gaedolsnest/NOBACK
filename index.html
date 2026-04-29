@@ -34,6 +34,8 @@
         color: #111;
       }
 
+      body[data-view="certificate"]::before { opacity: 0; }
+
       body::before {
         content: "";
         position: fixed;
@@ -741,6 +743,8 @@
         document.querySelectorAll(".view").forEach(v => v.classList.remove("active"));
         document.getElementById(`view-${view}`)?.classList.add("active");
 
+        document.body.dataset.view = view;
+
         document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
         document.querySelector(`.tab[data-tab="${view}"]`)?.classList.add("active");
 
@@ -1017,16 +1021,6 @@
         ctx.fillStyle = "#ffffff";
         ctx.fillRect(0, 0, W, H);
 
-        const bg = await loadOptionalImage("./bg.jpg?v=7030");
-        if (bg) {
-          ctx.save();
-          ctx.globalAlpha = 0.08;
-          const tile = 260;
-          const tileH = (tile * bg.height) / bg.width;
-          for (let yy = 0; yy < H; yy += tile) for (let xx = 0; xx < W; xx += tile) ctx.drawImage(bg, xx, yy, tile, tileH);
-          ctx.restore();
-        }
-
         const logo = await loadOptionalImage("./logo.png?v=7030");
         const photo = await loadDefaultMedalImage();
 
@@ -1035,183 +1029,164 @@
         const cardY = 120;
         const cardW = W - pad * 2;
         const cardH = H - 220;
+        const orange = "#ff6a00";
+        const ink = "#111111";
 
-        // card
         ctx.save();
-        ctx.shadowColor = "rgba(0,0,0,.14)";
-        ctx.shadowBlur = 28;
-        ctx.shadowOffsetY = 14;
-        ctx.fillStyle = "rgba(255,255,255,.96)";
-        roundedRect(ctx, cardX, cardY, cardW, cardH, 28);
+        ctx.fillStyle = "#ffffff";
+        roundedRect(ctx, cardX, cardY, cardW, cardH, 26);
         ctx.fill();
+        ctx.strokeStyle = "rgba(0,0,0,0.12)";
+        ctx.lineWidth = 2;
+        roundedRect(ctx, cardX, cardY, cardW, cardH, 26);
+        ctx.stroke();
         ctx.restore();
 
-        // top accent
-        ctx.fillStyle = "#ff6a00";
-        roundedRect(ctx, cardX, cardY, cardW, 18, 10);
+        ctx.fillStyle = orange;
+        roundedRect(ctx, cardX, cardY, cardW, 18, 9);
+        ctx.fill();
+        roundedRect(ctx, cardX, cardY + cardH - 18, cardW, 18, 9);
         ctx.fill();
 
-        // ===== DEFAULT MEDAL AREA: same size as the old uploaded photo area =====
-        // Text stays readable by gradient brightening near top.
-        if (photo) {
-          const px = cardX + 44;
-          const py = cardY + 300;                  // ⬅️ 사진이 여기서 시작 (기록 뒤까지 올라옴)
-          const pw = cardW - 88;
-          const ph = cardY + cardH - 44 - py;      // bottom padding
-
-          ctx.save();
-          roundedRect(ctx, px, py, pw, ph, 26);
-          ctx.clip();
-
-          // base
-          ctx.fillStyle = "rgba(0,0,0,0.03)";
-          ctx.fillRect(px, py, pw, ph);
-
-          // medal image (same contain sizing as the old uploaded photo)
-          drawContainImage(ctx, photo, px, py, pw, ph);
-
-          // very light overall tone control (doesn't kill photo)
-          ctx.fillStyle = "rgba(255,255,255,0.10)";
-          ctx.fillRect(px, py, pw, ph);
-
-          // strong top gradient ONLY near record text zone to protect readability
-          // (top = brighter, goes transparent)
-          const protectTop = ctx.createLinearGradient(0, py, 0, py + 520);
-          protectTop.addColorStop(0.00, "rgba(255,255,255,0.72)");
-          protectTop.addColorStop(0.35, "rgba(255,255,255,0.38)");
-          protectTop.addColorStop(1.00, "rgba(255,255,255,0.00)");
-          ctx.fillStyle = protectTop;
-          ctx.fillRect(px, py, pw, 560);
-
-          // subtle vignette to keep edges calm
-          const g = ctx.createRadialGradient(px + pw * 0.5, py + ph * 0.55, 180, px + pw * 0.5, py + ph * 0.55, pw);
-          g.addColorStop(0, "rgba(0,0,0,0.00)");
-          g.addColorStop(1, "rgba(0,0,0,0.16)");
-          ctx.fillStyle = g;
-          ctx.fillRect(px, py, pw, ph);
-
-          ctx.restore();
+        ctx.save();
+        ctx.strokeStyle = "rgba(255,106,0,0.95)";
+        ctx.lineWidth = 8;
+        ctx.lineCap = "round";
+        for (let i = 0; i < 4; i += 1) {
+          const x = cardX + cardW - 230 + i * 42;
+          ctx.beginPath();
+          ctx.moveTo(x, cardY + 72);
+          ctx.lineTo(x + 54, cardY + 26);
+          ctx.stroke();
         }
+        ctx.restore();
 
-        // header
-        ctx.fillStyle = "#111111";
         ctx.textAlign = "left";
         ctx.textBaseline = "alphabetic";
+        ctx.fillStyle = ink;
         ctx.font = "900 62px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
         ctx.fillText("CERTIFICATE OF RECORD", cardX + 70, cardY + 115);
 
-        ctx.fillStyle = "rgba(17,17,17,.70)";
-        ctx.font = "800 24px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        ctx.fillStyle = "rgba(17,17,17,.68)";
+        ctx.font = "900 25px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
         ctx.fillText("노빠꾸 러닝 크루", cardX + 70, cardY + 155);
 
-        ctx.fillStyle = "#111111";
-        ctx.font = "900 52px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        ctx.fillStyle = ink;
+        ctx.font = "900 54px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
         ctx.fillText(evName, cardX + 70, cardY + 225);
 
         const metaText = [evDate, evLocation].filter(Boolean).join(" · ");
         ctx.fillStyle = "rgba(17,17,17,.62)";
-        ctx.font = "800 24px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        ctx.font = "900 26px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
         ctx.fillText(metaText || "—", cardX + 70, cardY + 265);
 
-        ctx.strokeStyle = "rgba(0,0,0,.10)";
+        ctx.strokeStyle = "rgba(0,0,0,.12)";
         ctx.lineWidth = 2;
         ctx.beginPath();
         ctx.moveTo(cardX + 70, cardY + 305);
         ctx.lineTo(cardX + cardW - 70, cardY + 305);
         ctx.stroke();
 
-        // nick (high contrast)
-        ctx.textAlign = "center";
-        ctx.font = "900 80px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        ctx.fillStyle = "#ffffff";
-        ctx.shadowColor = "rgba(0,0,0,0.55)";
-        ctx.shadowBlur = 18;
-        ctx.shadowOffsetY = 2;
-        outlineText(ctx, nick, cardX + cardW / 2, cardY + 415, 10, "rgba(0,0,0,0.92)");
-        ctx.shadowColor = "transparent";
-
-        // time (strong)
-        const timeText = formatTime(timeSec);
-        ctx.textAlign = "center";
-        ctx.font = "900 172px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        ctx.shadowColor = "rgba(0,0,0,0.78)";
-        ctx.shadowBlur = 26;
-        ctx.shadowOffsetY = 4;
-        ctx.fillStyle = "#ff6a00";
-        outlineText(ctx, timeText, cardX + cardW / 2, cardY + 600, 18, "rgba(0,0,0,0.96)");
-
-        ctx.shadowColor = "transparent";
-        ctx.fillStyle = "rgba(255,255,255,0.70)";
-        outlineText(ctx, timeText, cardX + cardW / 2, cardY + 600, 4, "rgba(0,0,0,0.00)");
-
-        // distance between time and bib
-        if (evDistance) {
-          ctx.textAlign = "center";
-          ctx.font = "900 76px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-          ctx.fillStyle = "#ffffff";
-          ctx.shadowColor = "rgba(0,0,0,0.55)";
-          ctx.shadowBlur = 18;
-          ctx.shadowOffsetY = 2;
-          outlineText(ctx, evDistance, cardX + cardW / 2, cardY + 690, 10, "rgba(0,0,0,0.92)");
-          ctx.shadowColor = "transparent";
-        }
-
-        // bib (moved down)
-        if (bib) {
-          ctx.fillStyle = "#ff6a00";
-          ctx.font = "900 34px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-          ctx.shadowColor = "rgba(0,0,0,0.45)";
-          ctx.shadowBlur = 10;
-          ctx.shadowOffsetY = 2;
-          outlineText(ctx, `Bib No. ${bib}`, cardX + cardW / 2, cardY + 740, 6, "rgba(0,0,0,0.80)");
-          ctx.shadowColor = "transparent";
-        }
-
-        // no-photo: big logo watermark (keep)
-        if (!photo) {
-          const bottomX = cardX + 70;
-          const bottomY = cardY + 790;
-          const bottomW = cardW - 140;
-          const bottomH = 285;
-
-          if (logo) {
-            const maxW = Math.min(640, bottomW * 0.95);
-            const logoH = (maxW * logo.height) / logo.width;
-            const lx = bottomX + (bottomW - maxW) / 2;
-            const ly = bottomY + (bottomH - logoH) / 2;
-
-            ctx.save();
-            ctx.globalAlpha = 0.28;
-            ctx.drawImage(logo, lx, ly, maxW, logoH);
-            ctx.restore();
-          } else {
-            ctx.save();
-            ctx.globalAlpha = 0.20;
-            ctx.fillStyle = "#111";
-            ctx.textAlign = "center";
-            ctx.textBaseline = "middle";
-            ctx.font = "900 92px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-            ctx.fillText("NO BACK", bottomX + bottomW / 2, bottomY + bottomH / 2 - 6);
-            ctx.font = "900 32px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-            ctx.fillText("RUNNING CREW", bottomX + bottomW / 2, bottomY + bottomH / 2 + 56);
-            ctx.restore();
-          }
-        }
-        // 메달 이미지가 있을 때: 우하단 로고 등 추가 요소 없음
-
-        // footer
-        ctx.textAlign = "center";
-        ctx.fillStyle = "rgba(17,17,17,.78)";
-        ctx.font = "900 24px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        ctx.fillText("완주를 축하드립니다.", cardX + cardW / 2, cardY + cardH - 82);
+        // 메달 영역은 기존 사진 직접 추가 영역과 같은 크기/위치를 유지합니다.
+        const px = cardX + 44;
+        const py = cardY + 300;
+        const pw = cardW - 88;
+        const ph = cardY + cardH - 44 - py;
 
         ctx.save();
-        ctx.globalAlpha = 0.95;
-        ctx.fillStyle = "#ff6a00";
-        roundedRect(ctx, cardX, cardY + cardH - 18, cardW, 18, 10);
-        ctx.fill();
+        roundedRect(ctx, px, py, pw, ph, 26);
+        ctx.clip();
+
+        ctx.fillStyle = "#f2f2f2";
+        ctx.fillRect(px, py, pw, ph);
+
+        if (photo) {
+          drawContainImage(ctx, photo, px, py, pw, ph);
+        } else if (logo) {
+          ctx.save();
+          ctx.globalAlpha = 0.18;
+          const maxW = Math.min(650, pw * 0.8);
+          const logoH = (maxW * logo.height) / logo.width;
+          ctx.drawImage(logo, px + (pw - maxW) / 2, py + (ph - logoH) / 2, maxW, logoH);
+          ctx.restore();
+        }
+
+        const topWash = ctx.createLinearGradient(0, py, 0, py + 520);
+        topWash.addColorStop(0.00, "rgba(255,255,255,0.76)");
+        topWash.addColorStop(0.38, "rgba(255,255,255,0.34)");
+        topWash.addColorStop(1.00, "rgba(255,255,255,0.00)");
+        ctx.fillStyle = topWash;
+        ctx.fillRect(px, py, pw, 560);
+
+        const bottomShade = ctx.createLinearGradient(0, py + ph - 260, 0, py + ph);
+        bottomShade.addColorStop(0.00, "rgba(0,0,0,0.00)");
+        bottomShade.addColorStop(1.00, "rgba(0,0,0,0.24)");
+        ctx.fillStyle = bottomShade;
+        ctx.fillRect(px, py + ph - 280, pw, 280);
+
+        ctx.strokeStyle = "rgba(0,0,0,0.12)";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(px + 28, py + 28);
+        ctx.lineTo(px + pw - 28, py + 28);
+        ctx.stroke();
+
         ctx.restore();
 
+        ctx.save();
+        ctx.strokeStyle = "rgba(255,106,0,0.95)";
+        ctx.lineWidth = 7;
+        ctx.lineCap = "round";
+        for (let i = 0; i < 6; i += 1) {
+          const x = px + 36 + i * 30;
+          ctx.beginPath();
+          ctx.moveTo(x, py + ph - 86);
+          ctx.lineTo(x + 58, py + ph - 86);
+          ctx.stroke();
+        }
+        ctx.restore();
+
+        ctx.textAlign = "center";
+        ctx.textBaseline = "alphabetic";
+
+        ctx.font = "900 78px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        ctx.fillStyle = "#ffffff";
+        ctx.shadowColor = "rgba(0,0,0,0.62)";
+        ctx.shadowBlur = 15;
+        ctx.shadowOffsetY = 3;
+        outlineText(ctx, nick, cardX + cardW / 2, py + 110, 10, "rgba(0,0,0,0.95)");
+
+        const timeText = formatTime(timeSec);
+        ctx.font = "900 178px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        ctx.fillStyle = "#ffd1b8";
+        ctx.shadowColor = "rgba(0,0,0,0.72)";
+        ctx.shadowBlur = 24;
+        ctx.shadowOffsetY = 5;
+        outlineText(ctx, timeText, cardX + cardW / 2, py + 285, 18, "rgba(0,0,0,0.98)");
+
+        if (evDistance) {
+          ctx.font = "900 74px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+          ctx.fillStyle = "#ffffff";
+          ctx.shadowColor = "rgba(0,0,0,0.62)";
+          ctx.shadowBlur = 16;
+          ctx.shadowOffsetY = 3;
+          outlineText(ctx, evDistance, cardX + cardW / 2, py + 375, 10, "rgba(0,0,0,0.95)");
+        }
+
+        if (bib) {
+          ctx.font = "900 36px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+          ctx.fillStyle = orange;
+          ctx.shadowColor = "rgba(0,0,0,0.54)";
+          ctx.shadowBlur = 10;
+          ctx.shadowOffsetY = 2;
+          outlineText(ctx, `Bib No. ${bib}`, cardX + cardW / 2, py + 430, 6, "rgba(0,0,0,0.90)");
+        }
+
+        ctx.shadowColor = "transparent";
+        ctx.textAlign = "center";
+        ctx.fillStyle = "rgba(255,255,255,.88)";
+        ctx.font = "900 24px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        outlineText(ctx, "완주를 축하드립니다.", cardX + cardW / 2, py + ph - 54, 5, "rgba(0,0,0,.72)");
         const safeEventName = evName.replace(/\s+/g, "_");
         const safeNick = nick.replace(/\s+/g, "_");
         setDownloadEnabled(true, `noback_${safeEventName}_${safeNick}.png`);
