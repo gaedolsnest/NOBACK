@@ -246,9 +246,9 @@
       }
 
       .primary-action {
-        background: var(--accent);
-        border: 1px solid rgba(255, 255, 255, 0.18);
-        color: #111;
+        background: rgba(255, 106, 0, 0.18);
+        border: 1px solid rgba(255, 106, 0, 0.34);
+        color: var(--text);
       }
 
       .secondary-action {
@@ -272,8 +272,6 @@
         border-radius: 14px;
         border: 1px solid rgba(255, 255, 255, 0.14);
         background: rgba(255, 255, 255, 0.10);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
       }
 
       .hero-stat strong {
@@ -554,6 +552,15 @@
         gap: 7px;
         flex-wrap: wrap;
       }
+      .support-roleline {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+      .support-roleline .chip {
+        display: inline-flex;
+        justify-content: center;
+        text-align: center;
+      }
       .support-detail {
         display: grid;
         gap: 8px;
@@ -782,7 +789,7 @@
             <div class="hero-copy">
               <span class="eyebrow">NO BACK RUNNING CREW</span>
               <h2>함께 뛰면,<br />오늘의 페이스가<br />조금 더 가벼워집니다.</h2>
-              <p class="hero-lead">꾸준히 함께 뛰는 러닝 모임입니다.<br />정기런과 훈련 도구를 확인하세요.</p>
+              <p class="hero-lead">꾸준히 함께 뛰는 러닝 모임입니다.</p>
               <div class="hero-actions">
                 <a class="primary-action" href="#/regular">정기런 보기 →</a>
                 <a class="secondary-action" href="https://www.daangn.com/kr/group/%EB%85%B8%EB%B9%A0%EA%BE%B8-%EB%9F%AC%EB%8B%9D%ED%81%AC%EB%A3%A8-no-back-rc-1yeomgcwmnyx/" target="_blank" rel="noopener noreferrer">모임 바로가기</a>
@@ -797,11 +804,11 @@
           </section>
 
           <div class="grid">
-            <a class="card feature-card" href="#/interval">
+            <a class="card feature-card" href="#/regular">
               <div>
-                <span class="feature-icon">⏱</span>
-                <h2>인터벌 계산기</h2>
-                <p>400/200 같은 훈련 구간을 입력하면 워크/휴식 시간을 바로 계산합니다.</p>
+                <span class="feature-icon">📍</span>
+                <h2>정기런 안내</h2>
+                <p>집합, 스트레칭, 페이스 그룹 운영 방식까지 한 번에 확인합니다.</p>
               </div>
               <span class="cta">열기 →</span>
             </a>
@@ -815,11 +822,11 @@
               <span class="cta">열기 →</span>
             </a>
 
-            <a class="card feature-card" href="#/regular">
+            <a class="card feature-card" href="#/interval">
               <div>
-                <span class="feature-icon">📍</span>
-                <h2>정기런 안내</h2>
-                <p>집합, 스트레칭, 페이스 그룹 운영 방식까지 한 번에 확인합니다.</p>
+                <span class="feature-icon">⏱</span>
+                <h2>인터벌 계산기</h2>
+                <p>400/200 같은 훈련 구간을 입력하면 워크/휴식 시간을 바로 계산합니다.</p>
               </div>
               <span class="cta">열기 →</span>
             </a>
@@ -885,9 +892,10 @@
               </div>
               <span class="pill">함께 만드는 NBRC ✨</span>
             </div>
+            <div class="chipline support-roleline"><span class="chip">정기런 진행 🏃</span><span class="chip">출석 체크 ✅</span><span class="chip">페이스 케어 ⏱</span><span class="chip">신규 회원 안내 💬</span></div>
             <div class="support-rows">
               <div class="support-row"><span class="support-label">👑 크루장</span><div class="support-detail"><div class="chipline"><span class="chip">총괄 리딩 🏁</span></div><div class="chipline"><span class="chip">망구</span></div></div></div>
-              <div class="support-row"><span class="support-label">🤝 운영진</span><div class="support-detail"><div class="chipline"><span class="chip">정기런 진행 🏃</span><span class="chip">출석 체크 ✅</span><span class="chip">페이스 케어 ⏱</span><span class="chip">신규 회원 안내 💬</span></div><div class="support-caption">함께 챙겨주는 운영진</div><div class="chipline" id="home-ops-chips"></div></div></div>
+              <div class="support-row"><span class="support-label">🤝 운영진</span><div class="chipline" id="home-ops-chips"></div></div>
             </div>
           </section>
         </div>
@@ -1555,6 +1563,9 @@ function route() {
     </script>
   </body>
 </html>
+
+
+
 
 
 
