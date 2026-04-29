@@ -430,6 +430,16 @@
         gap: 10px;
       }
       .map-title strong { font-size: 18px; }
+      .map-art {
+        display: block;
+        width: 100%;
+        max-height: 360px;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(0, 0, 0, 0.18);
+      }
 
       .cert-guide {
         margin-top: 12px;
@@ -452,6 +462,87 @@
       }
       .cert-guide li { margin: 5px 0; }
 
+      .join-card {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(280px, 1.1fr);
+        gap: 14px;
+        align-items: stretch;
+      }
+      .join-steps {
+        display: grid;
+        gap: 10px;
+        counter-reset: joinstep;
+      }
+      .join-step {
+        display: grid;
+        grid-template-columns: 34px minmax(0, 1fr);
+        gap: 10px;
+        align-items: start;
+        padding: 12px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .join-step::before {
+        counter-increment: joinstep;
+        content: counter(joinstep);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        border-radius: 999px;
+        background: var(--accent);
+        color: #111;
+        font-size: 13px;
+        font-weight: 900;
+      }
+      .join-step strong {
+        display: block;
+        color: var(--text);
+        font-size: 14px;
+      }
+      .join-step span {
+        display: block;
+        margin-top: 3px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .support-card {
+        display: grid;
+        gap: 12px;
+      }
+      .support-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        align-items: flex-start;
+      }
+      .support-rows {
+        display: grid;
+        gap: 10px;
+      }
+      .support-row {
+        display: grid;
+        grid-template-columns: 92px minmax(0, 1fr);
+        gap: 10px;
+        align-items: start;
+        padding: 12px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .support-label {
+        color: var(--text);
+        font-size: 13px;
+        font-weight: 900;
+      }
+      .chipline {
+        display: flex;
+        gap: 7px;
+        flex-wrap: wrap;
+      }
       @media (max-width: 720px) {
         .container { padding: 14px 12px 46px; }
         header { align-items: flex-start; flex-direction: column; }
@@ -467,7 +558,7 @@
         .hero-lead { overflow-wrap: anywhere; }
         .hero-panel { grid-template-columns: minmax(0, 1fr); }
         .hero::after { opacity: 0.10; }
-        .home-feature-row, .showcase-card { grid-template-columns: 1fr; }
+        .home-feature-row, .showcase-card, .join-card { grid-template-columns: 1fr; }
         .cert-mini { min-height: 300px; }
       }
       .cta {
@@ -690,6 +781,37 @@
             </a>
           </div>
 
+          <section class="card join-card" aria-label="신규 회원 가입 승인 안내">
+            <div>
+              <span class="eyebrow">JOIN NBRC</span>
+              <h2>신규 회원 가입 안내</h2>
+              <p>가입 신청 후 매주 수요일 정기런에 참석해 출석이 확인되면 가입 승인이 진행됩니다.</p>
+              <div class="hero-actions">
+                <a class="primary-action" href="#/regular">정기런 안내 보기 →</a>
+                <a class="secondary-action" href="https://map.kakao.com/link/search/%ED%95%98%EB%82%A8%EC%A2%85%ED%95%A9%EC%9A%B4%EB%8F%99%EC%9E%A5" target="_blank" rel="noopener noreferrer">집합 장소 확인</a>
+              </div>
+            </div>
+            <div class="join-steps">
+              <div class="join-step"><div><strong>가입 신청</strong><span>모임 신청 후 정기런 참석 일정을 확인합니다.</span></div></div>
+              <div class="join-step"><div><strong>수요일 정기런 참석</strong><span>하남 종합운동장 집합 장소로 오시면 됩니다.</span></div></div>
+              <div class="join-step"><div><strong>출석 확인 후 승인</strong><span>현장에서 출석 인증이 확인되면 가입 승인이 진행됩니다.</span></div></div>
+            </div>
+          </section>
+
+          <section class="card support-card" aria-label="도움 주시는 분들">
+            <div class="support-head">
+              <div>
+                <span class="eyebrow">NBRC STAFF</span>
+                <h2>도움 주시는 분들</h2>
+                <p>정기런 진행과 신규 회원 안내를 함께 챙겨주시는 분들입니다.</p>
+              </div>
+              <span class="pill">운영진</span>
+            </div>
+            <div class="support-rows">
+              <div class="support-row"><span class="support-label">👑 크루장</span><div class="chipline"><span class="chip">망구</span></div></div>
+              <div class="support-row"><span class="support-label">운영진</span><div class="chipline" id="home-ops-chips"></div></div>
+            </div>
+          </section>
           <div class="home-feature-row">
             <section class="card showcase-card" aria-label="기록증 예시와 입력 안내">
               <div class="cert-mini" aria-hidden="true">
@@ -715,10 +837,11 @@
             <section class="card map-panel" aria-label="정기런 집합 장소">
               <div>
                 <div class="map-title"><strong>정기런 집합 장소</strong><span class="pill">하남</span></div>
-                <p style="margin-top:8px;">집합 장소는 하남 종합운동장 기준으로 안내합니다. 처음 오시는 분은 지도에서 위치를 먼저 확인해 주세요.</p>
+                <p style="margin-top:8px;">집합 장소는 하남 종합운동장 두번째 블록 기준으로 안내합니다.</p>
+                <img class="map-art" src="./assets/meetup-map.svg?v=7030" alt="하남 종합운동장 정기런 집합 위치 안내" />
               </div>
               <div class="hero-actions" style="margin-top:0;">
-                <a class="primary-action" href="https://map.naver.com/p/search/%ED%95%98%EB%82%A8%20%EC%A2%85%ED%95%A9%EC%9A%B4%EB%8F%99%EC%9E%A5" target="_blank" rel="noopener noreferrer">지도 보기 →</a>
+                <a class="primary-action" href="https://map.kakao.com/link/search/%ED%95%98%EB%82%A8%EC%A2%85%ED%95%A9%EC%9A%B4%EB%8F%99%EC%9E%A5" target="_blank" rel="noopener noreferrer">지도 보기 →</a>
                 <a class="secondary-action" href="#/regular">정기런 안내</a>
               </div>
             </section>
@@ -835,6 +958,13 @@
             처음 오시는 분들도 부담 없이 참여하시면 됩니다!
           </p>
 
+          <h3>신규 회원 가입 승인 안내</h3>
+          <ul>
+            <li>가입 신청 후 매주 수요일 정기런에 참석해 주세요.</li>
+            <li>하남 종합운동장 집합 장소에서 닉네임으로 출석 확인을 진행합니다.</li>
+            <li>정기런 참석 및 출석 인증이 확인되면 가입 승인이 진행됩니다.</li>
+          </ul>
+
           <h3>운영 방식</h3>
           <ul>
             <li>원활한 진행을 위해 정기런은 페이스 구간 사전취합 방식으로 운영합니다.</li>
@@ -845,7 +975,7 @@
 
           <p class="muted" style="margin-top:12px;">기타 인터벌 등 별도 훈련은 자유롭게 진행하시면 됩니다.</p>
           <p class="muted">늦지 않게 와서 몸 먼저 풀고 바로 출발할 수 있게 준비 부탁드립니다 😊</p>
-          <a class="cta" href="https://map.naver.com/p/search/%ED%95%98%EB%82%A8%20%EC%A2%85%ED%95%A9%EC%9A%B4%EB%8F%99%EC%9E%A5" target="_blank" rel="noopener noreferrer">하남 종합운동장 지도 보기 →</a>
+          <a class="cta" href="https://map.kakao.com/link/search/%ED%95%98%EB%82%A8%EC%A2%85%ED%95%A9%EC%9A%B4%EB%8F%99%EC%9E%A5" target="_blank" rel="noopener noreferrer">하남 종합운동장 지도 보기 →</a>
 
           <div class="staff">
             <h2 style="margin:0;">운영진 정보</h2>
@@ -959,17 +1089,18 @@
       function initStaff() {
         const ops = ["나올", "밍경", "김땅콩", "슈퍼짹", "뽀용"];
         const sorted = sortKoreanDesc(ops);
-        const container = document.getElementById("ops-chips");
-        if (!container) return;
-        container.innerHTML = "";
-        sorted.forEach(name => {
-          const chip = document.createElement("span");
-          chip.className = "chip";
-          chip.textContent = name;
-          container.appendChild(chip);
+        ["ops-chips", "home-ops-chips"].forEach(id => {
+          const container = document.getElementById(id);
+          if (!container) return;
+          container.innerHTML = "";
+          sorted.forEach(name => {
+            const chip = document.createElement("span");
+            chip.className = "chip";
+            chip.textContent = name;
+            container.appendChild(chip);
+          });
         });
       }
-
       function initInterval() {
         const form = document.getElementById("interval-form");
         if (!form) return;
@@ -1224,22 +1355,22 @@
 
         ctx.fillStyle = "rgba(17,17,17,.68)";
         ctx.font = "900 25px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        ctx.fillText("노빠꾸 러닝 크루", cardX + 70, cardY + 198);
+        ctx.fillText("NBRC", cardX + 70, cardY + 198);
 
         const infoY = cardY + 225;
         ctx.save();
         ctx.fillStyle = "rgba(255,106,0,0.09)";
-        roundedRect(ctx, cardX + 70, infoY, cardW - 140, 92, 18);
+        roundedRect(ctx, cardX + 70, infoY, cardW - 140, 112, 18);
         ctx.fill();
         ctx.fillStyle = orange;
-        roundedRect(ctx, cardX + 70, infoY, 12, 92, 6);
+        roundedRect(ctx, cardX + 70, infoY, 12, 112, 6);
         ctx.fill();
         ctx.restore();
 
         ctx.fillStyle = "rgba(17,17,17,.48)";
         ctx.font = "900 14px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
         ctx.fillText("EVENT", cardX + 96, infoY + 30);
-        ctx.fillText("DATE / PLACE", cardX + 96, infoY + 72);
+        ctx.fillText("DATE / PLACE", cardX + 96, infoY + 84);
 
         ctx.fillStyle = ink;
         ctx.font = "900 42px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
@@ -1248,18 +1379,18 @@
         const metaText = [evDate, evLocation].filter(Boolean).join(" · ");
         ctx.fillStyle = "rgba(17,17,17,.68)";
         ctx.font = "900 26px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        ctx.fillText(metaText || "—", cardX + 250, infoY + 75);
+        ctx.fillText(metaText || "—", cardX + 250, infoY + 88);
 
         ctx.strokeStyle = "rgba(0,0,0,.12)";
         ctx.lineWidth = 2;
         ctx.beginPath();
-        ctx.moveTo(cardX + 70, cardY + 342);
-        ctx.lineTo(cardX + cardW - 70, cardY + 342);
+        ctx.moveTo(cardX + 70, cardY + 372);
+        ctx.lineTo(cardX + cardW - 70, cardY + 372);
         ctx.stroke();
 
         // 메달 영역은 기존 사진 직접 추가 영역과 같은 크기/위치를 유지합니다.
         const px = cardX + 44;
-        const py = cardY + 300;
+        const py = cardY + 390;
         const pw = cardW - 88;
         const ph = cardY + cardH - 44 - py;
 
