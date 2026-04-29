@@ -684,7 +684,46 @@
         box-shadow: 0 0 0 3px rgba(255, 106, 0, 0.16);
       }
 
-      .actions {
+
+      .preset-panel {
+        grid-column: span 12;
+        display: grid;
+        gap: 10px;
+        padding: 12px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .preset-group {
+        display: grid;
+        grid-template-columns: 76px minmax(0, 1fr);
+        gap: 8px;
+        align-items: center;
+      }
+      .preset-label {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 900;
+      }
+      .preset-buttons {
+        display: flex;
+        gap: 7px;
+        flex-wrap: wrap;
+      }
+      .quick-pick {
+        min-height: 32px;
+        border-radius: 999px;
+        padding: 6px 10px;
+        border: 1px solid rgba(255, 106, 0, 0.34);
+        background: rgba(255, 106, 0, 0.14);
+        color: var(--text);
+        font-size: 12px;
+        font-weight: 900;
+        cursor: pointer;
+      }
+      @media (max-width: 720px) {
+        .preset-group { grid-template-columns: 1fr; }
+      }      .actions {
         grid-column: span 12;
         display: flex;
         gap: 10px;
@@ -776,9 +815,9 @@
 
       <nav class="tabs" aria-label="탭">
         <a class="tab" data-tab="home" href="#/">홈</a>
-        <a class="tab" data-tab="interval" href="#/interval">인터벌</a>
-        <a class="tab" data-tab="certificate" href="#/certificate">기록증</a>
         <a class="tab" data-tab="regular" href="#/regular">정기런</a>
+        <a class="tab" data-tab="certificate" href="#/certificate">기록증</a>
+        <a class="tab" data-tab="interval" href="#/interval">인터벌</a>
       </nav>
       <button type="button" class="mobile-join-jump" id="mobile-join-jump">가입 안내</button>
 
@@ -799,7 +838,7 @@
             <div class="hero-panel" aria-label="모임 핵심 정보">
               <div class="hero-stat"><strong>수요일 20:00</strong><span>정기런 진행</span></div>
               <div class="hero-stat"><strong>페이스별 그룹</strong><span>컨디션에 맞춰 편하게 선택</span></div>
-              <div class="hero-stat"><strong>기록증 출력</strong><span>완주 사진과 기록을 PNG로 저장</span></div>
+              <div class="hero-stat"><strong>신규 회원</strong><span>정기런 참석 후 가입승인</span></div>
             </div>
           </section>
 
@@ -908,6 +947,53 @@
           <p class="muted">워크/휴식 페이스 + 400/200 등 → 표</p>
 
           <form id="interval-form" style="margin-top:12px;">
+            <div class="preset-panel" aria-label="인터벌 빠른 선택">
+              <div class="preset-group">
+                <span class="preset-label">추천 조합</span>
+                <div class="preset-buttons">
+                  <button type="button" class="quick-pick" data-work="4:30" data-rest="6:30" data-pattern="400/200" data-reps="10">400/200 × 10</button>
+                  <button type="button" class="quick-pick" data-work="4:45" data-rest="6:40" data-pattern="800/400" data-reps="6">800/400 × 6</button>
+                  <button type="button" class="quick-pick" data-work="5:00" data-rest="7:00" data-pattern="1000/400" data-reps="5">1000/400 × 5</button>
+                </div>
+              </div>
+              <div class="preset-group">
+                <span class="preset-label">워크</span>
+                <div class="preset-buttons">
+                  <button type="button" class="quick-pick" data-target="int-work-pace" data-value="4:00">4:00</button>
+                  <button type="button" class="quick-pick" data-target="int-work-pace" data-value="4:30">4:30</button>
+                  <button type="button" class="quick-pick" data-target="int-work-pace" data-value="5:00">5:00</button>
+                  <button type="button" class="quick-pick" data-target="int-work-pace" data-value="5:30">5:30</button>
+                </div>
+              </div>
+              <div class="preset-group">
+                <span class="preset-label">휴식</span>
+                <div class="preset-buttons">
+                  <button type="button" class="quick-pick" data-target="int-rest-pace" data-value="6:00">6:00</button>
+                  <button type="button" class="quick-pick" data-target="int-rest-pace" data-value="6:30">6:30</button>
+                  <button type="button" class="quick-pick" data-target="int-rest-pace" data-value="7:00">7:00</button>
+                  <button type="button" class="quick-pick" data-target="int-rest-pace" data-value="8:00">8:00</button>
+                </div>
+              </div>
+              <div class="preset-group">
+                <span class="preset-label">패턴</span>
+                <div class="preset-buttons">
+                  <button type="button" class="quick-pick" data-target="int-pattern" data-value="200/200">200/200</button>
+                  <button type="button" class="quick-pick" data-target="int-pattern" data-value="400/200">400/200</button>
+                  <button type="button" class="quick-pick" data-target="int-pattern" data-value="800/400">800/400</button>
+                  <button type="button" class="quick-pick" data-target="int-pattern" data-value="1000/400">1000/400</button>
+                </div>
+              </div>
+              <div class="preset-group">
+                <span class="preset-label">횟수</span>
+                <div class="preset-buttons">
+                  <button type="button" class="quick-pick" data-target="int-reps" data-value="5">5회</button>
+                  <button type="button" class="quick-pick" data-target="int-reps" data-value="6">6회</button>
+                  <button type="button" class="quick-pick" data-target="int-reps" data-value="8">8회</button>
+                  <button type="button" class="quick-pick" data-target="int-reps" data-value="10">10회</button>
+                  <button type="button" class="quick-pick" data-target="int-reps" data-value="12">12회</button>
+                </div>
+              </div>
+            </div>
             <div class="field">
               <label for="int-work-pace">워크 페이스(/km)</label>
               <input id="int-work-pace" placeholder="예: 4:30" autocomplete="off" />
@@ -1172,6 +1258,19 @@ function route() {
         const result = document.getElementById("int-result");
         const tbody = document.getElementById("int-table");
         const total = document.getElementById("int-total");
+
+        form.querySelectorAll(".quick-pick").forEach(btn => {
+          btn.addEventListener("click", () => {
+            if (btn.dataset.target) {
+              const target = document.getElementById(btn.dataset.target);
+              if (target) target.value = btn.dataset.value || "";
+            }
+            if (btn.dataset.work) workPace.value = btn.dataset.work;
+            if (btn.dataset.rest) restPace.value = btn.dataset.rest;
+            if (btn.dataset.pattern) pattern.value = btn.dataset.pattern;
+            if (btn.dataset.reps) repsInput.value = btn.dataset.reps;
+          });
+        });
 
         document.getElementById("int-reset")?.addEventListener("click", () => {
           form.reset();
@@ -1563,6 +1662,8 @@ function route() {
     </script>
   </body>
 </html>
+
+
 
 
 
