@@ -334,6 +334,124 @@
       .card h3 { margin: 14px 0 8px; font-size: 14px; color: var(--text); }
       .card p { margin: 0; color: var(--muted); font-size: 13px; }
 
+      .home-feature-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+        gap: 14px;
+      }
+
+      .showcase-card {
+        display: grid;
+        grid-template-columns: minmax(210px, 0.72fr) minmax(0, 1fr);
+        gap: 18px;
+        align-items: center;
+      }
+
+      .cert-mini {
+        min-height: 320px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        background: #fff;
+        color: #111;
+        overflow: hidden;
+        position: relative;
+        box-shadow: inset 0 0 0 7px #fff;
+      }
+      .cert-mini::before,
+      .cert-mini::after {
+        content: "";
+        position: absolute;
+        left: 18px;
+        right: 18px;
+        height: 7px;
+        border-radius: 999px;
+        background: var(--accent);
+        z-index: 2;
+      }
+      .cert-mini::before { top: 18px; }
+      .cert-mini::after { bottom: 18px; }
+      .cert-mini-head {
+        position: relative;
+        z-index: 2;
+        padding: 42px 24px 12px;
+      }
+      .cert-mini-title {
+        display: block;
+        font-size: 22px;
+        font-weight: 900;
+        letter-spacing: 0;
+      }
+      .cert-mini-event {
+        display: block;
+        margin-top: 8px;
+        font-size: 15px;
+        font-weight: 900;
+      }
+      .cert-mini-photo {
+        position: absolute;
+        left: 24px;
+        right: 24px;
+        bottom: 34px;
+        height: 170px;
+        border-radius: 14px;
+        background: linear-gradient(180deg, rgba(255,255,255,.52), rgba(255,255,255,0)), url("./medal.png?v=7030") center / cover no-repeat;
+      }
+      .cert-mini-record {
+        position: absolute;
+        z-index: 3;
+        left: 0;
+        right: 0;
+        top: 158px;
+        text-align: center;
+        font-size: 52px;
+        font-weight: 900;
+        color: #ffd1b8;
+        -webkit-text-stroke: 4px #000;
+        text-shadow: 0 5px 18px rgba(0,0,0,.45);
+      }
+
+      .guide-list {
+        margin: 12px 0 0;
+        padding-left: 18px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .guide-list li { margin: 7px 0; }
+
+      .map-panel {
+        display: grid;
+        align-content: space-between;
+        gap: 14px;
+      }
+      .map-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .map-title strong { font-size: 18px; }
+
+      .cert-guide {
+        margin-top: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 14px;
+        padding: 12px 14px;
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .cert-guide strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--text);
+        font-size: 13px;
+      }
+      .cert-guide ol {
+        margin: 0;
+        padding-left: 18px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+      .cert-guide li { margin: 5px 0; }
+
       @media (max-width: 720px) {
         .container { padding: 14px 12px 46px; }
         header { align-items: flex-start; flex-direction: column; }
@@ -349,6 +467,8 @@
         .hero-lead { overflow-wrap: anywhere; }
         .hero-panel { grid-template-columns: minmax(0, 1fr); }
         .hero::after { opacity: 0.10; }
+        .home-feature-row, .showcase-card { grid-template-columns: 1fr; }
+        .cert-mini { min-height: 300px; }
       }
       .cta {
         margin-top: 12px;
@@ -476,7 +596,7 @@
         overflow: hidden;
         background: rgba(255, 255, 255, 0.05);
       }
-      canvas { display: block; width: 100%; height: auto; background: #fff; border-radius: 14px; }
+      canvas { display: block; width: 100%; height: auto; background: transparent; border-radius: 14px; }
 
       .staff {
         display: grid;
@@ -512,20 +632,6 @@
 
   <body>
     <div class="container">
-      <header>
-        <h1>노빠꾸 러닝 크루🏃</h1>
-        <div class="header-right">
-          <span class="builtby">built by <b>나올</b></span>
-          <a
-            class="linkbtn"
-            href="https://www.daangn.com/kr/group/%EB%85%B8%EB%B9%A0%EA%BE%B8-%EB%9F%AC%EB%8B%9D%ED%81%AC%EB%A3%A8-no-back-rc-1yeomgcwmnyx/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            당근 모임 바로가기 →
-          </a>
-        </div>
-      </header>
 
       <nav class="tabs" aria-label="탭">
         <a class="tab" data-tab="home" href="#/">홈</a>
@@ -569,7 +675,7 @@
               <div>
                 <span class="feature-icon">🏁</span>
                 <h2>기록증 출력</h2>
-                <p>대회명, 닉네임, 기록, 사진을 넣어 크루용 완주 기록증을 만듭니다.</p>
+                <p>대회명, 닉네임, 기록을 넣어 크루용 완주 기록증을 만듭니다.</p>
               </div>
               <span class="cta">열기 →</span>
             </a>
@@ -582,6 +688,40 @@
               </div>
               <span class="cta">열기 →</span>
             </a>
+          </div>
+
+          <div class="home-feature-row">
+            <section class="card showcase-card" aria-label="기록증 예시와 입력 안내">
+              <div class="cert-mini" aria-hidden="true">
+                <div class="cert-mini-head">
+                  <span class="cert-mini-title">CERTIFICATE</span>
+                  <span class="cert-mini-event">노빠꾸 아나바다</span>
+                </div>
+                <div class="cert-mini-record">55:31</div>
+                <div class="cert-mini-photo"></div>
+              </div>
+              <div>
+                <h2>완주 기록증 만들기</h2>
+                <p>대회명, 날짜, 장소, 거리, 닉네임, 기록을 입력하고 재생을 누르면 메달 이미지가 들어간 PNG 기록증이 생성됩니다.</p>
+                <ol class="guide-list">
+                  <li>대회명과 날짜, 장소를 입력합니다.</li>
+                  <li>거리와 닉네임, 기록을 입력합니다.</li>
+                  <li>Bib 번호가 있으면 함께 넣고 PNG로 저장합니다.</li>
+                </ol>
+                <a class="cta" href="#/certificate">기록증 만들기 →</a>
+              </div>
+            </section>
+
+            <section class="card map-panel" aria-label="정기런 집합 장소">
+              <div>
+                <div class="map-title"><strong>정기런 집합 장소</strong><span class="pill">하남</span></div>
+                <p style="margin-top:8px;">집합 장소는 하남 종합운동장 기준으로 안내합니다. 처음 오시는 분은 지도에서 위치를 먼저 확인해 주세요.</p>
+              </div>
+              <div class="hero-actions" style="margin-top:0;">
+                <a class="primary-action" href="https://map.naver.com/p/search/%ED%95%98%EB%82%A8%20%EC%A2%85%ED%95%A9%EC%9A%B4%EB%8F%99%EC%9E%A5" target="_blank" rel="noopener noreferrer">지도 보기 →</a>
+                <a class="secondary-action" href="#/regular">정기런 안내</a>
+              </div>
+            </section>
           </div>
         </div>
       </section>
@@ -643,6 +783,15 @@
           <h2>기록증 출력</h2>
           <p class="muted">기본 메달 이미지가 들어간 노빠꾸 기록증을 출력합니다.</p>
 
+          <div class="cert-guide">
+            <strong>입력 방법</strong>
+            <ol>
+              <li>대회명, 날짜, 장소를 먼저 입력합니다.</li>
+              <li>거리, 닉네임, 기록을 입력하고 Bib 번호는 선택으로 넣습니다.</li>
+              <li>재생을 누른 뒤 PNG 다운로드로 기록증만 저장합니다.</li>
+            </ol>
+          </div>
+
           <form id="cert-form" style="margin-top:12px;">
             <div class="field"><label for="cert-name">대회명</label><input id="cert-name" placeholder="예: 더레이스 서울" /></div>
             <div class="field"><label for="cert-date">날짜</label><input id="cert-date" placeholder="예: 2026-04-05" /></div>
@@ -696,6 +845,7 @@
 
           <p class="muted" style="margin-top:12px;">기타 인터벌 등 별도 훈련은 자유롭게 진행하시면 됩니다.</p>
           <p class="muted">늦지 않게 와서 몸 먼저 풀고 바로 출발할 수 있게 준비 부탁드립니다 😊</p>
+          <a class="cta" href="https://map.naver.com/p/search/%ED%95%98%EB%82%A8%20%EC%A2%85%ED%95%A9%EC%9A%B4%EB%8F%99%EC%9E%A5" target="_blank" rel="noopener noreferrer">하남 종합운동장 지도 보기 →</a>
 
           <div class="staff">
             <h2 style="margin:0;">운영진 정보</h2>
@@ -1018,17 +1168,15 @@
         const H = canvas.height;
 
         ctx.clearRect(0, 0, W, H);
-        ctx.fillStyle = "#ffffff";
-        ctx.fillRect(0, 0, W, H);
 
         const logo = await loadOptionalImage("./logo.png?v=7030");
         const photo = await loadDefaultMedalImage();
 
-        const pad = 70;
+        const pad = 24;
         const cardX = pad;
-        const cardY = 120;
+        const cardY = pad;
         const cardW = W - pad * 2;
-        const cardH = H - 220;
+        const cardH = H - pad * 2;
         const orange = "#ff6a00";
         const ink = "#111111";
 
@@ -1053,7 +1201,7 @@
         ctx.lineWidth = 8;
         ctx.lineCap = "round";
         for (let i = 0; i < 4; i += 1) {
-          const x = cardX + cardW - 230 + i * 42;
+          const x = cardX + cardW - 245 + i * 42;
           ctx.beginPath();
           ctx.moveTo(x, cardY + 72);
           ctx.lineTo(x + 54, cardY + 26);
@@ -1063,28 +1211,50 @@
 
         ctx.textAlign = "left";
         ctx.textBaseline = "alphabetic";
+        ctx.fillStyle = orange;
+        roundedRect(ctx, cardX + 70, cardY + 68, 210, 34, 17);
+        ctx.fill();
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "900 16px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        ctx.fillText("OFFICIAL RECORD", cardX + 88, cardY + 91);
+
         ctx.fillStyle = ink;
-        ctx.font = "900 62px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        ctx.fillText("CERTIFICATE OF RECORD", cardX + 70, cardY + 115);
+        ctx.font = "900 64px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        ctx.fillText("CERTIFICATE OF RECORD", cardX + 70, cardY + 158);
 
         ctx.fillStyle = "rgba(17,17,17,.68)";
         ctx.font = "900 25px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        ctx.fillText("노빠꾸 러닝 크루", cardX + 70, cardY + 155);
+        ctx.fillText("노빠꾸 러닝 크루", cardX + 70, cardY + 198);
+
+        const infoY = cardY + 225;
+        ctx.save();
+        ctx.fillStyle = "rgba(255,106,0,0.09)";
+        roundedRect(ctx, cardX + 70, infoY, cardW - 140, 92, 18);
+        ctx.fill();
+        ctx.fillStyle = orange;
+        roundedRect(ctx, cardX + 70, infoY, 12, 92, 6);
+        ctx.fill();
+        ctx.restore();
+
+        ctx.fillStyle = "rgba(17,17,17,.48)";
+        ctx.font = "900 14px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        ctx.fillText("EVENT", cardX + 96, infoY + 30);
+        ctx.fillText("DATE / PLACE", cardX + 96, infoY + 72);
 
         ctx.fillStyle = ink;
-        ctx.font = "900 54px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        ctx.fillText(evName, cardX + 70, cardY + 225);
+        ctx.font = "900 42px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        ctx.fillText(evName, cardX + 250, infoY + 34);
 
         const metaText = [evDate, evLocation].filter(Boolean).join(" · ");
-        ctx.fillStyle = "rgba(17,17,17,.62)";
+        ctx.fillStyle = "rgba(17,17,17,.68)";
         ctx.font = "900 26px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        ctx.fillText(metaText || "—", cardX + 70, cardY + 265);
+        ctx.fillText(metaText || "—", cardX + 250, infoY + 75);
 
         ctx.strokeStyle = "rgba(0,0,0,.12)";
         ctx.lineWidth = 2;
         ctx.beginPath();
-        ctx.moveTo(cardX + 70, cardY + 305);
-        ctx.lineTo(cardX + cardW - 70, cardY + 305);
+        ctx.moveTo(cardX + 70, cardY + 342);
+        ctx.lineTo(cardX + cardW - 70, cardY + 342);
         ctx.stroke();
 
         // 메달 영역은 기존 사진 직접 추가 영역과 같은 크기/위치를 유지합니다.
