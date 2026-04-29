@@ -148,12 +148,148 @@
       .view { display: none; }
       .view.active { display: block; }
 
-      .grid {
+      .home-stack {
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 14px;
       }
-      @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        min-height: 430px;
+        border-radius: var(--radius);
+        background:
+          linear-gradient(120deg, rgba(0, 0, 0, 0.91), rgba(0, 0, 0, 0.68) 54%, rgba(255, 106, 0, 0.24)),
+          url("./bg.jpg?v=7030");
+        background-size: cover, 420px auto;
+        background-position: center, center;
+        background-repeat: no-repeat, repeat;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        color: var(--text);
+        padding: 30px;
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(220px, 0.85fr);
+        gap: 24px;
+        align-items: end;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: auto 24px 24px auto;
+        width: min(280px, 42vw);
+        height: min(180px, 28vw);
+        background: url("./logo.png?v=7030") center / contain no-repeat;
+        opacity: 0.18;
+        pointer-events: none;
+      }
+
+      .hero-copy,
+      .hero-panel {
+        min-width: 0;
+        position: relative;
+        z-index: 1;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        width: max-content;
+        max-width: 100%;
+        margin-bottom: 14px;
+        border: 1px solid rgba(255, 106, 0, 0.38);
+        border-radius: 999px;
+        padding: 7px 11px;
+        background: rgba(255, 106, 0, 0.16);
+        color: rgba(255, 255, 255, 0.88);
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .hero h2 {
+        margin: 0;
+        max-width: 680px;
+        color: #fff;
+        font-size: 44px;
+        line-height: 1.08;
+        letter-spacing: 0;
+      }
+
+      .hero-lead {
+        margin: 14px 0 0;
+        max-width: 610px;
+        color: rgba(255, 255, 255, 0.76);
+        font-size: 15px;
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 22px;
+      }
+
+      .primary-action,
+      .secondary-action {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 42px;
+        border-radius: 999px;
+        padding: 10px 14px;
+        font-size: 13px;
+        font-weight: 800;
+        white-space: nowrap;
+      }
+
+      .primary-action {
+        background: var(--accent);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        color: #111;
+      }
+
+      .secondary-action {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        color: var(--text);
+      }
+
+      .hero-panel {
+        align-self: stretch;
+        display: grid;
+        gap: 10px;
+        align-content: end;
+      }
+
+      .hero-stat {
+        display: grid;
+        gap: 4px;
+        min-height: 76px;
+        padding: 14px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(0, 0, 0, 0.48);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+
+      .hero-stat strong {
+        color: #fff;
+        font-size: 20px;
+      }
+
+      .hero-stat span {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+      @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
 
       .card {
         border-radius: var(--radius);
@@ -166,10 +302,52 @@
         color: var(--text);
       }
 
-      .card h2 { margin: 0 0 6px; font-size: 16px; color: var(--text); }
+      .feature-card {
+        min-height: 178px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+      }
+      .feature-card:hover {
+        transform: translateY(-2px);
+        border-color: rgba(255, 106, 0, 0.48);
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.44));
+      }
+
+      .feature-icon {
+        width: 38px;
+        height: 38px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 14px;
+        border-radius: 12px;
+        background: rgba(255, 106, 0, 0.16);
+        border: 1px solid rgba(255, 106, 0, 0.34);
+        font-size: 18px;
+      }
+
+      .card h2 { margin: 0 0 6px; font-size: 17px; color: var(--text); }
       .card h3 { margin: 14px 0 8px; font-size: 14px; color: var(--text); }
       .card p { margin: 0; color: var(--muted); font-size: 13px; }
 
+      @media (max-width: 720px) {
+        .container { padding: 14px 12px 46px; }
+        header { align-items: flex-start; flex-direction: column; }
+        .header-right { width: 100%; justify-content: flex-start; }
+        .builtby { display: none; }
+        .linkbtn { max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
+        .hero {
+          min-height: auto;
+          grid-template-columns: 1fr;
+          padding: 24px 18px;
+        }
+        .hero h2 { max-width: 100%; font-size: 28px; line-height: 1.16; overflow-wrap: anywhere; }
+        .hero-lead { overflow-wrap: anywhere; }
+        .hero-panel { grid-template-columns: minmax(0, 1fr); }
+        .hero::after { opacity: 0.10; }
+      }
       .cta {
         margin-top: 12px;
         display: inline-flex;
@@ -238,7 +416,6 @@
         color: var(--text);
         outline: none;
       }
-      input[type="file"] { padding: 8px 10px; }
       input:focus {
         border-color: rgba(255, 106, 0, 0.6);
         box-shadow: 0 0 0 3px rgba(255, 106, 0, 0.16);
@@ -357,27 +534,55 @@
 
       <!-- HOME -->
       <section id="view-home" class="view">
-        <div class="grid">
-          <a class="card" href="#/interval">
-            <h2>인터벌</h2>
-            <p>400/200 등 구간 시간 계산</p>
-            <span class="cta">열기 →</span>
-          </a>
+        <div class="home-stack">
+          <section class="hero" aria-label="노빠꾸 러닝 크루 소개">
+            <div class="hero-copy">
+              <span class="eyebrow">NO BACK RUNNING CREW</span>
+              <h2>함께 뛰면,<br />오늘의 페이스가<br />조금 더 가벼워집니다.</h2>
+              <p class="hero-lead">꾸준히 함께 뛰는 러닝 모임입니다.<br />정기런과 훈련 도구를 확인하세요.</p>
+              <div class="hero-actions">
+                <a class="primary-action" href="#/regular">정기런 보기 →</a>
+                <a class="secondary-action" href="https://www.daangn.com/kr/group/%EB%85%B8%EB%B9%A0%EA%BE%B8-%EB%9F%AC%EB%8B%9D%ED%81%AC%EB%A3%A8-no-back-rc-1yeomgcwmnyx/" target="_blank" rel="noopener noreferrer">모임 바로가기</a>
+              </div>
+            </div>
 
-          <a class="card" href="#/certificate">
-            <h2>기록증</h2>
-            <p>사진은 크게 · 기록 우선</p>
-            <span class="cta">열기 →</span>
-          </a>
+            <div class="hero-panel" aria-label="모임 핵심 정보">
+              <div class="hero-stat"><strong>수요일 20:00</strong><span>정기런 진행</span></div>
+              <div class="hero-stat"><strong>페이스별 그룹</strong><span>컨디션에 맞춰 편하게 선택</span></div>
+              <div class="hero-stat"><strong>기록증 출력</strong><span>완주 사진과 기록을 PNG로 저장</span></div>
+            </div>
+          </section>
 
-          <a class="card" href="#/regular">
-            <h2>정기런</h2>
-            <p>매주 수요일 20:00 안내</p>
-            <span class="cta">열기 →</span>
-          </a>
+          <div class="grid">
+            <a class="card feature-card" href="#/interval">
+              <div>
+                <span class="feature-icon">⏱</span>
+                <h2>인터벌 계산기</h2>
+                <p>400/200 같은 훈련 구간을 입력하면 워크/휴식 시간을 바로 계산합니다.</p>
+              </div>
+              <span class="cta">열기 →</span>
+            </a>
+
+            <a class="card feature-card" href="#/certificate">
+              <div>
+                <span class="feature-icon">🏁</span>
+                <h2>기록증 출력</h2>
+                <p>대회명, 닉네임, 기록, 사진을 넣어 크루용 완주 기록증을 만듭니다.</p>
+              </div>
+              <span class="cta">열기 →</span>
+            </a>
+
+            <a class="card feature-card" href="#/regular">
+              <div>
+                <span class="feature-icon">📍</span>
+                <h2>정기런 안내</h2>
+                <p>집합, 스트레칭, 페이스 그룹 운영 방식까지 한 번에 확인합니다.</p>
+              </div>
+              <span class="cta">열기 →</span>
+            </a>
+          </div>
         </div>
       </section>
-
       <!-- INTERVAL -->
       <section id="view-interval" class="view">
         <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">인터벌</div></div>
@@ -434,7 +639,7 @@
 
         <div class="card">
           <h2>기록증 출력</h2>
-          <p class="muted">사진은 크게(기록 영역까지 올라와도 OK) · 텍스트는 항상 우선</p>
+          <p class="muted">기본 메달 이미지가 들어간 노빠꾸 기록증을 출력합니다.</p>
 
           <form id="cert-form" style="margin-top:12px;">
             <div class="field"><label for="cert-name">대회명</label><input id="cert-name" placeholder="예: 더레이스 서울" /></div>
@@ -444,13 +649,6 @@
             <div class="field"><label for="cert-bib">Bib (선택)</label><input id="cert-bib" inputmode="numeric" placeholder="예: 40222" /></div>
             <div class="field"><label for="cert-nick">닉네임</label><input id="cert-nick" placeholder="예: 나올" /></div>
             <div class="field"><label for="cert-time">기록</label><input id="cert-time" placeholder="예: 1:03:58 또는 54:00" /></div>
-
-            <div class="field">
-              <label for="cert-photo">사진 (선택)</label>
-              <input id="cert-photo" type="file" accept="image/*" />
-              <div class="help">사진 없어도 출력됩니다.</div>
-            </div>
-
             <div class="actions">
               <button type="submit">재생</button>
               <button type="button" id="cert-download" disabled>PNG 다운로드</button>
@@ -717,15 +915,6 @@
         ctx.fillText(text, x, y);
       }
 
-      function readFileAsDataURL(file) {
-        return new Promise((resolve, reject) => {
-          const reader = new FileReader();
-          reader.onload = () => resolve(reader.result);
-          reader.onerror = reject;
-          reader.readAsDataURL(file);
-        });
-      }
-
       async function loadImage(src) {
         return new Promise((resolve, reject) => {
           const img = new Image();
@@ -739,15 +928,8 @@
         try { return await loadImage(src); } catch { return null; }
       }
 
-      async function loadOptionalFileImage(inputEl) {
-        const file = inputEl?.files?.[0];
-        if (!file) return null;
-        try {
-          const dataUrl = await readFileAsDataURL(file);
-          return await loadImage(dataUrl);
-        } catch {
-          return null;
-        }
+      async function loadDefaultMedalImage() {
+        return await loadOptionalImage("./medal.png?v=7030") || await loadOptionalImage("./medal.PNG?v=7030");
       }
 
       function drawContainImage(ctx, img, x, y, w, h) {
@@ -822,8 +1004,6 @@
         const bib = String(document.getElementById("cert-bib")?.value || "").trim();
         const nick = String(document.getElementById("cert-nick")?.value || "").trim();
         const timeSec = parseTimeToSeconds(document.getElementById("cert-time")?.value);
-        const photoInput = document.getElementById("cert-photo");
-
         if (!evName) return setCertError("대회명을 입력해 주세요.");
         if (!nick) return setCertError("닉네임을 입력해 주세요.");
         if (!timeSec || timeSec <= 0) return setCertError("기록 시간을 올바르게 입력해 주세요.");
@@ -848,7 +1028,7 @@
         }
 
         const logo = await loadOptionalImage("./logo.png?v=7030");
-        const photo = await loadOptionalFileImage(photoInput);
+        const photo = await loadDefaultMedalImage();
 
         const pad = 70;
         const cardX = pad;
@@ -871,9 +1051,8 @@
         roundedRect(ctx, cardX, cardY, cardW, 18, 10);
         ctx.fill();
 
-        // ===== BIG PHOTO AREA: mid -> bottom (can go behind record area) =====
-        // Start under header line, so photo is actually big and visible.
-        // Text will stay readable by gradient brightening near top.
+        // ===== DEFAULT MEDAL AREA: same size as the old uploaded photo area =====
+        // Text stays readable by gradient brightening near top.
         if (photo) {
           const px = cardX + 44;
           const py = cardY + 300;                  // ⬅️ 사진이 여기서 시작 (기록 뒤까지 올라옴)
@@ -888,7 +1067,7 @@
           ctx.fillStyle = "rgba(0,0,0,0.03)";
           ctx.fillRect(px, py, pw, ph);
 
-          // image (contain)
+          // medal image (same contain sizing as the old uploaded photo)
           drawContainImage(ctx, photo, px, py, pw, ph);
 
           // very light overall tone control (doesn't kill photo)
@@ -1018,7 +1197,7 @@
             ctx.restore();
           }
         }
-        // ✅ photo 있을 때: 우하단 로고 등 추가 요소 없음(요청 반영)
+        // 메달 이미지가 있을 때: 우하단 로고 등 추가 요소 없음
 
         // footer
         ctx.textAlign = "center";
