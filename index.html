@@ -632,7 +632,27 @@
         margin-bottom: 12px;
       }
 
-      .back {
+      .topbar-actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .ops-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 32px;
+        border-radius: 999px;
+        padding: 6px 10px;
+        border: 1px solid rgba(255, 106, 0, 0.34);
+        background: rgba(255, 106, 0, 0.14);
+        color: var(--text);
+        font-size: 12px;
+        font-weight: 900;
+        white-space: nowrap;
+      }      .back {
         display: inline-flex;
         align-items: center;
         gap: 8px;
@@ -941,7 +961,7 @@
       </section>
       <!-- INTERVAL -->
       <section id="view-interval" class="view">
-        <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">인터벌</div></div>
+        <div class="topbar"><a class="back" href="#/">← 홈</a><div class="topbar-actions"><a class="ops-link" href="https://noback-lineup-generator.netlify.app/" target="_blank" rel="noopener noreferrer">라인업 생성기 ↗</a><div class="pill">인터벌</div></div></div>
         <div class="card">
           <h2>인터벌 계산기</h2>
           <p class="muted">워크/휴식 페이스 + 400/200 등 → 표</p>
@@ -1662,6 +1682,7 @@ function route() {
     </script>
   </body>
 </html>
+
 
 
 
