@@ -161,7 +161,7 @@
         min-height: 430px;
         border-radius: var(--radius);
         background:
-          linear-gradient(120deg, rgba(0, 0, 0, 0.91), rgba(0, 0, 0, 0.68) 54%, rgba(255, 106, 0, 0.24)),
+          linear-gradient(120deg, rgba(0, 0, 0, 0.68), rgba(0, 0, 0, 0.46) 54%, rgba(255, 106, 0, 0.16)),
           url("./bg.jpg?v=7030");
         background-size: cover, 420px auto;
         background-position: center, center;
@@ -271,7 +271,7 @@
         padding: 14px;
         border-radius: 14px;
         border: 1px solid rgba(255, 255, 255, 0.14);
-        background: rgba(0, 0, 0, 0.48);
+        background: rgba(255, 255, 255, 0.10);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
       }
@@ -492,20 +492,20 @@
         width: 28px;
         height: 28px;
         border-radius: 999px;
-        background: rgba(255, 255, 255, 0.12);
-        border: 1px solid rgba(255, 255, 255, 0.22);
-        color: rgba(255, 255, 255, 0.92);
+        background: rgba(255, 106, 0, 0.18);
+        border: 1px solid rgba(255, 106, 0, 0.34);
+        color: #ffd1b8;
         font-size: 13px;
         font-weight: 900;
       }
       .join-card .eyebrow {
-        background: rgba(255, 255, 255, 0.08);
-        border-color: rgba(255, 255, 255, 0.18);
-        color: rgba(255, 255, 255, 0.86);
+        background: rgba(255, 106, 0, 0.12);
+        border-color: rgba(255, 106, 0, 0.34);
+        color: #ffd1b8;
       }
       .join-card .primary-action {
-        background: rgba(255, 255, 255, 0.10);
-        border-color: rgba(255, 255, 255, 0.20);
+        background: rgba(255, 106, 0, 0.18);
+        border-color: rgba(255, 106, 0, 0.34);
         color: var(--text);
       }
       .join-step strong {
@@ -553,6 +553,16 @@
         display: flex;
         gap: 7px;
         flex-wrap: wrap;
+      }
+      .support-detail {
+        display: grid;
+        gap: 8px;
+        min-width: 0;
+      }
+      .support-caption {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 800;
       }
       .mobile-join-jump {
         display: none;
@@ -869,15 +879,15 @@
           <section class="card support-card" aria-label="도움 주시는 분들">
             <div class="support-head">
               <div>
-                <span class="eyebrow">NBRC STAFF</span>
-                <h2>도움 주시는 분들</h2>
-                <p>정기런 진행과 신규 회원 안내를 함께 챙겨주시는 분들입니다.</p>
+                <span class="eyebrow">NBRC STAFF ✨</span>
+                <h2>도움 주시는 분들 🙌</h2>
+                <p>정기런 진행, 신규 회원 안내, 현장 분위기를 함께 챙겨주는 든든한 NBRC 서포터즈입니다.</p>
               </div>
-              <span class="pill">운영진</span>
+              <span class="pill">함께 만드는 NBRC ✨</span>
             </div>
             <div class="support-rows">
-              <div class="support-row"><span class="support-label">👑 크루장</span><div class="chipline"><span class="chip">망구</span></div></div>
-              <div class="support-row"><span class="support-label">운영진</span><div class="chipline" id="home-ops-chips"></div></div>
+              <div class="support-row"><span class="support-label">👑 크루장</span><div class="support-detail"><div class="chipline"><span class="chip">총괄 리딩 🏁</span></div><div class="chipline"><span class="chip">망구</span></div></div></div>
+              <div class="support-row"><span class="support-label">🤝 운영진</span><div class="support-detail"><div class="chipline"><span class="chip">정기런 진행 🏃</span><span class="chip">출석 체크 ✅</span><span class="chip">페이스 케어 ⏱</span><span class="chip">신규 회원 안내 💬</span></div><div class="support-caption">함께 챙겨주는 운영진</div><div class="chipline" id="home-ops-chips"></div></div></div>
             </div>
           </section>
         </div>
@@ -1381,6 +1391,15 @@ function route() {
         }
         ctx.restore();
 
+        const setFitFont = (text, maxWidth, maxSize, minSize, weight = 900) => {
+          let size = maxSize;
+          do {
+            ctx.font = `${weight} ${size}px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial`;
+            if (ctx.measureText(text).width <= maxWidth || size <= minSize) break;
+            size -= 2;
+          } while (size > minSize);
+        };
+
         ctx.textAlign = "left";
         ctx.textBaseline = "alphabetic";
         ctx.fillStyle = orange;
@@ -1391,7 +1410,7 @@ function route() {
         ctx.fillText("OFFICIAL RECORD", cardX + 88, cardY + 91);
 
         ctx.fillStyle = ink;
-        ctx.font = "900 64px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        setFitFont("CERTIFICATE OF RECORD", cardW - 140, 56, 44);
         ctx.fillText("CERTIFICATE OF RECORD", cardX + 70, cardY + 158);
 
         ctx.fillStyle = "rgba(17,17,17,.68)";
@@ -1414,12 +1433,12 @@ function route() {
         ctx.fillText("DATE / PLACE", cardX + 96, infoY + 84);
 
         ctx.fillStyle = ink;
-        ctx.font = "900 42px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        setFitFont(evName, cardW - 320, 36, 24);
         ctx.fillText(evName, cardX + 250, infoY + 34);
 
         const metaText = [evDate, evLocation].filter(Boolean).join(" · ");
         ctx.fillStyle = "rgba(17,17,17,.68)";
-        ctx.font = "900 26px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+        setFitFont(metaText || "—", cardW - 320, 25, 18);
         ctx.fillText(metaText || "—", cardX + 250, infoY + 88);
 
         ctx.strokeStyle = "rgba(0,0,0,.12)";
@@ -1536,6 +1555,9 @@ function route() {
     </script>
   </body>
 </html>
+
+
+
 
 
 
