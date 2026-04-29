@@ -492,10 +492,21 @@
         width: 28px;
         height: 28px;
         border-radius: 999px;
-        background: var(--accent);
-        color: #111;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        color: rgba(255, 255, 255, 0.92);
         font-size: 13px;
         font-weight: 900;
+      }
+      .join-card .eyebrow {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.18);
+        color: rgba(255, 255, 255, 0.86);
+      }
+      .join-card .primary-action {
+        background: rgba(255, 255, 255, 0.10);
+        border-color: rgba(255, 255, 255, 0.20);
+        color: var(--text);
       }
       .join-step strong {
         display: block;
@@ -543,7 +554,29 @@
         gap: 7px;
         flex-wrap: wrap;
       }
+      .mobile-join-jump {
+        display: none;
+        position: fixed;
+        right: 14px;
+        bottom: 14px;
+        z-index: 30;
+        min-height: 38px;
+        padding: 9px 13px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        background: rgba(17, 17, 17, 0.74);
+        color: rgba(255, 255, 255, 0.94);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        font-size: 12px;
+        font-weight: 900;
+        cursor: pointer;
+      }
       @media (max-width: 720px) {
+        body[data-view="home"] .mobile-join-jump { display: inline-flex; align-items: center; justify-content: center; }
+        .home-feature-row .map-panel { order: -1; }
+
         .container { padding: 14px 12px 46px; }
         header { align-items: flex-start; flex-direction: column; }
         .header-right { width: 100%; justify-content: flex-start; }
@@ -730,6 +763,7 @@
         <a class="tab" data-tab="certificate" href="#/certificate">기록증</a>
         <a class="tab" data-tab="regular" href="#/regular">정기런</a>
       </nav>
+      <button type="button" class="mobile-join-jump" id="mobile-join-jump">가입 안내</button>
 
       <!-- HOME -->
       <section id="view-home" class="view">
@@ -781,7 +815,7 @@
             </a>
           </div>
 
-          <section class="card join-card" aria-label="신규 회원 가입 승인 안내">
+          <section class="card join-card" id="join-info" aria-label="신규 회원 가입 승인 안내">
             <div>
               <span class="eyebrow">JOIN NBRC</span>
               <h2>신규 회원 가입 안내</h2>
@@ -994,6 +1028,7 @@
 
         initRouter();
         initStaff();
+        initMobileJoinJump();
         initInterval();
         initCertificate();
         route();
@@ -1001,7 +1036,13 @@
 
       function initRouter() { window.addEventListener("hashchange", route); }
 
-      function route() {
+      function initMobileJoinJump() {
+        document.getElementById("mobile-join-jump")?.addEventListener("click", () => {
+          document.getElementById("join-info")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      }
+
+function route() {
         const raw = (location.hash || "#/").toLowerCase();
         const normalized = raw.startsWith("#/") ? raw : raw.startsWith("#") ? "#/" + raw.slice(1) : "#/";
 
@@ -1495,6 +1536,9 @@
     </script>
   </body>
 </html>
+
+
+
 
 
 
