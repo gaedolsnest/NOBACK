@@ -878,8 +878,32 @@
       .course-grid,
       .shoe-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        grid-template-columns: 1fr;
         gap: 14px;
+      }
+      .shoe-category {
+        display: grid;
+        gap: 12px;
+      }
+      .shoe-category-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: start;
+        padding-bottom: 10px;
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.16);
+      }
+      .shoe-category-head h3 {
+        margin: 0;
+        font-size: 18px;
+      }
+      .shoe-category-head p {
+        max-width: 620px;
+      }
+      .shoe-options {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 10px;
       }
       .course-card,
       .shoe-card {
@@ -913,16 +937,18 @@
         background: linear-gradient(135deg, rgba(255, 106, 0, 0.16), rgba(255, 255, 255, 0.06));
       }
       .shoe-brand {
-        width: 48px;
+        min-width: 72px;
+        width: auto;
         height: 48px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
+        padding: 0 12px;
         border-radius: 16px;
         border: 1px solid rgba(255, 106, 0, 0.34);
         background: rgba(255, 106, 0, 0.16);
         color: #ffd1b8;
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 900;
       }
       .shoe-use {
@@ -1322,68 +1348,152 @@
                 <span class="eyebrow">SHOE GUIDE</span>
                 <h3>러닝화 추천</h3>
               </div>
-              <p class="muted">이미지 대신 깨지지 않는 브랜드 카드로 구성했습니다. 모델명은 참고용이며, 최종 선택은 착화감과 사이즈가 우선입니다.</p>
+              <p class="muted">러닝 목적에 맞춰 여러 브랜드의 대표 모델을 가볍게 비교해보세요. 최종 선택은 착화감과 사이즈가 가장 중요합니다.</p>
             </div>
 
             <div class="shoe-grid">
-              <article class="card shoe-card">
-                <div class="shoe-visual"><span class="shoe-brand">AS</span><div class="shoe-use"><strong>조깅용</strong><span>편한 데일리</span></div></div>
-                <div>
-                  <h3>ASICS GEL-CUMULUS / Novablast</h3>
-                  <div class="shoe-meta"><span class="chip">초보~중급</span><span class="chip">데일리</span><span class="chip">중립 쿠션</span></div>
-                  <p>매주 꾸준히 조깅할 때 부담이 적은 범용 데일리 트레이너 계열입니다.</p>
+              <article class="card shoe-category">
+                <div class="shoe-category-head">
+                  <div><h3>조깅용 · 데일리</h3><p class="muted">처음 신거나 주 2~4회 꾸준히 달릴 때 무난한 기본 로테이션입니다.</p></div>
+                  <span class="pill">Easy Run</span>
                 </div>
-                <a class="cta" href="https://www.asics.com/us/en-us/running-shoes/c/aa80201000/" target="_blank" rel="noopener noreferrer">공식 보기 →</a>
+                <div class="shoe-options">
+                  <div class="card shoe-card">
+                    <div class="shoe-visual"><span class="shoe-brand">NIKE</span><div class="shoe-use"><strong>Pegasus</strong><span>올라운더</span></div></div>
+                    <p>페가수스 계열. 가벼운 조깅부터 일상 훈련까지 폭넓게 쓰기 좋습니다.</p>
+                    <a class="cta" href="https://www.nike.com/kr/w/running-shoes-37v7jzy7ok" target="_blank" rel="noopener noreferrer">한국 공홈 →</a>
+                  </div>
+                  <div class="card shoe-card">
+                    <div class="shoe-visual"><span class="shoe-brand">ASICS</span><div class="shoe-use"><strong>CUMULUS</strong><span>중립 쿠션</span></div></div>
+                    <p>젤-큐물러스/노바블라스트 계열. 편한 착지감과 반발감의 균형형입니다.</p>
+                    <a class="cta" href="https://www.asics.co.kr/" target="_blank" rel="noopener noreferrer">한국 공홈 →</a>
+                  </div>
+                  <div class="card shoe-card">
+                    <div class="shoe-visual"><span class="shoe-brand">NB</span><div class="shoe-use"><strong>880</strong><span>기본 훈련</span></div></div>
+                    <p>880 계열. 과하지 않은 쿠션과 안정적인 착화감으로 데일리 러닝에 어울립니다.</p>
+                    <a class="cta" href="https://www.nbkorea.com/" target="_blank" rel="noopener noreferrer">한국 공홈 →</a>
+                  </div>
+                </div>
               </article>
 
-              <article class="card shoe-card">
-                <div class="shoe-visual"><span class="shoe-brand">NB</span><div class="shoe-use"><strong>리커버리용</strong><span>푹신한 회복</span></div></div>
-                <div>
-                  <h3>New Balance 1080 / More</h3>
-                  <div class="shoe-meta"><span class="chip">회복주</span><span class="chip">장거리 조깅</span><span class="chip">맥스 쿠션</span></div>
-                  <p>대회 다음날이나 긴 조깅처럼 충격을 줄이고 싶은 날에 어울리는 쿠션 계열입니다.</p>
+              <article class="card shoe-category">
+                <div class="shoe-category-head">
+                  <div><h3>리커버리용 · 쿠션화</h3><p class="muted">대회 다음날, 긴 조깅, 피로한 날처럼 충격을 줄이고 싶은 날에 좋습니다.</p></div>
+                  <span class="pill">Recovery</span>
                 </div>
-                <a class="cta" href="https://www.newbalance.com/running/" target="_blank" rel="noopener noreferrer">공식 보기 →</a>
+                <div class="shoe-options">
+                  <div class="card shoe-card">
+                    <div class="shoe-visual"><span class="shoe-brand">ASICS</span><div class="shoe-use"><strong>NIMBUS</strong><span>맥스 쿠션</span></div></div>
+                    <p>젤-님버스 계열. 부드럽고 두툼한 쿠션감으로 회복주에 잘 맞습니다.</p>
+                    <a class="cta" href="https://www.asics.co.kr/" target="_blank" rel="noopener noreferrer">한국 공홈 →</a>
+                  </div>
+                  <div class="card shoe-card">
+                    <div class="shoe-visual"><span class="shoe-brand">HOKA</span><div class="shoe-use"><strong>Bondi</strong><span>푹신함</span></div></div>
+                    <p>본디 계열. 두꺼운 미드솔과 부드러운 롤링감으로 천천히 오래 뛰기 좋습니다.</p>
+                    <a class="cta" href="https://www.hoka.com/ko/kr/" target="_blank" rel="noopener noreferrer">한국 공홈 →</a>
+                  </div>
+                  <div class="card shoe-card">
+                    <div class="shoe-visual"><span class="shoe-brand">NB</span><div class="shoe-use"><strong>1080</strong><span>장거리 조깅</span></div></div>
+                    <p>1080 계열. 편안한 쿠션을 원하는 중립 러너의 회복/장거리 조깅용으로 무난합니다.</p>
+                    <a class="cta" href="https://www.nbkorea.com/" target="_blank" rel="noopener noreferrer">한국 공홈 →</a>
+                  </div>
+                </div>
               </article>
 
-              <article class="card shoe-card">
-                <div class="shoe-visual"><span class="shoe-brand">BR</span><div class="shoe-use"><strong>안정화</strong><span>발목/무릎 보호</span></div></div>
-                <div>
-                  <h3>Brooks Adrenaline GTS / ASICS Kayano</h3>
-                  <div class="shoe-meta"><span class="chip">과회내</span><span class="chip">평발 경향</span><span class="chip">서포트</span></div>
-                  <p>발이 안쪽으로 무너지는 느낌이 있거나 안정감이 필요한 러너에게 맞는 계열입니다.</p>
+              <article class="card shoe-category">
+                <div class="shoe-category-head">
+                  <div><h3>안정화</h3><p class="muted">발이 안쪽으로 무너지거나 무릎/발목이 불안한 러너가 참고하기 좋은 계열입니다.</p></div>
+                  <span class="pill">Stability</span>
                 </div>
-                <a class="cta" href="https://www.brooksrunning.com/en_us/mens/shoes/road-running-shoes/" target="_blank" rel="noopener noreferrer">공식 보기 →</a>
+                <div class="shoe-options">
+                  <div class="card shoe-card">
+                    <div class="shoe-visual"><span class="shoe-brand">ASICS</span><div class="shoe-use"><strong>KAYANO</strong><span>프리미엄 안정</span></div></div>
+                    <p>젤-카야노 계열. 안정성과 쿠션을 함께 원하는 러너에게 대표적인 선택지입니다.</p>
+                    <a class="cta" href="https://www.asics.co.kr/" target="_blank" rel="noopener noreferrer">한국 공홈 →</a>
+                  </div>
+                  <div class="card shoe-card">
+                    <div class="shoe-visual"><span class="shoe-brand">BROOKS</span><div class="shoe-use"><strong>Adrenaline</strong><span>가이드</span></div></div>
+                    <p>아드레날린 GTS 계열. 과한 흔들림을 잡아주는 안정화로 많이 언급됩니다.</p>
+                    <a class="cta" href="https://brooksrunning.co.kr/" target="_blank" rel="noopener noreferrer">한국 공홈 →</a>
+                  </div>
+                  <div class="card shoe-card">
+                    <div class="shoe-visual"><span class="shoe-brand">NB</span><div class="shoe-use"><strong>860</strong><span>서포트</span></div></div>
+                    <p>860 계열. 뉴발란스의 안정화 라인으로, 평발/과회내 경향 러너가 참고하기 좋습니다.</p>
+                    <a class="cta" href="https://www.nbkorea.com/" target="_blank" rel="noopener noreferrer">한국 공홈 →</a>
+                  </div>
+                </div>
               </article>
 
-              <article class="card shoe-card">
-                <div class="shoe-visual"><span class="shoe-brand">SA</span><div class="shoe-use"><strong>훈련용</strong><span>템포/지속주</span></div></div>
-                <div>
-                  <h3>Saucony Endorphin Speed / Ride</h3>
-                  <div class="shoe-meta"><span class="chip">페이스업</span><span class="chip">템포런</span><span class="chip">훈련화</span></div>
-                  <p>평소 조깅보다 빠르게 밀어붙이는 템포런이나 지속주에 쓰기 좋은 라인입니다.</p>
+              <article class="card shoe-category">
+                <div class="shoe-category-head">
+                  <div><h3>훈련용 · 템포런</h3><p class="muted">정기런보다 빠르게 밀거나 지속주, 템포런을 할 때 쓰기 좋은 중간 단계입니다.</p></div>
+                  <span class="pill">Tempo</span>
                 </div>
-                <a class="cta" href="https://www.saucony.com/en/running/" target="_blank" rel="noopener noreferrer">공식 보기 →</a>
+                <div class="shoe-options">
+                  <div class="card shoe-card">
+                    <div class="shoe-visual"><span class="shoe-brand">SAUCONY</span><div class="shoe-use"><strong>Speed</strong><span>업템포</span></div></div>
+                    <p>엔돌핀 스피드 계열. 빠른 훈련과 장거리 템포런 사이를 잘 커버합니다.</p>
+                    <a class="cta" href="https://www.saucony.co.kr/" target="_blank" rel="noopener noreferrer">한국 공홈 →</a>
+                  </div>
+                  <div class="card shoe-card">
+                    <div class="shoe-visual"><span class="shoe-brand">ADIDAS</span><div class="shoe-use"><strong>Boston</strong><span>지속주</span></div></div>
+                    <p>아디오스/보스턴 계열. 스피드 훈련과 긴 페이스주를 겸하기 좋은 라인입니다.</p>
+                    <a class="cta" href="https://www.adidas.co.kr/running-shoes" target="_blank" rel="noopener noreferrer">한국 공홈 →</a>
+                  </div>
+                  <div class="card shoe-card">
+                    <div class="shoe-visual"><span class="shoe-brand">HOKA</span><div class="shoe-use"><strong>Mach</strong><span>스피드 훈련</span></div></div>
+                    <p>마하 계열. 가볍고 경쾌한 착지감으로 템포/파틀렉에 어울립니다.</p>
+                    <a class="cta" href="https://www.hoka.com/ko/kr/" target="_blank" rel="noopener noreferrer">한국 공홈 →</a>
+                  </div>
+                </div>
               </article>
 
-              <article class="card shoe-card">
-                <div class="shoe-visual"><span class="shoe-brand">AD</span><div class="shoe-use"><strong>인터벌용</strong><span>짧고 빠르게</span></div></div>
-                <div>
-                  <h3>adidas Takumi Sen / Boston</h3>
-                  <div class="shoe-meta"><span class="chip">400/1000</span><span class="chip">스피드</span><span class="chip">가벼움</span></div>
-                  <p>짧은 반복주나 빠른 페이스 훈련처럼 발을 빨리 돌리는 날에 어울리는 계열입니다.</p>
+              <article class="card shoe-category">
+                <div class="shoe-category-head">
+                  <div><h3>인터벌용 · 스피드</h3><p class="muted">400/200, 1000m 반복주처럼 짧고 빠르게 발을 돌리는 날에 어울립니다.</p></div>
+                  <span class="pill">Interval</span>
                 </div>
-                <a class="cta" href="https://www.adidas.com/us/running-shoes" target="_blank" rel="noopener noreferrer">공식 보기 →</a>
+                <div class="shoe-options">
+                  <div class="card shoe-card">
+                    <div class="shoe-visual"><span class="shoe-brand">ADIDAS</span><div class="shoe-use"><strong>Takumi</strong><span>짧은 레이스</span></div></div>
+                    <p>타쿠미 센 계열. 5K~10K나 빠른 반복주에 어울리는 경량 스피드화입니다.</p>
+                    <a class="cta" href="https://www.adidas.co.kr/running-shoes" target="_blank" rel="noopener noreferrer">한국 공홈 →</a>
+                  </div>
+                  <div class="card shoe-card">
+                    <div class="shoe-visual"><span class="shoe-brand">ASICS</span><div class="shoe-use"><strong>Magic</strong><span>스피드</span></div></div>
+                    <p>매직 스피드 계열. 빠른 훈련 입문용으로 쓰기 좋은 반응성 중심 라인입니다.</p>
+                    <a class="cta" href="https://www.asics.co.kr/" target="_blank" rel="noopener noreferrer">한국 공홈 →</a>
+                  </div>
+                  <div class="card shoe-card">
+                    <div class="shoe-visual"><span class="shoe-brand">SAUCONY</span><div class="shoe-use"><strong>Kinvara</strong><span>가벼움</span></div></div>
+                    <p>킨바라 계열. 낮은 무게감과 자연스러운 접지감으로 빠른 훈련에 쓰기 좋습니다.</p>
+                    <a class="cta" href="https://www.saucony.co.kr/" target="_blank" rel="noopener noreferrer">한국 공홈 →</a>
+                  </div>
+                </div>
               </article>
 
-              <article class="card shoe-card">
-                <div class="shoe-visual"><span class="shoe-brand">NI</span><div class="shoe-use"><strong>대회용</strong><span>기록 도전</span></div></div>
-                <div>
-                  <h3>Nike Vaporfly / Alphafly</h3>
-                  <div class="shoe-meta"><span class="chip">레이스</span><span class="chip">카본</span><span class="chip">5K~풀</span></div>
-                  <p>기록을 노리는 대회 날에 쓰는 고반발 레이싱화 계열입니다. 적응주를 먼저 해보는 편이 좋습니다.</p>
+              <article class="card shoe-category">
+                <div class="shoe-category-head">
+                  <div><h3>대회용 · 기록 도전</h3><p class="muted">레이스 당일 기록을 노릴 때 쓰는 고반발/카본 계열입니다. 적응주를 먼저 해보는 편이 좋습니다.</p></div>
+                  <span class="pill">Race Day</span>
                 </div>
-                <a class="cta" href="https://about.nike.com/en/newsroom/collections/nike-running-shoes" target="_blank" rel="noopener noreferrer">공식 보기 →</a>
+                <div class="shoe-options">
+                  <div class="card shoe-card">
+                    <div class="shoe-visual"><span class="shoe-brand">NIKE</span><div class="shoe-use"><strong>Vaporfly</strong><span>카본 레이스</span></div></div>
+                    <p>베이퍼플라이/알파플라이 계열. 5K부터 풀까지 기록 도전용으로 많이 쓰입니다.</p>
+                    <a class="cta" href="https://www.nike.com/kr/w/running-shoes-37v7jzy7ok" target="_blank" rel="noopener noreferrer">한국 공홈 →</a>
+                  </div>
+                  <div class="card shoe-card">
+                    <div class="shoe-visual"><span class="shoe-brand">ASICS</span><div class="shoe-use"><strong>METASPEED</strong><span>레이싱</span></div></div>
+                    <p>메타스피드 계열. 빠른 페이스와 대회 기록을 목표로 하는 러너가 참고할 만합니다.</p>
+                    <a class="cta" href="https://www.asics.co.kr/" target="_blank" rel="noopener noreferrer">한국 공홈 →</a>
+                  </div>
+                  <div class="card shoe-card">
+                    <div class="shoe-visual"><span class="shoe-brand">SAUCONY</span><div class="shoe-use"><strong>Elite</strong><span>풀 카본</span></div></div>
+                    <p>엔돌핀 프로/엘리트 계열. 써코니의 레이스 데이용 카본 슈즈 라인입니다.</p>
+                    <a class="cta" href="https://www.saucony.co.kr/" target="_blank" rel="noopener noreferrer">한국 공홈 →</a>
+                  </div>
+                </div>
               </article>
             </div>
           </section>
