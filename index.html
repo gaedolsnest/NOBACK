@@ -875,6 +875,12 @@
       .recommend-head p {
         max-width: 620px;
       }
+      .section-jumps {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 14px;
+      }
       .course-grid,
       .shoe-grid {
         display: grid;
@@ -1252,14 +1258,18 @@
         <div class="card">
           <h2>코스북 & 러닝화</h2>
           <p class="muted">재밌게 찍히는 GPS 코스와 용도별 러닝화 추천을 한 곳에 모았습니다. 코스는 실제 주행 전 지도앱으로 동선을 확인하고, 신발은 발 모양과 부상 이력에 맞춰 신어본 뒤 고르는 걸 권장합니다.</p>
+          <div class="section-jumps" aria-label="코스북 빠른 이동">
+            <a class="cta" href="#course-routes">러닝 코스 보기 →</a>
+            <a class="cta" href="#shoe-guide">러닝화 추천 보기 →</a>
+          </div>
 
-          <section class="recommend-section" aria-label="러닝 코스 추천">
+          <section class="recommend-section" id="course-routes" aria-label="러닝 코스 추천">
             <div class="recommend-head">
               <div>
                 <span class="eyebrow">ROUTE BOOK</span>
                 <h3>러닝 코스</h3>
               </div>
-              <p class="muted">GPS 그림은 빼고, 거리와 출발 힌트, 참고 링크 중심으로 정리했습니다.</p>
+              <p class="muted">가볍게 둘러보기 좋은 코스와 GPS 아트 코스를 모았습니다. 자세한 동선은 참고 링크와 지도앱에서 확인해 주세요.</p>
             </div>
 
             <div class="course-grid">
@@ -1342,13 +1352,16 @@
             </div>
           </section>
 
-          <section class="recommend-section" aria-label="러닝화 추천">
+          <section class="recommend-section" id="shoe-guide" aria-label="러닝화 추천">
             <div class="recommend-head">
               <div>
                 <span class="eyebrow">SHOE GUIDE</span>
                 <h3>러닝화 추천</h3>
               </div>
               <p class="muted">러닝 목적에 맞춰 여러 브랜드의 대표 모델을 가볍게 비교해보세요. 최종 선택은 착화감과 사이즈가 가장 중요합니다.</p>
+            </div>
+            <div class="section-jumps" aria-label="러닝화 섹션 빠른 이동">
+              <a class="cta" href="#course-routes">러닝 코스로 이동 ↑</a>
             </div>
 
             <div class="shoe-grid">
