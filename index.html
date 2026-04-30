@@ -639,6 +639,26 @@
         gap: 8px;
         flex-wrap: wrap;
       }
+
+      .lineup-frame {
+        width: 100%;
+        min-height: 760px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.05);
+        overflow: hidden;
+      }
+      .lineup-frame iframe {
+        display: block;
+        width: 100%;
+        height: 760px;
+        border: 0;
+        background: #fff;
+      }
+      @media (max-width: 720px) {
+        .lineup-frame { min-height: 680px; }
+        .lineup-frame iframe { height: 680px; }
+      }
       .ops-link {
         display: inline-flex;
         align-items: center;
@@ -652,7 +672,9 @@
         font-size: 12px;
         font-weight: 900;
         white-space: nowrap;
-      }      .back {
+      }
+
+      .back {
         display: inline-flex;
         align-items: center;
         gap: 8px;
@@ -838,6 +860,7 @@
         <a class="tab" data-tab="regular" href="#/regular">정기런</a>
         <a class="tab" data-tab="certificate" href="#/certificate">기록증</a>
         <a class="tab" data-tab="interval" href="#/interval">인터벌</a>
+        <a class="tab" data-tab="lineup" href="#/lineup">라인업</a>
       </nav>
       <button type="button" class="mobile-join-jump" id="mobile-join-jump">가입 안내</button>
 
@@ -961,7 +984,7 @@
       </section>
       <!-- INTERVAL -->
       <section id="view-interval" class="view">
-        <div class="topbar"><a class="back" href="#/">← 홈</a><div class="topbar-actions"><a class="ops-link" href="https://noback-lineup-generator.netlify.app/" target="_blank" rel="noopener noreferrer">라인업 생성기 ↗</a><div class="pill">인터벌</div></div></div>
+        <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">인터벌</div></div>
         <div class="card">
           <h2>인터벌 계산기</h2>
           <p class="muted">워크/휴식 페이스 + 400/200 등 → 표</p>
@@ -1052,6 +1075,18 @@
             </table>
 
             <div id="int-total" class="pill" style="width:max-content;"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LINEUP -->
+      <section id="view-lineup" class="view">
+        <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">운영진</div></div>
+        <div class="card">
+          <h2>라인업 생성기</h2>
+          <p class="muted">운영진이 정기런 페이스 그룹을 정리할 때 사용하는 페이지입니다.</p>
+          <div class="lineup-frame" style="margin-top:12px;">
+            <iframe src="https://noback-lineup-generator.netlify.app/" title="노빠꾸 라인업 생성기"></iframe>
           </div>
         </div>
       </section>
@@ -1166,7 +1201,7 @@
         });
       }
 
-function route() {
+      function route() {
         const raw = (location.hash || "#/").toLowerCase();
         const normalized = raw.startsWith("#/") ? raw : raw.startsWith("#") ? "#/" + raw.slice(1) : "#/";
 
@@ -1175,7 +1210,8 @@ function route() {
           normalized.startsWith("#/home") ||
           normalized.startsWith("#/interval") ||
           normalized.startsWith("#/certificate") ||
-          normalized.startsWith("#/regular");
+          normalized.startsWith("#/regular") ||
+          normalized.startsWith("#/lineup");
 
         if (!known) { location.replace("#/"); return; }
 
@@ -1183,6 +1219,7 @@ function route() {
           normalized.startsWith("#/interval") ? "interval" :
           normalized.startsWith("#/certificate") ? "certificate" :
           normalized.startsWith("#/regular") ? "regular" :
+          normalized.startsWith("#/lineup") ? "lineup" :
           "home";
 
         document.querySelectorAll(".view").forEach(v => v.classList.remove("active"));
@@ -1682,6 +1719,9 @@ function route() {
     </script>
   </body>
 </html>
+
+
+
 
 
 
