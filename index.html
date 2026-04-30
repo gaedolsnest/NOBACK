@@ -765,7 +765,42 @@
       }
       @media (max-width: 720px) {
         .preset-group { grid-template-columns: 1fr; }
-      }      .actions {
+      }
+
+      .certificate-workspace {
+        display: grid;
+        grid-template-columns: minmax(260px, 0.82fr) minmax(360px, 1.18fr);
+        gap: 14px;
+        align-items: start;
+        margin-top: 12px;
+      }
+      .certificate-inputs,
+      .certificate-preview {
+        min-width: 0;
+      }
+      .certificate-inputs .field {
+        grid-column: span 12;
+      }
+      .certificate-preview-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 8px;
+      }
+      .certificate-preview-head strong {
+        color: var(--text);
+        font-size: 13px;
+      }
+      .certificate-preview-head span {
+        color: var(--muted);
+        font-size: 12px;
+      }
+      @media (max-width: 900px) {
+        .certificate-workspace { grid-template-columns: 1fr; }
+      }
+
+      .actions {
         grid-column: span 12;
         display: flex;
         gap: 10px;
@@ -943,7 +978,7 @@
               </div>
               <div>
                 <h2>완주 기록증 만들기</h2>
-                <p>대회명, 날짜, 장소, 거리, 닉네임, 기록을 입력하고 재생을 누르면 메달 이미지가 들어간 PNG 기록증이 생성됩니다.</p>
+                <p>대회명, 날짜, 장소, 거리, 닉네임, 기록을 입력하면 메달 이미지가 들어간 PNG 기록증을 미리 볼 수 있습니다.</p>
                 <ol class="guide-list">
                   <li>대회명과 날짜, 장소를 입력합니다.</li>
                   <li>거리와 닉네임, 기록을 입력합니다.</li>
@@ -1104,29 +1139,39 @@
             <ol>
               <li>대회명, 날짜, 장소를 먼저 입력합니다.</li>
               <li>거리, 닉네임, 기록을 입력하고 Bib 번호는 선택으로 넣습니다.</li>
-              <li>재생을 누른 뒤 PNG 다운로드로 기록증만 저장합니다.</li>
+              <li>미리보기를 확인한 뒤 PNG 다운로드로 기록증만 저장합니다.</li>
             </ol>
           </div>
 
-          <form id="cert-form" style="margin-top:12px;">
-            <div class="field"><label for="cert-name">대회명</label><input id="cert-name" placeholder="예: 더레이스 서울" /></div>
-            <div class="field"><label for="cert-date">날짜</label><input id="cert-date" placeholder="예: 2026-04-05" /></div>
-            <div class="field"><label for="cert-location">장소</label><input id="cert-location" placeholder="예: 서울" /></div>
-            <div class="field"><label for="cert-distance">거리</label><input id="cert-distance" placeholder="예: 10K / 21K / 42K" /></div>
-            <div class="field"><label for="cert-bib">Bib (선택)</label><input id="cert-bib" inputmode="numeric" placeholder="예: 40222" /></div>
-            <div class="field"><label for="cert-nick">닉네임</label><input id="cert-nick" placeholder="예: 나올" /></div>
-            <div class="field"><label for="cert-time">기록</label><input id="cert-time" placeholder="예: 1:03:58 또는 54:00" /></div>
-            <div class="actions">
-              <button type="submit">재생</button>
-              <button type="button" id="cert-download" disabled>PNG 다운로드</button>
-              <button type="button" class="ghost" id="cert-reset">초기화</button>
+          <div class="certificate-workspace">
+            <div class="certificate-inputs">
+              <form id="cert-form">
+                <div class="field"><label for="cert-name">대회명</label><input id="cert-name" placeholder="예: 더레이스 서울" /></div>
+                <div class="field"><label for="cert-date">날짜</label><input id="cert-date" type="date" /></div>
+                <div class="field"><label for="cert-location">장소</label><input id="cert-location" placeholder="예: 서울" /></div>
+                <div class="field"><label for="cert-distance">거리</label><input id="cert-distance" placeholder="예: 10K / 21K / 42K" /></div>
+                <div class="field"><label for="cert-bib">Bib (선택)</label><input id="cert-bib" inputmode="numeric" placeholder="예: 40222" /></div>
+                <div class="field"><label for="cert-nick">닉네임</label><input id="cert-nick" placeholder="예: 나올" /></div>
+                <div class="field"><label for="cert-time">기록</label><input id="cert-time" placeholder="예: 1:03:58 또는 54:00" /></div>
+                <div class="actions">
+                  <button type="submit">미리보기</button>
+                  <button type="button" id="cert-download" disabled>PNG 다운로드</button>
+                  <button type="button" class="ghost" id="cert-reset">초기화</button>
+                </div>
+              </form>
+
+              <div id="cert-error" class="error" style="display:none;"></div>
             </div>
-          </form>
 
-          <div id="cert-error" class="error" style="display:none;"></div>
-
-          <div class="canvas-wrap">
-            <canvas id="cert-canvas" width="1200" height="1600"></canvas>
+            <div class="certificate-preview">
+              <div class="certificate-preview-head">
+                <strong>실시간 미리보기</strong>
+                <span>입력하면 오른쪽에 바로 반영됩니다.</span>
+              </div>
+              <div class="canvas-wrap">
+                <canvas id="cert-canvas" width="1200" height="1600"></canvas>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -1469,6 +1514,25 @@
 
         const form = document.getElementById("cert-form");
         if (!form) return;
+        let previewTimer = null;
+        const refreshPreview = () => {
+          clearTimeout(previewTimer);
+          previewTimer = setTimeout(() => {
+            const hasCoreValues = ["cert-name", "cert-nick", "cert-time"].every(id => String(document.getElementById(id)?.value || "").trim());
+            if (!hasCoreValues) {
+              setCertError("");
+              setDownloadEnabled(false);
+              paintBlankCanvas();
+              return;
+            }
+            generateCertificatePreview(false);
+          }, 220);
+        };
+
+        form.querySelectorAll("input").forEach(input => {
+          input.addEventListener("input", refreshPreview);
+          input.addEventListener("change", refreshPreview);
+        });
 
         document.getElementById("cert-reset")?.addEventListener("click", () => {
           form.reset();
@@ -1489,13 +1553,17 @@
 
         form.addEventListener("submit", async (e) => {
           e.preventDefault();
-          await generateCertificatePreview();
+          await generateCertificatePreview(true);
         });
       }
 
-      async function generateCertificatePreview() {
+      async function generateCertificatePreview(showErrors = true) {
         setCertError("");
         setDownloadEnabled(false);
+        const fail = (msg) => {
+          if (showErrors) setCertError(msg);
+          return false;
+        };
 
         const evName = String(document.getElementById("cert-name")?.value || "").trim();
         const evDate = String(document.getElementById("cert-date")?.value || "").trim();
@@ -1504,9 +1572,9 @@
         const bib = String(document.getElementById("cert-bib")?.value || "").trim();
         const nick = String(document.getElementById("cert-nick")?.value || "").trim();
         const timeSec = parseTimeToSeconds(document.getElementById("cert-time")?.value);
-        if (!evName) return setCertError("대회명을 입력해 주세요.");
-        if (!nick) return setCertError("닉네임을 입력해 주세요.");
-        if (!timeSec || timeSec <= 0) return setCertError("기록 시간을 올바르게 입력해 주세요.");
+        if (!evName) return fail("대회명을 입력해 주세요.");
+        if (!nick) return fail("닉네임을 입력해 주세요.");
+        if (!timeSec || timeSec <= 0) return fail("기록 시간을 올바르게 입력해 주세요.");
 
         const canvas = document.getElementById("cert-canvas");
         const ctx = canvas.getContext("2d");
@@ -1715,6 +1783,7 @@
         const safeEventName = evName.replace(/\s+/g, "_");
         const safeNick = nick.replace(/\s+/g, "_");
         setDownloadEnabled(true, `noback_${safeEventName}_${safeNick}.png`);
+        return true;
       }
     </script>
   </body>
