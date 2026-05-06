@@ -1,0 +1,59 @@
+{
+  "updatedAt": "2026-05-06T23:38:14.211Z",
+  "events": [
+    {
+      "name": "2026 아이오닉9 TNF 100 KOREA",
+      "date": "2026-05-16",
+      "location": "강원 강릉",
+      "category": "트레일",
+      "distance": "10K / 50K / 100K",
+      "note": "강릉 산길을 길게 즐기는 대표 트레일 러닝 대회입니다.",
+      "url": "https://www.tnf100korea.com/"
+    },
+    {
+      "name": "2026 한라산 100 트레일런",
+      "date": "2026-06-06",
+      "location": "제주 한라산 일대",
+      "category": "트레일",
+      "distance": "10K / 40K / 100K",
+      "note": "제주 한라산 일대를 달리는 장거리 트레일 일정입니다.",
+      "url": "https://www.koreatrailrunning.com/"
+    },
+    {
+      "name": "2026 iM뱅크 코리아 오픈 마라톤",
+      "date": "2026-06-07",
+      "location": "서울 여의도공원",
+      "category": "로드",
+      "distance": "5K / 10K / Half",
+      "note": "서울 도심에서 참가하기 좋은 로드 대회입니다.",
+      "url": "https://www.korearace.com/"
+    },
+    {
+      "name": "2026 큰별쌤과 함께하는 나눔 마라톤",
+      "date": "2026-06-27",
+      "location": "서울 상암 평화의공원",
+      "category": "로드",
+      "distance": "5K / 10K / Half",
+      "note": "상암 일대에서 열리는 나눔 콘셉트의 마라톤입니다.",
+      "url": "https://www.kimrunning.com/"
+    },
+    {
+      "name": "2026 성남 트레일 레이스",
+      "date": "2026-09-12",
+      "location": "경기 성남",
+      "category": "트레일",
+      "distance": "12K / 21K / 50K / 100K",
+      "note": "가을 시즌 트레일 참가를 노려보기 좋은 일정입니다.",
+      "url": "https://www.koreatrailrunning.com/"
+    },
+    {
+      "name": "2026 JTBC 서울마라톤",
+      "date": "2026-11-01",
+      "location": "서울",
+      "category": "마라톤",
+      "distance": "Full / 10K",
+      "note": "하반기 대표 도심 마라톤 일정입니다.",
+      "url": "https://marathon.jtbc.com/"
+    }
+  ]
+}
