@@ -284,6 +284,66 @@
         font-size: 12px;
       }
 
+      .event-board {
+        display: grid;
+        gap: 12px;
+      }
+      .event-board-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .event-board-head h2 {
+        margin: 0;
+      }
+      .event-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 10px;
+      }
+      .event-item {
+        display: grid;
+        gap: 10px;
+        padding: 13px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .event-topline {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+      }
+      .event-dday {
+        min-width: 54px;
+        text-align: center;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 106, 0, 0.34);
+        background: rgba(255, 106, 0, 0.14);
+        color: #ffd1b8;
+        padding: 5px 8px;
+        font-size: 12px;
+        font-weight: 900;
+      }
+      .event-name {
+        color: var(--text);
+        font-weight: 900;
+        font-size: 15px;
+        line-height: 1.35;
+      }
+      .event-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .event-note {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
       .grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -1037,6 +1097,20 @@
             </div>
           </section>
 
+          <section class="card event-board" aria-label="다가오는 대회 일정">
+            <div class="event-board-head">
+              <div>
+                <span class="eyebrow">RACE CALENDAR</span>
+                <h2>다가오는 대회 일정</h2>
+                <p>로드, 마라톤, 트레일 대회를 함께 모아봤습니다.</p>
+              </div>
+              <a class="cta" href="#/lineup">라인업 만들기 →</a>
+            </div>
+            <div class="event-list" id="upcoming-events">
+              <div class="event-item"><p class="event-note">대회 일정을 불러오는 중입니다.</p></div>
+            </div>
+          </section>
+
           <div class="grid">
             <a class="card feature-card" href="#/regular">
               <div>
@@ -1621,6 +1695,7 @@
         initStaff();
         initMobileJoinJump();
         initCourseJumps();
+        initUpcomingEvents();
         initInterval();
         initCertificate();
         route();
@@ -1642,6 +1717,125 @@
             document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth", block: "start" });
           });
         });
+      }
+
+      async function initUpcomingEvents() {
+        const list = document.getElementById("upcoming-events");
+        if (!list) return;
+
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        const formatDate = (dateText) => {
+          const d = new Date(`${dateText}T00:00:00+09:00`);
+          return `${d.getMonth() + 1}.${String(d.getDate()).padStart(2, "0")}`;
+        };
+        const getDday = (dateText) => {
+          const d = new Date(`${dateText}T00:00:00+09:00`);
+          d.setHours(0, 0, 0, 0);
+          const diff = Math.ceil((d - today) / 86400000);
+          if (diff === 0) return "D-Day";
+          return diff > 0 ? `D-${diff}` : `D+${Math.abs(diff)}`;
+        };
+
+        const fallbackEvents = [
+          {
+            name: "2026 아이오닉9 TNF 100 KOREA",
+            date: "2026-05-16",
+            location: "강원 강릉",
+            category: "트레일",
+            distance: "10K / 50K / 100K",
+            note: "산길을 길게 즐기는 트레일 대회입니다.",
+            url: "https://www.tnf100korea.com/"
+          },
+          {
+            name: "2026 한라산 100 트레일런",
+            date: "2026-06-06",
+            location: "제주 한라산 일대",
+            category: "트레일",
+            distance: "10K / 40K / 100K",
+            note: "제주 산길에서 열리는 장거리 트레일 일정입니다.",
+            url: "https://www.koreatrailrunning.com/"
+          },
+          {
+            name: "2026 iM뱅크 코리아 오픈 마라톤",
+            date: "2026-06-07",
+            location: "서울 여의도공원",
+            category: "로드",
+            distance: "5K / 10K / Half",
+            note: "서울 도심에서 부담 없이 참가하기 좋은 로드 대회입니다.",
+            url: "https://www.korearace.com/"
+          },
+          {
+            name: "2026 큰별쌤과 함께하는 나눔 마라톤",
+            date: "2026-06-27",
+            location: "서울 상암 평화의공원",
+            category: "로드",
+            distance: "5K / 10K / Half",
+            note: "상암 일대에서 열리는 나눔 콘셉트의 마라톤입니다.",
+            url: "https://www.kimrunning.com/"
+          },
+          {
+            name: "2026 성남 트레일 레이스",
+            date: "2026-09-12",
+            location: "경기 성남",
+            category: "트레일",
+            distance: "12K / 21K / 50K / 100K",
+            note: "가을 시즌 트레일 참가를 노려보기 좋은 일정입니다.",
+            url: "https://www.koreatrailrunning.com/"
+          },
+          {
+            name: "2026 JTBC 서울마라톤",
+            date: "2026-11-01",
+            location: "서울",
+            category: "마라톤",
+            distance: "Full / 10K",
+            note: "하반기 대표 도심 마라톤 일정입니다.",
+            url: "https://marathon.jtbc.com/"
+          }
+        ];
+
+        const upcomingOnly = (source) => (source || [])
+            .filter(event => event.date && new Date(`${event.date}T23:59:59+09:00`) >= today)
+            .sort((a, b) => a.date.localeCompare(b.date))
+            .slice(0, 6);
+
+        const renderEvents = (events) => {
+          if (!events.length) {
+            list.innerHTML = `<div class="event-item"><p class="event-note">예정된 대회 일정이 없습니다.</p></div>`;
+            return;
+          }
+
+          list.innerHTML = events.map(event => `
+            <article class="event-item">
+              <div class="event-topline">
+                <span class="event-dday">${getDday(event.date)}</span>
+                <span class="pill">${event.category || event.type || "대회"}</span>
+              </div>
+              <div>
+                <div class="event-name">${event.name}</div>
+                <div class="event-meta">
+                  <span class="chip">${formatDate(event.date)}</span>
+                  <span class="chip">${event.location || "장소 확인"}</span>
+                  <span class="chip">${event.distance || "거리 확인"}</span>
+                </div>
+              </div>
+              <p class="event-note">${event.note || "상세 일정은 공식 안내를 확인해 주세요."}</p>
+              ${event.url ? `<a class="cta" href="${event.url}" target="_blank" rel="noopener noreferrer">대회 보기 →</a>` : ""}
+            </article>
+          `).join("");
+        };
+
+        try {
+          const res = await fetch("./data/events.json?v=7031", { cache: "no-store" });
+          if (!res.ok) throw new Error("events load failed");
+          const data = await res.json();
+          const sourceEvents = Array.isArray(data) ? data : data.events;
+          const events = upcomingOnly(sourceEvents);
+          renderEvents(events.length ? events : upcomingOnly(fallbackEvents));
+        } catch {
+          renderEvents(upcomingOnly(fallbackEvents));
+        }
       }
 
       function route() {
