@@ -347,6 +347,44 @@
         width: max-content;
         margin-top: 0;
       }
+      .event-board:not(.is-expanded) .event-item.is-extra {
+        display: none;
+      }
+      .event-toggle-row {
+        display: flex;
+        justify-content: center;
+        margin-top: 2px;
+      }
+      .event-toggle {
+        min-height: 36px;
+        border-radius: 999px;
+        padding: 8px 13px;
+        border: 1px solid rgba(255, 106, 0, 0.34);
+        background: rgba(255, 106, 0, 0.12);
+        color: var(--text);
+        font-size: 12px;
+        font-weight: 900;
+        cursor: pointer;
+      }
+      .lineup-preset {
+        display: none;
+        gap: 8px;
+        margin-top: 12px;
+        padding: 12px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 106, 0, 0.28);
+        background: rgba(255, 106, 0, 0.10);
+      }
+      .lineup-preset.is-visible {
+        display: grid;
+      }
+      .lineup-preset strong {
+        color: var(--text);
+        font-size: 14px;
+      }
+      .lineup-preset .event-meta {
+        margin-top: 2px;
+      }
 
       .grid {
         display: grid;
@@ -1323,6 +1361,17 @@
         <div class="card">
           <h2>라인업 생성기</h2>
           <p class="muted">대회 참가자 라인업을 정리하고 응원용 이미지를 만들 때 사용하는 페이지입니다.</p>
+          <div class="lineup-preset" id="lineup-preset" aria-live="polite">
+            <div>
+              <span class="eyebrow">SELECTED RACE</span>
+              <strong id="lineup-preset-name"></strong>
+              <div class="event-meta">
+                <span class="chip" id="lineup-preset-date"></span>
+                <span class="chip" id="lineup-preset-location"></span>
+              </div>
+            </div>
+            <p class="event-note">아래 생성기에 같은 대회명과 날짜로 라인업을 만들면 됩니다.</p>
+          </div>
           <div class="lineup-frame" style="margin-top:12px;">
             <iframe id="lineup-app" src="https://noback-lineup-generator.netlify.app/" title="노빠꾸 라인업 생성기"></iframe>
           </div>
@@ -1817,8 +1866,13 @@
             return `#/lineup?${params.toString()}`;
           };
 
-          list.innerHTML = events.map(event => `
-            <article class="event-item">
+          const hasMore = events.length > 4;
+          const board = list.closest(".event-board");
+          if (board) board.classList.remove("is-expanded");
+
+          list.innerHTML = `
+            ${events.map((event, index) => `
+            <article class="event-item ${index >= 4 ? "is-extra" : ""}">
               <div class="event-topline">
                 <span class="event-dday">${getDday(event.date)}</span>
                 <span class="pill">${event.category || event.type || "대회"}</span>
@@ -1834,7 +1888,16 @@
               <p class="event-note">${event.note || "상세 일정은 공식 안내를 확인해 주세요."}</p>
               <a class="cta event-lineup-link" href="${lineupHref(event)}">라인업에 넣기 →</a>
             </article>
-          `).join("");
+            `).join("")}
+            ${hasMore ? `<div class="event-toggle-row"><button type="button" class="event-toggle" id="event-toggle">더 보기 ${events.length - 4}개</button></div>` : ""}
+          `;
+
+          document.getElementById("event-toggle")?.addEventListener("click", () => {
+            if (!board) return;
+            const expanded = board.classList.toggle("is-expanded");
+            const btn = document.getElementById("event-toggle");
+            if (btn) btn.textContent = expanded ? "접기" : `더 보기 ${events.length - 4}개`;
+          });
         };
 
         try {
@@ -1890,7 +1953,31 @@
 
         const query = String(hash || "").split("?")[1] || "";
         const sourceParams = new URLSearchParams(query);
+        const selected = {
+          event: sourceParams.get("event") || "",
+          date: sourceParams.get("date") || "",
+          location: sourceParams.get("location") || ""
+        };
+        const preset = document.getElementById("lineup-preset");
+        const presetName = document.getElementById("lineup-preset-name");
+        const presetDate = document.getElementById("lineup-preset-date");
+        const presetLocation = document.getElementById("lineup-preset-location");
+        const hasSelectedRace = Boolean(selected.event || selected.date || selected.location);
+        preset?.classList.toggle("is-visible", hasSelectedRace);
+        if (presetName) presetName.textContent = selected.event || "선택한 대회";
+        if (presetDate) presetDate.textContent = selected.date || "날짜 확인";
+        if (presetLocation) presetLocation.textContent = selected.location || "장소 확인";
+
         const targetParams = new URLSearchParams();
+        ["event", "eventName", "race", "raceName", "title"].forEach(key => {
+          if (selected.event) targetParams.set(key, selected.event);
+        });
+        ["date", "eventDate", "raceDate"].forEach(key => {
+          if (selected.date) targetParams.set(key, selected.date);
+        });
+        ["location", "place"].forEach(key => {
+          if (selected.location) targetParams.set(key, selected.location);
+        });
         ["event", "date", "location"].forEach(key => {
           const value = sourceParams.get(key);
           if (value) targetParams.set(key, value);
