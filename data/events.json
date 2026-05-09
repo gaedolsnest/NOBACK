@@ -1,33 +1,6 @@
 {
-  "updatedAt": "2026-05-08T20:06:03.696Z",
+  "updatedAt": "2026-05-09T19:56:35.824Z",
   "events": [
-    {
-      "name": "2026 나는 솔로런",
-      "date": "2026-05-09",
-      "location": "여의도공원 문화의마당",
-      "category": "로드",
-      "distance": "10km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://www.solorun.kr"
-    },
-    {
-      "name": "2026 제23회 보령머드임해마라톤",
-      "date": "2026-05-09",
-      "location": "대천해수욕장1지구 제2주차장",
-      "category": "로드",
-      "distance": "하프 / 10km / 5km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://brrun.co.kr/"
-    },
-    {
-      "name": "커피 빵빵런2026",
-      "date": "2026-05-09",
-      "location": "강릉 경포호수광장",
-      "category": "로드",
-      "distance": "10km / 5km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://coffeebbangrun.com/"
-    },
     {
       "name": "제22회 3대하천마라톤",
       "date": "2026-05-10",
