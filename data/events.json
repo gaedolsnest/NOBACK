@@ -1,60 +1,6 @@
 {
-  "updatedAt": "2026-05-09T19:56:35.824Z",
+  "updatedAt": "2026-05-10T19:57:51.874Z",
   "events": [
-    {
-      "name": "제22회 3대하천마라톤",
-      "date": "2026-05-10",
-      "location": "대전엑스포시민광장",
-      "category": "로드",
-      "distance": "하프 / 10km / 5km / 가족코스(5km)",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://www.tjrace.net"
-    },
-    {
-      "name": "2026 용인마라톤",
-      "date": "2026-05-10",
-      "location": "용인특례시청",
-      "category": "로드",
-      "distance": "10km / 5km / 가족런",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://yonginmarathon.net"
-    },
-    {
-      "name": "윙스 포 라이프 월드런 2026",
-      "date": "2026-05-10",
-      "location": "부천종합운동장",
-      "category": "로드",
-      "distance": "기부 마라톤 / 추격 레이스",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://www.redbull.com/kr-ko/events/wings-for-life-world-run-2026"
-    },
-    {
-      "name": "2026 선양마사이 마라톤",
-      "date": "2026-05-10",
-      "location": "장동산림욕장 계족산황톳길 일원",
-      "category": "로드",
-      "distance": "13km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://www.barefootfesta.com/"
-    },
-    {
-      "name": "2026 가정의달 하하호호마라톤",
-      "date": "2026-05-10",
-      "location": "신정교하부육상트랙구장",
-      "category": "로드",
-      "distance": "10km / 5km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://www.xn--o39a84ke5dgxc710an6as16b.kr/"
-    },
-    {
-      "name": "소아암환우돕기 제23회 서울시민마라톤",
-      "date": "2026-05-10",
-      "location": "여의도 한강 물빛광장",
-      "category": "로드",
-      "distance": "하프 / 10km / 5km / 3km 걷기",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://soaam.runningdr.co.kr/"
-    },
     {
       "name": "RUN 518 도청가는길",
       "date": "2026-05-16",
@@ -693,6 +639,15 @@
       "distance": "하프 / 10km / 5km",
       "note": "마라톤온라인 대회 일정 기반입니다.",
       "url": "http://bigstarrun.kr/"
+    },
+    {
+      "name": "2026 울산남구청장배 육상대회",
+      "date": "2026-06-28",
+      "location": "태화강둔치 (태화다리 밑)",
+      "category": "로드",
+      "distance": "10km / 5km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://modern-infinity-9e6.notion.site/2026-359918810cc280958531fd2261f990d6"
     },
     {
       "name": "제20회 강북구청장배 마라톤",
