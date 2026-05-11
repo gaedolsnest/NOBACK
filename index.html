@@ -561,6 +561,22 @@
         font-size: 12px;
       }
       .cert-guide li { margin: 5px 0; }
+      .cert-event-summary {
+        display: grid;
+        gap: 8px;
+        margin-bottom: 12px;
+        padding: 13px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 106, 0, 0.28);
+        background: rgba(255, 106, 0, 0.10);
+      }
+      .cert-event-summary strong {
+        color: var(--text);
+        font-size: 16px;
+      }
+      .cert-event-summary .event-meta {
+        margin-top: 0;
+      }
 
       .join-card {
         display: grid;
@@ -812,9 +828,9 @@
       @media (max-width: 720px) { .field { grid-column: span 12; } }
 
       label { font-size: 12px; color: var(--muted); }
-      input, button { font: inherit; }
+      input, select, button { font: inherit; }
 
-      input {
+      input, select {
         width: 100%;
         padding: 10px 12px;
         border-radius: 12px;
@@ -823,7 +839,8 @@
         color: var(--text);
         outline: none;
       }
-      input:focus {
+      select option { color: #111; }
+      input:focus, select:focus {
         border-color: rgba(255, 106, 0, 0.6);
         box-shadow: 0 0 0 3px rgba(255, 106, 0, 0.16);
       }
@@ -1218,11 +1235,11 @@
                 <div class="cert-mini-photo"></div>
               </div>
               <div>
-                <h2>완주 기록증 만들기</h2>
-                <p>대회명, 날짜, 장소, 거리, 닉네임, 기록을 입력하면 메달 이미지가 들어간 PNG 기록증을 미리 볼 수 있습니다.</p>
+                <h2>런앤럭키 기록증 만들기</h2>
+                <p>행사 정보는 고정해두고 거리, 닉네임, 기록만 입력해 크루용 완주 기록증을 만듭니다.</p>
                 <ol class="guide-list">
-                  <li>대회명과 날짜, 장소를 입력합니다.</li>
-                  <li>거리와 닉네임, 기록을 입력합니다.</li>
+                  <li>대회명, 날짜, 장소는 행사 기준으로 고정됩니다.</li>
+                  <li>5K 또는 10K를 선택하고 닉네임과 기록을 입력합니다.</li>
                   <li>Bib 번호가 있으면 함께 넣고 PNG로 저장합니다.</li>
                 </ol>
                 <a class="cta" href="#/certificate">기록증 만들기 →</a>
@@ -1644,14 +1661,14 @@
         <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">기록증</div></div>
 
         <div class="card">
-          <h2>기록증 출력</h2>
-          <p class="muted">기본 메달 이미지가 들어간 노빠꾸 기록증을 출력합니다.</p>
+          <h2>런앤럭키 기록증 출력</h2>
+          <p class="muted">행사 정보는 고정되어 있고, 닉네임과 기록만 입력해 출력합니다.</p>
 
           <div class="cert-guide">
             <strong>입력 방법</strong>
             <ol>
-              <li>대회명, 날짜, 장소를 먼저 입력합니다.</li>
-              <li>거리, 닉네임, 기록을 입력하고 Bib 번호는 선택으로 넣습니다.</li>
+              <li>대회명, 날짜, 장소는 행사 기준으로 자동 적용됩니다.</li>
+              <li>5K 또는 10K를 선택하고 닉네임과 기록을 입력합니다.</li>
               <li>미리보기를 확인한 뒤 PNG 다운로드로 기록증만 저장합니다.</li>
             </ol>
           </div>
@@ -1659,10 +1676,25 @@
           <div class="certificate-workspace">
             <div class="certificate-inputs">
               <form id="cert-form">
-                <div class="field"><label for="cert-name">대회명</label><input id="cert-name" placeholder="예: 더레이스 서울" /></div>
-                <div class="field"><label for="cert-date">날짜</label><input id="cert-date" type="date" /></div>
-                <div class="field"><label for="cert-location">장소</label><input id="cert-location" placeholder="예: 서울" /></div>
-                <div class="field"><label for="cert-distance">거리</label><input id="cert-distance" placeholder="예: 10K / 21K / 42K" /></div>
+                <div class="cert-event-summary" aria-label="고정 기록증 행사 정보">
+                  <span class="eyebrow">CERTIFICATE EVENT</span>
+                  <strong id="cert-event-title">노빠꾸 런앤럭키</strong>
+                  <div class="event-meta">
+                    <span class="chip" id="cert-event-date">2026.05.30 07:00</span>
+                    <span class="chip" id="cert-event-place">미사경정공원</span>
+                    <span class="chip" id="cert-event-distance">5K / 10K</span>
+                  </div>
+                </div>
+                <input id="cert-name" type="hidden" />
+                <input id="cert-date" type="hidden" />
+                <input id="cert-location" type="hidden" />
+                <div class="field">
+                  <label for="cert-distance">거리</label>
+                  <select id="cert-distance">
+                    <option value="10K">10K</option>
+                    <option value="5K">5K</option>
+                  </select>
+                </div>
                 <div class="field"><label for="cert-bib">Bib (선택)</label><input id="cert-bib" inputmode="numeric" placeholder="예: 40222" /></div>
                 <div class="field"><label for="cert-nick">닉네임</label><input id="cert-nick" placeholder="예: 나올" /></div>
                 <div class="field"><label for="cert-time">기록</label><input id="cert-time" placeholder="예: 1:03:58 또는 54:00" /></div>
@@ -2186,6 +2218,32 @@
         return await loadOptionalImage("./medal.png?v=7030") || await loadOptionalImage("./medal.PNG?v=7030");
       }
 
+      // 다음 행사 때는 이 값만 바꾸면 기록증의 대회 정보가 교체됩니다.
+      const CERTIFICATE_EVENT = {
+        name: "노빠꾸 런앤럭키",
+        date: "2026.05.30 07:00",
+        location: "미사경정공원"
+      };
+
+      function applyCertificateEvent() {
+        const setValue = (id, value) => {
+          const el = document.getElementById(id);
+          if (el) el.value = value;
+        };
+        const setText = (id, value) => {
+          const el = document.getElementById(id);
+          if (el) el.textContent = value;
+        };
+
+        setValue("cert-name", CERTIFICATE_EVENT.name);
+        setValue("cert-date", CERTIFICATE_EVENT.date);
+        setValue("cert-location", CERTIFICATE_EVENT.location);
+        setText("cert-event-title", CERTIFICATE_EVENT.name);
+        setText("cert-event-date", CERTIFICATE_EVENT.date);
+        setText("cert-event-place", CERTIFICATE_EVENT.location);
+        setText("cert-event-distance", "5K / 10K");
+      }
+
       function drawContainImage(ctx, img, x, y, w, h) {
         const ir = img.width / img.height;
         const br = w / h;
@@ -2223,11 +2281,13 @@
 
         const form = document.getElementById("cert-form");
         if (!form) return;
+        applyCertificateEvent();
         let previewTimer = null;
         const refreshPreview = () => {
           clearTimeout(previewTimer);
           previewTimer = setTimeout(() => {
-            const hasCoreValues = ["cert-name", "cert-nick", "cert-time"].every(id => String(document.getElementById(id)?.value || "").trim());
+            applyCertificateEvent();
+            const hasCoreValues = ["cert-nick", "cert-time"].every(id => String(document.getElementById(id)?.value || "").trim());
             if (!hasCoreValues) {
               setCertError("");
               setDownloadEnabled(false);
@@ -2238,13 +2298,16 @@
           }, 220);
         };
 
-        form.querySelectorAll("input").forEach(input => {
+        form.querySelectorAll("input, select").forEach(input => {
           input.addEventListener("input", refreshPreview);
           input.addEventListener("change", refreshPreview);
         });
 
         document.getElementById("cert-reset")?.addEventListener("click", () => {
           form.reset();
+          applyCertificateEvent();
+          const distanceSelect = document.getElementById("cert-distance");
+          if (distanceSelect) distanceSelect.value = "10K";
           setCertError("");
           setDownloadEnabled(false);
           paintBlankCanvas();
@@ -2269,6 +2332,7 @@
       async function generateCertificatePreview(showErrors = true) {
         setCertError("");
         setDownloadEnabled(false);
+        applyCertificateEvent();
         const fail = (msg) => {
           if (showErrors) setCertError(msg);
           return false;
