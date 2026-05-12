@@ -2162,8 +2162,9 @@
       }
 
       async function initUpcomingEvents() {
-        const list = document.getElementById("upcoming-events");
-        if (!list) return;
+        const roadList = document.getElementById("road-events");
+        const trailList = document.getElementById("trail-events");
+        if (!roadList && !trailList) return;
 
         const today = new Date();
         today.setHours(0, 0, 0, 0);
