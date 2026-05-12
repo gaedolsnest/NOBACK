@@ -9,6 +9,15 @@ const LOOKAHEAD_DAYS = 60;
 const roadrunSourceBase = "http://www.roadrun.co.kr/schedule/list.php";
 const fallbackEvents = [
   {
+    name: "2026 TNF100 KOREA with VECTIV",
+    date: "2026-05-16",
+    location: "강릉 경포호수광장",
+    category: "트레일",
+    distance: "10K / 22K / 50K / 100K",
+    note: "공식 TNF100 KOREA 일정 보조 등록 대회입니다.",
+    url: "https://image.thenorthfacekorea.co.kr/tnf100"
+  },
+  {
     name: "2026 iM뱅크 코리아 오픈 마라톤",
     date: "2026-06-07",
     location: "서울 여의도공원",
@@ -194,7 +203,7 @@ function finalizeEvents(events) {
 
 async function main() {
   const collected = await collectRoadrunEvents();
-  const events = finalizeEvents(collected);
+  const events = finalizeEvents([...collected, ...fallbackEvents]);
   const outputEvents = events.length ? events : finalizeEvents(fallbackEvents);
 
   fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
