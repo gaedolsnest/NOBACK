@@ -1424,7 +1424,7 @@
           <section class="card event-board" aria-label="다가오는 트레일 대회 일정">
             <div class="event-board-head">
               <div>
-                <span class="eyebrow">TRAIL CALENDAR</span>
+                <span class="eyebrow">TRAIL RACE CALENDAR</span>
                 <h2>다가오는 트레일 대회</h2>
                 <p>앞으로 1~2개월 안에 열리는 트레일 대회입니다.</p>
               </div>
@@ -2252,7 +2252,7 @@
             return `#/lineup?${params.toString()}`;
           };
 
-          const visibleCount = 4;
+          const visibleCount = 3;
           const hasMore = events.length > visibleCount;
           const board = list.closest(".event-board");
           if (board) board.classList.remove("is-expanded");
@@ -2338,14 +2338,14 @@
           const sourceEvents = Array.isArray(data) ? data : data.events;
           const events = upcomingOnly(sourceEvents);
           const source = events.length ? events : upcomingOnly(fallbackEvents);
-          const roadEvents = source.filter(event => eventKind(event) === "로드").slice(0, 8);
-          const trailEvents = source.filter(event => eventKind(event) === "트레일").slice(0, 8);
+          const roadEvents = source.filter(event => eventKind(event) === "로드").slice(0, 6);
+          const trailEvents = source.filter(event => eventKind(event) === "트레일").slice(0, 6);
           renderEvents("road-events", roadEvents, "예정된 로드 대회 일정이 없습니다.");
           renderEvents("trail-events", trailEvents, "예정된 트레일 대회 일정이 없습니다.");
         } catch {
           const source = upcomingOnly(fallbackEvents);
-          renderEvents("road-events", source.filter(event => eventKind(event) === "로드").slice(0, 8), "예정된 로드 대회 일정이 없습니다.");
-          renderEvents("trail-events", source.filter(event => eventKind(event) === "트레일").slice(0, 8), "예정된 트레일 대회 일정이 없습니다.");
+          renderEvents("road-events", source.filter(event => eventKind(event) === "로드").slice(0, 6), "예정된 로드 대회 일정이 없습니다.");
+          renderEvents("trail-events", source.filter(event => eventKind(event) === "트레일").slice(0, 6), "예정된 트레일 대회 일정이 없습니다.");
         }
         renderMajorEvents();
       }
