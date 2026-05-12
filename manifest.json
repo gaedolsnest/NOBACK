@@ -1,0 +1,26 @@
+{
+  "name": "노빠꾸 러닝 크루",
+  "short_name": "노빠꾸",
+  "description": "노빠꾸 러닝 크루 일정, 라인업, 기록증, 러닝 도구",
+  "lang": "ko-KR",
+  "start_url": "./#/",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#111111",
+  "theme_color": "#ff6a00",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "./logo.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./logo.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

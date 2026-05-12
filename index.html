@@ -8,6 +8,12 @@
 
     <link rel="icon" type="image/x-icon" href="./favicon.ico?v=7030" />
     <link rel="shortcut icon" href="./favicon.ico?v=7030" />
+    <link rel="manifest" href="./manifest.json?v=7030" />
+    <link rel="apple-touch-icon" href="./logo.png?v=7030" />
+    <meta name="theme-color" content="#ff6a00" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="노빠꾸 러닝" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
     <style>
       :root {
@@ -1776,6 +1782,7 @@
         if (!location.hash) location.replace("#/");
 
         initRouter();
+        initPwa();
         initStaff();
         initMobileJoinJump();
         initCourseJumps();
@@ -1783,6 +1790,13 @@
         initInterval();
         initCertificate();
         route();
+      }
+
+      function initPwa() {
+        if (!("serviceWorker" in navigator)) return;
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("./service-worker.js").catch(() => {});
+        });
       }
 
       function initRouter() { window.addEventListener("hashchange", route); }
