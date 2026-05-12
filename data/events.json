@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-12T09:37:46.912Z",
+  "updatedAt": "2026-05-12T09:51:44.557Z",
   "events": [
     {
       "name": "RUN 518 도청가는길",
@@ -99,6 +99,15 @@
       "distance": "8km",
       "note": "마라톤온라인 대회 일정 기반입니다.",
       "url": "http://www.starbucks.co.kr/whats_new/campaign_view.do?pro_seq=3358"
+    },
+    {
+      "name": "2026 TNF100 KOREA with VECTIV",
+      "date": "2026-05-16",
+      "location": "강릉 경포호수광장",
+      "category": "트레일",
+      "distance": "10K / 22K / 50K / 100K",
+      "note": "공식 TNF100 KOREA 일정 보조 등록 대회입니다.",
+      "url": "https://image.thenorthfacekorea.co.kr/tnf100"
     },
     {
       "name": "2026 인천시육상연맹배 마라톤",
@@ -765,6 +774,15 @@
       "distance": "하프 / 10km / 5km",
       "note": "마라톤온라인 대회 일정 기반입니다.",
       "url": "http://bigstarrun.kr/"
+    },
+    {
+      "name": "2026 큰별쌤과 함께하는 나눔 마라톤",
+      "date": "2026-06-27",
+      "location": "서울 상암 평화의공원",
+      "category": "로드",
+      "distance": "5K / 10K / Half",
+      "note": "마라톤온라인 대회 일정 보조 등록 대회입니다.",
+      "url": "https://www.kimrunning.com/"
     },
     {
       "name": "2026 울산남구청장배 육상대회",
