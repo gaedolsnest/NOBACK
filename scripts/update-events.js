@@ -30,7 +30,7 @@ const fallbackEvents = [
     name: "2026 JTBC 서울마라톤",
     date: "2026-11-01",
     location: "서울",
-    category: "마라톤",
+    category: "로드",
     distance: "Full / 10K",
     note: "마라톤온라인 대회 일정 보조 등록 대회입니다.",
     url: "https://marathon.jtbc.com/"
@@ -73,13 +73,8 @@ function normalizeMonthDay(year, value) {
 
 function inferCategory(name, distance) {
   const text = `${name} ${distance}`;
-  if (/풀|full|42\.195/i.test(text)) return "마라톤";
+  if (/트레일|trail|산악|50k|37k|24k|100km|100k/i.test(text)) return "트레일";
   return "로드";
-}
-
-function isTrailEvent(event) {
-  const text = `${event.name} ${event.distance} ${event.location}`.toLowerCase();
-  return /트레일|trail|산악|50k|37k|24k|100km|100k/.test(text);
 }
 
 function cleanEventName(name) {
@@ -180,13 +175,12 @@ function finalizeEvents(events) {
   for (const event of events) {
     if (!event.name || !event.date) continue;
     if (event.date < today || event.date > endDate) continue;
-    if (isTrailEvent(event)) continue;
 
     const normalized = {
       name: event.name,
       date: event.date,
       location: event.location || "장소 확인",
-      category: event.category || inferCategory(event.name, event.distance),
+      category: inferCategory(event.name, event.distance || event.category),
       distance: event.distance || "거리 확인",
       note: event.note || "마라톤온라인 대회 일정 기반입니다.",
       url: event.url || roadrunSourceBase
