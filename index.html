@@ -571,10 +571,10 @@
         display: grid;
         gap: 8px;
         margin-bottom: 12px;
-        padding: 13px;
+        padding: 0;
         border-radius: 14px;
-        border: 1px solid rgba(255, 106, 0, 0.28);
-        background: rgba(255, 106, 0, 0.10);
+        border: 0;
+        background: transparent;
       }
       .cert-event-summary strong {
         color: var(--text);
@@ -585,8 +585,11 @@
       }
       .cert-event-summary .eyebrow,
       .cert-event-summary .chip {
-        border-color: rgba(255, 106, 0, 0.22);
-        background: rgba(255, 106, 0, 0.08);
+        border-color: transparent;
+        background: rgba(255, 255, 255, 0.08);
+      }
+      .cert-event-summary .eyebrow {
+        width: max-content;
       }
 
       .join-card {
@@ -1100,6 +1103,12 @@
         color: var(--muted);
         font-size: 12px;
       }
+      body[data-course-mode="routes"] #shoe-guide,
+      body[data-course-mode="shoes"] #course-routes,
+      body[data-course-mode="routes"] #courses-jumps,
+      body[data-course-mode="shoes"] #courses-jumps {
+        display: none;
+      }
 
       .staff {
         display: grid;
@@ -1127,6 +1136,178 @@
       }
       .staff .chip { color: var(--text); background: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.16); }
 
+      .regular-card {
+        font-size: 14px;
+      }
+      .regular-card h2 {
+        margin-bottom: 8px;
+      }
+      .regular-card h3 {
+        margin: 18px 0 8px;
+        font-size: 14px;
+        line-height: 1.35;
+      }
+      .regular-card p,
+      .regular-card li {
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1.65;
+      }
+      .regular-card ul {
+        margin: 8px 0 0;
+        padding-left: 18px;
+      }
+      .regular-card li {
+        margin: 4px 0;
+      }
+      .regular-card b,
+      .regular-card strong {
+        color: var(--text);
+        font-weight: 800;
+      }
+
+      .friendly-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 12px;
+        margin-top: 14px;
+      }
+      .friendly-card {
+        display: grid;
+        gap: 12px;
+        min-width: 0;
+      }
+      .friendly-card h3 {
+        margin: 0;
+      }
+      .guide-steps {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .guide-steps li {
+        display: grid;
+        grid-template-columns: 28px minmax(0, 1fr);
+        gap: 10px;
+        align-items: start;
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .step-num {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        border-radius: 999px;
+        background: rgba(255, 106, 0, 0.16);
+        border: 1px solid rgba(255, 106, 0, 0.34);
+        color: #ffd1b8;
+        font-weight: 900;
+      }
+      .phone-illustration {
+        min-height: 220px;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.05);
+        display: grid;
+        place-items: center;
+        padding: 16px;
+      }
+      .phone-frame {
+        width: 132px;
+        height: 188px;
+        border-radius: 24px;
+        border: 5px solid rgba(255, 255, 255, 0.84);
+        background: #141414;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 16px 34px rgba(0, 0, 0, 0.24);
+      }
+      .phone-frame::before {
+        content: "";
+        position: absolute;
+        top: 7px;
+        left: 50%;
+        width: 42px;
+        height: 5px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.52);
+        transform: translateX(-50%);
+      }
+      .phone-screen {
+        position: absolute;
+        inset: 20px 9px 10px;
+        border-radius: 14px;
+        background:
+          linear-gradient(180deg, rgba(255, 106, 0, 0.22), rgba(255, 255, 255, 0.06)),
+          url("./logo.png?v=7030") center 44% / 76px auto no-repeat;
+      }
+      .phone-action {
+        position: absolute;
+        left: 50%;
+        bottom: 17px;
+        transform: translateX(-50%);
+        min-width: 74px;
+        min-height: 24px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 106, 0, 0.52);
+        background: rgba(255, 106, 0, 0.24);
+        color: #fff;
+        font-size: 11px;
+        font-weight: 900;
+      }
+      .phone-share,
+      .phone-menu {
+        position: absolute;
+        top: 30px;
+        right: 18px;
+        width: 30px;
+        height: 30px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.16);
+        color: #fff;
+        font-size: 18px;
+        font-weight: 900;
+      }
+      .share-panel {
+        display: grid;
+        gap: 12px;
+      }
+      .share-copy {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .share-url {
+        flex: 1 1 260px;
+        min-width: 0;
+        padding: 10px 12px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(0, 0, 0, 0.16);
+        color: var(--muted);
+        font-size: 12px;
+        overflow-wrap: anywhere;
+      }
+      .share-status {
+        min-height: 18px;
+        color: #ffd1b8;
+        font-size: 12px;
+        font-weight: 800;
+      }
+
       ul { margin: 8px 0 0; padding-left: 18px; color: var(--muted); }
       li { margin: 6px 0; }
       .help { font-size: 12px; color: var(--muted); margin-top: 2px; }
@@ -1138,13 +1319,17 @@
 
       <nav class="tabs" aria-label="탭">
         <a class="tab" data-tab="home" href="#/">홈</a>
+        <a class="tab" data-tab="first" href="#/first">처음 오셨나요</a>
         <a class="tab" data-tab="regular" href="#/regular">정기런</a>
         <a class="tab" data-tab="certificate" href="#/certificate">기록증</a>
         <a class="tab" data-tab="interval" href="#/interval">인터벌</a>
-        <a class="tab" data-tab="courses" href="#/courses">코스북</a>
+        <a class="tab" data-tab="routes" href="#/routes">코스 추천</a>
+        <a class="tab" data-tab="shoes" href="#/shoes">러닝화 추천</a>
         <a class="tab" data-tab="lineup" href="#/lineup">라인업</a>
+        <a class="tab" data-tab="app" href="#/app">앱처럼 쓰기</a>
+        <a class="tab" data-tab="share" href="#/share">공유</a>
       </nav>
-      <button type="button" class="mobile-join-jump" id="mobile-join-jump">가입 안내</button>
+      <button type="button" class="mobile-join-jump" id="mobile-join-jump">처음 오셨나요</button>
 
       <!-- HOME -->
       <section id="view-home" class="view">
@@ -1168,11 +1353,11 @@
           </section>
 
           <div class="grid">
-            <a class="card feature-card" href="#/regular">
+            <a class="card feature-card" href="#/first">
               <div>
-                <span class="feature-icon">📍</span>
-                <h2>정기런 안내</h2>
-                <p>집합, 스트레칭, 페이스 그룹 운영 방식까지 한 번에 확인합니다.</p>
+                <span class="feature-icon">🙌</span>
+                <h2>처음 오셨나요</h2>
+                <p>첫 정기런 전에 보면 좋은 준비물과 참여 흐름을 정리했습니다.</p>
               </div>
               <span class="cta">열기 →</span>
             </a>
@@ -1195,11 +1380,29 @@
               <span class="cta">열기 →</span>
             </a>
 
-            <a class="card feature-card" href="#/courses">
+            <a class="card feature-card" href="#/routes">
+              <div>
+                <span class="feature-icon">🗺</span>
+                <h2>코스 추천</h2>
+                <p>가볍게 둘러보기 좋은 러닝 코스와 GPS 아트 코스를 모았습니다.</p>
+              </div>
+              <span class="cta">열기 →</span>
+            </a>
+
+            <a class="card feature-card" href="#/shoes">
               <div>
                 <span class="feature-icon">👟</span>
-                <h2>코스북 & 러닝화</h2>
-                <p>재밌는 러닝 코스와 용도별 러닝화 추천을 카드로 모았습니다.</p>
+                <h2>러닝화 추천</h2>
+                <p>조깅, 리커버리, 인터벌, 대회용 러닝화를 용도별로 봅니다.</p>
+              </div>
+              <span class="cta">열기 →</span>
+            </a>
+
+            <a class="card feature-card" href="#/app">
+              <div>
+                <span class="feature-icon">📱</span>
+                <h2>앱처럼 쓰기</h2>
+                <p>홈 화면에 추가해서 노빠꾸 페이지를 앱처럼 바로 열 수 있습니다.</p>
               </div>
               <span class="cta">열기 →</span>
             </a>
@@ -1218,22 +1421,18 @@
             </div>
           </section>
 
-          <section class="card join-card" id="join-info" aria-label="신규 회원 가입 승인 안내">
-            <div>
-              <span class="eyebrow">JOIN NBRC</span>
-              <h2>신규 회원 가입 안내</h2>
-              <p>당근 가입 신청 후 매주 수요일 정기런 참석이 확인되면 가입승인이 진행됩니다.</p>
-              <div class="hero-actions">
-                <a class="primary-action" href="#/regular">정기런 안내 보기 →</a>
+          <section class="card event-board" aria-label="국내 주요 마라톤 일정">
+            <div class="event-board-head">
+              <div>
+                <span class="eyebrow">MAJOR MARATHON</span>
+                <h2>국내 주요 마라톤</h2>
+                <p>가을 풀코스 목표로 많이 보는 대표 대회입니다.</p>
               </div>
             </div>
-            <div class="join-steps">
-              <div class="join-step"><div><strong>가입 신청</strong><span>당근 가입 신청 후 정기런 참석 확인 후에 가입승인됩니다.</span></div></div>
-              <div class="join-step"><div><strong>수요일 정기런 참석</strong><span>하남 종합운동장 두번째 블록 집합 장소로 오시면 됩니다.</span></div></div>
-              <div class="join-step"><div><strong>출석 확인 후 승인</strong><span>현장에서 출석 인증이 확인되면 가입 승인이 진행됩니다.</span></div></div>
+            <div class="event-list" id="major-events">
+              <div class="event-item"><p class="event-note">주요 마라톤 일정을 불러오는 중입니다.</p></div>
             </div>
           </section>
-
 
           <div class="home-feature-row">
             <section class="card showcase-card" aria-label="기록증 예시와 입력 안내">
@@ -1408,11 +1607,11 @@
 
       <!-- COURSES -->
       <section id="view-courses" class="view">
-        <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">코스북</div></div>
+        <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill" id="courses-pill">코스 추천</div></div>
         <div class="card">
-          <h2>코스북 & 러닝화</h2>
-          <p class="muted">재밌게 찍히는 GPS 코스와 용도별 러닝화 추천을 한 곳에 모았습니다. 코스는 실제 주행 전 지도앱으로 동선을 확인하고, 신발은 발 모양과 부상 이력에 맞춰 신어본 뒤 고르는 걸 권장합니다.</p>
-          <div class="section-jumps" aria-label="코스북 빠른 이동">
+          <h2 id="courses-title">코스 추천</h2>
+          <p class="muted" id="courses-lead">재밌게 찍히는 GPS 코스와 가볍게 둘러보기 좋은 러닝 코스를 모았습니다. 실제 주행 전 지도앱으로 동선을 확인해 주세요.</p>
+          <div class="section-jumps" id="courses-jumps" aria-label="코스북 빠른 이동">
             <button type="button" class="cta section-jump" data-scroll-target="course-routes">러닝 코스 보기 →</button>
             <button type="button" class="cta section-jump" data-scroll-target="shoe-guide">러닝화 추천 보기 →</button>
           </div>
@@ -1515,7 +1714,7 @@
               <p class="muted">러닝 목적에 맞춰 여러 브랜드의 대표 모델을 가볍게 비교해보세요. 최종 선택은 착화감과 사이즈가 가장 중요합니다.</p>
             </div>
             <div class="section-jumps" aria-label="러닝화 섹션 빠른 이동">
-              <button type="button" class="cta section-jump" data-scroll-target="course-routes">러닝 코스로 이동 ↑</button>
+              <a class="cta" href="#/routes">코스 추천으로 이동 ↑</a>
             </div>
 
             <div class="shoe-grid">
@@ -1672,7 +1871,7 @@
         <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">기록증</div></div>
 
         <div class="card">
-          <h2>런앤럭키 기록증 출력</h2>
+          <h2>Run & Lucky Day 기록증 출력</h2>
           <p class="muted">행사 정보는 고정되어 있고, 닉네임과 기록만 입력해 출력합니다.</p>
 
           <div class="cert-guide">
@@ -1689,7 +1888,7 @@
               <form id="cert-form">
                 <div class="cert-event-summary" aria-label="고정 기록증 행사 정보">
                   <span class="eyebrow">CERTIFICATE EVENT</span>
-                  <strong id="cert-event-title">NBRC Run&Lucly Day</strong>
+                  <strong id="cert-event-title">Run & Lucky Day</strong>
                   <div class="event-meta">
                     <span class="chip" id="cert-event-date">2026.05.30 07:00</span>
                     <span class="chip" id="cert-event-place">미사경정공원</span>
@@ -1732,11 +1931,135 @@
         </div>
       </section>
 
+      <!-- APP GUIDE -->
+      <section id="view-app" class="view">
+        <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">앱처럼 쓰기</div></div>
+
+        <div class="card">
+          <span class="eyebrow">ADD TO HOME SCREEN</span>
+          <h2>홈 화면에 추가해서 바로 열기</h2>
+          <p class="muted">앱스토어 설치가 아니라, 노빠꾸 페이지를 휴대폰 홈 화면에 바로가기처럼 꺼내두는 방식입니다. 그냥 링크로 봐도 똑같이 사용할 수 있습니다.</p>
+
+          <div class="friendly-grid">
+            <article class="card friendly-card">
+              <div class="phone-illustration" aria-hidden="true">
+                <div class="phone-frame">
+                  <div class="phone-screen"></div>
+                  <span class="phone-share">↥</span>
+                  <span class="phone-action">홈 추가</span>
+                </div>
+              </div>
+              <div>
+                <h3>iPhone</h3>
+                <ol class="guide-steps">
+                  <li><span class="step-num">1</span><span>Safari로 노빠꾸 링크를 엽니다.</span></li>
+                  <li><span class="step-num">2</span><span>아래쪽 공유 버튼을 누릅니다.</span></li>
+                  <li><span class="step-num">3</span><span>홈 화면에 추가를 선택합니다.</span></li>
+                  <li><span class="step-num">4</span><span>노빠꾸 아이콘으로 바로 실행합니다.</span></li>
+                </ol>
+              </div>
+            </article>
+
+            <article class="card friendly-card">
+              <div class="phone-illustration" aria-hidden="true">
+                <div class="phone-frame">
+                  <div class="phone-screen"></div>
+                  <span class="phone-menu">⋮</span>
+                  <span class="phone-action">홈 추가</span>
+                </div>
+              </div>
+              <div>
+                <h3>Android</h3>
+                <ol class="guide-steps">
+                  <li><span class="step-num">1</span><span>Chrome으로 노빠꾸 링크를 엽니다.</span></li>
+                  <li><span class="step-num">2</span><span>오른쪽 위 메뉴를 누릅니다.</span></li>
+                  <li><span class="step-num">3</span><span>홈 화면에 추가를 선택합니다.</span></li>
+                  <li><span class="step-num">4</span><span>홈 화면 아이콘으로 바로 실행합니다.</span></li>
+                </ol>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SHARE -->
+      <section id="view-share" class="view">
+        <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">공유</div></div>
+
+        <div class="card share-panel">
+          <span class="eyebrow">SHARE NBRC</span>
+          <h2>노빠꾸 페이지 공유</h2>
+          <p class="muted">일정, 라인업, 기록증, 러닝 도구를 한 번에 볼 수 있는 링크입니다.</p>
+          <div class="share-copy">
+            <div class="share-url" id="share-url">https://gaedolsnest.github.io/NOBACK/#/</div>
+            <button type="button" id="native-share">공유하기</button>
+            <button type="button" class="ghost" id="copy-share-link">링크 복사</button>
+          </div>
+          <div class="share-status" id="share-status" aria-live="polite"></div>
+          <div class="cert-guide">
+            <strong>보내기 좋은 문구</strong>
+            <p class="muted">노빠꾸 러닝 크루 페이지입니다. 일정, 라인업, 기록증, 러닝 도구를 여기서 확인할 수 있어요.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FIRST VISIT -->
+      <section id="view-first" class="view">
+        <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">처음 오셨나요</div></div>
+
+        <div class="card">
+          <span class="eyebrow">WELCOME RUNNER</span>
+          <h2>첫 정기런 전에 이것만 보면 됩니다</h2>
+          <p class="muted">기록보다 함께 뛰는 분위기를 우선합니다. 페이스가 걱정돼도 그날 컨디션에 맞춰 편하게 오시면 됩니다.</p>
+
+          <div class="friendly-grid">
+            <article class="card friendly-card">
+              <h3>참여 흐름</h3>
+              <ol class="guide-steps">
+                <li><span class="step-num">1</span><span>수요일 20:00 전에 집합 장소에 도착합니다.</span></li>
+                <li><span class="step-num">2</span><span>닉네임으로 출석 체크를 합니다.</span></li>
+                <li><span class="step-num">3</span><span>가벼운 스트레칭 후 페이스별로 출발합니다.</span></li>
+                <li><span class="step-num">4</span><span>러닝 후 마무리 스트레칭하고 해산합니다.</span></li>
+              </ol>
+            </article>
+
+            <article class="card friendly-card">
+              <h3>준비물</h3>
+              <div class="chipline">
+                <span class="chip">러닝화</span>
+                <span class="chip">가벼운 복장</span>
+                <span class="chip">물</span>
+                <span class="chip">개인 짐 최소화</span>
+                <span class="chip">닉네임 확인</span>
+              </div>
+              <p class="muted">처음이면 무리하지 않는 페이스를 고르는 게 가장 좋습니다.</p>
+              <a class="cta" href="#/regular">정기런 자세히 보기 →</a>
+            </article>
+          </div>
+
+          <section class="card join-card" id="join-info" aria-label="신규 회원 가입 승인 안내">
+            <div>
+              <span class="eyebrow">JOIN NBRC</span>
+              <h2>신규 회원 가입 안내</h2>
+              <p>당근 가입 신청 후 매주 수요일 정기런 참석이 확인되면 가입승인이 진행됩니다.</p>
+              <div class="hero-actions">
+                <a class="primary-action" href="#/regular">정기런 안내 보기 →</a>
+              </div>
+            </div>
+            <div class="join-steps">
+              <div class="join-step"><div><strong>가입 신청</strong><span>당근 가입 신청 후 정기런 참석 확인 후에 가입승인됩니다.</span></div></div>
+              <div class="join-step"><div><strong>수요일 정기런 참석</strong><span>하남 종합운동장 두번째 블록 집합 장소로 오시면 됩니다.</span></div></div>
+              <div class="join-step"><div><strong>출석 확인 후 승인</strong><span>현장에서 출석 인증이 확인되면 가입 승인이 진행됩니다.</span></div></div>
+            </div>
+          </section>
+        </div>
+      </section>
+
       <!-- REGULAR -->
       <section id="view-regular" class="view">
         <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">정기런</div></div>
 
-        <div class="card">
+        <div class="card regular-card">
           <h2>정기런</h2>
           <p class="muted">매주 <b>수요일 오후 8시</b>, 노빠꾸 정기런 진행합니다 🏃‍♂️🏃‍♀️</p>
 
@@ -1770,12 +2093,6 @@
           <p class="muted" style="margin-top:12px;">기타 인터벌 등 별도 훈련은 자유롭게 진행하시면 됩니다.</p>
           <p class="muted">늦지 않게 와서 몸 먼저 풀고 바로 출발할 수 있게 준비 부탁드립니다 😊</p>
           <a class="cta" href="https://map.kakao.com/link/search/%ED%95%98%EB%82%A8%EC%A2%85%ED%95%A9%EC%9A%B4%EB%8F%99%EC%9E%A5" target="_blank" rel="noopener noreferrer">하남 종합운동장 지도 보기 →</a>
-
-          <div class="staff">
-            <h2 style="margin:0;">운영진 정보</h2>
-            <div class="line"><span class="muted">크루장</span><span class="chip">망구</span></div>
-            <div class="line"><span class="muted">운영진</span><span id="ops-chips"></span></div>
-          </div>
         </div>
       </section>
     </div>
@@ -1788,6 +2105,7 @@
 
         initRouter();
         initPwa();
+        initFriendlyActions();
         initStaff();
         initMobileJoinJump();
         initCourseJumps();
@@ -1806,9 +2124,40 @@
 
       function initRouter() { window.addEventListener("hashchange", route); }
 
+      function initFriendlyActions() {
+        const shareUrl = "https://gaedolsnest.github.io/NOBACK/#/";
+        const shareText = "노빠꾸 러닝 크루 페이지입니다. 일정, 라인업, 기록증, 러닝 도구를 여기서 확인할 수 있어요.";
+        const status = document.getElementById("share-status");
+        const setStatus = (text) => {
+          if (!status) return;
+          status.textContent = text;
+          if (text) setTimeout(() => { status.textContent = ""; }, 2200);
+        };
+
+        document.getElementById("native-share")?.addEventListener("click", async () => {
+          if (!navigator.share) {
+            setStatus("공유 메뉴가 없으면 링크 복사를 이용해 주세요.");
+            return;
+          }
+          try {
+            await navigator.share({ title: "노빠꾸 러닝 크루", text: shareText, url: shareUrl });
+            setStatus("공유 창을 열었습니다.");
+          } catch {}
+        });
+
+        document.getElementById("copy-share-link")?.addEventListener("click", async () => {
+          try {
+            await navigator.clipboard.writeText(`${shareText}\n${shareUrl}`);
+            setStatus("공유 문구를 복사했습니다.");
+          } catch {
+            setStatus("복사가 막히면 링크를 길게 눌러 복사해 주세요.");
+          }
+        });
+      }
+
       function initMobileJoinJump() {
         document.getElementById("mobile-join-jump")?.addEventListener("click", () => {
-          document.getElementById("join-info")?.scrollIntoView({ behavior: "smooth", block: "start" });
+          location.hash = "#/first";
         });
       }
 
@@ -1878,28 +2227,21 @@
             note: "상암 일대에서 열리는 나눔 콘셉트의 마라톤입니다.",
             url: "https://www.kimrunning.com/"
           },
-          {
-            name: "2026 성남 트레일 레이스",
-            date: "2026-09-12",
-            location: "경기 성남",
-            category: "트레일",
-            distance: "12K / 21K / 50K / 100K",
-            note: "가을 시즌 트레일 참가를 노려보기 좋은 일정입니다.",
-            url: "https://www.koreatrailrunning.com/"
-          },
-          {
-            name: "2026 JTBC 서울마라톤",
-            date: "2026-11-01",
-            location: "서울",
-            category: "마라톤",
-            distance: "Full / 10K",
-            note: "하반기 대표 도심 마라톤 일정입니다.",
-            url: "https://marathon.jtbc.com/"
-          }
         ];
 
+        const eventWindowEnd = new Date(today);
+        eventWindowEnd.setDate(eventWindowEnd.getDate() + 60);
+        const eventKind = (event) => {
+          const text = `${event.category || ""} ${event.type || ""} ${event.name || ""} ${event.distance || ""}`;
+          return /트레일|trail|산악|trailrun/i.test(text) ? "트레일" : "로드";
+        };
+
         const upcomingOnly = (source) => (source || [])
-            .filter(event => event.date && new Date(`${event.date}T23:59:59+09:00`) >= today)
+            .filter(event => {
+              if (!event.date) return false;
+              const date = new Date(`${event.date}T23:59:59+09:00`);
+              return date >= today && date <= eventWindowEnd;
+            })
             .sort((a, b) => a.date.localeCompare(b.date))
             .slice(0, 18);
 
@@ -1917,16 +2259,17 @@
             return `#/lineup?${params.toString()}`;
           };
 
-          const hasMore = events.length > 4;
+          const visibleCount = 6;
+          const hasMore = events.length > visibleCount;
           const board = list.closest(".event-board");
           if (board) board.classList.remove("is-expanded");
 
           list.innerHTML = `
             ${events.map((event, index) => `
-            <article class="event-item ${index >= 4 ? "is-extra" : ""}">
+            <article class="event-item ${index >= visibleCount ? "is-extra" : ""}">
               <div class="event-topline">
                 <span class="event-dday">${getDday(event.date)}</span>
-                <span class="pill">${event.category || event.type || "대회"}</span>
+                <span class="pill">${eventKind(event)}</span>
               </div>
               <div>
                 <div class="event-name">${event.name}</div>
@@ -1940,15 +2283,59 @@
               <a class="cta event-lineup-link" href="${lineupHref(event)}">라인업에 넣기 →</a>
             </article>
             `).join("")}
-            ${hasMore ? `<div class="event-toggle-row"><button type="button" class="event-toggle" id="event-toggle">더 보기 ${events.length - 4}개</button></div>` : ""}
+            ${hasMore ? `<div class="event-toggle-row"><button type="button" class="event-toggle" id="event-toggle">더 보기 ${events.length - visibleCount}개</button></div>` : ""}
           `;
 
           document.getElementById("event-toggle")?.addEventListener("click", () => {
             if (!board) return;
             const expanded = board.classList.toggle("is-expanded");
             const btn = document.getElementById("event-toggle");
-            if (btn) btn.textContent = expanded ? "접기" : `더 보기 ${events.length - 4}개`;
+            if (btn) btn.textContent = expanded ? "접기" : `더 보기 ${events.length - visibleCount}개`;
           });
+        };
+
+        const renderMajorEvents = () => {
+          const majorList = document.getElementById("major-events");
+          if (!majorList) return;
+          const majorEvents = [
+            {
+              name: "2026 춘천마라톤",
+              date: "2026-10-25",
+              location: "춘천 공지천",
+              category: "로드",
+              distance: "Full / 10K",
+              note: "JTBC 서울마라톤 전주에 열리는 가을 대표 풀코스 대회입니다.",
+              url: "https://www.chuncheonmarathon.com/"
+            },
+            {
+              name: "2026 JTBC 서울마라톤",
+              date: "2026-11-01",
+              location: "서울 상암월드컵경기장",
+              category: "로드",
+              distance: "Full / 10K",
+              note: "가을 시즌 대표 도심 풀코스 대회입니다.",
+              url: "https://marathon.jtbc.com/"
+            }
+          ].filter(event => new Date(`${event.date}T23:59:59+09:00`) >= today);
+
+          majorList.innerHTML = majorEvents.map(event => `
+            <article class="event-item">
+              <div class="event-topline">
+                <span class="event-dday">${getDday(event.date)}</span>
+                <span class="pill">${eventKind(event)}</span>
+              </div>
+              <div>
+                <div class="event-name">${event.name}</div>
+                <div class="event-meta">
+                  <span class="chip">${formatDate(event.date)}</span>
+                  <span class="chip">${event.location}</span>
+                  <span class="chip">${event.distance}</span>
+                </div>
+              </div>
+              <p class="event-note">${event.note}</p>
+              <a class="cta event-lineup-link" href="${event.url}" target="_blank" rel="noopener noreferrer">공식 보기 →</a>
+            </article>
+          `).join("");
         };
 
         try {
@@ -1961,6 +2348,7 @@
         } catch {
           renderEvents(upcomingOnly(fallbackEvents));
         }
+        renderMajorEvents();
       }
 
       function route() {
@@ -1974,7 +2362,12 @@
           normalized.startsWith("#/certificate") ||
           normalized.startsWith("#/regular") ||
           normalized.startsWith("#/courses") ||
-          normalized.startsWith("#/lineup");
+          normalized.startsWith("#/routes") ||
+          normalized.startsWith("#/shoes") ||
+          normalized.startsWith("#/lineup") ||
+          normalized.startsWith("#/app") ||
+          normalized.startsWith("#/share") ||
+          normalized.startsWith("#/first");
 
         if (!known) { location.replace("#/"); return; }
 
@@ -1983,7 +2376,12 @@
           normalized.startsWith("#/certificate") ? "certificate" :
           normalized.startsWith("#/regular") ? "regular" :
           normalized.startsWith("#/courses") ? "courses" :
+          normalized.startsWith("#/routes") ? "courses" :
+          normalized.startsWith("#/shoes") ? "courses" :
           normalized.startsWith("#/lineup") ? "lineup" :
+          normalized.startsWith("#/app") ? "app" :
+          normalized.startsWith("#/share") ? "share" :
+          normalized.startsWith("#/first") ? "first" :
           "home";
 
         document.querySelectorAll(".view").forEach(v => v.classList.remove("active"));
@@ -1992,10 +2390,36 @@
         document.body.dataset.view = view;
 
         document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
-        document.querySelector(`.tab[data-tab="${view}"]`)?.classList.add("active");
+        const activeTab =
+          normalized.startsWith("#/routes") || (normalized.startsWith("#/courses") && !normalized.includes("shoe-guide")) ? "routes" :
+          normalized.startsWith("#/shoes") || normalized.includes("shoe-guide") ? "shoes" :
+          view;
+        document.querySelector(`.tab[data-tab="${activeTab}"]`)?.classList.add("active");
         syncLineupFrame(view, location.hash || "#/");
+        syncCourseSection(view, location.hash || "#/");
 
         if (normalized !== raw) history.replaceState(null, "", normalized);
+      }
+
+      function syncCourseSection(view, hash) {
+        if (view !== "courses") return;
+        const rawHash = String(hash || "");
+        const isShoes = rawHash.startsWith("#/shoes") || rawHash.includes("section=shoe-guide");
+        const section = isShoes ? "shoe-guide" : "course-routes";
+        document.body.dataset.courseMode = isShoes ? "shoes" : "routes";
+        const title = document.getElementById("courses-title");
+        const pill = document.getElementById("courses-pill");
+        const lead = document.getElementById("courses-lead");
+        if (title) title.textContent = isShoes ? "러닝화 추천" : "코스 추천";
+        if (pill) pill.textContent = isShoes ? "러닝화 추천" : "코스 추천";
+        if (lead) {
+          lead.textContent = isShoes
+            ? "러닝 목적에 맞춰 여러 브랜드의 대표 모델을 가볍게 비교해보세요. 최종 선택은 착화감과 사이즈가 가장 중요합니다."
+            : "재밌게 찍히는 GPS 코스와 가볍게 둘러보기 좋은 러닝 코스를 모았습니다. 실제 주행 전 지도앱으로 동선을 확인해 주세요.";
+        }
+        requestAnimationFrame(() => {
+          document.getElementById(section)?.scrollIntoView({ behavior: "auto", block: "start" });
+        });
       }
 
       function syncLineupFrame(view, hash) {
@@ -2239,7 +2663,7 @@
 
       // 다음 행사 때는 이 값만 바꾸면 기록증의 대회 정보가 교체됩니다.
       const CERTIFICATE_EVENT = {
-        name: "NBRC Run&Lucly Day",
+        name: "Run & Lucky Day",
         date: "2026.05.30 07:00",
         location: "미사경정공원"
       };
