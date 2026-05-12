@@ -583,6 +583,11 @@
       .cert-event-summary .event-meta {
         margin-top: 0;
       }
+      .cert-event-summary .eyebrow,
+      .cert-event-summary .chip {
+        border-color: rgba(255, 106, 0, 0.22);
+        background: rgba(255, 106, 0, 0.08);
+      }
 
       .join-card {
         display: grid;
@@ -1684,7 +1689,7 @@
               <form id="cert-form">
                 <div class="cert-event-summary" aria-label="고정 기록증 행사 정보">
                   <span class="eyebrow">CERTIFICATE EVENT</span>
-                  <strong id="cert-event-title">노빠꾸 런앤럭키</strong>
+                  <strong id="cert-event-title">NBRC Run&Lucly Day</strong>
                   <div class="event-meta">
                     <span class="chip" id="cert-event-date">2026.05.30 07:00</span>
                     <span class="chip" id="cert-event-place">미사경정공원</span>
@@ -2234,7 +2239,7 @@
 
       // 다음 행사 때는 이 값만 바꾸면 기록증의 대회 정보가 교체됩니다.
       const CERTIFICATE_EVENT = {
-        name: "노빠꾸 런앤럭키",
+        name: "NBRC Run&Lucly Day",
         date: "2026.05.30 07:00",
         location: "미사경정공원"
       };
@@ -2440,9 +2445,6 @@
         ctx.save();
         ctx.fillStyle = "rgba(255,106,0,0.09)";
         roundedRect(ctx, cardX + 70, infoY, cardW - 140, 112, 18);
-        ctx.fill();
-        ctx.fillStyle = orange;
-        roundedRect(ctx, cardX + 70, infoY, 12, 112, 6);
         ctx.fill();
         ctx.restore();
 
