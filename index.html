@@ -30,6 +30,9 @@
 
       * { box-sizing: border-box; }
       html, body { height: 100%; }
+      html {
+        touch-action: manipulation;
+      }
 
       body {
         margin: 0;
@@ -54,6 +57,13 @@
       }
 
       a { color: inherit; text-decoration: none; }
+      button,
+      a,
+      .tab,
+      .eyebrow,
+      .cta {
+        touch-action: manipulation;
+      }
 
       .container {
         position: relative;
@@ -1352,6 +1362,12 @@
         font-size: 12px;
         font-weight: 800;
       }
+      .share-admin-trigger {
+        width: max-content;
+        cursor: default;
+        user-select: none;
+        -webkit-user-select: none;
+      }
       .admin-shortcut {
         position: fixed;
         right: 18px;
@@ -2004,8 +2020,8 @@
         <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">공유</div></div>
 
         <div class="card share-panel">
-          <span class="eyebrow">SHARE NBRC</span>
-          <h2 id="share-admin-trigger">노빠꾸 페이지 공유</h2>
+          <span class="eyebrow share-admin-trigger" id="share-admin-trigger">SHARE NBRC</span>
+          <h2>노빠꾸 페이지 공유</h2>
           <p class="muted">일정, 라인업, 러닝 도구를 한 번에 볼 수 있는 링크입니다.</p>
           <div class="share-copy">
             <div class="share-url" id="share-url">https://gaedolsnest.github.io/NOBACK/#/</div>
