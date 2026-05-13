@@ -40,8 +40,6 @@
         color: #111;
       }
 
-      body[data-view="certificate"]::before { opacity: 0; }
-
       body::before {
         content: "";
         position: fixed;
@@ -741,6 +739,9 @@
         .hero-panel { grid-template-columns: minmax(0, 1fr); }
         .hero::after { opacity: 0.10; }
         .home-feature-row, .showcase-card, .join-card { grid-template-columns: 1fr; }
+        .first-hero { padding: 18px; }
+        .first-hero h2 { font-size: 21px; }
+        .first-card { min-height: auto; }
         .cert-mini { min-height: 300px; }
       }
       .cta {
@@ -1049,6 +1050,16 @@
         display: grid;
         gap: 12px;
       }
+      .recommend-section .course-card,
+      .recommend-section .shoe-category,
+      .recommend-section .shoe-card {
+        background: rgba(255, 255, 255, 0.07);
+        border-color: rgba(255, 255, 255, 0.13);
+        box-shadow: none;
+      }
+      .recommend-section .shoe-card {
+        background: rgba(255, 255, 255, 0.055);
+      }
       .course-card h3,
       .shoe-card h3 {
         margin: 0;
@@ -1172,6 +1183,40 @@
         grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
         gap: 12px;
         margin-top: 14px;
+      }
+      .first-stack {
+        display: grid;
+        gap: 16px;
+      }
+      .first-hero {
+        display: grid;
+        gap: 8px;
+        padding: 22px;
+      }
+      .first-hero h2 {
+        margin-bottom: 0;
+        font-size: 24px;
+      }
+      .first-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 16px;
+      }
+      .first-card {
+        display: grid;
+        gap: 14px;
+        align-content: start;
+        min-height: 230px;
+      }
+      .first-card .guide-steps {
+        gap: 12px;
+      }
+      .first-card .chipline {
+        gap: 8px;
+      }
+      .first-card .cta {
+        width: max-content;
+        margin-top: 4px;
       }
       .friendly-card {
         display: grid;
@@ -1307,6 +1352,16 @@
         font-size: 12px;
         font-weight: 800;
       }
+      .admin-shortcut {
+        position: fixed;
+        right: 18px;
+        bottom: 18px;
+        z-index: 30;
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+      }
+      .admin-shortcut[hidden] {
+        display: none;
+      }
 
       ul { margin: 8px 0 0; padding-left: 18px; color: var(--muted); }
       li { margin: 6px 0; }
@@ -1321,7 +1376,6 @@
         <a class="tab" data-tab="home" href="#/">홈</a>
         <a class="tab" data-tab="first" href="#/first">처음 오셨나요</a>
         <a class="tab" data-tab="regular" href="#/regular">정기런</a>
-        <a class="tab" data-tab="certificate" href="#/certificate">기록증</a>
         <a class="tab" data-tab="interval" href="#/interval">인터벌</a>
         <a class="tab" data-tab="routes" href="#/routes">코스 추천</a>
         <a class="tab" data-tab="shoes" href="#/shoes">러닝화 추천</a>
@@ -1330,6 +1384,7 @@
         <a class="tab" data-tab="share" href="#/share">공유</a>
       </nav>
       <button type="button" class="mobile-join-jump" id="mobile-join-jump">처음 오셨나요</button>
+      <button type="button" class="admin-shortcut" id="admin-certificate-link" hidden>기록증 열기</button>
 
       <!-- HOME -->
       <section id="view-home" class="view">
@@ -1358,15 +1413,6 @@
                 <span class="feature-icon">🙌</span>
                 <h2>처음 오셨나요</h2>
                 <p>첫 정기런 전에 보면 좋은 준비물과 참여 흐름을 정리했습니다.</p>
-              </div>
-              <span class="cta">열기 →</span>
-            </a>
-
-            <a class="card feature-card" href="#/certificate">
-              <div>
-                <span class="feature-icon">🏁</span>
-                <h2>기록증 출력</h2>
-                <p>대회명, 닉네임, 기록을 넣어 크루용 완주 기록증을 만듭니다.</p>
               </div>
               <span class="cta">열기 →</span>
             </a>
@@ -1986,13 +2032,15 @@
       <section id="view-first" class="view">
         <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">처음 오셨나요</div></div>
 
-        <div class="card">
-          <span class="eyebrow">WELCOME RUNNER</span>
-          <h2>첫 정기런 전에 이것만 보면 됩니다</h2>
-          <p class="muted">기록보다 함께 뛰는 분위기를 우선합니다. 페이스가 걱정돼도 그날 컨디션에 맞춰 편하게 오시면 됩니다.</p>
+        <div class="first-stack">
+          <section class="card first-hero" aria-label="처음 오신 분 안내">
+            <span class="eyebrow">WELCOME RUNNER</span>
+            <h2>첫 정기런 전에 이것만 보면 됩니다</h2>
+            <p class="muted">기록보다 함께 뛰는 분위기를 우선합니다. 페이스가 걱정돼도 그날 컨디션에 맞춰 편하게 오시면 됩니다.</p>
+          </section>
 
-          <div class="friendly-grid">
-            <article class="card friendly-card">
+          <div class="first-grid">
+            <article class="card first-card">
               <h3>참여 흐름</h3>
               <ol class="guide-steps">
                 <li><span class="step-num">1</span><span>수요일 20:00 전에 집합 장소에 도착합니다.</span></li>
@@ -2002,7 +2050,7 @@
               </ol>
             </article>
 
-            <article class="card friendly-card">
+            <article class="card first-card">
               <h3>준비물</h3>
               <div class="chipline">
                 <span class="chip">러닝화</span>
@@ -2098,6 +2146,7 @@
         initFriendlyActions();
         initStaff();
         initMobileJoinJump();
+        initAdminShortcut();
         initCourseJumps();
         initUpcomingEvents();
         initInterval();
@@ -2116,7 +2165,7 @@
 
       function initFriendlyActions() {
         const shareUrl = "https://gaedolsnest.github.io/NOBACK/#/";
-        const shareText = "노빠꾸 러닝 크루 페이지입니다. 일정, 라인업, 기록증, 러닝 도구를 여기서 확인할 수 있어요.";
+        const shareText = "노빠꾸 러닝 크루 페이지입니다. 일정, 라인업, 러닝 도구를 여기서 확인할 수 있어요.";
         const status = document.getElementById("share-status");
         const setStatus = (text) => {
           if (!status) return;
@@ -2148,6 +2197,30 @@
       function initMobileJoinJump() {
         document.getElementById("mobile-join-jump")?.addEventListener("click", () => {
           location.hash = "#/first";
+        });
+      }
+
+      function initAdminShortcut() {
+        const button = document.getElementById("admin-certificate-link");
+        if (!button) return;
+
+        const reveal = () => {
+          button.hidden = false;
+          try { sessionStorage.setItem("noback-admin-certificate", "1"); } catch {}
+        };
+
+        try {
+          if (sessionStorage.getItem("noback-admin-certificate") === "1") reveal();
+        } catch {}
+
+        button.addEventListener("click", () => {
+          location.hash = "#/certificate";
+        });
+
+        window.addEventListener("keydown", (event) => {
+          if (!event.ctrlKey || !event.altKey || event.key.toLowerCase() !== "m") return;
+          event.preventDefault();
+          reveal();
         });
       }
 
