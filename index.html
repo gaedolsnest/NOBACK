@@ -1,4 +1,4 @@
-﻿<!-- file: index.html -->
+<!-- file: index.html -->
 <!doctype html>
 <html lang="ko">
   <head>
@@ -2908,12 +2908,11 @@
 
         const orange = "#ff6a00";
         const white = "#fff4ec";
-        const cardX = 48;
-        const cardY = 48;
-        const cardW = W - cardX * 2;
-        const cardH = H - cardY * 2;
+        const cardX = 0;
+        const cardY = 0;
+        const cardW = W;
+        const cardH = H;
         const font = "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
-        const koreanFont = "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial";
         const timeText = formatTime(timeSec);
         const metaDate = evDate.replace(/\s+\d{2}:\d{2}$/, "");
 
@@ -2958,7 +2957,7 @@
         };
 
         ctx.save();
-        roundedRect(ctx, cardX, cardY, cardW, cardH, 42);
+        roundedRect(ctx, cardX, cardY, cardW, cardH, 0);
         ctx.clip();
 
         if (photo) {
@@ -3006,15 +3005,15 @@
         ctx.fillText("OFFICIAL RECORD", cardX + 78, cardY + 146);
 
         ctx.fillStyle = "#ffffff";
-        setFitFont("CERTIFICATE", 620, 102, 76);
-        ctx.fillText("CERTIFICATE", cardX + 78, cardY + 242);
+        setFitFont("CERTIFICATE", 590, 92, 70);
+        ctx.fillText("CERTIFICATE", cardX + 78, cardY + 226);
 
         ctx.textAlign = "right";
         ctx.fillStyle = "rgba(255,255,255,0.96)";
-        setFitFont(evName, 440, 43, 30);
-        ctx.fillText(evName, cardX + cardW - 78, cardY + 158);
-        drawRightPill(metaDate, cardX + cardW - 78, cardY + 204, 330);
-        drawRightPill(evLocation, cardX + cardW - 78, cardY + 260, 360);
+        setFitFont(evName, 520, 43, 30);
+        ctx.fillText(evName, cardX + cardW - 78, cardY + 318);
+        drawRightPill(metaDate, cardX + cardW - 78, cardY + 348, 330);
+        drawRightPill(evLocation, cardX + cardW - 78, cardY + 404, 360);
 
         ctx.textAlign = "left";
         ctx.shadowColor = "rgba(0,0,0,0.46)";
