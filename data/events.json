@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-12T20:28:30.570Z",
+  "updatedAt": "2026-05-13T20:44:30.329Z",
   "events": [
     {
       "name": "RUN 518 도청가는길",
@@ -873,6 +873,15 @@
       "distance": "11km / 11km",
       "note": "마라톤온라인 대회 일정 기반입니다.",
       "url": "http://www.koreatrail.net/home/main.php?link=event&einc=eapp&opp=20250821124548&csno=20220326200847#baseline"
+    },
+    {
+      "name": "2026 울릉도 국제 트레일러닝",
+      "date": "2026-07-12",
+      "location": "울릉 공설운동장",
+      "category": "트레일",
+      "distance": "40km / 27km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://osk.run/"
     }
   ]
 }
