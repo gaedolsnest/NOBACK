@@ -2906,8 +2906,8 @@
 
         const photo = await loadDefaultMedalImage();
 
-        const orange = "#ff6a00";
-        const white = "#fff4ec";
+        const orange = "#d85a16";
+        const white = "#f6eee6";
         const cardX = 0;
         const cardY = 0;
         const cardW = W;
@@ -3020,23 +3020,37 @@
         ctx.shadowBlur = 24;
         ctx.shadowOffsetY = 8;
         ctx.fillStyle = "#ffffff";
-        setFitFont(nick, 560, 66, 42);
-        ctx.fillText(nick, cardX + 78, cardY + cardH - 314);
+        setFitFont(nick, 520, 48, 34);
+        ctx.fillText(nick, cardX + 78, cardY + cardH - 326);
 
-        ctx.font = `1000 196px ${font}`;
+        const timeX = cardX + 78;
+        const timeY = cardY + cardH - 168;
+        setFitFont(timeText, cardW - 108, 150, 104, 1000);
+        ctx.shadowColor = "rgba(0,0,0,0.64)";
+        ctx.shadowBlur = 22;
+        ctx.shadowOffsetY = 8;
+        ctx.lineJoin = "round";
+        ctx.lineWidth = 16;
+        ctx.strokeStyle = "rgba(0,0,0,0.90)";
+        ctx.strokeText(timeText, timeX, timeY);
+        ctx.shadowColor = "rgba(0,0,0,0.34)";
+        ctx.shadowBlur = 4;
+        ctx.shadowOffsetY = 0;
         ctx.fillStyle = orange;
-        ctx.fillText(timeText, cardX + 82, cardY + cardH - 132);
+        ctx.fillText(timeText, timeX + 5, timeY + 20);
         ctx.fillStyle = white;
-        ctx.fillText(timeText, cardX + 78, cardY + cardH - 152);
+        ctx.fillText(timeText, timeX, timeY);
+        ctx.shadowColor = "transparent";
+        const timeWidth = ctx.measureText(timeText).width;
 
         if (evDistance) {
           const badgeSize = 184;
           const bx = cardX + cardW - 78 - badgeSize;
           const by = cardY + cardH - 356;
-          ctx.shadowColor = "rgba(255,106,0,0.36)";
+          ctx.shadowColor = "rgba(216,90,22,0.28)";
           ctx.shadowBlur = 42;
           ctx.shadowOffsetY = 18;
-          ctx.fillStyle = "rgba(255,106,0,0.88)";
+          ctx.fillStyle = "rgba(216,90,22,0.82)";
           roundedRect(ctx, bx, by, badgeSize, badgeSize, badgeSize / 2);
           ctx.fill();
           ctx.shadowColor = "transparent";
@@ -3057,18 +3071,18 @@
         ctx.strokeStyle = orange;
         ctx.lineWidth = 4;
         ctx.beginPath();
-        ctx.moveTo(cardX + 78, cardY + cardH - 74);
-        ctx.lineTo(cardX + 540, cardY + cardH - 74);
+        ctx.moveTo(cardX + 78, cardY + cardH - 92);
+        ctx.lineTo(Math.min(cardX + cardW - 78, timeX + timeWidth + 52), cardY + cardH - 92);
         ctx.stroke();
 
         ctx.fillStyle = "rgba(255,255,255,0.76)";
         ctx.font = `900 26px ${font}`;
-        ctx.fillText("NBRC RUNNING CREW", cardX + 78, cardY + cardH - 36);
+        ctx.fillText("NOBACK RUNNING CREW", cardX + 78, cardY + cardH - 58);
 
         if (bib) {
           ctx.textAlign = "right";
           ctx.fillStyle = "rgba(255,255,255,0.76)";
-          ctx.fillText(`Bib No. ${bib}`, cardX + cardW - 78, cardY + cardH - 36);
+          ctx.fillText(`Bib No. ${bib}`, cardX + cardW - 78, cardY + cardH - 58);
         }
 
         const safeEventName = evName.replace(/\s+/g, "_");
