@@ -2005,7 +2005,7 @@
 
         <div class="card share-panel">
           <span class="eyebrow">SHARE NBRC</span>
-          <h2>노빠꾸 페이지 공유</h2>
+          <h2 id="share-admin-trigger">노빠꾸 페이지 공유</h2>
           <p class="muted">일정, 라인업, 러닝 도구를 한 번에 볼 수 있는 링크입니다.</p>
           <div class="share-copy">
             <div class="share-url" id="share-url">https://gaedolsnest.github.io/NOBACK/#/</div>
@@ -2177,11 +2177,6 @@
         });
 
         document.getElementById("copy-share-link")?.addEventListener("click", async () => {
-          const copyButton = document.getElementById("copy-share-link");
-          if (copyButton?.dataset.adminLongPress === "1") {
-            copyButton.dataset.adminLongPress = "";
-            return;
-          }
           try {
             await navigator.clipboard.writeText(`${shareText}\n${shareUrl}`);
             setStatus("공유 문구를 복사했습니다.");
@@ -2214,28 +2209,35 @@
           location.hash = "#/certificate";
         });
 
-        const copyButton = document.getElementById("copy-share-link");
-        let holdTimer = 0;
-        const clearHold = () => {
-          if (!holdTimer) return;
-          window.clearTimeout(holdTimer);
-          holdTimer = 0;
-        };
-        copyButton?.addEventListener("pointerdown", () => {
-          clearHold();
-          holdTimer = window.setTimeout(() => {
-            copyButton.dataset.adminLongPress = "1";
-            reveal();
-          }, 900);
-        });
-        ["pointerup", "pointercancel", "pointerleave"].forEach(eventName => {
-          copyButton?.addEventListener(eventName, clearHold);
+        const shareAdminTrigger = document.getElementById("share-admin-trigger");
+        let adminTapCount = 0;
+        let adminTapTimer = 0;
+        shareAdminTrigger?.addEventListener("click", () => {
+          adminTapCount += 1;
+          window.clearTimeout(adminTapTimer);
+          adminTapTimer = window.setTimeout(() => { adminTapCount = 0; }, 1400);
+          if (adminTapCount < 5) return;
+          adminTapCount = 0;
+          reveal();
         });
 
+        let secretBuffer = "";
         window.addEventListener("keydown", (event) => {
-          if (!event.ctrlKey || !event.altKey || event.key.toLowerCase() !== "m") return;
-          event.preventDefault();
-          reveal();
+          const key = event.key.toLowerCase();
+          const target = event.target;
+          const isTyping = target?.matches?.("input, textarea, select, [contenteditable='true']");
+
+          if (event.ctrlKey && event.shiftKey && key === "c") {
+            event.preventDefault();
+            reveal();
+            return;
+          }
+
+          if (isTyping || event.ctrlKey || event.altKey || event.metaKey) return;
+          if (!/^[a-z]$/.test(key)) return;
+
+          secretBuffer = (secretBuffer + key).slice(-6);
+          if (secretBuffer === "noback") reveal();
         });
       }
 
