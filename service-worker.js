@@ -1,4 +1,4 @@
-const CACHE_NAME = "noback-pwa-v2";
+const CACHE_NAME = "noback-pwa-v4";
 const CORE_ASSETS = [
   "./",
   "./index.html",
@@ -9,6 +9,8 @@ const CORE_ASSETS = [
   "./logo.png",
   "./medal.PNG",
   "./favicon.ico",
+  "./assets/noback-hero.png",
+  "./assets/noback-bg-light.png",
   "./assets/meetup-map-custom.jpg"
 ];
 

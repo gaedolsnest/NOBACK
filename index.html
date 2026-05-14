@@ -18,9 +18,9 @@
     <style>
       :root {
         --accent: #ff6a00;
-        --page: #ffffff;
-        --glass: rgba(0, 0, 0, 0.56);
-        --glass2: rgba(0, 0, 0, 0.42);
+        --page: #f6f3ec;
+        --glass: rgba(35, 35, 35, 0.66);
+        --glass2: rgba(16, 16, 16, 0.58);
         --border: rgba(255, 255, 255, 0.14);
         --text: rgba(255, 255, 255, 0.94);
         --muted: rgba(255, 255, 255, 0.72);
@@ -40,18 +40,26 @@
         line-height: 1.45;
         background: var(--page);
         position: relative;
-        color: #111;
+        color: var(--text);
       }
 
       body::before {
         content: "";
         position: fixed;
         inset: 0;
-        background-image: url("./bg.jpg?v=7030");
-        background-repeat: repeat;
-        background-size: 260px auto;
-        background-position: 0 0;
-        opacity: 0.11;
+        background: url("./assets/noback-bg-light.png?v=7031") center top / cover no-repeat;
+        opacity: 1;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.26)),
+          radial-gradient(circle at 50% 26%, rgba(255, 255, 255, 0.38), transparent 42%);
         pointer-events: none;
         z-index: 0;
       }
@@ -140,7 +148,7 @@
       }
 
       .tabs {
-        display: flex;
+        display: none;
         gap: 8px;
         flex-wrap: wrap;
         margin: 12px 0 14px;
@@ -148,15 +156,15 @@
 
       .tab {
         font-size: 13px;
-        color: rgba(0, 0, 0, 0.62);
-        border: 1px solid rgba(0, 0, 0, 0.1);
+        color: rgba(255, 255, 255, 0.72);
+        border: 1px solid rgba(255, 255, 255, 0.12);
         padding: 8px 12px;
         border-radius: 999px;
-        background: rgba(0, 0, 0, 0.04);
+        background: rgba(0, 0, 0, 0.34);
       }
 
       .tab.active {
-        color: #111;
+        color: #fff;
         border-color: rgba(255, 106, 0, 0.6);
         background: rgba(255, 106, 0, 0.18);
       }
@@ -172,33 +180,21 @@
       .hero {
         position: relative;
         overflow: hidden;
-        min-height: 430px;
+        min-height: 510px;
         border-radius: var(--radius);
         background:
-          linear-gradient(120deg, rgba(0, 0, 0, 0.68), rgba(0, 0, 0, 0.46) 54%, rgba(255, 106, 0, 0.16)),
-          url("./bg.jpg?v=7030");
-        background-size: cover, 420px auto;
-        background-position: center, center;
-        background-repeat: no-repeat, repeat;
+          linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.12)),
+          url("./assets/noback-hero.png?v=7031");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
         border: 1px solid var(--border);
         box-shadow: var(--shadow);
         color: var(--text);
-        padding: 30px;
-        display: grid;
-        grid-template-columns: minmax(0, 1.15fr) minmax(220px, 0.85fr);
-        gap: 24px;
-        align-items: end;
       }
 
       .hero::after {
-        content: "";
-        position: absolute;
-        inset: auto 24px 24px auto;
-        width: min(280px, 42vw);
-        height: min(180px, 28vw);
-        background: url("./logo.png?v=7030") center / contain no-repeat;
-        opacity: 0.18;
-        pointer-events: none;
+        content: none;
       }
 
       .hero-copy,
@@ -206,6 +202,24 @@
         min-width: 0;
         position: relative;
         z-index: 1;
+      }
+
+      .intro-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 0.48fr);
+        gap: 14px;
+      }
+
+      .hero-copy {
+        max-width: none;
+        min-height: 190px;
+        padding: 22px;
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        background: rgba(28, 28, 28, 0.66);
+        box-shadow: 0 18px 46px rgba(0, 0, 0, 0.28);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
       }
 
       .eyebrow {
@@ -225,10 +239,11 @@
 
       .hero h2 {
         margin: 0;
-        max-width: 680px;
+        max-width: 620px;
         color: #fff;
-        font-size: 44px;
-        line-height: 1.08;
+        font-family: Impact, Haettenschweiler, "Arial Black", ui-sans-serif, system-ui, sans-serif;
+        font-size: clamp(42px, 7vw, 72px);
+        line-height: 0.95;
         letter-spacing: 0;
       }
 
@@ -237,6 +252,17 @@
         max-width: 610px;
         color: rgba(255, 255, 255, 0.76);
         font-size: 15px;
+      }
+
+      .hero-tagline {
+        margin: 12px 0 0;
+        color: #fff;
+        font-size: clamp(24px, 4vw, 42px);
+        font-weight: 1000;
+        line-height: 1.08;
+      }
+      .hero-tagline strong {
+        color: var(--accent);
       }
 
       .hero-actions {
@@ -272,20 +298,23 @@
       }
 
       .hero-panel {
-        align-self: stretch;
         display: grid;
         gap: 10px;
-        align-content: end;
+        align-content: space-between;
+        min-height: 190px;
+        padding: 22px;
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        background:
+          radial-gradient(circle at 80% 18%, rgba(255, 106, 0, 0.22), transparent 34%),
+          rgba(16, 16, 16, 0.74);
+        box-shadow: 0 18px 46px rgba(0, 0, 0, 0.28);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
       }
 
       .hero-stat {
-        display: grid;
-        gap: 4px;
-        min-height: 76px;
-        padding: 14px;
-        border-radius: 14px;
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        background: rgba(255, 255, 255, 0.10);
+        display: none;
       }
 
       .hero-stat strong {
@@ -296,6 +325,37 @@
       .hero-stat span {
         color: var(--muted);
         font-size: 12px;
+      }
+
+      .next-run-title {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 13px;
+        font-weight: 900;
+      }
+      .next-run-dday {
+        display: flex;
+        align-items: end;
+        gap: 10px;
+        margin-top: 8px;
+      }
+      .next-run-dday strong {
+        font-family: Impact, Haettenschweiler, "Arial Black", ui-sans-serif, system-ui, sans-serif;
+        color: #fff;
+        font-size: 58px;
+        line-height: 0.9;
+      }
+      .next-run-dday span {
+        padding-bottom: 7px;
+        color: rgba(255, 255, 255, 0.72);
+        font-weight: 900;
+      }
+      .run-meta {
+        display: grid;
+        gap: 5px;
+        margin-top: 14px;
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 14px;
       }
 
       .event-board {
@@ -314,13 +374,13 @@
       }
       .event-list {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 10px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 9px;
       }
       .event-item {
         display: grid;
-        gap: 10px;
-        padding: 13px;
+        gap: 8px;
+        padding: 12px;
         border-radius: 14px;
         border: 1px solid rgba(255, 255, 255, 0.14);
         background: rgba(255, 255, 255, 0.05);
@@ -405,6 +465,14 @@
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         gap: 14px;
       }
+      .home-lower {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 14px;
+      }
+      .race-board {
+        grid-column: 1 / -1;
+      }
       @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
 
       .card {
@@ -424,6 +492,28 @@
         flex-direction: column;
         justify-content: space-between;
         transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+      }
+
+      .mini-actions {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 14px;
+        padding-top: 14px;
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+      }
+      .mini-action {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 34px;
+        padding: 8px 11px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 106, 0, 0.34);
+        background: rgba(255, 106, 0, 0.12);
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 12px;
+        font-weight: 900;
       }
       .feature-card:hover {
         transform: translateY(-2px);
@@ -731,7 +821,7 @@
         cursor: pointer;
       }
       @media (max-width: 720px) {
-        body[data-view="home"] .mobile-join-jump { display: inline-flex; align-items: center; justify-content: center; }
+        body[data-view="home"] .mobile-join-jump { display: none; }
         .home-feature-row .map-panel { order: -1; }
 
         .container { padding: 14px 12px 46px; }
@@ -740,13 +830,17 @@
         .builtby { display: none; }
         .linkbtn { max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
         .hero {
-          min-height: auto;
-          grid-template-columns: 1fr;
-          padding: 24px 18px;
+          min-height: 330px;
+          background-position: center;
         }
         .hero h2 { max-width: 100%; font-size: 28px; line-height: 1.16; overflow-wrap: anywhere; }
         .hero-lead { overflow-wrap: anywhere; }
-        .hero-panel { grid-template-columns: minmax(0, 1fr); }
+        .intro-row,
+        .home-lower,
+        .event-list { grid-template-columns: 1fr; }
+        .hero-copy,
+        .hero-panel { min-height: auto; padding: 18px; }
+        .race-board { grid-column: auto; }
         .hero::after { opacity: 0.10; }
         .home-feature-row, .showcase-card, .join-card { grid-template-columns: 1fr; }
         .first-hero { padding: 18px; }
@@ -1086,39 +1180,64 @@
         width: max-content;
       }
       .shoe-visual {
-        min-height: 86px;
-        display: flex;
+        min-height: 128px;
+        display: grid;
+        grid-template-columns: minmax(92px, 0.9fr) minmax(0, 1.1fr);
         align-items: center;
-        justify-content: space-between;
         gap: 12px;
-        padding: 14px;
+        padding: 12px;
         border-radius: 14px;
         border: 1px solid rgba(255, 255, 255, 0.14);
         background: linear-gradient(135deg, rgba(255, 106, 0, 0.16), rgba(255, 255, 255, 0.06));
+        overflow: hidden;
+      }
+      .shoe-photo {
+        height: 96px;
+        display: grid;
+        place-items: center;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        background: rgba(255, 255, 255, 0.9);
+        overflow: hidden;
+      }
+      .shoe-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        padding: 6px;
+      }
+      .shoe-photo.fallback {
+        background:
+          radial-gradient(circle at 28% 22%, rgba(255, 106, 0, 0.28), transparent 34%),
+          linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.035));
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 18px;
+        font-weight: 1000;
+        letter-spacing: 0;
       }
       .shoe-brand {
-        min-width: 72px;
+        min-width: 0;
         width: auto;
-        height: 48px;
+        height: auto;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: 0 12px;
-        border-radius: 16px;
+        padding: 4px 8px;
+        border-radius: 999px;
         border: 1px solid rgba(255, 106, 0, 0.34);
         background: rgba(255, 106, 0, 0.16);
         color: #ffd1b8;
-        font-size: 14px;
+        font-size: 11px;
         font-weight: 900;
       }
       .shoe-use {
         display: grid;
-        gap: 2px;
-        text-align: right;
+        gap: 5px;
+        text-align: left;
       }
       .shoe-use strong {
         color: var(--text);
-        font-size: 14px;
+        font-size: 16px;
       }
       .shoe-use span {
         color: var(--muted);
@@ -1405,21 +1524,30 @@
       <!-- HOME -->
       <section id="view-home" class="view">
         <div class="home-stack">
-          <section class="hero" aria-label="노빠꾸 러닝 크루 소개">
+          <section class="hero" aria-label="노빠꾸 러닝 크루 대표 이미지"></section>
+
+          <section class="intro-row" aria-label="노빠꾸 러닝 크루 소개">
             <div class="hero-copy">
               <span class="eyebrow">NO BACK RUNNING CREW</span>
-              <h2>함께 뛰면,<br />오늘의 페이스가<br />조금 더 가벼워집니다.</h2>
-              <p class="hero-lead">꾸준히 함께 뛰는 러닝 모임입니다.</p>
+              <h2>NO BACK.<br />JUST RUN.</h2>
+              <p class="hero-tagline">하남 대표 러닝 크루<strong>!</strong></p>
+              <p class="hero-lead">기록보다 함께 뛰는 분위기를 우선합니다. 수요일 밤, 편하게 모여 함께 달립니다.</p>
               <div class="hero-actions">
                 <a class="primary-action" href="#/regular">정기런 보기 →</a>
                 <a class="secondary-action" href="https://www.daangn.com/kr/group/%EB%85%B8%EB%B9%A0%EA%BE%B8-%EB%9F%AC%EB%8B%9D%ED%81%AC%EB%A3%A8-no-back-rc-1yeomgcwmnyx/" target="_blank" rel="noopener noreferrer">모임 바로가기</a>
               </div>
             </div>
 
-            <div class="hero-panel" aria-label="모임 핵심 정보">
-              <div class="hero-stat"><strong>수요일 20:00</strong><span>정기런 진행</span></div>
-              <div class="hero-stat"><strong>페이스별 그룹</strong><span>컨디션에 맞춰 편하게 선택</span></div>
-              <div class="hero-stat"><strong>신규 회원</strong><span>정기런 참석 후 가입승인</span></div>
+            <div class="hero-panel" aria-label="다음 정기런">
+              <div>
+                <p class="next-run-title">NEXT REGULAR RUN</p>
+                <div class="next-run-dday"><strong id="next-regular-dday">D-0</strong><span>수요일 정기런</span></div>
+              </div>
+              <div class="run-meta">
+                <span id="next-regular-date">매주 수요일 20:00</span>
+                <span>하남 종합운동장</span>
+                <span>페이스별 그룹으로 편하게 출발</span>
+              </div>
             </div>
           </section>
 
@@ -1462,12 +1590,11 @@
 
           </div>
 
-          <section class="card event-board" aria-label="다가오는 로드 대회 일정">
+          <section class="card event-board race-board" aria-label="다가오는 로드 대회 일정">
             <div class="event-board-head">
               <div>
                 <span class="eyebrow">RACE CALENDAR</span>
                 <h2>다가오는 로드 대회</h2>
-                <p>앞으로 1~2개월 안에 열리는 로드 대회입니다.</p>
               </div>
             </div>
             <div class="event-list" id="road-events">
@@ -1475,12 +1602,11 @@
             </div>
           </section>
 
-          <section class="card event-board" aria-label="다가오는 트레일 대회 일정">
+          <section class="card event-board race-board" aria-label="다가오는 트레일 대회 일정">
             <div class="event-board-head">
               <div>
                 <span class="eyebrow">TRAIL RACE CALENDAR</span>
                 <h2>다가오는 트레일 대회</h2>
-                <p>앞으로 1~2개월 안에 열리는 트레일 대회입니다.</p>
               </div>
             </div>
             <div class="event-list" id="trail-events">
@@ -1488,33 +1614,36 @@
             </div>
           </section>
 
-          <section class="card event-board" aria-label="국내 주요 마라톤 일정">
-            <div class="event-board-head">
-              <div>
-                <span class="eyebrow">MAJOR MARATHON</span>
-                <h2>국내 주요 마라톤</h2>
-                <p>가을 풀코스 목표로 많이 보는 대표 대회입니다.</p>
+          <section class="home-lower" aria-label="홈 하단 정보">
+            <a class="card support-card" href="#/lineup" aria-label="라인업">
+              <div class="support-head">
+                <div>
+                  <span class="eyebrow">LINEUP</span>
+                  <h2>라인업</h2>
+                  <p>정기런, 이벤트런, 대회 준비에 맞춰 함께 뛰는 크루원 기록을 작게 남겨둡니다.</p>
+                </div>
               </div>
-            </div>
-            <div class="event-list" id="major-events">
-              <div class="event-item"><p class="event-note">주요 마라톤 일정을 불러오는 중입니다.</p></div>
-            </div>
-          </section>
+              <div class="chipline"><span class="chip">5K</span><span class="chip">10K</span><span class="chip">Half</span><span class="chip">Full</span></div>
+              <span class="cta">라인업 보기 →</span>
+            </a>
 
-          <section class="card support-card" aria-label="도움 주시는 분들">
+            <section class="card support-card" aria-label="운영진">
             <div class="support-head">
               <div>
-                <span class="eyebrow">NBRC STAFF ✨</span>
-                <h2>도움 주시는 분들 🙌</h2>
-                <p>정기런 진행, 신규 회원 안내, 현장 분위기를 함께 챙겨주는 든든한 NBRC 서포터즈입니다.</p>
+                <span class="eyebrow">CREW</span>
+                <h2>운영진</h2>
+                <p>문의와 현장 진행을 도와주는 운영진 정보는 홈 하단에 가볍게 유지합니다.</p>
               </div>
-              <span class="pill">함께 만드는 NBRC ✨</span>
             </div>
-            <div class="chipline support-roleline"><span class="chip">정기런 진행 🏃</span><span class="chip">출석 체크 ✅</span><span class="chip">페이스 케어 ⏱</span><span class="chip">신규 회원 안내 💬</span></div>
             <div class="support-rows">
               <div class="support-row"><span class="support-label">👑 크루장</span><div class="support-detail"><div class="chipline"><span class="chip">총괄 리딩 🏁</span></div><div class="chipline"><span class="chip">망구</span></div></div></div>
               <div class="support-row"><span class="support-label">🤝 운영진</span><div class="chipline" id="home-ops-chips"></div></div>
             </div>
+            <div class="mini-actions" aria-label="보조 메뉴">
+              <a class="mini-action" href="#/app">앱처럼 쓰기</a>
+              <a class="mini-action" href="#/share">공유</a>
+            </div>
+            </section>
           </section>
         </div>
       </section>
@@ -1744,7 +1873,7 @@
                 <span class="eyebrow">SHOE GUIDE</span>
                 <h3>러닝화 추천</h3>
               </div>
-              <p class="muted">러닝 목적에 맞춰 여러 브랜드의 대표 모델을 가볍게 비교해보세요. 최종 선택은 착화감과 사이즈가 가장 중요합니다.</p>
+              <p class="muted">러닝 목적에 맞춰 대표 모델을 이미지와 함께 가볍게 비교해보세요. 최종 선택은 착화감과 사이즈가 가장 중요합니다.</p>
             </div>
             <div class="section-jumps" aria-label="러닝화 섹션 빠른 이동">
               <a class="cta" href="#/routes">코스 추천으로 이동 ↑</a>
@@ -1753,24 +1882,33 @@
             <div class="shoe-grid">
               <article class="card shoe-category">
                 <div class="shoe-category-head">
-                  <div><h3>조깅용 · 데일리</h3><p class="muted">처음 신거나 주 2~4회 꾸준히 달릴 때 무난한 기본 로테이션입니다.</p></div>
-                  <span class="pill">Easy Run</span>
+                  <div><h3>입문용 · 데일리</h3><p class="muted">처음 신거나 주 2~4회 꾸준히 달릴 때 무난한 기본 로테이션입니다.</p></div>
+                  <span class="pill">Daily</span>
                 </div>
                 <div class="shoe-options">
                   <div class="card shoe-card">
-                    <div class="shoe-visual"><span class="shoe-brand">NIKE</span><div class="shoe-use"><strong>Pegasus</strong><span>올라운더</span></div></div>
-                    <p>페가수스 계열. 가벼운 조깅부터 일상 훈련까지 폭넓게 쓰기 좋습니다.</p>
-                    <a class="cta" href="https://www.nike.com/kr/w/running-shoes-37v7jzy7ok" target="_blank" rel="noopener noreferrer">한국 공홈 →</a>
+                    <div class="shoe-visual">
+                      <div class="shoe-photo"><img src="https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto%2Cu_9ddf04c7-2a9a-4d76-add1-d15af8f0263d%2Cc_scale%2Cfl_relative%2Cw_1.0%2Ch_1.0%2Cfl_layer_apply/d6c435e3-f6f6-451a-9052-160531612392/PEGASUS%2BPLUS.png" alt="Nike Pegasus Plus" loading="lazy"></div>
+                      <div class="shoe-use"><span class="shoe-brand">NIKE</span><strong>Pegasus Plus</strong><span>입문+데일리</span></div>
+                    </div>
+                    <p>기본 페가수스보다 조금 더 반응성 있는 데일리화입니다. 조깅부터 가벼운 페이스업까지 무난합니다.</p>
+                    <a class="cta" href="https://www.nike.com/kr/w/running-shoes-37v7jzy7ok" target="_blank" rel="noopener noreferrer">모델 보기 →</a>
                   </div>
                   <div class="card shoe-card">
-                    <div class="shoe-visual"><span class="shoe-brand">ASICS</span><div class="shoe-use"><strong>CUMULUS</strong><span>중립 쿠션</span></div></div>
-                    <p>젤-큐물러스/노바블라스트 계열. 편한 착지감과 반발감의 균형형입니다.</p>
-                    <a class="cta" href="https://www.asics.co.kr/" target="_blank" rel="noopener noreferrer">한국 공홈 →</a>
+                    <div class="shoe-visual">
+                      <div class="shoe-photo fallback">ASICS</div>
+                      <div class="shoe-use"><span class="shoe-brand">ASICS</span><strong>Novablast</strong><span>반발감 데일리</span></div>
+                    </div>
+                    <p>노바블라스트 계열. 편한 착지감에 통통 튀는 반발감이 있어 지루하지 않은 데일리화입니다.</p>
+                    <a class="cta" href="https://www.asics.co.kr/" target="_blank" rel="noopener noreferrer">모델 보기 →</a>
                   </div>
                   <div class="card shoe-card">
-                    <div class="shoe-visual"><span class="shoe-brand">NB</span><div class="shoe-use"><strong>880</strong><span>기본 훈련</span></div></div>
+                    <div class="shoe-visual">
+                      <div class="shoe-photo fallback">NB</div>
+                      <div class="shoe-use"><span class="shoe-brand">NB</span><strong>Fresh Foam X 880</strong><span>기본 훈련</span></div>
+                    </div>
                     <p>880 계열. 과하지 않은 쿠션과 안정적인 착화감으로 데일리 러닝에 어울립니다.</p>
-                    <a class="cta" href="https://www.nbkorea.com/" target="_blank" rel="noopener noreferrer">한국 공홈 →</a>
+                    <a class="cta" href="https://www.nbkorea.com/" target="_blank" rel="noopener noreferrer">모델 보기 →</a>
                   </div>
                 </div>
               </article>
@@ -1782,19 +1920,28 @@
                 </div>
                 <div class="shoe-options">
                   <div class="card shoe-card">
-                    <div class="shoe-visual"><span class="shoe-brand">ASICS</span><div class="shoe-use"><strong>NIMBUS</strong><span>맥스 쿠션</span></div></div>
+                    <div class="shoe-visual">
+                      <div class="shoe-photo fallback">ASICS</div>
+                      <div class="shoe-use"><span class="shoe-brand">ASICS</span><strong>Gel-Nimbus</strong><span>맥스 쿠션</span></div>
+                    </div>
                     <p>젤-님버스 계열. 부드럽고 두툼한 쿠션감으로 회복주에 잘 맞습니다.</p>
-                    <a class="cta" href="https://www.asics.co.kr/" target="_blank" rel="noopener noreferrer">한국 공홈 →</a>
+                    <a class="cta" href="https://www.asics.co.kr/" target="_blank" rel="noopener noreferrer">모델 보기 →</a>
                   </div>
                   <div class="card shoe-card">
-                    <div class="shoe-visual"><span class="shoe-brand">HOKA</span><div class="shoe-use"><strong>Bondi</strong><span>푹신함</span></div></div>
+                    <div class="shoe-visual">
+                      <div class="shoe-photo fallback">HOKA</div>
+                      <div class="shoe-use"><span class="shoe-brand">HOKA</span><strong>Bondi</strong><span>푹신함</span></div>
+                    </div>
                     <p>본디 계열. 두꺼운 미드솔과 부드러운 롤링감으로 천천히 오래 뛰기 좋습니다.</p>
-                    <a class="cta" href="https://www.hoka.com/ko/kr/" target="_blank" rel="noopener noreferrer">한국 공홈 →</a>
+                    <a class="cta" href="https://www.hoka.com/ko/kr/" target="_blank" rel="noopener noreferrer">모델 보기 →</a>
                   </div>
                   <div class="card shoe-card">
-                    <div class="shoe-visual"><span class="shoe-brand">NB</span><div class="shoe-use"><strong>1080</strong><span>장거리 조깅</span></div></div>
+                    <div class="shoe-visual">
+                      <div class="shoe-photo fallback">NB</div>
+                      <div class="shoe-use"><span class="shoe-brand">NB</span><strong>Fresh Foam X 1080</strong><span>장거리 조깅</span></div>
+                    </div>
                     <p>1080 계열. 편안한 쿠션을 원하는 중립 러너의 회복/장거리 조깅용으로 무난합니다.</p>
-                    <a class="cta" href="https://www.nbkorea.com/" target="_blank" rel="noopener noreferrer">한국 공홈 →</a>
+                    <a class="cta" href="https://www.nbkorea.com/" target="_blank" rel="noopener noreferrer">모델 보기 →</a>
                   </div>
                 </div>
               </article>
@@ -1806,19 +1953,28 @@
                 </div>
                 <div class="shoe-options">
                   <div class="card shoe-card">
-                    <div class="shoe-visual"><span class="shoe-brand">ASICS</span><div class="shoe-use"><strong>KAYANO</strong><span>프리미엄 안정</span></div></div>
+                    <div class="shoe-visual">
+                      <div class="shoe-photo fallback">ASICS</div>
+                      <div class="shoe-use"><span class="shoe-brand">ASICS</span><strong>Gel-Kayano</strong><span>프리미엄 안정</span></div>
+                    </div>
                     <p>젤-카야노 계열. 안정성과 쿠션을 함께 원하는 러너에게 대표적인 선택지입니다.</p>
-                    <a class="cta" href="https://www.asics.co.kr/" target="_blank" rel="noopener noreferrer">한국 공홈 →</a>
+                    <a class="cta" href="https://www.asics.co.kr/" target="_blank" rel="noopener noreferrer">모델 보기 →</a>
                   </div>
                   <div class="card shoe-card">
-                    <div class="shoe-visual"><span class="shoe-brand">BROOKS</span><div class="shoe-use"><strong>Adrenaline</strong><span>가이드</span></div></div>
+                    <div class="shoe-visual">
+                      <div class="shoe-photo fallback">BROOKS</div>
+                      <div class="shoe-use"><span class="shoe-brand">BROOKS</span><strong>Adrenaline GTS</strong><span>가이드</span></div>
+                    </div>
                     <p>아드레날린 GTS 계열. 과한 흔들림을 잡아주는 안정화로 많이 언급됩니다.</p>
-                    <a class="cta" href="https://brooksrunning.co.kr/" target="_blank" rel="noopener noreferrer">한국 공홈 →</a>
+                    <a class="cta" href="https://brooksrunning.co.kr/" target="_blank" rel="noopener noreferrer">모델 보기 →</a>
                   </div>
                   <div class="card shoe-card">
-                    <div class="shoe-visual"><span class="shoe-brand">NB</span><div class="shoe-use"><strong>860</strong><span>서포트</span></div></div>
+                    <div class="shoe-visual">
+                      <div class="shoe-photo fallback">NB</div>
+                      <div class="shoe-use"><span class="shoe-brand">NB</span><strong>Fresh Foam X 860</strong><span>서포트</span></div>
+                    </div>
                     <p>860 계열. 뉴발란스의 안정화 라인으로, 평발/과회내 경향 러너가 참고하기 좋습니다.</p>
-                    <a class="cta" href="https://www.nbkorea.com/" target="_blank" rel="noopener noreferrer">한국 공홈 →</a>
+                    <a class="cta" href="https://www.nbkorea.com/" target="_blank" rel="noopener noreferrer">모델 보기 →</a>
                   </div>
                 </div>
               </article>
@@ -1830,19 +1986,28 @@
                 </div>
                 <div class="shoe-options">
                   <div class="card shoe-card">
-                    <div class="shoe-visual"><span class="shoe-brand">SAUCONY</span><div class="shoe-use"><strong>Speed</strong><span>업템포</span></div></div>
+                    <div class="shoe-visual">
+                      <div class="shoe-photo"><img src="https://ecimg.cafe24img.com/pg2062b97563073024/sauconykorea/web/product/small/20251231/b95f0e5f94c2d67229f6c71b4690461e.jpg" alt="Saucony Endorphin Speed" loading="lazy"></div>
+                      <div class="shoe-use"><span class="shoe-brand">SAUCONY</span><strong>Endorphin Speed</strong><span>업템포</span></div>
+                    </div>
                     <p>엔돌핀 스피드 계열. 빠른 훈련과 장거리 템포런 사이를 잘 커버합니다.</p>
-                    <a class="cta" href="https://www.saucony.co.kr/" target="_blank" rel="noopener noreferrer">한국 공홈 →</a>
+                    <a class="cta" href="https://www.saucony.co.kr/" target="_blank" rel="noopener noreferrer">모델 보기 →</a>
                   </div>
                   <div class="card shoe-card">
-                    <div class="shoe-visual"><span class="shoe-brand">ADIDAS</span><div class="shoe-use"><strong>Boston</strong><span>지속주</span></div></div>
-                    <p>아디오스/보스턴 계열. 스피드 훈련과 긴 페이스주를 겸하기 좋은 라인입니다.</p>
-                    <a class="cta" href="https://www.adidas.co.kr/running-shoes" target="_blank" rel="noopener noreferrer">한국 공홈 →</a>
+                    <div class="shoe-visual">
+                      <div class="shoe-photo"><img src="https://assets.adidas.com/images/w_600%2Cf_auto%2Cq_auto/2d4ffb5af8b74f5394790c8a6c3dd354_9366/EVO_SL_White_JS4487_HM1.jpg" alt="Adidas Adizero EVO SL" loading="lazy"></div>
+                      <div class="shoe-use"><span class="shoe-brand">ADIDAS</span><strong>Adizero EVO SL</strong><span>하입 데일리</span></div>
+                    </div>
+                    <p>에보 SL 계열. 레이스화 감도를 데일리 훈련에 낮춘 느낌이라 템포런과 페이스주에 잘 맞습니다.</p>
+                    <a class="cta" href="https://www.adidas.co.kr/running-shoes" target="_blank" rel="noopener noreferrer">모델 보기 →</a>
                   </div>
                   <div class="card shoe-card">
-                    <div class="shoe-visual"><span class="shoe-brand">HOKA</span><div class="shoe-use"><strong>Mach</strong><span>스피드 훈련</span></div></div>
+                    <div class="shoe-visual">
+                      <div class="shoe-photo fallback">HOKA</div>
+                      <div class="shoe-use"><span class="shoe-brand">HOKA</span><strong>Mach</strong><span>스피드 훈련</span></div>
+                    </div>
                     <p>마하 계열. 가볍고 경쾌한 착지감으로 템포/파틀렉에 어울립니다.</p>
-                    <a class="cta" href="https://www.hoka.com/ko/kr/" target="_blank" rel="noopener noreferrer">한국 공홈 →</a>
+                    <a class="cta" href="https://www.hoka.com/ko/kr/" target="_blank" rel="noopener noreferrer">모델 보기 →</a>
                   </div>
                 </div>
               </article>
@@ -1854,19 +2019,28 @@
                 </div>
                 <div class="shoe-options">
                   <div class="card shoe-card">
-                    <div class="shoe-visual"><span class="shoe-brand">ADIDAS</span><div class="shoe-use"><strong>Takumi</strong><span>짧은 레이스</span></div></div>
-                    <p>타쿠미 센 계열. 5K~10K나 빠른 반복주에 어울리는 경량 스피드화입니다.</p>
-                    <a class="cta" href="https://www.adidas.co.kr/running-shoes" target="_blank" rel="noopener noreferrer">한국 공홈 →</a>
+                    <div class="shoe-visual">
+                      <div class="shoe-photo fallback">ADIZERO</div>
+                      <div class="shoe-use"><span class="shoe-brand">ADIDAS</span><strong>Adizero Adios</strong><span>짧은 스피드</span></div>
+                    </div>
+                    <p>아디오스 계열. 타쿠미 센보다 접근성이 좋아 400/1000m 반복주나 짧은 페이스업에 쓰기 좋습니다.</p>
+                    <a class="cta" href="https://www.adidas.co.kr/running-shoes" target="_blank" rel="noopener noreferrer">모델 보기 →</a>
                   </div>
                   <div class="card shoe-card">
-                    <div class="shoe-visual"><span class="shoe-brand">ASICS</span><div class="shoe-use"><strong>Magic</strong><span>스피드</span></div></div>
+                    <div class="shoe-visual">
+                      <div class="shoe-photo fallback">ASICS</div>
+                      <div class="shoe-use"><span class="shoe-brand">ASICS</span><strong>Magic Speed</strong><span>스피드</span></div>
+                    </div>
                     <p>매직 스피드 계열. 빠른 훈련 입문용으로 쓰기 좋은 반응성 중심 라인입니다.</p>
-                    <a class="cta" href="https://www.asics.co.kr/" target="_blank" rel="noopener noreferrer">한국 공홈 →</a>
+                    <a class="cta" href="https://www.asics.co.kr/" target="_blank" rel="noopener noreferrer">모델 보기 →</a>
                   </div>
                   <div class="card shoe-card">
-                    <div class="shoe-visual"><span class="shoe-brand">SAUCONY</span><div class="shoe-use"><strong>Kinvara</strong><span>가벼움</span></div></div>
+                    <div class="shoe-visual">
+                      <div class="shoe-photo fallback">SAUCONY</div>
+                      <div class="shoe-use"><span class="shoe-brand">SAUCONY</span><strong>Kinvara</strong><span>가벼움</span></div>
+                    </div>
                     <p>킨바라 계열. 낮은 무게감과 자연스러운 접지감으로 빠른 훈련에 쓰기 좋습니다.</p>
-                    <a class="cta" href="https://www.saucony.co.kr/" target="_blank" rel="noopener noreferrer">한국 공홈 →</a>
+                    <a class="cta" href="https://www.saucony.co.kr/" target="_blank" rel="noopener noreferrer">모델 보기 →</a>
                   </div>
                 </div>
               </article>
@@ -1878,19 +2052,28 @@
                 </div>
                 <div class="shoe-options">
                   <div class="card shoe-card">
-                    <div class="shoe-visual"><span class="shoe-brand">NIKE</span><div class="shoe-use"><strong>Vaporfly</strong><span>카본 레이스</span></div></div>
+                    <div class="shoe-visual">
+                      <div class="shoe-photo fallback">NIKE</div>
+                      <div class="shoe-use"><span class="shoe-brand">NIKE</span><strong>Vaporfly</strong><span>카본 레이스</span></div>
+                    </div>
                     <p>베이퍼플라이/알파플라이 계열. 5K부터 풀까지 기록 도전용으로 많이 쓰입니다.</p>
-                    <a class="cta" href="https://www.nike.com/kr/w/running-shoes-37v7jzy7ok" target="_blank" rel="noopener noreferrer">한국 공홈 →</a>
+                    <a class="cta" href="https://www.nike.com/kr/w/running-shoes-37v7jzy7ok" target="_blank" rel="noopener noreferrer">모델 보기 →</a>
                   </div>
                   <div class="card shoe-card">
-                    <div class="shoe-visual"><span class="shoe-brand">ASICS</span><div class="shoe-use"><strong>METASPEED</strong><span>레이싱</span></div></div>
+                    <div class="shoe-visual">
+                      <div class="shoe-photo fallback">ASICS</div>
+                      <div class="shoe-use"><span class="shoe-brand">ASICS</span><strong>METASPEED</strong><span>레이싱</span></div>
+                    </div>
                     <p>메타스피드 계열. 빠른 페이스와 대회 기록을 목표로 하는 러너가 참고할 만합니다.</p>
-                    <a class="cta" href="https://www.asics.co.kr/" target="_blank" rel="noopener noreferrer">한국 공홈 →</a>
+                    <a class="cta" href="https://www.asics.co.kr/" target="_blank" rel="noopener noreferrer">모델 보기 →</a>
                   </div>
                   <div class="card shoe-card">
-                    <div class="shoe-visual"><span class="shoe-brand">SAUCONY</span><div class="shoe-use"><strong>Elite</strong><span>풀 카본</span></div></div>
-                    <p>엔돌핀 프로/엘리트 계열. 써코니의 레이스 데이용 카본 슈즈 라인입니다.</p>
-                    <a class="cta" href="https://www.saucony.co.kr/" target="_blank" rel="noopener noreferrer">한국 공홈 →</a>
+                    <div class="shoe-visual">
+                      <div class="shoe-photo fallback">ADIDAS</div>
+                      <div class="shoe-use"><span class="shoe-brand">ADIDAS</span><strong>Adios Pro</strong><span>풀 카본</span></div>
+                    </div>
+                    <p>아디오스 프로 계열. 하프부터 풀까지 기록을 노릴 때 많이 언급되는 레이스 데이 슈즈입니다.</p>
+                    <a class="cta" href="https://www.adidas.co.kr/running-shoes" target="_blank" rel="noopener noreferrer">모델 보기 →</a>
                   </div>
                 </div>
               </article>
@@ -2153,6 +2336,7 @@
         initPwa();
         initFriendlyActions();
         initStaff();
+        initNextRegularRun();
         initMobileJoinJump();
         initAdminShortcut();
         initCourseJumps();
@@ -2206,6 +2390,25 @@
         document.getElementById("mobile-join-jump")?.addEventListener("click", () => {
           location.hash = "#/first";
         });
+      }
+
+      function initNextRegularRun() {
+        const dday = document.getElementById("next-regular-dday");
+        const dateText = document.getElementById("next-regular-date");
+        if (!dday || !dateText) return;
+        const now = new Date();
+        const next = new Date(now);
+        const targetDay = 3;
+        const daysUntil = (targetDay - now.getDay() + 7) % 7 || 7;
+        next.setDate(now.getDate() + daysUntil);
+        next.setHours(20, 0, 0, 0);
+        const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        const nextStart = new Date(next.getFullYear(), next.getMonth(), next.getDate());
+        const diffDays = Math.max(0, Math.ceil((nextStart - todayStart) / 86400000));
+        const month = String(next.getMonth() + 1).padStart(2, "0");
+        const day = String(next.getDate()).padStart(2, "0");
+        dday.textContent = `D-${diffDays}`;
+        dateText.textContent = `${month}.${day} 수요일 20:00`;
       }
 
       function initAdminShortcut() {
@@ -2358,7 +2561,7 @@
             return `#/lineup?${params.toString()}`;
           };
 
-          const visibleCount = 3;
+          const visibleCount = 6;
           const hasMore = events.length > visibleCount;
           const board = list.closest(".event-board");
           if (board) board.classList.remove("is-expanded");
@@ -2453,7 +2656,6 @@
           renderEvents("road-events", source.filter(event => eventKind(event) === "로드").slice(0, 6), "예정된 로드 대회 일정이 없습니다.");
           renderEvents("trail-events", source.filter(event => eventKind(event) === "트레일").slice(0, 6), "예정된 트레일 대회 일정이 없습니다.");
         }
-        renderMajorEvents();
       }
 
       function route() {
