@@ -752,6 +752,93 @@
         display: grid;
         gap: 12px;
       }
+      .instagram-card {
+        align-content: space-between;
+      }
+      .instagram-lockup {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .instagram-logo {
+        width: 54px;
+        height: 54px;
+        flex: 0 0 auto;
+        border-radius: 16px;
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.24);
+      }
+      .instagram-mark {
+        position: relative;
+        width: 54px;
+        height: 54px;
+        flex: 0 0 auto;
+        border-radius: 16px;
+        background:
+          radial-gradient(circle at 30% 110%, #ffdc80 0 22%, transparent 38%),
+          radial-gradient(circle at 10% 90%, #fcaf45 0 24%, transparent 42%),
+          radial-gradient(circle at 88% 12%, #5851db 0 24%, transparent 45%),
+          linear-gradient(135deg, #f77737, #e1306c 46%, #833ab4);
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.24);
+      }
+      .instagram-mark::before {
+        content: "";
+        position: absolute;
+        inset: 12px;
+        border: 3px solid rgba(255, 255, 255, 0.96);
+        border-radius: 13px;
+      }
+      .instagram-mark::after {
+        content: "";
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        left: 21px;
+        top: 21px;
+        border: 3px solid rgba(255, 255, 255, 0.96);
+        border-radius: 999px;
+        box-shadow: 10px -10px 0 -3px rgba(255, 255, 255, 0.96);
+      }
+      .instagram-handle {
+        display: block;
+        margin-top: 4px;
+        color: rgba(255, 255, 255, 0.84);
+        font-family: "Segoe UI", Roboto, Arial, sans-serif;
+        font-size: 15px;
+        font-weight: 800;
+        letter-spacing: 0;
+      }
+      .social-links {
+        display: grid;
+        gap: 10px;
+      }
+      .social-link {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 11px;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.07);
+      }
+      .social-link img {
+        width: 46px;
+        height: 46px;
+        flex: 0 0 auto;
+        border-radius: 14px;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+      }
+      .social-link strong {
+        display: block;
+        color: #fff;
+        font-size: 15px;
+      }
+      .social-link span {
+        display: block;
+        margin-top: 2px;
+        color: rgba(255, 255, 255, 0.76);
+        font-size: 13px;
+        font-weight: 800;
+      }
       .support-head {
         display: flex;
         justify-content: space-between;
@@ -1534,7 +1621,6 @@
               <p class="hero-lead">기록보다 함께 뛰는 분위기를 우선합니다. 수요일 밤, 편하게 모여 함께 달립니다.</p>
               <div class="hero-actions">
                 <a class="primary-action" href="#/regular">정기런 보기 →</a>
-                <a class="secondary-action" href="https://www.daangn.com/kr/group/%EB%85%B8%EB%B9%A0%EA%BE%B8-%EB%9F%AC%EB%8B%9D%ED%81%AC%EB%A3%A8-no-back-rc-1yeomgcwmnyx/" target="_blank" rel="noopener noreferrer">모임 바로가기</a>
               </div>
             </div>
 
@@ -1615,17 +1701,22 @@
           </section>
 
           <section class="home-lower" aria-label="홈 하단 정보">
-            <a class="card support-card" href="#/lineup" aria-label="라인업">
-              <div class="support-head">
-                <div>
-                  <span class="eyebrow">LINEUP</span>
-                  <h2>라인업</h2>
-                  <p>정기런, 이벤트런, 대회 준비에 맞춰 함께 뛰는 크루원 기록을 작게 남겨둡니다.</p>
-                </div>
+            <section class="card support-card instagram-card" aria-label="소셜 바로가기">
+              <div>
+                <span class="eyebrow">SOCIAL</span>
+                <h2>소셜 바로가기</h2>
               </div>
-              <div class="chipline"><span class="chip">5K</span><span class="chip">10K</span><span class="chip">Half</span><span class="chip">Full</span></div>
-              <span class="cta">라인업 보기 →</span>
-            </a>
+              <div class="social-links">
+                <a class="social-link" href="https://www.instagram.com/noppakku.official?igsh=ZXk0eWZyYW03eDh1&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="노빠꾸 공식 인스타그램">
+                  <img src="./assets/instagram-logo.svg?v=7031" alt="" aria-hidden="true" />
+                  <div><strong>노빠꾸 공식 인스타그램</strong><span>@noppakku.official</span></div>
+                </a>
+                <a class="social-link" href="https://www.daangn.com/kr/group/%EB%85%B8%EB%B9%A0%EA%BE%B8-%EB%9F%AC%EB%8B%9D%ED%81%AC%EB%A3%A8-no-back-rc-1yeomgcwmnyx/" target="_blank" rel="noopener noreferrer" aria-label="노빠꾸 당근 모임">
+                  <img src="./assets/daangn-logo.svg?v=7031" alt="" aria-hidden="true" />
+                  <div><strong>당근 모임 바로가기</strong><span>No Back RC</span></div>
+                </a>
+              </div>
+            </section>
 
             <section class="card support-card" aria-label="운영진">
             <div class="support-head">

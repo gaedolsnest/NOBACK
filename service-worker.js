@@ -11,6 +11,8 @@ const CORE_ASSETS = [
   "./favicon.ico",
   "./assets/noback-hero.png",
   "./assets/noback-bg-light.png",
+  "./assets/instagram-logo.svg",
+  "./assets/daangn-logo.svg",
   "./assets/meetup-map-custom.jpg"
 ];
 
