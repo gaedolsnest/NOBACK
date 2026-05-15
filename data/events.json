@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-14T20:26:54.744Z",
+  "updatedAt": "2026-05-15T20:15:11.549Z",
   "events": [
     {
       "name": "RUN 518 도청가는길",
@@ -758,15 +758,6 @@
       "url": "http://wallyrun.kr"
     },
     {
-      "name": "THE PACER SERIES",
-      "date": "2026-06-21",
-      "location": "대전 대덕구 미호동 57-1",
-      "category": "로드",
-      "distance": "10km / 5km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://thepacerseries.com"
-    },
-    {
       "name": "2026 보은 속리산 말티재 힐링 알몸 마라톤",
       "date": "2026-06-21",
       "location": "보은군 속리산 말티고개",
@@ -846,6 +837,15 @@
       "distance": "10km / 5km",
       "note": "마라톤온라인 대회 일정 기반입니다.",
       "url": "http://modern-infinity-9e6.notion.site/2026-359918810cc280958531fd2261f990d6"
+    },
+    {
+      "name": "THE PACER SERIES",
+      "date": "2026-06-28",
+      "location": "충청북도 청주시 상당구 문의면 청남대길 646",
+      "category": "로드",
+      "distance": "10km / 5km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://thepacerseries.com"
     },
     {
       "name": "제20회 강북구청장배 마라톤",
