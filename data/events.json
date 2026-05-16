@@ -1,114 +1,6 @@
 {
-  "updatedAt": "2026-05-15T20:15:11.549Z",
+  "updatedAt": "2026-05-16T20:00:46.658Z",
   "events": [
-    {
-      "name": "RUN 518 도청가는길",
-      "date": "2026-05-16",
-      "location": "전남대 대운동장",
-      "category": "로드",
-      "distance": "5.18km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://www.run518.com"
-    },
-    {
-      "name": "시골스런 - 양주 꿀런",
-      "date": "2026-05-16",
-      "location": "경기도 양주 나리농원",
-      "category": "로드",
-      "distance": "5km / 3km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://www.sfinder.co.kr/contest/contest_info/390"
-    },
-    {
-      "name": "2026 JUST RUN10 양산 10k 러닝",
-      "date": "2026-05-16",
-      "location": "양산 가산수변공원 일원",
-      "category": "로드",
-      "distance": "10km / 5km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://runten.co.kr"
-    },
-    {
-      "name": "2026 서천한산모시마라톤",
-      "date": "2026-05-16",
-      "location": "한산모시체육관",
-      "category": "로드",
-      "distance": "10km / 5km / 5km 가족런",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://mosirun.co.kr"
-    },
-    {
-      "name": "2026 철강마라톤",
-      "date": "2026-05-16",
-      "location": "하남미사경정공원",
-      "category": "로드",
-      "distance": "10km / 5km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://www.kosa.or.kr"
-    },
-    {
-      "name": "유플러스와 함께하는 레고랜드런",
-      "date": "2026-05-16",
-      "location": "강원도 춘천시 하중도길 128",
-      "category": "로드",
-      "distance": "5km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://upluslegolandrun.com/"
-    },
-    {
-      "name": "2026 제 1회 경기신문 씨사이드 마라톤대회",
-      "date": "2026-05-16",
-      "location": "인천 중구 씨사이드파크 일원",
-      "category": "로드",
-      "distance": "하프 / 10km / 5km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://kgseasiderun.co.kr/"
-    },
-    {
-      "name": "2026 옥스팜 트레일워커",
-      "date": "2026-05-16",
-      "location": "인제정중앙휴게소",
-      "category": "트레일",
-      "distance": "100km / 50km / 25km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://www.oxfamtrailwalker.or.kr/ko/"
-    },
-    {
-      "name": "2026 서울신문 하프마라톤",
-      "date": "2026-05-16",
-      "location": "상암동 평화의공원 평화광장",
-      "category": "로드",
-      "distance": "하프 / 10km / 5km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://run.seoul.co.kr/"
-    },
-    {
-      "name": "제4회 서울한강울트라마라톤",
-      "date": "2026-05-16",
-      "location": "장안1수변공원",
-      "category": "트레일",
-      "distance": "100km / 50km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://www.seoul-hangang.kr"
-    },
-    {
-      "name": "오클리 커뮤니티 러닝 with 스타벅스",
-      "date": "2026-05-16",
-      "location": "스타벅스 여의도한강공원점",
-      "category": "로드",
-      "distance": "8km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://www.starbucks.co.kr/whats_new/campaign_view.do?pro_seq=3358"
-    },
-    {
-      "name": "2026 TNF100 KOREA with VECTIV",
-      "date": "2026-05-16",
-      "location": "강릉 경포호수광장",
-      "category": "트레일",
-      "distance": "10K / 22K / 50K / 100K",
-      "note": "공식 TNF100 KOREA 일정 보조 등록 대회입니다.",
-      "url": "https://image.thenorthfacekorea.co.kr/tnf100"
-    },
     {
       "name": "2026 인천시육상연맹배 마라톤",
       "date": "2026-05-17",
@@ -144,15 +36,6 @@
       "distance": "10km",
       "note": "마라톤온라인 대회 일정 기반입니다.",
       "url": "http://runable.me/comp/3735"
-    },
-    {
-      "name": "밀양아리랑트레일런",
-      "date": "2026-05-17",
-      "location": "밀양보트장",
-      "category": "트레일",
-      "distance": "20km / 10km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://www.mtrailrun.kr"
     },
     {
       "name": "2026 세이브더칠드런 국제어린이마라톤(나주)",
@@ -648,6 +531,15 @@
       "distance": "하프 / 10km / 커플런 / 가족런",
       "note": "마라톤온라인 대회 일정 기반입니다.",
       "url": "http://culturerun.net/index.php"
+    },
+    {
+      "name": "부산 송도해안트레일런",
+      "date": "2026-06-13",
+      "location": "남항대교 수변야외공연장",
+      "category": "트레일",
+      "distance": "13km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://www.mtrailrun.kr"
     },
     {
       "name": "제21회 광진구연맹회장배 육상대회",
