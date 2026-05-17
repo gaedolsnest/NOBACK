@@ -1,42 +1,6 @@
 {
-  "updatedAt": "2026-05-16T20:00:46.658Z",
+  "updatedAt": "2026-05-17T20:03:22.772Z",
   "events": [
-    {
-      "name": "2026 인천시육상연맹배 마라톤",
-      "date": "2026-05-17",
-      "location": "정서진아라타워",
-      "category": "로드",
-      "distance": "하프 / 10km / 5km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://incheonafcup.co.kr/"
-    },
-    {
-      "name": "2026 식품안전 마라톤",
-      "date": "2026-05-17",
-      "location": "대전엑스포시민광장",
-      "category": "로드",
-      "distance": "하프 / 10km / 4km (이벤트 코스)",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://mara1080.com/event/29a34ee9-32a9-4a3b-b92f-37b3772cc183"
-    },
-    {
-      "name": "2026 THE RACE DAEJEON 10K",
-      "date": "2026-05-17",
-      "location": "미정",
-      "category": "로드",
-      "distance": "10km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://daejeon.therace.co.kr"
-    },
-    {
-      "name": "2026 GOLD RUSH RACE",
-      "date": "2026-05-17",
-      "location": "미사경정공원",
-      "category": "로드",
-      "distance": "10km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://runable.me/comp/3735"
-    },
     {
       "name": "2026 세이브더칠드런 국제어린이마라톤(나주)",
       "date": "2026-05-23",
@@ -681,7 +645,7 @@
       "date": "2026-06-21",
       "location": "죽령휴게소",
       "category": "트레일",
-      "distance": "28km / 10km",
+      "distance": "22km",
       "note": "마라톤온라인 대회 일정 기반입니다.",
       "url": "http://www.koreatrail.net/home/main.php?link=event&einc=eindex&opp=20250626115011&csno=20201120111538#baseline"
     },
