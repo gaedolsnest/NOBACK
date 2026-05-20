@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-19T20:28:57.500Z",
+  "updatedAt": "2026-05-20T20:58:31.096Z",
   "events": [
     {
       "name": "2026 세이브더칠드런 국제어린이마라톤(나주)",
@@ -99,6 +99,15 @@
       "distance": "10km / 7km / 5km",
       "note": "마라톤온라인 대회 일정 기반입니다.",
       "url": "http://www.burningrun.co.kr"
+    },
+    {
+      "name": "6.10만세운동 메모리얼로드(무료)",
+      "date": "2026-05-30",
+      "location": "청계광장",
+      "category": "로드",
+      "distance": "6.1km내외",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://s2s2.co.kr/sites/610manse"
     },
     {
       "name": "2026 부천의장배 20km릴레이마라톤",
@@ -414,6 +423,15 @@
       "distance": "5km",
       "note": "마라톤온라인 대회 일정 기반입니다.",
       "url": "http://www.sfinder.co.kr"
+    },
+    {
+      "name": "DC SUPER HERO RUN",
+      "date": "2026-06-13",
+      "location": "여의도공원 문화의마당",
+      "category": "로드",
+      "distance": "10km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://kko.to/ZKJ0jsV6GV"
     },
     {
       "name": "2026 지중해마을 마라톤",
@@ -794,6 +812,15 @@
       "url": "http://osk.run/"
     },
     {
+      "name": "2026 코리아 나이트 런 태백",
+      "date": "2026-07-18",
+      "location": "O2 리조트",
+      "category": "로드",
+      "distance": "28K / 17K / 7K",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://koreanightrun.imweb.me/main"
+    },
+    {
       "name": "2026 쿨밸리트레일레이스",
       "date": "2026-07-18",
       "location": "장수종합경기장",
@@ -801,6 +828,33 @@
       "distance": "18K",
       "note": "마라톤온라인 대회 일정 기반입니다.",
       "url": "http://rocknrun.kr"
+    },
+    {
+      "name": "제16회 태종대혹서기전국마라톤",
+      "date": "2026-07-19",
+      "location": "태종대공원",
+      "category": "로드",
+      "distance": "하프 / 10km / 7km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://www.bsama.co.kr/index.asp"
+    },
+    {
+      "name": "2026 쿨밸리트레일레이스",
+      "date": "2026-07-19",
+      "location": "장수종합경기장, 방화동휴양림",
+      "category": "트레일",
+      "distance": "18K",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://rocknrun.kr"
+    },
+    {
+      "name": "2026 청계산.인릉산 TrailRunn",
+      "date": "2026-07-19",
+      "location": "화물터미널 청계산옛골",
+      "category": "트레일",
+      "distance": "하프 / 12km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://www.koreatrail.net/home/main.php?link=event&einc=eapp&opp=20250821130406&csno=20190812093657#baseline"
     }
   ]
 }
