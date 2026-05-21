@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-20T20:58:31.096Z",
+  "updatedAt": "2026-05-21T20:49:59.007Z",
   "events": [
     {
       "name": "2026 세이브더칠드런 국제어린이마라톤(나주)",
@@ -101,7 +101,7 @@
       "url": "http://www.burningrun.co.kr"
     },
     {
-      "name": "6.10만세운동 메모리얼로드(무료)",
+      "name": "6.10만세운동 무료 걷기대회(상품권 증정)",
       "date": "2026-05-30",
       "location": "청계광장",
       "category": "로드",
@@ -425,7 +425,7 @@
       "url": "http://www.sfinder.co.kr"
     },
     {
-      "name": "DC SUPER HERO RUN",
+      "name": "DC SUPER HERO RUN(대회취소)",
       "date": "2026-06-13",
       "location": "여의도공원 문화의마당",
       "category": "로드",
@@ -513,15 +513,6 @@
       "distance": "하프 / 10km / 커플런 / 가족런",
       "note": "마라톤온라인 대회 일정 기반입니다.",
       "url": "http://culturerun.net/index.php"
-    },
-    {
-      "name": "부산 송도해안트레일런",
-      "date": "2026-06-13",
-      "location": "남항대교 수변야외공연장",
-      "category": "트레일",
-      "distance": "13km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://www.mtrailrun.kr"
     },
     {
       "name": "제21회 광진구연맹회장배 육상대회",
@@ -621,6 +612,15 @@
       "distance": "하프 / 10km / 5km / 하프 7인1조 단체전 / 10k 커플런",
       "note": "마라톤온라인 대회 일정 기반입니다.",
       "url": "http://wellmaderun.com"
+    },
+    {
+      "name": "경주 남산트레일런",
+      "date": "2026-06-20",
+      "location": "서남산주차장 삼릉입구",
+      "category": "트레일",
+      "distance": "15km / 10km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://www.mtrailrun.kr"
     },
     {
       "name": "월리를 찾아라런 in 서울 2026",
