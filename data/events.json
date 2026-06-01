@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-31T20:05:48.197Z",
+  "updatedAt": "2026-06-01T21:58:43.872Z",
   "events": [
     {
       "name": "2026 물사랑 낙동강 200km울트라마라톤",
@@ -531,6 +531,15 @@
       "distance": "40km / 27km",
       "note": "마라톤온라인 대회 일정 기반입니다.",
       "url": "http://osk.run/"
+    },
+    {
+      "name": "제2회 울릉나이트런",
+      "date": "2026-07-18",
+      "location": "울릉군 현포항",
+      "category": "로드",
+      "distance": "10km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://forms.gle/wZenaiNwaS7MtRYa6"
     },
     {
       "name": "2026 코리아 나이트 런 태백",
