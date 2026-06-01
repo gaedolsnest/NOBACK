@@ -180,12 +180,13 @@
       .hero {
         position: relative;
         overflow: hidden;
-        min-height: 510px;
+        aspect-ratio: 2500 / 1000;
+        min-height: 360px;
         border-radius: var(--radius);
         background:
           linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.12)),
           url("./assets/noback-hero.png?v=7031");
-        background-size: cover;
+        background-size: contain;
         background-position: center;
         background-repeat: no-repeat;
         border: 1px solid var(--border);
@@ -917,7 +918,9 @@
         .builtby { display: none; }
         .linkbtn { max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
         .hero {
-          min-height: 330px;
+          min-height: 0;
+          aspect-ratio: 2500 / 1000;
+          background-size: contain;
           background-position: center;
         }
         .hero h2 { max-width: 100%; font-size: 28px; line-height: 1.16; overflow-wrap: anywhere; }
