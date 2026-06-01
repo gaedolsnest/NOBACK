@@ -1,19 +1,191 @@
 {
-  "daily": [
-    { "brand": "Nike", "model": "Pegasus 41", "tag": "데일리", "note": "입문/만능 데일리 트레이너" },
-    { "brand": "ASICS", "model": "Novablast 5", "tag": "데일리", "note": "편하고 반응성 있는 데일리" },
-    { "brand": "Brooks", "model": "Ghost (16/17)", "tag": "데일리", "note": "무난한 쿠션/안정감" },
-    { "brand": "HOKA", "model": "Clifton (9/10)", "tag": "데일리", "note": "부드러운 데일리 쿠션" },
-    { "brand": "New Balance", "model": "1080 (v14/v15)", "tag": "데일리", "note": "쿠션 좋은 데일리" },
-    { "brand": "Saucony", "model": "Ride", "tag": "데일리", "note": "기본기 좋은 데일리" }
-  ],
-  "training": [
-    { "brand": "Saucony", "model": "Endorphin Speed (시리즈)", "tag": "훈련", "note": "템포/훈련 겸용(빠른 날)" },
-    { "brand": "ASICS", "model": "Megablast", "tag": "훈련", "note": "스피드/훈련 성향" }
-  ],
-  "race": [
-    { "brand": "Nike", "model": "Alphafly 3", "tag": "레이스", "note": "카본 레이스화(마라톤)" },
-    { "brand": "adidas", "model": "Adizero Adios Pro 4", "tag": "레이스", "note": "카본 레이스화" },
-    { "brand": "ASICS", "model": "Metaspeed Sky (계열)", "tag": "레이스", "note": "카본 레이스화" }
+  "updatedAt": "2026-06-01",
+  "categories": [
+    {
+      "title": "입문용 · 데일리",
+      "label": "Daily",
+      "lead": "처음 신거나 주 2~4회 꾸준히 달릴 때 무난한 기본 로테이션입니다.",
+      "items": [
+        {
+          "brand": "NIKE",
+          "model": "Pegasus 42",
+          "use": "입문+데일리",
+          "description": "페가수스 최신 데일리 라인. 가벼운 조깅부터 평소 훈련까지 가장 무난하게 권하기 좋습니다.",
+          "image": "",
+          "url": "https://www.nike.com/kr/w/running-shoes-37v7jzy7ok"
+        },
+        {
+          "brand": "ASICS",
+          "model": "Novablast 5",
+          "use": "반발감 데일리",
+          "description": "통통 튀는 반발감과 쿠션 밸런스가 좋아 데일리 조깅이 심심하지 않은 선택지입니다.",
+          "image": "",
+          "url": "https://www.asics.co.kr/"
+        },
+        {
+          "brand": "NB",
+          "model": "Fresh Foam X 880 v15",
+          "use": "기본 훈련",
+          "description": "과하지 않은 쿠션과 안정적인 착화감으로 첫 러닝화나 기본 훈련화로 보기 좋습니다.",
+          "image": "",
+          "url": "https://www.nbkorea.com/"
+        }
+      ]
+    },
+    {
+      "title": "리커버리용 · 쿠션화",
+      "label": "Recovery",
+      "lead": "대회 다음날, 긴 조깅, 피로한 날처럼 충격을 줄이고 싶은 날에 좋습니다.",
+      "items": [
+        {
+          "brand": "ASICS",
+          "model": "Gel-Nimbus 27",
+          "use": "맥스 쿠션",
+          "description": "부드럽고 두툼한 쿠션감이 강점인 회복주 대표 라인입니다.",
+          "image": "",
+          "url": "https://www.asics.co.kr/"
+        },
+        {
+          "brand": "HOKA",
+          "model": "Bondi 9",
+          "use": "푹신함",
+          "description": "두꺼운 미드솔과 편한 롤링감으로 천천히 오래 뛰는 날에 잘 맞습니다.",
+          "image": "",
+          "url": "https://www.hoka.com/ko/kr/"
+        },
+        {
+          "brand": "NB",
+          "model": "Fresh Foam X 1080 v14",
+          "use": "장거리 조깅",
+          "description": "편안한 쿠션을 원하는 중립 러너의 회복주와 장거리 조깅용으로 무난합니다.",
+          "image": "",
+          "url": "https://www.nbkorea.com/"
+        }
+      ]
+    },
+    {
+      "title": "안정화",
+      "label": "Stability",
+      "lead": "발이 안쪽으로 무너지거나 무릎/발목이 불안한 러너가 참고하기 좋은 계열입니다.",
+      "items": [
+        {
+          "brand": "ASICS",
+          "model": "Gel-Kayano 32",
+          "use": "프리미엄 안정",
+          "description": "안정성과 쿠션을 함께 원하는 러너에게 대표적인 안정화 선택지입니다.",
+          "image": "",
+          "url": "https://www.asics.co.kr/"
+        },
+        {
+          "brand": "BROOKS",
+          "model": "Adrenaline GTS 24/25",
+          "use": "가이드",
+          "description": "흔들림을 잡아주는 가이드 구조로 꾸준히 언급되는 안정화 라인입니다.",
+          "image": "",
+          "url": "https://brooksrunning.co.kr/"
+        },
+        {
+          "brand": "NB",
+          "model": "Fresh Foam X 860 v14/15",
+          "use": "서포트",
+          "description": "뉴발란스 안정화 라인. 평발/과회내 경향 러너가 참고하기 좋습니다.",
+          "image": "",
+          "url": "https://www.nbkorea.com/"
+        }
+      ]
+    },
+    {
+      "title": "훈련용 · 템포런",
+      "label": "Tempo",
+      "lead": "정기런보다 빠르게 밀거나 지속주, 템포런을 할 때 쓰기 좋은 중간 단계입니다.",
+      "items": [
+        {
+          "brand": "ADIDAS",
+          "model": "Adizero EVO SL",
+          "use": "하입 데일리",
+          "description": "레이스화 감도를 데일리 훈련 쪽으로 낮춘 느낌이라 템포런과 페이스주에 잘 맞습니다.",
+          "image": "https://assets.adidas.com/images/w_600,f_auto,q_auto/2d4ffb5af8b74f5394790c8a6c3dd354_9366/EVO_SL_White_JS4487_HM1.jpg",
+          "url": "https://www.adidas.co.kr/running-shoes"
+        },
+        {
+          "brand": "SAUCONY",
+          "model": "Endorphin Speed 5",
+          "use": "업템포",
+          "description": "빠른 훈련과 장거리 템포런 사이를 잘 커버하는 훈련용 슈퍼트레이너 계열입니다.",
+          "image": "",
+          "url": "https://www.saucony.co.kr/"
+        },
+        {
+          "brand": "HOKA",
+          "model": "Mach X 3",
+          "use": "스피드 훈련",
+          "description": "가볍고 경쾌한 착지감에 빠른 훈련용 성격을 더한 템포런 후보입니다.",
+          "image": "",
+          "url": "https://www.hoka.com/ko/kr/"
+        }
+      ]
+    },
+    {
+      "title": "인터벌용 · 스피드",
+      "label": "Interval",
+      "lead": "400/200, 1000m 반복주처럼 짧고 빠르게 발을 돌리는 날에 어울립니다.",
+      "items": [
+        {
+          "brand": "ADIDAS",
+          "model": "Adizero Adios 9",
+          "use": "짧은 스피드",
+          "description": "타쿠미 센보다 접근성이 좋아 400/1000m 반복주나 짧은 페이스업에 쓰기 좋습니다.",
+          "image": "",
+          "url": "https://www.adidas.co.kr/running-shoes"
+        },
+        {
+          "brand": "ASICS",
+          "model": "Magic Speed 4",
+          "use": "스피드",
+          "description": "빠른 훈련 입문용으로 쓰기 좋은 반응성 중심 라인입니다.",
+          "image": "",
+          "url": "https://www.asics.co.kr/"
+        },
+        {
+          "brand": "PUMA",
+          "model": "Deviate Nitro 3",
+          "use": "반응성",
+          "description": "카본 플레이트 계열 감도를 훈련에서도 써보고 싶은 러너에게 어울립니다.",
+          "image": "",
+          "url": "https://kr.puma.com/"
+        }
+      ]
+    },
+    {
+      "title": "대회용 · 기록 도전",
+      "label": "Race Day",
+      "lead": "레이스 당일 기록을 노릴 때 쓰는 고반발/카본 계열입니다. 적응주를 먼저 해보는 편이 좋습니다.",
+      "items": [
+        {
+          "brand": "NIKE",
+          "model": "Vaporfly 4",
+          "use": "카본 레이스",
+          "description": "5K부터 풀까지 기록 도전용으로 많이 언급되는 대표 레이스화 라인입니다.",
+          "image": "",
+          "url": "https://www.nike.com/kr/w/running-shoes-37v7jzy7ok"
+        },
+        {
+          "brand": "ADIDAS",
+          "model": "Adizero Adios Pro 4",
+          "use": "풀 카본",
+          "description": "하프부터 풀까지 기록을 노릴 때 많이 언급되는 레이스 데이 슈즈입니다.",
+          "image": "",
+          "url": "https://www.adidas.co.kr/running-shoes"
+        },
+        {
+          "brand": "ASICS",
+          "model": "Metaspeed Sky Tokyo",
+          "use": "레이싱",
+          "description": "빠른 페이스와 대회 기록을 목표로 하는 러너가 참고할 만한 최신 레이스 라인입니다.",
+          "image": "",
+          "url": "https://www.asics.co.kr/"
+        }
+      ]
+    }
   ]
 }
