@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-01T21:58:43.872Z",
+  "updatedAt": "2026-06-02T21:46:34.505Z",
   "events": [
     {
       "name": "2026 물사랑 낙동강 200km울트라마라톤",
@@ -585,6 +585,15 @@
       "distance": "하프 / 12km",
       "note": "마라톤온라인 대회 일정 기반입니다.",
       "url": "http://www.koreatrail.net/home/main.php?link=event&einc=eapp&opp=20250821130406&csno=20190812093657#baseline"
+    },
+    {
+      "name": "2026 인사이더런 S",
+      "date": "2026-08-01",
+      "location": "일산 킨텍스 제2전시장 7,8",
+      "category": "로드",
+      "distance": "10km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://insiderun.me"
     }
   ]
 }
