@@ -1,15 +1,6 @@
 {
-  "updatedAt": "2026-06-04T20:55:24.311Z",
+  "updatedAt": "2026-06-05T20:47:11.186Z",
   "events": [
-    {
-      "name": "2026 물사랑 낙동강 200km울트라마라톤",
-      "date": "2026-06-05",
-      "location": "을숙도물문화센터",
-      "category": "트레일",
-      "distance": "100km / 200km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://www.ndru200.co.kr/"
-    },
     {
       "name": "2026 명품-FAAB 한강 브릿지런",
       "date": "2026-06-06",
@@ -549,6 +540,15 @@
       "distance": "풀 / 4km / 8km / 12km / 24km",
       "note": "마라톤온라인 대회 일정 기반입니다.",
       "url": "http://mara1080.com/event/48dc9d78-292d-4851-9cc9-bbebcfad0a45"
+    },
+    {
+      "name": "2026 광제산 트레일 런",
+      "date": "2026-07-12",
+      "location": "홍지소류지(진주 명석면 계원리",
+      "category": "트레일",
+      "distance": "하프 / 10km / 5km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://www.trailrun.kr"
     },
     {
       "name": "2026 울릉도 국제 트레일러닝",
