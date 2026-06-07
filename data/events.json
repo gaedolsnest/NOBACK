@@ -1,51 +1,6 @@
 {
-  "updatedAt": "2026-06-06T20:07:37.783Z",
+  "updatedAt": "2026-06-07T20:09:49.597Z",
   "events": [
-    {
-      "name": "2026 마인드마라톤",
-      "date": "2026-06-07",
-      "location": "서울광장",
-      "category": "로드",
-      "distance": "하프 / 10km / 5km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://mindmarathon.kr"
-    },
-    {
-      "name": "2026 iM뱅크 코리아 오픈 마라톤",
-      "date": "2026-06-07",
-      "location": "여의도공원 문화의마당",
-      "category": "로드",
-      "distance": "하프 / 10km / 5km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://www.imrun.kr"
-    },
-    {
-      "name": "제30회 제주관광마라톤 축제",
-      "date": "2026-06-07",
-      "location": "구좌종합운동장",
-      "category": "로드",
-      "distance": "풀 / 하프 / 10km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://jejumarathon.com"
-    },
-    {
-      "name": "2026 THE RACE DAEGU 10K",
-      "date": "2026-06-07",
-      "location": "대구 스타디움 동편광장",
-      "category": "로드",
-      "distance": "10km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://daegu.therace.co.kr"
-    },
-    {
-      "name": "제11회 너릿재마라톤",
-      "date": "2026-06-07",
-      "location": "화순 셀레브 카페 입구",
-      "category": "트레일",
-      "distance": "8km / 16km / 24km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://marathonworld.kr/?utm_source=marathongo&utm_medium=referral"
-    },
     {
       "name": "제1회 모두런",
       "date": "2026-06-13",
