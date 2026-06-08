@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-07T20:09:49.597Z",
+  "updatedAt": "2026-06-08T21:10:29.911Z",
   "events": [
     {
       "name": "제1회 모두런",
@@ -486,6 +486,15 @@
       "distance": "하프 / 12km",
       "note": "마라톤온라인 대회 일정 기반입니다.",
       "url": "http://www.koreatrail.net/home/main.php?link=event&einc=eapp&opp=20250821130406&csno=20190812093657#baseline"
+    },
+    {
+      "name": "사우나런 in 올림픽공원",
+      "date": "2026-07-31",
+      "location": "올림픽 공원 인근",
+      "category": "로드",
+      "distance": "10km / 5km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://saunarun.com/category/?idx=119"
     },
     {
       "name": "2026 인사이더런 S",
