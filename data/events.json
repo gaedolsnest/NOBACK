@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-08T21:10:29.911Z",
+  "updatedAt": "2026-06-09T20:54:50.969Z",
   "events": [
     {
       "name": "제1회 모두런",
@@ -504,6 +504,24 @@
       "distance": "10km",
       "note": "마라톤온라인 대회 일정 기반입니다.",
       "url": "http://insiderun.me"
+    },
+    {
+      "name": "2026 양산 어필(up-hill) 레이스",
+      "date": "2026-08-08",
+      "location": "양산 에덴밸리 리조트 루지장",
+      "category": "로드",
+      "distance": "1.7Km / 1.7Km+2Km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://www.yangsanuphillrace.kr"
+    },
+    {
+      "name": "제1회 테마임도 트레일런",
+      "date": "2026-08-08",
+      "location": "부산스포원",
+      "category": "트레일",
+      "distance": "50km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://korearun01.imweb.me/"
     }
   ]
 }
