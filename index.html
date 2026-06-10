@@ -2300,7 +2300,7 @@
         const now = new Date();
         const next = new Date(now);
         const targetDay = 3;
-        const daysUntil = (targetDay - now.getDay() + 7) % 7 || 7;
+        const daysUntil = (targetDay - now.getDay() + 7) % 7;
         next.setDate(now.getDate() + daysUntil);
         next.setHours(20, 0, 0, 0);
         const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
@@ -2308,7 +2308,7 @@
         const diffDays = Math.max(0, Math.ceil((nextStart - todayStart) / 86400000));
         const month = String(next.getMonth() + 1).padStart(2, "0");
         const day = String(next.getDate()).padStart(2, "0");
-        dday.textContent = `D-${diffDays}`;
+        dday.textContent = diffDays === 0 ? "D-DAY 🎉" : `D-${diffDays}`;
         dateText.textContent = `${month}.${day} 수요일 20:00`;
       }
 
