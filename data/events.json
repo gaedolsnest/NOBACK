@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-15T21:41:03.954Z",
+  "updatedAt": "2026-06-16T21:40:58.549Z",
   "events": [
     {
       "name": "제2회 희망 서울 마라톤",
@@ -369,6 +369,42 @@
       "distance": "50km",
       "note": "마라톤온라인 대회 일정 기반입니다.",
       "url": "http://korearun01.imweb.me/"
+    },
+    {
+      "name": "2026 안양천 달빛 나이트런",
+      "date": "2026-08-15",
+      "location": "신정교 하부 영롱이 억새구장",
+      "category": "로드",
+      "distance": "10km / 5km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://moonnightrun.kr/"
+    },
+    {
+      "name": "2026 장수 나이트 트레일",
+      "date": "2026-08-15",
+      "location": "장수종합경기장",
+      "category": "트레일",
+      "distance": "38K-P / 14K",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://rocknrun.kr"
+    },
+    {
+      "name": "영남알프스9봉 트레일 레이스",
+      "date": "2026-08-15",
+      "location": "청운산장",
+      "category": "트레일",
+      "distance": "9봉 87k / 5봉 45k",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://jyd.creatorlink.net"
+    },
+    {
+      "name": "제38회 지리산화대종주 UTMB",
+      "date": "2026-08-15",
+      "location": "화엄사주차장",
+      "category": "로드",
+      "distance": "48km / 40km / 34km / 21km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://www.koreatrail.net/home/main.php?link=event&einc=eapp&opp=20250820150217&csno=20191209143330#baseline"
     }
   ]
 }
