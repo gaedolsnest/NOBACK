@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-16T21:40:58.549Z",
+  "updatedAt": "2026-06-17T21:03:36.050Z",
   "events": [
     {
       "name": "제2회 희망 서울 마라톤",
@@ -281,6 +281,15 @@
       "url": "http://osk.run/"
     },
     {
+      "name": "2026 전마협 청주 무료 초청 훈련 마라톤",
+      "date": "2026-07-18",
+      "location": "청주 무심천 롤러스케이트장",
+      "category": "로드",
+      "distance": "10km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://mara1080.com/event/e320ef81-c1ba-4939-bc1d-c398e514e920"
+    },
+    {
       "name": "제2회 울릉나이트런",
       "date": "2026-07-18",
       "location": "울릉군 현포항",
@@ -396,6 +405,15 @@
       "distance": "9봉 87k / 5봉 45k",
       "note": "마라톤온라인 대회 일정 기반입니다.",
       "url": "http://jyd.creatorlink.net"
+    },
+    {
+      "name": "2026 전마협 광복절 무료 초청 마라톤",
+      "date": "2026-08-15",
+      "location": "대전엑스포다리 밑",
+      "category": "로드",
+      "distance": "10km / 5km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://mara1080.com/event/9e568eef-64ff-4548-881f-3a420689dece"
     },
     {
       "name": "제38회 지리산화대종주 UTMB",
