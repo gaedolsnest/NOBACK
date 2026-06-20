@@ -1,51 +1,6 @@
 {
-  "updatedAt": "2026-06-19T20:25:17.302Z",
+  "updatedAt": "2026-06-20T20:12:59.414Z",
   "events": [
-    {
-      "name": "제2회 희망 서울 마라톤",
-      "date": "2026-06-20",
-      "location": "여의도공원 문화의마당",
-      "category": "로드",
-      "distance": "하프 / 10km / 5km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://hoperun.kr/"
-    },
-    {
-      "name": "제16회 국민행복마라톤",
-      "date": "2026-06-20",
-      "location": "서울 뚝섬한강공원 수변광장",
-      "category": "로드",
-      "distance": "하프 / 10km / 5km / 마니아",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://www.irunman.kr"
-    },
-    {
-      "name": "제25회 충주마라톤",
-      "date": "2026-06-20",
-      "location": "충주종합운동장",
-      "category": "로드",
-      "distance": "하프 / 10km / 5km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://cjapplemarathon.com/index.asp"
-    },
-    {
-      "name": "2026 웰메이드런",
-      "date": "2026-06-20",
-      "location": "남양주한강공원 삼패지구",
-      "category": "로드",
-      "distance": "하프 / 10km / 5km / 하프 7인1조 단체전 / 10k 커플런",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://wellmaderun.com"
-    },
-    {
-      "name": "경주 남산트레일런",
-      "date": "2026-06-20",
-      "location": "서남산주차장 삼릉입구",
-      "category": "트레일",
-      "distance": "15km / 10km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://www.mtrailrun.kr"
-    },
     {
       "name": "SPINDLE TRAIL RUN 2026",
       "date": "2026-06-21",
