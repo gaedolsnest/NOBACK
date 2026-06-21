@@ -1,60 +1,6 @@
 {
-  "updatedAt": "2026-06-20T20:12:59.414Z",
+  "updatedAt": "2026-06-21T20:23:34.317Z",
   "events": [
-    {
-      "name": "SPINDLE TRAIL RUN 2026",
-      "date": "2026-06-21",
-      "location": "삼양라운드힐",
-      "category": "트레일",
-      "distance": "12K / 20K",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://sqnc.global/spindle-trail-run"
-    },
-    {
-      "name": "월리를 찾아라런 in 서울 2026",
-      "date": "2026-06-21",
-      "location": "여의도공원 문화의마당",
-      "category": "로드",
-      "distance": "10km / 5km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://wallyrun.kr"
-    },
-    {
-      "name": "2026 보은 속리산 말티재 힐링 알몸 마라톤",
-      "date": "2026-06-21",
-      "location": "보은군 속리산 말티고개",
-      "category": "로드",
-      "distance": "10km / 5km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://mara1080.com/event/cfa1bea4-b545-4df9-8ae1-5ce280ca0e3d"
-    },
-    {
-      "name": "2026 참행복나눔 마라톤",
-      "date": "2026-06-21",
-      "location": "상암 월드컵공원 평화광장",
-      "category": "로드",
-      "distance": "하프 / 10km / 5km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://realhappyrun.kr/"
-    },
-    {
-      "name": "2026 람사르습지 밤섬런",
-      "date": "2026-06-21",
-      "location": "여의도 한강공원 물빛무대",
-      "category": "로드",
-      "distance": "10km / 5km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://bamseomrun.kr"
-    },
-    {
-      "name": "소백산 죽령 TrailRunnig",
-      "date": "2026-06-21",
-      "location": "죽령휴게소",
-      "category": "트레일",
-      "distance": "22km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://www.koreatrail.net/home/main.php?link=event&einc=eindex&opp=20250626115011&csno=20201120111538#baseline"
-    },
     {
       "name": "2026 순천 치유 미식 트레일런",
       "date": "2026-06-27",
