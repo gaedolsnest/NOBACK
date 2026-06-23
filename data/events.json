@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-22T21:30:23.502Z",
+  "updatedAt": "2026-06-23T20:59:31.391Z",
   "events": [
     {
       "name": "2026 순천 치유 미식 트레일런",
@@ -27,15 +27,6 @@
       "distance": "하프 / 10km / 5km",
       "note": "마라톤온라인 대회 일정 기반입니다.",
       "url": "http://bigstarrun.kr/"
-    },
-    {
-      "name": "무주 베리 로드 트레일 (덕유산)",
-      "date": "2026-06-27",
-      "location": "덕유산국립공원다목적광장",
-      "category": "트레일",
-      "distance": "19K",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://rocknrun.kr"
     },
     {
       "name": "2026 큰별쌤과 함께하는 나눔 마라톤",
@@ -324,6 +315,15 @@
       "distance": "48km / 40km / 34km / 21km",
       "note": "마라톤온라인 대회 일정 기반입니다.",
       "url": "http://www.koreatrail.net/home/main.php?link=event&einc=eapp&opp=20250820150217&csno=20191209143330#baseline"
+    },
+    {
+      "name": "제2회 한양도성길 트레일런",
+      "date": "2026-08-22",
+      "location": "낙산공원중앙광장(낙산길54)",
+      "category": "트레일",
+      "distance": "20km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://www.mtrailrun.kr/"
     }
   ]
 }
