@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-23T20:59:31.391Z",
+  "updatedAt": "2026-06-24T20:46:48.893Z",
   "events": [
     {
       "name": "2026 순천 치유 미식 트레일런",
@@ -324,6 +324,24 @@
       "distance": "20km",
       "note": "마라톤온라인 대회 일정 기반입니다.",
       "url": "http://www.mtrailrun.kr/"
+    },
+    {
+      "name": "2026대구세계마스터즈 10km대회",
+      "date": "2026-08-23",
+      "location": "대구스타디움 일원",
+      "category": "로드",
+      "distance": "10km / 35세이상일반인 / 3000명",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://www.wmac2026.com"
+    },
+    {
+      "name": "2026 금수산트레일러닝대회",
+      "date": "2026-08-23",
+      "location": "청풍리조트",
+      "category": "트레일",
+      "distance": "22km / 13km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://www.runnerking.com"
     }
   ]
 }
