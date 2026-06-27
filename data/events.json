@@ -1,42 +1,6 @@
 {
-  "updatedAt": "2026-06-26T20:45:10.937Z",
+  "updatedAt": "2026-06-27T20:06:40.468Z",
   "events": [
-    {
-      "name": "2026 순천 치유 미식 트레일런",
-      "date": "2026-06-27",
-      "location": "순천 선암사",
-      "category": "트레일",
-      "distance": "14km / 7km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://projectruntrip.com"
-    },
-    {
-      "name": "2026 전마협 10km 연대별 최강전",
-      "date": "2026-06-27",
-      "location": "금산인삼엑스포주차장",
-      "category": "로드",
-      "distance": "10km / 5km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://mara1080.com/event/5baeed50-d91c-4453-bf68-48ab19911d58"
-    },
-    {
-      "name": "2026 큰별 하프 마라톤",
-      "date": "2026-06-27",
-      "location": "상암 월드컵공원 평화광장",
-      "category": "로드",
-      "distance": "하프 / 10km / 5km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://bigstarrun.kr/"
-    },
-    {
-      "name": "2026 큰별쌤과 함께하는 나눔 마라톤",
-      "date": "2026-06-27",
-      "location": "서울 상암 평화의공원",
-      "category": "로드",
-      "distance": "5K / 10K / Half",
-      "note": "마라톤온라인 대회 일정 보조 등록 대회입니다.",
-      "url": "https://www.kimrunning.com/"
-    },
     {
       "name": "2026 울산남구청장배 육상대회",
       "date": "2026-06-28",
