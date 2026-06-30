@@ -1,15 +1,6 @@
 {
-  "updatedAt": "2026-06-29T20:48:12.715Z",
+  "updatedAt": "2026-06-30T20:55:58.529Z",
   "events": [
-    {
-      "name": "사우나런 in 석촌호수",
-      "date": "2026-06-31",
-      "location": "석촌 호수 인근",
-      "category": "로드",
-      "distance": "10km / 5km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://saunarun.com"
-    },
     {
       "name": "IRON RUN 2026",
       "date": "2026-07-04",
@@ -218,6 +209,15 @@
       "url": "http://www.koreatrail.net/home/main.php?link=event&einc=eapp&opp=20250820150217&csno=20191209143330#baseline"
     },
     {
+      "name": "2026Happy700평창대관령전국하프마라톤",
+      "date": "2026-08-16",
+      "location": "2018 평창동계올림픽 기념관",
+      "category": "로드",
+      "distance": "하프 / 10km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://www.ifunrunkorea.co.kr/sub0102"
+    },
+    {
       "name": "제2회 한양도성길 트레일런",
       "date": "2026-08-22",
       "location": "낙산공원중앙광장(낙산길54)",
@@ -243,6 +243,24 @@
       "distance": "22km / 13km",
       "note": "마라톤온라인 대회 일정 기반입니다.",
       "url": "http://www.runnerking.com"
+    },
+    {
+      "name": "2026 전마협 증평 무료 마라톤",
+      "date": "2026-08-29",
+      "location": "증평군 다목적운동장 일원",
+      "category": "로드",
+      "distance": "10km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://mara1080.com/event/48116855-ac2a-4db5-b343-593a01c5b353"
+    },
+    {
+      "name": "2026 단양달빛레이스",
+      "date": "2026-08-29",
+      "location": "단양생태체육공원",
+      "category": "로드",
+      "distance": "10km / 5km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://danyangmarathon.kr"
     }
   ]
 }
