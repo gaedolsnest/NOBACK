@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-30T20:55:58.529Z",
+  "updatedAt": "2026-07-01T20:46:50.944Z",
   "events": [
     {
       "name": "IRON RUN 2026",
@@ -261,6 +261,33 @@
       "distance": "10km / 5km",
       "note": "마라톤온라인 대회 일정 기반입니다.",
       "url": "http://danyangmarathon.kr"
+    },
+    {
+      "name": "제3회 한강 서울 하프 마라톤",
+      "date": "2026-08-30",
+      "location": "여의도 한강공원 물빛광장",
+      "category": "로드",
+      "distance": "하프 / 10km / 5km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://seoulhalfrun.kr/"
+    },
+    {
+      "name": "제3회 GO대관령 국제 트레일런",
+      "date": "2026-08-30",
+      "location": "평창동계올림픽기념공원",
+      "category": "트레일",
+      "distance": "10km / 20.18km / 44km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://daegwallyeongrun.com"
+    },
+    {
+      "name": "2026대구세계마스터즈 하프마라톤대회",
+      "date": "2026-08-30",
+      "location": "신천동로 일원",
+      "category": "로드",
+      "distance": "하프 / 35세이상일반인 / 5000명",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://www.wmac2026.com"
     }
   ]
 }
