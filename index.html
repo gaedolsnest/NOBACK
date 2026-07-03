@@ -1694,6 +1694,9 @@
       #view-home .newcomer-banner h2 { margin: 0; color: #18364d; font-size: 24px; }
       #view-home .newcomer-banner p { margin: 8px 0 0; color: #62788a; }
       #view-home .newcomer-banner .cta { min-width: 112px; justify-content: center; }
+      .newcomer-banner-actions { display: grid; gap: 8px; min-width: 190px; }
+      .newcomer-banner-actions button,
+      .newcomer-banner-actions a { width: 100%; justify-content: center; }
       #view-home .cta,
       #view-home .mini-action {
         color: #d95500;
@@ -1904,6 +1907,23 @@
         box-shadow: 0 28px 90px rgba(15, 41, 59, 0.34);
       }
       .newcomer-admin-dialog::backdrop { background: rgba(12, 28, 40, 0.64); }
+      .newcomer-form-dialog { padding: 20px; background: #f8fbfd; }
+      .newcomer-form-dialog .newcomer-board {
+        color: #18364d;
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+        padding: 0;
+      }
+      .newcomer-form-dialog .muted { color: #62788a; }
+      .newcomer-form-dialog input,
+      .newcomer-form-dialog select,
+      .newcomer-form-dialog textarea {
+        color: #18364d;
+        background: #fff;
+        border-color: #d2e2eb;
+      }
+      .newcomer-form-close { float: right; min-width: auto; padding: 8px 12px; }
       .newcomer-admin-head {
         position: sticky;
         top: 0;
@@ -2039,14 +2059,17 @@
             <div class="crew-fact"><strong>현장 가입 승인</strong><span>첫 참석 확인 후 진행</span></div>
           </section>
 
-          <a class="card newcomer-banner" href="#/first?section=attendance">
+          <section class="card newcomer-banner">
             <div>
               <span class="feature-icon">🙌</span>
               <h2>가입 신청하셨나요?</h2>
               <p>첫 참석 예정일을 남겨주시면 현장 운영진이 미리 확인합니다.</p>
             </div>
-            <span class="cta">첫 참석 일정 남기기 →</span>
-          </a>
+            <div class="newcomer-banner-actions">
+              <button type="button" class="primary-action" data-open-attendance>첫 참석 일정 남기기</button>
+              <a class="cta" href="#/first">신규회원 안내 보기 →</a>
+            </div>
+          </section>
 
           <div class="grid">
 
@@ -2565,37 +2588,15 @@
             <details><summary>비가 오거나 일정이 바뀌면요?</summary><p>당일 변경 사항은 당근 모임 공지를 기준으로 확인해 주세요. 페이지 일정도 안내를 받은 뒤 함께 업데이트합니다.</p></details>
           </section>
 
-          <section class="card newcomer-board" id="newcomer-attendance" aria-label="신규 러너 첫 인사 보드">
+          <section class="card newcomer-board" id="newcomer-attendance" aria-label="신규 러너 참석 일정 안내">
             <div>
               <span class="eyebrow">HELLO, NEW RUNNER</span>
-              <h2>첫 참석 인사 남기기</h2>
-              <p class="muted">닉네임과 참석 예정일을 남겨주시면 현장 운영진이 미리 확인합니다. 실명이나 연락처는 입력하지 마세요.</p>
+              <h2>첫 참석 일정을 남겨주세요</h2>
+              <p class="muted">작성한 내용은 현장 운영진이 미리 확인합니다. 입력은 팝업에서 간단히 끝낼 수 있어요.</p>
             </div>
-            <form class="newcomer-board-form" id="newcomer-board-form">
-              <div class="field"><label for="newcomer-nick">당근 닉네임</label><input id="newcomer-nick" maxlength="20" required placeholder="예: 달리는콩" /></div>
-              <div class="field"><label for="newcomer-date">첫 참석 예정일</label><input id="newcomer-date" type="date" required /></div>
-              <div class="field full"><label for="newcomer-pace">희망 페이스</label><select id="newcomer-pace"><option>처음이라 잘 모르겠어요</option><option>7분대 이상</option><option>6분대</option><option>5분대</option><option>4분대 이하</option></select></div>
-              <div class="field full"><label for="newcomer-message">한마디</label><textarea id="newcomer-message" maxlength="100" placeholder="예: 첫 참석이라 조금 긴장되지만 즐겁게 뛰고 싶어요!"></textarea></div>
-              <div class="newcomer-board-actions">
-                <button type="submit">참석 인사 제출</button>
-                <a class="cta" href="https://www.daangn.com/kr/group/%EB%85%B8%EB%B9%A0%EA%BE%B8-%EB%9F%AC%EB%8B%9D%ED%81%AC%EB%A3%A8-no-back-rc-1yeomgcwmnyx/" target="_blank" rel="noopener noreferrer">당근 모임 열기 →</a>
-              </div>
-            </form>
-            <div class="newcomer-board-status" id="newcomer-board-status" aria-live="polite"></div>
-            <button type="button" class="ghost newcomer-admin-entry" id="newcomer-admin-trigger">참석 신청 확인 · 운영진 (0)</button>
+            <button type="button" data-open-attendance>첫 참석 일정 입력하기</button>
           </section>
         </div>
-
-        <dialog class="newcomer-admin-dialog" id="newcomer-admin-dialog">
-          <div class="newcomer-admin-head">
-            <h2 id="newcomer-admin-title">현재 신청 인원</h2>
-            <div class="newcomer-admin-actions">
-              <button type="button" class="danger" id="newcomer-admin-reset">전체 초기화</button>
-              <button type="button" id="newcomer-admin-close">닫기</button>
-            </div>
-          </div>
-          <div class="newcomer-admin-list" id="newcomer-admin-list"><p>불러오는 중입니다.</p></div>
-        </dialog>
       </section>
 
       <!-- REGULAR -->
@@ -2651,6 +2652,40 @@
         </div>
       </section>
     </div>
+
+    <dialog class="newcomer-admin-dialog newcomer-form-dialog" id="newcomer-form-dialog">
+      <button type="button" class="newcomer-form-close" id="newcomer-form-close">닫기</button>
+      <section class="newcomer-board" aria-label="신규 러너 첫 참석 입력">
+        <div>
+          <span class="eyebrow">HELLO, NEW RUNNER</span>
+          <h2>첫 참석 일정 남기기</h2>
+          <p class="muted">닉네임과 참석 예정일을 남겨주시면 현장 운영진이 미리 확인합니다. 실명이나 연락처는 입력하지 마세요.</p>
+        </div>
+            <form class="newcomer-board-form" id="newcomer-board-form">
+              <div class="field"><label for="newcomer-nick">당근 닉네임</label><input id="newcomer-nick" maxlength="20" required placeholder="예: 달리는콩" /></div>
+              <div class="field"><label for="newcomer-date">첫 참석 예정일</label><input id="newcomer-date" type="date" required /></div>
+              <div class="field full"><label for="newcomer-pace">희망 페이스</label><select id="newcomer-pace"><option>처음이라 잘 모르겠어요</option><option>7분대 이상</option><option>6분대</option><option>5분대</option><option>4분대 이하</option></select></div>
+              <div class="field full"><label for="newcomer-message">한마디</label><textarea id="newcomer-message" maxlength="100" placeholder="예: 첫 참석이라 조금 긴장되지만 즐겁게 뛰고 싶어요!"></textarea></div>
+              <div class="newcomer-board-actions">
+                <button type="submit">참석 인사 제출</button>
+                <a class="cta" href="https://www.daangn.com/kr/group/%EB%85%B8%EB%B9%A0%EA%BE%B8-%EB%9F%AC%EB%8B%9D%ED%81%AC%EB%A3%A8-no-back-rc-1yeomgcwmnyx/" target="_blank" rel="noopener noreferrer">당근 모임 열기 →</a>
+              </div>
+            </form>
+            <div class="newcomer-board-status" id="newcomer-board-status" aria-live="polite"></div>
+            <button type="button" class="ghost newcomer-admin-entry" id="newcomer-admin-trigger">참석 신청 확인 · 운영진 (0)</button>
+      </section>
+    </dialog>
+
+    <dialog class="newcomer-admin-dialog" id="newcomer-admin-dialog">
+          <div class="newcomer-admin-head">
+            <h2 id="newcomer-admin-title">현재 신청 인원</h2>
+            <div class="newcomer-admin-actions">
+              <button type="button" class="danger" id="newcomer-admin-reset">전체 초기화</button>
+              <button type="button" id="newcomer-admin-close">닫기</button>
+            </div>
+          </div>
+          <div class="newcomer-admin-list" id="newcomer-admin-list"><p>불러오는 중입니다.</p></div>
+    </dialog>
 
     <script>
       document.addEventListener("DOMContentLoaded", () => boot());
@@ -3359,6 +3394,11 @@
         };
         const form = document.getElementById("newcomer-board-form");
         if (!form) return;
+        const formDialog = document.getElementById("newcomer-form-dialog");
+        document.querySelectorAll("[data-open-attendance]").forEach(button => {
+          button.addEventListener("click", () => formDialog?.showModal());
+        });
+        document.getElementById("newcomer-form-close")?.addEventListener("click", () => formDialog?.close());
         const status = document.getElementById("newcomer-board-status");
         const submitButton = form.querySelector('button[type="submit"]');
         form.addEventListener("submit", async (event) => {
