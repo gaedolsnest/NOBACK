@@ -1588,6 +1588,119 @@
         display: none;
       }
 
+      /* Home dashboard: match the bright coastal hero artwork */
+      #view-home {
+        --text: #18364d;
+        --muted: #62788a;
+      }
+      #view-home .hero-copy,
+      #view-home .card {
+        background: rgba(255, 255, 255, 0.88);
+        border-color: rgba(45, 113, 156, 0.14);
+        box-shadow: 0 18px 50px rgba(38, 83, 112, 0.12);
+      }
+      #view-home .hero-copy h2,
+      #view-home .hero-tagline,
+      #view-home .hero-lead,
+      #view-home .feature-card h2,
+      #view-home .event-board h2,
+      #view-home .support-card h2 {
+        color: #18364d;
+      }
+      #view-home .eyebrow {
+        color: #a8450a;
+        background: rgba(255, 106, 0, 0.1);
+        border-color: rgba(255, 106, 0, 0.24);
+      }
+      #view-home .hero-copy {
+        background:
+          radial-gradient(circle at 96% 8%, rgba(44, 170, 226, 0.16), transparent 34%),
+          rgba(255, 255, 255, 0.9);
+      }
+      #view-home .hero-panel {
+        --text: #fff;
+        --muted: rgba(255, 255, 255, 0.78);
+        background:
+          radial-gradient(circle at 90% 10%, rgba(255, 175, 54, 0.42), transparent 36%),
+          linear-gradient(145deg, #147fb1, #15516f);
+        border-color: rgba(255, 255, 255, 0.28);
+        box-shadow: 0 18px 46px rgba(17, 91, 125, 0.24);
+      }
+      #view-home .hero-panel span,
+      #view-home .hero-panel p { color: rgba(255, 255, 255, 0.82); }
+      #view-home .hero-panel strong { color: #fff; }
+      #view-home .feature-card {
+        position: relative;
+        overflow: hidden;
+        transition: transform 160ms ease, box-shadow 160ms ease;
+      }
+      #view-home .feature-card::after {
+        content: "";
+        position: absolute;
+        width: 110px;
+        height: 110px;
+        right: -42px;
+        bottom: -54px;
+        border-radius: 999px;
+        background: rgba(39, 164, 218, 0.08);
+      }
+      #view-home .feature-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 22px 56px rgba(38, 83, 112, 0.17);
+      }
+      #view-home .cta,
+      #view-home .mini-action {
+        color: #d95500;
+        border-color: rgba(255, 106, 0, 0.3);
+        background: rgba(255, 106, 0, 0.08);
+      }
+      #view-home .event-item,
+      #view-home .social-link,
+      #view-home .support-row {
+        background: rgba(232, 246, 253, 0.58);
+        border-color: rgba(45, 113, 156, 0.14);
+      }
+      #view-home .social-link strong,
+      #view-home .social-link span,
+      #view-home .support-label,
+      #view-home .support-detail {
+        color: #28516a;
+      }
+      #view-home .chip {
+        color: #28516a;
+        background: rgba(255, 255, 255, 0.78);
+        border-color: rgba(45, 113, 156, 0.18);
+      }
+      .crew-facts {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+      }
+      .crew-fact {
+        min-width: 0;
+        padding: 16px;
+        border-radius: 16px;
+        color: #18364d;
+        background: rgba(255, 255, 255, 0.86);
+        border: 1px solid rgba(45, 113, 156, 0.14);
+        box-shadow: 0 12px 34px rgba(38, 83, 112, 0.1);
+      }
+      .crew-fact strong { display: block; color: #d95500; font-size: 17px; }
+      .crew-fact span { display: block; margin-top: 4px; color: #62788a; font-size: 12px; }
+      .first-faq { display: grid; gap: 10px; }
+      .first-faq details {
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 13px 14px;
+      }
+      .first-faq summary { cursor: pointer; color: var(--text); font-weight: 850; }
+      .first-faq details p { margin: 9px 0 0; color: var(--muted); font-size: 13px; }
+      @media (max-width: 720px) {
+        .crew-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        #view-home .hero-copy { padding: 18px; }
+      }
+
       ul { margin: 8px 0 0; padding-left: 18px; color: var(--muted); }
       li { margin: 6px 0; }
       .help { font-size: 12px; color: var(--muted); margin-top: 2px; }
@@ -1637,6 +1750,13 @@
                 <span>페이스별 그룹으로 편하게 출발</span>
               </div>
             </div>
+          </section>
+
+          <section class="crew-facts" aria-label="크루 핵심 정보">
+            <div class="crew-fact"><strong>매주 수요일</strong><span>오후 8시 정기런</span></div>
+            <div class="crew-fact"><strong>하남 종합운동장</strong><span>두 번째 블록 집합</span></div>
+            <div class="crew-fact"><strong>페이스별 출발</strong><span>처음이어도 부담 없이</span></div>
+            <div class="crew-fact"><strong>현장 가입 승인</strong><span>첫 참석 확인 후 진행</span></div>
           </section>
 
           <div class="grid">
@@ -2150,6 +2270,15 @@
               <div class="join-step"><div><strong>2. 수요일 정기런 참석</strong><span>오후 8시 전, 하남 종합운동장 두 번째 블록 집합 장소로 오시면 됩니다.</span></div></div>
               <div class="join-step"><div><strong>3. 현장에서 가입 승인</strong><span>운영진이 닉네임과 참석을 확인한 뒤 당근 모임 가입을 승인해 드립니다.</span></div></div>
             </div>
+          </section>
+
+          <section class="card first-faq" aria-label="첫 참석 자주 묻는 질문">
+            <span class="eyebrow">FIRST RUN FAQ</span>
+            <h2>처음 오실 때 자주 묻는 질문</h2>
+            <details open><summary>러닝을 잘 못해도 괜찮나요?</summary><p>괜찮습니다. 그날 컨디션과 페이스에 맞는 그룹을 고르고, 무리하지 않는 것을 가장 중요하게 생각합니다.</p></details>
+            <details><summary>혼자 가도 어색하지 않을까요?</summary><p>대부분 닉네임으로 인사하고 함께 몸을 풉니다. 도착하면 운영진에게 처음 왔다고 편하게 말씀해 주세요.</p></details>
+            <details><summary>짐은 어디에 두나요?</summary><p>개인 짐은 가능한 한 가볍게 준비해 주세요. 귀중품 보관이 어려울 수 있어 러닝에 필요한 물품만 가져오는 편이 좋습니다.</p></details>
+            <details><summary>비가 오거나 일정이 바뀌면요?</summary><p>당일 변경 사항은 당근 모임 공지를 기준으로 확인해 주세요. 페이지 일정도 안내를 받은 뒤 함께 업데이트합니다.</p></details>
           </section>
         </div>
       </section>

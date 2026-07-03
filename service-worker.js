@@ -1,9 +1,8 @@
-const CACHE_NAME = "noback-pwa-v9";
+const CACHE_NAME = "noback-pwa-v10";
 const CORE_ASSETS = [
   "./",
   "./index.html",
   "./manifest.json",
-  "./data/events.json",
   "./data/meetups.json",
   "./data/shoes.json",
   "./bg.jpg",
