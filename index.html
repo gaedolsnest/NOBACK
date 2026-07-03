@@ -1970,6 +1970,15 @@
       .newcomer-entry strong { color: #18364d; }
       .newcomer-entry-meta { color: #62788a; font-size: 13px; }
       .newcomer-entry p { margin: 0; color: #3e596c; white-space: pre-wrap; }
+      .newcomer-entry-delete {
+        justify-self: end;
+        min-width: auto;
+        padding: 7px 10px;
+        color: #b63f2a;
+        background: #fff5f2;
+        border-color: rgba(182, 63, 42, 0.24);
+        font-size: 12px;
+      }
       @media (max-width: 620px) {
         .newcomer-board-form { grid-template-columns: 1fr; }
         .newcomer-board-form .field,
@@ -3506,6 +3515,28 @@
               meta.textContent = `${entry.attendance_date} · ${entry.pace}`;
               card.append(name, meta);
               if (entry.message) card.append(Object.assign(document.createElement("p"), { textContent: entry.message }));
+              const deleteButton = document.createElement("button");
+              deleteButton.type = "button";
+              deleteButton.className = "newcomer-entry-delete";
+              deleteButton.textContent = "개별 삭제";
+              deleteButton.addEventListener("click", async () => {
+                if (!confirm(`${entry.nickname}님의 참석 신청을 삭제할까요?`)) return;
+                deleteButton.disabled = true;
+                try {
+                  const response = await fetch(`${SUPABASE_URL}/rest/v1/rpc/delete_newcomer_greeting`, {
+                    method: "POST",
+                    headers: apiHeaders,
+                    body: JSON.stringify({ access_code: adminCode, target_id: entry.id })
+                  });
+                  if (!response.ok) throw new Error("delete failed");
+                  await loadNewcomerEntries();
+                  refreshNewcomerCount();
+                } catch {
+                  alert("삭제하지 못했습니다. 잠시 후 다시 시도해 주세요.");
+                  deleteButton.disabled = false;
+                }
+              });
+              card.append(deleteButton);
               list.append(card);
             });
           } catch {
