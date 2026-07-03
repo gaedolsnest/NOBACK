@@ -1413,6 +1413,16 @@
         display: grid;
         gap: 16px;
       }
+      #view-first .first-hero { order: 1; }
+      #view-first .join-card { order: 2; }
+      #view-first .newcomer-board { order: 3; }
+      #view-first .first-faq { order: 4; }
+      #view-first .first-grid { order: 5; }
+      .welcome-lines {
+        display: grid;
+        gap: 4px;
+      }
+      .welcome-lines span { display: block; }
       .first-hero {
         display: grid;
         gap: 8px;
@@ -2025,7 +2035,7 @@
               <div>
                 <span class="eyebrow">UPCOMING CREW RUNS</span>
                 <h2>다가오는 크루 일정</h2>
-                <p>정기런과 벙개, 함께 나가는 대회 일정을 모아봅니다.</p>
+                <p>앞으로 예정된 크루 일정과 번개런을 모아봅니다.</p>
               </div>
             </div>
             <div class="event-list" id="crew-events">
@@ -2456,8 +2466,11 @@
         <div class="first-stack">
           <section class="card first-hero" aria-label="처음 오신 분 안내">
             <span class="eyebrow">WELCOME RUNNER</span>
-            <h2>가입 승인 전에도, 노빠꾸를 먼저 만나보세요</h2>
-            <p class="muted">당근 모임 가입 승인은 첫 정기런 참석 확인 후 현장에서 진행합니다. 기다리는 동안 이 페이지에서 크루 분위기, 정기런 방식, 코스와 러닝 팁을 편하게 둘러보실 수 있어요.</p>
+            <h2>처음이라도 괜찮아요.</h2>
+            <p class="muted welcome-lines">
+              <span>수요일 저녁, 편하게 함께 달려요.</span>
+              <span>첫 참석 확인 후 당근 모임 가입이 승인됩니다.</span>
+            </p>
           </section>
 
           <div class="first-grid">
