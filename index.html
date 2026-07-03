@@ -1657,15 +1657,33 @@
       #view-home .home-stack > .hero { order: 1; }
       #view-home .home-stack > .intro-row { order: 2; }
       #view-home .home-stack > .crew-facts { order: 3; }
-      #view-home .home-stack > .event-board { order: 4; }
-      #view-home .home-stack > .grid { order: 5; }
-      #view-home .home-stack > .home-lower { order: 6; }
+      #view-home .home-stack > .newcomer-banner { order: 4; }
+      #view-home .home-stack > .event-board { order: 5; }
+      #view-home .home-stack > .grid { order: 6; }
+      #view-home .home-stack > .home-lower { order: 7; }
       #view-home .newcomer-card {
         border-color: rgba(255, 106, 0, 0.24);
         background:
           radial-gradient(circle at 92% 12%, rgba(255, 159, 56, 0.2), transparent 34%),
           rgba(255, 255, 255, 0.92);
       }
+      #view-home .newcomer-banner {
+        min-height: 150px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 18px;
+        padding: 24px;
+        border-color: rgba(255, 106, 0, 0.3);
+        background:
+          radial-gradient(circle at 92% 12%, rgba(255, 159, 56, 0.23), transparent 32%),
+          radial-gradient(circle at 100% 100%, rgba(44, 170, 226, 0.12), transparent 30%),
+          rgba(255, 255, 255, 0.94);
+      }
+      #view-home .newcomer-banner .feature-icon { margin-bottom: 10px; }
+      #view-home .newcomer-banner h2 { margin: 0; color: #18364d; font-size: 24px; }
+      #view-home .newcomer-banner p { margin: 8px 0 0; color: #62788a; }
+      #view-home .newcomer-banner .cta { min-width: 112px; justify-content: center; }
       #view-home .cta,
       #view-home .mini-action {
         color: #d95500;
@@ -1760,6 +1778,47 @@
       #view-courses .shoe-category-head h3 {
         color: #18364d;
       }
+      #view-first {
+        --text: #18364d;
+        --muted: #62788a;
+      }
+      #view-first .card {
+        color: #18364d;
+        background: rgba(255, 255, 255, 0.91);
+        border-color: rgba(45, 113, 156, 0.14);
+        box-shadow: 0 18px 48px rgba(38, 83, 112, 0.12);
+      }
+      #view-first .topbar .back,
+      #view-first .topbar .pill,
+      #view-first .cta,
+      #view-first button {
+        color: #a8450a;
+        background: rgba(255, 106, 0, 0.09);
+        border-color: rgba(255, 106, 0, 0.26);
+      }
+      #view-first .eyebrow {
+        color: #a8450a;
+        background: rgba(255, 106, 0, 0.1);
+        border-color: rgba(255, 106, 0, 0.24);
+      }
+      #view-first h2,
+      #view-first h3,
+      #view-first summary { color: #18364d; }
+      #view-first .chip,
+      #view-first .join-step,
+      #view-first details {
+        color: #28516a;
+        background: rgba(232, 246, 253, 0.62);
+        border-color: rgba(45, 113, 156, 0.15);
+      }
+      #view-first input,
+      #view-first select,
+      #view-first textarea {
+        color: #18364d;
+        background: #fff;
+        border-color: rgba(45, 113, 156, 0.2);
+      }
+      #view-first .newcomer-board-status { color: #a8450a; }
       @media (max-width: 520px) {
         #view-courses .shoe-photo {
           max-width: 280px;
@@ -1862,6 +1921,14 @@
           content: "→";
           font-size: 14px;
         }
+        #view-home .newcomer-banner {
+          min-height: 0;
+          grid-template-columns: 1fr;
+          padding: 20px;
+        }
+        #view-home .newcomer-banner .cta {
+          width: 100%;
+        }
       }
 
       ul { margin: 8px 0 0; padding-left: 18px; color: var(--muted); }
@@ -1922,15 +1989,16 @@
             <div class="crew-fact"><strong>현장 가입 승인</strong><span>첫 참석 확인 후 진행</span></div>
           </section>
 
+          <a class="card newcomer-banner" href="#/first">
+            <div>
+              <span class="feature-icon">🙌</span>
+              <h2>가입 신청하셨나요?</h2>
+              <p>첫 정기런 전, 노빠꾸의 분위기와 참여 방법을 먼저 둘러보세요.</p>
+            </div>
+            <span class="cta">신규 회원 안내 보기 →</span>
+          </a>
+
           <div class="grid">
-            <a class="card feature-card newcomer-card" href="#/first">
-              <div>
-                <span class="feature-icon">🙌</span>
-                <h2>가입 신청하셨나요?</h2>
-                <p>첫 정기런 전, 노빠꾸의 분위기와 참여 방법을 먼저 둘러보세요.</p>
-              </div>
-              <span class="cta">열기 →</span>
-            </a>
 
             <a class="card feature-card" href="#/routes">
               <div>
@@ -2835,7 +2903,6 @@
                 </div>
               </div>
               <p class="event-note">${event.note || "상세 일정은 공식 안내를 확인해 주세요."}</p>
-              <a class="cta event-lineup-link" href="${lineupHref(event)}">라인업에 넣기 →</a>
             </article>
             `).join("")}
             ${hasMore ? `<div class="event-toggle-row"><button type="button" class="event-toggle">더 보기 ${events.length - visibleCount}개</button></div>` : ""}
