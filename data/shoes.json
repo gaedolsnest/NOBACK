@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-01",
+  "updatedAt": "2026-07-03",
   "categories": [
     {
       "title": "입문용 · 데일리",
@@ -11,8 +11,8 @@
           "model": "Pegasus 42",
           "use": "입문+데일리",
           "description": "페가수스 최신 데일리 라인. 가벼운 조깅부터 평소 훈련까지 가장 무난하게 권하기 좋습니다.",
-          "image": "",
-          "url": "https://www.nike.com/kr/w/running-shoes-37v7jzy7ok"
+          "image": "https://static.nike.com/a/images/t_default/u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/6edeec71-1b18-4990-9742-7068166eb34e/AIR+ZOOM+PEGASUS+42+RR.png",
+          "url": "https://www.nike.com/kr/t/%ED%8E%98%EA%B0%80%EC%88%98%EC%8A%A4-42-%EB%82%A8%EC%84%B1-%EB%A1%9C%EB%93%9C-%EB%9F%AC%EB%8B%9D%ED%99%94-hzTwdMlw/II7210-100"
         },
         {
           "brand": "ASICS",
@@ -39,11 +39,11 @@
       "items": [
         {
           "brand": "ASICS",
-          "model": "Gel-Nimbus 27",
+          "model": "Gel-Nimbus 28",
           "use": "맥스 쿠션",
-          "description": "부드럽고 두툼한 쿠션감이 강점인 회복주 대표 라인입니다.",
-          "image": "",
-          "url": "https://www.asics.co.kr/"
+          "description": "전작보다 가벼워진 맥스 쿠션 라인으로, 편안한 회복주와 긴 조깅에 어울립니다.",
+          "image": "https://images.asics.com/is/image/asics/1011C127_003_SL_LT_GLB?$sfcc-product$",
+          "url": "https://www.asics.com/ph/en-ph/gel-nimbus-28/p/1011C127-003.html"
         },
         {
           "brand": "HOKA",
@@ -78,15 +78,15 @@
         },
         {
           "brand": "BROOKS",
-          "model": "Adrenaline GTS 24/25",
+          "model": "Adrenaline GTS 25",
           "use": "가이드",
           "description": "흔들림을 잡아주는 가이드 구조로 꾸준히 언급되는 안정화 라인입니다.",
-          "image": "",
-          "url": "https://brooksrunning.co.kr/"
+          "image": "https://www.brooksrunning.com/on/demandware.static/-/Sites-brooks-master-catalog/default/dwcecc5127/original/110454/110454-020-l-adrenaline-gts-25-mens-dynamic-cushion-road-running-shoe.png",
+          "url": "https://www.brooksrunning.com/en_us/mens/shoes/road-running-shoes/adrenaline-gts-25/1104541D020.090.html"
         },
         {
           "brand": "NB",
-          "model": "Fresh Foam X 860 v14/15",
+          "model": "Fresh Foam X 860 v15",
           "use": "서포트",
           "description": "뉴발란스 안정화 라인. 평발/과회내 경향 러너가 참고하기 좋습니다.",
           "image": "",
@@ -112,8 +112,8 @@
           "model": "Endorphin Speed 5",
           "use": "업템포",
           "description": "빠른 훈련과 장거리 템포런 사이를 잘 커버하는 훈련용 슈퍼트레이너 계열입니다.",
-          "image": "",
-          "url": "https://www.saucony.co.kr/"
+          "image": "https://thekit.wolverineworldwide.com/match/media_lookup/S21007-10_1/?preset=dw-large",
+          "url": "https://www.saucony.com/en/endorphin-speed-5/60307M.html"
         },
         {
           "brand": "HOKA",
@@ -126,9 +126,9 @@
       ]
     },
     {
-      "title": "인터벌용 · 스피드",
-      "label": "Interval",
-      "lead": "400/200, 1000m 반복주처럼 짧고 빠르게 발을 돌리는 날에 어울립니다.",
+      "title": "스피드 훈련용",
+      "label": "Speed",
+      "lead": "짧고 빠른 반복주나 페이스 훈련처럼 발을 빠르게 돌리는 날에 어울립니다.",
       "items": [
         {
           "brand": "ADIDAS",
@@ -140,11 +140,11 @@
         },
         {
           "brand": "ASICS",
-          "model": "Magic Speed 4",
+          "model": "Magic Speed 5",
           "use": "스피드",
-          "description": "빠른 훈련 입문용으로 쓰기 좋은 반응성 중심 라인입니다.",
-          "image": "",
-          "url": "https://www.asics.co.kr/"
+          "description": "가벼운 카본 플레이트 훈련화로, 반복주와 템포런에서 레이스화에 가까운 반응성을 경험하기 좋습니다.",
+          "image": "https://images.asics.com/is/image/asics/1013A183_300_SL_LT_GLB?$sfcc-product$",
+          "url": "https://www.asics.com/jp/ja-jp/magic-speed-5/p/1013A183-300.html"
         },
         {
           "brand": "PUMA",
@@ -182,8 +182,8 @@
           "model": "Metaspeed Sky Tokyo",
           "use": "레이싱",
           "description": "빠른 페이스와 대회 기록을 목표로 하는 러너가 참고할 만한 최신 레이스 라인입니다.",
-          "image": "",
-          "url": "https://www.asics.co.kr/"
+          "image": "https://images.asics.com/is/image/asics/1013A162_300_SL_LT_GLB?$sfcc-product$",
+          "url": "https://www.asics.com/jp/ja-jp/metaspeed-sky-tokyo/p/1013A162-300.html"
         }
       ]
     }

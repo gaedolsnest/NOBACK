@@ -1282,7 +1282,9 @@
         overflow: hidden;
       }
       .shoe-photo {
-        height: 96px;
+        width: 100%;
+        min-height: 132px;
+        aspect-ratio: 4 / 3;
         display: grid;
         place-items: center;
         border-radius: 12px;
@@ -1291,10 +1293,14 @@
         overflow: hidden;
       }
       .shoe-photo img {
-        width: 100%;
-        height: 100%;
+        display: block;
+        width: calc(100% - 16px);
+        height: calc(100% - 16px);
+        min-width: 0;
+        min-height: 0;
         object-fit: contain;
-        padding: 6px;
+        object-position: center;
+        padding: 0;
       }
       .shoe-photo.fallback {
         background:
@@ -1588,6 +1594,343 @@
         display: none;
       }
 
+      /* Home dashboard: match the bright coastal hero artwork */
+      #view-home {
+        --text: #18364d;
+        --muted: #62788a;
+      }
+      #view-home .hero-copy,
+      #view-home .card {
+        background: rgba(255, 255, 255, 0.88);
+        border-color: rgba(45, 113, 156, 0.14);
+        box-shadow: 0 18px 50px rgba(38, 83, 112, 0.12);
+      }
+      #view-home .hero-copy h2,
+      #view-home .hero-tagline,
+      #view-home .hero-lead,
+      #view-home .feature-card h2,
+      #view-home .event-board h2,
+      #view-home .support-card h2 {
+        color: #18364d;
+      }
+      #view-home .eyebrow {
+        color: #a8450a;
+        background: rgba(255, 106, 0, 0.1);
+        border-color: rgba(255, 106, 0, 0.24);
+      }
+      #view-home .hero-copy {
+        background:
+          radial-gradient(circle at 96% 8%, rgba(44, 170, 226, 0.16), transparent 34%),
+          rgba(255, 255, 255, 0.9);
+      }
+      #view-home .hero-panel {
+        --text: #fff;
+        --muted: rgba(255, 255, 255, 0.78);
+        background:
+          radial-gradient(circle at 90% 10%, rgba(255, 175, 54, 0.42), transparent 36%),
+          linear-gradient(145deg, #147fb1, #15516f);
+        border-color: rgba(255, 255, 255, 0.28);
+        box-shadow: 0 18px 46px rgba(17, 91, 125, 0.24);
+      }
+      #view-home .hero-panel span,
+      #view-home .hero-panel p { color: rgba(255, 255, 255, 0.82); }
+      #view-home .hero-panel strong { color: #fff; }
+      #view-home .feature-card {
+        position: relative;
+        overflow: hidden;
+        transition: transform 160ms ease, box-shadow 160ms ease;
+      }
+      #view-home .feature-card::after {
+        content: "";
+        position: absolute;
+        width: 110px;
+        height: 110px;
+        right: -42px;
+        bottom: -54px;
+        border-radius: 999px;
+        background: rgba(39, 164, 218, 0.08);
+      }
+      #view-home .feature-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 22px 56px rgba(38, 83, 112, 0.17);
+      }
+      #view-home .home-stack > .hero { order: 1; }
+      #view-home .home-stack > .intro-row { order: 2; }
+      #view-home .home-stack > .crew-facts { order: 3; }
+      #view-home .home-stack > .newcomer-banner { order: 4; }
+      #view-home .home-stack > .event-board { order: 5; }
+      #view-home .home-stack > .grid { order: 6; }
+      #view-home .home-stack > .home-lower { order: 7; }
+      #view-home .newcomer-card {
+        border-color: rgba(255, 106, 0, 0.24);
+        background:
+          radial-gradient(circle at 92% 12%, rgba(255, 159, 56, 0.2), transparent 34%),
+          rgba(255, 255, 255, 0.92);
+      }
+      #view-home .newcomer-banner {
+        min-height: 150px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 18px;
+        padding: 24px;
+        border-color: rgba(255, 106, 0, 0.3);
+        background:
+          radial-gradient(circle at 92% 12%, rgba(255, 159, 56, 0.23), transparent 32%),
+          radial-gradient(circle at 100% 100%, rgba(44, 170, 226, 0.12), transparent 30%),
+          rgba(255, 255, 255, 0.94);
+      }
+      #view-home .newcomer-banner .feature-icon { margin-bottom: 10px; }
+      #view-home .newcomer-banner h2 { margin: 0; color: #18364d; font-size: 24px; }
+      #view-home .newcomer-banner p { margin: 8px 0 0; color: #62788a; }
+      #view-home .newcomer-banner .cta { min-width: 112px; justify-content: center; }
+      #view-home .cta,
+      #view-home .mini-action {
+        color: #d95500;
+        border-color: rgba(255, 106, 0, 0.3);
+        background: rgba(255, 106, 0, 0.08);
+      }
+      #view-home .event-item,
+      #view-home .social-link,
+      #view-home .support-row {
+        background: rgba(232, 246, 253, 0.58);
+        border-color: rgba(45, 113, 156, 0.14);
+      }
+      #view-home .social-link strong,
+      #view-home .social-link span,
+      #view-home .support-label,
+      #view-home .support-detail {
+        color: #28516a;
+      }
+      #view-home .chip {
+        color: #28516a;
+        background: rgba(255, 255, 255, 0.78);
+        border-color: rgba(45, 113, 156, 0.18);
+      }
+      #view-courses {
+        --text: #18364d;
+        --muted: #62788a;
+      }
+      #view-courses .card,
+      #view-courses .recommend-section .shoe-category,
+      #view-courses .recommend-section .shoe-card,
+      #view-courses .recommend-section .course-card {
+        color: #18364d;
+        background: rgba(255, 255, 255, 0.9);
+        border-color: rgba(45, 113, 156, 0.14);
+        box-shadow: 0 18px 48px rgba(38, 83, 112, 0.12);
+      }
+      #view-courses .topbar .back,
+      #view-courses .topbar .pill,
+      #view-courses .section-jump,
+      #view-courses .cta {
+        color: #a8450a;
+        background: rgba(255, 106, 0, 0.09);
+        border-color: rgba(255, 106, 0, 0.26);
+      }
+      #view-courses .shoe-category-head {
+        border-bottom-color: rgba(45, 113, 156, 0.15);
+      }
+      #view-courses .shoe-visual {
+        min-height: 0;
+        grid-template-columns: 1fr;
+        align-content: start;
+        background:
+          radial-gradient(circle at 8% 10%, rgba(255, 170, 70, 0.15), transparent 32%),
+          linear-gradient(135deg, rgba(232, 246, 253, 0.94), rgba(255, 255, 255, 0.86));
+        border-color: rgba(45, 113, 156, 0.16);
+      }
+      #view-courses .shoe-photo {
+        width: 100%;
+        max-width: 260px;
+        margin: 0 auto;
+        border-color: rgba(45, 113, 156, 0.13);
+        background: #fff;
+      }
+      #view-courses .shoe-photo.fallback {
+        color: #28516a;
+        background:
+          radial-gradient(circle at 28% 22%, rgba(255, 106, 0, 0.17), transparent 34%),
+          linear-gradient(135deg, #edf8fd, #fff);
+      }
+      #view-courses .shoe-brand {
+        color: #a8450a;
+        background: rgba(255, 106, 0, 0.1);
+        border-color: rgba(255, 106, 0, 0.24);
+      }
+      #view-courses .shoe-use {
+        width: 100%;
+        grid-template-columns: max-content minmax(0, 1fr);
+        align-items: center;
+        gap: 5px 9px;
+      }
+      #view-courses .shoe-use strong {
+        min-width: 0;
+        overflow-wrap: anywhere;
+      }
+      #view-courses .shoe-use > span:last-child {
+        grid-column: 1 / -1;
+      }
+      #view-courses .shoe-use strong,
+      #view-courses .course-card h3,
+      #view-courses .shoe-card h3,
+      #view-courses .recommend-head h3,
+      #view-courses .shoe-category-head h3 {
+        color: #18364d;
+      }
+      #view-first {
+        --text: #18364d;
+        --muted: #62788a;
+      }
+      #view-first .card {
+        color: #18364d;
+        background: rgba(255, 255, 255, 0.91);
+        border-color: rgba(45, 113, 156, 0.14);
+        box-shadow: 0 18px 48px rgba(38, 83, 112, 0.12);
+      }
+      #view-first .topbar .back,
+      #view-first .topbar .pill,
+      #view-first .cta,
+      #view-first button {
+        color: #a8450a;
+        background: rgba(255, 106, 0, 0.09);
+        border-color: rgba(255, 106, 0, 0.26);
+      }
+      #view-first .eyebrow {
+        color: #a8450a;
+        background: rgba(255, 106, 0, 0.1);
+        border-color: rgba(255, 106, 0, 0.24);
+      }
+      #view-first h2,
+      #view-first h3,
+      #view-first summary { color: #18364d; }
+      #view-first .chip,
+      #view-first .join-step,
+      #view-first details {
+        color: #28516a;
+        background: rgba(232, 246, 253, 0.62);
+        border-color: rgba(45, 113, 156, 0.15);
+      }
+      #view-first input,
+      #view-first select,
+      #view-first textarea {
+        color: #18364d;
+        background: #fff;
+        border-color: rgba(45, 113, 156, 0.2);
+      }
+      #view-first .newcomer-board-status { color: #a8450a; }
+      @media (max-width: 520px) {
+        #view-courses .shoe-photo {
+          max-width: 280px;
+          margin: 0 auto;
+        }
+      }
+      .crew-facts {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+      }
+      .crew-fact {
+        min-width: 0;
+        padding: 16px;
+        border-radius: 16px;
+        color: #18364d;
+        background: rgba(255, 255, 255, 0.86);
+        border: 1px solid rgba(45, 113, 156, 0.14);
+        box-shadow: 0 12px 34px rgba(38, 83, 112, 0.1);
+      }
+      .crew-fact strong { display: block; color: #d95500; font-size: 17px; }
+      .crew-fact span { display: block; margin-top: 4px; color: #62788a; font-size: 12px; }
+      .first-faq { display: grid; gap: 10px; }
+      .first-faq details {
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 13px 14px;
+      }
+      .first-faq summary { cursor: pointer; color: var(--text); font-weight: 850; }
+      .first-faq details p { margin: 9px 0 0; color: var(--muted); font-size: 13px; }
+      .newcomer-board {
+        display: grid;
+        gap: 14px;
+      }
+      .newcomer-board-form {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+      .newcomer-board-form .field { grid-column: auto; }
+      .newcomer-board-form .field.full { grid-column: 1 / -1; }
+      .newcomer-board-form textarea {
+        width: 100%;
+        min-height: 86px;
+        resize: vertical;
+        padding: 10px 12px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--text);
+      }
+      .newcomer-board-actions {
+        grid-column: 1 / -1;
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .newcomer-board-status {
+        min-height: 18px;
+        color: #ffd1b8;
+        font-size: 12px;
+      }
+      @media (max-width: 620px) {
+        .newcomer-board-form { grid-template-columns: 1fr; }
+        .newcomer-board-form .field,
+        .newcomer-board-form .field.full { grid-column: 1; }
+      }
+      @media (max-width: 720px) {
+        .crew-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        #view-home .hero-copy { padding: 18px; }
+        #view-home .grid { gap: 10px; }
+        #view-home .feature-card {
+          min-height: 0;
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) auto;
+          align-items: center;
+          gap: 8px 12px;
+          padding: 14px;
+        }
+        #view-home .feature-card > div {
+          display: grid;
+          grid-template-columns: 38px minmax(0, 1fr);
+          gap: 3px 10px;
+          align-items: center;
+        }
+        #view-home .feature-card .feature-icon {
+          grid-row: 1 / span 2;
+          margin: 0;
+        }
+        #view-home .feature-card h2,
+        #view-home .feature-card p { margin: 0; }
+        #view-home .feature-card p { font-size: 12px; }
+        #view-home .feature-card .cta {
+          margin: 0;
+          padding: 7px 9px;
+          font-size: 0;
+        }
+        #view-home .feature-card .cta::after {
+          content: "→";
+          font-size: 14px;
+        }
+        #view-home .newcomer-banner {
+          min-height: 0;
+          grid-template-columns: 1fr;
+          padding: 20px;
+        }
+        #view-home .newcomer-banner .cta {
+          width: 100%;
+        }
+      }
+
       ul { margin: 8px 0 0; padding-left: 18px; color: var(--muted); }
       li { margin: 6px 0; }
       .help { font-size: 12px; color: var(--muted); margin-top: 2px; }
@@ -1601,7 +1944,6 @@
         <a class="tab" data-tab="home" href="#/">홈</a>
         <a class="tab" data-tab="first" href="#/first">처음 오셨나요</a>
         <a class="tab" data-tab="regular" href="#/regular">정기런</a>
-        <a class="tab" data-tab="interval" href="#/interval">인터벌</a>
         <a class="tab" data-tab="routes" href="#/routes">코스 추천</a>
         <a class="tab" data-tab="shoes" href="#/shoes">러닝화 추천</a>
         <a class="tab" data-tab="lineup" href="#/lineup">라인업</a>
@@ -1640,24 +1982,23 @@
             </div>
           </section>
 
-          <div class="grid">
-            <a class="card feature-card" href="#/first">
-              <div>
-                <span class="feature-icon">🙌</span>
-                <h2>처음 오셨나요</h2>
-                <p>첫 정기런 전에 보면 좋은 준비물과 참여 흐름을 정리했습니다.</p>
-              </div>
-              <span class="cta">열기 →</span>
-            </a>
+          <section class="crew-facts" aria-label="크루 핵심 정보">
+            <div class="crew-fact"><strong>매주 수요일</strong><span>오후 8시 정기런</span></div>
+            <div class="crew-fact"><strong>하남 종합운동장</strong><span>두 번째 블록 집합</span></div>
+            <div class="crew-fact"><strong>페이스별 출발</strong><span>처음이어도 부담 없이</span></div>
+            <div class="crew-fact"><strong>현장 가입 승인</strong><span>첫 참석 확인 후 진행</span></div>
+          </section>
 
-            <a class="card feature-card" href="#/interval">
-              <div>
-                <span class="feature-icon">⏱</span>
-                <h2>인터벌 계산기</h2>
-                <p>400/200 같은 훈련 구간을 입력하면 워크/휴식 시간을 바로 계산합니다.</p>
-              </div>
-              <span class="cta">열기 →</span>
-            </a>
+          <a class="card newcomer-banner" href="#/first">
+            <div>
+              <span class="feature-icon">🙌</span>
+              <h2>가입 신청하셨나요?</h2>
+              <p>첫 정기런 전, 노빠꾸의 분위기와 참여 방법을 먼저 둘러보세요.</p>
+            </div>
+            <span class="cta">신규 회원 안내 보기 →</span>
+          </a>
+
+          <div class="grid">
 
             <a class="card feature-card" href="#/routes">
               <div>
@@ -1672,34 +2013,23 @@
               <div>
                 <span class="feature-icon">👟</span>
                 <h2>러닝화 추천</h2>
-                <p>조깅, 리커버리, 인터벌, 대회용 러닝화를 용도별로 봅니다.</p>
+                <p>데일리, 리커버리, 스피드 훈련, 대회용 러닝화를 용도별로 봅니다.</p>
               </div>
               <span class="cta">열기 →</span>
             </a>
 
           </div>
 
-          <section class="card event-board race-board" aria-label="다가오는 로드 대회 일정">
+          <section class="card event-board race-board" aria-label="다가오는 크루 일정">
             <div class="event-board-head">
               <div>
-                <span class="eyebrow">RACE CALENDAR</span>
-                <h2>다가오는 로드 대회</h2>
+                <span class="eyebrow">UPCOMING CREW RUNS</span>
+                <h2>다가오는 크루 일정</h2>
+                <p>정기런과 벙개, 함께 나가는 대회 일정을 모아봅니다.</p>
               </div>
             </div>
-            <div class="event-list" id="road-events">
-              <div class="event-item"><p class="event-note">로드 대회 일정을 불러오는 중입니다.</p></div>
-            </div>
-          </section>
-
-          <section class="card event-board race-board" aria-label="다가오는 트레일 대회 일정">
-            <div class="event-board-head">
-              <div>
-                <span class="eyebrow">TRAIL RACE CALENDAR</span>
-                <h2>다가오는 트레일 대회</h2>
-              </div>
-            </div>
-            <div class="event-list" id="trail-events">
-              <div class="event-item"><p class="event-note">트레일 대회 일정을 불러오는 중입니다.</p></div>
+            <div class="event-list" id="crew-events">
+              <div class="event-item"><p class="event-note">크루 일정을 불러오는 중입니다.</p></div>
             </div>
           </section>
 
@@ -2126,8 +2456,8 @@
         <div class="first-stack">
           <section class="card first-hero" aria-label="처음 오신 분 안내">
             <span class="eyebrow">WELCOME RUNNER</span>
-            <h2>첫 정기런 전에 이것만 보면 됩니다</h2>
-            <p class="muted">기록보다 함께 뛰는 분위기를 우선합니다. 페이스가 걱정돼도 그날 컨디션에 맞춰 편하게 오시면 됩니다.</p>
+            <h2>가입 승인 전에도, 노빠꾸를 먼저 만나보세요</h2>
+            <p class="muted">당근 모임 가입 승인은 첫 정기런 참석 확인 후 현장에서 진행합니다. 기다리는 동안 이 페이지에서 크루 분위기, 정기런 방식, 코스와 러닝 팁을 편하게 둘러보실 수 있어요.</p>
           </section>
 
           <div class="first-grid">
@@ -2146,11 +2476,12 @@
               <div class="chipline">
                 <span class="chip">러닝화</span>
                 <span class="chip">가벼운 복장</span>
-                <span class="chip">물</span>
+                <span class="chip">물 또는 이온음료</span>
+                <span class="chip">작은 수건</span>
                 <span class="chip">개인 짐 최소화</span>
                 <span class="chip">닉네임 확인</span>
               </div>
-              <p class="muted">처음이면 무리하지 않는 페이스를 고르는 게 가장 좋습니다.</p>
+              <p class="muted">운동 후 바로 마실 음료를 준비하면 좋습니다. 땀이 많은 날에는 작은 수건도 챙겨주세요. 처음이면 무리하지 않는 페이스를 고르는 게 가장 중요합니다.</p>
               <a class="cta" href="#/regular">정기런 자세히 보기 →</a>
             </article>
           </div>
@@ -2158,17 +2489,46 @@
           <section class="card join-card" id="join-info" aria-label="신규 회원 가입 승인 안내">
             <div>
               <span class="eyebrow">JOIN NBRC</span>
-              <h2>신규 회원 가입 안내</h2>
-              <p>당근 가입 신청 후 매주 수요일 정기런 참석이 확인되면 가입승인이 진행됩니다.</p>
+              <h2>신규 가입은 이렇게 진행됩니다</h2>
+              <p>당근에서 가입을 신청하신 뒤 첫 수요일 정기런에 참석해 주세요. 현장 운영진이 참석을 확인하면 모임 가입을 승인해 드립니다.</p>
               <div class="hero-actions">
                 <a class="primary-action" href="#/regular">정기런 안내 보기 →</a>
+                <a class="cta" href="https://www.daangn.com/kr/group/%EB%85%B8%EB%B9%A0%EA%BE%B8-%EB%9F%AC%EB%8B%9D%ED%81%AC%EB%A3%A8-no-back-rc-1yeomgcwmnyx/" target="_blank" rel="noopener noreferrer">당근 모임 열기 →</a>
               </div>
             </div>
             <div class="join-steps">
-              <div class="join-step"><div><strong>가입 신청</strong><span>당근 가입 신청 후 정기런 참석 확인 후에 가입승인됩니다.</span></div></div>
-              <div class="join-step"><div><strong>수요일 정기런 참석</strong><span>하남 종합운동장 두번째 블록 집합 장소로 오시면 됩니다.</span></div></div>
-              <div class="join-step"><div><strong>출석 확인 후 승인</strong><span>현장에서 출석 인증이 확인되면 가입 승인이 진행됩니다.</span></div></div>
+              <div class="join-step"><div><strong>1. 당근에서 가입 신청</strong><span>승인을 기다리는 동안 이 페이지에서 크루와 정기런 정보를 먼저 확인해 주세요.</span></div></div>
+              <div class="join-step"><div><strong>2. 수요일 정기런 참석</strong><span>오후 8시 전, 하남 종합운동장 두 번째 블록 집합 장소로 오시면 됩니다.</span></div></div>
+              <div class="join-step"><div><strong>3. 현장에서 가입 승인</strong><span>운영진이 닉네임과 참석을 확인한 뒤 당근 모임 가입을 승인해 드립니다.</span></div></div>
             </div>
+          </section>
+
+          <section class="card first-faq" aria-label="첫 참석 자주 묻는 질문">
+            <span class="eyebrow">FIRST RUN FAQ</span>
+            <h2>처음 오실 때 자주 묻는 질문</h2>
+            <details open><summary>러닝을 잘 못해도 괜찮나요?</summary><p>괜찮습니다. 그날 컨디션과 페이스에 맞는 그룹을 고르고, 무리하지 않는 것을 가장 중요하게 생각합니다.</p></details>
+            <details><summary>혼자 가도 어색하지 않을까요?</summary><p>대부분 닉네임으로 인사하고 함께 몸을 풉니다. 도착하면 운영진에게 처음 왔다고 편하게 말씀해 주세요.</p></details>
+            <details><summary>짐은 어디에 두나요?</summary><p>개인 짐은 가능한 한 가볍게 준비해 주세요. 귀중품 보관이 어려울 수 있어 러닝에 필요한 물품만 가져오는 편이 좋습니다.</p></details>
+            <details><summary>비가 오거나 일정이 바뀌면요?</summary><p>당일 변경 사항은 당근 모임 공지를 기준으로 확인해 주세요. 페이지 일정도 안내를 받은 뒤 함께 업데이트합니다.</p></details>
+          </section>
+
+          <section class="card newcomer-board" aria-label="신규 러너 첫 인사 보드">
+            <div>
+              <span class="eyebrow">HELLO, NEW RUNNER</span>
+              <h2>첫 참석 인사 만들기</h2>
+              <p class="muted">간단히 작성하면 당근 모임에 남길 인사 문구를 만들어 드립니다. 공개 웹에 개인정보를 저장하지 않고, 실제 대화는 당근에서 이어갑니다.</p>
+            </div>
+            <form class="newcomer-board-form" id="newcomer-board-form">
+              <div class="field"><label for="newcomer-nick">당근 닉네임</label><input id="newcomer-nick" maxlength="20" required placeholder="예: 달리는콩" /></div>
+              <div class="field"><label for="newcomer-date">첫 참석 예정일</label><input id="newcomer-date" type="date" required /></div>
+              <div class="field full"><label for="newcomer-pace">희망 페이스</label><select id="newcomer-pace"><option>처음이라 잘 모르겠어요</option><option>7분대 이상</option><option>6분대</option><option>5분대</option><option>4분대 이하</option></select></div>
+              <div class="field full"><label for="newcomer-message">한마디</label><textarea id="newcomer-message" maxlength="100" placeholder="예: 첫 참석이라 조금 긴장되지만 즐겁게 뛰고 싶어요!"></textarea></div>
+              <div class="newcomer-board-actions">
+                <button type="submit">인사 문구 복사</button>
+                <a class="cta" href="https://www.daangn.com/kr/group/%EB%85%B8%EB%B9%A0%EA%BE%B8-%EB%9F%AC%EB%8B%9D%ED%81%AC%EB%A3%A8-no-back-rc-1yeomgcwmnyx/" target="_blank" rel="noopener noreferrer">당근 모임 열기 →</a>
+              </div>
+            </form>
+            <div class="newcomer-board-status" id="newcomer-board-status" aria-live="polite"></div>
           </section>
         </div>
       </section>
@@ -2195,9 +2555,10 @@
 
           <h3>신규 회원 가입 승인 안내</h3>
           <ul>
-            <li>가입 신청 후 매주 수요일 정기런에 참석해 주세요.</li>
+            <li>당근 모임 가입 신청 후 첫 수요일 정기런에 참석해 주세요.</li>
             <li>하남 종합운동장 집합 장소에서 닉네임으로 출석 확인을 진행합니다.</li>
-            <li>정기런 참석 및 출석 인증이 확인되면 가입 승인이 진행됩니다.</li>
+            <li>현장 운영진이 참석을 확인하면 당근 모임 가입을 승인해 드립니다.</li>
+            <li>승인 전에도 이 페이지의 크루 정보와 정기런 안내는 자유롭게 볼 수 있습니다.</li>
           </ul>
 
           <h3>운영 방식</h3>
@@ -2242,6 +2603,7 @@
         initCourseJumps();
         initShoes();
         initUpcomingEvents();
+        initNewcomerBoard();
         initInterval();
         initCertificate();
         route();
@@ -2387,7 +2749,7 @@
         const renderFallbackPhoto = (brand) => `<div class="shoe-photo fallback">${escapeHtml(brand || "RUN")}</div>`;
         const renderPhoto = (shoe) => {
           if (!shoe.image) return renderFallbackPhoto(shoe.brand);
-          return `<div class="shoe-photo"><img src="${escapeHtml(shoe.image)}" alt="${escapeHtml(`${shoe.brand || ""} ${shoe.model || ""}`.trim())}" loading="lazy" onerror="this.closest('.shoe-photo').outerHTML='${renderFallbackPhoto(shoe.brand).replaceAll("'", "\\'")}'"></div>`;
+          return `<div class="shoe-photo"><img src="${escapeHtml(shoe.image)}" alt="${escapeHtml(`${shoe.brand || ""} ${shoe.model || ""}`.trim())}" data-brand="${escapeHtml(shoe.brand || "RUN")}" loading="lazy"></div>`;
         };
 
         const renderShoe = (shoe) => `
@@ -2412,20 +2774,24 @@
         `;
 
         try {
-          const res = await fetch("./data/shoes.json?v=20260601", { cache: "no-store" });
+          const res = await fetch("./data/shoes.json?v=20260703", { cache: "no-store" });
           if (!res.ok) throw new Error("shoes load failed");
           const data = await res.json();
           const categories = Array.isArray(data) ? data : data.categories;
           if (!Array.isArray(categories) || !categories.length) throw new Error("shoes empty");
           grid.innerHTML = categories.map(renderCategory).join("");
+          grid.querySelectorAll(".shoe-photo img").forEach(img => {
+            img.addEventListener("error", () => {
+              img.closest(".shoe-photo").outerHTML = renderFallbackPhoto(img.dataset.brand);
+            }, { once: true });
+          });
         } catch {
           grid.innerHTML = `<article class="card shoe-category"><p class="event-note">러닝화 추천을 불러오지 못했습니다. 잠시 후 다시 열어주세요.</p></article>`;
         }
       }
       async function initUpcomingEvents() {
-        const roadList = document.getElementById("road-events");
-        const trailList = document.getElementById("trail-events");
-        if (!roadList && !trailList) return;
+        const crewList = document.getElementById("crew-events");
+        if (!crewList) return;
 
         const today = new Date();
         today.setHours(0, 0, 0, 0);
@@ -2482,8 +2848,9 @@
         ];
 
         const eventWindowEnd = new Date(today);
-        eventWindowEnd.setDate(eventWindowEnd.getDate() + 60);
+        eventWindowEnd.setDate(eventWindowEnd.getDate() + 180);
         const eventKind = (event) => {
+          if (event.category) return event.category;
           const text = `${event.category || ""} ${event.type || ""} ${event.name || ""} ${event.distance || ""}`;
           return /트레일|trail|산악|trailrun/i.test(text) ? "트레일" : "로드";
         };
@@ -2529,12 +2896,13 @@
                 <div class="event-name">${event.name}</div>
                 <div class="event-meta">
                   <span class="chip">${formatDate(event.date)}</span>
-                  <span class="chip">${event.location || "장소 확인"}</span>
-                  <span class="chip">${event.distance || "거리 확인"}</span>
+                  ${event.time ? `<span class="chip">🕒 ${event.time}</span>` : ""}
+                  ${event.location ? `<span class="chip">${event.location}</span>` : ""}
+                  ${event.distance ? `<span class="chip">${event.distance}</span>` : ""}
+                  ${Number.isFinite(event.participants) && Number.isFinite(event.capacity) ? `<span class="chip">👥 ${event.participants}/${event.capacity}명</span>` : ""}
                 </div>
               </div>
               <p class="event-note">${event.note || "상세 일정은 공식 안내를 확인해 주세요."}</p>
-              <a class="cta event-lineup-link" href="${lineupHref(event)}">라인업에 넣기 →</a>
             </article>
             `).join("")}
             ${hasMore ? `<div class="event-toggle-row"><button type="button" class="event-toggle">더 보기 ${events.length - visibleCount}개</button></div>` : ""}
@@ -2593,20 +2961,14 @@
         };
 
         try {
-          const res = await fetch("./data/events.json?v=7031", { cache: "no-store" });
-          if (!res.ok) throw new Error("events load failed");
+          const res = await fetch("./data/meetups.json?v=20260703", { cache: "no-store" });
+          if (!res.ok) throw new Error("meetups load failed");
           const data = await res.json();
           const sourceEvents = Array.isArray(data) ? data : data.events;
           const events = upcomingOnly(sourceEvents);
-          const source = events.length ? events : upcomingOnly(fallbackEvents);
-          const roadEvents = source.filter(event => eventKind(event) === "로드").slice(0, 6);
-          const trailEvents = source.filter(event => eventKind(event) === "트레일").slice(0, 6);
-          renderEvents("road-events", roadEvents, "예정된 로드 대회 일정이 없습니다.");
-          renderEvents("trail-events", trailEvents, "예정된 트레일 대회 일정이 없습니다.");
+          renderEvents("crew-events", events, "아직 등록된 벙개가 없습니다. 새 일정이 생기면 이곳에 바로 알려드릴게요.");
         } catch {
-          const source = upcomingOnly(fallbackEvents);
-          renderEvents("road-events", source.filter(event => eventKind(event) === "로드").slice(0, 6), "예정된 로드 대회 일정이 없습니다.");
-          renderEvents("trail-events", source.filter(event => eventKind(event) === "트레일").slice(0, 6), "예정된 트레일 대회 일정이 없습니다.");
+          renderEvents("crew-events", [], "아직 등록된 벙개가 없습니다. 새 일정이 생기면 이곳에 바로 알려드릴게요.");
         }
       }
 
@@ -2614,10 +2976,11 @@
         const raw = (location.hash || "#/").toLowerCase();
         const normalized = raw.startsWith("#/") ? raw : raw.startsWith("#") ? "#/" + raw.slice(1) : "#/";
 
+        if (normalized.startsWith("#/interval")) { location.replace("#/"); return; }
+
         const known =
           normalized === "#/" ||
           normalized.startsWith("#/home") ||
-          normalized.startsWith("#/interval") ||
           normalized.startsWith("#/certificate") ||
           normalized.startsWith("#/regular") ||
           normalized.startsWith("#/courses") ||
@@ -2631,7 +2994,6 @@
         if (!known) { location.replace("#/"); return; }
 
         const view =
-          normalized.startsWith("#/interval") ? "interval" :
           normalized.startsWith("#/certificate") ? "certificate" :
           normalized.startsWith("#/regular") ? "regular" :
           normalized.startsWith("#/courses") ? "courses" :
@@ -2777,7 +3139,7 @@
       }
 
       function initStaff() {
-        const ops = ["나올", "밍경", "김땅콩", "슈퍼짹", "뽀용"];
+        const ops = ["나올", "밍경", "김땅콩", "뽀용"];
         const sorted = sortKoreanDesc(ops);
         ["ops-chips", "home-ops-chips"].forEach(id => {
           const container = document.getElementById(id);
@@ -2918,6 +3280,32 @@
 
       async function loadDefaultMedalImage() {
         return await loadOptionalImage("./medal.png?v=7030") || await loadOptionalImage("./medal.PNG?v=7030");
+      }
+      function initNewcomerBoard() {
+        const form = document.getElementById("newcomer-board-form");
+        if (!form) return;
+        const status = document.getElementById("newcomer-board-status");
+        form.addEventListener("submit", async (event) => {
+          event.preventDefault();
+          const nick = document.getElementById("newcomer-nick").value.trim();
+          const date = document.getElementById("newcomer-date").value;
+          const pace = document.getElementById("newcomer-pace").value;
+          const message = document.getElementById("newcomer-message").value.trim();
+          if (!nick || !date) return;
+          const text = [
+            "안녕하세요! 첫 정기런 참석 예정입니다 🙌",
+            `닉네임: ${nick}`,
+            `참석 예정일: ${date}`,
+            `희망 페이스: ${pace}`,
+            message ? `한마디: ${message}` : ""
+          ].filter(Boolean).join("\n");
+          try {
+            await navigator.clipboard.writeText(text);
+            status.textContent = "인사 문구를 복사했습니다. 당근 모임을 열어 붙여넣어 주세요.";
+          } catch {
+            status.textContent = text;
+          }
+        });
       }
 
       // 다음 행사 때는 이 값만 바꾸면 기록증의 대회 정보가 교체됩니다.
