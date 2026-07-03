@@ -1601,7 +1601,6 @@
         <a class="tab" data-tab="home" href="#/">홈</a>
         <a class="tab" data-tab="first" href="#/first">처음 오셨나요</a>
         <a class="tab" data-tab="regular" href="#/regular">정기런</a>
-        <a class="tab" data-tab="interval" href="#/interval">인터벌</a>
         <a class="tab" data-tab="routes" href="#/routes">코스 추천</a>
         <a class="tab" data-tab="shoes" href="#/shoes">러닝화 추천</a>
         <a class="tab" data-tab="lineup" href="#/lineup">라인업</a>
@@ -1644,17 +1643,8 @@
             <a class="card feature-card" href="#/first">
               <div>
                 <span class="feature-icon">🙌</span>
-                <h2>처음 오셨나요</h2>
-                <p>첫 정기런 전에 보면 좋은 준비물과 참여 흐름을 정리했습니다.</p>
-              </div>
-              <span class="cta">열기 →</span>
-            </a>
-
-            <a class="card feature-card" href="#/interval">
-              <div>
-                <span class="feature-icon">⏱</span>
-                <h2>인터벌 계산기</h2>
-                <p>400/200 같은 훈련 구간을 입력하면 워크/휴식 시간을 바로 계산합니다.</p>
+                <h2>가입 신청하셨나요?</h2>
+                <p>첫 정기런 전, 노빠꾸의 분위기와 참여 방법을 먼저 둘러보세요.</p>
               </div>
               <span class="cta">열기 →</span>
             </a>
@@ -1672,34 +1662,23 @@
               <div>
                 <span class="feature-icon">👟</span>
                 <h2>러닝화 추천</h2>
-                <p>조깅, 리커버리, 인터벌, 대회용 러닝화를 용도별로 봅니다.</p>
+                <p>데일리, 리커버리, 스피드 훈련, 대회용 러닝화를 용도별로 봅니다.</p>
               </div>
               <span class="cta">열기 →</span>
             </a>
 
           </div>
 
-          <section class="card event-board race-board" aria-label="다가오는 로드 대회 일정">
+          <section class="card event-board race-board" aria-label="다가오는 크루 일정">
             <div class="event-board-head">
               <div>
-                <span class="eyebrow">RACE CALENDAR</span>
-                <h2>다가오는 로드 대회</h2>
+                <span class="eyebrow">UPCOMING CREW RUNS</span>
+                <h2>다가오는 크루 일정</h2>
+                <p>정기런과 벙개, 함께 나가는 대회 일정을 모아봅니다.</p>
               </div>
             </div>
-            <div class="event-list" id="road-events">
-              <div class="event-item"><p class="event-note">로드 대회 일정을 불러오는 중입니다.</p></div>
-            </div>
-          </section>
-
-          <section class="card event-board race-board" aria-label="다가오는 트레일 대회 일정">
-            <div class="event-board-head">
-              <div>
-                <span class="eyebrow">TRAIL RACE CALENDAR</span>
-                <h2>다가오는 트레일 대회</h2>
-              </div>
-            </div>
-            <div class="event-list" id="trail-events">
-              <div class="event-item"><p class="event-note">트레일 대회 일정을 불러오는 중입니다.</p></div>
+            <div class="event-list" id="crew-events">
+              <div class="event-item"><p class="event-note">크루 일정을 불러오는 중입니다.</p></div>
             </div>
           </section>
 
@@ -2126,8 +2105,8 @@
         <div class="first-stack">
           <section class="card first-hero" aria-label="처음 오신 분 안내">
             <span class="eyebrow">WELCOME RUNNER</span>
-            <h2>첫 정기런 전에 이것만 보면 됩니다</h2>
-            <p class="muted">기록보다 함께 뛰는 분위기를 우선합니다. 페이스가 걱정돼도 그날 컨디션에 맞춰 편하게 오시면 됩니다.</p>
+            <h2>가입 승인 전에도, 노빠꾸를 먼저 만나보세요</h2>
+            <p class="muted">당근 모임 가입 승인은 첫 정기런 참석 확인 후 현장에서 진행합니다. 기다리는 동안 이 페이지에서 크루 분위기, 정기런 방식, 코스와 러닝 팁을 편하게 둘러보실 수 있어요.</p>
           </section>
 
           <div class="first-grid">
@@ -2146,11 +2125,12 @@
               <div class="chipline">
                 <span class="chip">러닝화</span>
                 <span class="chip">가벼운 복장</span>
-                <span class="chip">물</span>
+                <span class="chip">물 또는 이온음료</span>
+                <span class="chip">작은 수건</span>
                 <span class="chip">개인 짐 최소화</span>
                 <span class="chip">닉네임 확인</span>
               </div>
-              <p class="muted">처음이면 무리하지 않는 페이스를 고르는 게 가장 좋습니다.</p>
+              <p class="muted">운동 후 바로 마실 음료를 준비하면 좋습니다. 땀이 많은 날에는 작은 수건도 챙겨주세요. 처음이면 무리하지 않는 페이스를 고르는 게 가장 중요합니다.</p>
               <a class="cta" href="#/regular">정기런 자세히 보기 →</a>
             </article>
           </div>
@@ -2158,16 +2138,17 @@
           <section class="card join-card" id="join-info" aria-label="신규 회원 가입 승인 안내">
             <div>
               <span class="eyebrow">JOIN NBRC</span>
-              <h2>신규 회원 가입 안내</h2>
-              <p>당근 가입 신청 후 매주 수요일 정기런 참석이 확인되면 가입승인이 진행됩니다.</p>
+              <h2>신규 가입은 이렇게 진행됩니다</h2>
+              <p>당근에서 가입을 신청하신 뒤 첫 수요일 정기런에 참석해 주세요. 현장 운영진이 참석을 확인하면 모임 가입을 승인해 드립니다.</p>
               <div class="hero-actions">
                 <a class="primary-action" href="#/regular">정기런 안내 보기 →</a>
+                <a class="cta" href="https://www.daangn.com/kr/group/%EB%85%B8%EB%B9%A0%EA%BE%B8-%EB%9F%AC%EB%8B%9D%ED%81%AC%EB%A3%A8-no-back-rc-1yeomgcwmnyx/" target="_blank" rel="noopener noreferrer">당근 모임 열기 →</a>
               </div>
             </div>
             <div class="join-steps">
-              <div class="join-step"><div><strong>가입 신청</strong><span>당근 가입 신청 후 정기런 참석 확인 후에 가입승인됩니다.</span></div></div>
-              <div class="join-step"><div><strong>수요일 정기런 참석</strong><span>하남 종합운동장 두번째 블록 집합 장소로 오시면 됩니다.</span></div></div>
-              <div class="join-step"><div><strong>출석 확인 후 승인</strong><span>현장에서 출석 인증이 확인되면 가입 승인이 진행됩니다.</span></div></div>
+              <div class="join-step"><div><strong>1. 당근에서 가입 신청</strong><span>승인을 기다리는 동안 이 페이지에서 크루와 정기런 정보를 먼저 확인해 주세요.</span></div></div>
+              <div class="join-step"><div><strong>2. 수요일 정기런 참석</strong><span>오후 8시 전, 하남 종합운동장 두 번째 블록 집합 장소로 오시면 됩니다.</span></div></div>
+              <div class="join-step"><div><strong>3. 현장에서 가입 승인</strong><span>운영진이 닉네임과 참석을 확인한 뒤 당근 모임 가입을 승인해 드립니다.</span></div></div>
             </div>
           </section>
         </div>
@@ -2195,9 +2176,10 @@
 
           <h3>신규 회원 가입 승인 안내</h3>
           <ul>
-            <li>가입 신청 후 매주 수요일 정기런에 참석해 주세요.</li>
+            <li>당근 모임 가입 신청 후 첫 수요일 정기런에 참석해 주세요.</li>
             <li>하남 종합운동장 집합 장소에서 닉네임으로 출석 확인을 진행합니다.</li>
-            <li>정기런 참석 및 출석 인증이 확인되면 가입 승인이 진행됩니다.</li>
+            <li>현장 운영진이 참석을 확인하면 당근 모임 가입을 승인해 드립니다.</li>
+            <li>승인 전에도 이 페이지의 크루 정보와 정기런 안내는 자유롭게 볼 수 있습니다.</li>
           </ul>
 
           <h3>운영 방식</h3>
@@ -2387,7 +2369,7 @@
         const renderFallbackPhoto = (brand) => `<div class="shoe-photo fallback">${escapeHtml(brand || "RUN")}</div>`;
         const renderPhoto = (shoe) => {
           if (!shoe.image) return renderFallbackPhoto(shoe.brand);
-          return `<div class="shoe-photo"><img src="${escapeHtml(shoe.image)}" alt="${escapeHtml(`${shoe.brand || ""} ${shoe.model || ""}`.trim())}" loading="lazy" onerror="this.closest('.shoe-photo').outerHTML='${renderFallbackPhoto(shoe.brand).replaceAll("'", "\\'")}'"></div>`;
+          return `<div class="shoe-photo"><img src="${escapeHtml(shoe.image)}" alt="${escapeHtml(`${shoe.brand || ""} ${shoe.model || ""}`.trim())}" data-brand="${escapeHtml(shoe.brand || "RUN")}" loading="lazy"></div>`;
         };
 
         const renderShoe = (shoe) => `
@@ -2412,20 +2394,24 @@
         `;
 
         try {
-          const res = await fetch("./data/shoes.json?v=20260601", { cache: "no-store" });
+          const res = await fetch("./data/shoes.json?v=20260703", { cache: "no-store" });
           if (!res.ok) throw new Error("shoes load failed");
           const data = await res.json();
           const categories = Array.isArray(data) ? data : data.categories;
           if (!Array.isArray(categories) || !categories.length) throw new Error("shoes empty");
           grid.innerHTML = categories.map(renderCategory).join("");
+          grid.querySelectorAll(".shoe-photo img").forEach(img => {
+            img.addEventListener("error", () => {
+              img.closest(".shoe-photo").outerHTML = renderFallbackPhoto(img.dataset.brand);
+            }, { once: true });
+          });
         } catch {
           grid.innerHTML = `<article class="card shoe-category"><p class="event-note">러닝화 추천을 불러오지 못했습니다. 잠시 후 다시 열어주세요.</p></article>`;
         }
       }
       async function initUpcomingEvents() {
-        const roadList = document.getElementById("road-events");
-        const trailList = document.getElementById("trail-events");
-        if (!roadList && !trailList) return;
+        const crewList = document.getElementById("crew-events");
+        if (!crewList) return;
 
         const today = new Date();
         today.setHours(0, 0, 0, 0);
@@ -2484,6 +2470,7 @@
         const eventWindowEnd = new Date(today);
         eventWindowEnd.setDate(eventWindowEnd.getDate() + 60);
         const eventKind = (event) => {
+          if (event.category) return event.category;
           const text = `${event.category || ""} ${event.type || ""} ${event.name || ""} ${event.distance || ""}`;
           return /트레일|trail|산악|trailrun/i.test(text) ? "트레일" : "로드";
         };
@@ -2593,20 +2580,14 @@
         };
 
         try {
-          const res = await fetch("./data/events.json?v=7031", { cache: "no-store" });
-          if (!res.ok) throw new Error("events load failed");
+          const res = await fetch("./data/meetups.json?v=20260703", { cache: "no-store" });
+          if (!res.ok) throw new Error("meetups load failed");
           const data = await res.json();
           const sourceEvents = Array.isArray(data) ? data : data.events;
           const events = upcomingOnly(sourceEvents);
-          const source = events.length ? events : upcomingOnly(fallbackEvents);
-          const roadEvents = source.filter(event => eventKind(event) === "로드").slice(0, 6);
-          const trailEvents = source.filter(event => eventKind(event) === "트레일").slice(0, 6);
-          renderEvents("road-events", roadEvents, "예정된 로드 대회 일정이 없습니다.");
-          renderEvents("trail-events", trailEvents, "예정된 트레일 대회 일정이 없습니다.");
+          renderEvents("crew-events", events, "아직 등록된 벙개가 없습니다. 새 일정이 생기면 이곳에 바로 알려드릴게요.");
         } catch {
-          const source = upcomingOnly(fallbackEvents);
-          renderEvents("road-events", source.filter(event => eventKind(event) === "로드").slice(0, 6), "예정된 로드 대회 일정이 없습니다.");
-          renderEvents("trail-events", source.filter(event => eventKind(event) === "트레일").slice(0, 6), "예정된 트레일 대회 일정이 없습니다.");
+          renderEvents("crew-events", [], "아직 등록된 벙개가 없습니다. 새 일정이 생기면 이곳에 바로 알려드릴게요.");
         }
       }
 
@@ -2614,10 +2595,11 @@
         const raw = (location.hash || "#/").toLowerCase();
         const normalized = raw.startsWith("#/") ? raw : raw.startsWith("#") ? "#/" + raw.slice(1) : "#/";
 
+        if (normalized.startsWith("#/interval")) { location.replace("#/"); return; }
+
         const known =
           normalized === "#/" ||
           normalized.startsWith("#/home") ||
-          normalized.startsWith("#/interval") ||
           normalized.startsWith("#/certificate") ||
           normalized.startsWith("#/regular") ||
           normalized.startsWith("#/courses") ||
@@ -2631,7 +2613,6 @@
         if (!known) { location.replace("#/"); return; }
 
         const view =
-          normalized.startsWith("#/interval") ? "interval" :
           normalized.startsWith("#/certificate") ? "certificate" :
           normalized.startsWith("#/regular") ? "regular" :
           normalized.startsWith("#/courses") ? "courses" :
@@ -2777,7 +2758,7 @@
       }
 
       function initStaff() {
-        const ops = ["나올", "밍경", "김땅콩", "슈퍼짹", "뽀용"];
+        const ops = ["나올", "밍경", "김땅콩", "뽀용"];
         const sorted = sortKoreanDesc(ops);
         ["ops-chips", "home-ops-chips"].forEach(id => {
           const container = document.getElementById(id);
