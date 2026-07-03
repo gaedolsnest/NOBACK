@@ -2910,9 +2910,9 @@
                 <div class="event-meta">
                   <span class="chip">${formatDate(event.date)}</span>
                   ${event.time ? `<span class="chip">🕒 ${event.time}</span>` : ""}
-                  ${event.location ? `<span class="chip">${event.location}</span>` : ""}
+                  <span class="chip">📍 ${event.location || "장소 추후 안내"}</span>
                   ${event.distance ? `<span class="chip">${event.distance}</span>` : ""}
-                  ${Number.isFinite(event.participants) && Number.isFinite(event.capacity) ? `<span class="chip">👥 ${event.participants}/${event.capacity}명</span>` : ""}
+                  ${Number.isFinite(event.capacity) ? `<span class="chip">👥 최대 ${event.capacity}명</span>` : ""}
                 </div>
               </div>
               <p class="event-note">${event.note || "상세 일정은 공식 안내를 확인해 주세요."}</p>
@@ -2974,7 +2974,7 @@
         };
 
         try {
-          const res = await fetch("./data/meetups.json?v=20260703-2", { cache: "no-store" });
+          const res = await fetch("./data/meetups.json?v=20260703-3", { cache: "no-store" });
           if (!res.ok) throw new Error("meetups load failed");
           const data = await res.json();
           const sourceEvents = Array.isArray(data) ? data : data.events;
