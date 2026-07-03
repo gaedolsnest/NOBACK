@@ -2961,7 +2961,7 @@
         };
 
         try {
-          const res = await fetch("./data/meetups.json?v=20260703", { cache: "no-store" });
+          const res = await fetch("./data/meetups.json?v=20260703-2", { cache: "no-store" });
           if (!res.ok) throw new Error("meetups load failed");
           const data = await res.json();
           const sourceEvents = Array.isArray(data) ? data : data.events;
