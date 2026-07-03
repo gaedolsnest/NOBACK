@@ -1791,6 +1791,43 @@
       }
       .first-faq summary { cursor: pointer; color: var(--text); font-weight: 850; }
       .first-faq details p { margin: 9px 0 0; color: var(--muted); font-size: 13px; }
+      .newcomer-board {
+        display: grid;
+        gap: 14px;
+      }
+      .newcomer-board-form {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+      .newcomer-board-form .field { grid-column: auto; }
+      .newcomer-board-form .field.full { grid-column: 1 / -1; }
+      .newcomer-board-form textarea {
+        width: 100%;
+        min-height: 86px;
+        resize: vertical;
+        padding: 10px 12px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--text);
+      }
+      .newcomer-board-actions {
+        grid-column: 1 / -1;
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .newcomer-board-status {
+        min-height: 18px;
+        color: #ffd1b8;
+        font-size: 12px;
+      }
+      @media (max-width: 620px) {
+        .newcomer-board-form { grid-template-columns: 1fr; }
+        .newcomer-board-form .field,
+        .newcomer-board-form .field.full { grid-column: 1; }
+      }
       @media (max-width: 720px) {
         .crew-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         #view-home .hero-copy { padding: 18px; }
@@ -2406,6 +2443,25 @@
             <details><summary>짐은 어디에 두나요?</summary><p>개인 짐은 가능한 한 가볍게 준비해 주세요. 귀중품 보관이 어려울 수 있어 러닝에 필요한 물품만 가져오는 편이 좋습니다.</p></details>
             <details><summary>비가 오거나 일정이 바뀌면요?</summary><p>당일 변경 사항은 당근 모임 공지를 기준으로 확인해 주세요. 페이지 일정도 안내를 받은 뒤 함께 업데이트합니다.</p></details>
           </section>
+
+          <section class="card newcomer-board" aria-label="신규 러너 첫 인사 보드">
+            <div>
+              <span class="eyebrow">HELLO, NEW RUNNER</span>
+              <h2>첫 참석 인사 만들기</h2>
+              <p class="muted">간단히 작성하면 당근 모임에 남길 인사 문구를 만들어 드립니다. 공개 웹에 개인정보를 저장하지 않고, 실제 대화는 당근에서 이어갑니다.</p>
+            </div>
+            <form class="newcomer-board-form" id="newcomer-board-form">
+              <div class="field"><label for="newcomer-nick">당근 닉네임</label><input id="newcomer-nick" maxlength="20" required placeholder="예: 달리는콩" /></div>
+              <div class="field"><label for="newcomer-date">첫 참석 예정일</label><input id="newcomer-date" type="date" required /></div>
+              <div class="field full"><label for="newcomer-pace">희망 페이스</label><select id="newcomer-pace"><option>처음이라 잘 모르겠어요</option><option>7분대 이상</option><option>6분대</option><option>5분대</option><option>4분대 이하</option></select></div>
+              <div class="field full"><label for="newcomer-message">한마디</label><textarea id="newcomer-message" maxlength="100" placeholder="예: 첫 참석이라 조금 긴장되지만 즐겁게 뛰고 싶어요!"></textarea></div>
+              <div class="newcomer-board-actions">
+                <button type="submit">인사 문구 복사</button>
+                <a class="cta" href="https://www.daangn.com/kr/group/%EB%85%B8%EB%B9%A0%EA%BE%B8-%EB%9F%AC%EB%8B%9D%ED%81%AC%EB%A3%A8-no-back-rc-1yeomgcwmnyx/" target="_blank" rel="noopener noreferrer">당근 모임 열기 →</a>
+              </div>
+            </form>
+            <div class="newcomer-board-status" id="newcomer-board-status" aria-live="polite"></div>
+          </section>
         </div>
       </section>
 
@@ -2479,6 +2535,7 @@
         initCourseJumps();
         initShoes();
         initUpcomingEvents();
+        initNewcomerBoard();
         initInterval();
         initCertificate();
         route();
@@ -2723,7 +2780,7 @@
         ];
 
         const eventWindowEnd = new Date(today);
-        eventWindowEnd.setDate(eventWindowEnd.getDate() + 60);
+        eventWindowEnd.setDate(eventWindowEnd.getDate() + 180);
         const eventKind = (event) => {
           if (event.category) return event.category;
           const text = `${event.category || ""} ${event.type || ""} ${event.name || ""} ${event.distance || ""}`;
@@ -2771,8 +2828,10 @@
                 <div class="event-name">${event.name}</div>
                 <div class="event-meta">
                   <span class="chip">${formatDate(event.date)}</span>
-                  <span class="chip">${event.location || "장소 확인"}</span>
-                  <span class="chip">${event.distance || "거리 확인"}</span>
+                  ${event.time ? `<span class="chip">🕒 ${event.time}</span>` : ""}
+                  ${event.location ? `<span class="chip">${event.location}</span>` : ""}
+                  ${event.distance ? `<span class="chip">${event.distance}</span>` : ""}
+                  ${Number.isFinite(event.participants) && Number.isFinite(event.capacity) ? `<span class="chip">👥 ${event.participants}/${event.capacity}명</span>` : ""}
                 </div>
               </div>
               <p class="event-note">${event.note || "상세 일정은 공식 안내를 확인해 주세요."}</p>
@@ -3154,6 +3213,32 @@
 
       async function loadDefaultMedalImage() {
         return await loadOptionalImage("./medal.png?v=7030") || await loadOptionalImage("./medal.PNG?v=7030");
+      }
+      function initNewcomerBoard() {
+        const form = document.getElementById("newcomer-board-form");
+        if (!form) return;
+        const status = document.getElementById("newcomer-board-status");
+        form.addEventListener("submit", async (event) => {
+          event.preventDefault();
+          const nick = document.getElementById("newcomer-nick").value.trim();
+          const date = document.getElementById("newcomer-date").value;
+          const pace = document.getElementById("newcomer-pace").value;
+          const message = document.getElementById("newcomer-message").value.trim();
+          if (!nick || !date) return;
+          const text = [
+            "안녕하세요! 첫 정기런 참석 예정입니다 🙌",
+            `닉네임: ${nick}`,
+            `참석 예정일: ${date}`,
+            `희망 페이스: ${pace}`,
+            message ? `한마디: ${message}` : ""
+          ].filter(Boolean).join("\n");
+          try {
+            await navigator.clipboard.writeText(text);
+            status.textContent = "인사 문구를 복사했습니다. 당근 모임을 열어 붙여넣어 주세요.";
+          } catch {
+            status.textContent = text;
+          }
+        });
       }
 
       // 다음 행사 때는 이 값만 바꾸면 기록증의 대회 정보가 교체됩니다.
