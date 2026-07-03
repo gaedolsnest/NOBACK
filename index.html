@@ -1892,6 +1892,46 @@
         color: #ffd1b8;
         font-size: 12px;
       }
+      .newcomer-admin-entry { justify-self: start; font-size: 12px; }
+      .newcomer-admin-dialog {
+        width: min(680px, calc(100% - 28px));
+        max-height: min(760px, calc(100vh - 40px));
+        padding: 0;
+        border: 0;
+        border-radius: 22px;
+        color: #18364d;
+        background: #f8fbfd;
+        box-shadow: 0 28px 90px rgba(15, 41, 59, 0.34);
+      }
+      .newcomer-admin-dialog::backdrop { background: rgba(12, 28, 40, 0.64); }
+      .newcomer-admin-head {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 18px 20px;
+        background: rgba(248, 251, 253, 0.96);
+        border-bottom: 1px solid #dbe7ee;
+      }
+      .newcomer-admin-head h2 { margin: 0; font-size: 20px; }
+      .newcomer-admin-head button { min-width: auto; padding: 8px 12px; }
+      .newcomer-admin-actions { display: flex; gap: 7px; }
+      .newcomer-admin-actions .danger { color: #b63f2a; border-color: rgba(182, 63, 42, 0.28); }
+      .newcomer-admin-list { display: grid; gap: 10px; padding: 16px 20px 22px; }
+      .newcomer-entry {
+        display: grid;
+        gap: 7px;
+        padding: 14px;
+        border: 1px solid #dbe7ee;
+        border-radius: 15px;
+        background: #fff;
+      }
+      .newcomer-entry strong { color: #18364d; }
+      .newcomer-entry-meta { color: #62788a; font-size: 13px; }
+      .newcomer-entry p { margin: 0; color: #3e596c; white-space: pre-wrap; }
       @media (max-width: 620px) {
         .newcomer-board-form { grid-template-columns: 1fr; }
         .newcomer-board-form .field,
@@ -1999,13 +2039,13 @@
             <div class="crew-fact"><strong>현장 가입 승인</strong><span>첫 참석 확인 후 진행</span></div>
           </section>
 
-          <a class="card newcomer-banner" href="#/first">
+          <a class="card newcomer-banner" href="#/first?section=attendance">
             <div>
               <span class="feature-icon">🙌</span>
               <h2>가입 신청하셨나요?</h2>
-              <p>첫 정기런 전, 노빠꾸의 분위기와 참여 방법을 먼저 둘러보세요.</p>
+              <p>첫 참석 예정일을 남겨주시면 현장 운영진이 미리 확인합니다.</p>
             </div>
-            <span class="cta">신규 회원 안내 보기 →</span>
+            <span class="cta">첫 참석 일정 남기기 →</span>
           </a>
 
           <div class="grid">
@@ -2525,11 +2565,11 @@
             <details><summary>비가 오거나 일정이 바뀌면요?</summary><p>당일 변경 사항은 당근 모임 공지를 기준으로 확인해 주세요. 페이지 일정도 안내를 받은 뒤 함께 업데이트합니다.</p></details>
           </section>
 
-          <section class="card newcomer-board" aria-label="신규 러너 첫 인사 보드">
+          <section class="card newcomer-board" id="newcomer-attendance" aria-label="신규 러너 첫 인사 보드">
             <div>
               <span class="eyebrow">HELLO, NEW RUNNER</span>
-              <h2>첫 참석 인사 만들기</h2>
-              <p class="muted">간단히 작성하면 당근 모임에 남길 인사 문구를 만들어 드립니다. 공개 웹에 개인정보를 저장하지 않고, 실제 대화는 당근에서 이어갑니다.</p>
+              <h2>첫 참석 인사 남기기</h2>
+              <p class="muted">닉네임과 참석 예정일을 남겨주시면 현장 운영진이 미리 확인합니다. 실명이나 연락처는 입력하지 마세요.</p>
             </div>
             <form class="newcomer-board-form" id="newcomer-board-form">
               <div class="field"><label for="newcomer-nick">당근 닉네임</label><input id="newcomer-nick" maxlength="20" required placeholder="예: 달리는콩" /></div>
@@ -2537,13 +2577,25 @@
               <div class="field full"><label for="newcomer-pace">희망 페이스</label><select id="newcomer-pace"><option>처음이라 잘 모르겠어요</option><option>7분대 이상</option><option>6분대</option><option>5분대</option><option>4분대 이하</option></select></div>
               <div class="field full"><label for="newcomer-message">한마디</label><textarea id="newcomer-message" maxlength="100" placeholder="예: 첫 참석이라 조금 긴장되지만 즐겁게 뛰고 싶어요!"></textarea></div>
               <div class="newcomer-board-actions">
-                <button type="submit">인사 문구 복사</button>
+                <button type="submit">참석 인사 제출</button>
                 <a class="cta" href="https://www.daangn.com/kr/group/%EB%85%B8%EB%B9%A0%EA%BE%B8-%EB%9F%AC%EB%8B%9D%ED%81%AC%EB%A3%A8-no-back-rc-1yeomgcwmnyx/" target="_blank" rel="noopener noreferrer">당근 모임 열기 →</a>
               </div>
             </form>
             <div class="newcomer-board-status" id="newcomer-board-status" aria-live="polite"></div>
+            <button type="button" class="ghost newcomer-admin-entry" id="newcomer-admin-trigger">참석 신청 확인 · 운영진 (0)</button>
           </section>
         </div>
+
+        <dialog class="newcomer-admin-dialog" id="newcomer-admin-dialog">
+          <div class="newcomer-admin-head">
+            <h2 id="newcomer-admin-title">현재 신청 인원</h2>
+            <div class="newcomer-admin-actions">
+              <button type="button" class="danger" id="newcomer-admin-reset">전체 초기화</button>
+              <button type="button" id="newcomer-admin-close">닫기</button>
+            </div>
+          </div>
+          <div class="newcomer-admin-list" id="newcomer-admin-list"><p>불러오는 중입니다.</p></div>
+        </dialog>
       </section>
 
       <!-- REGULAR -->
@@ -3031,6 +3083,9 @@
         document.querySelector(`.tab[data-tab="${activeTab}"]`)?.classList.add("active");
         syncLineupFrame(view, location.hash || "#/");
         syncCourseSection(view, location.hash || "#/");
+        if (view === "first" && normalized.includes("section=attendance")) {
+          requestAnimationFrame(() => document.getElementById("newcomer-attendance")?.scrollIntoView({ behavior: "smooth", block: "start" }));
+        }
 
         if (normalized !== raw) history.replaceState(null, "", normalized);
       }
@@ -3295,9 +3350,17 @@
         return await loadOptionalImage("./medal.png?v=7030") || await loadOptionalImage("./medal.PNG?v=7030");
       }
       function initNewcomerBoard() {
+        const SUPABASE_URL = "https://abwmnevdhqgzofrgewfp.supabase.co";
+        const SUPABASE_KEY = "sb_publishable_hksxpg6L19bfjeTiGJtZjA_jWQz0Ovv";
+        const apiHeaders = {
+          apikey: SUPABASE_KEY,
+          Authorization: `Bearer ${SUPABASE_KEY}`,
+          "Content-Type": "application/json"
+        };
         const form = document.getElementById("newcomer-board-form");
         if (!form) return;
         const status = document.getElementById("newcomer-board-status");
+        const submitButton = form.querySelector('button[type="submit"]');
         form.addEventListener("submit", async (event) => {
           event.preventDefault();
           const nick = document.getElementById("newcomer-nick").value.trim();
@@ -3305,20 +3368,111 @@
           const pace = document.getElementById("newcomer-pace").value;
           const message = document.getElementById("newcomer-message").value.trim();
           if (!nick || !date) return;
-          const text = [
-            "안녕하세요! 첫 정기런 참석 예정입니다 🙌",
-            `닉네임: ${nick}`,
-            `참석 예정일: ${date}`,
-            `희망 페이스: ${pace}`,
-            message ? `한마디: ${message}` : ""
-          ].filter(Boolean).join("\n");
+          submitButton.disabled = true;
+          status.textContent = "제출하고 있습니다…";
           try {
-            await navigator.clipboard.writeText(text);
-            status.textContent = "인사 문구를 복사했습니다. 당근 모임을 열어 붙여넣어 주세요.";
+            const response = await fetch(`${SUPABASE_URL}/rest/v1/newcomer_greetings`, {
+              method: "POST",
+              headers: { ...apiHeaders, Prefer: "return=minimal" },
+              body: JSON.stringify({ nickname: nick, attendance_date: date, pace, message: message || null })
+            });
+            if (!response.ok) throw new Error("submit failed");
+            form.reset();
+            status.textContent = "참석 인사가 제출됐습니다. 현장에서 닉네임을 말씀해 주세요!";
+            refreshNewcomerCount();
           } catch {
-            status.textContent = text;
+            status.textContent = "아직 신청함 연결이 완료되지 않았습니다. 잠시 후 다시 시도해 주세요.";
+          } finally {
+            submitButton.disabled = false;
           }
         });
+
+        const trigger = document.getElementById("newcomer-admin-trigger");
+        const dialog = document.getElementById("newcomer-admin-dialog");
+        const list = document.getElementById("newcomer-admin-list");
+        const title = document.getElementById("newcomer-admin-title");
+        let adminCode = "";
+        trigger?.addEventListener("click", () => {
+          const code = prompt("운영진 코드를 입력해 주세요.");
+          if (!code) return;
+          adminCode = code;
+          loadNewcomerEntries();
+        });
+        document.getElementById("newcomer-admin-close")?.addEventListener("click", () => dialog?.close());
+        document.getElementById("newcomer-admin-reset")?.addEventListener("click", async () => {
+          if (!confirm("저장된 참석 인사를 모두 삭제할까요? 이 작업은 되돌릴 수 없습니다.")) return;
+          const resetButton = document.getElementById("newcomer-admin-reset");
+          resetButton.disabled = true;
+          try {
+            const response = await fetch(`${SUPABASE_URL}/rest/v1/rpc/clear_newcomer_greetings`, {
+              method: "POST",
+              headers: apiHeaders,
+              body: JSON.stringify({ access_code: adminCode })
+            });
+            if (!response.ok) throw new Error("reset failed");
+            await loadNewcomerEntries();
+            refreshNewcomerCount();
+          } catch {
+            alert("초기화하지 못했습니다. 잠시 후 다시 시도해 주세요.");
+          } finally {
+            resetButton.disabled = false;
+          }
+        });
+
+        async function loadNewcomerEntries() {
+          if (!dialog || !list) return;
+          dialog.showModal();
+          title.textContent = "현재 신청 인원";
+          list.replaceChildren(Object.assign(document.createElement("p"), { textContent: "불러오는 중입니다." }));
+          try {
+            const response = await fetch(`${SUPABASE_URL}/rest/v1/rpc/get_newcomer_greetings`, {
+              method: "POST",
+              headers: apiHeaders,
+              body: JSON.stringify({ access_code: adminCode })
+            });
+            if (!response.ok) throw new Error("load failed");
+            const entries = await response.json();
+            title.textContent = `현재 신청 인원 ${entries.length}명`;
+            list.replaceChildren();
+            if (!entries.length) {
+              list.append(Object.assign(document.createElement("p"), { textContent: "아직 제출된 참석 인사가 없습니다." }));
+              return;
+            }
+            entries.forEach(entry => {
+              const card = document.createElement("article");
+              card.className = "newcomer-entry";
+              const name = document.createElement("strong");
+              name.textContent = entry.nickname;
+              const meta = document.createElement("div");
+              meta.className = "newcomer-entry-meta";
+              meta.textContent = `${entry.attendance_date} · ${entry.pace}`;
+              card.append(name, meta);
+              if (entry.message) card.append(Object.assign(document.createElement("p"), { textContent: entry.message }));
+              list.append(card);
+            });
+          } catch {
+            title.textContent = "운영진 확인";
+            list.replaceChildren(Object.assign(document.createElement("p"), { textContent: "코드가 맞지 않거나 신청 목록을 불러오지 못했습니다." }));
+          }
+        }
+
+        async function refreshNewcomerCount() {
+          if (!trigger) return;
+          try {
+            const response = await fetch(`${SUPABASE_URL}/rest/v1/rpc/get_newcomer_count`, {
+              method: "POST",
+              headers: apiHeaders,
+              body: "{}"
+            });
+            if (!response.ok) throw new Error("count failed");
+            const count = await response.json();
+            trigger.textContent = `참석 신청 확인 · 운영진 (${Number(count) || 0})`;
+          } catch {
+            trigger.textContent = "참석 신청 확인 · 운영진";
+          }
+        }
+
+        refreshNewcomerCount();
       }
 
       // 다음 행사 때는 이 값만 바꾸면 기록증의 대회 정보가 교체됩니다.

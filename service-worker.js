@@ -1,4 +1,4 @@
-const CACHE_NAME = "noback-pwa-v20";
+const CACHE_NAME = "noback-pwa-v23";
 const CORE_ASSETS = [
   "./",
   "./index.html",
