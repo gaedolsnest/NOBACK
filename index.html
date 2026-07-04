@@ -2103,8 +2103,6 @@
       <nav class="tabs" aria-label="탭">
         <a class="tab" data-tab="home" href="#/">홈</a>
         <a class="tab" data-tab="first" href="#/first">처음 오셨나요</a>
-        <a class="tab" data-tab="routes" href="#/routes">코스 추천</a>
-        <a class="tab" data-tab="shoes" href="#/shoes">러닝화 추천</a>
         <a class="tab" data-tab="lineup" href="#/lineup">라인업</a>
         <a class="tab" data-tab="app" href="#/app">앱처럼 쓰기</a>
         <a class="tab" data-tab="share" href="#/share">공유</a>
@@ -2160,27 +2158,6 @@
             </div>
           </section>
 
-          <div class="grid">
-
-            <a class="card feature-card" href="#/routes">
-              <div>
-                <span class="feature-icon">🗺</span>
-                <h2>코스 추천</h2>
-                <p>가볍게 둘러보기 좋은 러닝 코스와 GPS 아트 코스를 모았습니다.</p>
-              </div>
-              <span class="cta">열기 →</span>
-            </a>
-
-            <a class="card feature-card" href="#/shoes">
-              <div>
-                <span class="feature-icon">👟</span>
-                <h2>러닝화 추천</h2>
-                <p>데일리, 리커버리, 스피드 훈련, 대회용 러닝화를 용도별로 봅니다.</p>
-              </div>
-              <span class="cta">열기 →</span>
-            </a>
-
-          </div>
 
           <section class="card event-board race-board" aria-label="다가오는 크루 일정">
             <div class="event-board-head">
@@ -2350,109 +2327,6 @@
           <div class="lineup-frame" style="margin-top:12px;">
             <iframe id="lineup-app" src="https://noback-lineup-generator.netlify.app/" title="노빠꾸 라인업 생성기"></iframe>
           </div>
-        </div>
-      </section>
-
-      <!-- COURSES -->
-      <section id="view-courses" class="view">
-        <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill" id="courses-pill">코스 추천</div></div>
-        <div class="card">
-          <h2 id="courses-title">코스 추천</h2>
-          <p class="muted" id="courses-lead">재밌게 찍히는 GPS 코스와 가볍게 둘러보기 좋은 러닝 코스를 모았습니다. 실제 주행 전 지도앱으로 동선을 확인해 주세요.</p>
-          <div class="section-jumps" id="courses-jumps" aria-label="코스북 빠른 이동">
-            <button type="button" class="cta section-jump" data-scroll-target="course-routes">러닝 코스 보기 →</button>
-            <button type="button" class="cta section-jump" data-scroll-target="shoe-guide">러닝화 추천 보기 →</button>
-          </div>
-
-          <section class="recommend-section" id="course-routes" aria-label="러닝 코스 추천">
-            <div class="recommend-head">
-              <div>
-                <span class="eyebrow">ROUTE BOOK</span>
-                <h3>러닝 코스</h3>
-              </div>
-              <p class="muted">공개 GPX 또는 온라인 실제 경로 지도를 확인할 수 있는 코스만 소개합니다. 실제 주행 전 경로와 통행 가능 여부를 다시 확인해 주세요.</p>
-            </div>
-
-            <div class="course-grid">
-              <article class="card course-card course-card-featured">
-                <div>
-                  <h3>댕댕런</h3>
-                  <div class="course-meta">
-                    <span class="chip">서울 도심</span><span class="chip">약 8.5km</span><span class="chip">공개 GPX</span>
-                  </div>
-                  <p>광화문에서 출발해 경복궁·삼청동·북촌·종로를 연결하는 강아지 모양 GPS 아트 코스입니다.</p>
-                  <a class="cta" href="https://walking-report.tistory.com/16" target="_blank" rel="noopener noreferrer">GPX 출처 및 다운로드 →</a>
-                </div>
-                <figure class="course-route-preview">
-                  <img src="./assets/routes/dog-run-gps.svg?v=1" alt="공개 GPX 데이터로 그린 경복궁 댕댕런 실제 GPS 경로" />
-                  <figcaption>공개 GPX 좌표로 직접 그린 실제 경로 궤적</figcaption>
-                </figure>
-              </article>
-
-              <article class="card course-card course-card-featured">
-                <div>
-                  <h3>여의도 고구마런</h3>
-                  <div class="course-meta">
-                    <span class="chip">여의도 한강</span><span class="chip">약 8.2km</span><span class="chip">온라인 GPS 지도</span>
-                  </div>
-                  <p>여의도 외곽의 한강과 샛강 구간을 한 바퀴 도는 평지 중심 순환 코스입니다.</p>
-                  <a class="cta" href="https://www.padak.run/2025/05/Yeouido-Sweet-Potato-Running-Course.html" target="_blank" rel="noopener noreferrer">경로 출처 보기 →</a>
-                </div>
-                <figure class="course-route-preview">
-                  <img src="./assets/routes/sweet-potato-run.svg?v=1" alt="온라인 GPS 지도를 기준으로 다시 그린 여의도 고구마런 경로" />
-                  <figcaption>온라인 공개 경로 지도를 기준으로 재구성한 궤적</figcaption>
-                </figure>
-              </article>
-
-              <article class="card course-card course-card-featured">
-                <div>
-                  <h3>어린이대공원 붕어빵런</h3>
-                  <div class="course-meta">
-                    <span class="chip">서울 광진구</span><span class="chip">약 2km</span><span class="chip">온라인 코스 지도</span>
-                  </div>
-                  <p>서울어린이대공원의 산책로와 주요 시설 외곽을 연결해 붕어빵 형태로 도는 코스입니다.</p>
-                  <a class="cta" href="https://v.daum.net/v/GItavd3GvH" target="_blank" rel="noopener noreferrer">경로 출처 보기 →</a>
-                </div>
-                <figure class="course-route-preview">
-                  <img src="./assets/routes/fish-bread-run.svg?v=1" alt="온라인 코스 지도를 기준으로 다시 그린 어린이대공원 붕어빵런 경로" />
-                  <figcaption>온라인 공개 코스 지도를 기준으로 재구성한 궤적</figcaption>
-                </figure>
-              </article>
-
-              <article class="card course-card course-card-featured">
-                <div>
-                  <h3>당정뜰 나비런</h3>
-                  <div class="course-meta">
-                    <span class="chip">하남 당정뜰</span><span class="chip">약 7km</span><span class="chip">크루 GPS 기록</span>
-                  </div>
-                  <p>유니온타워 인근에서 출발해 북쪽과 동쪽의 두 루프를 이어 나비 모양을 완성하는 코스입니다.</p>
-                </div>
-                <figure class="course-route-preview">
-                  <img src="./assets/routes/butterfly-run.svg?v=1" alt="크루 GPS 기록을 기준으로 다시 그린 하남 당정뜰 나비런 경로" />
-                  <figcaption>크루가 제공한 GPS 기록을 기준으로 재구성한 궤적</figcaption>
-                </figure>
-              </article>
-            </div>
-          </section>
-
-                    <section class="recommend-section" id="shoe-guide" aria-label="러닝화 추천">
-            <div class="recommend-head">
-              <div>
-                <span class="eyebrow">SHOE GUIDE</span>
-                <h3>러닝화 추천</h3>
-              </div>
-              <p class="muted">러닝 목적에 맞춰 대표 모델을 이미지와 함께 가볍게 비교해보세요. 최종 선택은 착화감과 사이즈가 가장 중요합니다.</p>
-            </div>
-            <div class="section-jumps" aria-label="러닝화 섹션 빠른 이동">
-              <a class="cta" href="#/routes">코스 추천으로 이동 ↑</a>
-            </div>
-
-            <div class="shoe-grid" id="shoe-grid">
-              <article class="card shoe-category">
-                <p class="event-note">러닝화 추천을 불러오는 중입니다.</p>
-              </article>
-            </div>
-          </section>
         </div>
       </section>
 
@@ -2719,8 +2593,6 @@
         initNextRegularRun();
         initMobileJoinJump();
         initAdminShortcut();
-        initCourseJumps();
-        initShoes();
         initUpcomingEvents();
         initNewcomerBoard();
         initInterval();
@@ -2842,72 +2714,6 @@
         });
       }
 
-      function initCourseJumps() {
-        document.querySelectorAll(".section-jump").forEach(btn => {
-          btn.addEventListener("click", () => {
-            const targetId = btn.dataset.scrollTarget;
-            if (!targetId) return;
-            document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth", block: "start" });
-          });
-        });
-      }
-
-      function escapeHtml(value) {
-        return String(value ?? "")
-          .replaceAll("&", "&amp;")
-          .replaceAll("<", "&lt;")
-          .replaceAll(">", "&gt;")
-          .replaceAll('"', "&quot;")
-          .replaceAll("'", "&#39;");
-      }
-
-      async function initShoes() {
-        const grid = document.getElementById("shoe-grid");
-        if (!grid) return;
-
-        const renderFallbackPhoto = (brand) => `<div class="shoe-photo fallback">${escapeHtml(brand || "RUN")}</div>`;
-        const renderPhoto = (shoe) => {
-          if (!shoe.image) return renderFallbackPhoto(shoe.brand);
-          return `<div class="shoe-photo"><img src="${escapeHtml(shoe.image)}" alt="${escapeHtml(`${shoe.brand || ""} ${shoe.model || ""}`.trim())}" data-brand="${escapeHtml(shoe.brand || "RUN")}" loading="lazy"></div>`;
-        };
-
-        const renderShoe = (shoe) => `
-          <div class="card shoe-card">
-            <div class="shoe-visual">
-              ${renderPhoto(shoe)}
-              <div class="shoe-use"><span class="shoe-brand">${escapeHtml(shoe.brand)}</span><strong>${escapeHtml(shoe.model)}</strong><span>${escapeHtml(shoe.use)}</span></div>
-            </div>
-            <p>${escapeHtml(shoe.description)}</p>
-            <a class="cta" href="${escapeHtml(shoe.url)}" target="_blank" rel="noopener noreferrer">모델 보기 →</a>
-          </div>
-        `;
-
-        const renderCategory = (category) => `
-          <article class="card shoe-category">
-            <div class="shoe-category-head">
-              <div><h3>${escapeHtml(category.title)}</h3><p class="muted">${escapeHtml(category.lead)}</p></div>
-              <span class="pill">${escapeHtml(category.label)}</span>
-            </div>
-            <div class="shoe-options">${(category.items || []).map(renderShoe).join("")}</div>
-          </article>
-        `;
-
-        try {
-          const res = await fetch("./data/shoes.json?v=20260703", { cache: "no-store" });
-          if (!res.ok) throw new Error("shoes load failed");
-          const data = await res.json();
-          const categories = Array.isArray(data) ? data : data.categories;
-          if (!Array.isArray(categories) || !categories.length) throw new Error("shoes empty");
-          grid.innerHTML = categories.map(renderCategory).join("");
-          grid.querySelectorAll(".shoe-photo img").forEach(img => {
-            img.addEventListener("error", () => {
-              img.closest(".shoe-photo").outerHTML = renderFallbackPhoto(img.dataset.brand);
-            }, { once: true });
-          });
-        } catch {
-          grid.innerHTML = `<article class="card shoe-category"><p class="event-note">러닝화 추천을 불러오지 못했습니다. 잠시 후 다시 열어주세요.</p></article>`;
-        }
-      }
       async function initUpcomingEvents() {
         const crewList = document.getElementById("crew-events");
         if (!crewList) return;
@@ -3097,14 +2903,12 @@
 
         if (normalized.startsWith("#/interval")) { location.replace("#/"); return; }
         if (normalized.startsWith("#/regular")) { location.replace("#/first"); return; }
+        if (normalized.startsWith("#/courses") || normalized.startsWith("#/routes") || normalized.startsWith("#/shoes")) { location.replace("#/"); return; }
 
         const known =
           normalized === "#/" ||
           normalized.startsWith("#/home") ||
           normalized.startsWith("#/certificate") ||
-          normalized.startsWith("#/courses") ||
-          normalized.startsWith("#/routes") ||
-          normalized.startsWith("#/shoes") ||
           normalized.startsWith("#/lineup") ||
           normalized.startsWith("#/app") ||
           normalized.startsWith("#/share") ||
@@ -3114,9 +2918,6 @@
 
         const view =
           normalized.startsWith("#/certificate") ? "certificate" :
-          normalized.startsWith("#/courses") ? "courses" :
-          normalized.startsWith("#/routes") ? "courses" :
-          normalized.startsWith("#/shoes") ? "courses" :
           normalized.startsWith("#/lineup") ? "lineup" :
           normalized.startsWith("#/app") ? "app" :
           normalized.startsWith("#/share") ? "share" :
@@ -3129,39 +2930,14 @@
         document.body.dataset.view = view;
 
         document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
-        const activeTab =
-          normalized.startsWith("#/routes") || (normalized.startsWith("#/courses") && !normalized.includes("shoe-guide")) ? "routes" :
-          normalized.startsWith("#/shoes") || normalized.includes("shoe-guide") ? "shoes" :
-          view;
+        const activeTab = view;
         document.querySelector(`.tab[data-tab="${activeTab}"]`)?.classList.add("active");
         syncLineupFrame(view, location.hash || "#/");
-        syncCourseSection(view, location.hash || "#/");
         if (view === "first" && normalized.includes("section=attendance")) {
           requestAnimationFrame(() => document.getElementById("newcomer-attendance")?.scrollIntoView({ behavior: "smooth", block: "start" }));
         }
 
         if (normalized !== raw) history.replaceState(null, "", normalized);
-      }
-
-      function syncCourseSection(view, hash) {
-        if (view !== "courses") return;
-        const rawHash = String(hash || "");
-        const isShoes = rawHash.startsWith("#/shoes") || rawHash.includes("section=shoe-guide");
-        const section = isShoes ? "shoe-guide" : "course-routes";
-        document.body.dataset.courseMode = isShoes ? "shoes" : "routes";
-        const title = document.getElementById("courses-title");
-        const pill = document.getElementById("courses-pill");
-        const lead = document.getElementById("courses-lead");
-        if (title) title.textContent = isShoes ? "러닝화 추천" : "코스 추천";
-        if (pill) pill.textContent = isShoes ? "러닝화 추천" : "코스 추천";
-        if (lead) {
-          lead.textContent = isShoes
-            ? "러닝 목적에 맞춰 여러 브랜드의 대표 모델을 가볍게 비교해보세요. 최종 선택은 착화감과 사이즈가 가장 중요합니다."
-            : "재밌게 찍히는 GPS 코스와 가볍게 둘러보기 좋은 러닝 코스를 모았습니다. 실제 주행 전 지도앱으로 동선을 확인해 주세요.";
-        }
-        requestAnimationFrame(() => {
-          document.getElementById(section)?.scrollIntoView({ behavior: "auto", block: "start" });
-        });
       }
 
       function syncLineupFrame(view, hash) {
