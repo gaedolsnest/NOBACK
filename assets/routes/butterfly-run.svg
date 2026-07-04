@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 320" role="img" aria-labelledby="title desc">
+  <title id="title">하남 당정뜰 나비런 GPS 경로</title>
+  <desc id="desc">크루가 제공한 GPS 기록을 기준으로 다시 그린 당정뜰 약 7킬로미터 나비 모양 코스</desc>
+  <rect width="520" height="320" rx="24" fill="#edf7fb"/>
+  <g stroke="#cfe1ea" stroke-width="1" opacity=".65"><path d="M0 80H520M0 160H520M0 240H520M130 0V320M260 0V320M390 0V320"/></g>
+  <path d="M230 246 L202 268 L178 253 L132 73 Q123 47 145 58 L238 215 L210 267 L233 249 L268 226 L438 282 Q466 290 455 269 L286 187 L239 245 L263 218 L236 246 L203 268" fill="none" stroke="#d95400" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M230 246 L202 268 L178 253 L132 73 Q123 47 145 58 L238 215 L210 267 L233 249 L268 226 L438 282 Q466 290 455 269 L286 187 L239 245" fill="none" stroke="#ffb27f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="203" cy="268" r="9" fill="#18364d" stroke="#fff" stroke-width="4"/><circle cx="210" cy="267" r="9" fill="#d95400" stroke="#fff" stroke-width="4"/>
+  <g font-family="Arial,sans-serif"><text x="24" y="30" fill="#18364d" font-size="14" font-weight="700">CREW GPS TRACE</text><text x="496" y="298" text-anchor="end" fill="#62788a" font-size="12">당정뜰 나비런 · 약 7km</text></g>
+</svg>

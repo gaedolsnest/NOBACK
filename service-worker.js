@@ -1,4 +1,4 @@
-const CACHE_NAME = "noback-pwa-v29";
+const CACHE_NAME = "noback-pwa-v30";
 const CORE_ASSETS = [
   "./",
   "./index.html",
@@ -16,7 +16,8 @@ const CORE_ASSETS = [
   "./assets/meetup-map-custom.jpg",
   "./assets/routes/dog-run-gps.svg",
   "./assets/routes/sweet-potato-run.svg",
-  "./assets/routes/fish-bread-run.svg"
+  "./assets/routes/fish-bread-run.svg",
+  "./assets/routes/butterfly-run.svg"
 ];
 
 self.addEventListener("install", (event) => {
