@@ -1,4 +1,4 @@
-const CACHE_NAME = "noback-pwa-v27";
+const CACHE_NAME = "noback-pwa-v28";
 const CORE_ASSETS = [
   "./",
   "./index.html",
@@ -13,7 +13,8 @@ const CORE_ASSETS = [
   "./assets/noback-bg-light.png",
   "./assets/instagram-logo.svg",
   "./assets/daangn-logo.svg",
-  "./assets/meetup-map-custom.jpg"
+  "./assets/meetup-map-custom.jpg",
+  "./assets/routes/dog-run-gps.svg"
 ];
 
 self.addEventListener("install", (event) => {

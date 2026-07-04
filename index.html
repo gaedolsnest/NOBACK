@@ -1269,6 +1269,27 @@
       .shoe-card .cta {
         width: max-content;
       }
+      .course-card-featured {
+        grid-template-columns: minmax(0, 1fr) minmax(240px, 0.82fr);
+        align-items: center;
+        gap: 20px;
+      }
+      .course-route-preview {
+        display: grid;
+        gap: 7px;
+        margin: 0;
+      }
+      .course-route-preview img {
+        display: block;
+        width: 100%;
+        border-radius: 16px;
+        border: 1px solid rgba(45, 113, 156, 0.18);
+        background: #edf7fb;
+      }
+      .course-route-preview figcaption { color: #62788a; font-size: 11px; }
+      @media (max-width: 700px) {
+        .course-card-featured { grid-template-columns: 1fr; }
+      }
       .shoe-visual {
         min-height: 128px;
         display: grid;
@@ -1743,6 +1764,17 @@
       }
       #view-courses .shoe-category-head {
         border-bottom-color: rgba(45, 113, 156, 0.15);
+      }
+      #view-courses .eyebrow {
+        color: #fff;
+        background: #d95400;
+        border-color: #d95400;
+      }
+      #view-courses .chip {
+        color: #18364d;
+        background: #eaf4f9;
+        border-color: #bfd8e5;
+        font-weight: 800;
       }
       #view-courses .shoe-visual {
         min-height: 0;
@@ -2338,85 +2370,23 @@
                 <span class="eyebrow">ROUTE BOOK</span>
                 <h3>러닝 코스</h3>
               </div>
-              <p class="muted">가볍게 둘러보기 좋은 코스와 GPS 아트 코스를 모았습니다. 자세한 동선은 지도앱과 참고 링크에서 확인해 주세요.</p>
+              <p class="muted">공개 GPX 원본을 확인할 수 있는 코스만 소개합니다. 실제 주행 전 경로와 통행 가능 여부를 다시 확인해 주세요.</p>
             </div>
 
             <div class="course-grid">
-              <article class="card course-card">
+              <article class="card course-card course-card-featured">
                 <div>
                   <h3>댕댕런</h3>
                   <div class="course-meta">
-                    <span class="chip">서울 도심</span><span class="chip">약 8km</span><span class="chip">강아지 모양</span>
+                    <span class="chip">서울 도심</span><span class="chip">약 8.5km</span><span class="chip">공개 GPX</span>
                   </div>
-                  <p>광화문 일대에서 시작해 청와대로와 종로 방향을 잇는 도심 순환 GPS 아트 코스입니다.</p>
+                  <p>광화문에서 출발해 경복궁·삼청동·북촌·종로를 연결하는 강아지 모양 GPS 아트 코스입니다.</p>
+                  <a class="cta" href="https://walking-report.tistory.com/16" target="_blank" rel="noopener noreferrer">GPX 출처 및 다운로드 →</a>
                 </div>
-                <a class="cta" href="https://www.wikitree.co.kr/articles/1101072" target="_blank" rel="noopener noreferrer">참고 보기 →</a>
-              </article>
-
-              <article class="card course-card">
-                <div>
-                  <h3>여의도 고구마런</h3>
-                  <div class="course-meta">
-                    <span class="chip">여의도 한강</span><span class="chip">약 8km대</span><span class="chip">고구마 모양</span>
-                  </div>
-                  <p>여의도 한강공원 물빛무대 일대에서 많이 언급되는 한강변 GPS 아트 코스입니다.</p>
-                </div>
-                <a class="cta" href="https://www.fnnews.com/ampNews/202603050400047640" target="_blank" rel="noopener noreferrer">참고 보기 →</a>
-              </article>
-
-              <article class="card course-card">
-                <div>
-                  <h3>어린이대공원 붕어빵런</h3>
-                  <div class="course-meta">
-                    <span class="chip">서울 광진구</span><span class="chip">약 2.5km / 5km</span><span class="chip">붕어빵 모양</span>
-                  </div>
-                  <p>어린이대공원 주변을 돌며 GPS 로그가 붕어빵처럼 보이는 코스로 소개되어 있습니다.</p>
-                </div>
-                <a class="cta" href="https://walking-report.tistory.com/m/22" target="_blank" rel="noopener noreferrer">참고 보기 →</a>
-              </article>
-
-              <article class="card course-card">
-                <div>
-                  <h3>당정뜰 나비런</h3>
-                  <div class="course-meta">
-                    <span class="chip">하남 당정뜰</span><span class="chip">약 7km</span><span class="chip">나비 모양</span>
-                  </div>
-                  <p>유니온타워 인근에서 출발해 미사대로 하단과 당정뜰 수변길을 크게 돌아 복귀하는 코스입니다.</p>
-                </div>
-                <a class="cta" href="https://www.ktourmap.com/spotDetails.jsp?contentId=2751647" target="_blank" rel="noopener noreferrer">장소 보기 →</a>
-              </article>
-
-              <article class="card course-card">
-                <div>
-                  <h3>석촌호수 런</h3>
-                  <div class="course-meta">
-                    <span class="chip">서울 송파구</span><span class="chip">한 바퀴 약 2.5km</span><span class="chip">호수 루프</span>
-                  </div>
-                  <p>동호와 서호를 이어 가볍게 돌기 좋은 도심형 호수 루프 코스입니다.</p>
-                </div>
-                <a class="cta" href="https://nyang-in-peace.tistory.com/304" target="_blank" rel="noopener noreferrer">참고 보기 →</a>
-              </article>
-
-              <article class="card course-card">
-                <div>
-                  <h3>고덕천 러닝코스</h3>
-                  <div class="course-meta">
-                    <span class="chip">서울 강동구</span><span class="chip">약 7~9km</span><span class="chip">하천길</span>
-                  </div>
-                  <p>상일동 쪽에서 고덕천을 따라 한강 합수부까지 이어지는 조용한 수변 왕복 코스입니다.</p>
-                </div>
-                <a class="cta" href="https://memoguri6.tistory.com/1498" target="_blank" rel="noopener noreferrer">참고 보기 →</a>
-              </article>
-
-              <article class="card course-card">
-                <div>
-                  <h3>올림픽공원 런</h3>
-                  <div class="course-meta">
-                    <span class="chip">서울 송파구</span><span class="chip">약 4.8~5km</span><span class="chip">외곽 랩</span>
-                  </div>
-                  <p>공원 외곽을 크게 도는 대표 코스와 몽촌토성 산책로를 섞어 달리기 좋은 훈련 코스입니다.</p>
-                </div>
-                <a class="cta" href="https://1history.tistory.com/488" target="_blank" rel="noopener noreferrer">참고 보기 →</a>
+                <figure class="course-route-preview">
+                  <img src="./assets/routes/dog-run-gps.svg?v=1" alt="공개 GPX 데이터로 그린 경복궁 댕댕런 실제 GPS 경로" />
+                  <figcaption>공개 GPX 좌표로 직접 그린 실제 경로 궤적</figcaption>
+                </figure>
               </article>
             </div>
           </section>
@@ -3066,7 +3036,7 @@
         };
 
         try {
-          const res = await fetch("./data/meetups.json?v=20260703-4", { cache: "no-store" });
+          const res = await fetch("./data/meetups.json?v=20260704-1", { cache: "no-store" });
           if (!res.ok) throw new Error("meetups load failed");
           const data = await res.json();
           const sourceEvents = Array.isArray(data) ? data : data.events;
