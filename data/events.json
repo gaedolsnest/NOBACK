@@ -1,24 +1,6 @@
 {
-  "updatedAt": "2026-07-03T20:12:37.114Z",
+  "updatedAt": "2026-07-04T20:07:42.552Z",
   "events": [
-    {
-      "name": "IRON RUN 2026",
-      "date": "2026-07-04",
-      "location": "포항 영일대해수욕장 장미광장",
-      "category": "로드",
-      "distance": "15.38km / 7.87km / 3.8km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://www.ironrun.kr"
-    },
-    {
-      "name": "2026 전마협 하계 무료 훈련 마라톤",
-      "date": "2026-07-04",
-      "location": "금산인삼엑스포주차장",
-      "category": "로드",
-      "distance": "10km / 5km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://mara1080.com/event/3c31740e-986e-4cb8-a7e5-850a80d2a5fd"
-    },
     {
       "name": "제10회 노원구청장배 겸 회장배마라톤",
       "date": "2026-07-05",
