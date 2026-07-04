@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 320" role="img" aria-labelledby="title desc">
+  <title id="title">어린이대공원 붕어빵런 GPS 경로</title>
+  <desc id="desc">온라인 공개 코스 지도를 기준으로 다시 그린 서울어린이대공원 약 2킬로미터 순환 코스</desc>
+  <rect width="520" height="320" rx="24" fill="#edf7fb"/>
+  <g stroke="#cfe1ea" stroke-width="1" opacity=".65"><path d="M0 80H520M0 160H520M0 240H520M130 0V320M260 0V320M390 0V320"/></g>
+  <path d="M89 162 C118 102 190 69 280 77 C352 83 401 111 428 145 L477 112 L461 170 L479 215 L425 192 C393 230 334 252 260 251 C172 250 111 215 89 162 Z M111 160 C145 150 169 137 190 112" fill="none" stroke="#d95400" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M89 162 C118 102 190 69 280 77 C352 83 401 111 428 145 L477 112 L461 170 L479 215 L425 192 C393 230 334 252 260 251 C172 250 111 215 89 162 Z" fill="none" stroke="#ffb27f" stroke-width="2"/>
+  <circle cx="89" cy="162" r="9" fill="#18364d" stroke="#fff" stroke-width="4"/><circle cx="111" cy="160" r="9" fill="#d95400" stroke="#fff" stroke-width="4"/>
+  <g font-family="Arial,sans-serif"><text x="24" y="30" fill="#18364d" font-size="14" font-weight="700">GPS MAP TRACE</text><text x="496" y="298" text-anchor="end" fill="#62788a" font-size="12">어린이대공원 붕어빵런 · 약 2km</text></g>
+</svg>

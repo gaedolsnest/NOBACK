@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 320" role="img" aria-labelledby="title desc">
+  <title id="title">여의도 고구마런 GPS 경로</title>
+  <desc id="desc">온라인 공개 경로 지도를 기준으로 다시 그린 여의도 약 8.2킬로미터 순환 코스</desc>
+  <rect width="520" height="320" rx="24" fill="#edf7fb"/>
+  <g stroke="#cfe1ea" stroke-width="1" opacity=".65"><path d="M0 80H520M0 160H520M0 240H520M130 0V320M260 0V320M390 0V320"/></g>
+  <path d="M65 86 C120 54 206 47 292 62 C365 76 431 111 462 160 C483 194 473 230 432 247 C360 277 250 273 157 251 C98 237 67 207 58 165 C51 132 51 104 65 86 Z" fill="none" stroke="#d95400" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M65 86 C120 54 206 47 292 62 C365 76 431 111 462 160 C483 194 473 230 432 247 C360 277 250 273 157 251 C98 237 67 207 58 165 C51 132 51 104 65 86 Z" fill="none" stroke="#ffb27f" stroke-width="2"/>
+  <circle cx="65" cy="86" r="9" fill="#18364d" stroke="#fff" stroke-width="4"/><circle cx="58" cy="92" r="9" fill="#d95400" stroke="#fff" stroke-width="4"/>
+  <g font-family="Arial,sans-serif"><text x="24" y="30" fill="#18364d" font-size="14" font-weight="700">GPS MAP TRACE</text><text x="496" y="298" text-anchor="end" fill="#62788a" font-size="12">여의도 고구마런 · 약 8.2km</text></g>
+</svg>
