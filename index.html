@@ -1958,6 +1958,19 @@
         color: #ffd1b8;
         font-size: 12px;
       }
+      .field-help { display: block; margin-top: 6px; color: #62788a; font-size: 11px; line-height: 1.5; }
+      .newcomer-success {
+        display: grid;
+        gap: 10px;
+        padding: 16px;
+        border-radius: 16px;
+        color: #18364d;
+        background: #eef8fc;
+        border: 1px solid #c9e0ea;
+      }
+      .newcomer-success[hidden] { display: none; }
+      .newcomer-success h3,
+      .newcomer-success p { margin: 0; }
       .newcomer-admin-entry { justify-self: start; font-size: 12px; }
       .newcomer-admin-dialog {
         width: min(680px, calc(100% - 28px));
@@ -2021,6 +2034,14 @@
       .newcomer-admin-head button { min-width: auto; padding: 8px 12px; }
       .newcomer-admin-actions { display: flex; gap: 7px; }
       .newcomer-admin-actions .danger { color: #b63f2a; border-color: rgba(182, 63, 42, 0.28); }
+      .newcomer-admin-filters {
+        display: flex;
+        gap: 7px;
+        flex-wrap: wrap;
+        padding: 12px 20px 0;
+      }
+      .newcomer-admin-filters button { min-width: auto; padding: 7px 10px; color: #28516a; background: #eaf4f9; border-color: #c8dce7; font-size: 12px; }
+      .newcomer-admin-filters button.active { color: #fff; background: #d95400; border-color: #d95400; }
       .newcomer-admin-list { display: grid; gap: 10px; padding: 16px 20px 22px; }
       .newcomer-entry {
         display: grid;
@@ -2033,6 +2054,8 @@
       .newcomer-entry strong { color: #18364d; }
       .newcomer-entry-meta { color: #62788a; font-size: 13px; }
       .newcomer-entry p { margin: 0; color: #3e596c; white-space: pre-wrap; }
+      .newcomer-entry-status { display: grid; gap: 4px; color: #62788a; font-size: 11px; }
+      .newcomer-entry-status select { width: 100%; color: #18364d; background: #f7fbfd; border-color: #c8dce7; }
       .newcomer-entry-delete {
         justify-self: end;
         min-width: auto;
@@ -2119,8 +2142,8 @@
             <div class="hero-copy">
               <span class="eyebrow">NO BACK RUNNING CREW</span>
               <h2>NO BACK.<br />JUST RUN.</h2>
-              <p class="hero-tagline">하남 대표 러닝 크루<strong>!</strong></p>
-              <p class="hero-lead">기록보다 함께 뛰는 분위기를 우선합니다. 수요일 밤, 편하게 모여 함께 달립니다.</p>
+              <p class="hero-tagline">처음이어도 편하게 뛰는 수요 러닝</p>
+              <p class="hero-lead">기록보다 함께 뛰는 분위기를 우선합니다.<br />수요일 밤, 페이스에 맞춰 나눠 달립니다.</p>
               <div class="hero-actions">
                 <a class="primary-action" href="#/first">첫 참석 안내 보기 →</a>
               </div>
@@ -2133,7 +2156,8 @@
               </div>
               <div class="run-meta">
                 <span id="next-regular-date">매주 수요일 20:00</span>
-                <span>하남 종합운동장</span>
+                <span>하남 종합운동장 두 번째 블록</span>
+                <span>처음 참석자는 당근 닉네임으로 체크인</span>
                 <span>페이스별 그룹으로 편하게 출발</span>
               </div>
             </div>
@@ -2143,7 +2167,7 @@
             <div class="crew-fact"><strong>매주 수요일</strong><span>오후 8시 정기런</span></div>
             <div class="crew-fact"><strong>하남 종합운동장</strong><span>두 번째 블록 집합</span></div>
             <div class="crew-fact"><strong>페이스별 출발</strong><span>처음이어도 부담 없이</span></div>
-            <div class="crew-fact"><strong>현장 가입 승인</strong><span>첫 참석 확인 후 진행</span></div>
+            <div class="crew-fact"><strong>첫 참석 체크</strong><span>운영진 확인 후 가입 안내</span></div>
           </section>
 
           <section class="card newcomer-banner">
@@ -2164,7 +2188,7 @@
               <div>
                 <span class="eyebrow">UPCOMING CREW RUNS</span>
                 <h2>다가오는 크루 일정</h2>
-                <p>앞으로 예정된 크루 일정과 번개런을 모아봅니다.</p>
+                <p>노빠꾸에서 함께하는 다양한 활동들을 가볍게 모아봤습니다.</p>
               </div>
             </div>
             <div class="event-list" id="crew-events">
@@ -2477,7 +2501,7 @@
             <h2>처음이라도 괜찮아요.</h2>
             <p class="muted welcome-lines">
               <span>수요일 저녁, 편하게 함께 달려요.</span>
-              <span>첫 참석 확인 후 당근 모임 가입이 승인됩니다.</span>
+              <span>첫 참석 후 운영진이 당근 가입을 안내합니다.</span>
             </p>
           </section>
 
@@ -2486,7 +2510,7 @@
               <h3>참여 흐름</h3>
               <ol class="guide-steps">
                 <li><span class="step-num">1</span><span>수요일 20:00 전에 집합 장소에 도착합니다.</span></li>
-                <li><span class="step-num">2</span><span>닉네임으로 출석 체크를 합니다.</span></li>
+                <li><span class="step-num">2</span><span>운영진에게 “처음 왔어요”라고 말하고 당근 닉네임으로 체크합니다.</span></li>
                 <li><span class="step-num">3</span><span>가벼운 스트레칭 후 페이스별로 출발합니다.</span></li>
                 <li><span class="step-num">4</span><span>러닝 후 마무리 스트레칭하고 해산합니다.</span></li>
               </ol>
@@ -2499,19 +2523,19 @@
                 <span class="chip">가벼운 복장</span>
                 <span class="chip">물 또는 이온음료</span>
                 <span class="chip">작은 수건</span>
-                <span class="chip">개인 짐 최소화</span>
                 <span class="chip">닉네임 확인</span>
+                <span class="chip">귀중품 최소화</span>
               </div>
-              <p class="muted">운동 후 바로 마실 음료를 준비하면 좋습니다. 땀이 많은 날에는 작은 수건도 챙겨주세요. 처음이면 무리하지 않는 페이스를 고르는 게 가장 중요합니다.</p>
+              <p class="muted">운동 후 바로 마실 음료와 작은 수건을 준비하면 좋습니다. 간단한 짐은 운동장 간이의자 쪽에 크루원 짐과 함께 둘 수 있습니다. 다만 별도 락커나 전용 보관함은 없으니 귀중품은 가져오지 않거나 직접 소지해 주세요. 분실 위험이 있어 현금, 지갑, 고가 물품은 최소화하는 걸 권장합니다.</p>
               <a class="cta" href="https://map.kakao.com/link/search/%ED%95%98%EB%82%A8%EC%A2%85%ED%95%A9%EC%9A%B4%EB%8F%99%EC%9E%A5" target="_blank" rel="noopener noreferrer">집합 장소 지도 보기 →</a>
             </article>
           </div>
 
-          <section class="card join-card" id="join-info" aria-label="신규 회원 가입 승인 안내">
+          <section class="card join-card" id="join-info" aria-label="신규 회원 첫 참석 안내">
             <div>
               <span class="eyebrow">JOIN NBRC</span>
-              <h2>신규 가입은 이렇게 진행됩니다</h2>
-              <p>당근에서 가입을 신청하신 뒤 첫 수요일 정기런에 참석해 주세요. 현장 운영진이 참석을 확인하면 모임 가입을 승인해 드립니다.</p>
+              <h2>첫 참석은 이렇게 진행됩니다</h2>
+              <p>당근에서 가입을 신청하신 뒤 첫 수요일 정기런에 참석해 주세요. 현장 운영진이 닉네임과 신청 내용을 확인하고 페이스에 맞춰 안내해드립니다.</p>
               <div class="hero-actions">
                 <button type="button" class="primary-action" data-open-attendance>첫 참석 일정 남기기</button>
                 <a class="cta" href="https://www.daangn.com/kr/group/%EB%85%B8%EB%B9%A0%EA%BE%B8-%EB%9F%AC%EB%8B%9D%ED%81%AC%EB%A3%A8-no-back-rc-1yeomgcwmnyx/" target="_blank" rel="noopener noreferrer">당근 모임 열기 →</a>
@@ -2520,7 +2544,7 @@
             <div class="join-steps">
               <div class="join-step"><div><strong>1. 당근에서 가입 신청</strong><span>승인을 기다리는 동안 이 페이지에서 크루와 정기런 정보를 먼저 확인해 주세요.</span></div></div>
               <div class="join-step"><div><strong>2. 수요일 정기런 참석</strong><span>오후 8시 전, 하남 종합운동장 두 번째 블록 집합 장소로 오시면 됩니다.</span></div></div>
-              <div class="join-step"><div><strong>3. 현장에서 가입 승인</strong><span>운영진이 닉네임과 참석을 확인한 뒤 당근 모임 가입을 승인해 드립니다.</span></div></div>
+              <div class="join-step"><div><strong>3. 현장에서 가입 안내</strong><span>운영진이 첫 참석을 확인한 뒤 당근 모임 가입을 안내해 드립니다.</span></div></div>
             </div>
           </section>
 
@@ -2528,8 +2552,9 @@
             <span class="eyebrow">FIRST RUN FAQ</span>
             <h2>처음 오실 때 자주 묻는 질문</h2>
             <details open><summary>러닝을 잘 못해도 괜찮나요?</summary><p>괜찮습니다. 그날 컨디션과 페이스에 맞는 그룹을 고르고, 무리하지 않는 것을 가장 중요하게 생각합니다.</p></details>
+            <details><summary>처음 가면 누구한테 말하면 되나요?</summary><p>집결지에 도착하면 운영진에게 “처음 왔어요”라고 말하고 당근 닉네임을 알려주세요. 운영진이 신청 내용을 확인한 뒤 페이스와 진행 흐름을 안내해드립니다.</p></details>
             <details><summary>혼자 가도 어색하지 않을까요?</summary><p>대부분 닉네임으로 인사하고 함께 몸을 풉니다. 도착하면 운영진에게 처음 왔다고 편하게 말씀해 주세요.</p></details>
-            <details><summary>짐은 어디에 두나요?</summary><p>개인 짐은 가능한 한 가볍게 준비해 주세요. 귀중품 보관이 어려울 수 있어 러닝에 필요한 물품만 가져오는 편이 좋습니다.</p></details>
+            <details><summary>짐은 어디에 두나요?</summary><p>간단한 짐은 운동장 간이의자 쪽에 함께 모아둘 수 있지만 별도 락커는 없습니다. 귀중품은 가져오지 않거나 직접 소지해 주세요.</p></details>
             <details><summary>비가 오거나 일정이 바뀌면요?</summary><p>당일 변경 사항은 당근 모임 공지를 기준으로 확인해 주세요. 페이지 일정도 안내를 받은 뒤 함께 업데이트합니다.</p></details>
           </section>
 
@@ -2557,14 +2582,20 @@
             <form class="newcomer-board-form" id="newcomer-board-form">
               <div class="field"><label for="newcomer-nick">당근 닉네임</label><input id="newcomer-nick" maxlength="20" required placeholder="예: 달리는콩" /></div>
               <div class="field"><label for="newcomer-date">첫 참석 예정일</label><input id="newcomer-date" type="date" required /></div>
-              <div class="field full"><label for="newcomer-pace">희망 페이스</label><select id="newcomer-pace"><option>처음이라 잘 모르겠어요</option><option>7분대 이상</option><option>6분대</option><option>5분대</option><option>4분대 이하</option></select></div>
-              <div class="field full"><label for="newcomer-message">한마디</label><textarea id="newcomer-message" maxlength="100" placeholder="예: 첫 참석이라 조금 긴장되지만 즐겁게 뛰고 싶어요!"></textarea></div>
+              <div class="field full"><label for="newcomer-experience">러닝 경험</label><select id="newcomer-experience"><option>거의 처음이에요</option><option>3~5km 정도 뛰어봤어요</option><option>10km까지 뛰어봤어요</option><option>크루런 경험 있어요</option></select></div>
+              <div class="field full"><label for="newcomer-pace">편하게 뛸 수 있는 페이스</label><select id="newcomer-pace"><option>처음이라 잘 모르겠어요</option><option>7분대 이상 / 걷뛰 가능</option><option>6분대</option><option>5분대</option><option>4분대 이하</option></select><span class="field-help">정확하지 않아도 괜찮아요. 당일 컨디션에 맞춰 페이스를 다시 나눕니다.</span></div>
+              <div class="field full"><label for="newcomer-message">한마디</label><textarea id="newcomer-message" maxlength="100" placeholder="예: 첫 참석이라 조금 긴장돼요. / 천천히 뛰고 싶어요. / 무릎이 안 좋아 무리하지 않고 뛰고 싶어요."></textarea></div>
               <div class="newcomer-board-actions">
                 <button type="submit">참석 인사 제출</button>
-                <a class="cta" href="https://www.daangn.com/kr/group/%EB%85%B8%EB%B9%A0%EA%BE%B8-%EB%9F%AC%EB%8B%9D%ED%81%AC%EB%A3%A8-no-back-rc-1yeomgcwmnyx/" target="_blank" rel="noopener noreferrer">당근 모임 열기 →</a>
               </div>
             </form>
             <div class="newcomer-board-status" id="newcomer-board-status" aria-live="polite"></div>
+            <section class="newcomer-success" id="newcomer-success" hidden aria-live="polite">
+              <h3>첫 참석 일정이 남겨졌습니다.</h3>
+              <p>정기런 당일 집결지에서 당근 닉네임을 말씀해 주세요.<br />운영진이 확인 후 페이스에 맞춰 안내드릴게요.</p>
+              <p>당근 모임 가입 신청을 아직 안 하셨다면 아래 버튼을 눌러주세요.</p>
+              <a class="cta" href="https://www.daangn.com/kr/group/%EB%85%B8%EB%B9%A0%EA%BE%B8-%EB%9F%AC%EB%8B%9D%ED%81%AC%EB%A3%A8-no-back-rc-1yeomgcwmnyx/" target="_blank" rel="noopener noreferrer">당근 모임 열기 →</a>
+            </section>
             <button type="button" class="ghost newcomer-admin-entry" id="newcomer-admin-trigger">참석 신청 확인 · 운영진 (0)</button>
       </section>
     </dialog>
@@ -2576,6 +2607,12 @@
               <button type="button" class="danger" id="newcomer-admin-reset">전체 초기화</button>
               <button type="button" id="newcomer-admin-close">닫기</button>
             </div>
+          </div>
+          <div class="newcomer-admin-filters" id="newcomer-admin-filters" aria-label="신청자 필터">
+            <button type="button" class="active" data-newcomer-filter="all">전체</button>
+            <button type="button" data-newcomer-filter="this-week">이번 주 참석자</button>
+            <button type="button" data-newcomer-filter="first-run">처음 참석자</button>
+            <button type="button" data-newcomer-filter="pace-unknown">페이스 모름</button>
           </div>
           <div class="newcomer-admin-list" id="newcomer-admin-list"><p>불러오는 중입니다.</p></div>
     </dialog>
@@ -3189,8 +3226,14 @@
         const form = document.getElementById("newcomer-board-form");
         if (!form) return;
         const formDialog = document.getElementById("newcomer-form-dialog");
+        const successPanel = document.getElementById("newcomer-success");
         document.querySelectorAll("[data-open-attendance]").forEach(button => {
-          button.addEventListener("click", () => formDialog?.showModal());
+          button.addEventListener("click", () => {
+            form.hidden = false;
+            successPanel.hidden = true;
+            document.getElementById("newcomer-board-status").textContent = "";
+            formDialog?.showModal();
+          });
         });
         document.getElementById("newcomer-form-close")?.addEventListener("click", () => formDialog?.close());
         const status = document.getElementById("newcomer-board-status");
@@ -3199,6 +3242,7 @@
           event.preventDefault();
           const nick = document.getElementById("newcomer-nick").value.trim();
           const date = document.getElementById("newcomer-date").value;
+          const experience = document.getElementById("newcomer-experience").value;
           const pace = document.getElementById("newcomer-pace").value;
           const message = document.getElementById("newcomer-message").value.trim();
           if (!nick || !date) return;
@@ -3208,11 +3252,13 @@
             const response = await fetch(`${SUPABASE_URL}/rest/v1/newcomer_greetings`, {
               method: "POST",
               headers: { ...apiHeaders, Prefer: "return=minimal" },
-              body: JSON.stringify({ nickname: nick, attendance_date: date, pace, message: message || null })
+              body: JSON.stringify({ nickname: nick, attendance_date: date, experience, pace, message: message || null })
             });
             if (!response.ok) throw new Error("submit failed");
             form.reset();
-            status.textContent = "참석 인사가 제출됐습니다. 현장에서 닉네임을 말씀해 주세요!";
+            status.textContent = "";
+            form.hidden = true;
+            successPanel.hidden = false;
             refreshNewcomerCount();
           } catch {
             status.textContent = "아직 신청함 연결이 완료되지 않았습니다. 잠시 후 다시 시도해 주세요.";
@@ -3226,6 +3272,15 @@
         const list = document.getElementById("newcomer-admin-list");
         const title = document.getElementById("newcomer-admin-title");
         let adminCode = "";
+        let allEntries = [];
+        let activeFilter = "all";
+        document.querySelectorAll("[data-newcomer-filter]").forEach(button => {
+          button.addEventListener("click", () => {
+            activeFilter = button.dataset.newcomerFilter;
+            document.querySelectorAll("[data-newcomer-filter]").forEach(item => item.classList.toggle("active", item === button));
+            renderNewcomerEntries();
+          });
+        });
         trigger?.addEventListener("click", () => {
           const code = prompt("운영진 코드를 입력해 주세요.");
           if (!code) return;
@@ -3255,7 +3310,7 @@
 
         async function loadNewcomerEntries() {
           if (!dialog || !list) return;
-          dialog.showModal();
+          if (!dialog.open) dialog.showModal();
           title.textContent = "현재 신청 인원";
           list.replaceChildren(Object.assign(document.createElement("p"), { textContent: "불러오는 중입니다." }));
           try {
@@ -3265,11 +3320,33 @@
               body: JSON.stringify({ access_code: adminCode })
             });
             if (!response.ok) throw new Error("load failed");
-            const entries = await response.json();
-            title.textContent = `현재 신청 인원 ${entries.length}명`;
+            allEntries = await response.json();
+            title.textContent = `현재 신청 인원 ${allEntries.length}명`;
+            renderNewcomerEntries();
+          } catch {
+            title.textContent = "운영진 확인";
+            list.replaceChildren(Object.assign(document.createElement("p"), { textContent: "코드가 맞지 않거나 신청 목록을 불러오지 못했습니다." }));
+          }
+        }
+
+        function renderNewcomerEntries() {
+            const now = new Date();
+            const day = now.getDay() || 7;
+            const monday = new Date(now.getFullYear(), now.getMonth(), now.getDate() - day + 1);
+            const sunday = new Date(monday);
+            sunday.setDate(monday.getDate() + 6);
+            const entries = allEntries.filter(entry => {
+              if (activeFilter === "first-run") return entry.experience === "거의 처음이에요";
+              if (activeFilter === "pace-unknown") return entry.pace === "처음이라 잘 모르겠어요";
+              if (activeFilter === "this-week") {
+                const date = new Date(`${entry.attendance_date}T00:00:00`);
+                return date >= monday && date <= sunday;
+              }
+              return true;
+            });
             list.replaceChildren();
             if (!entries.length) {
-              list.append(Object.assign(document.createElement("p"), { textContent: "아직 제출된 참석 인사가 없습니다." }));
+              list.append(Object.assign(document.createElement("p"), { textContent: allEntries.length ? "이 조건에 맞는 신청자가 없습니다." : "아직 제출된 참석 인사가 없습니다." }));
               return;
             }
             entries.forEach(entry => {
@@ -3279,9 +3356,35 @@
               name.textContent = entry.nickname;
               const meta = document.createElement("div");
               meta.className = "newcomer-entry-meta";
-              meta.textContent = `${entry.attendance_date} · ${entry.pace}`;
+              meta.textContent = `${entry.attendance_date} · ${entry.experience || "경험 미입력"} · ${entry.pace}`;
               card.append(name, meta);
               if (entry.message) card.append(Object.assign(document.createElement("p"), { textContent: entry.message }));
+              const statusField = document.createElement("label");
+              statusField.className = "newcomer-entry-status";
+              statusField.textContent = "참석 확인 상태";
+              const statusSelect = document.createElement("select");
+              ["신청 접수", "이번 주 참석 예정", "현장 참석 확인", "당근 가입 안내 완료", "불참 / 다음 일정"].forEach(value => {
+                statusSelect.append(Object.assign(document.createElement("option"), { value, textContent: value, selected: value === entry.status }));
+              });
+              statusSelect.addEventListener("change", async () => {
+                statusSelect.disabled = true;
+                try {
+                  const response = await fetch(`${SUPABASE_URL}/rest/v1/rpc/update_newcomer_status`, {
+                    method: "POST",
+                    headers: apiHeaders,
+                    body: JSON.stringify({ access_code: adminCode, target_id: entry.id, new_status: statusSelect.value })
+                  });
+                  if (!response.ok) throw new Error("status failed");
+                  entry.status = statusSelect.value;
+                } catch {
+                  alert("상태를 변경하지 못했습니다.");
+                  statusSelect.value = entry.status;
+                } finally {
+                  statusSelect.disabled = false;
+                }
+              });
+              statusField.append(statusSelect);
+              card.append(statusField);
               const deleteButton = document.createElement("button");
               deleteButton.type = "button";
               deleteButton.className = "newcomer-entry-delete";
@@ -3306,10 +3409,6 @@
               card.append(deleteButton);
               list.append(card);
             });
-          } catch {
-            title.textContent = "운영진 확인";
-            list.replaceChildren(Object.assign(document.createElement("p"), { textContent: "코드가 맞지 않거나 신청 목록을 불러오지 못했습니다." }));
-          }
         }
 
         async function refreshNewcomerCount() {
