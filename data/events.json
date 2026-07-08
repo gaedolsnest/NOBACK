@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-07T20:47:49.987Z",
+  "updatedAt": "2026-07-08T20:18:37.183Z",
   "events": [
     {
       "name": "2026 전마협 무주 풀코스 마라톤",
@@ -324,6 +324,78 @@
       "distance": "50k / 32k-T / 32k-U / 24k / 15k",
       "note": "마라톤온라인 대회 일정 기반입니다.",
       "url": "http://taebaektrail.com/"
+    },
+    {
+      "name": "2026 전마협회장배 청주마라톤",
+      "date": "2026-09-06",
+      "location": "청주 무심천 체육공원",
+      "category": "로드",
+      "distance": "10km / 5km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://mara1080.com/event/a9780087-8fc3-4849-a234-7659978f6792"
+    },
+    {
+      "name": "제9회 인천 서구청장배 단축마라톤",
+      "date": "2026-09-06",
+      "location": "청라호수공원 멀티프라자 트랙",
+      "category": "로드",
+      "distance": "10km / 4.3km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://www.sgicaaf.co.kr"
+    },
+    {
+      "name": "제11회 김대중 평화 마라톤 대회",
+      "date": "2026-09-06",
+      "location": "뚝섬 한강공원 수변무대",
+      "category": "로드",
+      "distance": "하프 / 10km / 5km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://kdjrun.kr/"
+    },
+    {
+      "name": "2026 샌드런 IN 영덕",
+      "date": "2026-09-06",
+      "location": "영덕 대진해수욕장",
+      "category": "로드",
+      "distance": "4km / 8km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://sandrun.co.kr"
+    },
+    {
+      "name": "2026 YTN 서울투어마라톤",
+      "date": "2026-09-06",
+      "location": "서울광장",
+      "category": "로드",
+      "distance": "하프 / 11km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://run.ytn.co.kr"
+    },
+    {
+      "name": "2026 봉화송이 전국마라톤",
+      "date": "2026-09-06",
+      "location": "봉화공설운동장",
+      "category": "로드",
+      "distance": "하프 / 10km / 5km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://bonghwarun.kr"
+    },
+    {
+      "name": "제24회 청광종주TRAILRUNNING",
+      "date": "2026-09-06",
+      "location": "양재동 화물",
+      "category": "트레일",
+      "distance": "26km / 14km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://www.koreatrail.net/home/main.php?link=event&einc=eapp&opp=20250626120820&csno=20191016122754#baseline"
+    },
+    {
+      "name": "희망드림 제23회 새벽강변 국제마라톤",
+      "date": "2026-09-06",
+      "location": "(양천구)목동운동장",
+      "category": "로드",
+      "distance": "하프 / 10km / 5km / 3km가족런",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://amarunsb.com/"
     }
   ]
 }
