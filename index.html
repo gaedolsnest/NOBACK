@@ -2056,6 +2056,28 @@
       .newcomer-entry p { margin: 0; color: #3e596c; white-space: pre-wrap; }
       .newcomer-entry-status { display: grid; gap: 4px; color: #62788a; font-size: 11px; }
       .newcomer-entry-status select { width: 100%; color: #18364d; background: #f7fbfd; border-color: #c8dce7; }
+      .newcomer-entry-quick {
+        display: flex;
+        gap: 7px;
+        flex-wrap: wrap;
+      }
+      .newcomer-entry-quick button {
+        min-width: auto;
+        padding: 7px 10px;
+        color: #fff;
+        background: #24536d;
+        border-color: #24536d;
+        font-size: 12px;
+      }
+      .newcomer-entry-quick button.absent {
+        background: #7b8790;
+        border-color: #7b8790;
+      }
+      .newcomer-entry-quick button.archive {
+        color: #8e3b00;
+        background: #fff1e9;
+        border-color: rgba(217, 84, 0, 0.32);
+      }
       .newcomer-entry-delete {
         justify-self: end;
         min-width: auto;
@@ -2922,7 +2944,7 @@
         };
 
         try {
-          const res = await fetch("./data/meetups.json?v=20260704-1", { cache: "no-store" });
+          const res = await fetch("./data/meetups.json?v=20260709-1", { cache: "no-store" });
           if (!res.ok) throw new Error("meetups load failed");
           const data = await res.json();
           const sourceEvents = Array.isArray(data) ? data : data.events;
@@ -3358,6 +3380,41 @@
               meta.textContent = `${entry.attendance_date} · ${entry.experience || "경험 미입력"} · ${entry.pace}`;
               card.append(name, meta);
               if (entry.message) card.append(Object.assign(document.createElement("p"), { textContent: entry.message }));
+
+              const updateEntryStatus = async (nextStatus, control) => {
+                if (control) control.disabled = true;
+                try {
+                  const response = await fetch(`${SUPABASE_URL}/rest/v1/rpc/update_newcomer_status`, {
+                    method: "POST",
+                    headers: apiHeaders,
+                    body: JSON.stringify({ access_code: adminCode, target_id: entry.id, new_status: nextStatus })
+                  });
+                  if (!response.ok) throw new Error("status failed");
+                  entry.status = nextStatus;
+                  renderNewcomerEntries();
+                } catch {
+                  alert("상태를 변경하지 못했습니다.");
+                  if (control) control.disabled = false;
+                }
+              };
+
+              const quickActions = document.createElement("div");
+              quickActions.className = "newcomer-entry-quick";
+              [
+                ["출석", "현장 참석 확인", ""],
+                ["불출석", "불참 / 다음 일정", "absent"],
+                ["안내완료 · 보관", "당근 가입 안내 완료", "archive"]
+              ].forEach(([label, nextStatus, className]) => {
+                const button = document.createElement("button");
+                button.type = "button";
+                button.textContent = label;
+                if (className) button.className = className;
+                button.disabled = entry.status === nextStatus;
+                button.addEventListener("click", () => updateEntryStatus(nextStatus, button));
+                quickActions.append(button);
+              });
+              card.append(quickActions);
+
               const statusField = document.createElement("label");
               statusField.className = "newcomer-entry-status";
               statusField.textContent = "참석 확인 상태";
@@ -3366,21 +3423,9 @@
                 statusSelect.append(Object.assign(document.createElement("option"), { value, textContent: value, selected: value === entry.status }));
               });
               statusSelect.addEventListener("change", async () => {
-                statusSelect.disabled = true;
-                try {
-                  const response = await fetch(`${SUPABASE_URL}/rest/v1/rpc/update_newcomer_status`, {
-                    method: "POST",
-                    headers: apiHeaders,
-                    body: JSON.stringify({ access_code: adminCode, target_id: entry.id, new_status: statusSelect.value })
-                  });
-                  if (!response.ok) throw new Error("status failed");
-                  entry.status = statusSelect.value;
-                } catch {
-                  alert("상태를 변경하지 못했습니다.");
-                  statusSelect.value = entry.status;
-                } finally {
-                  statusSelect.disabled = false;
-                }
+                const nextStatus = statusSelect.value;
+                statusSelect.value = entry.status;
+                updateEntryStatus(nextStatus, statusSelect);
               });
               statusField.append(statusSelect);
               card.append(statusField);

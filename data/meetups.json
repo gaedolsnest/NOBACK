@@ -1,27 +1,25 @@
 {
-  "updatedAt": "2026-07-03",
+  "updatedAt": "2026-07-09",
   "events": [
     {
-      "name": "검단산 등산",
-      "date": "2026-07-04",
-      "time": "오전 5:30",
-      "category": "등산",
-      "location": "검단산 노상공영주차장",
-      "participants": 3,
-      "capacity": 6,
+      "name": "똑방길 2~3회전",
+      "date": "2026-07-11",
+      "time": "오전 6:00",
+      "category": "벙개",
+      "location": "장소 추후 안내",
+      "capacity": 12,
       "status": "모집중",
-      "note": "이른 아침 검단산 등산 일정입니다. 세부 집결지는 모임 공지를 확인해 주세요."
+      "note": "크루원들과 함께하는 아침 러닝 일정입니다."
     },
     {
-      "name": "토요일 어린이천문대 업힐 🏃",
-      "date": "2026-07-04",
-      "time": "오전 6:00",
-      "category": "업힐",
-      "location": "송파하남어린이천문대",
-      "participants": 5,
-      "capacity": 40,
+      "name": "남산 북측순환로 n회전",
+      "date": "2026-07-11",
+      "time": "오전 6:30",
+      "category": "벙개",
+      "location": "남산 북측순환로",
+      "capacity": 6,
       "status": "모집중",
-      "note": "토요일 아침 업힐 러닝 일정입니다."
+      "note": "남산 북측순환로를 함께 도는 아침 러닝 일정입니다."
     },
     {
       "name": "한강 러닝 & 풀장 쿨다운",
@@ -29,22 +27,29 @@
       "time": "오후 6:00",
       "category": "벙개",
       "location": "암사한강 → 뚝섬 한강수영장",
-      "participants": 7,
       "capacity": 20,
       "status": "모집중",
       "note": "한강 러닝 후 풀장에서 시원하게 마무리하는 일정입니다."
     },
     {
-      "name": "월말 평가 · 5K TT",
-      "date": "2026-07-26",
-      "time": "오전 5:30",
-      "category": "훈련",
-      "location": "하남종합운동장",
-      "distance": "5K",
-      "participants": 4,
-      "capacity": 10,
+      "name": "황산숲데크로드 1K × 3회전 + 망월천",
+      "date": "2026-07-12",
+      "time": "오전 6:30",
+      "category": "벙개",
+      "location": "황산숲데크로드 · 망월천",
+      "capacity": 6,
       "status": "모집중",
-      "note": "월말 5K 타임 트라이얼 일정입니다."
+      "note": "숲길과 망월천 코스를 함께 달리는 아침 러닝 일정입니다."
+    },
+    {
+      "name": "어린이대공원 붕어빵 런",
+      "date": "2026-07-18",
+      "time": "오전 7:00",
+      "category": "벙개",
+      "location": "어린이대공원",
+      "capacity": 12,
+      "status": "모집중",
+      "note": "크루원들과 함께하는 주말 러닝 일정입니다."
     },
     {
       "name": "빵트런 (달릴수록 더 맛있어진다!)",
@@ -52,7 +57,6 @@
       "time": "오전 10:00",
       "category": "벙개",
       "location": "하이원 리조트 및 하늘길",
-      "participants": 12,
       "capacity": 16,
       "status": "모집중",
       "note": "함께 달리고 맛있는 빵을 즐기는 크루 일정입니다."
