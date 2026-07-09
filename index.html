@@ -2199,7 +2199,7 @@
               <p>첫 참석 예정일을 남겨주시면 현장 운영진이 미리 확인합니다.</p>
             </div>
             <div class="newcomer-banner-actions">
-              <button type="button" class="primary-action" data-open-attendance>첫 참석 일정 남기기</button>
+              <button type="button" class="primary-action" data-open-attendance>첫 참석 신청</button>
               <a class="cta" href="#/first">신규회원 안내 보기 →</a>
             </div>
           </section>
@@ -2558,7 +2558,7 @@
               <h2>첫 참석은 이렇게 진행됩니다</h2>
               <p>당근에서 가입을 신청하신 뒤 첫 수요일 정기런에 참석해 주세요. 현장 운영진이 닉네임과 신청 내용을 확인하고 페이스에 맞춰 안내해드립니다.</p>
               <div class="hero-actions">
-                <button type="button" class="primary-action" data-open-attendance>첫 참석 일정 남기기</button>
+                <button type="button" class="primary-action" data-open-attendance>첫 참석 신청</button>
                 <a class="cta" href="https://www.daangn.com/kr/group/%EB%85%B8%EB%B9%A0%EA%BE%B8-%EB%9F%AC%EB%8B%9D%ED%81%AC%EB%A3%A8-no-back-rc-1yeomgcwmnyx/" target="_blank" rel="noopener noreferrer">당근 모임 열기 →</a>
               </div>
             </div>
@@ -2582,10 +2582,10 @@
           <section class="card newcomer-board" id="newcomer-attendance" aria-label="신규 러너 참석 일정 안내">
             <div>
               <span class="eyebrow">HELLO, NEW RUNNER</span>
-              <h2>첫 참석 일정을 남겨주세요</h2>
+              <h2>첫 참석 신청을 남겨주세요</h2>
               <p class="muted">작성한 내용은 현장 운영진이 미리 확인합니다. 입력은 팝업에서 간단히 끝낼 수 있어요.</p>
             </div>
-            <button type="button" data-open-attendance>첫 참석 일정 입력하기</button>
+            <button type="button" data-open-attendance>첫 참석 신청하기</button>
           </section>
         </div>
       </section>
@@ -2597,7 +2597,7 @@
       <section class="newcomer-board" aria-label="신규 러너 첫 참석 입력">
         <div>
           <span class="eyebrow">HELLO, NEW RUNNER</span>
-          <h2>첫 참석 일정 남기기</h2>
+          <h2>첫 참석 신청</h2>
           <p class="muted">닉네임과 참석 예정일을 남겨주시면 현장 운영진이 미리 확인합니다. 실명이나 연락처는 입력하지 마세요.</p>
         </div>
             <form class="newcomer-board-form" id="newcomer-board-form">
@@ -2607,12 +2607,12 @@
               <div class="field full"><label for="newcomer-pace">편하게 뛸 수 있는 페이스</label><select id="newcomer-pace"><option>처음이라 잘 모르겠어요</option><option>7분대 이상 / 걷뛰 가능</option><option>6분대</option><option>5분대</option><option>4분대 이하</option></select><span class="field-help">정확하지 않아도 괜찮아요. 당일 컨디션에 맞춰 페이스를 다시 나눕니다.</span></div>
               <div class="field full"><label for="newcomer-message">한마디</label><textarea id="newcomer-message" maxlength="100" placeholder="예: 첫 참석이라 조금 긴장돼요. / 천천히 뛰고 싶어요. / 무릎이 안 좋아 무리하지 않고 뛰고 싶어요."></textarea></div>
               <div class="newcomer-board-actions">
-                <button type="submit">참석 인사 제출</button>
+                <button type="submit">참석 신청 남기기</button>
               </div>
             </form>
             <div class="newcomer-board-status" id="newcomer-board-status" aria-live="polite"></div>
             <section class="newcomer-success" id="newcomer-success" hidden aria-live="polite">
-              <h3>첫 참석 일정이 남겨졌습니다.</h3>
+              <h3>첫 참석 신청이 남겨졌습니다.</h3>
               <p>정기런 당일 집결지에서 당근 닉네임을 말씀해 주세요.<br />운영진이 확인 후 페이스에 맞춰 안내드릴게요.</p>
               <p>당근 모임 가입 신청을 아직 안 하셨다면 아래 버튼을 눌러주세요.</p>
               <a class="cta" href="https://www.daangn.com/kr/group/%EB%85%B8%EB%B9%A0%EA%BE%B8-%EB%9F%AC%EB%8B%9D%ED%81%AC%EB%A3%A8-no-back-rc-1yeomgcwmnyx/" target="_blank" rel="noopener noreferrer">당근 모임 열기 →</a>
@@ -2623,17 +2623,19 @@
 
     <dialog class="newcomer-admin-dialog" id="newcomer-admin-dialog">
           <div class="newcomer-admin-head">
-            <h2 id="newcomer-admin-title">현재 신청 인원</h2>
+            <h2 id="newcomer-admin-title">확인 필요한 신청</h2>
             <div class="newcomer-admin-actions">
               <button type="button" class="danger" id="newcomer-admin-reset">전체 초기화</button>
               <button type="button" id="newcomer-admin-close">닫기</button>
             </div>
           </div>
           <div class="newcomer-admin-filters" id="newcomer-admin-filters" aria-label="신청자 필터">
-            <button type="button" class="active" data-newcomer-filter="all">전체</button>
+            <button type="button" class="active" data-newcomer-filter="pending">확인 필요</button>
+            <button type="button" data-newcomer-filter="all">전체</button>
             <button type="button" data-newcomer-filter="this-week">이번 주 참석자</button>
             <button type="button" data-newcomer-filter="first-run">처음 참석자</button>
             <button type="button" data-newcomer-filter="pace-unknown">페이스 모름</button>
+            <button type="button" data-newcomer-filter="completed">처리완료</button>
           </div>
           <div class="newcomer-admin-list" id="newcomer-admin-list"><p>불러오는 중입니다.</p></div>
     </dialog>
@@ -3294,7 +3296,9 @@
         const title = document.getElementById("newcomer-admin-title");
         let adminCode = "";
         let allEntries = [];
-        let activeFilter = "all";
+        const pendingStatuses = ["신청 접수", "이번 주 참석 예정"];
+        const completedStatuses = ["현장 참석 확인", "당근 가입 안내 완료", "불참 / 다음 일정"];
+        let activeFilter = "pending";
         document.querySelectorAll("[data-newcomer-filter]").forEach(button => {
           button.addEventListener("click", () => {
             activeFilter = button.dataset.newcomerFilter;
@@ -3310,7 +3314,7 @@
         });
         document.getElementById("newcomer-admin-close")?.addEventListener("click", () => dialog?.close());
         document.getElementById("newcomer-admin-reset")?.addEventListener("click", async () => {
-          if (!confirm("저장된 참석 인사를 모두 삭제할까요? 이 작업은 되돌릴 수 없습니다.")) return;
+          if (!confirm("저장된 참석 신청을 모두 삭제할까요? 이 작업은 되돌릴 수 없습니다.")) return;
           const resetButton = document.getElementById("newcomer-admin-reset");
           resetButton.disabled = true;
           try {
@@ -3332,7 +3336,7 @@
         async function loadNewcomerEntries() {
           if (!dialog || !list) return;
           if (!dialog.open) dialog.showModal();
-          title.textContent = "현재 신청 인원";
+          title.textContent = "확인 필요한 신청";
           list.replaceChildren(Object.assign(document.createElement("p"), { textContent: "불러오는 중입니다." }));
           try {
             const response = await fetch(`${SUPABASE_URL}/rest/v1/rpc/get_newcomer_greetings`, {
@@ -3342,7 +3346,8 @@
             });
             if (!response.ok) throw new Error("load failed");
             allEntries = await response.json();
-            title.textContent = `현재 신청 인원 ${allEntries.length}명`;
+            const pendingCount = allEntries.filter(entry => pendingStatuses.includes(entry.status || "신청 접수")).length;
+            title.textContent = `확인 필요한 신청 ${pendingCount}명`;
             renderNewcomerEntries();
           } catch {
             title.textContent = "운영진 확인";
@@ -3357,6 +3362,9 @@
             const sunday = new Date(monday);
             sunday.setDate(monday.getDate() + 6);
             const entries = allEntries.filter(entry => {
+              const currentStatus = entry.status || "신청 접수";
+              if (activeFilter === "pending") return pendingStatuses.includes(currentStatus);
+              if (activeFilter === "completed") return completedStatuses.includes(currentStatus);
               if (activeFilter === "first-run") return entry.experience === "거의 처음이에요";
               if (activeFilter === "pace-unknown") return entry.pace === "처음이라 잘 모르겠어요";
               if (activeFilter === "this-week") {
@@ -3367,7 +3375,7 @@
             });
             list.replaceChildren();
             if (!entries.length) {
-              list.append(Object.assign(document.createElement("p"), { textContent: allEntries.length ? "이 조건에 맞는 신청자가 없습니다." : "아직 제출된 참석 인사가 없습니다." }));
+              list.append(Object.assign(document.createElement("p"), { textContent: allEntries.length ? "이 조건에 맞는 신청자가 없습니다." : "아직 제출된 참석 신청이 없습니다." }));
               return;
             }
             entries.forEach(entry => {
@@ -3391,6 +3399,7 @@
                   });
                   if (!response.ok) throw new Error("status failed");
                   entry.status = nextStatus;
+                  refreshNewcomerCount();
                   renderNewcomerEntries();
                 } catch {
                   alert("상태를 변경하지 못했습니다.");
