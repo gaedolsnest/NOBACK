@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-09T20:45:08.076Z",
+  "updatedAt": "2026-07-10T20:20:35.853Z",
   "events": [
     {
       "name": "2026 전마협 무주 풀코스 마라톤",
@@ -92,6 +92,15 @@
       "url": "http://www.koreatrail.net/home/main.php?link=event&einc=eapp&opp=20250821130406&csno=20190812093657#baseline"
     },
     {
+      "name": "순천만국가정원 챌린지가든런",
+      "date": "2026-07-25",
+      "location": "순천만국가정원 동문",
+      "category": "로드",
+      "distance": "10km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://projectruntrip.com/"
+    },
+    {
       "name": "사우나런 in 올림픽공원",
       "date": "2026-07-31",
       "location": "올림픽 공원 인근",
@@ -157,7 +166,7 @@
     {
       "name": "영남알프스9봉 트레일 레이스",
       "date": "2026-08-15",
-      "location": "청운산장",
+      "location": "가늘산장",
       "category": "트레일",
       "distance": "9봉 87k / 5봉 45k",
       "note": "마라톤온라인 대회 일정 기반입니다.",
