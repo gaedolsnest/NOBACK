@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-13T20:13:01.520Z",
+  "updatedAt": "2026-07-14T20:07:58.905Z",
   "events": [
     {
       "name": "2026 전마협 청주 무료 초청 훈련 마라톤",
@@ -378,6 +378,42 @@
       "distance": "하프 / 10km / 5km / 3km가족런",
       "note": "마라톤온라인 대회 일정 기반입니다.",
       "url": "http://amarunsb.com/"
+    },
+    {
+      "name": "제2회 화이트런 생리대 기부마라톤",
+      "date": "2026-09-12",
+      "location": "영등포구 신정교하부 육상트랙구",
+      "category": "로드",
+      "distance": "10km / 5km / 걷기",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://whiterun.kr"
+    },
+    {
+      "name": "제2회 초록우산 런웨이 마라톤",
+      "date": "2026-09-12",
+      "location": "대전엑스포시민광장",
+      "category": "로드",
+      "distance": "하프 / 10km / 5km / 3km 걷기 / 3km 걷기(어린이)",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://mara1080.com/event/9443583f-6577-466c-ab2f-43d1dbd820d4"
+    },
+    {
+      "name": "2026 양양 강변 전국 마라톤",
+      "date": "2026-09-12",
+      "location": "강원도 양양군 웰컴센터",
+      "category": "로드",
+      "distance": "하프 / 10km / 5km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://yrun.co.kr"
+    },
+    {
+      "name": "빵트레일런 2026",
+      "date": "2026-09-12",
+      "location": "정선 하이원 리조트",
+      "category": "트레일",
+      "distance": "10km / 30K / 20K",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://bbangtrailrun.co.kr"
     }
   ]
 }
