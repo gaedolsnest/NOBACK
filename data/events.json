@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-15T20:06:24.145Z",
+  "updatedAt": "2026-07-16T20:01:06.908Z",
   "events": [
     {
       "name": "2026 전마협 청주 무료 초청 훈련 마라톤",
@@ -405,6 +405,15 @@
       "distance": "10km / 5km",
       "note": "마라톤온라인 대회 일정 기반입니다.",
       "url": "http://www.herorace.kr/"
+    },
+    {
+      "name": "2026 장수 레드푸드레이스",
+      "date": "2026-09-12",
+      "location": "장수말역사체험관",
+      "category": "로드",
+      "distance": "10km / 5km / 16Km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://rocknrun.kr/REDFOODRACE"
     },
     {
       "name": "제2회 화이트런 생리대 기부마라톤",
