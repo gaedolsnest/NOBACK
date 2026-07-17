@@ -3474,17 +3474,20 @@
                 : `${name}님 출석 체크를 취소할까요?`;
               if (!confirm(message)) return;
 
+              if (nextPresent) presentNames.add(name);
+              else presentNames.delete(name);
+              render();
+
               button.classList.add("is-busy");
-              setStatus("스프레드시트에 반영하는 중입니다…");
+              setStatus(nextPresent ? `${name}님 출석 체크 중…` : `${name}님 출석 취소 중…`);
               try {
                 await submitAttendance(name, nextPresent);
-                if (nextPresent) presentNames.add(name);
-                else presentNames.delete(name);
                 setStatus(nextPresent ? `${name}님 출석 체크 완료` : `${name}님 출석 체크 취소 완료`);
-                render();
               } catch (error) {
+                if (nextPresent) presentNames.delete(name);
+                else presentNames.add(name);
                 setStatus("반영에 실패했어요. Apps Script 배포/권한을 확인해 주세요.");
-                button.classList.remove("is-busy");
+                render();
               }
             });
             list.appendChild(button);
