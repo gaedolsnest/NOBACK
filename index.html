@@ -358,6 +358,24 @@
         color: rgba(255, 255, 255, 0.78);
         font-size: 14px;
       }
+      .regular-weather {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        width: fit-content;
+        margin-top: 12px;
+        padding: 9px 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(191, 220, 233, 0.34);
+        background: rgba(191, 220, 233, 0.1);
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 13px;
+        font-weight: 800;
+      }
+      .regular-weather a {
+        color: inherit;
+        text-decoration: none;
+      }
 
       .event-board {
         display: grid;
@@ -2136,34 +2154,6 @@
         }
       }
 
-      .weather-card {
-        display: grid;
-        gap: 12px;
-      }
-      .weather-list {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 9px;
-      }
-      .weather-item {
-        display: grid;
-        gap: 6px;
-        padding: 12px;
-        border-radius: 14px;
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        background: rgba(255, 255, 255, 0.05);
-      }
-      .weather-item strong {
-        color: var(--text);
-        font-size: 15px;
-      }
-      .weather-item span {
-        color: var(--muted);
-        font-size: 12px;
-      }
-      .weather-link {
-        justify-self: start;
-      }
       .attendance-panel {
         display: grid;
         gap: 14px;
@@ -2366,6 +2356,9 @@
                 <span>처음 참석자는 당근 닉네임으로 체크인</span>
                 <span>페이스별 그룹으로 편하게 출발</span>
               </div>
+              <div class="regular-weather" id="regular-weather">
+                이번 수요일 날씨 확인 중
+              </div>
             </div>
           </section>
 
@@ -2401,19 +2394,6 @@
               <div class="event-item"><p class="event-note">크루 일정을 불러오는 중입니다.</p></div>
             </div>
           </section>
-
-          <section class="card weather-card" aria-label="러닝 전 날씨 확인">
-            <div>
-              <span class="eyebrow">WEATHER CHECK</span>
-              <h2>러닝 전 날씨</h2>
-              <p>하남 기준 오늘·내일 예보를 가볍게 확인합니다.</p>
-            </div>
-            <div class="weather-list" id="weather-list">
-              <div class="weather-item"><strong>불러오는 중</strong><span>날씨 정보를 확인하고 있어요.</span></div>
-            </div>
-            <a class="mini-action weather-link" href="https://weather.naver.com/today/02450110" target="_blank" rel="noopener noreferrer">자세한 날씨 보기</a>
-          </section>
-
           <section class="home-lower" aria-label="홈 하단 정보">
             <section class="card support-card instagram-card" aria-label="소셜 바로가기">
               <div>
@@ -3186,8 +3166,8 @@
       }
 
       async function initWeather() {
-        const list = document.getElementById("weather-list");
-        if (!list) return;
+        const weather = document.getElementById("regular-weather");
+        if (!weather) return;
 
         const weatherCodeLabel = (code) => {
           if ([0].includes(code)) return "맑음";
@@ -3201,27 +3181,35 @@
           return "날씨 확인";
         };
 
+        const getNextWednesdayIso = () => {
+          const now = new Date();
+          const next = new Date(now);
+          const daysUntil = (3 - now.getDay() + 7) % 7;
+          next.setDate(now.getDate() + daysUntil);
+          const yyyy = next.getFullYear();
+          const mm = String(next.getMonth() + 1).padStart(2, "0");
+          const dd = String(next.getDate()).padStart(2, "0");
+          return `${yyyy}-${mm}-${dd}`;
+        };
+
         try {
-          const url = "https://api.open-meteo.com/v1/forecast?latitude=37.5393&longitude=127.2148&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FSeoul&forecast_days=2";
+          const targetDate = getNextWednesdayIso();
+          const url = "https://api.open-meteo.com/v1/forecast?latitude=37.5393&longitude=127.2148&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FSeoul&forecast_days=10";
           const response = await fetch(url);
           if (!response.ok) throw new Error("weather fetch failed");
           const data = await response.json();
           const days = data?.daily?.time || [];
-          const labels = ["오늘", "내일"];
-          list.innerHTML = days.slice(0, 2).map((date, index) => {
-            const code = data.daily.weather_code?.[index];
-            const rain = data.daily.precipitation_probability_max?.[index];
-            const max = Math.round(data.daily.temperature_2m_max?.[index]);
-            const min = Math.round(data.daily.temperature_2m_min?.[index]);
-            return `
-              <div class="weather-item">
-                <strong>${labels[index] || date} · ${weatherCodeLabel(code)}</strong>
-                <span>${Number.isFinite(min) && Number.isFinite(max) ? `${min}° / ${max}°` : "기온 확인 중"} · 강수확률 ${Number.isFinite(rain) ? `${rain}%` : "확인 중"}</span>
-              </div>
-            `;
-          }).join("");
+          const index = days.findIndex(date => date === targetDate);
+          if (index < 0) throw new Error("regular run weather not found");
+          const code = data.daily.weather_code?.[index];
+          const rain = data.daily.precipitation_probability_max?.[index];
+          const max = Math.round(data.daily.temperature_2m_max?.[index]);
+          const min = Math.round(data.daily.temperature_2m_min?.[index]);
+          const temp = Number.isFinite(min) && Number.isFinite(max) ? `${min}°/${max}°` : "기온 확인";
+          const rainText = Number.isFinite(rain) ? `강수 ${rain}%` : "강수 확인";
+          weather.innerHTML = `<a href="https://weather.naver.com/today/02450110" target="_blank" rel="noopener noreferrer">수요일 날씨 · ${weatherCodeLabel(code)} · ${temp} · ${rainText}</a>`;
         } catch (error) {
-          list.innerHTML = `<div class="weather-item"><strong>날씨 확인</strong><span>실시간 예보를 불러오지 못했어요. 아래 링크로 확인해 주세요.</span></div>`;
+          weather.innerHTML = `<a href="https://weather.naver.com/today/02450110" target="_blank" rel="noopener noreferrer">수요일 날씨 확인하기</a>`;
         }
       }
 
