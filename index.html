@@ -2164,6 +2164,69 @@
       .weather-link {
         justify-self: start;
       }
+      .attendance-panel {
+        display: grid;
+        gap: 14px;
+      }
+      .attendance-summary {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+      .attendance-summary > div {
+        display: grid;
+        gap: 3px;
+        padding: 14px;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.06);
+      }
+      .attendance-summary strong {
+        color: var(--text);
+        font-size: 24px;
+      }
+      .attendance-summary span,
+      .attendance-search span,
+      .attendance-status {
+        color: var(--muted);
+        font-size: 12px;
+      }
+      .attendance-search {
+        display: grid;
+        gap: 7px;
+      }
+      .attendance-search input {
+        width: 100%;
+        min-height: 46px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--text);
+        padding: 11px 13px;
+        font: inherit;
+      }
+      .attendance-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+        gap: 8px;
+      }
+      .attendance-member {
+        min-height: 48px;
+        border-radius: 14px;
+        border: 1px solid rgba(141, 185, 207, 0.28);
+        background: rgba(238, 248, 252, 0.12);
+        color: var(--text);
+        font-weight: 900;
+      }
+      .attendance-member.is-present {
+        color: #fff;
+        border-color: #24536d;
+        background: #24536d;
+      }
+      .attendance-member.is-busy {
+        opacity: 0.66;
+        pointer-events: none;
+      }
       .event-item.is-canceled {
         border-color: rgba(123, 135, 144, 0.32);
         background: rgba(123, 135, 144, 0.12);
@@ -2248,6 +2311,12 @@
       @media (max-width: 620px) {
         .weather-list {
           grid-template-columns: 1fr;
+        }
+        .attendance-summary {
+          grid-template-columns: 1fr;
+        }
+        .attendance-list {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
         }
       }
 
@@ -2375,6 +2444,7 @@
               <div class="support-row"><span class="support-label">🤝 운영진</span><div class="chipline" id="home-ops-chips"></div></div>
             </div>
             <div class="mini-actions" aria-label="보조 메뉴">
+              <a class="mini-action" href="#/attendance">출석 체크</a>
               <a class="mini-action" href="#/app">앱처럼 쓰기</a>
               <a class="mini-action" href="#/share">공유</a>
             </div>
@@ -2639,6 +2709,33 @@
         </div>
       </section>
 
+      <!-- ATTENDANCE -->
+      <section id="view-attendance" class="view">
+        <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">운영진 출석 체크</div></div>
+
+        <div class="card attendance-panel">
+          <span class="eyebrow">CREW ATTENDANCE</span>
+          <h2>오늘 출석 체크</h2>
+          <p class="muted">현장 운영진이 참석한 크루원 닉네임을 눌러 출석을 반영합니다.</p>
+
+          <div class="attendance-summary">
+            <div><strong id="attendance-date-label">오늘</strong><span>정기런 기준 날짜</span></div>
+            <div><strong id="attendance-count">0명</strong><span>오늘 출석 체크</span></div>
+          </div>
+
+          <label class="attendance-search">
+            <span>닉네임 검색</span>
+            <input id="attendance-search" autocomplete="off" placeholder="예: 망구" />
+          </label>
+
+          <div class="attendance-list" id="attendance-list">
+            <p class="muted">회원 명단을 불러오는 중입니다.</p>
+          </div>
+
+          <div class="attendance-status" id="attendance-status" aria-live="polite"></div>
+        </div>
+      </section>
+
       <!-- FIRST VISIT -->
       <section id="view-first" class="view">
         <div class="topbar"><a class="back" href="#/">← 홈</a><div class="pill">처음 오셨나요</div></div>
@@ -2782,6 +2879,7 @@
         initAdminShortcut();
         initUpcomingEvents();
         initWeather();
+        initAttendanceCheck();
         initNewcomerBoard();
         initInterval();
         initCertificate();
@@ -3140,6 +3238,7 @@
           normalized.startsWith("#/home") ||
           normalized.startsWith("#/certificate") ||
           normalized.startsWith("#/lineup") ||
+          normalized.startsWith("#/attendance") ||
           normalized.startsWith("#/app") ||
           normalized.startsWith("#/share") ||
           normalized.startsWith("#/first");
@@ -3149,6 +3248,7 @@
         const view =
           normalized.startsWith("#/certificate") ? "certificate" :
           normalized.startsWith("#/lineup") ? "lineup" :
+          normalized.startsWith("#/attendance") ? "attendance" :
           normalized.startsWith("#/app") ? "app" :
           normalized.startsWith("#/share") ? "share" :
           normalized.startsWith("#/first") ? "first" :
@@ -3263,6 +3363,152 @@
 
       function sortKoreanDesc(arr) {
         return arr.slice().map(x => String(x).trim()).filter(Boolean).sort((a, b) => b.localeCompare(a, "ko"));
+      }
+
+      function sortKoreanAsc(arr) {
+        return arr.slice().map(x => String(x).trim()).filter(Boolean).sort((a, b) => a.localeCompare(b, "ko"));
+      }
+
+      function getKstDateText(date = new Date()) {
+        const parts = new Intl.DateTimeFormat("en-CA", {
+          timeZone: "Asia/Seoul",
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit"
+        }).formatToParts(date).reduce((acc, part) => {
+          acc[part.type] = part.value;
+          return acc;
+        }, {});
+        return `${parts.year}-${parts.month}-${parts.day}`;
+      }
+
+      function formatKoreanDateLabel(dateText) {
+        const date = new Date(`${dateText}T00:00:00+09:00`);
+        const weekdays = ["일", "월", "화", "수", "목", "금", "토"];
+        return `${date.getMonth() + 1}.${String(date.getDate()).padStart(2, "0")} ${weekdays[date.getDay()]}요일`;
+      }
+
+      function initAttendanceCheck() {
+        const list = document.getElementById("attendance-list");
+        if (!list) return;
+
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw88IO1_5j9rvuPRFkMXMnnySc0cFXdE5ACJEKl-QXXy4ktFY0ExFQRTIY05sE2k2cV/exec";
+        const dateText = getKstDateText();
+        const presentNames = new Set();
+        let members = [];
+
+        const search = document.getElementById("attendance-search");
+        const status = document.getElementById("attendance-status");
+        const count = document.getElementById("attendance-count");
+        const dateLabel = document.getElementById("attendance-date-label");
+
+        if (dateLabel) dateLabel.textContent = formatKoreanDateLabel(dateText);
+
+        const setStatus = (text) => {
+          if (status) status.textContent = text || "";
+        };
+
+        const updateCount = () => {
+          if (count) count.textContent = `${presentNames.size}명`;
+        };
+
+        const parseAttendanceList = (data) => {
+          if (Array.isArray(data)) return data;
+          if (Array.isArray(data?.attendees)) return data.attendees;
+          if (Array.isArray(data?.present)) return data.present;
+          if (Array.isArray(data?.names)) return data.names;
+          return [];
+        };
+
+        const submitAttendance = async (nickname, present) => {
+          const body = new URLSearchParams({
+            action: "toggle",
+            nickname,
+            date: dateText,
+            present: present ? "true" : "false"
+          });
+
+          try {
+            const response = await fetch(SCRIPT_URL, {
+              method: "POST",
+              body
+            });
+            if (!response.ok) throw new Error("attendance post failed");
+            try {
+              const data = await response.json();
+              if (data?.ok === false) throw new Error(data.message || "attendance rejected");
+            } catch {
+              // Apps Script가 텍스트 응답을 주는 경우도 성공으로 처리합니다.
+            }
+          } catch (error) {
+            await fetch(SCRIPT_URL, {
+              method: "POST",
+              mode: "no-cors",
+              body
+            });
+          }
+        };
+
+        const render = () => {
+          const query = (search?.value || "").trim().toLowerCase();
+          const visible = members.filter(name => !query || name.toLowerCase().includes(query));
+          updateCount();
+          if (!visible.length) {
+            list.innerHTML = `<p class="muted">검색 결과가 없습니다.</p>`;
+            return;
+          }
+
+          list.innerHTML = "";
+          visible.forEach(name => {
+            const button = document.createElement("button");
+            button.type = "button";
+            button.className = `attendance-member ${presentNames.has(name) ? "is-present" : ""}`;
+            button.textContent = presentNames.has(name) ? `${name} · 완료` : name;
+            button.addEventListener("click", async () => {
+              const nextPresent = !presentNames.has(name);
+              const message = nextPresent
+                ? `${name}님을 오늘 출석 처리할까요?`
+                : `${name}님 출석 체크를 취소할까요?`;
+              if (!confirm(message)) return;
+
+              button.classList.add("is-busy");
+              setStatus("스프레드시트에 반영하는 중입니다…");
+              try {
+                await submitAttendance(name, nextPresent);
+                if (nextPresent) presentNames.add(name);
+                else presentNames.delete(name);
+                setStatus(nextPresent ? `${name}님 출석 체크 완료` : `${name}님 출석 체크 취소 완료`);
+                render();
+              } catch (error) {
+                setStatus("반영에 실패했어요. Apps Script 배포/권한을 확인해 주세요.");
+                button.classList.remove("is-busy");
+              }
+            });
+            list.appendChild(button);
+          });
+        };
+
+        search?.addEventListener("input", render);
+
+        fetch("./data/members.json?v=20260717-1", { cache: "no-store" })
+          .then(response => response.ok ? response.json() : Promise.reject(new Error("members load failed")))
+          .then(data => {
+            members = sortKoreanAsc(data.members || []);
+            render();
+          })
+          .catch(() => {
+            list.innerHTML = `<p class="muted">회원 명단을 불러오지 못했어요.</p>`;
+          });
+
+        fetch(`${SCRIPT_URL}?action=list&date=${encodeURIComponent(dateText)}`, { cache: "no-store" })
+          .then(response => response.ok ? response.json() : Promise.reject(new Error("attendance load failed")))
+          .then(data => {
+            parseAttendanceList(data).forEach(name => presentNames.add(String(name).trim()));
+            render();
+          })
+          .catch(() => {
+            setStatus("오늘 출석 현황은 불러오지 못했지만, 새 체크는 시도할 수 있어요.");
+          });
       }
 
       function initStaff() {

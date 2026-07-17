@@ -1,9 +1,10 @@
-const CACHE_NAME = "noback-pwa-v37";
+const CACHE_NAME = "noback-pwa-v38";
 const CORE_ASSETS = [
   "./",
   "./index.html",
   "./manifest.json",
   "./data/meetups.json",
+  "./data/members.json",
   "./bg.jpg",
   "./logo.png",
   "./medal.PNG",
