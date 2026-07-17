@@ -8,7 +8,7 @@ const FIRST_DATE_COL = 7; // G
 
 function doGet(e) {
   const action = String(e.parameter.action || '').trim();
-  const dateText = normalizeDate_(e.parameter.date || new Date());
+  const dateText = normalizeDate_(e.parameter.date || getNextWednesday_());
 
   if (action === 'list') {
     return json_({
@@ -25,7 +25,7 @@ function doPost(e) {
   const params = e.parameter || {};
   const action = String(params.action || 'toggle').trim();
   const nickname = String(params.nickname || '').trim();
-  const dateText = normalizeDate_(params.date || new Date());
+  const dateText = normalizeDate_(params.date || getNextWednesday_());
   const present = String(params.present || 'true').toLowerCase() !== 'false';
 
   if (action !== 'toggle') {
@@ -109,6 +109,15 @@ function normalizeDate_(value) {
   }
 
   throw new Error(`invalid date: ${value}`);
+}
+
+function getNextWednesday_() {
+  const now = new Date();
+  const day = Number(Utilities.formatDate(now, 'Asia/Seoul', 'u')); // Mon=1 ... Sun=7
+  const diff = day <= 3 ? 3 - day : 10 - day;
+  const next = new Date(now);
+  next.setDate(next.getDate() + diff);
+  return Utilities.formatDate(next, 'Asia/Seoul', 'yyyy-MM-dd');
 }
 
 function json_(payload) {

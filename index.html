@@ -3382,6 +3382,15 @@
         return `${parts.year}-${parts.month}-${parts.day}`;
       }
 
+      function getNextWednesdayText() {
+        const now = new Date();
+        const kstDate = new Date(`${getKstDateText(now)}T00:00:00+09:00`);
+        const day = kstDate.getDay();
+        const diff = day <= 3 ? 3 - day : 10 - day;
+        kstDate.setDate(kstDate.getDate() + diff);
+        return getKstDateText(kstDate);
+      }
+
       function formatKoreanDateLabel(dateText) {
         const date = new Date(`${dateText}T00:00:00+09:00`);
         const weekdays = ["일", "월", "화", "수", "목", "금", "토"];
@@ -3393,7 +3402,7 @@
         if (!list) return;
 
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw88IO1_5j9rvuPRFkMXMnnySc0cFXdE5ACJEKl-QXXy4ktFY0ExFQRTIY05sE2k2cV/exec";
-        const dateText = getKstDateText();
+        const dateText = getNextWednesdayText();
         const presentNames = new Set();
         let members = [];
 
