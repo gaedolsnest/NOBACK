@@ -8,16 +8,16 @@
 
     <link rel="icon" type="image/x-icon" href="./favicon.ico?v=7030" />
     <link rel="shortcut icon" href="./favicon.ico?v=7030" />
-    <link rel="manifest" href="./manifest.json?v=7030" />
+    <link rel="manifest" href="./manifest.json?v=7032" />
     <link rel="apple-touch-icon" href="./logo.png?v=7030" />
-    <meta name="theme-color" content="#ff6a00" />
+    <meta name="theme-color" content="#24536d" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="노빠꾸 러닝" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
     <style>
       :root {
-        --accent: #ff6a00;
+        --accent: #24536d;
         --page: #f6f3ec;
         --glass: rgba(35, 35, 35, 0.66);
         --glass2: rgba(16, 16, 16, 0.58);
@@ -2136,6 +2136,121 @@
         }
       }
 
+      .weather-card {
+        display: grid;
+        gap: 12px;
+      }
+      .weather-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 9px;
+      }
+      .weather-item {
+        display: grid;
+        gap: 6px;
+        padding: 12px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .weather-item strong {
+        color: var(--text);
+        font-size: 15px;
+      }
+      .weather-item span {
+        color: var(--muted);
+        font-size: 12px;
+      }
+      .weather-link {
+        justify-self: start;
+      }
+      .event-item.is-canceled {
+        border-color: rgba(123, 135, 144, 0.32);
+        background: rgba(123, 135, 144, 0.12);
+      }
+      .event-item.is-canceled .event-dday,
+      .event-status-canceled {
+        color: #eef8fc;
+        background: rgba(123, 135, 144, 0.45);
+        border-color: rgba(255, 255, 255, 0.14);
+      }
+
+      /* Cool-tone overrides: remove the older orange accent from share/app support pages. */
+      header h1::before { box-shadow: 0 0 0 4px rgba(45, 113, 156, 0.18); }
+      .linkbtn {
+        border-color: rgba(141, 185, 207, 0.34);
+        background: rgba(36, 83, 109, 0.2);
+      }
+      .tab.active {
+        border-color: rgba(141, 185, 207, 0.5);
+        background: rgba(36, 83, 109, 0.34);
+      }
+      .eyebrow,
+      .step-num,
+      .feature-icon,
+      .event-dday {
+        border-color: rgba(141, 185, 207, 0.34);
+        background: rgba(36, 83, 109, 0.22);
+        color: #d9edf7;
+      }
+      .primary-action,
+      #view-home .primary-action,
+      #view-first .primary-action,
+      #view-courses .primary-action,
+      .newcomer-banner-actions .primary-action,
+      .newcomer-form-dialog button[type="submit"],
+      .newcomer-admin-filters button.active {
+        color: #fff;
+        background: #24536d;
+        border-color: #24536d;
+        box-shadow: 0 8px 20px rgba(36, 83, 109, 0.22);
+      }
+      #view-home button,
+      #view-home .cta,
+      #view-home .mini-action,
+      #view-first button,
+      #view-first .cta,
+      #view-courses button,
+      #view-courses .cta,
+      .newcomer-form-dialog button,
+      .newcomer-form-dialog .cta,
+      .newcomer-entry-quick button.archive {
+        color: #24536d;
+        background: #eef8fc;
+        border-color: rgba(45, 113, 156, 0.28);
+        box-shadow: 0 6px 16px rgba(36, 83, 109, 0.08);
+      }
+      .hero-panel {
+        background:
+          radial-gradient(circle at 80% 18%, rgba(45, 113, 156, 0.22), transparent 34%),
+          rgba(16, 16, 16, 0.74);
+      }
+      .phone-screen {
+        background:
+          linear-gradient(180deg, rgba(45, 113, 156, 0.28), rgba(255, 255, 255, 0.06)),
+          url("./logo.png?v=7030") center 44% / 76px auto no-repeat;
+      }
+      .phone-action {
+        border-color: rgba(141, 185, 207, 0.52);
+        background: rgba(36, 83, 109, 0.82);
+      }
+      .share-status,
+      #view-first .newcomer-board-status {
+        color: #24536d;
+      }
+      #view-first .topbar .back,
+      #view-first .topbar .pill,
+      #view-first .eyebrow {
+        color: #24536d;
+        background: rgba(232, 246, 253, 0.72);
+        border-color: rgba(45, 113, 156, 0.2);
+      }
+      @media (max-width: 620px) {
+        .weather-list {
+          grid-template-columns: 1fr;
+        }
+      }
+
       ul { margin: 8px 0 0; padding-left: 18px; color: var(--muted); }
       li { margin: 6px 0; }
       .help { font-size: 12px; color: var(--muted); margin-top: 2px; }
@@ -2216,6 +2331,18 @@
             <div class="event-list" id="crew-events">
               <div class="event-item"><p class="event-note">크루 일정을 불러오는 중입니다.</p></div>
             </div>
+          </section>
+
+          <section class="card weather-card" aria-label="러닝 전 날씨 확인">
+            <div>
+              <span class="eyebrow">WEATHER CHECK</span>
+              <h2>러닝 전 날씨</h2>
+              <p>하남 기준 오늘·내일 예보를 가볍게 확인합니다.</p>
+            </div>
+            <div class="weather-list" id="weather-list">
+              <div class="weather-item"><strong>불러오는 중</strong><span>날씨 정보를 확인하고 있어요.</span></div>
+            </div>
+            <a class="mini-action weather-link" href="https://weather.naver.com/today/02450110" target="_blank" rel="noopener noreferrer">자세한 날씨 보기</a>
           </section>
 
           <section class="home-lower" aria-label="홈 하단 정보">
@@ -2498,7 +2625,7 @@
         <div class="card share-panel">
           <span class="eyebrow share-admin-trigger" id="share-admin-trigger">SHARE NBRC</span>
           <h2>노빠꾸 페이지 공유</h2>
-          <p class="muted">일정, 라인업, 러닝 도구를 한 번에 볼 수 있는 링크입니다.</p>
+          <p class="muted">첫 참석 신청과 크루 안내를 한 번에 볼 수 있는 링크입니다.</p>
           <div class="share-copy">
             <div class="share-url" id="share-url">https://gaedolsnest.github.io/NOBACK/#/</div>
             <button type="button" id="native-share">공유하기</button>
@@ -2507,7 +2634,7 @@
           <div class="share-status" id="share-status" aria-live="polite"></div>
           <div class="cert-guide">
             <strong>보내기 좋은 문구</strong>
-            <p class="muted">노빠꾸 러닝 크루 페이지입니다. 일정, 라인업, 러닝 도구를 여기서 확인할 수 있어요.</p>
+            <p class="muted">노빠꾸 러닝 크루 첫 참석 안내 페이지입니다. 정기런이 처음이라면 이 링크에서 참석 예정일을 남길 수 있어요.</p>
           </div>
         </div>
       </section>
@@ -2654,6 +2781,7 @@
         initMobileJoinJump();
         initAdminShortcut();
         initUpcomingEvents();
+        initWeather();
         initNewcomerBoard();
         initInterval();
         initCertificate();
@@ -2671,7 +2799,7 @@
 
       function initFriendlyActions() {
         const shareUrl = "https://gaedolsnest.github.io/NOBACK/#/";
-        const shareText = "노빠꾸 러닝 크루 페이지입니다. 일정, 라인업, 러닝 도구를 여기서 확인할 수 있어요.";
+        const shareText = "노빠꾸 러닝 크루 첫 참석 안내 페이지입니다. 정기런이 처음이라면 이 링크에서 참석 예정일을 남길 수 있어요.";
         const status = document.getElementById("share-status");
         const setStatus = (text) => {
           if (!status) return;
@@ -2792,6 +2920,7 @@
           if (diff === 0) return "D-Day";
           return diff > 0 ? `D-${diff}` : `D+${Math.abs(diff)}`;
         };
+        const isCanceled = (event) => /취소|cancel/i.test(`${event.status || ""} ${event.note || ""}`);
 
         const fallbackEvents = [
           {
@@ -2872,9 +3001,9 @@
 
           list.innerHTML = `
             ${events.map((event, index) => `
-            <article class="event-item ${index >= visibleCount ? "is-extra" : ""}">
+            <article class="event-item ${index >= visibleCount ? "is-extra" : ""} ${isCanceled(event) ? "is-canceled" : ""}">
               <div class="event-topline">
-                <span class="event-dday">${getDday(event.date)}</span>
+                <span class="event-dday">${isCanceled(event) ? "취소" : getDday(event.date)}</span>
                 <span class="pill">${eventKind(event)}</span>
               </div>
               <div>
@@ -2885,6 +3014,7 @@
                   <span class="chip">📍 ${event.location || "장소 추후 안내"}</span>
                   ${event.distance ? `<span class="chip">${event.distance}</span>` : ""}
                   ${Number.isFinite(event.capacity) ? `<span class="chip">👥 최대 ${event.capacity}명</span>` : ""}
+                  ${event.status && event.status !== "모집중" ? `<span class="chip event-status-canceled">${event.status}</span>` : ""}
                 </div>
               </div>
               <p class="event-note">${event.note || "상세 일정은 공식 안내를 확인해 주세요."}</p>
@@ -2946,7 +3076,7 @@
         };
 
         try {
-          const res = await fetch("./data/meetups.json?v=20260709-1", { cache: "no-store" });
+          const res = await fetch("./data/meetups.json?v=20260717-1", { cache: "no-store" });
           if (!res.ok) throw new Error("meetups load failed");
           const data = await res.json();
           const sourceEvents = Array.isArray(data) ? data : data.events;
@@ -2954,6 +3084,46 @@
           renderEvents("crew-events", events, "아직 등록된 벙개가 없습니다. 새 일정이 생기면 이곳에 바로 알려드릴게요.");
         } catch {
           renderEvents("crew-events", [], "아직 등록된 벙개가 없습니다. 새 일정이 생기면 이곳에 바로 알려드릴게요.");
+        }
+      }
+
+      async function initWeather() {
+        const list = document.getElementById("weather-list");
+        if (!list) return;
+
+        const weatherCodeLabel = (code) => {
+          if ([0].includes(code)) return "맑음";
+          if ([1, 2].includes(code)) return "대체로 맑음";
+          if ([3].includes(code)) return "흐림";
+          if ([45, 48].includes(code)) return "안개";
+          if ([51, 53, 55, 56, 57].includes(code)) return "이슬비";
+          if ([61, 63, 65, 66, 67, 80, 81, 82].includes(code)) return "비";
+          if ([71, 73, 75, 77, 85, 86].includes(code)) return "눈";
+          if ([95, 96, 99].includes(code)) return "뇌우";
+          return "날씨 확인";
+        };
+
+        try {
+          const url = "https://api.open-meteo.com/v1/forecast?latitude=37.5393&longitude=127.2148&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FSeoul&forecast_days=2";
+          const response = await fetch(url);
+          if (!response.ok) throw new Error("weather fetch failed");
+          const data = await response.json();
+          const days = data?.daily?.time || [];
+          const labels = ["오늘", "내일"];
+          list.innerHTML = days.slice(0, 2).map((date, index) => {
+            const code = data.daily.weather_code?.[index];
+            const rain = data.daily.precipitation_probability_max?.[index];
+            const max = Math.round(data.daily.temperature_2m_max?.[index]);
+            const min = Math.round(data.daily.temperature_2m_min?.[index]);
+            return `
+              <div class="weather-item">
+                <strong>${labels[index] || date} · ${weatherCodeLabel(code)}</strong>
+                <span>${Number.isFinite(min) && Number.isFinite(max) ? `${min}° / ${max}°` : "기온 확인 중"} · 강수확률 ${Number.isFinite(rain) ? `${rain}%` : "확인 중"}</span>
+              </div>
+            `;
+          }).join("");
+        } catch (error) {
+          list.innerHTML = `<div class="weather-item"><strong>날씨 확인</strong><span>실시간 예보를 불러오지 못했어요. 아래 링크로 확인해 주세요.</span></div>`;
         }
       }
 
