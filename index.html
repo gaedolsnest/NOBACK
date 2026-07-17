@@ -3430,18 +3430,16 @@
         };
 
         const submitAttendance = async (nickname, present) => {
-          const body = new URLSearchParams({
+          const params = new URLSearchParams({
             action: "toggle",
             nickname,
             date: dateText,
             present: present ? "true" : "false"
           });
+          const url = `${SCRIPT_URL}?${params.toString()}`;
 
           try {
-            const response = await fetch(SCRIPT_URL, {
-              method: "POST",
-              body
-            });
+            const response = await fetch(url, { cache: "no-store" });
             if (!response.ok) throw new Error("attendance post failed");
             try {
               const data = await response.json();
@@ -3450,11 +3448,7 @@
               // Apps Script가 텍스트 응답을 주는 경우도 성공으로 처리합니다.
             }
           } catch (error) {
-            await fetch(SCRIPT_URL, {
-              method: "POST",
-              mode: "no-cors",
-              body
-            });
+            await fetch(url, { mode: "no-cors", cache: "no-store" });
           }
         };
 

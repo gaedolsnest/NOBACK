@@ -10,6 +10,25 @@ function doGet(e) {
   const action = String(e.parameter.action || '').trim();
   const dateText = normalizeDate_(e.parameter.date || getNextWednesday_());
 
+  if (action === 'toggle') {
+    const nickname = String(e.parameter.nickname || '').trim();
+    const present = String(e.parameter.present || 'true').toLowerCase() !== 'false';
+
+    if (!nickname) {
+      return json_({ ok: false, message: 'nickname is required' });
+    }
+
+    const result = setAttendance_(nickname, dateText, present);
+    return json_({
+      ok: true,
+      nickname,
+      date: dateText,
+      present,
+      row: result.row,
+      col: result.col,
+    });
+  }
+
   if (action === 'list') {
     return json_({
       ok: true,
