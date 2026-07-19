@@ -1,33 +1,6 @@
 {
-  "updatedAt": "2026-07-18T20:02:21.111Z",
+  "updatedAt": "2026-07-19T20:05:34.903Z",
   "events": [
-    {
-      "name": "제16회 태종대혹서기전국마라톤",
-      "date": "2026-07-19",
-      "location": "태종대공원",
-      "category": "로드",
-      "distance": "하프 / 10km / 7km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://www.bsama.co.kr/index.asp"
-    },
-    {
-      "name": "2026 쿨밸리트레일레이스",
-      "date": "2026-07-19",
-      "location": "장수종합경기장, 방화동휴양림",
-      "category": "트레일",
-      "distance": "18K",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://rocknrun.kr"
-    },
-    {
-      "name": "2026 청계산.인릉산 TrailRunn",
-      "date": "2026-07-19",
-      "location": "화물터미널 청계산옛골",
-      "category": "트레일",
-      "distance": "하프 / 12km",
-      "note": "마라톤온라인 대회 일정 기반입니다.",
-      "url": "http://www.koreatrail.net/home/main.php?link=event&einc=eapp&opp=20250821130406&csno=20190812093657#baseline"
-    },
     {
       "name": "순천만국가정원 챌린지가든런",
       "date": "2026-07-25",
