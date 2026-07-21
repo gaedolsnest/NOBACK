@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-20T20:18:41.141Z",
+  "updatedAt": "2026-07-21T20:16:59.790Z",
   "events": [
     {
       "name": "순천만국가정원 챌린지가든런",
@@ -468,6 +468,78 @@
       "distance": "하프 / 10km / 5km / 7인1팀단체전 / 가족4인단체전",
       "note": "마라톤온라인 대회 일정 기반입니다.",
       "url": "http://www.ujrun.kr"
+    },
+    {
+      "name": "시포레 RUN & FIT with 디스커버리",
+      "date": "2026-09-19",
+      "location": "고양시 일산호수공원",
+      "category": "로드",
+      "distance": "10km / +운동 프로그램",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://cityforestival.kr/"
+    },
+    {
+      "name": "제4회 문경 오미자런",
+      "date": "2026-09-19",
+      "location": "문경종합온천",
+      "category": "로드",
+      "distance": "10km / 5km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://www.omijarun.com"
+    },
+    {
+      "name": "2026 안양천 하프 마라톤",
+      "date": "2026-09-19",
+      "location": "신정교 하부 영롱이 억새구장",
+      "category": "로드",
+      "distance": "하프 / 10km / 5km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://aychalf.kr"
+    },
+    {
+      "name": "2026 JUST RUN10 김해 대동",
+      "date": "2026-09-19",
+      "location": "김해 대동생태체육공원 축구장",
+      "category": "로드",
+      "distance": "10km / 5km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://runten.co.kr"
+    },
+    {
+      "name": "제2회 경기신문 씨사이드 마라톤",
+      "date": "2026-09-19",
+      "location": "영종구 씨사이드파크 일원",
+      "category": "로드",
+      "distance": "하프 / 10km / 5km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://kgseasiderun.co.kr/"
+    },
+    {
+      "name": "제18회 사이버 영토 수호 마라톤",
+      "date": "2026-09-19",
+      "location": "여의도 물빛무대 앞 광",
+      "category": "로드",
+      "distance": "하프 / 10km / 5km / 걷기3km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://www.cyber-run.com"
+    },
+    {
+      "name": "2026 금산인삼축제 마라톤",
+      "date": "2026-09-19",
+      "location": "금산세계인삼엑스포주차장",
+      "category": "로드",
+      "distance": "하프 / 10km / 4km",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://mara1080.com/event/2044eb82-fcdb-4e56-b79b-f3543a6a360d"
+    },
+    {
+      "name": "2026 장수트레일레이스 Fall",
+      "date": "2026-09-19",
+      "location": "장수종합경기장",
+      "category": "트레일",
+      "distance": "100km / JTR Miler / JTR 40J",
+      "note": "마라톤온라인 대회 일정 기반입니다.",
+      "url": "http://rocknrun.kr"
     }
   ]
 }
